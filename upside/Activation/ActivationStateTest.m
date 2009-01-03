@@ -20,6 +20,7 @@
 @implementation ActivationStateTest
 
 - (void) setUp {
+	[ActivationState removeSavedState];
 	activationState = [ActivationState sharedState];
 }
 
@@ -39,6 +40,16 @@
 				   @"-decodeFromData does not restore activated state");
 }
 
+- (void) testLoadInitialization {
+	activationState.activated = YES;
+
+	[ActivationState removeSavedState];
+	[activationState load];
+	
+	STAssertEquals(NO, activationState.activated,
+				   @"dry -load does not set activated to NO");
+}
+
 - (void) testSaving {
 	activationState.activated = YES;
 	[activationState save];
@@ -46,7 +57,7 @@
 	[activationState load];
 	
 	STAssertEquals(YES, activationState.activated,
-				   @"-load does not restore activated state");
+				   @"-load does not restore activated state");	
 }
 
 @end

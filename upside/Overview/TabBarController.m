@@ -1,16 +1,15 @@
 //
-//  upsideViewController.m
+//  TabBarController.m
 //  upside
 //
-//  Created by Victor Costan on 1/2/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Created by Victor Costan on 1/3/09.
+//  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "upsideViewController.h"
-
-@implementation upsideViewController
+#import "TabBarController.h"
 
 
+@implementation TabBarController
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -28,14 +27,12 @@
 }
 */
 
-
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
 */
-
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -45,7 +42,6 @@
 }
 */
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
@@ -54,6 +50,21 @@
 
 - (void)dealloc {
     [super dealloc];
+}
+
++ (UITabBarController*) loadFromNib: (NSString*)nibName
+	  						  owner: (UpsideAppDelegate*)owner {
+	NSArray* nibContents = [[NSBundle mainBundle] loadNibNamed:nibName
+														 owner:owner
+													   options:nil];
+	NSEnumerator* nibEnumerator = [nibContents objectEnumerator];
+	
+	NSObject* nibItem;
+	while ((nibItem = [nibEnumerator nextObject])) {
+		if ([nibItem isKindOfClass:[UITabBarController class]])
+			return (UITabBarController*)nibItem;
+	}
+	return nil;	
 }
 
 @end

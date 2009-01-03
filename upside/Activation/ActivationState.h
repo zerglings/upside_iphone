@@ -36,4 +36,7 @@
 // Loads state from disk.
 - (void) load;
 
+// Removes the state saved on disk. Intended for testing.
++ (void) removeSavedState;
+
 @end

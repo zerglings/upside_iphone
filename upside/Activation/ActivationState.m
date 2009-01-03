@@ -36,7 +36,7 @@ NSString* kStateFileName = @".ActivationState";
 	[unarchiver release];
 }
 
-- (NSString*)filePath {
++ (NSString*)filePath {
 	NSArray* docPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
 															NSUserDomainMask,
 															YES);
@@ -45,22 +45,29 @@ NSString* kStateFileName = @".ActivationState";
 }
 
 - (void) load {
-	NSData* data = [NSData dataWithContentsOfFile:[self filePath]];
+	NSData* data = [NSData dataWithContentsOfFile:[ActivationState filePath]];
 	if (data) {
 		[self unarchiveFromData:data];
+	}
+	else {
+		activated = NO;
 	}
 }
 
 - (void) save {
 	NSData* data = [self archiveToData];
-	[data writeToFile:[self filePath] atomically:YES];
+	[data writeToFile:[ActivationState filePath] atomically:YES];
+}
+
++ (void) removeSavedState {
+	[[NSFileManager defaultManager] removeItemAtPath:[ActivationState filePath]
+											   error:nil];
 }
 
 # pragma mark Lifecycle
 
 - (id) init {
 	if ((self = [super init])) {
-		activated = NO;
 		[self load];
 	}
 	return self;
