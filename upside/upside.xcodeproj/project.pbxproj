@@ -15,10 +15,18 @@
 		2899E5220DE3E06400AC0155 /* ActivationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ActivationViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* ActivationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ActivationViewController.m */; };
+		570C70860F11202800DC666C /* StockFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093E40F11049E00069411 /* StockFormatterTest.m */; };
+		570C70870F11203300DC666C /* StockFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* StockFormatter.m */; };
+		570C70B30F11217E00DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
+		570C70B40F1121B100DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
 		575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */; };
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
 		575E39650F0FA00700DEB8E3 /* RedDownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39630F0FA00700DEB8E3 /* RedDownArrow.png */; };
+		577091AE0F0FA8B000069411 /* StockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 577091AD0F0FA8B000069411 /* StockTableViewCell.m */; };
+		577091E30F10502F00069411 /* StockTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E20F10502F00069411 /* StockTableCellNarrow.xib */; };
+		577091E50F10503900069411 /* StockTableCellWide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E40F10503900069411 /* StockTableCellWide.xib */; };
+		577093620F1084D400069411 /* StockFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* StockFormatter.m */; };
 		57CB188E0F0F01C600E95AE1 /* ActivationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB188D0F0F01C600E95AE1 /* ActivationState.m */; };
 		57CB1A0A0F0F1AF700E95AE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		57CB1A0B0F0F1AF700E95AE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -44,7 +52,6 @@
 		57CDB2210F0F7DEB002C60C5 /* OverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2200F0F7DEB002C60C5 /* OverviewViewController.xib */; };
 		57CDB2860F0F8554002C60C5 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB2850F0F8554002C60C5 /* TabBarController.m */; };
 		57CDB2D60F0F8CA4002C60C5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2D40F0F8CA4002C60C5 /* Icon.png */; };
-		57CDB2D70F0F8CA4002C60C5 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2D50F0F8CA4002C60C5 /* iTunesArtwork */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,8 +67,17 @@
 		28D7ACF70DDB3853001CB0EB /* ActivationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* upside_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = upside_Prefix.pch; sourceTree = "<group>"; };
+		570C70B20F11217E00DC666C /* Stock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock.m; sourceTree = "<group>"; };
 		575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenUpArrow.png; sourceTree = "<group>"; };
 		575E39630F0FA00700DEB8E3 /* RedDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDownArrow.png; sourceTree = "<group>"; };
+		577091AC0F0FA8B000069411 /* StockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTableViewCell.h; sourceTree = "<group>"; };
+		577091AD0F0FA8B000069411 /* StockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockTableViewCell.m; sourceTree = "<group>"; };
+		577091E20F10502F00069411 /* StockTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockTableCellNarrow.xib; sourceTree = "<group>"; };
+		577091E40F10503900069411 /* StockTableCellWide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockTableCellWide.xib; sourceTree = "<group>"; };
+		577093600F1084D400069411 /* StockFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockFormatter.h; sourceTree = "<group>"; };
+		577093610F1084D400069411 /* StockFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockFormatter.m; sourceTree = "<group>"; };
+		577093E10F11032200069411 /* Stock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock.h; sourceTree = "<group>"; };
+		577093E40F11049E00069411 /* StockFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockFormatterTest.m; sourceTree = "<group>"; };
 		57CB188C0F0F01C600E95AE1 /* ActivationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationState.h; sourceTree = "<group>"; };
 		57CB188D0F0F01C600E95AE1 /* ActivationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationState.m; sourceTree = "<group>"; };
 		57CB18CB0F0F128A00E95AE1 /* GTMCALayer+UnitTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMCALayer+UnitTesting.h"; sourceTree = "<group>"; };
@@ -252,6 +268,15 @@
 				57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */,
 				57CDB1A90F0F5ECE002C60C5 /* Portfolio.h */,
 				57CDB1AA0F0F5ECE002C60C5 /* Portfolio.m */,
+				577091AC0F0FA8B000069411 /* StockTableViewCell.h */,
+				577091AD0F0FA8B000069411 /* StockTableViewCell.m */,
+				577091E20F10502F00069411 /* StockTableCellNarrow.xib */,
+				577091E40F10503900069411 /* StockTableCellWide.xib */,
+				577093E10F11032200069411 /* Stock.h */,
+				570C70B20F11217E00DC666C /* Stock.m */,
+				577093600F1084D400069411 /* StockFormatter.h */,
+				577093610F1084D400069411 /* StockFormatter.m */,
+				577093E40F11049E00069411 /* StockFormatterTest.m */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
@@ -341,9 +366,10 @@
 				57CDB1B10F0F68D9002C60C5 /* NewsTabIcon.png in Resources */,
 				57CDB2210F0F7DEB002C60C5 /* OverviewViewController.xib in Resources */,
 				57CDB2D60F0F8CA4002C60C5 /* Icon.png in Resources */,
-				57CDB2D70F0F8CA4002C60C5 /* iTunesArtwork in Resources */,
 				575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */,
 				575E39650F0FA00700DEB8E3 /* RedDownArrow.png in Resources */,
+				577091E30F10502F00069411 /* StockTableCellNarrow.xib in Resources */,
+				577091E50F10503900069411 /* StockTableCellWide.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +395,9 @@
 				57CB188E0F0F01C600E95AE1 /* ActivationState.m in Sources */,
 				57CDB21D0F0F7DD2002C60C5 /* OverviewViewController.m in Sources */,
 				57CDB2860F0F8554002C60C5 /* TabBarController.m in Sources */,
+				570C70B30F11217E00DC666C /* Stock.m in Sources */,
+				577091AE0F0FA8B000069411 /* StockTableViewCell.m in Sources */,
+				577093620F1084D400069411 /* StockFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +407,9 @@
 			files = (
 				57CB1A5F0F0F270E00E95AE1 /* ActivationState.m in Sources */,
 				57CB1A140F0F1B2D00E95AE1 /* ActivationStateTest.m in Sources */,
+				570C70B40F1121B100DC666C /* Stock.m in Sources */,
+				570C70870F11203300DC666C /* StockFormatter.m in Sources */,
+				570C70860F11202800DC666C /* StockFormatterTest.m in Sources */,
 				57CB1A0D0F0F1B0C00E95AE1 /* GTMSystemVersion.m in Sources */,
 				57CB1A0E0F0F1B0C00E95AE1 /* GTMCALayer+UnitTesting.m in Sources */,
 				57CB1A0F0F0F1B0C00E95AE1 /* GTMIPhoneUnitTestDelegate.m in Sources */,

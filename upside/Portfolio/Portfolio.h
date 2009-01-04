@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Stock.h"
 
 @interface Portfolio : NSObject {
 	NSArray* stockIds;
@@ -24,25 +25,5 @@
 - (NSUInteger)stockIdAtIndex: (NSUInteger)index;
 
 // Information for the stock at the given index.
-- (NSDictionary*)stockWithStockId: (NSUInteger)stockId;
+- (Stock*)stockWithStockId: (NSUInteger)stockId;
 @end
-
-#pragma mark Stock Information Keys
-
-// A NSString with the stock's ticker, e.g. @"AAPL" for Apple.
-const NSString* kStockTicker;
-
-// A NSString with the stock's name, e.g. @"Apple Inc."
-const NSString* kStockName;
-
-// A NSNumber with the stock's asking price, in cents.
-const NSString* kStockAskCents;
-
-// A NSNumber with the stock's bidding price, in cents.
-const NSString* kStockBidCents;
-
-// A NSNumber with the stock's last clsoing asking price, in cents.
-const NSString* kStockLastAskCents;
-
-// A NSNumber with the stock's last closing bidding price, in cents.
-const NSString* kStockLastBidCents;

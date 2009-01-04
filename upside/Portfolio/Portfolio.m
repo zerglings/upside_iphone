@@ -20,15 +20,6 @@
 - (void) save {
 }
 
-#pragma mark Stock Information Keys
-
-const NSString* kStockTicker = @"ticker";
-const NSString* kStockName = @"name";
-const NSString* kStockAskCents = @"askCents";
-const NSString* kStockBidCents = @"bidCents";
-const NSString* kStockLastAskCents = @"lastAskCents";
-const NSString* kStockLastBidCents = @"lastBidCents";
-
 #pragma mark Testing
 
 - (void) loadMockData {
@@ -42,6 +33,7 @@ const NSString* kStockLastBidCents = @"lastBidCents";
 								[NSDictionary dictionaryWithObjectsAndKeys:
 								 @"Apple Inc", kStockName,
 								 @"AAPL", kStockTicker,
+								 [NSNumber numberWithInt:10000], kStockHeld,
 								 [NSNumber numberWithInt:9100], kStockAskCents,
 								 [NSNumber numberWithInt:9050], kStockBidCents,
 								 [NSNumber numberWithInt:9050], kStockLastAskCents,
@@ -51,6 +43,7 @@ const NSString* kStockLastBidCents = @"lastBidCents";
 								[NSDictionary dictionaryWithObjectsAndKeys:
 								 @"Google Inc", kStockName,
 								 @"GOOG", kStockTicker,
+								 [NSNumber numberWithInt:31415], kStockHeld,
 								 [NSNumber numberWithInt:30000], kStockAskCents,
 								 [NSNumber numberWithInt:29800], kStockBidCents,
 								 [NSNumber numberWithInt:30100], kStockLastAskCents,
@@ -60,6 +53,7 @@ const NSString* kStockLastBidCents = @"lastBidCents";
 								[NSDictionary dictionaryWithObjectsAndKeys:
 								 @"Microsoft Corp", kStockName,
 								 @"MSFT", kStockTicker,
+								 [NSNumber numberWithInt:666], kStockHeld,
 								 [NSNumber numberWithInt:2100], kStockAskCents,
 								 [NSNumber numberWithInt:1995], kStockBidCents,
 								 [NSNumber numberWithInt:2150], kStockLastAskCents,
@@ -97,7 +91,7 @@ const NSString* kStockLastBidCents = @"lastBidCents";
 	return [[stockIds objectAtIndex:index] unsignedIntValue];
 }
 
-- (NSDictionary*)stockWithStockId:(NSUInteger)stockId {
+- (Stock*)stockWithStockId:(NSUInteger)stockId {
 	return [stocks objectForKey:[NSNumber numberWithUnsignedInt:stockId]];
 }
 

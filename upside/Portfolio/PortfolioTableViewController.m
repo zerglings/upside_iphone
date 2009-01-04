@@ -9,6 +9,7 @@
 #import "PortfolioTableViewController.h"
 
 #import "Portfolio.h"
+#import "StockTableViewCell.h"
 
 @implementation PortfolioTableViewController
 
@@ -51,13 +52,15 @@
 }
 */
 
-/*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
-*/
+
+- (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration {
+	[(UITableView*)self.view reloadData];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -79,19 +82,24 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"StockShort";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	NSString* cellIdentifier = @"StockNarrow";
+	NSString* cellNib = @"StockTableCellNarrow";
+	if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+		cellIdentifier = @"StockWide";
+		cellNib = @"StockTableCellWide";
+	}    
+    StockTableViewCell *cell = (StockTableViewCell*)
+	    [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        cell = [StockTableViewCell loadFromNib:cellNib
+									identifier:cellIdentifier
+										 owner:self];
     }
     
     // Set up the cell...
 	NSUInteger stockId = [[Portfolio sharedPortfolio]
 						  stockIdAtIndex:indexPath.row];
-	cell.text = [[[Portfolio sharedPortfolio] stockWithStockId:stockId]
-				 objectForKey:kStockName];
+	cell.stockId = stockId;
 
     return cell;
 }
@@ -149,6 +157,8 @@
     [super dealloc];
 }
 
+- (IBAction) changeButtonWasTapped {
+}
 
 @end
 

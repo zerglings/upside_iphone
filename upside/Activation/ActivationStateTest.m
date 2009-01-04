@@ -9,8 +9,7 @@
 #import "GTMSenTestCase.h"
 #import "ActivationState.h"
 
-@interface ActivationStateTest: SenTestCase
-{
+@interface ActivationStateTest: SenTestCase {
 	ActivationState* activationState;
 }
 
