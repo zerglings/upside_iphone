@@ -13,6 +13,14 @@
 	NSDictionary* props;
 }
 
+// Initializes the stock's state from a dictionary of properties.
+- (id)initWithProperties:(NSDictionary*)properties;
+
+#pragma mark Accessors
+
+// The raw properties behind this stock.
+// Prefer accessor methods to reaching inside the properties directly.
+// Use the strings in this file as keys in the properties dictionary.
 @property (nonatomic, readonly) NSDictionary* properties;
 
 // The stock's ticker, e.g. @"AAPL" for Apple.
@@ -38,12 +46,9 @@
 // The stock's last closing asking price, in cents.
 - (NSUInteger)lastBidCents;
 
-// Initializes the stock's state from a dictionary of properties.
-- (id)initWithProperties:(NSDictionary*)properties;
-
 @end
 
-#pragma mark Stock Information Keys
+#pragma mark Stock Properties Keys
 
 // A NSString with the stock's ticker, e.g. @"AAPL" for Apple.
 const NSString* kStockTicker;

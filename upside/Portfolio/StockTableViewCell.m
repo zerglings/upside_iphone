@@ -35,14 +35,12 @@
     [super dealloc];
 }
 
-- (NSUInteger) stockId {
-	return stockId;
+- (Stock*) stock {
+	return stock;
 }
 
-- (void) setStockId: (NSUInteger)newStockId {
-	stockId = newStockId;
-	
-	Stock* stock = [[Portfolio sharedPortfolio] stockWithStockId:stockId];
+- (void) setStock: (Stock*)newStock {
+	stock = newStock;
 	
 	tickerLabel.text = [stock ticker];
 	nameLabel.text = [stock name];

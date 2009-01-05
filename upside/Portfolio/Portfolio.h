@@ -11,7 +11,7 @@
 #import "Stock.h"
 
 @interface Portfolio : NSObject {
-	NSArray* stockIds;
+	NSArray* stockTickers;
 	NSDictionary* stocks;
 }
 
@@ -22,8 +22,8 @@
 - (NSUInteger)count;
 
 // The numeric stock ID for the stock at the given index.
-- (NSUInteger)stockIdAtIndex: (NSUInteger)index;
+- (NSString*)stockTickerAtIndex: (NSUInteger)index;
 
 // Information for the stock at the given index.
-- (Stock*)stockWithStockId: (NSUInteger)stockId;
+- (Stock*)stockWithTicker: (NSString*)stockTicker;
 @end

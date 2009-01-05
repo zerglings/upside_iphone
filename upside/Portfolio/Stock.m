@@ -67,11 +67,11 @@
 
 @end
 
-#pragma mark Stock Information Keys
+#pragma mark Stock Properties Keys
 
 const NSString* kStockTicker = @"ticker";
 const NSString* kStockName = @"name";
-const NSString* kStockHeld = @"held";
+const NSString* kStockHeld = @"owns";
 const NSString* kStockAskCents = @"askCents";
 const NSString* kStockBidCents = @"bidCents";
 const NSString* kStockLastAskCents = @"lastAskCents";

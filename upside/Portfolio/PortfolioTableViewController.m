@@ -80,9 +80,10 @@
 											   cellForRowAtIndexPath:indexPath];
     
     // Set up the cell...
-	NSUInteger stockId = [[Portfolio sharedPortfolio]
-						  stockIdAtIndex:indexPath.row];
-	cell.stockId = stockId;
+	Portfolio* portfolio = [Portfolio sharedPortfolio];
+	Stock* stock = [portfolio stockWithTicker:
+					[portfolio stockTickerAtIndex:indexPath.row]];
+	cell.stock = stock;
 
     return cell;
 }

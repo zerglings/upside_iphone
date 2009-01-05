@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class PortfolioTableViewController;
+@class Stock;
 
 @interface StockTableViewCell : UITableViewCell {
 	IBOutlet UILabel* tickerLabel;
@@ -22,14 +23,9 @@
 	IBOutlet UIImageView* bidPriceProgressIcon;
 	IBOutlet UIImageView* askPriceProgressIcon;
 	
-	NSUInteger stockId;
+	Stock *stock;
 }
 
-- (NSUInteger) stockId;
-- (void) setStockId: (NSUInteger)stockId;
-
-// Loads a table cell with the given reuse identifier from a nib.
-+ (StockTableViewCell*) loadFromNib: (NSString*)nibName
-						 identifier: (NSString*)identifier
-							  owner: (PortfolioTableViewController*)owner;
+- (Stock*) stock;
+- (void) setStock: (Stock*)stock;
 @end

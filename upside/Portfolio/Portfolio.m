@@ -23,11 +23,8 @@
 #pragma mark Testing
 
 - (void) loadMockData {
-	NSArray* mockStockIds = [NSArray arrayWithObjects:[NSNumber numberWithInt:1],
-							 [NSNumber numberWithInt:2],
-							 [NSNumber numberWithInt:3],
-							 nil];
-	
+	NSArray* mockStockTickers = [NSArray arrayWithObjects:@"AAPL", @"GOOG",
+								 @"MSFT", nil];
 	
 	NSDictionary* mockStocks = [NSDictionary dictionaryWithObjectsAndKeys:
 								[[Stock alloc] initWithProperties:
@@ -40,7 +37,7 @@
 								 [NSNumber numberWithInt:9050], kStockLastAskCents,
 								 [NSNumber numberWithInt:9030], kStockLastBidCents,
 								 nil]],
-								[NSNumber numberWithInt:1],
+								@"AAPL",
 								[[Stock alloc] initWithProperties:
 								 [NSDictionary dictionaryWithObjectsAndKeys:
 								 @"Google Inc", kStockName,
@@ -51,7 +48,7 @@
 								 [NSNumber numberWithInt:30100], kStockLastAskCents,
 								 [NSNumber numberWithInt:29900], kStockLastBidCents,
 								 nil]],
-								[NSNumber numberWithInt:2],
+								@"GOOG",
 								[[Stock alloc] initWithProperties:
 								 [NSDictionary dictionaryWithObjectsAndKeys:
 								 @"Microsoft Corp", kStockName,
@@ -62,10 +59,10 @@
 								 [NSNumber numberWithInt:2150], kStockLastAskCents,
 								 [NSNumber numberWithInt:1950], kStockLastBidCents,
 								 nil]],
-								[NSNumber numberWithInt:3],
+								@"MSFT",
 								nil];
 	
-	stockIds = [mockStockIds retain];
+	stockTickers = [mockStockTickers retain];
 	stocks = [mockStocks retain];
 }
 
@@ -80,22 +77,22 @@
 
 - (void)dealloc {
 	[stocks release];
-	[stockIds release];
+	[stockTickers release];
 	[super dealloc];
 }
 
 #pragma mark Properties
 
 - (NSUInteger)count {
-	return [stockIds count];
+	return [stockTickers count];
 }
 
-- (NSUInteger)stockIdAtIndex:(NSUInteger)index {
-	return [[stockIds objectAtIndex:index] unsignedIntValue];
+- (NSString*)stockTickerAtIndex:(NSUInteger)index {
+	return [stockTickers objectAtIndex:index];
 }
 
-- (Stock*)stockWithStockId:(NSUInteger)stockId {
-	return [stocks objectForKey:[NSNumber numberWithUnsignedInt:stockId]];
+- (Stock*)stockWithTicker:(NSString*)stockTicker {
+	return [stocks objectForKey:stockTicker];
 }
 
 #pragma mark Singleton
