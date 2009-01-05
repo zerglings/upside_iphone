@@ -1,17 +1,16 @@
 //
-//  PortfolioTableViewController.m
+//  OrdersViewController.m
 //  upside
 //
-//  Created by Victor Costan on 1/3/09.
+//  Created by Victor Costan on 1/4/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "PortfolioTableViewController.h"
+#import "OrdersViewController.h"
 
-#import "Portfolio.h"
-#import "StockTableViewCell.h"
+#import "OrderTableViewCell.h"
 
-@implementation PortfolioTableViewController
+@implementation OrdersViewController
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -24,13 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-	self.narrowCellNib = @"StockTableCellNarrow";
-	self.wideCellNib = @"StockTableCellWide";
-	self.narrowCellReuseIdentifier = @"StockNarrow";
-	self.wideCellReuseIdentifier = @"StockWide";
-	self.cellClass = [StockTableViewCell class];
 	
+	self.narrowCellNib = @"OrderTableCellNarrow";
+	self.wideCellNib = @"OrderTableCellWide";
+	self.narrowCellReuseIdentifier = @"OrderNarrow";
+	self.wideCellReuseIdentifier = @"OrderWide";
+	self.cellClass = [OrderTableViewCell class];
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -56,6 +55,14 @@
 }
 */
 
+/*
+// Override to allow orientations other than the default portrait orientation.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+*/
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
@@ -70,19 +77,14 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[Portfolio sharedPortfolio] count];
+    return 5;
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	StockTableViewCell *cell = (StockTableViewCell*)[super tableView:tableView
+    OrderTableViewCell* cell = (OrderTableViewCell*)[super tableView:tableView
 											   cellForRowAtIndexPath:indexPath];
-    
-    // Set up the cell...
-	NSUInteger stockId = [[Portfolio sharedPortfolio]
-						  stockIdAtIndex:indexPath.row];
-	cell.stockId = stockId;
 
     return cell;
 }
@@ -140,8 +142,6 @@
     [super dealloc];
 }
 
-- (IBAction) changeButtonWasTapped {
-}
 
 @end
 

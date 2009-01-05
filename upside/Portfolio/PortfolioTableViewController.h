@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "AutoRotatingTableViewController.h"
 
-@interface PortfolioTableViewController : UITableViewController {
+
+@interface PortfolioTableViewController : AutoRotatingTableViewController {
 
 }
 

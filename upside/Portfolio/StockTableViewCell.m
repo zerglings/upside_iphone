@@ -74,24 +74,4 @@
 	bidPriceProgressIcon.image = [stock imageForBidChange];
 }
 
-+ (StockTableViewCell*) loadFromNib: (NSString*)nibName
-						 identifier: (NSString*)identifier
-							  owner: (PortfolioTableViewController*)owner {
-	NSArray* nibContents = [[NSBundle mainBundle] loadNibNamed:nibName
-														 owner:owner
-													   options:nil];
-	NSEnumerator* nibEnumerator = [nibContents objectEnumerator];
-	
-	NSObject* nibItem;
-	while ((nibItem = [nibEnumerator nextObject])) {
-		if (![nibItem isKindOfClass:[StockTableViewCell class]])
-			continue;
-		StockTableViewCell* stockTableViewCell = (StockTableViewCell*)nibItem;
-		if ([stockTableViewCell.reuseIdentifier isEqualToString:identifier])
-			return stockTableViewCell;
-	}
-	NSLog(@"StockTableViewCell -loadFromNib failed to find the cell");
-	return nil;	
-}
-
 @end

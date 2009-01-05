@@ -20,6 +20,12 @@
 		570C70B30F11217E00DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
 		570C70B40F1121B100DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
 		570D82DD0F1196F800D54544 /* MarketOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82DC0F1196F800D54544 /* MarketOrder.m */; };
+		570D82DF0F119D7C00D54544 /* OrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D82DE0F119D7C00D54544 /* OrdersViewController.xib */; };
+		570D82E20F11A45A00D54544 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82E10F11A45A00D54544 /* OrdersViewController.m */; };
+		570D82EF0F11A5F000D54544 /* AutoRotatingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */; };
+		570D83300F11B0DD00D54544 /* OrderTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D832F0F11B0DD00D54544 /* OrderTableCellNarrow.xib */; };
+		570D83320F11B0E700D54544 /* OrderTableCellWide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D83310F11B0E700D54544 /* OrderTableCellWide.xib */; };
+		570D83350F11B10A00D54544 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D83340F11B10A00D54544 /* OrderTableViewCell.m */; };
 		575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */; };
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
@@ -71,6 +77,15 @@
 		570C70B20F11217E00DC666C /* Stock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock.m; sourceTree = "<group>"; };
 		570D82DB0F1196F800D54544 /* MarketOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketOrder.h; sourceTree = "<group>"; };
 		570D82DC0F1196F800D54544 /* MarketOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketOrder.m; sourceTree = "<group>"; };
+		570D82DE0F119D7C00D54544 /* OrdersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersViewController.xib; sourceTree = "<group>"; };
+		570D82E00F11A45A00D54544 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
+		570D82E10F11A45A00D54544 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
+		570D82ED0F11A5F000D54544 /* AutoRotatingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRotatingTableViewController.h; sourceTree = "<group>"; };
+		570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRotatingTableViewController.m; sourceTree = "<group>"; };
+		570D832F0F11B0DD00D54544 /* OrderTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableCellNarrow.xib; sourceTree = "<group>"; };
+		570D83310F11B0E700D54544 /* OrderTableCellWide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableCellWide.xib; sourceTree = "<group>"; };
+		570D83330F11B10A00D54544 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
+		570D83340F11B10A00D54544 /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
 		575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenUpArrow.png; sourceTree = "<group>"; };
 		575E39630F0FA00700DEB8E3 /* RedDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDownArrow.png; sourceTree = "<group>"; };
 		577091AC0F0FA8B000069411 /* StockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTableViewCell.h; sourceTree = "<group>"; };
@@ -168,6 +183,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				570D82EC0F11A5BB00D54544 /* Util */,
 				5732104C0F117B9E003D97D8 /* Orders */,
 				57CDB2180F0F7D44002C60C5 /* Overview */,
 				57CDB19E0F0F56CB002C60C5 /* Portfolio */,
@@ -212,11 +228,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		570D82EC0F11A5BB00D54544 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				570D82ED0F11A5F000D54544 /* AutoRotatingTableViewController.h */,
+				570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		5732104C0F117B9E003D97D8 /* Orders */ = {
 			isa = PBXGroup;
 			children = (
 				570D82DB0F1196F800D54544 /* MarketOrder.h */,
 				570D82DC0F1196F800D54544 /* MarketOrder.m */,
+				570D82DE0F119D7C00D54544 /* OrdersViewController.xib */,
+				570D82E00F11A45A00D54544 /* OrdersViewController.h */,
+				570D82E10F11A45A00D54544 /* OrdersViewController.m */,
+				570D832F0F11B0DD00D54544 /* OrderTableCellNarrow.xib */,
+				570D83310F11B0E700D54544 /* OrderTableCellWide.xib */,
+				570D83330F11B10A00D54544 /* OrderTableViewCell.h */,
+				570D83340F11B10A00D54544 /* OrderTableViewCell.m */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
@@ -383,6 +415,9 @@
 				575E39650F0FA00700DEB8E3 /* RedDownArrow.png in Resources */,
 				577091E30F10502F00069411 /* StockTableCellNarrow.xib in Resources */,
 				577091E50F10503900069411 /* StockTableCellWide.xib in Resources */,
+				570D82DF0F119D7C00D54544 /* OrdersViewController.xib in Resources */,
+				570D83300F11B0DD00D54544 /* OrderTableCellNarrow.xib in Resources */,
+				570D83320F11B0E700D54544 /* OrderTableCellWide.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +447,9 @@
 				577091AE0F0FA8B000069411 /* StockTableViewCell.m in Sources */,
 				577093620F1084D400069411 /* Stock+Formatting.m in Sources */,
 				570D82DD0F1196F800D54544 /* MarketOrder.m in Sources */,
+				570D82E20F11A45A00D54544 /* OrdersViewController.m in Sources */,
+				570D82EF0F11A5F000D54544 /* AutoRotatingTableViewController.m in Sources */,
+				570D83350F11B10A00D54544 /* OrderTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
