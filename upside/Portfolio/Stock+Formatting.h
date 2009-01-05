@@ -10,44 +10,36 @@
 
 #import "Stock.h"
 
-@interface StockFormatter : NSObject {
-	NSNumberFormatter* countFormatter;
-	NSNumberFormatter* priceFormatter;
-	NSNumberFormatter* netChangeFormatter;
-	NSNumberFormatter* pointChangeFormatter;
-}
-
-// The singleton StockFormatter instance.
-+ (StockFormatter*) sharedFormatter;
+@interface Stock (Formatting)
 
 // Format the number of stocks owned.
-- (NSString*) ownCountFor:(Stock*)stock;
+- (NSString*) formattedOwnCount;
 // Format the stock's ask price.
-- (NSString*) askPriceFor:(Stock*)stock;
+- (NSString*) formattedAskPrice;
 // Format the stock's bid price.
-- (NSString*) bidPriceFor:(Stock*)stock;
+- (NSString*) formattedBidPrice;
 // Format the stock's value in the portfolio, using the ask price.
-- (NSString*) valueUsingAskPriceFor:(Stock*)stock;
+- (NSString*) formattedValueUsingAskPrice;
 // Format the stock's value in the portfolio, using the bid price.
-- (NSString*) valueUsingBskPriceFor:(Stock*)stock;
+- (NSString*) formattedValueUsingBidPrice;
 
 
 // Format the net change in the stock's ask price.
-- (NSString*) netAskChangeFor:(Stock*)stock;
+- (NSString*) formattedNetAskChange;
 // Format the net change in the stock's bid price.
-- (NSString*) netBidChangeFor:(Stock*)stock;
+- (NSString*) formattedNetBidChange;
 // Format the point change in the stock's ask price.
-- (NSString*) pointAskChangeFor:(Stock*)stock;
+- (NSString*) formattedPointAskChange;
 // Format the point change in the stock's bid price.
-- (NSString*) pointBidChangeFor:(Stock*)stock;
+- (NSString*) formattedPointBidChange;
 
 // The color showing the change in the stock's ask price. 
-- (UIColor*) askChangeColorFor:(Stock*)stock;
+- (UIColor*) colorForAskChange;
 // The color showing the change in the stock's bid price. 
-- (UIColor*) bidChangeColorFor:(Stock*)stock;
+- (UIColor*) colorForBidChange;
 // The image showing the change in the stock's ask price. 
-- (UIImage*) askChangeImageFor:(Stock*)stock;
+- (UIImage*) imageForAskChange;
 // The image showing the change in the stock's bid price. 
-- (UIImage*) bidChangeImageFor:(Stock*)stock;
+- (UIImage*) imageForBidChange;
 
 @end

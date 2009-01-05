@@ -9,7 +9,8 @@
 #import "StockTableViewCell.h"
 
 #import "Portfolio.h"
-#import "StockFormatter.h"
+#import "Stock.h"
+#import "Stock+Formatting.h"
 
 
 @implementation StockTableViewCell
@@ -42,36 +43,35 @@
 	stockId = newStockId;
 	
 	Stock* stock = [[Portfolio sharedPortfolio] stockWithStockId:stockId];
-	StockFormatter* formatter = [StockFormatter sharedFormatter];
 	
-	tickerLabel.text = [stock objectForKey:kStockTicker];
-	nameLabel.text = [stock objectForKey:kStockName];
+	tickerLabel.text = [stock ticker];
+	nameLabel.text = [stock name];
 	
-	[askChangeButton setTitle:[formatter netAskChangeFor:stock]
+	[askChangeButton setTitle:[stock formattedNetAskChange]
 					 forState:UIControlStateNormal];
-	[askChangeButton setTitle:[formatter netAskChangeFor:stock]
+	[askChangeButton setTitle:[stock formattedNetAskChange]
 					 forState:UIControlStateHighlighted];
-	[bidChangeButton setTitle:[formatter netAskChangeFor:stock]
+	[bidChangeButton setTitle:[stock formattedNetBidChange]
 					 forState:UIControlStateNormal];
-	[bidChangeButton setTitle:[formatter netAskChangeFor:stock]
+	[bidChangeButton setTitle:[stock formattedNetBidChange]
 					 forState:UIControlStateHighlighted];
 	
-	[askChangeButton setTitleColor:[formatter askChangeColorFor:stock]
+	[askChangeButton setTitleColor:[stock colorForAskChange]
 					      forState:UIControlStateNormal];
-	[askChangeButton setTitleColor:[formatter askChangeColorFor:stock]
+	[askChangeButton setTitleColor:[stock colorForAskChange]
 					      forState:UIControlStateHighlighted];
-	[bidChangeButton setTitleColor:[formatter bidChangeColorFor:stock]
+	[bidChangeButton setTitleColor:[stock colorForBidChange]
 					      forState:UIControlStateNormal];
-	[bidChangeButton setTitleColor:[formatter bidChangeColorFor:stock]
+	[bidChangeButton setTitleColor:[stock colorForBidChange]
 					      forState:UIControlStateHighlighted];
 	
-	askPriceLabel.text = [formatter askPriceFor:stock];
-	bidPriceLabel.text = [formatter bidPriceFor:stock];
-	stockValueLabel.text = [formatter valueUsingBskPriceFor:stock];	
-	stockCountLabel.text = [formatter ownCountFor:stock];
+	askPriceLabel.text = [stock formattedAskPrice];
+	bidPriceLabel.text = [stock formattedBidPrice];
+	stockValueLabel.text = [stock formattedValueUsingBidPrice];	
+	stockCountLabel.text = [stock formattedOwnCount];
 						   
-	askPriceProgressIcon.image = [formatter askChangeImageFor:stock];
-	bidPriceProgressIcon.image = [formatter bidChangeImageFor:stock];
+	askPriceProgressIcon.image = [stock imageForAskChange];
+	bidPriceProgressIcon.image = [stock imageForBidChange];
 }
 
 + (StockTableViewCell*) loadFromNib: (NSString*)nibName

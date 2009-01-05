@@ -9,7 +9,39 @@
 #import <Foundation/Foundation.h>
 
 // Data about a single stock.
-typedef NSDictionary Stock;
+@interface Stock : NSObject {
+	NSDictionary* props;
+}
+
+@property (nonatomic, readonly) NSDictionary* properties;
+
+// The stock's ticker, e.g. @"AAPL" for Apple.
+- (NSString*)ticker;
+// The stock's name, e.g. @"Apple Inc."
+- (NSString*)name;
+
+// The number of stocks held in a portfolio.
+- (NSUInteger)ownCount;
+// The stock's asking price, in cents.
+- (NSUInteger)askCents;
+// The stock's bidding price, in cents.
+- (NSUInteger)bidCents;
+
+// The stock's asking price, in dollars.
+- (double)askPrice;
+// The stock's bidding price, in dollars.
+- (double)bidPrice;
+
+// The stock's last closing bidding price, in cents.
+- (NSUInteger)lastAskCents;
+
+// The stock's last closing asking price, in cents.
+- (NSUInteger)lastBidCents;
+
+// Initializes the stock's state from a dictionary of properties.
+- (id)initWithProperties:(NSDictionary*)properties;
+
+@end
 
 #pragma mark Stock Information Keys
 

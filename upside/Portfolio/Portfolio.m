@@ -30,7 +30,8 @@
 	
 	
 	NSDictionary* mockStocks = [NSDictionary dictionaryWithObjectsAndKeys:
-								[NSDictionary dictionaryWithObjectsAndKeys:
+								[[Stock alloc] initWithProperties:
+								 [NSDictionary dictionaryWithObjectsAndKeys:
 								 @"Apple Inc", kStockName,
 								 @"AAPL", kStockTicker,
 								 [NSNumber numberWithInt:10000], kStockHeld,
@@ -38,9 +39,10 @@
 								 [NSNumber numberWithInt:9050], kStockBidCents,
 								 [NSNumber numberWithInt:9050], kStockLastAskCents,
 								 [NSNumber numberWithInt:9030], kStockLastBidCents,
-								 nil],
+								 nil]],
 								[NSNumber numberWithInt:1],
-								[NSDictionary dictionaryWithObjectsAndKeys:
+								[[Stock alloc] initWithProperties:
+								 [NSDictionary dictionaryWithObjectsAndKeys:
 								 @"Google Inc", kStockName,
 								 @"GOOG", kStockTicker,
 								 [NSNumber numberWithInt:31415], kStockHeld,
@@ -48,9 +50,10 @@
 								 [NSNumber numberWithInt:29800], kStockBidCents,
 								 [NSNumber numberWithInt:30100], kStockLastAskCents,
 								 [NSNumber numberWithInt:29900], kStockLastBidCents,
-								 nil],
+								 nil]],
 								[NSNumber numberWithInt:2],
-								[NSDictionary dictionaryWithObjectsAndKeys:
+								[[Stock alloc] initWithProperties:
+								 [NSDictionary dictionaryWithObjectsAndKeys:
 								 @"Microsoft Corp", kStockName,
 								 @"MSFT", kStockTicker,
 								 [NSNumber numberWithInt:666], kStockHeld,
@@ -58,7 +61,7 @@
 								 [NSNumber numberWithInt:1995], kStockBidCents,
 								 [NSNumber numberWithInt:2150], kStockLastAskCents,
 								 [NSNumber numberWithInt:1950], kStockLastBidCents,
-								 nil],
+								 nil]],
 								[NSNumber numberWithInt:3],
 								nil];
 	
