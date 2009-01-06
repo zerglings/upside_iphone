@@ -16,6 +16,7 @@
 
 static NSNumberFormatter* quantityFormatter = nil;
 static NSNumberFormatter* priceFormatter = nil;
+static NSNumberFormatter* percentFormatter = nil;
 
 #pragma mark Formatting
 
@@ -27,6 +28,9 @@ static void SetupFormatters() {
 			
 			priceFormatter = [[NSNumberFormatter alloc] init];
 			[priceFormatter setPositiveFormat:@"$#,##0.00"];
+			
+			percentFormatter = [[NSNumberFormatter alloc] init];
+			[percentFormatter setPositiveFormat:@"##0.00%"];
 		}
 	}
 }
@@ -42,6 +46,13 @@ static void SetupFormatters() {
 	return [quantityFormatter stringFromNumber:[NSNumber numberWithUnsignedInt:
 												[self quantityFilled]]];
 }
+
+- (NSString*) formattedPercentFilled {
+	SetupFormatters();
+	return [percentFormatter stringFromNumber:[NSNumber numberWithDouble:
+											   [self fillRatio]]];
+}
+
 
 - (NSString*) formattedLimitPrice {
 	SetupFormatters();

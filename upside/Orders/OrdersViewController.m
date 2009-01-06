@@ -8,7 +8,9 @@
 
 #import "OrdersViewController.h"
 
+#import "Game.h"
 #import "OrderTableViewCell.h"
+#import "TradeBook.h"
 
 @implementation OrdersViewController
 
@@ -71,13 +73,25 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	switch(section) {
+		case 0:
+			return @"Buy";
+		case 1:
+			return @"Sell";
+		default:
+			return nil;
+			
+	}
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return [[[Game sharedGame] tradeBook] count];
 }
 
 
@@ -85,6 +99,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OrderTableViewCell* cell = (OrderTableViewCell*)[super tableView:tableView
 											   cellForRowAtIndexPath:indexPath];
+		
+	TradeBook* tradeBook = [[Game sharedGame] tradeBook];
+	cell.order = [tradeBook orderAtIndex:indexPath.row];
 
     return cell;
 }

@@ -24,7 +24,7 @@
 }
 
 - (double) fillRatio {
-	return (double)[self quantityFilled] / (double)[self quantity];
+	return (double)[self quantityFilled] / [self quantity];
 }
 
 - (BOOL) isBuyOrder {

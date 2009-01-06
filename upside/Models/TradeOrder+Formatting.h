@@ -14,6 +14,8 @@
 
 - (NSString*) formattedQuantityFilled;
 
+- (NSString*) formattedPercentFilled;
+
 - (NSString*) formattedLimitPrice;
 
 @end

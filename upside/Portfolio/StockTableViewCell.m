@@ -32,6 +32,7 @@
 
 
 - (void)dealloc {
+	[stock release];
     [super dealloc];
 }
 
@@ -40,6 +41,8 @@
 }
 
 - (void) setStock: (Stock*)newStock {
+	[newStock retain];
+	[stock release];
 	stock = newStock;
 	
 	tickerLabel.text = [stock ticker];

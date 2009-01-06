@@ -47,6 +47,13 @@
 						 @"Large filled quantity");
 }
 
+- (void) testFillPercentages {
+	STAssertEqualStrings(@"10.00%", [buyOrder formattedPercentFilled],
+						 @"Easy fill percent");
+	STAssertEqualStrings(@"0.00%", [sellOrder formattedPercentFilled],
+						 @"Zero fill percent");
+}
+	
 - (void) testLimits {
 	STAssertEqualStrings(@"$1,310.50", [buyOrder formattedLimitPrice],
 						 @"Large limit");

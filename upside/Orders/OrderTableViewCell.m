@@ -8,6 +8,9 @@
 
 #import "OrderTableViewCell.h"
 
+#import "TradeOrder.h"
+#import "TradeOrder+Formatting.h"
+
 
 @implementation OrderTableViewCell
 
@@ -28,8 +31,25 @@
 
 
 - (void)dealloc {
+	[order release];
     [super dealloc];
 }
 
+- (TradeOrder*) order {
+	return order;
+}
+- (void) setOrder: (TradeOrder*)newOrder {
+	[newOrder retain];
+	[order release];
+	order = newOrder;
+	
+	tickerLabel.text = [order ticker];
+	buyOrSellLabel.text = [order isBuyOrder] ? @"buy" : @"sell";
+	limitPriceLabel.text = [order formattedLimitPrice];
+	quantityLabel.text = [order formattedQuantity];
+	quantityFilledLabel.text = [order formattedQuantityFilled];
+	percentFilledLabel.text = [order formattedPercentFilled];
+	[fillProgressView setProgress:[order fillRatio]];
+}
 
 @end

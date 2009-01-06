@@ -8,6 +8,7 @@
 
 #import "PortfolioTableViewController.h"
 
+#import "Game.h"
 #import "Portfolio.h"
 #import "StockTableViewCell.h"
 
@@ -70,7 +71,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[Portfolio sharedPortfolio] count];
+    return [[[Game sharedGame] portfolio] count];
 }
 
 
@@ -80,7 +81,7 @@
 											   cellForRowAtIndexPath:indexPath];
     
     // Set up the cell...
-	Portfolio* portfolio = [Portfolio sharedPortfolio];
+	Portfolio* portfolio = [[Game sharedGame] portfolio];
 	Stock* stock = [portfolio stockWithTicker:
 					[portfolio stockTickerAtIndex:indexPath.row]];
 	cell.stock = stock;

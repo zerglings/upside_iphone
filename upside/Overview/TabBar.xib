@@ -34,36 +34,18 @@
 			<object class="IBUITabBarController" id="98304440">
 				<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-				<object class="IBUINavigationController" key="IBUISelectedViewController" id="669302241">
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="28153748">
-						<string key="IBUITitle">Orders</string>
+				<object class="IBUIViewController" key="IBUISelectedViewController" id="888440022">
+					<string key="IBUITitle">News</string>
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="359759714">
+						<string key="IBUITitle">News</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">TransactionsTabIcon.png</string>
+							<string key="NSResourceName">NewsTabIcon.png</string>
 						</object>
 						<reference key="IBUITabBar"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="98304440"/>
-					<object class="IBUINavigationBar" key="IBUINavigationBar" id="545657289">
-						<nil key="NSNextResponder"/>
-						<int key="NSvFlags">256</int>
-						<string key="NSFrameSize">{320, 44}</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-					</object>
-					<object class="NSArray" key="IBUIViewControllers">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="IBUITableViewController" id="935858488">
-							<object class="IBUINavigationItem" key="IBUINavigationItem" id="339365779">
-								<reference key="IBUINavigationBar"/>
-								<string key="IBUITitle">Item</string>
-							</object>
-							<reference key="IBUIParentViewController" ref="669302241"/>
-							<string key="IBUINibName">OrdersViewController</string>
-							<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-						</object>
-					</object>
+					<string key="IBUINibName">OverviewViewController</string>
 				</object>
 				<object class="NSMutableArray" key="IBUIViewControllers">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -110,7 +92,38 @@
 							</object>
 						</object>
 					</object>
-					<reference ref="669302241"/>
+					<object class="IBUINavigationController" id="1722607">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="983203261">
+							<string key="IBUITitle">Orders</string>
+							<object class="NSCustomResource" key="IBUIImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">TransactionsTabIcon.png</string>
+							</object>
+							<reference key="IBUITabBar"/>
+						</object>
+						<reference key="IBUIParentViewController" ref="98304440"/>
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="491917729">
+							<nil key="NSNextResponder"/>
+							<int key="NSvFlags">256</int>
+							<string key="NSFrameSize">{320, 44}</string>
+							<bool key="IBUIOpaque">NO</bool>
+							<bool key="IBUIClipsSubviews">YES</bool>
+							<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						</object>
+						<object class="NSArray" key="IBUIViewControllers">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUITableViewController" id="835197989">
+								<string key="IBUITitle">Orders</string>
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="589760937">
+									<string key="IBUITitle">Orders</string>
+								</object>
+								<reference key="IBUIParentViewController" ref="1722607"/>
+								<string key="IBUINibName">OrdersViewController</string>
+								<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+							</object>
+						</object>
+					</object>
+					<reference ref="888440022"/>
 					<object class="IBUIViewController" id="502809820">
 						<string key="IBUITitle">Goals</string>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="894917706">
@@ -118,19 +131,6 @@
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">GoalsTabIcon.png</string>
-							</object>
-							<reference key="IBUITabBar"/>
-						</object>
-						<reference key="IBUIParentViewController" ref="98304440"/>
-						<string key="IBUINibName">OverviewViewController</string>
-					</object>
-					<object class="IBUIViewController" id="888440022">
-						<string key="IBUITitle">News</string>
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="359759714">
-							<string key="IBUITitle">News</string>
-							<object class="NSCustomResource" key="IBUIImage">
-								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">NewsTabIcon.png</string>
 							</object>
 							<reference key="IBUITabBar"/>
 						</object>
@@ -195,12 +195,12 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="990339854"/>
-							<reference ref="888440022"/>
 							<reference ref="647360675"/>
 							<reference ref="812881648"/>
 							<reference ref="654553562"/>
 							<reference ref="502809820"/>
-							<reference ref="669302241"/>
+							<reference ref="1722607"/>
+							<reference ref="888440022"/>
 						</object>
 						<reference key="parent" ref="957960031"/>
 					</object>
@@ -302,38 +302,38 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">42</int>
-						<reference key="object" ref="669302241"/>
+						<reference key="object" ref="1722607"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="28153748"/>
-							<reference ref="545657289"/>
-							<reference ref="935858488"/>
+							<reference ref="983203261"/>
+							<reference ref="491917729"/>
+							<reference ref="835197989"/>
 						</object>
 						<reference key="parent" ref="98304440"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">43</int>
-						<reference key="object" ref="28153748"/>
-						<reference key="parent" ref="669302241"/>
+						<reference key="object" ref="983203261"/>
+						<reference key="parent" ref="1722607"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">46</int>
-						<reference key="object" ref="545657289"/>
-						<reference key="parent" ref="669302241"/>
+						<reference key="object" ref="491917729"/>
+						<reference key="parent" ref="1722607"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">47</int>
-						<reference key="object" ref="935858488"/>
+						<reference key="object" ref="835197989"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="339365779"/>
+							<reference ref="589760937"/>
 						</object>
-						<reference key="parent" ref="669302241"/>
+						<reference key="parent" ref="1722607"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">51</int>
-						<reference key="object" ref="339365779"/>
-						<reference key="parent" ref="935858488"/>
+						<reference key="object" ref="589760937"/>
+						<reference key="parent" ref="835197989"/>
 					</object>
 				</object>
 			</object>
@@ -427,7 +427,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">OrdersViewController</string>
-					<string key="superclassName">UITableViewController</string>
+					<string key="superclassName">AutoRotatingTableViewController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Orders/OrdersViewController.h</string>
