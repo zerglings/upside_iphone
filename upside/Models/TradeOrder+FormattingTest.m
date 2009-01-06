@@ -22,13 +22,15 @@
 
 - (void) setUp {
 	buyOrder = [[TradeOrder alloc] initWithTicker:@"AAPL"
-										 quantity:1000
+										 quantity:10000
+								   quantityFilled:1000
 									   isBuyOrder:YES
 									   limitCents:131050
 										 serverId:kTradeOrderInvalidServerId];
 
 	sellOrder = [[TradeOrder alloc] initWithTicker:@"MSFT"
 										  quantity:35
+									quantityFilled:0
 										isBuyOrder:NO
 										  serverId:6];
 }
@@ -36,8 +38,13 @@
 - (void) testQuantities {
 	STAssertEqualStrings(@"35", [sellOrder formattedQuantity],
 						 @"Easy quantity");
-	STAssertEqualStrings(@"1,000", [buyOrder formattedQuantity],
+	STAssertEqualStrings(@"10,000", [buyOrder formattedQuantity],
 						 @"Large quantity");
+
+	STAssertEqualStrings(@"0", [sellOrder formattedQuantityFilled],
+						 @"Zero filled quantity");
+	STAssertEqualStrings(@"1,000", [buyOrder formattedQuantityFilled],
+						 @"Large filled quantity");
 }
 
 - (void) testLimits {

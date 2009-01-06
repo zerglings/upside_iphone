@@ -15,9 +15,6 @@
 	NSDictionary* stocks;
 }
 
-// The singleton Portfolio instance.
-+ (Portfolio*)sharedPortfolio;
-
 // How many stocks in this portfolio.
 - (NSUInteger)count;
 

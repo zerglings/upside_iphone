@@ -95,17 +95,4 @@
 	return [stocks objectForKey:stockTicker];
 }
 
-#pragma mark Singleton
-
-static Portfolio* sharedPortfolio = nil;
-
-+ (Portfolio*) sharedPortfolio {
-	@synchronized(self) {
-		if (sharedPortfolio == nil) {
-			sharedPortfolio = [[Portfolio alloc] init];
-		}
-	}
-	return sharedPortfolio;
-}
-
 @end

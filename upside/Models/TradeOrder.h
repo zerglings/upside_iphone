@@ -18,6 +18,7 @@
 // Convenience constructor for limit orders.
 - (TradeOrder*) initWithTicker:(NSString*)ticker
 					  quantity:(NSUInteger)quantity
+				quantityFilled:(NSUInteger)quantityFilled
 					isBuyOrder:(BOOL)isBuyOrder
 					limitCents:(NSUInteger)limitCents
 					  serverId:(NSUInteger)serverId;
@@ -25,6 +26,7 @@
 // Convenience constructor for market orders.
 - (TradeOrder*) initWithTicker:(NSString*)ticker
 					  quantity:(NSUInteger)quantity
+				quantityFilled:(NSUInteger)quantityFilled
 					isBuyOrder:(BOOL)isBuyOrder
 					  serverId:(NSUInteger)serverId;
 
@@ -35,6 +37,12 @@
 
 // The number of stocks in the order.
 - (NSUInteger) quantity;
+
+// The number of stocks in the order.
+- (NSUInteger) quantityFilled;
+
+// The ratio of filled to ordered stocks in this order.
+- (double) fillRatio;
 
 // YES for buy orders, NO for sell orders.
 - (BOOL) isBuyOrder;
@@ -77,6 +85,9 @@ const NSString* kTradeOrderLimitCents;
 // An NSNumber with the server-assigned order id, or kTradeOrderInvalidLimit for
 // unsubmitted orders.
 const NSString* kTradeOrderServerId;
+
+// An NSNumber with the amount of stocks that were filled in this order.
+const NSString* kTradeOrderQuantityFilled;
 
 // The value returned by -serverId for orders that are not on the server yet.
 const NSUInteger kTradeOrderInvalidServerId;

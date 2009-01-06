@@ -19,6 +19,14 @@
 	return [[props objectForKey:kTradeOrderQuantity] unsignedIntValue];
 }
 
+- (NSUInteger) quantityFilled {
+	return [[props objectForKey:kTradeOrderQuantityFilled] unsignedIntValue];
+}
+
+- (double) fillRatio {
+	return (double)[self quantityFilled] / (double)[self quantity];
+}
+
 - (BOOL) isBuyOrder {
 	return [[props objectForKey:kTradeOrderIsBuyOrder] unsignedIntValue];
 }
@@ -47,6 +55,7 @@
 
 - (TradeOrder*) initWithTicker:(NSString*)ticker
 					  quantity:(NSUInteger)quantity
+				quantityFilled:(NSUInteger)quantityFilled
 					isBuyOrder:(BOOL)isBuyOrder
 					limitCents:(NSUInteger)limitCents
 					  serverId:(NSUInteger)serverId {
@@ -57,6 +66,8 @@
 		  kTradeOrderLimitCents,
 		  [NSNumber numberWithUnsignedInt:quantity],
 		  kTradeOrderQuantity,
+		  [NSNumber numberWithUnsignedInt:quantityFilled],
+		  kTradeOrderQuantityFilled,
 		  [NSNumber numberWithBool:isBuyOrder], kTradeOrderIsBuyOrder,
 		  [NSNumber numberWithBool:YES], kTradeOrderIsLimitOrder,
 		  [NSNumber numberWithUnsignedInt:serverId],
@@ -68,6 +79,7 @@
 // Convenience constructor for market orders.
 - (TradeOrder*) initWithTicker:(NSString*)ticker
 					  quantity:(NSUInteger)quantity
+				quantityFilled:(NSUInteger)quantityFilled
 					isBuyOrder:(BOOL)isBuyOrder
 					  serverId:(NSUInteger)serverId {
 	NSDictionary* properties = 
@@ -77,6 +89,8 @@
 	  kTradeOrderLimitCents,
 	  [NSNumber numberWithUnsignedInt:quantity],
 	  kTradeOrderQuantity,
+	  [NSNumber numberWithUnsignedInt:quantityFilled],
+	  kTradeOrderQuantityFilled,	  
 	  [NSNumber numberWithBool:isBuyOrder], kTradeOrderIsBuyOrder,
 	  [NSNumber numberWithBool:NO], kTradeOrderIsLimitOrder,
 	  [NSNumber numberWithUnsignedInt:serverId],
@@ -95,5 +109,6 @@ const NSString* kTradeOrderIsBuyOrder = @"is_buy";
 const NSString* kTradeOrderIsLimitOrder = @"is_limit";
 const NSString* kTradeOrderLimitCents = @"limit_cents";
 const NSString* kTradeOrderServerId = @"id";
+const NSString* kTradeOrderQuantityFilled = @"quantity_filled";
 const NSUInteger kTradeOrderInvalidServerId = 0;
 const NSUInteger kTradeOrderInvalidLimit = 0;

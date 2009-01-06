@@ -37,6 +37,12 @@ static void SetupFormatters() {
 												[self quantity]]];
 }
 
+- (NSString*) formattedQuantityFilled {
+	SetupFormatters();
+	return [quantityFormatter stringFromNumber:[NSNumber numberWithUnsignedInt:
+												[self quantityFilled]]];
+}
+
 - (NSString*) formattedLimitPrice {
 	SetupFormatters();
 	
