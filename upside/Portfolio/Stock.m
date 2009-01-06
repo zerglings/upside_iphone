@@ -10,28 +10,7 @@
 
 @implementation Stock
 
-#pragma mark Lifecycle
-
-- (id)initWithProperties:(NSDictionary*)properties {
-	if ((self = [super init])) {
-		props = [NSDictionary dictionaryWithDictionary:properties];
-		[props retain];
-	}
-	return self;
-}
-
-- (void) dealloc {
-	[props release];
-	[super dealloc];
-}
-
 #pragma mark Accessors
-
-@dynamic properties;
-
-- (NSDictionary*)properties {
-	return props;
-}
 
 - (NSString*)ticker {
 	return [props objectForKey:kStockTicker];

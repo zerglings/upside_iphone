@@ -19,13 +19,20 @@
 		570C70870F11203300DC666C /* Stock+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* Stock+Formatting.m */; };
 		570C70B30F11217E00DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
 		570C70B40F1121B100DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
-		570D82DD0F1196F800D54544 /* MarketOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82DC0F1196F800D54544 /* MarketOrder.m */; };
+		570D82DD0F1196F800D54544 /* TradeOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82DC0F1196F800D54544 /* TradeOrder.m */; };
 		570D82DF0F119D7C00D54544 /* OrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D82DE0F119D7C00D54544 /* OrdersViewController.xib */; };
 		570D82E20F11A45A00D54544 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82E10F11A45A00D54544 /* OrdersViewController.m */; };
 		570D82EF0F11A5F000D54544 /* AutoRotatingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */; };
 		570D83300F11B0DD00D54544 /* OrderTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D832F0F11B0DD00D54544 /* OrderTableCellNarrow.xib */; };
 		570D83320F11B0E700D54544 /* OrderTableCellWide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D83310F11B0E700D54544 /* OrderTableCellWide.xib */; };
 		570D83350F11B10A00D54544 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D83340F11B10A00D54544 /* OrderTableViewCell.m */; };
+		570D83DD0F130BC000D54544 /* DictionaryBackedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D83DC0F130BC000D54544 /* DictionaryBackedModel.m */; };
+		570D84180F130CDA00D54544 /* DictionaryBackedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D83DC0F130BC000D54544 /* DictionaryBackedModel.m */; };
+		570D84300F130FA300D54544 /* TradeOrder+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D842F0F130FA300D54544 /* TradeOrder+Formatting.m */; };
+		570D84330F1312B200D54544 /* TradeOrder+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */; };
+		570D843D0F131BAA00D54544 /* TradeOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82DC0F1196F800D54544 /* TradeOrder.m */; };
+		570D843E0F131BB900D54544 /* TradeOrder+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D842F0F130FA300D54544 /* TradeOrder+Formatting.m */; };
+		570D843F0F131BBF00D54544 /* TradeOrder+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */; };
 		575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */; };
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
@@ -65,7 +72,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* UpsideAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpsideAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* UpsideAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpsideAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* upside.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = upside.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Stock Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stock Play.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* ActivationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivationViewController.xib; sourceTree = "<group>"; };
@@ -75,8 +82,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* upside_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = upside_Prefix.pch; sourceTree = "<group>"; };
 		570C70B20F11217E00DC666C /* Stock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock.m; sourceTree = "<group>"; };
-		570D82DB0F1196F800D54544 /* MarketOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketOrder.h; sourceTree = "<group>"; };
-		570D82DC0F1196F800D54544 /* MarketOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketOrder.m; sourceTree = "<group>"; };
+		570D82DB0F1196F800D54544 /* TradeOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeOrder.h; sourceTree = "<group>"; };
+		570D82DC0F1196F800D54544 /* TradeOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeOrder.m; sourceTree = "<group>"; };
 		570D82DE0F119D7C00D54544 /* OrdersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersViewController.xib; sourceTree = "<group>"; };
 		570D82E00F11A45A00D54544 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
 		570D82E10F11A45A00D54544 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
@@ -86,6 +93,11 @@
 		570D83310F11B0E700D54544 /* OrderTableCellWide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableCellWide.xib; sourceTree = "<group>"; };
 		570D83330F11B10A00D54544 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
 		570D83340F11B10A00D54544 /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
+		570D83DB0F130BC000D54544 /* DictionaryBackedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBackedModel.h; sourceTree = "<group>"; };
+		570D83DC0F130BC000D54544 /* DictionaryBackedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryBackedModel.m; sourceTree = "<group>"; };
+		570D842E0F130FA300D54544 /* TradeOrder+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TradeOrder+Formatting.h"; sourceTree = "<group>"; };
+		570D842F0F130FA300D54544 /* TradeOrder+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TradeOrder+Formatting.m"; sourceTree = "<group>"; };
+		570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TradeOrder+FormattingTest.m"; sourceTree = "<group>"; };
 		575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenUpArrow.png; sourceTree = "<group>"; };
 		575E39630F0FA00700DEB8E3 /* RedDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDownArrow.png; sourceTree = "<group>"; };
 		577091AC0F0FA8B000069411 /* StockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTableViewCell.h; sourceTree = "<group>"; };
@@ -174,7 +186,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* upside.app */,
+				1D6058910D05DD3D006BFB54 /* Stock Play.app */,
 				57CB1A040F0F1ADE00E95AE1 /* UpsideTests.app */,
 			);
 			name = Products;
@@ -233,6 +245,8 @@
 			children = (
 				570D82ED0F11A5F000D54544 /* AutoRotatingTableViewController.h */,
 				570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */,
+				570D83DB0F130BC000D54544 /* DictionaryBackedModel.h */,
+				570D83DC0F130BC000D54544 /* DictionaryBackedModel.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -240,8 +254,6 @@
 		5732104C0F117B9E003D97D8 /* Orders */ = {
 			isa = PBXGroup;
 			children = (
-				570D82DB0F1196F800D54544 /* MarketOrder.h */,
-				570D82DC0F1196F800D54544 /* MarketOrder.m */,
 				570D82DE0F119D7C00D54544 /* OrdersViewController.xib */,
 				570D82E00F11A45A00D54544 /* OrdersViewController.h */,
 				570D82E10F11A45A00D54544 /* OrdersViewController.m */,
@@ -249,6 +261,11 @@
 				570D83310F11B0E700D54544 /* OrderTableCellWide.xib */,
 				570D83330F11B10A00D54544 /* OrderTableViewCell.h */,
 				570D83340F11B10A00D54544 /* OrderTableViewCell.m */,
+				570D82DB0F1196F800D54544 /* TradeOrder.h */,
+				570D82DC0F1196F800D54544 /* TradeOrder.m */,
+				570D842E0F130FA300D54544 /* TradeOrder+Formatting.h */,
+				570D842F0F130FA300D54544 /* TradeOrder+Formatting.m */,
+				570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
@@ -356,7 +373,7 @@
 			);
 			name = Upside;
 			productName = upside;
-			productReference = 1D6058910D05DD3D006BFB54 /* upside.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Stock Play.app */;
 			productType = "com.apple.product-type.application";
 		};
 		57CB1A030F0F1ADE00E95AE1 /* UpsideTests */ = {
@@ -446,10 +463,13 @@
 				570C70B30F11217E00DC666C /* Stock.m in Sources */,
 				577091AE0F0FA8B000069411 /* StockTableViewCell.m in Sources */,
 				577093620F1084D400069411 /* Stock+Formatting.m in Sources */,
-				570D82DD0F1196F800D54544 /* MarketOrder.m in Sources */,
+				570D82DD0F1196F800D54544 /* TradeOrder.m in Sources */,
 				570D82E20F11A45A00D54544 /* OrdersViewController.m in Sources */,
 				570D82EF0F11A5F000D54544 /* AutoRotatingTableViewController.m in Sources */,
 				570D83350F11B10A00D54544 /* OrderTableViewCell.m in Sources */,
+				570D83DD0F130BC000D54544 /* DictionaryBackedModel.m in Sources */,
+				570D84300F130FA300D54544 /* TradeOrder+Formatting.m in Sources */,
+				570D84330F1312B200D54544 /* TradeOrder+FormattingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +489,10 @@
 				57CB1A110F0F1B0C00E95AE1 /* GTMNSObject+UnitTesting.m in Sources */,
 				57CB1A120F0F1B0C00E95AE1 /* GTMSenTestCase.m in Sources */,
 				57CB1A130F0F1B0C00E95AE1 /* GTMUIKit+UnitTesting.m in Sources */,
+				570D84180F130CDA00D54544 /* DictionaryBackedModel.m in Sources */,
+				570D843D0F131BAA00D54544 /* TradeOrder.m in Sources */,
+				570D843E0F131BB900D54544 /* TradeOrder+Formatting.m in Sources */,
+				570D843F0F131BBF00D54544 /* TradeOrder+FormattingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +509,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = upside_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = upside;
+				PRODUCT_NAME = "Stock Play";
 			};
 			name = Debug;
 		};
@@ -497,7 +521,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = upside_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = upside;
+				PRODUCT_NAME = "Stock Play";
 			};
 			name = Release;
 		};

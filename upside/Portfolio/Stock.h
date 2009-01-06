@@ -8,20 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DictionaryBackedModel.h"
+
 // Data about a single stock.
-@interface Stock : NSObject {
-	NSDictionary* props;
+@interface Stock : DictionaryBackedModel {
 }
 
-// Initializes the stock's state from a dictionary of properties.
-- (id)initWithProperties:(NSDictionary*)properties;
-
 #pragma mark Accessors
-
-// The raw properties behind this stock.
-// Prefer accessor methods to reaching inside the properties directly.
-// Use the strings in this file as keys in the properties dictionary.
-@property (nonatomic, readonly) NSDictionary* properties;
 
 // The stock's ticker, e.g. @"AAPL" for Apple.
 - (NSString*)ticker;
@@ -50,23 +43,23 @@
 
 #pragma mark Stock Properties Keys
 
-// A NSString with the stock's ticker, e.g. @"AAPL" for Apple.
+// An NSString with the stock's ticker, e.g. @"AAPL" for Apple.
 const NSString* kStockTicker;
 
-// A NSString with the stock's name, e.g. @"Apple Inc."
+// An NSString with the stock's name, e.g. @"Apple Inc."
 const NSString* kStockName;
 
-// A NSNumber with the number of stocks held in the portfolio.
+// An NSNumber with the number of stocks held in the portfolio.
 const NSString* kStockHeld;
 
-// A NSNumber with the stock's asking price, in cents.
+// An NSNumber with the stock's asking price, in cents.
 const NSString* kStockAskCents;
 
-// A NSNumber with the stock's bidding price, in cents.
+// An NSNumber with the stock's bidding price, in cents.
 const NSString* kStockBidCents;
 
-// A NSNumber with the stock's last clsoing asking price, in cents.
+// An NSNumber with the stock's last clsoing asking price, in cents.
 const NSString* kStockLastAskCents;
 
-// A NSNumber with the stock's last closing bidding price, in cents.
+// An NSNumber with the stock's last closing bidding price, in cents.
 const NSString* kStockLastBidCents;
