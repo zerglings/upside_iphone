@@ -195,6 +195,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				570D84C70F1336EE00D54544 /* Models */,
 				570D82EC0F11A5BB00D54544 /* Util */,
 				5732104C0F117B9E003D97D8 /* Orders */,
 				57CDB2180F0F7D44002C60C5 /* Overview */,
@@ -251,6 +252,25 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		570D84C70F1336EE00D54544 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				57CDB1A90F0F5ECE002C60C5 /* Portfolio.h */,
+				57CDB1AA0F0F5ECE002C60C5 /* Portfolio.m */,
+				570D82DB0F1196F800D54544 /* TradeOrder.h */,
+				570D82DC0F1196F800D54544 /* TradeOrder.m */,
+				570D842E0F130FA300D54544 /* TradeOrder+Formatting.h */,
+				570D842F0F130FA300D54544 /* TradeOrder+Formatting.m */,
+				570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */,
+				577093E10F11032200069411 /* Stock.h */,
+				570C70B20F11217E00DC666C /* Stock.m */,
+				577093600F1084D400069411 /* Stock+Formatting.h */,
+				577093610F1084D400069411 /* Stock+Formatting.m */,
+				577093E40F11049E00069411 /* Stock+FormattingTest.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		5732104C0F117B9E003D97D8 /* Orders */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,11 +281,6 @@
 				570D83310F11B0E700D54544 /* OrderTableCellWide.xib */,
 				570D83330F11B10A00D54544 /* OrderTableViewCell.h */,
 				570D83340F11B10A00D54544 /* OrderTableViewCell.m */,
-				570D82DB0F1196F800D54544 /* TradeOrder.h */,
-				570D82DC0F1196F800D54544 /* TradeOrder.m */,
-				570D842E0F130FA300D54544 /* TradeOrder+Formatting.h */,
-				570D842F0F130FA300D54544 /* TradeOrder+Formatting.m */,
-				570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
@@ -328,17 +343,10 @@
 				57CDB1A00F0F5A1D002C60C5 /* PortfolioTableViewController.h */,
 				57CDB1A10F0F5A1D002C60C5 /* PortfolioTableViewController.m */,
 				57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */,
-				57CDB1A90F0F5ECE002C60C5 /* Portfolio.h */,
-				57CDB1AA0F0F5ECE002C60C5 /* Portfolio.m */,
 				577091AC0F0FA8B000069411 /* StockTableViewCell.h */,
 				577091AD0F0FA8B000069411 /* StockTableViewCell.m */,
 				577091E20F10502F00069411 /* StockTableCellNarrow.xib */,
 				577091E40F10503900069411 /* StockTableCellWide.xib */,
-				577093E10F11032200069411 /* Stock.h */,
-				570C70B20F11217E00DC666C /* Stock.m */,
-				577093600F1084D400069411 /* Stock+Formatting.h */,
-				577093610F1084D400069411 /* Stock+Formatting.m */,
-				577093E40F11049E00069411 /* Stock+FormattingTest.m */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
