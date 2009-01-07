@@ -17,27 +17,25 @@
 #pragma mark Accessors
 
 // The stock's ticker, e.g. @"AAPL" for Apple.
-- (NSString*)ticker;
+- (NSString*) ticker;
 // The stock's name, e.g. @"Apple Inc."
-- (NSString*)name;
+- (NSString*) name;
 
-// The number of stocks held in a portfolio.
-- (NSUInteger)ownCount;
 // The stock's asking price, in cents.
-- (NSUInteger)askCents;
+- (NSUInteger) askCents;
 // The stock's bidding price, in cents.
-- (NSUInteger)bidCents;
+- (NSUInteger) bidCents;
 
 // The stock's asking price, in dollars.
-- (double)askPrice;
+- (double) askPrice;
 // The stock's bidding price, in dollars.
-- (double)bidPrice;
+- (double) bidPrice;
 
 // The stock's last closing bidding price, in cents.
-- (NSUInteger)lastAskCents;
+- (NSUInteger) lastAskCents;
 
 // The stock's last closing asking price, in cents.
-- (NSUInteger)lastBidCents;
+- (NSUInteger) lastBidCents;
 
 @end
 
@@ -48,9 +46,6 @@ const NSString* kStockTicker;
 
 // An NSString with the stock's name, e.g. @"Apple Inc."
 const NSString* kStockName;
-
-// An NSNumber with the number of stocks held in the portfolio.
-const NSString* kStockHeld;
 
 // An NSNumber with the stock's asking price, in cents.
 const NSString* kStockAskCents;

@@ -10,6 +10,13 @@
 
 #import "TradeOrder.h"
 
+@interface TradeBook ()
+
+- (void) loadMockData;
+
+@end
+
+
 @implementation TradeBook
 
 #pragma mark I/O

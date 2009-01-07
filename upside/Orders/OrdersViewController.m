@@ -10,7 +10,9 @@
 
 #import "Game.h"
 #import "OrderTableViewCell.h"
+#import "StockCache.h"
 #import "TradeBook.h"
+#import "TradeOrder.h"
 
 @implementation OrdersViewController
 
@@ -101,7 +103,9 @@
 											   cellForRowAtIndexPath:indexPath];
 		
 	TradeBook* tradeBook = [[Game sharedGame] tradeBook];
-	cell.order = [tradeBook orderAtIndex:indexPath.row];
+	TradeOrder* order = [tradeBook orderAtIndex:indexPath.row];
+	Stock* stock = [[[Game sharedGame] stockCache] stockForTicker:order.ticker];
+	[cell setOrder:order forStock:stock];
 
     return cell;
 }

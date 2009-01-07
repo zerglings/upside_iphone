@@ -8,6 +8,9 @@
 
 #import "Portfolio.h"
 
+@interface Portfolio ()
+- (void) loadMockData;
+@end
 
 @implementation Portfolio
 
@@ -22,48 +25,25 @@
 
 #pragma mark Testing
 
+- (void) loadData: (NSDictionary*)newStocksHeld {
+	[newStocksHeld retain];
+	[stockHeld release];
+	stockHeld = newStocksHeld;
+	
+	[stockTickers release];
+	stockTickers = [[[stockHeld allKeys] sortedArrayUsingSelector:
+					 @selector(localizedCompare:)] retain];
+}
+
 - (void) loadMockData {
-	NSArray* mockStockTickers = [NSArray arrayWithObjects:@"AAPL", @"GOOG",
-								 @"MSFT", nil];
-	
-	NSDictionary* mockStocks = [NSDictionary dictionaryWithObjectsAndKeys:
-								[[Stock alloc] initWithProperties:
-								 [NSDictionary dictionaryWithObjectsAndKeys:
-								 @"Apple Inc", kStockName,
-								 @"AAPL", kStockTicker,
-								 [NSNumber numberWithInt:10000], kStockHeld,
-								 [NSNumber numberWithInt:9100], kStockAskCents,
-								 [NSNumber numberWithInt:9050], kStockBidCents,
-								 [NSNumber numberWithInt:9050], kStockLastAskCents,
-								 [NSNumber numberWithInt:9030], kStockLastBidCents,
-								 nil]],
-								@"AAPL",
-								[[Stock alloc] initWithProperties:
-								 [NSDictionary dictionaryWithObjectsAndKeys:
-								 @"Google Inc", kStockName,
-								 @"GOOG", kStockTicker,
-								 [NSNumber numberWithInt:31415], kStockHeld,
-								 [NSNumber numberWithInt:30000], kStockAskCents,
-								 [NSNumber numberWithInt:29800], kStockBidCents,
-								 [NSNumber numberWithInt:30100], kStockLastAskCents,
-								 [NSNumber numberWithInt:29900], kStockLastBidCents,
-								 nil]],
-								@"GOOG",
-								[[Stock alloc] initWithProperties:
-								 [NSDictionary dictionaryWithObjectsAndKeys:
-								 @"Microsoft Corp", kStockName,
-								 @"MSFT", kStockTicker,
-								 [NSNumber numberWithInt:666], kStockHeld,
-								 [NSNumber numberWithInt:2100], kStockAskCents,
-								 [NSNumber numberWithInt:1995], kStockBidCents,
-								 [NSNumber numberWithInt:2150], kStockLastAskCents,
-								 [NSNumber numberWithInt:1950], kStockLastBidCents,
-								 nil]],
-								@"MSFT",
-								nil];
-	
-	stockTickers = [mockStockTickers retain];
-	stocks = [mockStocks retain];
+	[self loadData:[NSDictionary dictionaryWithObjectsAndKeys:
+					[NSNumber numberWithUnsignedInt:10000],
+					@"AAPL",
+					[NSNumber numberWithUnsignedInt:31415],
+					@"GOOG",
+					[NSNumber numberWithUnsignedInt:666],
+					@"MSFT",
+					nil]];
 }
 
 #pragma mark Lifecycle
@@ -76,8 +56,8 @@
 }
 
 - (void)dealloc {
-	[stocks release];
 	[stockTickers release];
+	[stockHeld release];
 	[super dealloc];
 }
 
@@ -91,8 +71,8 @@
 	return [stockTickers objectAtIndex:index];
 }
 
-- (Stock*)stockWithTicker:(NSString*)stockTicker {
-	return [stocks objectForKey:stockTicker];
+- (NSUInteger)stockOwnedForTicker: (NSString*)stockTicker {
+	return [[stockHeld objectForKey:stockTicker] unsignedIntValue];
 }
 
 @end

@@ -19,9 +19,6 @@
 	return [props objectForKey:kStockName];
 }
 
-- (NSUInteger)ownCount {
-	return [[props objectForKey:kStockHeld] unsignedIntValue];
-}
 - (NSUInteger)askCents {
 	return [[props objectForKey:kStockAskCents] unsignedIntValue];
 }
@@ -50,7 +47,6 @@
 
 const NSString* kStockTicker = @"ticker";
 const NSString* kStockName = @"name";
-const NSString* kStockHeld = @"owns";
 const NSString* kStockAskCents = @"askCents";
 const NSString* kStockBidCents = @"bidCents";
 const NSString* kStockLastAskCents = @"lastAskCents";

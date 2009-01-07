@@ -9,6 +9,7 @@
 #import "StockTableViewCell.h"
 
 #import "Portfolio.h"
+#import "Portfolio+Formatting.h"
 #import "Stock.h"
 #import "Stock+Formatting.h"
 
@@ -40,10 +41,15 @@
 	return stock;
 }
 
-- (void) setStock: (Stock*)newStock {
+- (NSUInteger) stockOwned {
+	return stockOwned;
+}
+
+- (void) setStock: (Stock*)newStock owned:(NSUInteger)newStockOwned {
 	[newStock retain];
 	[stock release];
 	stock = newStock;
+	stockOwned = newStockOwned;
 	
 	tickerLabel.text = [stock ticker];
 	nameLabel.text = [stock name];
@@ -68,8 +74,8 @@
 	
 	askPriceLabel.text = [stock formattedAskPrice];
 	bidPriceLabel.text = [stock formattedBidPrice];
-	stockValueLabel.text = [stock formattedValueUsingBidPrice];	
-	stockCountLabel.text = [stock formattedOwnCount];
+	stockValueLabel.text = [stock formattedValueUsingBidPriceFor:stockOwned];	
+	stockCountLabel.text = [Portfolio formatStockOwned:stockOwned];
 						   
 	askPriceProgressIcon.image = [stock imageForAskChange];
 	bidPriceProgressIcon.image = [stock imageForBidChange];

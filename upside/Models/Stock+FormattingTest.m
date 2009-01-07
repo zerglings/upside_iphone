@@ -25,7 +25,6 @@
 				   [NSDictionary dictionaryWithObjectsAndKeys:
 					@"Apple Inc", kStockName,
 					@"AAPL", kStockTicker,
-					[NSNumber numberWithInt:10000], kStockHeld,
 					[NSNumber numberWithInt:109100], kStockAskCents,
 					[NSNumber numberWithInt:9050], kStockBidCents,
 					[NSNumber numberWithInt:9000], kStockLastAskCents,
@@ -36,7 +35,6 @@
 	                [NSDictionary dictionaryWithObjectsAndKeys:
 					 @"Microsoft Corp", kStockName,
 					 @"MSFT", kStockTicker,
-					 [NSNumber numberWithInt:10000], kStockHeld,
 					 [NSNumber numberWithInt:90], kStockAskCents,
 					 [NSNumber numberWithInt:9], kStockBidCents,
 					 [NSNumber numberWithInt:281], kStockLastAskCents,

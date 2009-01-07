@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class Portfolio;
+@class StockCache;
 @class TradeBook;
 
 @interface Game : NSObject {
 	Portfolio* portfolio;
 	TradeBook* tradeBook;
+	StockCache* stockCache;
 }
 
 // The singleton Game instance.
@@ -23,5 +25,6 @@
 
 @property (nonatomic, readonly) Portfolio* portfolio;
 @property (nonatomic, readonly) TradeBook* tradeBook;
+@property (nonatomic, readonly) StockCache* stockCache;
 
 @end

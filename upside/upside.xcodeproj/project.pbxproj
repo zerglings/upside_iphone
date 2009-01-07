@@ -15,7 +15,6 @@
 		2899E5220DE3E06400AC0155 /* ActivationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ActivationViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* ActivationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ActivationViewController.m */; };
-		570C70860F11202800DC666C /* Stock+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093E40F11049E00069411 /* Stock+FormattingTest.m */; };
 		570C70870F11203300DC666C /* Stock+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* Stock+Formatting.m */; };
 		570C70B30F11217E00DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
 		570C70B40F1121B100DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
@@ -31,10 +30,18 @@
 		570D84300F130FA300D54544 /* TradeOrder+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D842F0F130FA300D54544 /* TradeOrder+Formatting.m */; };
 		570D843D0F131BAA00D54544 /* TradeOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82DC0F1196F800D54544 /* TradeOrder.m */; };
 		570D843E0F131BB900D54544 /* TradeOrder+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D842F0F130FA300D54544 /* TradeOrder+Formatting.m */; };
-		570D843F0F131BBF00D54544 /* TradeOrder+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */; };
 		570D84EA0F1338EA00D54544 /* TradeBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84E90F1338EA00D54544 /* TradeBook.m */; };
 		570D84F00F133A7800D54544 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84EF0F133A7800D54544 /* Game.m */; };
 		570D84F50F133E9C00D54544 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 570D84F40F133E9C00D54544 /* Default.png */; };
+		570D86D50F144BD900D54544 /* StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D86D40F144BD900D54544 /* StockCache.m */; };
+		570D86D60F144BD900D54544 /* StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D86D40F144BD900D54544 /* StockCache.m */; };
+		570D87190F14549100D54544 /* Portfolio+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87180F14549100D54544 /* Portfolio+Formatting.m */; };
+		570D871A0F14549100D54544 /* Portfolio+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87180F14549100D54544 /* Portfolio+Formatting.m */; };
+		570D87BF0F14BCA600D54544 /* PortfolioTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87980F14B99500D54544 /* PortfolioTest.m */; };
+		570D87D50F14BD8B00D54544 /* Portfolio.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB1AA0F0F5ECE002C60C5 /* Portfolio.m */; };
+		570D87DA0F14BDA300D54544 /* TradeOrder+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */; };
+		570D87DB0F14BDA300D54544 /* Stock+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093E40F11049E00069411 /* Stock+FormattingTest.m */; };
+		570D87DC0F14BDA300D54544 /* Portfolio+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87470F145BBA00D54544 /* Portfolio+FormattingTest.m */; };
 		575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */; };
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
@@ -105,6 +112,12 @@
 		570D84EE0F133A7800D54544 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		570D84EF0F133A7800D54544 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		570D84F40F133E9C00D54544 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		570D86D30F144BD900D54544 /* StockCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockCache.h; sourceTree = "<group>"; };
+		570D86D40F144BD900D54544 /* StockCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockCache.m; sourceTree = "<group>"; };
+		570D87170F14549100D54544 /* Portfolio+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Portfolio+Formatting.h"; sourceTree = "<group>"; };
+		570D87180F14549100D54544 /* Portfolio+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+Formatting.m"; sourceTree = "<group>"; };
+		570D87470F145BBA00D54544 /* Portfolio+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+FormattingTest.m"; sourceTree = "<group>"; };
+		570D87980F14B99500D54544 /* PortfolioTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortfolioTest.m; sourceTree = "<group>"; };
 		575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenUpArrow.png; sourceTree = "<group>"; };
 		575E39630F0FA00700DEB8E3 /* RedDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDownArrow.png; sourceTree = "<group>"; };
 		577091AC0F0FA8B000069411 /* StockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTableViewCell.h; sourceTree = "<group>"; };
@@ -274,10 +287,16 @@
 				577093E40F11049E00069411 /* Stock+FormattingTest.m */,
 				57CDB1A90F0F5ECE002C60C5 /* Portfolio.h */,
 				57CDB1AA0F0F5ECE002C60C5 /* Portfolio.m */,
+				570D87980F14B99500D54544 /* PortfolioTest.m */,
+				570D87170F14549100D54544 /* Portfolio+Formatting.h */,
+				570D87180F14549100D54544 /* Portfolio+Formatting.m */,
+				570D87470F145BBA00D54544 /* Portfolio+FormattingTest.m */,
 				570D84E80F1338EA00D54544 /* TradeBook.h */,
 				570D84E90F1338EA00D54544 /* TradeBook.m */,
 				570D84EE0F133A7800D54544 /* Game.h */,
 				570D84EF0F133A7800D54544 /* Game.m */,
+				570D86D30F144BD900D54544 /* StockCache.h */,
+				570D86D40F144BD900D54544 /* StockCache.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -492,6 +511,8 @@
 				570D84300F130FA300D54544 /* TradeOrder+Formatting.m in Sources */,
 				570D84EA0F1338EA00D54544 /* TradeBook.m in Sources */,
 				570D84F00F133A7800D54544 /* Game.m in Sources */,
+				570D86D50F144BD900D54544 /* StockCache.m in Sources */,
+				570D87190F14549100D54544 /* Portfolio+Formatting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,11 +520,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570D87BF0F14BCA600D54544 /* PortfolioTest.m in Sources */,
 				57CB1A5F0F0F270E00E95AE1 /* ActivationState.m in Sources */,
 				57CB1A140F0F1B2D00E95AE1 /* ActivationStateTest.m in Sources */,
 				570C70B40F1121B100DC666C /* Stock.m in Sources */,
 				570C70870F11203300DC666C /* Stock+Formatting.m in Sources */,
-				570C70860F11202800DC666C /* Stock+FormattingTest.m in Sources */,
 				57CB1A0D0F0F1B0C00E95AE1 /* GTMSystemVersion.m in Sources */,
 				57CB1A0E0F0F1B0C00E95AE1 /* GTMCALayer+UnitTesting.m in Sources */,
 				57CB1A0F0F0F1B0C00E95AE1 /* GTMIPhoneUnitTestDelegate.m in Sources */,
@@ -514,7 +535,12 @@
 				570D84180F130CDA00D54544 /* DictionaryBackedModel.m in Sources */,
 				570D843D0F131BAA00D54544 /* TradeOrder.m in Sources */,
 				570D843E0F131BB900D54544 /* TradeOrder+Formatting.m in Sources */,
-				570D843F0F131BBF00D54544 /* TradeOrder+FormattingTest.m in Sources */,
+				570D86D60F144BD900D54544 /* StockCache.m in Sources */,
+				570D871A0F14549100D54544 /* Portfolio+Formatting.m in Sources */,
+				570D87D50F14BD8B00D54544 /* Portfolio.m in Sources */,
+				570D87DA0F14BDA300D54544 /* TradeOrder+FormattingTest.m in Sources */,
+				570D87DB0F14BDA300D54544 /* Stock+FormattingTest.m in Sources */,
+				570D87DC0F14BDA300D54544 /* Portfolio+FormattingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

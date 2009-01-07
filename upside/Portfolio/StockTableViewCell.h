@@ -24,8 +24,12 @@
 	IBOutlet UIImageView* askPriceProgressIcon;
 	
 	Stock *stock;
+	NSUInteger stockOwned;
 }
 
 - (Stock*) stock;
-- (void) setStock: (Stock*)stock;
+- (NSUInteger) stockOwned;
+
+- (void) setStock: (Stock*)stock owned:(NSUInteger)stockOwned;
+
 @end

@@ -9,6 +9,7 @@
 #import "Game.h"
 
 #import "Portfolio.h"
+#import "StockCache.h"
 #import "TradeBook.h"
 
 @implementation Game
@@ -17,6 +18,7 @@
 
 - (id) init {
 	if ((self = [super init])) {
+		stockCache = [[StockCache alloc] init];
 		portfolio = [[Portfolio alloc] init];
 		tradeBook = [[TradeBook alloc] init];
 	}
@@ -24,6 +26,7 @@
 }
 
 - (void) dealloc {
+	[stockCache release];
 	[portfolio release];
 	[tradeBook release];
 	[super dealloc];
@@ -33,6 +36,7 @@
 
 @synthesize portfolio;
 @synthesize tradeBook;
+@synthesize stockCache;
 
 #pragma mark Singleton
 

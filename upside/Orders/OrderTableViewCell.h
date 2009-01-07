@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class TradeOrder;
+@class Stock;
 
 @interface OrderTableViewCell : UITableViewCell {
 	IBOutlet UILabel* tickerLabel;
@@ -17,12 +18,15 @@
 	IBOutlet UILabel* quantityLabel;
 	IBOutlet UILabel* quantityFilledLabel;
 	IBOutlet UILabel* percentFilledLabel;
+	IBOutlet UILabel* marketAskOrSellLabel;
 	IBOutlet UIProgressView* fillProgressView;
 	
-	TradeOrder* order;	
+	TradeOrder* order;
+	Stock* stock;
 }
 
 - (TradeOrder*) order;
-- (void) setOrder: (TradeOrder*)order;
+- (Stock*) stock;
+- (void) setOrder: (TradeOrder*)order forStock: (Stock*)stock;
 
 @end

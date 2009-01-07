@@ -10,6 +10,7 @@
 
 #import "Game.h"
 #import "Portfolio.h"
+#import "StockCache.h"
 #import "StockTableViewCell.h"
 
 @implementation PortfolioTableViewController
@@ -82,9 +83,10 @@
     
     // Set up the cell...
 	Portfolio* portfolio = [[Game sharedGame] portfolio];
-	Stock* stock = [portfolio stockWithTicker:
-					[portfolio stockTickerAtIndex:indexPath.row]];
-	cell.stock = stock;
+	StockCache* stockCache = [[Game sharedGame] stockCache]; 
+	NSString* ticker = [portfolio stockTickerAtIndex:indexPath.row];
+	[cell setStock:[stockCache stockForTicker:ticker]
+			 owned:[portfolio stockOwnedForTicker:ticker]];
 
     return cell;
 }

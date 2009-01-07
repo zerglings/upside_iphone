@@ -8,6 +8,8 @@
 
 #import "OrderTableViewCell.h"
 
+#import "Stock.h"
+#import "Stock+Formatting.h"
 #import "TradeOrder.h"
 #import "TradeOrder+Formatting.h"
 
@@ -38,10 +40,18 @@
 - (TradeOrder*) order {
 	return order;
 }
-- (void) setOrder: (TradeOrder*)newOrder {
+- (Stock*) stock {
+	return stock;
+}
+
+- (void) setOrder: (TradeOrder*)newOrder forStock: (Stock*)newStock {
 	[newOrder retain];
 	[order release];
 	order = newOrder;
+	
+	[newStock retain];
+	[stock release];
+	stock = newStock;
 	
 	tickerLabel.text = [order ticker];
 	buyOrSellLabel.text = [order isBuyOrder] ? @"buy" : @"sell";
@@ -49,6 +59,8 @@
 	quantityLabel.text = [order formattedQuantity];
 	quantityFilledLabel.text = [order formattedQuantityFilled];
 	percentFilledLabel.text = [order formattedPercentFilled];
+	marketAskOrSellLabel.text = [order isBuyOrder] ?
+	    [stock formattedAskPrice] : [stock formattedBidPrice];
 	[fillProgressView setProgress:[order fillRatio]];
 }
 

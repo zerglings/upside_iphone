@@ -42,12 +42,6 @@ static void SetupFormatters() {
 	}
 }
 
-- (NSString*) formattedOwnCount {
-	SetupFormatters();
-	return [countFormatter stringFromNumber:[self.properties
-											 objectForKey:kStockHeld]];
-}
-
 + (NSString*) formattedPrice: (double)price {
 	SetupFormatters();
 	return [priceFormatter stringFromNumber:[NSNumber numberWithDouble:price]];
@@ -61,18 +55,18 @@ static void SetupFormatters() {
 	return [Stock formattedPrice:[self bidPrice]];
 }
 
-+ (NSString*) formatValueFor:(NSUInteger)count
-				  usingPrice:(NSUInteger)priceInCents {
++ (NSString*) formatValueFor: (NSUInteger)count
+				  usingPrice: (NSUInteger)priceInCents {
 	SetupFormatters();
 	return [priceFormatter stringFromNumber:[NSNumber numberWithDouble:
 											 ((count * priceInCents) / 100.0)]];
 }
 
-- (NSString*) formattedValueUsingAskPrice {
-	return [Stock formatValueFor:[self ownCount] usingPrice:[self askCents]];
+- (NSString*) formattedValueUsingAskPriceFor: (NSUInteger)stockCount {
+	return [Stock formatValueFor:stockCount usingPrice:[self askCents]];
 }
-- (NSString*) formattedValueUsingBidPrice {
-	return [Stock formatValueFor:[self ownCount] usingPrice:[self bidCents]];
+- (NSString*) formattedValueUsingBidPriceFor: (NSUInteger)stockCount {
+	return [Stock formatValueFor:stockCount usingPrice:[self bidCents]];
 }
 
 + (NSString*) formatChange: (NSUInteger)newPriceInCents

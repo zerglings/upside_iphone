@@ -12,7 +12,7 @@
 
 @interface Portfolio : NSObject {
 	NSArray* stockTickers;
-	NSDictionary* stocks;
+	NSDictionary* stockHeld;
 }
 
 // How many stocks in this portfolio.
@@ -21,6 +21,10 @@
 // The numeric stock ID for the stock at the given index.
 - (NSString*)stockTickerAtIndex: (NSUInteger)index;
 
-// Information for the stock at the given index.
-- (Stock*)stockWithTicker: (NSString*)stockTicker;
+// How many stocks of a certain ticker are owned.
+- (NSUInteger)stockOwnedForTicker: (NSString*)stockTicker;
+
+// Reloads the portfolio with the given data.
+- (void) loadData: (NSDictionary*)newStocksHeld;
+
 @end

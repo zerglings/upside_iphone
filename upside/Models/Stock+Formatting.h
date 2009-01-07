@@ -12,16 +12,15 @@
 
 @interface Stock (Formatting)
 
-// Format the number of stocks owned.
-- (NSString*) formattedOwnCount;
 // Format the stock's ask price.
 - (NSString*) formattedAskPrice;
 // Format the stock's bid price.
 - (NSString*) formattedBidPrice;
-// Format the stock's value in the portfolio, using the ask price.
-- (NSString*) formattedValueUsingAskPrice;
-// Format the stock's value in the portfolio, using the bid price.
-- (NSString*) formattedValueUsingBidPrice;
+
+// Format the value of some stocks, using the ask price.
+- (NSString*) formattedValueUsingAskPriceFor: (NSUInteger)stockCount;
+// Format the value of some stocks, using the bid price.
+- (NSString*) formattedValueUsingBidPriceFor: (NSUInteger)stockCount;
 
 
 // Format the net change in the stock's ask price.
