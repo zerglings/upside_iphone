@@ -10,7 +10,7 @@
 
 #import "AutoRotatingTableViewController.h"
 
-@interface OrdersViewController : AutoRotatingTableViewController {
+@interface OrdersTableViewController : AutoRotatingTableViewController {
 }
 
 @end

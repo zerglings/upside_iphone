@@ -1,20 +1,15 @@
 //
-//  OrdersViewController.m
+//  NewsTableViewController.m
 //  upside
 //
-//  Created by Victor Costan on 1/4/09.
+//  Created by Victor Costan on 1/8/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "OrdersViewController.h"
+#import "NewsTableViewController.h"
 
-#import "Game.h"
-#import "OrderTableViewCell.h"
-#import "StockCache.h"
-#import "TradeBook.h"
-#import "TradeOrder.h"
 
-@implementation OrdersViewController
+@implementation NewsTableViewController
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -25,18 +20,14 @@
 }
 */
 
+/*
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	self.narrowCellNib = @"OrderTableCellNarrow";
-	self.wideCellNib = @"OrderTableCellWide";
-	self.narrowCellReuseIdentifier = @"OrderNarrow";
-	self.wideCellReuseIdentifier = @"OrderWide";
-	self.cellClass = [OrderTableViewCell class];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,37 +66,27 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	switch(section) {
-		case 0:
-			return @"Buy";
-		case 1:
-			return @"Sell";
-		default:
-			return nil;
-			
-	}
+    return 1;
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[Game sharedGame] tradeBook] count];
+    return 0;
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    OrderTableViewCell* cell = (OrderTableViewCell*)[super tableView:tableView
-											   cellForRowAtIndexPath:indexPath];
-		
-	TradeBook* tradeBook = [[Game sharedGame] tradeBook];
-	TradeOrder* order = [tradeBook orderAtIndex:indexPath.row];
-	Stock* stock = [[[Game sharedGame] stockCache] stockForTicker:order.ticker];
-	[cell setOrder:order forStock:stock];
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    // Set up the cell...
 
     return cell;
 }
