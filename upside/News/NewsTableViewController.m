@@ -8,6 +8,9 @@
 
 #import "NewsTableViewController.h"
 
+#import "Game.h"
+#import "Portfolio.h"
+
 
 @implementation NewsTableViewController
 
@@ -72,14 +75,29 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+	switch (section) {
+		case 0:
+			return [[[Game sharedGame] portfolio] count];
+		default:
+			return -1;
+	}
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	switch (section) {
+		case 0:
+			return @"Portfolio";
+		default:
+			break;
+	}
+	return @"Portfolio";
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"NewsStockCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -87,6 +105,9 @@
     }
     
     // Set up the cell...
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	cell.text = [[[Game sharedGame] portfolio]
+				 stockTickerAtIndex:indexPath.row];
 
     return cell;
 }
