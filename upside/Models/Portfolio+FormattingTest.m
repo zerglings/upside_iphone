@@ -26,6 +26,10 @@
 						 @"MSFT"]];
 }
 
+- (void) tearDown {
+	[portfolio release];
+}
+
 
 
 @end

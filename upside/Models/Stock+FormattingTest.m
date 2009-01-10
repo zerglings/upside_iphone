@@ -42,6 +42,11 @@
 					 nil]];
 }
 
+- (void) tearDown {
+	[risingStock release];
+	[fallingStock release];
+}
+
 - (void) testPrices {
 	STAssertEqualStrings(@"$90.50", [risingStock formattedBidPrice],
 						 @"Easy price formatting");

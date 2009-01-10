@@ -35,6 +35,11 @@
 										  serverId:6];
 }
 
+- (void) tearDown {
+	[buyOrder release];
+	[sellOrder release];
+}
+
 - (void) testQuantities {
 	STAssertEqualStrings(@"35", [sellOrder formattedQuantity],
 						 @"Easy quantity");
