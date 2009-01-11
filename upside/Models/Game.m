@@ -34,6 +34,12 @@
 	[super dealloc];
 }
 
+# pragma mark Setup
+
+- (void) setup {
+	[portfolio loadIntoNewsCenter];
+}
+
 #pragma mark Accessors
 
 @synthesize portfolio;
@@ -48,6 +54,7 @@ static Game* sharedGame = nil;
 	@synchronized(self) {
 		if (sharedGame == nil) {
 			sharedGame = [[Game alloc] init];
+			[sharedGame setup];
 		}
 	}
 	return sharedGame;
