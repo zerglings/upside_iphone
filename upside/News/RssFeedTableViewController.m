@@ -9,6 +9,7 @@
 #import "RssFeedTableViewController.h"
 
 #import "Game.h"
+#import "NewsArticleViewController.h"
 #import "NewsCenter.h"
 #import "NewsItem.h"
 #import "RssFeedTableViewCell.h"
@@ -100,10 +101,17 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+	NewsItem* newsItem = [[[Game sharedGame] newsCenter]
+						  newsItemForTitle:feedTitle
+						  atIndex:indexPath.row];
+	
+	NewsArticleViewController *articleViewController =
+	    [[NewsArticleViewController alloc]
+		 initWithNibName:@"NewsArticleViewController" bundle:nil];
+	[self.navigationController pushViewController:articleViewController
+	                                     animated:YES];
+	articleViewController.newsItem = newsItem;
+	[articleViewController release];
 }
 
 
@@ -158,6 +166,7 @@
 	[newFeedTitle retain];
 	[feedTitle release];
 	feedTitle = newFeedTitle;
+	self.navigationItem.title = newFeedTitle;
 	
 	[(UITableView*)self.view reloadData];
 }

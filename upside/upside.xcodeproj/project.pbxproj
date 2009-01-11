@@ -63,6 +63,8 @@
 		571A25D10F19799D00A996A2 /* RssFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25D00F19799D00A996A2 /* RssFeedTableViewController.m */; };
 		571A25D50F197A8400A996A2 /* RssFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25D40F197A8400A996A2 /* RssFeedTableViewCell.m */; };
 		571A25F40F197C2E00A996A2 /* RssFeedTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571A25F30F197C2E00A996A2 /* RssFeedTableCellNarrow.xib */; };
+		571A26900F19871C00A996A2 /* NewsArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571A268F0F19871C00A996A2 /* NewsArticleViewController.xib */; };
+		571A26930F19874500A996A2 /* NewsArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A26920F19874500A996A2 /* NewsArticleViewController.m */; };
 		575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */; };
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
@@ -164,6 +166,9 @@
 		571A25D30F197A8400A996A2 /* RssFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RssFeedTableViewCell.h; sourceTree = "<group>"; };
 		571A25D40F197A8400A996A2 /* RssFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RssFeedTableViewCell.m; sourceTree = "<group>"; };
 		571A25F30F197C2E00A996A2 /* RssFeedTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RssFeedTableCellNarrow.xib; sourceTree = "<group>"; };
+		571A268F0F19871C00A996A2 /* NewsArticleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsArticleViewController.xib; sourceTree = "<group>"; };
+		571A26910F19874500A996A2 /* NewsArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsArticleViewController.h; sourceTree = "<group>"; };
+		571A26920F19874500A996A2 /* NewsArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsArticleViewController.m; sourceTree = "<group>"; };
 		575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenUpArrow.png; sourceTree = "<group>"; };
 		575E39630F0FA00700DEB8E3 /* RedDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDownArrow.png; sourceTree = "<group>"; };
 		577091AC0F0FA8B000069411 /* StockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTableViewCell.h; sourceTree = "<group>"; };
@@ -376,6 +381,9 @@
 				571A25D30F197A8400A996A2 /* RssFeedTableViewCell.h */,
 				571A25D40F197A8400A996A2 /* RssFeedTableViewCell.m */,
 				571A25F30F197C2E00A996A2 /* RssFeedTableCellNarrow.xib */,
+				571A268F0F19871C00A996A2 /* NewsArticleViewController.xib */,
+				571A26910F19874500A996A2 /* NewsArticleViewController.h */,
+				571A26920F19874500A996A2 /* NewsArticleViewController.m */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -557,6 +565,7 @@
 				570D88C90F16C8E800D54544 /* NewsTableViewController.xib in Resources */,
 				571A25CE0F19798000A996A2 /* RssFeedTableViewController.xib in Resources */,
 				571A25F40F197C2E00A996A2 /* RssFeedTableCellNarrow.xib in Resources */,
+				571A26900F19871C00A996A2 /* NewsArticleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +613,7 @@
 				571A25D10F19799D00A996A2 /* RssFeedTableViewController.m in Sources */,
 				571A25D50F197A8400A996A2 /* RssFeedTableViewCell.m in Sources */,
 				570D86D50F144BD900D54544 /* StockCache.m in Sources */,
+				571A26930F19874500A996A2 /* NewsArticleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

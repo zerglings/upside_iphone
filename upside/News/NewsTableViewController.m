@@ -123,6 +123,7 @@
 	[feedController setFeedTitle:
 	 [Portfolio rssFeedTitleForTicker:[[[Game sharedGame] portfolio]
 									   stockTickerAtIndex:indexPath.row]]];
+	[feedController release];
 }
 
 
