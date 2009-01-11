@@ -1,20 +1,19 @@
 //
-//  NewsTableViewController.m
+//  RssFeedTableViewController.m
 //  upside
 //
-//  Created by Victor Costan on 1/8/09.
+//  Created by Victor Costan on 1/10/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "NewsTableViewController.h"
-
-#import "Game.h"
-#import "Portfolio.h"
-#import "Portfolio+RSS.h"
 #import "RssFeedTableViewController.h"
 
+#import "Game.h"
+#import "NewsCenter.h"
+#import "NewsItem.h"
+#import "RssFeedTableViewCell.h"
 
-@implementation NewsTableViewController
+@implementation RssFeedTableViewController
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -25,14 +24,18 @@
 }
 */
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+	self.narrowCellNib = @"RssFeedTableCellNarrow";
+	self.wideCellNib = @"RssFeedTableCellNarrow";
+	self.narrowCellReuseIdentifier = @"RssItemNarrow";
+	self.wideCellReuseIdentifier = @"RssItemNarrow";
+	self.cellClass = [RssFeedTableViewCell class];
+	
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,52 +80,30 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	switch (section) {
-		case 0:
-			return [[[Game sharedGame] portfolio] count];
-		default:
-			return -1;
-	}
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	switch (section) {
-		case 0:
-			return @"Portfolio";
-		default:
-			break;
-	}
-	return @"Portfolio";
+    return [[[Game sharedGame] newsCenter] totalNewsForTitle:feedTitle];
 }
 
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    RssFeedTableViewCell* cell =
+	    (RssFeedTableViewCell*)[super tableView:tableView
+						  cellForRowAtIndexPath:indexPath];
     
-    static NSString *CellIdentifier = @"NewsStockCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    // Set up the cell...
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	cell.text = [[[Game sharedGame] portfolio]
-				 stockTickerAtIndex:indexPath.row];
-
+	NewsItem* newsItem = [[[Game sharedGame] newsCenter]
+						  newsItemForTitle:feedTitle
+						           atIndex:indexPath.row];
+	[cell setNewsItem:newsItem];
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	RssFeedTableViewController *feedController =
-	    [[RssFeedTableViewController alloc]
-		 initWithNibName:@"RssFeedTableViewController" bundle:nil];
-	[self.navigationController pushViewController:feedController animated:YES];
-	[feedController setFeedTitle:
-	 [Portfolio rssFeedTitleForTicker:[[[Game sharedGame] portfolio]
-									   stockTickerAtIndex:indexPath.row]]];
+    // Navigation logic may go here. Create and push another view controller.
+	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
+	// [self.navigationController pushViewController:anotherViewController];
+	// [anotherViewController release];
 }
 
 
@@ -167,9 +148,19 @@
 
 
 - (void)dealloc {
+	[feedTitle release];
     [super dealloc];
 }
 
+@synthesize feedTitle;
+
+- (void) setFeedTitle: (NSString*) newFeedTitle {
+	[newFeedTitle retain];
+	[feedTitle release];
+	feedTitle = newFeedTitle;
+	
+	[(UITableView*)self.view reloadData];
+}
 
 @end
 

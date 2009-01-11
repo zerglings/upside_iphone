@@ -44,6 +44,25 @@
 		570D87DC0F14BDA300D54544 /* Portfolio+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87470F145BBA00D54544 /* Portfolio+FormattingTest.m */; };
 		570D88BF0F16C73D00D54544 /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88BE0F16C73D00D54544 /* NewsTableViewController.m */; };
 		570D88C90F16C8E800D54544 /* NewsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D88C80F16C8E800D54544 /* NewsTableViewController.xib */; };
+		570D88F60F16EA6400D54544 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88F50F16EA6400D54544 /* NewsItem.m */; };
+		570D890D0F17183B00D54544 /* DictionaryXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890C0F17183B00D54544 /* DictionaryXmlParser.m */; };
+		570D89120F17209800D54544 /* DictionaryXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890E0F171AF500D54544 /* DictionaryXmlParserTest.m */; };
+		570D89130F1720A100D54544 /* DictionaryXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890C0F17183B00D54544 /* DictionaryXmlParser.m */; };
+		570D8A060F17465C00D54544 /* NewsCenterTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 570D89100F171B1F00D54544 /* NewsCenterTest.xml */; };
+		570D8ABE0F1816CE00D54544 /* DictionaryXmlParserTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 570D8ABD0F1816CE00D54544 /* DictionaryXmlParserTest.xml */; };
+		571A234C0F189EB700A996A2 /* NewsCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A234B0F189EB700A996A2 /* NewsCenter.m */; };
+		571A23B70F18BA4B00A996A2 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88F50F16EA6400D54544 /* NewsItem.m */; };
+		571A23D70F18D5B400A996A2 /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
+		571A23DA0F18D9B500A996A2 /* NewsItem+ReaderState.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D90F18D9B500A996A2 /* NewsItem+ReaderState.m */; };
+		571A23DC0F18D9F400A996A2 /* NewsItem+ReaderStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23DB0F18D9F400A996A2 /* NewsItem+ReaderStateTest.m */; };
+		571A258F0F19729D00A996A2 /* Portfolio+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A258E0F19729D00A996A2 /* Portfolio+RSS.m */; };
+		571A25970F19759A00A996A2 /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
+		571A25B80F1978A400A996A2 /* Portfolio+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A258E0F19729D00A996A2 /* Portfolio+RSS.m */; };
+		571A25B90F1978C300A996A2 /* NewsCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A234B0F189EB700A996A2 /* NewsCenter.m */; };
+		571A25CE0F19798000A996A2 /* RssFeedTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571A25CD0F19798000A996A2 /* RssFeedTableViewController.xib */; };
+		571A25D10F19799D00A996A2 /* RssFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25D00F19799D00A996A2 /* RssFeedTableViewController.m */; };
+		571A25D50F197A8400A996A2 /* RssFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25D40F197A8400A996A2 /* RssFeedTableViewCell.m */; };
+		571A25F40F197C2E00A996A2 /* RssFeedTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571A25F30F197C2E00A996A2 /* RssFeedTableCellNarrow.xib */; };
 		575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */; };
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
@@ -123,6 +142,28 @@
 		570D88BD0F16C73D00D54544 /* NewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewController.h; sourceTree = "<group>"; };
 		570D88BE0F16C73D00D54544 /* NewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewController.m; sourceTree = "<group>"; };
 		570D88C80F16C8E800D54544 /* NewsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewController.xib; sourceTree = "<group>"; };
+		570D88F40F16EA6400D54544 /* NewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsItem.h; sourceTree = "<group>"; };
+		570D88F50F16EA6400D54544 /* NewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsItem.m; sourceTree = "<group>"; };
+		570D890B0F17183B00D54544 /* DictionaryXmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryXmlParser.h; sourceTree = "<group>"; };
+		570D890C0F17183B00D54544 /* DictionaryXmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryXmlParser.m; sourceTree = "<group>"; };
+		570D890E0F171AF500D54544 /* DictionaryXmlParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryXmlParserTest.m; sourceTree = "<group>"; };
+		570D89100F171B1F00D54544 /* NewsCenterTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NewsCenterTest.xml; sourceTree = "<group>"; };
+		570D8ABD0F1816CE00D54544 /* DictionaryXmlParserTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DictionaryXmlParserTest.xml; sourceTree = "<group>"; };
+		571A234A0F189EB700A996A2 /* NewsCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCenter.h; sourceTree = "<group>"; };
+		571A234B0F189EB700A996A2 /* NewsCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenter.m; sourceTree = "<group>"; };
+		571A23D60F18D5B400A996A2 /* NewsCenterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenterTest.m; sourceTree = "<group>"; };
+		571A23D80F18D9B500A996A2 /* NewsItem+ReaderState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NewsItem+ReaderState.h"; sourceTree = "<group>"; };
+		571A23D90F18D9B500A996A2 /* NewsItem+ReaderState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NewsItem+ReaderState.m"; sourceTree = "<group>"; };
+		571A23DB0F18D9F400A996A2 /* NewsItem+ReaderStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NewsItem+ReaderStateTest.m"; sourceTree = "<group>"; };
+		571A258D0F19729D00A996A2 /* Portfolio+RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Portfolio+RSS.h"; sourceTree = "<group>"; };
+		571A258E0F19729D00A996A2 /* Portfolio+RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+RSS.m"; sourceTree = "<group>"; };
+		571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+RSSTest.m"; sourceTree = "<group>"; };
+		571A25CD0F19798000A996A2 /* RssFeedTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RssFeedTableViewController.xib; sourceTree = "<group>"; };
+		571A25CF0F19799D00A996A2 /* RssFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RssFeedTableViewController.h; sourceTree = "<group>"; };
+		571A25D00F19799D00A996A2 /* RssFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RssFeedTableViewController.m; sourceTree = "<group>"; };
+		571A25D30F197A8400A996A2 /* RssFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RssFeedTableViewCell.h; sourceTree = "<group>"; };
+		571A25D40F197A8400A996A2 /* RssFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RssFeedTableViewCell.m; sourceTree = "<group>"; };
+		571A25F30F197C2E00A996A2 /* RssFeedTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RssFeedTableCellNarrow.xib; sourceTree = "<group>"; };
 		575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenUpArrow.png; sourceTree = "<group>"; };
 		575E39630F0FA00700DEB8E3 /* RedDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDownArrow.png; sourceTree = "<group>"; };
 		577091AC0F0FA8B000069411 /* StockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTableViewCell.h; sourceTree = "<group>"; };
@@ -274,6 +315,10 @@
 				570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */,
 				570D83DB0F130BC000D54544 /* DictionaryBackedModel.h */,
 				570D83DC0F130BC000D54544 /* DictionaryBackedModel.m */,
+				570D890B0F17183B00D54544 /* DictionaryXmlParser.h */,
+				570D890C0F17183B00D54544 /* DictionaryXmlParser.m */,
+				570D890E0F171AF500D54544 /* DictionaryXmlParserTest.m */,
+				570D8ABD0F1816CE00D54544 /* DictionaryXmlParserTest.xml */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -281,6 +326,11 @@
 		570D84C70F1336EE00D54544 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				570D88F40F16EA6400D54544 /* NewsItem.h */,
+				570D88F50F16EA6400D54544 /* NewsItem.m */,
+				571A23D80F18D9B500A996A2 /* NewsItem+ReaderState.h */,
+				571A23D90F18D9B500A996A2 /* NewsItem+ReaderState.m */,
+				571A23DB0F18D9F400A996A2 /* NewsItem+ReaderStateTest.m */,
 				570D82DB0F1196F800D54544 /* TradeOrder.h */,
 				570D82DC0F1196F800D54544 /* TradeOrder.m */,
 				570D842E0F130FA300D54544 /* TradeOrder+Formatting.h */,
@@ -297,6 +347,9 @@
 				570D87170F14549100D54544 /* Portfolio+Formatting.h */,
 				570D87180F14549100D54544 /* Portfolio+Formatting.m */,
 				570D87470F145BBA00D54544 /* Portfolio+FormattingTest.m */,
+				571A258D0F19729D00A996A2 /* Portfolio+RSS.h */,
+				571A258E0F19729D00A996A2 /* Portfolio+RSS.m */,
+				571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */,
 				570D84E80F1338EA00D54544 /* TradeBook.h */,
 				570D84E90F1338EA00D54544 /* TradeBook.m */,
 				570D84EE0F133A7800D54544 /* Game.h */,
@@ -313,6 +366,16 @@
 				570D88BD0F16C73D00D54544 /* NewsTableViewController.h */,
 				570D88BE0F16C73D00D54544 /* NewsTableViewController.m */,
 				570D88C80F16C8E800D54544 /* NewsTableViewController.xib */,
+				570D89100F171B1F00D54544 /* NewsCenterTest.xml */,
+				571A234A0F189EB700A996A2 /* NewsCenter.h */,
+				571A234B0F189EB700A996A2 /* NewsCenter.m */,
+				571A23D60F18D5B400A996A2 /* NewsCenterTest.m */,
+				571A25CD0F19798000A996A2 /* RssFeedTableViewController.xib */,
+				571A25CF0F19799D00A996A2 /* RssFeedTableViewController.h */,
+				571A25D00F19799D00A996A2 /* RssFeedTableViewController.m */,
+				571A25D30F197A8400A996A2 /* RssFeedTableViewCell.h */,
+				571A25D40F197A8400A996A2 /* RssFeedTableViewCell.m */,
+				571A25F30F197C2E00A996A2 /* RssFeedTableCellNarrow.xib */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -492,6 +555,8 @@
 				570D83320F11B0E700D54544 /* OrderTableCellWide.xib in Resources */,
 				570D84F50F133E9C00D54544 /* Default.png in Resources */,
 				570D88C90F16C8E800D54544 /* NewsTableViewController.xib in Resources */,
+				571A25CE0F19798000A996A2 /* RssFeedTableViewController.xib in Resources */,
+				571A25F40F197C2E00A996A2 /* RssFeedTableCellNarrow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +564,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570D8A060F17465C00D54544 /* NewsCenterTest.xml in Resources */,
+				570D8ABE0F1816CE00D54544 /* DictionaryXmlParserTest.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,8 +576,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57CDB1B70F0F7608002C60C5 /* PortfolioTableViewController.m in Sources */,
-				57CDB1B90F0F7608002C60C5 /* Portfolio.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* UpsideAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* ActivationViewController.m in Sources */,
@@ -528,9 +593,17 @@
 				570D84300F130FA300D54544 /* TradeOrder+Formatting.m in Sources */,
 				570D84EA0F1338EA00D54544 /* TradeBook.m in Sources */,
 				570D84F00F133A7800D54544 /* Game.m in Sources */,
-				570D86D50F144BD900D54544 /* StockCache.m in Sources */,
-				570D87190F14549100D54544 /* Portfolio+Formatting.m in Sources */,
+				571A25B90F1978C300A996A2 /* NewsCenter.m in Sources */,
+				570D88F60F16EA6400D54544 /* NewsItem.m in Sources */,
 				570D88BF0F16C73D00D54544 /* NewsTableViewController.m in Sources */,
+				570D890D0F17183B00D54544 /* DictionaryXmlParser.m in Sources */,
+				57CDB1B90F0F7608002C60C5 /* Portfolio.m in Sources */,
+				571A25B80F1978A400A996A2 /* Portfolio+RSS.m in Sources */,
+				570D87190F14549100D54544 /* Portfolio+Formatting.m in Sources */,
+				57CDB1B70F0F7608002C60C5 /* PortfolioTableViewController.m in Sources */,
+				571A25D10F19799D00A996A2 /* RssFeedTableViewController.m in Sources */,
+				571A25D50F197A8400A996A2 /* RssFeedTableViewCell.m in Sources */,
+				570D86D50F144BD900D54544 /* StockCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,11 +611,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				570D87BF0F14BCA600D54544 /* PortfolioTest.m in Sources */,
+				570D89130F1720A100D54544 /* DictionaryXmlParser.m in Sources */,
+				570D89120F17209800D54544 /* DictionaryXmlParserTest.m in Sources */,
 				57CB1A5F0F0F270E00E95AE1 /* ActivationState.m in Sources */,
 				57CB1A140F0F1B2D00E95AE1 /* ActivationStateTest.m in Sources */,
 				570C70B40F1121B100DC666C /* Stock.m in Sources */,
+				570D86D60F144BD900D54544 /* StockCache.m in Sources */,
 				570C70870F11203300DC666C /* Stock+Formatting.m in Sources */,
+				570D87DB0F14BDA300D54544 /* Stock+FormattingTest.m in Sources */,
+				570D84180F130CDA00D54544 /* DictionaryBackedModel.m in Sources */,
+				570D843D0F131BAA00D54544 /* TradeOrder.m in Sources */,
+				570D843E0F131BB900D54544 /* TradeOrder+Formatting.m in Sources */,
+				570D87D50F14BD8B00D54544 /* Portfolio.m in Sources */,
+				570D87BF0F14BCA600D54544 /* PortfolioTest.m in Sources */,
+				570D871A0F14549100D54544 /* Portfolio+Formatting.m in Sources */,
+				570D87DC0F14BDA300D54544 /* Portfolio+FormattingTest.m in Sources */,
+				570D87DA0F14BDA300D54544 /* TradeOrder+FormattingTest.m in Sources */,
 				57CB1A0D0F0F1B0C00E95AE1 /* GTMSystemVersion.m in Sources */,
 				57CB1A0E0F0F1B0C00E95AE1 /* GTMCALayer+UnitTesting.m in Sources */,
 				57CB1A0F0F0F1B0C00E95AE1 /* GTMIPhoneUnitTestDelegate.m in Sources */,
@@ -550,15 +634,13 @@
 				57CB1A110F0F1B0C00E95AE1 /* GTMNSObject+UnitTesting.m in Sources */,
 				57CB1A120F0F1B0C00E95AE1 /* GTMSenTestCase.m in Sources */,
 				57CB1A130F0F1B0C00E95AE1 /* GTMUIKit+UnitTesting.m in Sources */,
-				570D84180F130CDA00D54544 /* DictionaryBackedModel.m in Sources */,
-				570D843D0F131BAA00D54544 /* TradeOrder.m in Sources */,
-				570D843E0F131BB900D54544 /* TradeOrder+Formatting.m in Sources */,
-				570D86D60F144BD900D54544 /* StockCache.m in Sources */,
-				570D871A0F14549100D54544 /* Portfolio+Formatting.m in Sources */,
-				570D87D50F14BD8B00D54544 /* Portfolio.m in Sources */,
-				570D87DA0F14BDA300D54544 /* TradeOrder+FormattingTest.m in Sources */,
-				570D87DB0F14BDA300D54544 /* Stock+FormattingTest.m in Sources */,
-				570D87DC0F14BDA300D54544 /* Portfolio+FormattingTest.m in Sources */,
+				571A234C0F189EB700A996A2 /* NewsCenter.m in Sources */,
+				571A23B70F18BA4B00A996A2 /* NewsItem.m in Sources */,
+				571A23D70F18D5B400A996A2 /* NewsCenterTest.m in Sources */,
+				571A23DA0F18D9B500A996A2 /* NewsItem+ReaderState.m in Sources */,
+				571A23DC0F18D9F400A996A2 /* NewsItem+ReaderStateTest.m in Sources */,
+				571A258F0F19729D00A996A2 /* Portfolio+RSS.m in Sources */,
+				571A25970F19759A00A996A2 /* Portfolio+RSSTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

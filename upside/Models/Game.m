@@ -8,7 +8,9 @@
 
 #import "Game.h"
 
+#import "NewsCenter.h"
 #import "Portfolio.h"
+#import "Portfolio+RSS.h"
 #import "StockCache.h"
 #import "TradeBook.h"
 
@@ -37,7 +39,7 @@
 # pragma mark Setup
 
 - (void) setup {
-	[portfolio loadIntoNewsCenter];
+	[portfolio loadRssFeedsIntoCenter:newsCenter];
 }
 
 #pragma mark Accessors
@@ -45,6 +47,7 @@
 @synthesize portfolio;
 @synthesize tradeBook;
 @synthesize stockCache;
+@synthesize newsCenter;
 
 #pragma mark Singleton
 
