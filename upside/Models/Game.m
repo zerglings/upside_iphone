@@ -18,6 +18,7 @@
 
 - (id) init {
 	if ((self = [super init])) {
+		newsCenter = [[NewsCenter alloc] init];
 		stockCache = [[StockCache alloc] init];
 		portfolio = [[Portfolio alloc] init];
 		tradeBook = [[TradeBook alloc] init];
@@ -26,6 +27,7 @@
 }
 
 - (void) dealloc {
+	[newsCenter release];
 	[stockCache release];
 	[portfolio release];
 	[tradeBook release];

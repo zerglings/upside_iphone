@@ -21,6 +21,8 @@
 				 uid: (NSString*)uid
 			 summary: (NSString*)summary;
 
+- (id) initWithRssItem: (NSDictionary*)rssItem;
+
 #pragma mark Accessors
 	
 // The news' title.

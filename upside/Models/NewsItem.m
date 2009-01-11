@@ -32,16 +32,21 @@
 
 - (id) initWithRssItem: (NSDictionary*)rssItem {
 	NSString* title = [rssItem objectForKey:kNewsItemTitle];
-	NSDate* date = [NSDate dateWithString:[rssItem objectForKey:kNewsItemDate]];
+	if (!title)
+		title = @"";
+	NSDate* date = [NSDate dateWithNaturalLanguageString:
+					[rssItem objectForKey:kNewsItemDate]];
+	if (!date)
+		date = [NSDate date];
 	NSURL* url = [NSURL URLWithString:[rssItem objectForKey:kNewsItemUrl]];
-	NSString* uid = [rssItem objectForKey:kNewsItemTitle];
-	NSString* summary = [rssItem objectForKey:kNewsItemTitle];
+	NSString* uid = [rssItem objectForKey:kNewsItemUid];
+	NSString* summary = [rssItem objectForKey:kNewsItemSummary];
 	
 	return [super initWithProperties:[NSDictionary dictionaryWithObjectsAndKeys:
+									  uid, kNewsItemUid,
 									  title, kNewsItemTitle,
 									  date, kNewsItemDate,
 									  url, kNewsItemUrl,
-									  uid, kNewsItemUid,
 									  summary, kNewsItemSummary,
 									  nil]];
 }

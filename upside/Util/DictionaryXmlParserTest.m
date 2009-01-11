@@ -89,35 +89,6 @@ NSString* kContextObject = @"This is the context";
 	[self checkItems];
 }
 
-/*
-- (void) checkItems {
-	STAssertEquals(3U, [items count], @"Didn't parse all the items");
-	
-	NSDictionary* firstItem = [items objectAtIndex:0];
-	STAssertEqualStrings(@"Verizon Picks Microsoft Search over Google, Yahoo",
-						 [firstItem objectForKey:kRssItemTitle],
-						 @"Title check for the first article");
-	STAssertEqualStrings(@"http://www.eweek.com/c/a/Search-Engines/Verizon-Picks-Microsoft-Search-over-Google-Yahoo/",
-						 [firstItem objectForKey:kRssItemUrl],
-						 @"URL check for the first article");
-	
-	NSDictionary* secondItem = [items objectAtIndex:1];
-	STAssertEqualStrings(@"tag:finance.google.com,cluster:1287774134",
-						 [secondItem objectForKey:kRssItemId],
-						 @"ID check for the first article");	
-	STAssertEqualStrings(@"Wed, 07 Jan 2009 23:31:25 GMT",
-						 [secondItem objectForKey:kRssItemDate],
-						 @"ID check for the first article");
-
-	NSDictionary* thirdItem = [items objectAtIndex:2];
-	STAssertEqualStrings(@"Google Sued by Model Over 'Skank' Comment",
-						 [thirdItem objectForKey:kRssItemTitle],
-						 @"Title with escaped XML entities");	
-	
-	checkedItems = YES;
-}
-*/
-
 - (void) parsedItem: (NSDictionary*) itemData
 		   withName:(NSString*)itemName
 				for:(NSObject*)context {
