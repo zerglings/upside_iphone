@@ -84,6 +84,14 @@
     return [[[Game sharedGame] newsCenter] totalNewsForTitle:feedTitle];
 }
 
+- (void) setUpCell: (RssFeedTableViewCell*)cell 
+	  forIndexPath: (NSIndexPath*)indexPath {	
+	NewsItem* newsItem = [[[Game sharedGame] newsCenter]
+						  newsItemForTitle:feedTitle
+						  atIndex:indexPath.row];
+	[cell setNewsItem:newsItem];
+}
+
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -91,11 +99,7 @@
     RssFeedTableViewCell* cell =
 	    (RssFeedTableViewCell*)[super tableView:tableView
 						  cellForRowAtIndexPath:indexPath];
-    
-	NewsItem* newsItem = [[[Game sharedGame] newsCenter]
-						  newsItemForTitle:feedTitle
-						           atIndex:indexPath.row];
-	[cell setNewsItem:newsItem];
+    [self setUpCell:cell forIndexPath:indexPath];
     return cell;
 }
 
@@ -168,8 +172,8 @@
 	[newFeedTitle retain];
 	[feedTitle release];
 	feedTitle = newFeedTitle;
-	self.navigationItem.title = newFeedTitle;
 	
+	self.navigationItem.title = feedTitle;
 	[(UITableView*)self.view reloadData];
 }
 

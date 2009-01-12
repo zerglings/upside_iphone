@@ -52,6 +52,8 @@
 		570D8ABE0F1816CE00D54544 /* DictionaryXmlParserTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 570D8ABD0F1816CE00D54544 /* DictionaryXmlParserTest.xml */; };
 		5711926B0F1BA38400FD89EA /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
 		571193500F1BBC9A00FD89EA /* NewsItem+ReaderState.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D90F18D9B500A996A2 /* NewsItem+ReaderState.m */; };
+		571193850F1BEE2C00FD89EA /* NewsTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571193840F1BEE2C00FD89EA /* NewsTableCellNarrow.xib */; };
+		571193880F1BEE7900FD89EA /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 571193870F1BEE7900FD89EA /* NewsTableViewCell.m */; };
 		571A234C0F189EB700A996A2 /* NewsCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A234B0F189EB700A996A2 /* NewsCenter.m */; };
 		571A23B70F18BA4B00A996A2 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88F50F16EA6400D54544 /* NewsItem.m */; };
 		571A23D70F18D5B400A996A2 /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
@@ -154,6 +156,9 @@
 		570D890E0F171AF500D54544 /* DictionaryXmlParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryXmlParserTest.m; sourceTree = "<group>"; };
 		570D89100F171B1F00D54544 /* NewsCenterTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NewsCenterTest.xml; sourceTree = "<group>"; };
 		570D8ABD0F1816CE00D54544 /* DictionaryXmlParserTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DictionaryXmlParserTest.xml; sourceTree = "<group>"; };
+		571193840F1BEE2C00FD89EA /* NewsTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableCellNarrow.xib; sourceTree = "<group>"; };
+		571193860F1BEE7900FD89EA /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
+		571193870F1BEE7900FD89EA /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
 		571A234A0F189EB700A996A2 /* NewsCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCenter.h; sourceTree = "<group>"; };
 		571A234B0F189EB700A996A2 /* NewsCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenter.m; sourceTree = "<group>"; };
 		571A23D60F18D5B400A996A2 /* NewsCenterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenterTest.m; sourceTree = "<group>"; };
@@ -378,6 +383,9 @@
 				570D88BD0F16C73D00D54544 /* NewsTableViewController.h */,
 				570D88BE0F16C73D00D54544 /* NewsTableViewController.m */,
 				570D88C80F16C8E800D54544 /* NewsTableViewController.xib */,
+				571193860F1BEE7900FD89EA /* NewsTableViewCell.h */,
+				571193870F1BEE7900FD89EA /* NewsTableViewCell.m */,
+				571193840F1BEE2C00FD89EA /* NewsTableCellNarrow.xib */,
 				570D89100F171B1F00D54544 /* NewsCenterTest.xml */,
 				571A234A0F189EB700A996A2 /* NewsCenter.h */,
 				571A234B0F189EB700A996A2 /* NewsCenter.m */,
@@ -573,6 +581,7 @@
 				571A25CE0F19798000A996A2 /* RssFeedTableViewController.xib in Resources */,
 				571A25F40F197C2E00A996A2 /* RssFeedTableCellNarrow.xib in Resources */,
 				571A26900F19871C00A996A2 /* NewsArticleViewController.xib in Resources */,
+				571193850F1BEE2C00FD89EA /* NewsTableCellNarrow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +632,7 @@
 				571A26930F19874500A996A2 /* NewsArticleViewController.m in Sources */,
 				571A27090F1ABA5000A996A2 /* NetworkProgress.m in Sources */,
 				571193500F1BBC9A00FD89EA /* NewsItem+ReaderState.m in Sources */,
+				571193880F1BEE7900FD89EA /* NewsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "NewsTableViewController.h"
 
 #import "Game.h"
+#import "NewsTableViewCell.h"
 #import "Portfolio.h"
 #import "Portfolio+RSS.h"
 #import "RssFeedTableViewController.h"
@@ -25,20 +26,25 @@
 }
 */
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+	self.narrowCellReuseIdentifier = @"NewsFeedNarrow";
+	self.wideCellReuseIdentifier = @"NewsFeedNarrow";
+	self.narrowCellNib = @"NewsTableCellNarrow";
+	self.wideCellNib = @"NewsTableCellNarrow";
+	self.cellClass = [NewsTableViewCell class];
+	
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-*/
 
-/*
+
 - (void)viewWillAppear:(BOOL)animated {
+	[(UITableView*)self.view reloadData];
     [super viewWillAppear:animated];
 }
-*/
+ 
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -95,25 +101,15 @@
 	return @"Portfolio";
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView
+		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {    
+    NewsTableViewCell* cell = (NewsTableViewCell*)[super tableView:tableView
+											 cellForRowAtIndexPath:indexPath];
 
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"NewsStockCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    // Set up the cell...
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	cell.text = [[[Game sharedGame] portfolio]
-				 stockTickerAtIndex:indexPath.row];
-
+	[cell setFeedTitle:[[[Game sharedGame] portfolio]
+						stockTickerAtIndex:indexPath.row]];
     return cell;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	RssFeedTableViewController *feedController =

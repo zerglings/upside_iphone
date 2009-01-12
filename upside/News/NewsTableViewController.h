@@ -11,7 +11,7 @@
 #import "AutoRotatingTableViewController.h"
 
 
-@interface NewsTableViewController : UITableViewController {
+@interface NewsTableViewController : AutoRotatingTableViewController {
 
 }
 
