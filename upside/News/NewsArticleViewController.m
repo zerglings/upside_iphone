@@ -90,4 +90,11 @@
 	}
 }
 
+- (void)webView: (UIWebView *)webView didFailLoadWithError: (NSError *)error {
+	if (connectionIndicator) {
+		connectionIndicator = NO;
+		[NetworkProgress connectionDone];		
+	}
+}
+
 @end

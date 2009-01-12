@@ -144,7 +144,7 @@
 	return [newsByUid objectForKey:[data.uids objectAtIndex:index]];
 }
 
-- (void) markAsRead: (NSString*) uid {
+- (void) markAsReadItemWithId: (NSString*) uid {
 	[newsByUid setObject:[[NewsItem alloc] initWithItem:[newsByUid
 														 objectForKey:uid]
 											 markAsRead:YES]

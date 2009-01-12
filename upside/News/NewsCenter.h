@@ -27,7 +27,7 @@
 
 - (NewsItem*) newsItemForTitle: (NSString*)title atIndex: (NSUInteger)index;
 
-- (void) markAsRead: (NSString*)title;
+- (void) markAsReadItemWithId: (NSString*)uid;
 
 - (void) integrateNews: (NSArray*)news forTitle: (NSString*)title;
 

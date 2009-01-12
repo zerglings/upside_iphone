@@ -60,7 +60,7 @@
 	
 	STAssertEquals(3U, [newsCenter unreadNewsForTitle:@"misc"],
 				   @"-unreadNewsForTitle: on freshly added stories");
-	[newsCenter markAsRead:[item1 uid]];
+	[newsCenter markAsReadItemWithId:[item1 uid]];
 	STAssertEquals(2U, [newsCenter unreadNewsForTitle:@"misc"],
 				   @"-unreadNewsForTitle: after -markAsRead");
 }
@@ -68,7 +68,7 @@
 - (void) testIntegrate {
 	[newsCenter integrateNews:[NSArray arrayWithObjects:item2, item1, nil]
 					 forTitle:@"misc"];
-	[newsCenter markAsRead:[item2 uid]];
+	[newsCenter markAsReadItemWithId:[item2 uid]];
 	STAssertEquals(2U, [newsCenter totalNewsForTitle:@"misc"],
 				   @"-totalNewsForTitle: on freshly added stories");
 	STAssertEquals(1U, [newsCenter unreadNewsForTitle:@"misc"],

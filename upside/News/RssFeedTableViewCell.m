@@ -9,6 +9,7 @@
 #import "RssFeedTableViewCell.h"
 
 #import "NewsItem.h"
+#import "NewsItem+ReaderState.h"
 
 
 @implementation RssFeedTableViewCell
@@ -39,6 +40,8 @@
 	[newsItem release];
 	newsItem = theNewsItem;
 	
+	titleLabel.font = [newsItem isRead] ? [UIFont systemFontOfSize:16] :
+	                                      [UIFont boldSystemFontOfSize:16];
 	titleLabel.text = [newsItem title];
 	summaryLabel.text = [newsItem summary];
 }

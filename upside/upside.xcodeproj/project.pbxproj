@@ -51,6 +51,7 @@
 		570D8A060F17465C00D54544 /* NewsCenterTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 570D89100F171B1F00D54544 /* NewsCenterTest.xml */; };
 		570D8ABE0F1816CE00D54544 /* DictionaryXmlParserTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 570D8ABD0F1816CE00D54544 /* DictionaryXmlParserTest.xml */; };
 		5711926B0F1BA38400FD89EA /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
+		571193500F1BBC9A00FD89EA /* NewsItem+ReaderState.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D90F18D9B500A996A2 /* NewsItem+ReaderState.m */; };
 		571A234C0F189EB700A996A2 /* NewsCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A234B0F189EB700A996A2 /* NewsCenter.m */; };
 		571A23B70F18BA4B00A996A2 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88F50F16EA6400D54544 /* NewsItem.m */; };
 		571A23D70F18D5B400A996A2 /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
@@ -621,6 +622,7 @@
 				570D86D50F144BD900D54544 /* StockCache.m in Sources */,
 				571A26930F19874500A996A2 /* NewsArticleViewController.m in Sources */,
 				571A27090F1ABA5000A996A2 /* NetworkProgress.m in Sources */,
+				571193500F1BBC9A00FD89EA /* NewsItem+ReaderState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
