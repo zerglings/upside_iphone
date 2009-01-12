@@ -9,6 +9,8 @@
 #import "NewsArticleViewController.h"
 
 #import "NewsItem.h"
+#import "NetworkProgress.h"
+
 
 @implementation NewsArticleViewController
 
@@ -27,6 +29,14 @@
 - (void)loadView {
 }
 */
+
+- (void)viewDidDisappear:(BOOL)animated {
+	if (connectionIndicator) {
+		connectionIndicator = NO;
+		[NetworkProgress connectionDone];
+	}
+	[super viewDidDisappear:animated];
+}
 
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -64,6 +74,20 @@
 	
 	self.navigationItem.title = [newsItem title];
 	[articleView loadRequest:[NSURLRequest requestWithURL:[newsItem url]]];
+}
+
+- (void) webViewDidStartLoad: (UIWebView *)webView {
+	if (!connectionIndicator) {
+		connectionIndicator = YES;
+		[NetworkProgress connectionStarted];
+	}
+}
+
+- (void) webViewDidFinishLoad: (UIWebView *)webView {
+	if (connectionIndicator) {
+		connectionIndicator = NO;
+		[NetworkProgress connectionDone];		
+	}
 }
 
 @end

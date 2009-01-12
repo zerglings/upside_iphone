@@ -9,6 +9,7 @@
 #import "NewsCenter.h"
 
 #import "DictionaryXmlParser.h"
+#import "NetworkProgress.h"
 #import "NewsItem.h"
 #import "NewsItem+ReaderState.h"
 
@@ -217,13 +218,17 @@ static NSDictionary* rssParserSchema = nil;
 				
 		NSDate* sleepTimeout =
 		    [NSDate dateWithTimeIntervalSinceNow:feedData.refreshInterval];
-		if ([rssParser parseURL:feedData.url]) {		
+		[NetworkProgress connectionStarted];
+		BOOL parsingWorked = [rssParser parseURL:feedData.url];
+		[NetworkProgress connectionDone];
+		if (parsingWorked) {		
 			[feedData performSelectorOnMainThread:@selector(integrateNews:)
 									   withObject:newsItems
 									waitUntilDone:YES];
 		}
 		[newsItems removeAllObjects];
-		[runLoop runUntilDate:sleepTimeout];
+		[NSThread sleepUntilDate:sleepTimeout];
+		//[runLoop runUntilDate:sleepTimeout];
 		 
 		[arp release];
 	}

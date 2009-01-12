@@ -8,6 +8,8 @@
 
 #import "TabBarController.h"
 
+#import "Game.h"
+
 
 @implementation TabBarController
 
@@ -29,6 +31,9 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	// Ping the game to force all the good background processing to start.
+	[Game sharedGame];
+	
     [super viewDidLoad];
 }
 

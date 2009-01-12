@@ -43,5 +43,4 @@
 	summaryLabel.text = [newsItem summary];
 }
 
-
 @end
