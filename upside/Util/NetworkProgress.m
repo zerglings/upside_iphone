@@ -14,20 +14,30 @@
 #pragma mark Connection Accounting
 
 - (void) connectionStarted {
-	@synchronized (self) {
+	if ([NSThread isMainThread]) {
 		if (workingConnections == 0) {
 			app.networkActivityIndicatorVisible = YES;
 		}
 		workingConnections++;
 	}
+	else {
+		[self performSelectorOnMainThread:@selector(connectionStarted) 
+							   withObject:nil
+							waitUntilDone:NO];
+	}
 }
 
 - (void) connectionDone {
-	@synchronized (self) {
+	if ([NSThread isMainThread]) {
 		workingConnections--;
 		if (workingConnections == 0) {
 			app.networkActivityIndicatorVisible = NO;
 		}
+	}
+	else {
+		[self performSelectorOnMainThread:@selector(connectionDone)
+							   withObject:nil
+							waitUntilDone:NO];		
 	}
 }
 
