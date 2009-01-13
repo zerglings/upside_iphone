@@ -20,7 +20,9 @@
 - (id) initWithItem: (NewsItem*)item markAsRead: (BOOL)isRead {
 	NSMutableDictionary* newProps = [item.properties mutableCopy];
 	[newProps setObject:[NSNumber numberWithBool:isRead] forKey:kNewsItemRead];
-	return [super initWithProperties:newProps];
+	self = [super initWithProperties:newProps];
+	[newProps release];
+	return self;
 }
 
 @end
