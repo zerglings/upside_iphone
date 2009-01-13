@@ -38,10 +38,11 @@
 - (void) setFeedTitle: (NSString*)title {
 	[title retain];
 	[feedTitle release];
+	feedTitle = title;
 	
-	titleLabel.text = title;
+	titleLabel.text = feedTitle;
 	NSUInteger unreadItems = [[[Game sharedGame] newsCenter]
-							  unreadNewsForTitle:title];
+							  unreadNewsForTitle:feedTitle];
 	[unreadCountButton setTitle:[NSString stringWithFormat:@"%u", unreadItems]
 					   forState:UIControlStateNormal];
 	[unreadCountButton setTitle:[NSString stringWithFormat:@"%u", unreadItems]
