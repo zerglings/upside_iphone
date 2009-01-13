@@ -88,4 +88,13 @@
 	return cell;
 }
 
+- (void) dealloc {
+	[wideCellReuseIdentifier release];
+	[wideCellNib release];
+	[narrowCellReuseIdentifier release];
+	[narrowCellNib release];
+	[cellClass release];
+	[super dealloc];
+}
+
 @end

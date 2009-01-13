@@ -145,10 +145,12 @@
 }
 
 - (void) markAsReadItemWithId: (NSString*) uid {
-	[newsByUid setObject:[[NewsItem alloc] initWithItem:[newsByUid
-														 objectForKey:uid]
-											 markAsRead:YES]
+	NewsItem* newItem = [[NewsItem alloc] initWithItem:[newsByUid
+														objectForKey:uid]
+											markAsRead:YES];
+	[newsByUid setObject:newItem
 				  forKey:uid];
+	[newItem release];
 }
 
 - (void) integrateNews: (NSArray*)news forTitle: (NSString*)title {
@@ -198,8 +200,9 @@ static NSDictionary* rssParserSchema = nil;
 - (void) parsedItem: (NSDictionary*)itemData
 		   withName: (NSString*)itemName
 				for: (NSObject*)context {
-	[(NSMutableArray*)context addObject:[[NewsItem alloc]
-										 initWithRssItem:itemData]];
+	NewsItem* newsItem = [[NewsItem alloc] initWithRssItem:itemData];
+	[(NSMutableArray*)context addObject:newsItem];
+	[newsItem release];		
 }
 
 - (void) feedFetcherThreadMain: (NewsCenterData*)feedData {
@@ -214,7 +217,7 @@ static NSDictionary* rssParserSchema = nil;
 	
 	while (!feedData.removed) {
 		NSAutoreleasePool* arp = [[NSAutoreleasePool alloc] init];
-		NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
+		//NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
 				
 		NSDate* sleepTimeout =
 		    [NSDate dateWithTimeIntervalSinceNow:feedData.refreshInterval];
@@ -232,8 +235,10 @@ static NSDictionary* rssParserSchema = nil;
 		 
 		[arp release];
 	}
-	[outerArp release];
 	[feedData release];
+	[newsItems release];
+	[rssParser release];
+	[outerArp release];
 }
 
 - (void) startFetchingNewsFor: (NewsCenterData*)feedData {

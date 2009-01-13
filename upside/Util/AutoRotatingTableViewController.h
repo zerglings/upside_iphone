@@ -26,7 +26,7 @@
 // Subclasses should set this to the NIB for portrait mode cells.
 @property (nonatomic, retain) NSString* narrowCellNib;
 // Subclasses should set this to class of the table cells.
-@property (nonatomic) Class cellClass;
+@property (nonatomic, retain) Class cellClass;
 
 // Subclasses should override this and call the super version.
 - (UITableViewCell *)tableView:(UITableView *)tableView
