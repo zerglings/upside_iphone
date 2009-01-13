@@ -29,6 +29,7 @@
 */
 
 - (void)viewDidDisappear:(BOOL)animated {
+	[(UIWebView*)self.view stopLoading];
 	if (connectionIndicator) {
 		connectionIndicator = NO;
 		[NetworkProgress connectionDone];
@@ -43,13 +44,10 @@
 }
 */
 
-/*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
-*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -71,7 +69,8 @@
 	newsItem = theNewsItem;
 	
 	self.navigationItem.title = [newsItem title];
-	[articleView loadRequest:[NSURLRequest requestWithURL:[newsItem url]]];
+	[(UIWebView*)self.view loadRequest:[NSURLRequest
+										requestWithURL:[newsItem url]]];
 }
 
 - (void) webViewDidStartLoad: (UIWebView *)webView {

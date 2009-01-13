@@ -65,6 +65,16 @@
 				   @"-unreadNewsForTitle: after -markAsRead");
 }
 
+- (void) testConsecutiveUnreadBug {
+	[newsCenter integrateNews:[NSArray arrayWithObjects:
+							   item1, item2, item3, nil]
+					 forTitle:@"misc"];
+	[newsCenter markAsReadItemWithId:[item1 uid]];
+	[newsCenter markAsReadItemWithId:[item2 uid]];	
+	STAssertEquals(1U, [newsCenter unreadNewsForTitle:@"misc"],
+				   @"-unreadNewsForTitle: after 2 -markAsRead calls");
+}
+
 - (void) testIntegrate {
 	[newsCenter integrateNews:[NSArray arrayWithObjects:item2, item1, nil]
 					 forTitle:@"misc"];

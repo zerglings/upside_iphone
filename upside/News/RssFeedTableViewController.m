@@ -115,9 +115,9 @@
 	[self.navigationController pushViewController:articleViewController
 	                                     animated:YES];
 	articleViewController.newsItem = newsItem;
+	[articleViewController release];
 	[[[Game sharedGame] newsCenter] markAsReadItemWithId:[newsItem uid]];
 	[(UITableView*)self.view reloadData];
-	[articleViewController release];
 }
 
 

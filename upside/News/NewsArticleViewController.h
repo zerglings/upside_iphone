@@ -11,7 +11,7 @@
 @class NewsItem;
 
 @interface NewsArticleViewController : UIViewController {
-	IBOutlet UIWebView* articleView;
+	//IBOutlet UIWebView* articleView;
 
 	BOOL connectionIndicator;	
 	

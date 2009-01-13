@@ -98,6 +98,8 @@
 - (void) addTitle: (NSString*)title
 		  withUrl: (NSURL*)url
 	   andRefresh: (NSTimeInterval)refreshInterval {
+	NSAssert([NSThread mainThread], @"Method called outside main thread");
+	
 	NewsCenterData* data = [dataByTitle objectForKey:title];
 	if (data != nil) {
 		data.url = url;
@@ -117,6 +119,8 @@
 }
 
 - (void) removeTitle: (NSString*) title {
+	NSAssert([NSThread mainThread], @"Method called outside main thread");
+	
 	NewsCenterData* data = [dataByTitle objectForKey:title];
 	if (data != nil) {
 		data.removed = YES;
@@ -128,10 +132,14 @@
 }
 
 - (NSUInteger) totalNewsForTitle: (NSString*) title {
+	NSAssert([NSThread mainThread], @"Method called outside main thread");
+	
 	return [[[dataByTitle objectForKey:title] uids] count];
 }
 
 - (NSUInteger) unreadNewsForTitle: (NSString*) title {
+	NSAssert([NSThread mainThread], @"Method called outside main thread");
+	
 	NSUInteger unread = 0;
 	for (NSString* uid in [[dataByTitle objectForKey:title] uids]) {
 		unread += [(NewsItem*)[newsByUid objectForKey:uid] isRead] ? 0 : 1;
@@ -145,6 +153,8 @@
 }
 
 - (void) markAsReadItemWithId: (NSString*) uid {
+	NSAssert([NSThread mainThread], @"Method called outside main thread");
+	
 	NewsItem* newItem = [[NewsItem alloc] initWithItem:[newsByUid
 														objectForKey:uid]
 											markAsRead:YES];
@@ -154,6 +164,8 @@
 }
 
 - (void) integrateNews: (NSArray*)news forTitle: (NSString*)title {
+	NSAssert([NSThread mainThread], @"Method called outside main thread");
+	
 	NewsCenterData* data = [dataByTitle objectForKey:title];
 	
 	NSMutableSet* oldUids = [[NSMutableSet alloc] initWithArray:data.uids];
@@ -212,12 +224,12 @@ static NSDictionary* rssParserSchema = nil;
 	DictionaryXmlParser* rssParser = [[DictionaryXmlParser alloc]
 									  initWithSchema:
 									  [NewsCenter rssParserSchema]];
+	//NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
 	rssParser.context = newsItems;
 	rssParser.delegate = self;
 	
 	while (!feedData.removed) {
 		NSAutoreleasePool* arp = [[NSAutoreleasePool alloc] init];
-		//NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
 				
 		NSDate* sleepTimeout =
 		    [NSDate dateWithTimeIntervalSinceNow:feedData.refreshInterval];
@@ -230,10 +242,13 @@ static NSDictionary* rssParserSchema = nil;
 									waitUntilDone:YES];
 		}
 		[newsItems removeAllObjects];
+		[arp release];
+		
+		NSAutoreleasePool* miniArp = [[NSAutoreleasePool alloc] init];		
 		[NSThread sleepUntilDate:sleepTimeout];
 		//[runLoop runUntilDate:sleepTimeout];
+		[miniArp release];
 		 
-		[arp release];
 	}
 	[feedData release];
 	[newsItems release];
