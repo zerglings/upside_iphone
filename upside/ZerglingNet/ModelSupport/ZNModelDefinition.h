@@ -8,9 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class ZNModelDefinitionAttribute;
+
 @interface ZNModelDefinition : NSObject {
-	
+	NSString* name;
+	NSDictionary* attributes;
 }
+
+@property (nonatomic, readonly, retain) NSString* name;
+@property (nonatomic, readonly, retain) NSDictionary* attributes;
+
+- (ZNModelDefinitionAttribute*) attributeNamed: (NSString*)name;
 
 + (ZNModelDefinition*) definitionForClass: (Class)klass;
 

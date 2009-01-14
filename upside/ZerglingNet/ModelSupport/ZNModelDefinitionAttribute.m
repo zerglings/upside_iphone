@@ -56,8 +56,10 @@
 										newTypeFromString:propertyAttributes];
 
 	const char* typeComma = strchr(propertyAttributes, ',');
-	NSAssert(typeComma, @"Property attributes format changed");
-	propertyAttributes = typeComma + 1;
+	if (typeComma)
+		propertyAttributes = typeComma;
+	else
+		propertyAttributes += strlen(propertyAttributes);
 	
 		
 	// Property properties

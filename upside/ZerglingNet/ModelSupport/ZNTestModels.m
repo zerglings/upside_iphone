@@ -16,6 +16,11 @@
 
 @end
 
+@implementation ZNTestProtocolDef
+
+@dynamic win1, win2, win3, fail1, fail2;
+
+@end
 
 @implementation ZNTestModel
 

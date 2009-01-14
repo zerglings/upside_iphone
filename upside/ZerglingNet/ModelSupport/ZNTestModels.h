@@ -39,6 +39,22 @@
 
 @end
 
+@protocol ZNTestProtocolDef_ZNMS
+
+@property (nonatomic) NSUInteger win1; 
+@property (nonatomic) NSUInteger win2; 
+@property (nonatomic) NSUInteger win3; 
+
+@end
+
+
+@interface ZNTestProtocolDef : NSObject <ZNTestProtocolDef_ZNMS>
+
+@property (nonatomic) NSUInteger fail1, fail2;
+
+@end
+
+
 @interface ZNTestModel : NSObject {
 	NSUInteger ssn;
 	double age;
