@@ -1,0 +1,24 @@
+//
+//  ZNTestModels.m
+//  upside
+//
+//  Created by Victor Costan on 1/14/09.
+//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//
+
+#import "ZNTestModels.h"
+
+@implementation ZNTestParsing
+
+@dynamic assign, copy, retain, ro_assign, ro_copy, ro_retain;
+@dynamic date_prop, double_prop, integer_prop, string_prop, uinteger_prop;
+@dynamic getter, setter, accessor;
+
+@end
+
+
+@implementation ZNTestModel
+
+@synthesize ssn, age, name, tag;
+
+@end

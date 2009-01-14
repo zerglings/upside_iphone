@@ -54,6 +54,26 @@
 		571193500F1BBC9A00FD89EA /* NewsItem+ReaderState.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D90F18D9B500A996A2 /* NewsItem+ReaderState.m */; };
 		571193850F1BEE2C00FD89EA /* NewsTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571193840F1BEE2C00FD89EA /* NewsTableCellNarrow.xib */; };
 		571193880F1BEE7900FD89EA /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 571193870F1BEE7900FD89EA /* NewsTableViewCell.m */; };
+		5711955D0F1DC97800FD89EA /* ZNModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711955C0F1DC97800FD89EA /* ZNModel.m */; };
+		571195600F1DCA0B00FD89EA /* ZNModelDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711955F0F1DCA0B00FD89EA /* ZNModelDefinition.m */; };
+		571195660F1DCC3600FD89EA /* ZNTestModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 571195640F1DCC2700FD89EA /* ZNTestModels.m */; };
+		5711956B0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956A0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m */; };
+		5711956C0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956A0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m */; };
+		571195700F1DCFA500FD89EA /* ZNModelDefinitionAttributeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956E0F1DCFA500FD89EA /* ZNModelDefinitionAttributeTest.m */; };
+		571196900F1DECAA00FD89EA /* ZNMSAttributeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711968F0F1DECAA00FD89EA /* ZNMSAttributeType.m */; };
+		571196910F1DECAA00FD89EA /* ZNMSAttributeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711968F0F1DECAA00FD89EA /* ZNMSAttributeType.m */; };
+		571196940F1DF39000FD89EA /* ZNMSAttributeTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 571196930F1DF39000FD89EA /* ZNMSAttributeTypes.m */; };
+		571196950F1DF39000FD89EA /* ZNMSAttributeTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 571196930F1DF39000FD89EA /* ZNMSAttributeTypes.m */; };
+		571196980F1DF3F800FD89EA /* ZNMSInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = 571196970F1DF3F800FD89EA /* ZNMSInteger.m */; };
+		571196990F1DF3F800FD89EA /* ZNMSInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = 571196970F1DF3F800FD89EA /* ZNMSInteger.m */; };
+		5711969C0F1DF42400FD89EA /* ZNMSDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711969B0F1DF42400FD89EA /* ZNMSDouble.m */; };
+		5711969D0F1DF42400FD89EA /* ZNMSDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711969B0F1DF42400FD89EA /* ZNMSDouble.m */; };
+		571196A00F1DF44600FD89EA /* ZNMSUInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711969F0F1DF44600FD89EA /* ZNMSUInteger.m */; };
+		571196A10F1DF44600FD89EA /* ZNMSUInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711969F0F1DF44600FD89EA /* ZNMSUInteger.m */; };
+		571196A40F1DF45300FD89EA /* ZNMSString.m in Sources */ = {isa = PBXBuildFile; fileRef = 571196A30F1DF45300FD89EA /* ZNMSString.m */; };
+		571196A50F1DF45300FD89EA /* ZNMSString.m in Sources */ = {isa = PBXBuildFile; fileRef = 571196A30F1DF45300FD89EA /* ZNMSString.m */; };
+		571198070F1E064D00FD89EA /* ZNMSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 571198060F1E064D00FD89EA /* ZNMSDate.m */; };
+		571198080F1E064D00FD89EA /* ZNMSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 571198060F1E064D00FD89EA /* ZNMSDate.m */; };
 		571A234C0F189EB700A996A2 /* NewsCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A234B0F189EB700A996A2 /* NewsCenter.m */; };
 		571A23B70F18BA4B00A996A2 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88F50F16EA6400D54544 /* NewsItem.m */; };
 		571A23D70F18D5B400A996A2 /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
@@ -159,6 +179,30 @@
 		571193840F1BEE2C00FD89EA /* NewsTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableCellNarrow.xib; sourceTree = "<group>"; };
 		571193860F1BEE7900FD89EA /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
 		571193870F1BEE7900FD89EA /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
+		571195550F1DC94B00FD89EA /* ModelSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelSupport.h; sourceTree = "<group>"; };
+		5711955B0F1DC97800FD89EA /* ZNModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNModel.h; sourceTree = "<group>"; };
+		5711955C0F1DC97800FD89EA /* ZNModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNModel.m; sourceTree = "<group>"; };
+		5711955E0F1DCA0B00FD89EA /* ZNModelDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNModelDefinition.h; sourceTree = "<group>"; };
+		5711955F0F1DCA0B00FD89EA /* ZNModelDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNModelDefinition.m; sourceTree = "<group>"; };
+		571195630F1DCC2700FD89EA /* ZNTestModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNTestModels.h; sourceTree = "<group>"; };
+		571195640F1DCC2700FD89EA /* ZNTestModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNTestModels.m; sourceTree = "<group>"; };
+		571195690F1DCF9200FD89EA /* ZNModelDefinitionAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNModelDefinitionAttribute.h; sourceTree = "<group>"; };
+		5711956A0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNModelDefinitionAttribute.m; sourceTree = "<group>"; };
+		5711956E0F1DCFA500FD89EA /* ZNModelDefinitionAttributeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNModelDefinitionAttributeTest.m; sourceTree = "<group>"; };
+		5711968E0F1DECAA00FD89EA /* ZNMSAttributeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSAttributeType.h; sourceTree = "<group>"; };
+		5711968F0F1DECAA00FD89EA /* ZNMSAttributeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSAttributeType.m; sourceTree = "<group>"; };
+		571196920F1DF39000FD89EA /* ZNMSAttributeTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSAttributeTypes.h; sourceTree = "<group>"; };
+		571196930F1DF39000FD89EA /* ZNMSAttributeTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSAttributeTypes.m; sourceTree = "<group>"; };
+		571196960F1DF3F800FD89EA /* ZNMSInteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSInteger.h; sourceTree = "<group>"; };
+		571196970F1DF3F800FD89EA /* ZNMSInteger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSInteger.m; sourceTree = "<group>"; };
+		5711969A0F1DF42400FD89EA /* ZNMSDouble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSDouble.h; sourceTree = "<group>"; };
+		5711969B0F1DF42400FD89EA /* ZNMSDouble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSDouble.m; sourceTree = "<group>"; };
+		5711969E0F1DF44600FD89EA /* ZNMSUInteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSUInteger.h; sourceTree = "<group>"; };
+		5711969F0F1DF44600FD89EA /* ZNMSUInteger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSUInteger.m; sourceTree = "<group>"; };
+		571196A20F1DF45300FD89EA /* ZNMSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSString.h; sourceTree = "<group>"; };
+		571196A30F1DF45300FD89EA /* ZNMSString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSString.m; sourceTree = "<group>"; };
+		571198050F1E064D00FD89EA /* ZNMSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSDate.h; sourceTree = "<group>"; };
+		571198060F1E064D00FD89EA /* ZNMSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSDate.m; sourceTree = "<group>"; };
 		571A234A0F189EB700A996A2 /* NewsCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCenter.h; sourceTree = "<group>"; };
 		571A234B0F189EB700A996A2 /* NewsCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenter.m; sourceTree = "<group>"; };
 		571A23D60F18D5B400A996A2 /* NewsCenterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenterTest.m; sourceTree = "<group>"; };
@@ -276,6 +320,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				571195500F1DC67C00FD89EA /* ZerglingNet */,
 				570D84C70F1336EE00D54544 /* Models */,
 				570D88BC0F16ABDD00D54544 /* News */,
 				570D82EC0F11A5BB00D54544 /* Util */,
@@ -401,6 +446,45 @@
 				571A26920F19874500A996A2 /* NewsArticleViewController.m */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		571195500F1DC67C00FD89EA /* ZerglingNet */ = {
+			isa = PBXGroup;
+			children = (
+				571195540F1DC8A800FD89EA /* ModelSupport */,
+			);
+			path = ZerglingNet;
+			sourceTree = "<group>";
+		};
+		571195540F1DC8A800FD89EA /* ModelSupport */ = {
+			isa = PBXGroup;
+			children = (
+				571195550F1DC94B00FD89EA /* ModelSupport.h */,
+				5711955B0F1DC97800FD89EA /* ZNModel.h */,
+				5711955C0F1DC97800FD89EA /* ZNModel.m */,
+				5711955E0F1DCA0B00FD89EA /* ZNModelDefinition.h */,
+				5711955F0F1DCA0B00FD89EA /* ZNModelDefinition.m */,
+				571195690F1DCF9200FD89EA /* ZNModelDefinitionAttribute.h */,
+				5711956A0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m */,
+				5711956E0F1DCFA500FD89EA /* ZNModelDefinitionAttributeTest.m */,
+				571195630F1DCC2700FD89EA /* ZNTestModels.h */,
+				571195640F1DCC2700FD89EA /* ZNTestModels.m */,
+				5711968E0F1DECAA00FD89EA /* ZNMSAttributeType.h */,
+				5711968F0F1DECAA00FD89EA /* ZNMSAttributeType.m */,
+				571198050F1E064D00FD89EA /* ZNMSDate.h */,
+				571198060F1E064D00FD89EA /* ZNMSDate.m */,
+				5711969A0F1DF42400FD89EA /* ZNMSDouble.h */,
+				5711969B0F1DF42400FD89EA /* ZNMSDouble.m */,
+				571196960F1DF3F800FD89EA /* ZNMSInteger.h */,
+				571196970F1DF3F800FD89EA /* ZNMSInteger.m */,
+				571196A20F1DF45300FD89EA /* ZNMSString.h */,
+				571196A30F1DF45300FD89EA /* ZNMSString.m */,
+				5711969E0F1DF44600FD89EA /* ZNMSUInteger.h */,
+				5711969F0F1DF44600FD89EA /* ZNMSUInteger.m */,
+				571196920F1DF39000FD89EA /* ZNMSAttributeTypes.h */,
+				571196930F1DF39000FD89EA /* ZNMSAttributeTypes.m */,
+			);
+			path = ModelSupport;
 			sourceTree = "<group>";
 		};
 		5732104C0F117B9E003D97D8 /* Orders */ = {
@@ -633,6 +717,16 @@
 				571A27090F1ABA5000A996A2 /* NetworkProgress.m in Sources */,
 				571193500F1BBC9A00FD89EA /* NewsItem+ReaderState.m in Sources */,
 				571193880F1BEE7900FD89EA /* NewsTableViewCell.m in Sources */,
+				5711955D0F1DC97800FD89EA /* ZNModel.m in Sources */,
+				571195600F1DCA0B00FD89EA /* ZNModelDefinition.m in Sources */,
+				5711956B0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m in Sources */,
+				571196900F1DECAA00FD89EA /* ZNMSAttributeType.m in Sources */,
+				571196940F1DF39000FD89EA /* ZNMSAttributeTypes.m in Sources */,
+				571196980F1DF3F800FD89EA /* ZNMSInteger.m in Sources */,
+				5711969C0F1DF42400FD89EA /* ZNMSDouble.m in Sources */,
+				571196A00F1DF44600FD89EA /* ZNMSUInteger.m in Sources */,
+				571196A40F1DF45300FD89EA /* ZNMSString.m in Sources */,
+				571198070F1E064D00FD89EA /* ZNMSDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +765,16 @@
 				571A258F0F19729D00A996A2 /* Portfolio+RSS.m in Sources */,
 				571A25970F19759A00A996A2 /* Portfolio+RSSTest.m in Sources */,
 				5711926B0F1BA38400FD89EA /* NetworkProgress.m in Sources */,
+				571195660F1DCC3600FD89EA /* ZNTestModels.m in Sources */,
+				5711956C0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m in Sources */,
+				571195700F1DCFA500FD89EA /* ZNModelDefinitionAttributeTest.m in Sources */,
+				571196910F1DECAA00FD89EA /* ZNMSAttributeType.m in Sources */,
+				571196950F1DF39000FD89EA /* ZNMSAttributeTypes.m in Sources */,
+				571196990F1DF3F800FD89EA /* ZNMSInteger.m in Sources */,
+				5711969D0F1DF42400FD89EA /* ZNMSDouble.m in Sources */,
+				571196A10F1DF44600FD89EA /* ZNMSUInteger.m in Sources */,
+				571196A50F1DF45300FD89EA /* ZNMSString.m in Sources */,
+				571198080F1E064D00FD89EA /* ZNMSDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
