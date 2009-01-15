@@ -35,6 +35,10 @@
 	NSDictionary* dateDict = [dateModel copyToDictionaryForcingStrings:NO];
 	STAssertEqualObjects(date, [dateDict objectForKey:@"pubDate"],
 						 @"Boxed date should equal original date");
+	ZNTestDate* thawedModel = [[ZNTestDate alloc] initWithProperties:dateDict];
+	STAssertEqualObjects(date, thawedModel.pubDate,
+						 @"Unboxed date should equal original date");
+	[thawedModel release];
 	[dateDict release];
 	
 	dateDict = [dateModel copyToDictionaryForcingStrings:YES];
@@ -42,7 +46,13 @@
 					 [dateDict objectForKey:@"pubDate"]];
 	STAssertEqualsWithAccuracy(0.0, [date2 timeIntervalSinceDate:date], 1.0,
 							   @"String-boxed date should equal original date");
+	thawedModel = [[ZNTestDate alloc] initWithProperties:dateDict];
+	STAssertEqualsWithAccuracy(0.0, [thawedModel.pubDate
+									 timeIntervalSinceDate:date],
+							   1.0,
+							   @"String-unboxed date should equal original");
 	[dateDict release];
+	[thawedModel release];
 }
 
 @end

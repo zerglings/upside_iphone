@@ -94,7 +94,6 @@
 		571A26900F19871C00A996A2 /* NewsArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571A268F0F19871C00A996A2 /* NewsArticleViewController.xib */; };
 		571A26930F19874500A996A2 /* NewsArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A26920F19874500A996A2 /* NewsArticleViewController.m */; };
 		571A27090F1ABA5000A996A2 /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
-		574CCFD30F1F5291002CEDDB /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
 		575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */; };
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
@@ -790,7 +789,6 @@
 				571199380F1EBE9B00FD89EA /* ZNMSRegistryTest.m in Sources */,
 				571199B00F1F2F0200FD89EA /* ZNModel.m in Sources */,
 				57119A0B0F1F3D2C00FD89EA /* ZNModelTest.m in Sources */,
-				574CCFD30F1F5291002CEDDB /* NewsCenterTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

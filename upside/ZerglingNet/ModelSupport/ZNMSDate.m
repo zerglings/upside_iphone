@@ -8,6 +8,7 @@
 
 #import "ZNMSDate.h"
 
+#import "ZNModelDefinitionAttribute.h"
 
 @implementation ZNMSDate
 
@@ -28,19 +29,19 @@
 
 #pragma mark Boxing
 
-- (NSObject*) boxInstanceVar: (Ivar)instanceVar
-				  inInstance: (ZNModel*)instance
-			     forceString: (BOOL)forceString {
-	NSDate* date = object_getIvar(instance, instanceVar);
+- (NSObject*) boxAttribute: (ZNModelDefinitionAttribute*)attribute
+				inInstance: (ZNModel*)instance
+			   forceString: (BOOL)forceString {
+	NSDate* date = object_getIvar(instance, [attribute runtimeIvar]);
 	if (forceString)
 		return [formatter stringFromDate:date];
 	else
 		return date;
 }
 
-- (void) unboxInstanceVar: (Ivar)instanceVar
-		 	   inInstance: (ZNModel*)instance
-				     from: (NSObject*)boxedObject {
+- (void) unboxAttribute: (ZNModelDefinitionAttribute*)attribute
+		 	 inInstance: (ZNModel*)instance
+			       from: (NSObject*)boxedObject {
 	NSDate* date;
 	if ([boxedObject isKindOfClass:[NSString class]])
 		date = [NSDate dateWithNaturalLanguageString:(NSString*)boxedObject];
@@ -49,7 +50,15 @@
 	}
 	else
 		date = nil;
-	object_setIvar(instance, instanceVar, date);
+	switch ([attribute setterStrategy]) {
+		case kZNPropertyWantsCopy:
+			date = [date copy];
+			break;
+		case kZNPropertyWantsRetain:
+			date = [date retain];
+			break;
+	}
+	object_setIvar(instance, [attribute runtimeIvar], date);
 }
 
 @end

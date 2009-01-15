@@ -15,7 +15,6 @@
 
 @property (nonatomic, readonly) NSDictionary* supplementalProperties;
 
-- (void) loadFromDictionary: (NSDictionary*)dictionary;
 - (NSDictionary*) copyToDictionaryForcingStrings: (BOOL)forceStrings;
 
 @end
