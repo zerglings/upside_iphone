@@ -12,11 +12,12 @@
 
 @implementation ZNModelDefinitionAttribute
 
-@synthesize name, getterName, setterName, type;
+@synthesize name, getterName, setterName, type, runtimeIvar;
 @synthesize isAtomic, isReadOnly, setterStrategy;
 
 - (id) initWithName: (NSString*)theName
 			   type: (ZNMSAttributeType*)theType
+		runtimeIvar: (Ivar)theIvar
 		   isAtomic: (BOOL)theIsAtomic
 		 isReadOnly: (BOOL)theIsReadOnly
 		 getterName: (NSString*)theGetter
@@ -27,6 +28,7 @@
 		getterName = [theGetter retain];
 		setterName = [theSetter retain];
 		type = [theType retain];
+		runtimeIvar = theIvar;
 		isAtomic = theIsAtomic;
 		isReadOnly = theIsReadOnly;
 		setterStrategy = theStrategy; 
@@ -42,14 +44,16 @@
 	[super dealloc];
 }
 
-+ (ZNModelDefinitionAttribute*) newAttributeFromProperty: (objc_property_t)property {
++ (ZNModelDefinitionAttribute*) newAttributeFromProperty: (objc_property_t)property
+												 ofClass: (Class)klass {
 	const char* propertyName = property_getName(property);
 	const char* propertyAttributes = property_getAttributes(property);
 	
 	NSAssert(*propertyAttributes == 'T', @"Property attributes format changed");
 	propertyAttributes++;
 	
-
+	Ivar runtimeIvar = class_getInstanceVariable(klass, propertyName);
+	
 	// Property type
 
 	ZNMSAttributeType* attributeType = [ZNMSAttributeType
@@ -111,10 +115,11 @@
 		}
 	}
 	
-done:	
+done:
 	return [[ZNModelDefinitionAttribute alloc]
 			initWithName:[NSString stringWithCString:propertyName]
 					type:attributeType
+			 runtimeIvar:runtimeIvar
 			    isAtomic:isAtomic
 			  isReadOnly:isReadOnly
 			  getterName:getterName

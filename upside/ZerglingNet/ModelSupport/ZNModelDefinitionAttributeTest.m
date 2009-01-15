@@ -17,13 +17,14 @@
 
 @interface ZNModelDefinitionAttributeTest : SenTestCase {
 	objc_property_t* testProperties;
+	Class testClass;
 	unsigned int numTestProperties;
 }
 @end
 
 @implementation ZNModelDefinitionAttributeTest
 - (void) setUp {
-	Class testClass = [ZNTestParsing class];
+	testClass = [ZNTestParsing class];
 	testProperties = class_copyPropertyList(testClass,
 											&numTestProperties);
 }
@@ -55,7 +56,8 @@
 	for(int i = 0; i < sizeof(properties) / sizeof(*properties); i++) {
 		objc_property_t property = [self propertyNamed:properties[i]];
 		ZNModelDefinitionAttribute* attr =
-		   [ZNModelDefinitionAttribute newAttributeFromProperty:property];
+		   [ZNModelDefinitionAttribute newAttributeFromProperty:property
+														ofClass:testClass];
 		
 		STAssertEquals(golden_strategies[i], [attr setterStrategy],
 					   @"Failed to parse setter strategy %s", properties[i]);
@@ -80,7 +82,8 @@
 	for(int i = 0; i < sizeof(properties) / sizeof(*properties); i++) {
 		objc_property_t property = [self propertyNamed:properties[i]];
 		ZNModelDefinitionAttribute* attr =
-		[ZNModelDefinitionAttribute newAttributeFromProperty:property];
+		    [ZNModelDefinitionAttribute newAttributeFromProperty:property
+														 ofClass:testClass];
 		
 		STAssertEquals(golden_types[i], [attr type],
 					   @"Failed to parse type for %s", properties[i]);
@@ -103,7 +106,8 @@
 	for(int i = 0; i < sizeof(properties) / sizeof(*properties); i++) {
 		objc_property_t property = [self propertyNamed:properties[i]];
 		ZNModelDefinitionAttribute* attr =
-		[ZNModelDefinitionAttribute newAttributeFromProperty:property];
+		    [ZNModelDefinitionAttribute newAttributeFromProperty:property
+														 ofClass:testClass];
 		
 		STAssertEqualStrings(golden_getters[i], [attr getterName],
 					         @"Failed to parse getter name for %s",

@@ -32,6 +32,11 @@
 	newsCenter = [[NewsCenter alloc] init];
 }
 
+- (void) tearDown {
+	[portfolio release];
+	[newsCenter release];
+}
+
 - (void) testSetup {
 	[portfolio loadRssFeedsIntoCenter:newsCenter];
 	NSString* title = [Portfolio rssFeedTitleForTicker:@"MSFT"];

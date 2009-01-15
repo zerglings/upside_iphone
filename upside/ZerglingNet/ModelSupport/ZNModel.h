@@ -10,10 +10,12 @@
 
 // Base class for the models using ModelSupport.
 @interface ZNModel : NSObject {
-
+	NSDictionary* props;
 }
 
+@property (nonatomic, readonly) NSDictionary* supplementalProperties;
+
 - (void) loadFromDictionary: (NSDictionary*)dictionary;
-- (NSDictionary*) saveToDictionary: (NSDictionary*)dictionary;
+- (NSDictionary*) copyToDictionaryForcingStrings: (BOOL)forceStrings;
 
 @end

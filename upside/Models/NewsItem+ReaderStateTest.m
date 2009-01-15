@@ -31,6 +31,10 @@
 										 summary:@"Nothing exciting today."];
 }
 
+- (void) tearDown {
+	[unreadItem release];
+}
+
 - (void) testDefaultIsUnread {
 	STAssertEquals(NO, [unreadItem isRead],
 				   @"Items should be marked unread by default");

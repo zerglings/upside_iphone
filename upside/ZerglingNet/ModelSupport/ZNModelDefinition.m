@@ -76,7 +76,8 @@
 														 sizeof(NSString*));
 	for (unsigned int i = 0; i < propertyCount; i++) {
 		attributesCarray[i] = [ZNModelDefinitionAttribute
-							   newAttributeFromProperty:properties[i]];
+							   newAttributeFromProperty:properties[i]
+							                    ofClass:klass];
 		attributeNamesCarray[i] = [attributesCarray[i] name];
 	}	
 	NSDictionary* attributes =

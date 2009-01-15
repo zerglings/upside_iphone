@@ -49,6 +49,13 @@
 									summary:@"Third description."];
 }
 
+- (void) tearDown {
+	[newsCenter release];
+	[item1 release];
+	[item2 release];
+	[item3 release];
+}
+
 - (void) testTotalAndUnreadCount {
 	[newsCenter integrateNews:[NSArray arrayWithObjects:
 							   item1, item2, item3, nil]

@@ -23,6 +23,7 @@ enum ZNPropertySetterStrategy {
 	NSString* getterName;
 	NSString* setterName;
 	ZNMSAttributeType* type;
+	Ivar runtimeIvar;
 	BOOL isAtomic;
 	BOOL isReadOnly;
 	enum ZNPropertySetterStrategy setterStrategy;
@@ -32,10 +33,11 @@ enum ZNPropertySetterStrategy {
 @property (nonatomic, readonly) NSString* getterName;
 @property (nonatomic, readonly) NSString* setterName;
 @property (nonatomic, readonly) ZNMSAttributeType* type;
+@property (nonatomic, readonly) Ivar runtimeIvar;
 @property (nonatomic, readonly) BOOL isAtomic;
 @property (nonatomic, readonly) BOOL isReadOnly;
 @property (nonatomic, readonly) enum ZNPropertySetterStrategy setterStrategy;
 
-+ (ZNModelDefinitionAttribute*) newAttributeFromProperty:(objc_property_t)property;
-
++ (ZNModelDefinitionAttribute*) newAttributeFromProperty:(objc_property_t)property
+												 ofClass: (Class)klass;
 @end

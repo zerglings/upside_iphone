@@ -11,7 +11,6 @@
 #import "ZNMSAttributeType.h"
 
 @interface ZNMSDouble : ZNMSAttributeType {
-
 }
 
 @end

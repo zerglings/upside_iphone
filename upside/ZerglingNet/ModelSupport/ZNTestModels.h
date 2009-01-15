@@ -10,6 +10,8 @@
 
 // This file contains test models. It should not be used outside testing.
 
+#import "ZNModel.h"
+
 @interface ZNTestParsing : NSObject {
 }
 
@@ -55,17 +57,11 @@
 @end
 
 
-@interface ZNTestModel : NSObject {
-	NSUInteger ssn;
-	double age;
-	NSString* name;
-	NSString* tag;
+@interface ZNTestDate : ZNModel {
+	NSDate* pubDate;
 }
 
-@property (nonatomic, readonly) NSUInteger ssn;
-@property (nonatomic, assign) double age;
-@property (nonatomic, retain) NSString* name;
-@property (nonatomic, copy) NSString* tag;
+@property (nonatomic, retain) NSDate* pubDate;
 
 @end
 		   

@@ -11,7 +11,7 @@
 #import "ZNMSAttributeType.h"
 
 @interface ZNMSDate : ZNMSAttributeType {
-
+	NSDateFormatter* formatter;
 }
 
 @end

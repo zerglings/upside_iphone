@@ -22,8 +22,13 @@
 
 @end
 
-@implementation ZNTestModel
+@implementation ZNTestDate
+@synthesize pubDate;
 
-@synthesize ssn, age, name, tag;
+- (void) dealloc {
+	[pubDate release];
+	[super dealloc];
+}
 
 @end
+

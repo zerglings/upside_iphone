@@ -27,10 +27,10 @@ NSString* kContextObject = @"This is the context";
 
 - (void) setUp {
 	NSDictionary* schema = [NSDictionary dictionaryWithObjectsAndKeys:
-							[[NSSet alloc] initWithObjects:@"<open>", nil],
+							[NSSet setWithObjects:@"<open>", nil],
 							@"itemA",
-							[[NSSet alloc]
-							 initWithObjects:@"keyB", @"keyC", nil],
+							[NSSet
+							 setWithObjects:@"keyB", @"keyC", nil],
 							@"itemB",
 							nil];
 	
