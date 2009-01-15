@@ -20,6 +20,6 @@
 
 - (ZNModelDefinitionAttribute*) attributeNamed: (NSString*)name;
 
-+ (ZNModelDefinition*) definitionForClass: (Class)klass;
++ (ZNModelDefinition*) newDefinitionForClass: (Class)klass;
 
 @end

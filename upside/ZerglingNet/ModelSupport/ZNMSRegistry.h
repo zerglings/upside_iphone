@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ZNMSAttributeType.h"
+@class ZNModelDefinition;
+@class ZNMSAttributeType;
 
-@interface ZNMSAttributeTypes : NSObject {
+@interface ZNMSRegistry : NSObject {
 	ZNMSAttributeType* dateType;
 	ZNMSAttributeType* doubleType;
 	ZNMSAttributeType* integerType;
 	ZNMSAttributeType* stringType;
 	ZNMSAttributeType* uintegerType;
+	
+	NSMutableDictionary* modelDefinitions;
 }
 
 @property (nonatomic, readonly) ZNMSAttributeType* dateType;
@@ -24,12 +27,11 @@
 @property (nonatomic, readonly) ZNMSAttributeType* stringType;
 @property (nonatomic, readonly) ZNMSAttributeType* uintegerType;
 
-+ (ZNMSAttributeTypes*) sharedInstance;
+- (ZNModelDefinition*) definitionForModelClass: (Class)klass;
 
-@end
+- (ZNModelDefinition*) definitionForModelClassNamed: (NSString*)className;
 
-@interface ZNMSAttributeType (Types)
-
-+ (ZNMSAttributeType*) newTypeFromString: (const char*)encodedType;
+// The singleton ZNMSRegistry instance.
++ (ZNMSRegistry*) sharedRegistry;
 
 @end

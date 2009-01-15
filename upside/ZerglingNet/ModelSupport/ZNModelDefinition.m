@@ -64,7 +64,7 @@
 	return class_copyPropertyList(klass, outCount);
 }
 
-+ (ZNModelDefinition*) definitionForClass: (Class)klass {
++ (ZNModelDefinition*) newDefinitionForClass: (Class)klass {
 	unsigned int propertyCount;
 	const objc_property_t* properties =
 	    [self copyModelPropertiesForClass:klass outCount:&propertyCount];

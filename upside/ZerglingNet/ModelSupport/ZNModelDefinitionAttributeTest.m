@@ -11,8 +11,8 @@
 #import "GTMSenTestCase.h"
 #import "ZNTestModels.h"
 
-#import "ZNMSAttributeTypes.h"
 #import "ZNModelDefinitionAttribute.h"
+#import "ZNMSRegistry.h"
 
 
 @interface ZNModelDefinitionAttributeTest : SenTestCase {
@@ -73,7 +73,7 @@
 - (void) testType {
 	const char* properties[] = {"date_prop",
 	    "double_prop", "integer_prop", "string_prop", "uinteger_prop"};
-	ZNMSAttributeTypes* t = [ZNMSAttributeTypes sharedInstance];
+	ZNMSRegistry* t = [ZNMSRegistry sharedRegistry];
 	ZNMSAttributeType* golden_types[] = {[t dateType],
 	    [t doubleType], [t integerType], [t stringType], [t uintegerType]};
 	

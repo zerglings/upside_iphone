@@ -8,7 +8,7 @@
 
 #import "ZNModelDefinitionAttribute.h"
 
-#import "ZNMSAttributeTypes.h"
+#import "ZNMSAttributeType.h"
 
 @implementation ZNModelDefinitionAttribute
 

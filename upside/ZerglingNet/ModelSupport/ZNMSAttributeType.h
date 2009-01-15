@@ -13,4 +13,6 @@
 
 }
 
++ (ZNMSAttributeType*) newTypeFromString: (const char*)encodedType;
+
 @end

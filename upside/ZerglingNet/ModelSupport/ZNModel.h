@@ -13,4 +13,7 @@
 
 }
 
+- (void) loadFromDictionary: (NSDictionary*)dictionary;
+- (NSDictionary*) saveToDictionary: (NSDictionary*)dictionary;
+
 @end
