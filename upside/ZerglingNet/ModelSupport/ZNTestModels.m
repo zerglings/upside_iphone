@@ -35,5 +35,10 @@
 
 @implementation ZNTestNumbers
 @synthesize trueVal, falseVal;
-@synthesize doubleVal, integerVal, uintegerVal;
+@synthesize doubleVal, integerVal, uintegerVal, stringVal;
+
+- (void) dealloc {
+	[stringVal release];
+	[super dealloc];
+}
 @end
