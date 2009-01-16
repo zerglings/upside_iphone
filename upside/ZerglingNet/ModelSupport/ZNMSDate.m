@@ -57,15 +57,23 @@
 	}
 	else
 		date = nil;
+	
+	Ivar runtimeIvar = [attribute runtimeIvar];
 	switch ([attribute setterStrategy]) {
-		case kZNPropertyWantsCopy:
+		case kZNPropertyWantsCopy: {
 			date = [date copy];
+			NSDate* oldDate = object_getIvar(instance, runtimeIvar);
+			[oldDate release];
 			break;
-		case kZNPropertyWantsRetain:
-			date = [date retain];
+		}
+		case kZNPropertyWantsRetain: {
+			[date retain];
+			NSDate* oldDate = object_getIvar(instance, runtimeIvar);
+			[oldDate release];
 			break;
+		}
 	}
-	object_setIvar(instance, [attribute runtimeIvar], date);
+	object_setIvar(instance, runtimeIvar, date);
 }
 
 @end

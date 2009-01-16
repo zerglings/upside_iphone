@@ -32,6 +32,14 @@
 						 nil]];
 }
 
+- (void) tearDown {
+	[portfolio release];
+}
+
+- (void) dealloc {
+	[super dealloc];
+}
+
 - (void) testCount {
 	STAssertEquals(3U, [portfolio count],
 				   @"-count called right after -loadData");

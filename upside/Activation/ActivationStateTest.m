@@ -23,6 +23,10 @@
 	activationState = [ActivationState sharedState];
 }
 
+- (void) dealloc {
+	[super dealloc];
+}
+
 - (void) testSingleton {
 	STAssertEqualObjects([ActivationState sharedState],
 						 activationState,

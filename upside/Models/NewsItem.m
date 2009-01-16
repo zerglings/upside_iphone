@@ -28,7 +28,7 @@
 }
 
 - (id) initWithItem: (NewsItem*)item markAsRead: (BOOL)isReadValue {
-	if ((self = [super initWithModel:item])) {
+	if ((self = [self initWithModel:item])) {
 		isRead = isReadValue;
 	}
 	return self;

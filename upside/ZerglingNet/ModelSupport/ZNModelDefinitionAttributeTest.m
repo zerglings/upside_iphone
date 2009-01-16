@@ -35,6 +35,10 @@
 	}
 }
 
+- (void) dealloc {
+	[super dealloc];
+}
+
 - (objc_property_t) propertyNamed: (const char*)name {
 	for(unsigned int i = 0; i < numTestProperties; i++) {
 		const char* propertyName = property_getName(testProperties[i]);

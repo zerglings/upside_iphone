@@ -47,10 +47,14 @@ NSString* kContextObject = @"This is the context";
 
 - (void) tearDown {
 	[parser release];
-	[names release];
-	[dupNames release];
 	[items release];
 	[dupItems release];
+	[names release];
+	[dupNames release];
+}
+
+- (void) dealloc {
+	[super dealloc];
 }
 
 - (void) checkItems {

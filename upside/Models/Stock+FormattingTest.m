@@ -47,6 +47,10 @@
 	[fallingStock release];
 }
 
+- (void) dealloc {
+	[super dealloc];
+}
+
 - (void) testPrices {
 	STAssertEqualStrings(@"$90.50", [risingStock formattedBidPrice],
 						 @"Easy price formatting");

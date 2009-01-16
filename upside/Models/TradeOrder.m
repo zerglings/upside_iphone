@@ -11,6 +11,11 @@
 
 @implementation TradeOrder
 
+- (void) dealloc {
+	[ticker release];	
+	[super dealloc];
+}
+
 @synthesize ticker, quantity, quantityFilled, isBuyOrder, limitCents, serverId;
 
 - (double) fillRatio {

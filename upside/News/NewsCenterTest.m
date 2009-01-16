@@ -70,6 +70,10 @@
 	[item3 release];
 }
 
+- (void) dealloc {
+	[super dealloc];
+}
+
 - (void) testTotalAndUnreadCount {
 	[newsCenter integrateNews:[NSArray arrayWithObjects:
 							   item1, item2, item3, nil]
@@ -152,9 +156,9 @@
 						  @"NewsCenterTest.xml"];
 	
 	[newsCenter addTitle:@"local" withUrl:[NSURL fileURLWithPath:filePath]
-			  andRefresh:0.3];
+			  andRefresh:0.5];
 	[[NSRunLoop currentRunLoop]
-	 runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];	
+	 runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];	
 	[self checkRssData];
 	[newsCenter removeTitle:@"local"];
 }

@@ -36,6 +36,10 @@
 	[unreadItem release];
 }
 
+- (void) dealloc {
+	[super dealloc];
+}
+
 - (void) testDefaultIsUnread {
 	STAssertEquals(NO, [unreadItem isRead],
 				   @"Items should be marked unread by default");
@@ -46,6 +50,8 @@
 												markAsRead:NO];
 	STAssertEquals(NO, [unreadItem2 isRead],
 				   @"-initWithItem:markAsRead: to mark unread item");
+	
+	[unreadItem2 release];
 	
 	NewsItem* readItem = [[NewsItem alloc] initWithItem:unreadItem
 											 markAsRead:YES];
@@ -60,6 +66,8 @@
 						 @"-initWithItem:markAsRead: preserves uid");
 	STAssertEqualObjects([unreadItem date], [readItem date],
 						 @"-initWithItem:markAsRead: preserves date");
+	
+	[readItem release];
 }
 
 @end

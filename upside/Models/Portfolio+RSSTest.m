@@ -37,6 +37,10 @@
 	[newsCenter release];
 }
 
+- (void) dealloc {
+	[super dealloc];
+}
+
 - (void) testSetup {
 	[portfolio loadRssFeedsIntoCenter:newsCenter];
 	NSString* title = [Portfolio rssFeedTitleForTicker:@"MSFT"];

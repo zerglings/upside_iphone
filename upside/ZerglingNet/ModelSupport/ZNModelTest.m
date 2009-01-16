@@ -54,14 +54,18 @@
 }
 
 - (void) tearDown {
-	[dateModel release];
 	[date release];
+	[dateModel release];
 	[numbersModel release];
 	[trueObject release];
 	[falseObject release];
 	[doubleObject release];
 	[integerObject release];
 	[uintegerObject release];
+}
+
+- (void) dealloc {
+	[super dealloc];
 }
 
 - (void) testPrimitiveBoxing {

@@ -68,6 +68,9 @@
 		}
 	}
 	
+	[props release];
+	props = [[NSDictionary alloc] initWithDictionary:supplementalProps];
+	[supplementalProps release];
 }
 
 

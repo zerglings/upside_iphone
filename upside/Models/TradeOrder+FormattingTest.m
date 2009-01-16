@@ -40,6 +40,10 @@
 	[sellOrder release];
 }
 
+- (void) dealloc {
+	[super dealloc];
+}
+
 - (void) testQuantities {
 	STAssertEqualStrings(@"35", [sellOrder formattedQuantity],
 						 @"Easy quantity");

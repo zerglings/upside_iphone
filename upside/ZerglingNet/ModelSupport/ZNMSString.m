@@ -30,15 +30,22 @@
 	else
 		string = [boxedObject description];
 	
+	Ivar runtimeIvar = [attribute runtimeIvar];
 	switch ([attribute setterStrategy]) {
-		case kZNPropertyWantsCopy:
+		case kZNPropertyWantsCopy: {
 			string = [string copy];
+			NSString* oldString = object_getIvar(instance, runtimeIvar);
+			[oldString release];
 			break;
-		case kZNPropertyWantsRetain:
-			string = [string retain];
+		}
+		case kZNPropertyWantsRetain: {
+			[string retain];
+			NSString* oldString = object_getIvar(instance, runtimeIvar);
+			[oldString release];
 			break;
+		}
 	}
-	object_setIvar(instance, [attribute runtimeIvar], string);
+	object_setIvar(instance, runtimeIvar, string);
 }
 
 @end

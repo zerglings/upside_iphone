@@ -27,6 +27,10 @@
 	[registry release];
 }
 
+- (void) dealloc {
+	[super dealloc];
+}
+
 - (void) testNamedClassRegistration {
 	ZNModelDefinition *defn =
 	   [registry definitionForModelClassNamed:@"ZNTestParsing"];
