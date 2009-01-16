@@ -38,13 +38,13 @@ static void SetupFormatters() {
 - (NSString*) formattedQuantity {
 	SetupFormatters();
 	return [quantityFormatter stringFromNumber:[NSNumber numberWithUnsignedInt:
-												[self quantity]]];
+												quantity]];
 }
 
 - (NSString*) formattedQuantityFilled {
 	SetupFormatters();
 	return [quantityFormatter stringFromNumber:[NSNumber numberWithUnsignedInt:
-												[self quantityFilled]]];
+												quantityFilled]];
 }
 
 - (NSString*) formattedPercentFilled {

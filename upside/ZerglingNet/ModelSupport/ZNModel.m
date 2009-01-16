@@ -32,6 +32,14 @@
 	return self;
 }
 
+- (id) initWithModel: (ZNModel*)model {
+	NSMutableDictionary* modelAttributes =
+	    [model copyToMutableDictionaryForcingStrings:NO];
+	id returnModel = [self initWithProperties:modelAttributes];
+	[modelAttributes release];
+	return returnModel;
+}
+
 - (void) dealloc {
 	[props release];
 	[super dealloc];
@@ -100,9 +108,16 @@ copyToMutableDictionaryForcingStrings: (BOOL)forceStrings {
 
 - (NSMutableDictionary*)
 attributeMutableDictionaryForcingStrings: (BOOL)forceStrings {
-	return [[self attributeMutableDictionaryForcingStrings:forceStrings]
+	return [[self copyToMutableDictionaryForcingStrings:forceStrings]
 			autorelease];
 }
 
+#pragma mark Debugging
+
+- (NSString*) description {
+	return [NSString stringWithFormat:@"<ZNModel name=%s attributes=%@>",
+			class_getName([self class]),
+			[[self attributeDictionaryForcingStrings:YES] description]];
+}
 
 @end

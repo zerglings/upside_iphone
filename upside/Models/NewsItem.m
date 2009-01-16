@@ -8,6 +8,10 @@
 
 #import "NewsItem.h"
 
+@interface NewsItem ()
+@property (nonatomic) BOOL isRead;
+@end
+
 @implementation NewsItem
 
 @synthesize title, pubDate, guid, description, link;
@@ -24,12 +28,10 @@
 }
 
 - (id) initWithItem: (NewsItem*)item markAsRead: (BOOL)isReadValue {
-	NSMutableDictionary* attrs = [item
-								  copyToMutableDictionaryForcingStrings:NO];
-	[attrs setObject:[NSNumber numberWithBool:isReadValue] forKey:@"isRead"];
-	NewsItem* newItem = [[NewsItem alloc] initWithProperties:attrs];
-	[attrs release];
-	return newItem;
+	if ((self = [super initWithModel:item])) {
+		isRead = isReadValue;
+	}
+	return self;
 }
 
 @end

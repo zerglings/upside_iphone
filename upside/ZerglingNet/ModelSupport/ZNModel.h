@@ -15,6 +15,15 @@
 
 @property (nonatomic, readonly) NSDictionary* supplementalProperties;
 
+#pragma mark Initializers
+
+// Designated initializer.
+- (id) initWithProperties: (NSDictionary*)dictionary;
+
+- (id) initWithModel: (ZNModel*)model;
+
+#pragma mark Saving Attributes
+
 - (NSDictionary*) copyToDictionaryForcingStrings: (BOOL)forceStrings;
 
 - (NSMutableDictionary*)

@@ -38,7 +38,8 @@
 }
 
 - (NSString*) description {
-	return [NSString stringWithFormat:@"<ZNModel definition name=%@ attributes=%@>",
+	return [NSString
+			stringWithFormat:@"<ZNModel definition name=%@ attributes=%@>",
 			[name description], [attributes description]];
 }
 

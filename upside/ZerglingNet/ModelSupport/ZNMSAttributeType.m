@@ -46,8 +46,8 @@
 				inInstance: (ZNModel*)instance
 			   forceString: (BOOL)forceString {
 	NSAssert1(FALSE,
-			  @"Attribute type %@ did not implement -boxInstanceVar",
-			  [self className]);
+			  @"Attribute type %s did not implement -boxInstanceVar",
+			  class_getName([self class]));
 	return [NSNull null];
 }
 
@@ -55,8 +55,8 @@
 			 inInstance: (ZNModel*)instance
 				   from: (NSObject*)boxedObject {
 	NSAssert1(FALSE,
-			  @"Attribute type %@ did not implement -unboxInstanceVar",
-			  [self className]);
+			  @"Attribute type %s did not implement -unboxInstanceVar",
+			  class_getName([self class]));
 }
 
 @end

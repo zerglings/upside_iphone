@@ -8,10 +8,34 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DictionaryBackedModel.h"
+#import "ModelSupport.h"
 
-@interface TradeOrder : DictionaryBackedModel {
+@interface TradeOrder : ZNModel {
+	NSString* ticker;
+	NSUInteger quantity;
+	NSUInteger quantityFilled;
+	BOOL isBuyOrder;
+	NSUInteger limitCents;
+	NSUInteger serverId;
 }
+
+// The ticker of the stock. 
+@property (nonatomic, readonly, retain) NSString* ticker;
+
+// The number of stocks in the order.
+@property (nonatomic, readonly) NSUInteger quantity;
+
+// The number of stocks in the order.
+@property (nonatomic, readonly) NSUInteger quantityFilled;
+
+// YES for buy orders, NO for sell orders.
+@property (nonatomic, readonly) BOOL isBuyOrder;
+
+// The limit on the order, in cents.
+@property (nonatomic, readonly) NSUInteger limitCents;
+
+// The ID assigned by the server when the order is submitted. 
+@property (nonatomic, readonly)  NSUInteger serverId;
 
 #pragma mark Convenience Constructors
 
@@ -30,67 +54,26 @@
 					isBuyOrder:(BOOL)isBuyOrder
 					  serverId:(NSUInteger)serverId;
 
-#pragma mark Accessors
-
-// The ticker of the stock. 
-- (NSString*) ticker;
-
-// The number of stocks in the order.
-- (NSUInteger) quantity;
-
-// The number of stocks in the order.
-- (NSUInteger) quantityFilled;
+#pragma mark Conveience Accessors
 
 // The ratio of filled to ordered stocks in this order.
 - (double) fillRatio;
 
-// YES for buy orders, NO for sell orders.
-- (BOOL) isBuyOrder;
-
-// YES for limit orders, NO for market orders. 
-- (BOOL) isLimitOrder;
-
-// The limit on the order, in cents.
-- (NSUInteger) limitCents;
-
 // The limit on the order, in dollars.
 - (double) limitPrice;
 
-// The ID assigned by the server when the order is submitted. 
-- (NSUInteger) serverId;
+// YES for limit orders, NO for market orders. 
+- (BOOL) isLimitOrder;
 
 // YES for submitted orders, NO for orders pending submission.
 - (BOOL) isSubmitted;
 
 @end
 
-#pragma mark Order Properties Keys
+#pragma mark Special Values
 
-// An NSString with the stock's ticker, e.g. @"AAPL".
-const NSString* kTradeOrderTicker;
-
-// An NSNumber with the amount of stocks to be traded. 
-const NSString* kTradeOrderQuantity;
-
-// An NSNumber storing a boolean YES for buy orders or a NO for sell orders. 
-const NSString* kTradeOrderIsBuyOrder;
-
-// An NSNumber storing a boolean YES for limit orders or a NO for market orders. 
-const NSString* kTradeOrderIsLimitOrder;
-
-// An NSNumber with the price limit, in cents, for limit orders, or
-// kTradeOrderInvalidLimit for market orders.
-const NSString* kTradeOrderLimitCents;
-
-// An NSNumber with the server-assigned order id, or kTradeOrderInvalidLimit for
-// unsubmitted orders.
-const NSString* kTradeOrderServerId;
-
-// An NSNumber with the amount of stocks that were filled in this order.
-const NSString* kTradeOrderQuantityFilled;
-
-// The value returned by -serverId for orders that are not on the server yet.
+// The value of serverId for orders that are not on the server yet.
 const NSUInteger kTradeOrderInvalidServerId;
 
-// The value returned by -limitCents for market orders.
+// The value of limitCents for market orders.
 const NSUInteger kTradeOrderInvalidLimit;

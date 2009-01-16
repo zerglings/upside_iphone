@@ -16,14 +16,17 @@
 
 - (id) init {
 	if ((self = [super init])) {
-		formatter = [[NSDateFormatter alloc] init];
-		[formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss ZZZ"];
+		osxFormatter = [[NSDateFormatter alloc] init];
+		[osxFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
+		rssFormatter = [[NSDateFormatter alloc] init];
+		[rssFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss zzz"];
 	}
 	return self;
 }
 
 - (void) dealloc {
-	[formatter release];
+	[osxFormatter release];
+	[rssFormatter release];
 	[super dealloc];
 }
 
@@ -34,7 +37,7 @@
 			   forceString: (BOOL)forceString {
 	NSDate* date = object_getIvar(instance, [attribute runtimeIvar]);
 	if (forceString)
-		return [formatter stringFromDate:date];
+		return [osxFormatter stringFromDate:date];
 	else
 		return date;
 }
@@ -43,8 +46,12 @@
 		 	 inInstance: (ZNModel*)instance
 			       from: (NSObject*)boxedObject {
 	NSDate* date;
-	if ([boxedObject isKindOfClass:[NSString class]])
-		date = [NSDate dateWithNaturalLanguageString:(NSString*)boxedObject];
+	if ([boxedObject isKindOfClass:[NSString class]]) {
+		date = [osxFormatter dateFromString:(NSString*)boxedObject];
+		if (!date) {
+			date = [rssFormatter dateFromString:(NSString*)boxedObject];
+		}
+	}
 	else if ([boxedObject isKindOfClass:[NSDate class]]) {		
 		date = (NSDate*)boxedObject;
 	}

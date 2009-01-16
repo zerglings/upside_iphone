@@ -72,7 +72,6 @@
 		571A23B70F18BA4B00A996A2 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88F50F16EA6400D54544 /* NewsItem.m */; };
 		571A23DC0F18D9F400A996A2 /* NewsItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23DB0F18D9F400A996A2 /* NewsItemTest.m */; };
 		571A258F0F19729D00A996A2 /* Portfolio+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A258E0F19729D00A996A2 /* Portfolio+RSS.m */; };
-		571A25970F19759A00A996A2 /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
 		571A25B80F1978A400A996A2 /* Portfolio+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A258E0F19729D00A996A2 /* Portfolio+RSS.m */; };
 		571A25B90F1978C300A996A2 /* NewsCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A234B0F189EB700A996A2 /* NewsCenter.m */; };
 		571A25CE0F19798000A996A2 /* RssFeedTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571A25CD0F19798000A996A2 /* RssFeedTableViewController.xib */; };
@@ -91,6 +90,8 @@
 		577091E30F10502F00069411 /* StockTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E20F10502F00069411 /* StockTableCellNarrow.xib */; };
 		577091E50F10503900069411 /* StockTableCellWide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E40F10503900069411 /* StockTableCellWide.xib */; };
 		577093620F1084D400069411 /* Stock+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* Stock+Formatting.m */; };
+		57A1E4710F20A0D600B8179A /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
+		57A1E4860F20A24300B8179A /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
 		57CB188E0F0F01C600E95AE1 /* ActivationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB188D0F0F01C600E95AE1 /* ActivationState.m */; };
 		57CB1A0A0F0F1AF700E95AE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		57CB1A0B0F0F1AF700E95AE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -116,7 +117,6 @@
 		57CDB2210F0F7DEB002C60C5 /* OverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2200F0F7DEB002C60C5 /* OverviewViewController.xib */; };
 		57CDB2860F0F8554002C60C5 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB2850F0F8554002C60C5 /* TabBarController.m */; };
 		57CDB2D60F0F8CA4002C60C5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2D40F0F8CA4002C60C5 /* Icon.png */; };
-		57F5F30C0F2066C600AFCB29 /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
 		57F5F3A90F20745C00AFCB29 /* ZNModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711955C0F1DC97800FD89EA /* ZNModel.m */; };
 		57F5F3AA0F20745C00AFCB29 /* ZNModelDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711955F0F1DCA0B00FD89EA /* ZNModelDefinition.m */; };
 		57F5F3AB0F20745C00AFCB29 /* ZNModelDefinitionAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956A0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m */; };
@@ -772,7 +772,6 @@
 				571A23B70F18BA4B00A996A2 /* NewsItem.m in Sources */,
 				571A23DC0F18D9F400A996A2 /* NewsItemTest.m in Sources */,
 				571A258F0F19729D00A996A2 /* Portfolio+RSS.m in Sources */,
-				571A25970F19759A00A996A2 /* Portfolio+RSSTest.m in Sources */,
 				5711926B0F1BA38400FD89EA /* NetworkProgress.m in Sources */,
 				571195660F1DCC3600FD89EA /* ZNTestModels.m in Sources */,
 				5711956C0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m in Sources */,
@@ -790,7 +789,8 @@
 				571199B00F1F2F0200FD89EA /* ZNModel.m in Sources */,
 				57119A0B0F1F3D2C00FD89EA /* ZNModelTest.m in Sources */,
 				574CD0AC0F20275D002CEDDB /* ZNMSBoolean.m in Sources */,
-				57F5F30C0F2066C600AFCB29 /* NewsCenterTest.m in Sources */,
+				57A1E4710F20A0D600B8179A /* NewsCenterTest.m in Sources */,
+				57A1E4860F20A24300B8179A /* Portfolio+RSSTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
