@@ -21,25 +21,19 @@
 @implementation StockFormattingTest
 
 - (void) setUp {	
-	risingStock = [[Stock alloc] initWithProperties:
-				   [NSDictionary dictionaryWithObjectsAndKeys:
-					@"Apple Inc", kStockName,
-					@"AAPL", kStockTicker,
-					[NSNumber numberWithInt:109100], kStockAskCents,
-					[NSNumber numberWithInt:9050], kStockBidCents,
-					[NSNumber numberWithInt:9000], kStockLastAskCents,
-					[NSNumber numberWithInt:8500], kStockLastBidCents,
-					nil]];
+	risingStock = [[Stock alloc] initWithTicker:@"AAPL"
+										   name:@"Apple Inc"
+									   askCents:109100
+									   bidCents:9050
+								   lastAskCents:9000
+								   lastBidCents:8500];
 	
-	fallingStock = [[Stock alloc] initWithProperties:
-	                [NSDictionary dictionaryWithObjectsAndKeys:
-					 @"Microsoft Corp", kStockName,
-					 @"MSFT", kStockTicker,
-					 [NSNumber numberWithInt:90], kStockAskCents,
-					 [NSNumber numberWithInt:9], kStockBidCents,
-					 [NSNumber numberWithInt:281], kStockLastAskCents,
-					 [NSNumber numberWithInt:11], kStockLastBidCents,
-					 nil]];
+	fallingStock = [[Stock alloc] initWithTicker:@"MSFT"
+											name:@"Microsoft Inc"
+										askCents:90
+										bidCents:9
+									lastAskCents:281
+									lastBidCents:11];
 }
 
 - (void) tearDown {

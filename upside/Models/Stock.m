@@ -10,44 +10,34 @@
 
 @implementation Stock
 
+@synthesize ticker, name, askCents, bidCents, lastAskCents, lastBidCents;
+
 #pragma mark Accessors
 
-- (NSString*)ticker {
-	return [props objectForKey:kStockTicker];
-}
-- (NSString*)name {
-	return [props objectForKey:kStockName];
-}
-
-- (NSUInteger)askCents {
-	return [[props objectForKey:kStockAskCents] unsignedIntValue];
-}
-- (NSUInteger)bidCents {
-	return [[props objectForKey:kStockBidCents] unsignedIntValue];
-}
-
 - (double)askPrice {
-	return [[props objectForKey:kStockAskCents] unsignedIntValue] / 100.0;
+	return askCents / 100.0;
 }
 - (double)bidPrice {
-	return [[props objectForKey:kStockBidCents] unsignedIntValue] / 100.0;
+	return bidCents / 100.0;
 }
 
-- (NSUInteger)lastAskCents {
-	return [[props objectForKey:kStockLastAskCents] unsignedIntValue];
-}
+#pragma mark Convenience Initializers
 
-- (NSUInteger)lastBidCents {
-	return [[props objectForKey:kStockLastBidCents] unsignedIntValue];
+- (id) initWithTicker: (NSString*)theTicker
+				 name: (NSString*)theName
+			 askCents: (NSUInteger)theAskCents
+			 bidCents: (NSUInteger)theBidCents
+		 lastAskCents: (NSUInteger)theLastAskCents
+		 lastBidCents: (NSUInteger)theLastBidCents {
+	if ((self = [self initWithProperties:nil])) {
+		ticker = theTicker;
+		name = theName;
+		askCents = theAskCents;
+		bidCents = theBidCents;
+		lastAskCents = theLastAskCents;
+		lastBidCents = theLastBidCents;
+	}
+	return self;
 }
 
 @end
-
-#pragma mark Stock Properties Keys
-
-const NSString* kStockTicker = @"ticker";
-const NSString* kStockName = @"name";
-const NSString* kStockAskCents = @"askCents";
-const NSString* kStockBidCents = @"bidCents";
-const NSString* kStockLastAskCents = @"lastAskCents";
-const NSString* kStockLastBidCents = @"lastBidCents";

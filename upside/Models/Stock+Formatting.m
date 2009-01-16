@@ -63,10 +63,10 @@ static void SetupFormatters() {
 }
 
 - (NSString*) formattedValueUsingAskPriceFor: (NSUInteger)stockCount {
-	return [Stock formatValueFor:stockCount usingPrice:[self askCents]];
+	return [Stock formatValueFor:stockCount usingPrice:askCents];
 }
 - (NSString*) formattedValueUsingBidPriceFor: (NSUInteger)stockCount {
-	return [Stock formatValueFor:stockCount usingPrice:[self bidCents]];
+	return [Stock formatValueFor:stockCount usingPrice:bidCents];
 }
 
 + (NSString*) formatChange: (NSUInteger)newPriceInCents
@@ -84,27 +84,27 @@ static void SetupFormatters() {
 }
 	
 - (NSString*) formattedNetAskChange {
-	return [Stock formatChange:[self askCents]
-				 		  from:[self lastAskCents]
+	return [Stock formatChange:askCents
+				 		  from:lastAskCents
 						 point:NO];
 }
 
 - (NSString*) formattedPointAskChange {
-	return [Stock formatChange:[self askCents]
-						  from:[self lastAskCents]
+	return [Stock formatChange:askCents
+						  from:lastAskCents
 						 point:YES];
 }
 
 - (NSString*) formattedNetBidChange {
-	return [Stock formatChange:[self bidCents]
-						  from:[self lastBidCents]
+	return [Stock formatChange:bidCents
+						  from:lastBidCents
 						 point:NO];
 }
 
 
 - (NSString*) formattedPointBidChange {
-	return [Stock formatChange:[self bidCents]
-						  from:[self lastBidCents]
+	return [Stock formatChange:bidCents
+						  from:lastBidCents
 						 point:YES];
 }
 
@@ -127,20 +127,20 @@ static void SetupFormatters() {
 }
 
 - (UIColor*) colorForAskChange {
-	return [Stock colorForChange:[self askCents]
-						    from:[self lastAskCents]];	
+	return [Stock colorForChange:askCents
+						    from:lastAskCents];	
 }
 - (UIColor*) colorForBidChange {
-	return [Stock colorForChange:[self bidCents]
-						    from:[self lastBidCents]];	
+	return [Stock colorForChange:bidCents
+						    from:lastBidCents];	
 }
 - (UIImage*) imageForBidChange {
-	return [Stock imageForChange:[self askCents]
-						    from:[self lastAskCents]];	
+	return [Stock imageForChange:askCents
+						    from:lastAskCents];	
 }
 - (UIImage*) imageForAskChange {
-	return [Stock imageForChange:[self bidCents]
-						    from:[self lastBidCents]];	
+	return [Stock imageForChange:bidCents
+						    from:lastBidCents];
 }
 
 @end

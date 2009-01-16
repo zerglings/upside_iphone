@@ -32,35 +32,29 @@
 
 - (void) loadMockData {
 	NSDictionary* mockStocks = [NSDictionary dictionaryWithObjectsAndKeys:
-								[[[Stock alloc] initWithProperties:
-								  [NSDictionary dictionaryWithObjectsAndKeys:
-								   @"Apple Inc", kStockName,
-								   @"AAPL", kStockTicker,
-								   [NSNumber numberWithInt:9100], kStockAskCents,
-								   [NSNumber numberWithInt:9050], kStockBidCents,
-								   [NSNumber numberWithInt:9050], kStockLastAskCents,
-								   [NSNumber numberWithInt:9030], kStockLastBidCents,
-								   nil]] autorelease],
+								[[[Stock alloc] initWithTicker:@"AAPL"
+														  name:@"Apple Inc"
+													  askCents:9100
+													  bidCents:9050
+												  lastAskCents:9050
+												  lastBidCents:9030]
+								 autorelease],
 								@"AAPL",
-								[[[Stock alloc] initWithProperties:
-								  [NSDictionary dictionaryWithObjectsAndKeys:
-								   @"Google Inc", kStockName,
-								   @"GOOG", kStockTicker,
-								   [NSNumber numberWithInt:30000], kStockAskCents,
-								   [NSNumber numberWithInt:29800], kStockBidCents,
-								   [NSNumber numberWithInt:30100], kStockLastAskCents,
-								   [NSNumber numberWithInt:29900], kStockLastBidCents,
-								   nil]] autorelease],
+								[[[Stock alloc] initWithTicker:@"GOOG"
+														  name:@"Google Inc"
+													  askCents:30000
+													  bidCents:29800
+												  lastAskCents:30100
+												  lastBidCents:29900]
+								 autorelease],
 								@"GOOG",
-								[[[Stock alloc] initWithProperties:
-								  [NSDictionary dictionaryWithObjectsAndKeys:
-								   @"Microsoft Corp", kStockName,
-								   @"MSFT", kStockTicker,
-								   [NSNumber numberWithInt:2100], kStockAskCents,
-								   [NSNumber numberWithInt:1995], kStockBidCents,
-								   [NSNumber numberWithInt:2150], kStockLastAskCents,
-								   [NSNumber numberWithInt:1950], kStockLastBidCents,
-								   nil]] autorelease],
+								[[[Stock alloc] initWithTicker:@"MSFT"
+														  name:@"Microsoft Inc"
+													  askCents:2100
+													  bidCents:1995
+												  lastAskCents:2150
+												  lastBidCents:1950]
+								 autorelease],
 								@"MSFT",
 								nil];
 	

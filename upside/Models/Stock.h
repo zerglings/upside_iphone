@@ -8,53 +8,50 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DictionaryBackedModel.h"
+#import "ModelSupport.h"
 
 // Data about a single stock.
-@interface Stock : DictionaryBackedModel {
+@interface Stock : ZNModel {
+	NSString* ticker;
+	NSString* name;
+	NSUInteger askCents;
+	NSUInteger bidCents;
+	NSUInteger lastAskCents;
+	NSUInteger lastBidCents;	
 }
 
-#pragma mark Accessors
-
 // The stock's ticker, e.g. @"AAPL" for Apple.
-- (NSString*) ticker;
+@property (nonatomic, readonly, retain) NSString* ticker;
+
 // The stock's name, e.g. @"Apple Inc."
-- (NSString*) name;
+@property (nonatomic, readonly, retain) NSString* name;
 
 // The stock's asking price, in cents.
-- (NSUInteger) askCents;
+@property (nonatomic, readonly) NSUInteger askCents;
+
 // The stock's bidding price, in cents.
-- (NSUInteger) bidCents;
+@property (nonatomic, readonly) NSUInteger bidCents;
+
+// The stock's last closing bidding price, in cents.
+@property (nonatomic, readonly) NSUInteger lastAskCents;
+
+// The stock's last closing asking price, in cents.
+@property (nonatomic, readonly) NSUInteger lastBidCents;
+
+#pragma mark Convenience Accessors
 
 // The stock's asking price, in dollars.
 - (double) askPrice;
+
 // The stock's bidding price, in dollars.
 - (double) bidPrice;
 
-// The stock's last closing bidding price, in cents.
-- (NSUInteger) lastAskCents;
+#pragma mark Convenience Constructors
 
-// The stock's last closing asking price, in cents.
-- (NSUInteger) lastBidCents;
-
+- (id) initWithTicker: (NSString*)ticker
+				 name: (NSString*)name
+			 askCents: (NSUInteger)askCents
+			 bidCents: (NSUInteger)bidCents
+		 lastAskCents: (NSUInteger)lastAskCents
+		 lastBidCents: (NSUInteger)lastBidCents;
 @end
-
-#pragma mark Stock Properties Keys
-
-// An NSString with the stock's ticker, e.g. @"AAPL" for Apple.
-const NSString* kStockTicker;
-
-// An NSString with the stock's name, e.g. @"Apple Inc."
-const NSString* kStockName;
-
-// An NSNumber with the stock's asking price, in cents.
-const NSString* kStockAskCents;
-
-// An NSNumber with the stock's bidding price, in cents.
-const NSString* kStockBidCents;
-
-// An NSNumber with the stock's last clsoing asking price, in cents.
-const NSString* kStockLastAskCents;
-
-// An NSNumber with the stock's last closing bidding price, in cents.
-const NSString* kStockLastBidCents;
