@@ -16,6 +16,8 @@
 	ZNTestDate* dateModel;
 	NSDate* date;
 	ZNTestNumbers* numbersModel;
+	NSNumber* trueObject;
+	NSNumber* falseObject;
 	NSNumber* doubleObject;
 	NSNumber* integerObject;
 	NSNumber* uintegerObject;
@@ -36,9 +38,13 @@
 	testInteger = -3141592;
 	testUInteger = 0x87654321;
 	numbersModel = [[ZNTestNumbers alloc] initWithProperties:nil];
+	numbersModel.trueVal = YES;
+	numbersModel.falseVal = NO;
 	numbersModel.doubleVal = testDouble;
 	numbersModel.integerVal = testInteger;
 	numbersModel.uintegerVal = testUInteger;
+	trueObject = [[NSNumber alloc] initWithBool:YES];
+	falseObject = [[NSNumber alloc] initWithBool:NO];
 	doubleObject = [[NSNumber alloc] initWithDouble:testDouble];
 	integerObject = [[NSNumber alloc] initWithInteger:testInteger];
 	uintegerObject = [[NSNumber alloc] initWithUnsignedInteger:testUInteger];
@@ -48,6 +54,8 @@
 	[dateModel release];
 	[date release];
 	[numbersModel release];
+	[trueObject release];
+	[falseObject release];
 	[doubleObject release];
 	[integerObject release];
 	[uintegerObject release];
@@ -80,6 +88,10 @@
 - (void) testNumberBoxing {
 	NSDictionary* numbersDict = [numbersModel
 								 copyToDictionaryForcingStrings:NO];
+	STAssertEqualObjects(trueObject, [numbersDict objectForKey:@"trueVal"],
+						 @"Boxed YES should reflect the original value");
+	STAssertEqualObjects(falseObject, [numbersDict objectForKey:@"falseVal"],
+						 @"Boxed NO should reflect the original value");
 	STAssertEqualObjects(doubleObject, [numbersDict objectForKey:@"doubleVal"],
 						 @"Boxed double should reflect the original value");
 	STAssertEqualObjects(integerObject, [numbersDict
@@ -90,6 +102,10 @@
 						 @"Boxed uinteger should reflect the original value");
 	ZNTestNumbers* thawedModel = [[ZNTestNumbers alloc]
 								  initWithProperties:numbersDict];
+	STAssertEquals(YES, thawedModel.trueVal,
+				   @"Unboxed YES should equal original");
+	STAssertEquals(NO, thawedModel.falseVal,
+				   @"Unboxed NO should equal original");
 	STAssertEquals(testDouble, thawedModel.doubleVal,
 				   @"Unboxed double should equal original");
 	STAssertEquals(testInteger, thawedModel.integerVal,
@@ -100,6 +116,10 @@
 	[thawedModel release];
 	
 	numbersDict = [numbersModel copyToDictionaryForcingStrings:YES];
+	STAssertEqualStrings(@"true", [numbersDict objectForKey:@"trueVal"],
+						 @"String-boxed YES should reflect original");
+	STAssertEqualStrings(@"false", [numbersDict objectForKey:@"falseVal"],
+						 @"String-boxed NO should reflect original");
 	STAssertEqualStrings(@"3.141592", [numbersDict objectForKey:@"doubleVal"],
 						 @"String-boxed double should reflect original");
 	STAssertEqualStrings(@"-3141592", [numbersDict objectForKey:@"integerVal"],
@@ -108,6 +128,10 @@
 										 objectForKey:@"uintegerVal"],
 						 @"String-boxed uinteger should reflect original");
 	thawedModel = [[ZNTestNumbers alloc] initWithProperties:numbersDict];
+	STAssertEquals(YES, thawedModel.trueVal,
+				   @"String-unboxed YES should equal original");
+	STAssertEquals(NO, thawedModel.falseVal,
+				   @"String-unboxed NO should equal original");
 	STAssertEquals(testDouble, thawedModel.doubleVal,
 				   @"String-unboxed double should equal original");
 	STAssertEquals(testInteger, thawedModel.integerVal,

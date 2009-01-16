@@ -11,7 +11,8 @@
 @implementation ZNTestParsing
 
 @dynamic assign, copy, retain, ro_assign, ro_copy, ro_retain;
-@dynamic date_prop, double_prop, integer_prop, string_prop, uinteger_prop;
+@dynamic bool_prop, date_prop, double_prop, integer_prop, string_prop;
+@dynamic uinteger_prop;
 @dynamic getter, setter, accessor;
 
 @end
@@ -33,5 +34,6 @@
 @end
 
 @implementation ZNTestNumbers
+@synthesize trueVal, falseVal;
 @synthesize doubleVal, integerVal, uintegerVal;
 @end

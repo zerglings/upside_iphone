@@ -26,6 +26,7 @@
 
 // types
 
+@property (nonatomic) BOOL bool_prop;
 @property (nonatomic, copy) NSDate* date_prop;
 @property (nonatomic) double double_prop;
 @property (nonatomic) NSInteger integer_prop;
@@ -66,11 +67,13 @@
 @end
 
 @interface ZNTestNumbers : ZNModel {
+	BOOL trueVal, falseVal;
 	double doubleVal;
 	NSInteger integerVal;
 	NSUInteger uintegerVal;
 }
 
+@property (nonatomic) BOOL trueVal, falseVal;
 @property (nonatomic) double doubleVal;
 @property (nonatomic) NSInteger integerVal;
 @property (nonatomic) NSUInteger uintegerVal;

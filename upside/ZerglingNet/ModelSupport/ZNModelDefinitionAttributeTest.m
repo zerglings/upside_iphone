@@ -73,10 +73,10 @@
 }
 
 - (void) testType {
-	const char* properties[] = {"date_prop",
+	const char* properties[] = {"bool_prop", "date_prop",
 	    "double_prop", "integer_prop", "string_prop", "uinteger_prop"};
 	ZNMSRegistry* t = [ZNMSRegistry sharedRegistry];
-	ZNMSAttributeType* golden_types[] = {[t dateType],
+	ZNMSAttributeType* golden_types[] = {[t booleanType], [t dateType],
 	    [t doubleType], [t integerType], [t stringType], [t uintegerType]};
 	
 	for(int i = 0; i < sizeof(properties) / sizeof(*properties); i++) {

@@ -11,6 +11,7 @@
 #import <objc/runtime.h>
 
 #import "ZNModelDefinition.h"
+#import "ZNMSBoolean.h"
 #import "ZNMSDate.h"
 #import "ZNMSDouble.h"
 #import "ZNMSInteger.h"
@@ -19,7 +20,8 @@
 
 @implementation ZNMSRegistry
 
-@synthesize dateType, doubleType, integerType, stringType, uintegerType;
+@synthesize booleanType, doubleType, integerType, uintegerType;
+@synthesize dateType, stringType;
 
 #pragma mark Lifecycle
 
@@ -27,6 +29,7 @@
 	if ((self = [super init])) {
 		modelDefinitions = [[NSMutableDictionary alloc] init];
 		
+		booleanType = [[ZNMSBoolean alloc] init];
 		dateType = [[ZNMSDate alloc] init];
 		doubleType = [[ZNMSDouble alloc] init];
 		integerType = [[ZNMSInteger alloc] init];
@@ -39,6 +42,7 @@
 - (void) dealloc {
 	[modelDefinitions release];
 	
+	[booleanType release];
 	[dateType release];
 	[doubleType release];
 	[integerType release];

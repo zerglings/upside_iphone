@@ -94,6 +94,8 @@
 		571A26900F19871C00A996A2 /* NewsArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571A268F0F19871C00A996A2 /* NewsArticleViewController.xib */; };
 		571A26930F19874500A996A2 /* NewsArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A26920F19874500A996A2 /* NewsArticleViewController.m */; };
 		571A27090F1ABA5000A996A2 /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
+		574CD0AC0F20275D002CEDDB /* ZNMSBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 574CD0AB0F20275D002CEDDB /* ZNMSBoolean.m */; };
+		574CD0AD0F202768002CEDDB /* ZNMSBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 574CD0AB0F20275D002CEDDB /* ZNMSBoolean.m */; };
 		575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */; };
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
@@ -230,6 +232,8 @@
 		571A26920F19874500A996A2 /* NewsArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsArticleViewController.m; sourceTree = "<group>"; };
 		571A27070F1ABA5000A996A2 /* NetworkProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkProgress.h; sourceTree = "<group>"; };
 		571A27080F1ABA5000A996A2 /* NetworkProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkProgress.m; sourceTree = "<group>"; };
+		574CD0AA0F20275D002CEDDB /* ZNMSBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSBoolean.h; sourceTree = "<group>"; };
+		574CD0AB0F20275D002CEDDB /* ZNMSBoolean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSBoolean.m; sourceTree = "<group>"; };
 		575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenUpArrow.png; sourceTree = "<group>"; };
 		575E39630F0FA00700DEB8E3 /* RedDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDownArrow.png; sourceTree = "<group>"; };
 		577091AC0F0FA8B000069411 /* StockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTableViewCell.h; sourceTree = "<group>"; };
@@ -483,6 +487,8 @@
 				571199370F1EBE9B00FD89EA /* ZNMSRegistryTest.m */,
 				571195630F1DCC2700FD89EA /* ZNTestModels.h */,
 				571195640F1DCC2700FD89EA /* ZNTestModels.m */,
+				574CD0AA0F20275D002CEDDB /* ZNMSBoolean.h */,
+				574CD0AB0F20275D002CEDDB /* ZNMSBoolean.m */,
 				571198050F1E064D00FD89EA /* ZNMSDate.h */,
 				571198060F1E064D00FD89EA /* ZNMSDate.m */,
 				5711969A0F1DF42400FD89EA /* ZNMSDouble.h */,
@@ -737,6 +743,7 @@
 				571196A00F1DF44600FD89EA /* ZNMSUInteger.m in Sources */,
 				571196A40F1DF45300FD89EA /* ZNMSString.m in Sources */,
 				571198070F1E064D00FD89EA /* ZNMSDate.m in Sources */,
+				574CD0AD0F202768002CEDDB /* ZNMSBoolean.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,6 +796,7 @@
 				571199380F1EBE9B00FD89EA /* ZNMSRegistryTest.m in Sources */,
 				571199B00F1F2F0200FD89EA /* ZNModel.m in Sources */,
 				57119A0B0F1F3D2C00FD89EA /* ZNModelTest.m in Sources */,
+				574CD0AC0F20275D002CEDDB /* ZNMSBoolean.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

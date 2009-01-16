@@ -37,7 +37,7 @@
 	ZNModelDefinition *defn = [[ZNModelDefinition
 							    newDefinitionForClass:[ZNTestParsing class]]
 							   autorelease];
-	STAssertEquals(14U, [defn.attributes count],
+	STAssertEquals(15U, [defn.attributes count],
 				   @"Parsing metadata for model using class - method count");
 	
 	ZNModelDefinitionAttribute* prop = [defn attributeNamed:@"ro_copy"];

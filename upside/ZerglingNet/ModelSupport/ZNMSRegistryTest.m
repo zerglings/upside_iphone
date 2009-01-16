@@ -33,7 +33,7 @@
 	
 	STAssertEqualStrings(@"ZNTestParsing", [defn name],
 	                     @"Registering named model located wrong class");						 
-	STAssertEquals(14U, [defn.attributes count],
+	STAssertEquals(15U, [defn.attributes count],
 				   @"Registering named model definition located wrong class");	
 }
 
@@ -43,7 +43,7 @@
 	
 	STAssertEqualStrings(@"ZNTestParsing", [defn name],
 	                     @"Registering named model located wrong class");						 
-	STAssertEquals(14U, [defn.attributes count],
+	STAssertEquals(15U, [defn.attributes count],
 				   @"Registering named model definition located wrong class");	
 }
 
