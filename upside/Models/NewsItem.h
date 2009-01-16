@@ -1,5 +1,5 @@
 //
-//  RssNewsItem.h
+//  NewsItem.h
 //  upside
 //
 //  Created by Victor Costan on 1/8/09.
@@ -8,53 +8,39 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DictionaryBackedModel.h"
+#import "ModelSupport.h"
 
-@interface NewsItem : DictionaryBackedModel {
+@interface NewsItem : ZNModel {
+	NSString* title;
+	NSDate* pubDate;
+	NSString* guid;
+	NSString* description;
+
+	// TODO(overmind): allow this to be a NSURL
+	NSString* link;	
+	
+	BOOL isRead;
 }
 
-#pragma mark Convenience Constructors
-
-- (id) initWithTitle: (NSString*)title
-				date: (NSDate*)date
-				 url: (NSURL*)url
-				 uid: (NSString*)uid
-			 summary: (NSString*)summary;
-
-- (id) initWithRssItem: (NSDictionary*)rssItem;
-
-#pragma mark Accessors
-	
 // The news' title.
-- (NSString*) title;
+@property (nonatomic, readonly, retain) NSString* title;
 
 // The date when the news was published.
-- (NSDate*) date;
-
-// An URL with the news' entire contents.
-- (NSURL*) url;
+@property (nonatomic, readonly, retain, getter=date) NSDate* pubDate;
 
 // An unique ID for the news.
-- (NSString*) uid;
+@property (nonatomic, readonly, retain, getter=uid) NSString* guid;
 
 // Summary for the news.
-- (NSString*) summary;
+@property (nonatomic, readonly, retain, getter=summary) NSString* description;
+
+// An URL with the news' entire contents.
+@property (nonatomic, readonly, retain, getter=url) NSString* link;
+
+// YES if the item has been read.
+@property (nonatomic, readonly) BOOL isRead;
+
+
+- (id) initWithItem: (NewsItem*)item markAsRead: (BOOL)isRead;
 
 @end
-	
-#pragma mark News Item Properties Keys
-	
-// An NSString with the item's title.
-const NSString* kNewsItemTitle;
-
-// An NSDate with the date when the item was published.
-const NSString* kNewsItemDate;
-
-// An NSURL with the URL of the full article associated with the item.
-const NSString* kNewsItemUrl;
-
-// An NSString with a unique id for the news item.
-const NSString* kNewsItemUid;
-
-// An NSString with the item's summary.
-const NSString* kNewsItemSummary;

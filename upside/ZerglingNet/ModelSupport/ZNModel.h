@@ -17,4 +17,12 @@
 
 - (NSDictionary*) copyToDictionaryForcingStrings: (BOOL)forceStrings;
 
+- (NSMutableDictionary*)
+copyToMutableDictionaryForcingStrings: (BOOL)forceStrings;
+
+- (NSDictionary*) attributeDictionaryForcingStrings: (BOOL)forceStrings;
+
+- (NSMutableDictionary*)
+attributeMutableDictionaryForcingStrings: (BOOL)forceStrings;
+
 @end

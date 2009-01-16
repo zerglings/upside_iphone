@@ -1,5 +1,5 @@
 //
-//  RssNewsItem.m
+//  NewsItem.m
 //  upside
 //
 //  Created by Victor Costan on 1/8/09.
@@ -8,74 +8,28 @@
 
 #import "NewsItem.h"
 
-#import "DictionaryXmlParser.h"
-
-
 @implementation NewsItem
 
-#pragma mark Convenience Constructors
+@synthesize title, pubDate, guid, description, link;
 
-- (id) initWithTitle: (NSString*)title
-				date: (NSDate*)date
-				 url: (NSURL*)url
-				 uid: (NSString*)uid
-			 summary: (NSString*)summary {
-	props = [NSDictionary dictionaryWithObjectsAndKeys:
-			 title, kNewsItemTitle,
-			 date, kNewsItemDate,
-			 url, kNewsItemUrl,
-			 uid, kNewsItemUid,
-			 summary, kNewsItemSummary,
-			 nil];
-	return [super initWithProperties:props];
+@synthesize isRead;
+
+- (void) dealloc {
+	[title release];
+	[pubDate release];
+	[guid release];
+	[description release];
+	[link release];
+	[super dealloc];
 }
 
-- (id) initWithRssItem: (NSDictionary*)rssItem {
-	NSObject* title = [rssItem objectForKey:kNewsItemTitle];
-	if (!title) title = [NSNull null];
-	NSObject* date = [NSDate dateWithNaturalLanguageString:
-					[rssItem objectForKey:kNewsItemDate]];
-	if (!date) date = [NSNull null];
-	NSObject* url = [NSURL URLWithString:[rssItem objectForKey:kNewsItemUrl]];
-	if (!url) url = [NSNull null];
-	NSObject* uid = [rssItem objectForKey:kNewsItemUid];
-	if (!uid) uid = [NSNull null];
-	NSObject* summary = [rssItem objectForKey:kNewsItemSummary];
-	if (!summary) summary = [NSNull null];
-	
-	return [super initWithProperties:[NSDictionary dictionaryWithObjectsAndKeys:
-									  uid, kNewsItemUid,
-									  title, kNewsItemTitle,
-									  date, kNewsItemDate,
-									  url, kNewsItemUrl,
-									  summary, kNewsItemSummary,
-									  nil]];
-}
-
-#pragma mark Accessors
-
-- (NSString*) title {
-	return [props objectForKey:kNewsItemTitle];
-}
-- (NSDate*) date {
-	return [props objectForKey:kNewsItemDate];
-}
-- (NSURL*) url {
-	return [props objectForKey:kNewsItemUrl];
-}
-- (NSString*) uid {
-	return [props objectForKey:kNewsItemUid];
-}
-- (NSString*) summary {
-	return [props objectForKey:kNewsItemSummary];
+- (id) initWithItem: (NewsItem*)item markAsRead: (BOOL)isReadValue {
+	NSMutableDictionary* attrs = [item
+								  copyToMutableDictionaryForcingStrings:NO];
+	[attrs setObject:[NSNumber numberWithBool:isReadValue] forKey:@"isRead"];
+	NewsItem* newItem = [[NewsItem alloc] initWithProperties:attrs];
+	[attrs release];
+	return newItem;
 }
 
 @end
-
-#pragma mark News Item Properties Keys
-
-const NSString* kNewsItemTitle = @"title";
-const NSString* kNewsItemDate = @"pubDate";
-const NSString* kNewsItemUrl = @"link";
-const NSString* kNewsItemUid = @"guid";
-const NSString* kNewsItemSummary = @"description";

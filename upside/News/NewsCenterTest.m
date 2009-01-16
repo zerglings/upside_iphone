@@ -28,25 +28,39 @@
 - (void) setUp {
 	newsCenter = [[NewsCenter alloc] init];
 	
-	NSURL* badUrl = [NSURL URLWithString:@"http://127.0.0.1/bad.bad"];
-	[newsCenter addTitle:@"misc" withUrl:badUrl andRefresh:1.0];
-	[newsCenter addTitle:@"test" withUrl:badUrl andRefresh:1.0];
+	NSString* badUrl = @"http://127.0.0.1/bad.bad";
+	[newsCenter addTitle:@"misc"
+				 withUrl:[NSURL URLWithString:badUrl]
+			  andRefresh:1.0];
+	[newsCenter addTitle:@"test"
+				 withUrl:[NSURL URLWithString:badUrl]
+			  andRefresh:1.0];
 	
-	item1 = [[NewsItem alloc] initWithTitle:@"First Title"
-									   date:[NSDate date]
-										url:badUrl
-										uid:@"unittest-1" 
-									summary:@"First description."];
-	item2 = [[NewsItem alloc] initWithTitle:@"First Title"
-									   date:[NSDate date]
-										url:badUrl
-										uid:@"unittest-2" 
-									summary:@"Second description."];
-	item3 = [[NewsItem alloc] initWithTitle:@"First Title"
-									   date:[NSDate date]
-										url:badUrl
-										uid:@"unittest-3" 
-									summary:@"Third description."];
+	item1 = [[NewsItem alloc] initWithProperties:
+			 [NSDictionary dictionaryWithObjectsAndKeys:
+			  @"First Title", @"title",
+			  @"2008-12-01 12:30:05 -0500", @"pubDate",
+			  badUrl, @"link",
+			  @"unittest-1", @"guid",
+			  @"First description.", @"description",
+			  nil]];
+	item2 = [[NewsItem alloc] initWithProperties:
+			 [NSDictionary dictionaryWithObjectsAndKeys:
+			  @"Second Title", @"title",
+			  @"2008-11-01 12:30:05 -0500", @"pubDate",
+			  badUrl, @"link",
+			  @"unittest-2", @"guid",
+			  @"Second description.", @"description",
+			  nil]];
+	
+	item3 = [[NewsItem alloc] initWithProperties:
+			 [NSDictionary dictionaryWithObjectsAndKeys:
+			  @"First Title", @"title",
+			  @"2008-10-30 12:30:07 -0500", @"pubDate",
+			  badUrl, @"link",
+			  @"unittest-3", @"guid",
+			  @"Third description.", @"description",
+			  nil]];
 }
 
 - (void) tearDown {
@@ -113,8 +127,7 @@
 	 STAssertEqualStrings(@"Verizon Picks Microsoft Search over Google, Yahoo",
 						  [firstItem title],
 						  @"Title check for the first article");
-	 STAssertEqualObjects([NSURL URLWithString:
-						  @"http://www.eweek.com/c/a/Search-Engines/Verizon-Picks-Microsoft-Search-over-Google-Yahoo/"],
+	 STAssertEqualStrings(@"http://www.eweek.com/c/a/Search-Engines/Verizon-Picks-Microsoft-Search-over-Google-Yahoo/",
 						  [firstItem url],
 						  @"URL check for the first article");
 	 
@@ -139,11 +152,11 @@
 						  @"NewsCenterTest.xml"];
 	
 	[newsCenter addTitle:@"local" withUrl:[NSURL fileURLWithPath:filePath]
-			  andRefresh:1.0];
+			  andRefresh:0.3];
 	[[NSRunLoop currentRunLoop]
-	 runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-	
+	 runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];	
 	[self checkRssData];
+	[newsCenter removeTitle:@"local"];
 }
 
 @end

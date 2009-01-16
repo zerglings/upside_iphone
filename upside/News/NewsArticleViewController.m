@@ -69,8 +69,8 @@
 	newsItem = theNewsItem;
 	
 	self.navigationItem.title = [newsItem title];
-	[(UIWebView*)self.view loadRequest:[NSURLRequest
-										requestWithURL:[newsItem url]]];
+	[(UIWebView*)self.view loadRequest:[NSURLRequest requestWithURL:
+										[NSURL URLWithString:[newsItem url]]]];
 }
 
 - (void) webViewDidStartLoad: (UIWebView *)webView {

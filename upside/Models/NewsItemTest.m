@@ -1,5 +1,5 @@
 //
-//  NewsItem+ReaderStateTest.m
+//  NewsItemTest.m
 //  upside
 //
 //  Created by Victor Costan on 1/10/09.
@@ -12,23 +12,24 @@
 #import "GTMSenTestCase.h"
 
 #import "NewsItem.h"
-#import "NewsItem+ReaderState.h"
 
-
-@interface NewsItemReaderStateTest : SenTestCase {
+@interface NewsItemTest : SenTestCase {
 	NewsItem* unreadItem;
 }
 
 @end
 
-@implementation NewsItemReaderStateTest
+@implementation NewsItemTest
 
 - (void) setUp {
-	unreadItem = [[NewsItem alloc] initWithTitle:@"Title1"
-											date:[NSDate date]
-											 url:[NSURL URLWithString:@"file://rss.xml"]
-											 uid:@"st-1"
-										 summary:@"Nothing exciting today."];
+	unreadItem = [[NewsItem alloc] initWithProperties:
+				   [NSDictionary dictionaryWithObjectsAndKeys:
+					@"Title1", @"title",
+					@"2008-12-01 12:30:05 -0500", @"pubDate",
+					@"file://rss.xml", @"link",
+					@"st-1", @"guid",
+					@"Nothing exciting today.", @"description",
+					nil]];
 }
 
 - (void) tearDown {

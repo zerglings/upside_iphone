@@ -37,6 +37,11 @@
 	return [attributes objectForKey:attributeName];
 }
 
+- (NSString*) description {
+	return [NSString stringWithFormat:@"<ZNModel definition name=%@ attributes=%@>",
+			[name description], [attributes description]];
+}
+
 #pragma mark ObjC Metadata Parsing
 
 + (objc_property_t*) copyModelPropertiesForClass: (Class)klass

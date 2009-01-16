@@ -11,7 +11,6 @@
 #import "DictionaryXmlParser.h"
 #import "NetworkProgress.h"
 #import "NewsItem.h"
-#import "NewsItem+ReaderState.h"
 
 #pragma mark Internal Data Structure
 
@@ -199,11 +198,8 @@ static NSDictionary* rssParserSchema = nil;
 	@synchronized ([NewsCenter class]) {
 		if (rssParserSchema == nil) {
 			rssParserSchema = [[NSDictionary alloc] initWithObjectsAndKeys:
-							   [[NSSet alloc] initWithObjects:
-							    kNewsItemDate, kNewsItemSummary, kNewsItemTitle,
-								kNewsItemUid, kNewsItemUrl, nil],
-							   @"item",
-							   nil];
+							   [[NSSet alloc] initWithObjects:@"<open>", nil],
+							   @"item", nil];
 		}
 	}
 	return rssParserSchema;
@@ -212,7 +208,7 @@ static NSDictionary* rssParserSchema = nil;
 - (void) parsedItem: (NSDictionary*)itemData
 		   withName: (NSString*)itemName
 				for: (NSObject*)context {
-	NewsItem* newsItem = [[NewsItem alloc] initWithRssItem:itemData];
+	NewsItem* newsItem = [[NewsItem alloc] initWithProperties:itemData];
 	[(NSMutableArray*)context addObject:newsItem];
 	[newsItem release];		
 }
@@ -224,7 +220,6 @@ static NSDictionary* rssParserSchema = nil;
 	DictionaryXmlParser* rssParser = [[DictionaryXmlParser alloc]
 									  initWithSchema:
 									  [NewsCenter rssParserSchema]];
-	//NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
 	rssParser.context = newsItems;
 	rssParser.delegate = self;
 	
@@ -232,7 +227,8 @@ static NSDictionary* rssParserSchema = nil;
 		NSAutoreleasePool* arp = [[NSAutoreleasePool alloc] init];
 				
 		NSDate* sleepTimeout =
-		    [NSDate dateWithTimeIntervalSinceNow:feedData.refreshInterval];
+		    [[NSDate alloc]
+			 initWithTimeIntervalSinceNow:feedData.refreshInterval];
 		[NetworkProgress connectionStarted];
 		BOOL parsingWorked = [rssParser parseURL:feedData.url];
 		[NetworkProgress connectionDone];
@@ -246,9 +242,8 @@ static NSDictionary* rssParserSchema = nil;
 		
 		NSAutoreleasePool* miniArp = [[NSAutoreleasePool alloc] init];		
 		[NSThread sleepUntilDate:sleepTimeout];
-		//[runLoop runUntilDate:sleepTimeout];
+		[sleepTimeout release];
 		[miniArp release];
-		 
 	}
 	[feedData release];
 	[newsItems release];

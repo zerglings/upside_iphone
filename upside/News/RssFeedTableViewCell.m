@@ -9,8 +9,6 @@
 #import "RssFeedTableViewCell.h"
 
 #import "NewsItem.h"
-#import "NewsItem+ReaderState.h"
-
 
 @implementation RssFeedTableViewCell
 

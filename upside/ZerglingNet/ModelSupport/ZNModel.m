@@ -62,7 +62,10 @@
 	
 }
 
-- (NSDictionary*) copyToDictionaryForcingStrings: (BOOL)forceStrings {
+
+
+- (NSMutableDictionary*)
+copyToMutableDictionaryForcingStrings: (BOOL)forceStrings {
 	NSMutableDictionary* attributes = [[NSMutableDictionary alloc]
 						 			   initWithDictionary:props];
 	ZNModelDefinition* definition = [[ZNMSRegistry sharedRegistry]
@@ -78,10 +81,28 @@
 											   forceString:forceStrings];
 		[attributes setObject:boxedValue forKey:attributeName];
 	}
+	return attributes;
+}
+
+- (NSDictionary*) copyToDictionaryForcingStrings: (BOOL)forceStrings {
+	NSMutableDictionary* attributes =
+	    [self copyToMutableDictionaryForcingStrings:forceStrings];
+	
 	NSDictionary* dictionary = [[NSDictionary alloc]
 								initWithDictionary:attributes];
 	[attributes release];
 	return dictionary;
 }
+
+- (NSDictionary*) attributeDictionaryForcingStrings: (BOOL)forceStrings {
+	return [[self copyToDictionaryForcingStrings:forceStrings] autorelease];
+}
+
+- (NSMutableDictionary*)
+attributeMutableDictionaryForcingStrings: (BOOL)forceStrings {
+	return [[self attributeMutableDictionaryForcingStrings:forceStrings]
+			autorelease];
+}
+
 
 @end
