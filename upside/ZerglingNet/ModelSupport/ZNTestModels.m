@@ -32,3 +32,6 @@
 
 @end
 
+@implementation ZNTestNumbers
+@synthesize doubleVal, integerVal, uintegerVal;
+@end

@@ -64,7 +64,19 @@
 @property (nonatomic, retain) NSDate* pubDate;
 
 @end
-		   
+
+@interface ZNTestNumbers : ZNModel {
+	double doubleVal;
+	NSInteger integerVal;
+	NSUInteger uintegerVal;
+}
+
+@property (nonatomic) double doubleVal;
+@property (nonatomic) NSInteger integerVal;
+@property (nonatomic) NSUInteger uintegerVal;
+
+@end
+
 @protocol ZNTestModel_ZNMS
 @end
 
