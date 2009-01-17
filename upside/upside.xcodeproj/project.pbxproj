@@ -42,11 +42,11 @@
 		570D88BF0F16C73D00D54544 /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88BE0F16C73D00D54544 /* NewsTableViewController.m */; };
 		570D88C90F16C8E800D54544 /* NewsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D88C80F16C8E800D54544 /* NewsTableViewController.xib */; };
 		570D88F60F16EA6400D54544 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88F50F16EA6400D54544 /* NewsItem.m */; };
-		570D890D0F17183B00D54544 /* DictionaryXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890C0F17183B00D54544 /* DictionaryXmlParser.m */; };
-		570D89120F17209800D54544 /* DictionaryXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890E0F171AF500D54544 /* DictionaryXmlParserTest.m */; };
-		570D89130F1720A100D54544 /* DictionaryXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890C0F17183B00D54544 /* DictionaryXmlParser.m */; };
+		570D890D0F17183B00D54544 /* ZNDictionaryXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890C0F17183B00D54544 /* ZNDictionaryXmlParser.m */; };
+		570D89120F17209800D54544 /* ZNDictionaryXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890E0F171AF500D54544 /* ZNDictionaryXmlParserTest.m */; };
+		570D89130F1720A100D54544 /* ZNDictionaryXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890C0F17183B00D54544 /* ZNDictionaryXmlParser.m */; };
 		570D8A060F17465C00D54544 /* NewsCenterTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 570D89100F171B1F00D54544 /* NewsCenterTest.xml */; };
-		570D8ABE0F1816CE00D54544 /* DictionaryXmlParserTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 570D8ABD0F1816CE00D54544 /* DictionaryXmlParserTest.xml */; };
+		570D8ABE0F1816CE00D54544 /* ZNDictionaryXmlParserTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 570D8ABD0F1816CE00D54544 /* ZNDictionaryXmlParserTest.xml */; };
 		5711926B0F1BA38400FD89EA /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
 		571193850F1BEE2C00FD89EA /* NewsTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571193840F1BEE2C00FD89EA /* NewsTableCellNarrow.xib */; };
 		571193880F1BEE7900FD89EA /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 571193870F1BEE7900FD89EA /* NewsTableViewCell.m */; };
@@ -89,9 +89,16 @@
 		57A1E5AD0F20AC5800B8179A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
 		57A1E5AE0F20AC5800B8179A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
 		57A1E6640F20B19000B8179A /* NewsItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23DB0F18D9F400A996A2 /* NewsItemTest.m */; };
-		57A1E66B0F20B1C800B8179A /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
 		57A1E67C0F20B22700B8179A /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
 		57A1E6830F20B26700B8179A /* TradeOrder+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */; };
+		57A1E7080F2164D600B8179A /* ActivationCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7070F2164D600B8179A /* ActivationCommController.m */; };
+		57A1E7090F2164D600B8179A /* ActivationCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7070F2164D600B8179A /* ActivationCommController.m */; };
+		57A1E70C0F21656800B8179A /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E70B0F21656800B8179A /* Device.m */; };
+		57A1E70D0F21656800B8179A /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E70B0F21656800B8179A /* Device.m */; };
+		57A1E7660F21815900B8179A /* ZNFormURLEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7650F21815900B8179A /* ZNFormURLEncoder.m */; };
+		57A1E7670F21815900B8179A /* ZNFormURLEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7650F21815900B8179A /* ZNFormURLEncoder.m */; };
+		57A1E7860F2184A800B8179A /* ZNFormURLEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */; };
+		57A1E7EA0F21931B00B8179A /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
 		57CB188E0F0F01C600E95AE1 /* ActivationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB188D0F0F01C600E95AE1 /* ActivationState.m */; };
 		57CB1A0A0F0F1AF700E95AE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		57CB1A0B0F0F1AF700E95AE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -174,11 +181,11 @@
 		570D88C80F16C8E800D54544 /* NewsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewController.xib; sourceTree = "<group>"; };
 		570D88F40F16EA6400D54544 /* NewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsItem.h; sourceTree = "<group>"; };
 		570D88F50F16EA6400D54544 /* NewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsItem.m; sourceTree = "<group>"; };
-		570D890B0F17183B00D54544 /* DictionaryXmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryXmlParser.h; sourceTree = "<group>"; };
-		570D890C0F17183B00D54544 /* DictionaryXmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryXmlParser.m; sourceTree = "<group>"; };
-		570D890E0F171AF500D54544 /* DictionaryXmlParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryXmlParserTest.m; sourceTree = "<group>"; };
+		570D890B0F17183B00D54544 /* ZNDictionaryXmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNDictionaryXmlParser.h; sourceTree = "<group>"; };
+		570D890C0F17183B00D54544 /* ZNDictionaryXmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDictionaryXmlParser.m; sourceTree = "<group>"; };
+		570D890E0F171AF500D54544 /* ZNDictionaryXmlParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDictionaryXmlParserTest.m; sourceTree = "<group>"; };
 		570D89100F171B1F00D54544 /* NewsCenterTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NewsCenterTest.xml; sourceTree = "<group>"; };
-		570D8ABD0F1816CE00D54544 /* DictionaryXmlParserTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DictionaryXmlParserTest.xml; sourceTree = "<group>"; };
+		570D8ABD0F1816CE00D54544 /* ZNDictionaryXmlParserTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZNDictionaryXmlParserTest.xml; sourceTree = "<group>"; };
 		571193840F1BEE2C00FD89EA /* NewsTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableCellNarrow.xib; sourceTree = "<group>"; };
 		571193860F1BEE7900FD89EA /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
 		571193870F1BEE7900FD89EA /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
@@ -240,6 +247,13 @@
 		577093E10F11032200069411 /* Stock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock.h; sourceTree = "<group>"; };
 		577093E40F11049E00069411 /* Stock+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+FormattingTest.m"; sourceTree = "<group>"; };
 		57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		57A1E7060F2164D600B8179A /* ActivationCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationCommController.h; sourceTree = "<group>"; };
+		57A1E7070F2164D600B8179A /* ActivationCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationCommController.m; sourceTree = "<group>"; };
+		57A1E70A0F21656800B8179A /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		57A1E70B0F21656800B8179A /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
+		57A1E7640F21815900B8179A /* ZNFormURLEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNFormURLEncoder.h; sourceTree = "<group>"; };
+		57A1E7650F21815900B8179A /* ZNFormURLEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNFormURLEncoder.m; sourceTree = "<group>"; };
+		57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNFormURLEncoderTest.m; sourceTree = "<group>"; };
 		57CB188C0F0F01C600E95AE1 /* ActivationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationState.h; sourceTree = "<group>"; };
 		57CB188D0F0F01C600E95AE1 /* ActivationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationState.m; sourceTree = "<group>"; };
 		57CB18CB0F0F128A00E95AE1 /* GTMCALayer+UnitTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMCALayer+UnitTesting.h"; sourceTree = "<group>"; };
@@ -383,10 +397,6 @@
 			children = (
 				570D82ED0F11A5F000D54544 /* AutoRotatingTableViewController.h */,
 				570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */,
-				570D890B0F17183B00D54544 /* DictionaryXmlParser.h */,
-				570D890C0F17183B00D54544 /* DictionaryXmlParser.m */,
-				570D890E0F171AF500D54544 /* DictionaryXmlParserTest.m */,
-				570D8ABD0F1816CE00D54544 /* DictionaryXmlParserTest.xml */,
 				571A27070F1ABA5000A996A2 /* NetworkProgress.h */,
 				571A27080F1ABA5000A996A2 /* NetworkProgress.m */,
 			);
@@ -457,6 +467,7 @@
 		571195500F1DC67C00FD89EA /* ZerglingNet */ = {
 			isa = PBXGroup;
 			children = (
+				57A1E7F70F21973800B8179A /* WebSupport */,
 				571195540F1DC8A800FD89EA /* ModelSupport */,
 			);
 			path = ZerglingNet;
@@ -512,6 +523,20 @@
 			path = Orders;
 			sourceTree = "<group>";
 		};
+		57A1E7F70F21973800B8179A /* WebSupport */ = {
+			isa = PBXGroup;
+			children = (
+				570D890B0F17183B00D54544 /* ZNDictionaryXmlParser.h */,
+				570D890C0F17183B00D54544 /* ZNDictionaryXmlParser.m */,
+				570D890E0F171AF500D54544 /* ZNDictionaryXmlParserTest.m */,
+				570D8ABD0F1816CE00D54544 /* ZNDictionaryXmlParserTest.xml */,
+				57A1E7640F21815900B8179A /* ZNFormURLEncoder.h */,
+				57A1E7650F21815900B8179A /* ZNFormURLEncoder.m */,
+				57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */,
+			);
+			path = WebSupport;
+			sourceTree = "<group>";
+		};
 		57CB188B0F0F016C00E95AE1 /* Activation */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +546,10 @@
 				57CB188C0F0F01C600E95AE1 /* ActivationState.h */,
 				57CB188D0F0F01C600E95AE1 /* ActivationState.m */,
 				57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */,
+				57A1E7060F2164D600B8179A /* ActivationCommController.h */,
+				57A1E7070F2164D600B8179A /* ActivationCommController.m */,
+				57A1E70A0F21656800B8179A /* Device.h */,
+				57A1E70B0F21656800B8179A /* Device.m */,
 			);
 			path = Activation;
 			sourceTree = "<group>";
@@ -685,7 +714,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				570D8A060F17465C00D54544 /* NewsCenterTest.xml in Resources */,
-				570D8ABE0F1816CE00D54544 /* DictionaryXmlParserTest.xml in Resources */,
+				570D8ABE0F1816CE00D54544 /* ZNDictionaryXmlParserTest.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,7 +744,7 @@
 				571A25B90F1978C300A996A2 /* NewsCenter.m in Sources */,
 				570D88F60F16EA6400D54544 /* NewsItem.m in Sources */,
 				570D88BF0F16C73D00D54544 /* NewsTableViewController.m in Sources */,
-				570D890D0F17183B00D54544 /* DictionaryXmlParser.m in Sources */,
+				570D890D0F17183B00D54544 /* ZNDictionaryXmlParser.m in Sources */,
 				57CDB1B90F0F7608002C60C5 /* Portfolio.m in Sources */,
 				571A25B80F1978A400A996A2 /* Portfolio+RSS.m in Sources */,
 				570D87190F14549100D54544 /* Portfolio+Formatting.m in Sources */,
@@ -737,6 +766,9 @@
 				57F5F3B10F20745C00AFCB29 /* ZNMSInteger.m in Sources */,
 				57F5F3B20F20745C00AFCB29 /* ZNMSString.m in Sources */,
 				57F5F3B30F20745C00AFCB29 /* ZNMSUInteger.m in Sources */,
+				57A1E7090F2164D600B8179A /* ActivationCommController.m in Sources */,
+				57A1E70D0F21656800B8179A /* Device.m in Sources */,
+				57A1E7670F21815900B8179A /* ZNFormURLEncoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,8 +776,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				570D89130F1720A100D54544 /* DictionaryXmlParser.m in Sources */,
-				570D89120F17209800D54544 /* DictionaryXmlParserTest.m in Sources */,
+				570D89130F1720A100D54544 /* ZNDictionaryXmlParser.m in Sources */,
+				570D89120F17209800D54544 /* ZNDictionaryXmlParserTest.m in Sources */,
 				57CB1A5F0F0F270E00E95AE1 /* ActivationState.m in Sources */,
 				57CB1A140F0F1B2D00E95AE1 /* ActivationStateTest.m in Sources */,
 				570C70B40F1121B100DC666C /* Stock.m in Sources */,
@@ -786,9 +818,13 @@
 				57119A0B0F1F3D2C00FD89EA /* ZNModelTest.m in Sources */,
 				574CD0AC0F20275D002CEDDB /* ZNMSBoolean.m in Sources */,
 				57A1E6640F20B19000B8179A /* NewsItemTest.m in Sources */,
-				57A1E66B0F20B1C800B8179A /* NewsCenterTest.m in Sources */,
 				57A1E67C0F20B22700B8179A /* Portfolio+RSSTest.m in Sources */,
 				57A1E6830F20B26700B8179A /* TradeOrder+FormattingTest.m in Sources */,
+				57A1E7080F2164D600B8179A /* ActivationCommController.m in Sources */,
+				57A1E70C0F21656800B8179A /* Device.m in Sources */,
+				57A1E7660F21815900B8179A /* ZNFormURLEncoder.m in Sources */,
+				57A1E7860F2184A800B8179A /* ZNFormURLEncoderTest.m in Sources */,
+				57A1E7EA0F21931B00B8179A /* NewsCenterTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

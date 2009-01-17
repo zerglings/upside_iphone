@@ -6,10 +6,10 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "DictionaryXmlParser.h"
+#import "ZNDictionaryXmlParser.h"
 
 
-@implementation DictionaryXmlParser
+@implementation ZNDictionaryXmlParser
 
 #pragma mark Lifecycle
 

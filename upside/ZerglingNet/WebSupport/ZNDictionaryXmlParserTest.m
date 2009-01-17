@@ -8,10 +8,11 @@
 
 #include "GTMSenTestCase.h"
 
-#include "DictionaryXmlParser.h"
+#include "ZNDictionaryXmlParser.h"
 
-@interface DictionaryXmlParserTest : SenTestCase <DictionaryXmlParserDelegate> {
-	DictionaryXmlParser* parser;
+@interface ZNDictionaryXmlParserTest : SenTestCase <DictionaryXmlParserDelegate>
+{
+	ZNDictionaryXmlParser* parser;
 
 	NSMutableArray* items;
 	NSMutableArray* dupItems;
@@ -23,7 +24,7 @@
 
 NSString* kContextObject = @"This is the context";
 
-@implementation DictionaryXmlParserTest
+@implementation ZNDictionaryXmlParserTest
 
 - (void) setUp {
 	NSDictionary* schema = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -34,7 +35,7 @@ NSString* kContextObject = @"This is the context";
 							@"itemB",
 							nil];
 	
-	parser = [[DictionaryXmlParser alloc] initWithSchema:schema];
+	parser = [[ZNDictionaryXmlParser alloc] initWithSchema:schema];
 	parser.context = kContextObject;
 	parser.delegate = self;
 	
@@ -86,9 +87,9 @@ NSString* kContextObject = @"This is the context";
 - (void) testParsing {
 	NSString *filePath = [[[NSBundle mainBundle] resourcePath]
 						  stringByAppendingPathComponent:
-						  @"DictionaryXmlParserTest.xml"];
+						  @"ZNDictionaryXmlParserTest.xml"];
 	BOOL success = [parser parseURL:[NSURL fileURLWithPath:filePath]];	
-	STAssertTrue(success, @"Parsing failed on DictionaryXmlParserTest.xml");
+	STAssertTrue(success, @"Parsing failed on ZNDictionaryXmlParserTest.xml");
 	
 	[self checkItems];
 }

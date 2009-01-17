@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class ActivationCommController;
+
 @interface ActivationViewController : UIViewController {
 	IBOutlet UIButton* activateButton;
+	
+	ActivationCommController* activationCommController;
 }
 
 - (IBAction) activateButtonWasTapped;

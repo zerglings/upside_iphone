@@ -17,7 +17,7 @@
 @end
 
 
-@interface DictionaryXmlParser : NSObject {
+@interface ZNDictionaryXmlParser : NSObject {
 	NSObject<DictionaryXmlParserDelegate>* delegate;
 	NSObject* context;
 	NSDictionary* schema;

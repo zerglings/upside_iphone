@@ -8,7 +8,7 @@
 
 #import "NewsCenter.h"
 
-#import "DictionaryXmlParser.h"
+#import "ZNDictionaryXmlParser.h"
 #import "NetworkProgress.h"
 #import "NewsItem.h"
 
@@ -217,7 +217,7 @@ static NSDictionary* rssParserSchema = nil;
 	NSAutoreleasePool* outerArp = [[NSAutoreleasePool alloc] init];
 	
 	NSMutableArray* newsItems = [[NSMutableArray alloc] init];
-	DictionaryXmlParser* rssParser = [[DictionaryXmlParser alloc]
+	ZNDictionaryXmlParser* rssParser = [[ZNDictionaryXmlParser alloc]
 									  initWithSchema:
 									  [NewsCenter rssParserSchema]];
 	rssParser.context = newsItems;
