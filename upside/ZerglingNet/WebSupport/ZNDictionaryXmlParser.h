@@ -8,17 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol DictionaryXmlParserDelegate
+@protocol ZNDictionaryXmlParserDelegate
 
 - (void) parsedItem: (NSDictionary*)itemData
-		   withName: (NSString*)itemName
-				for: (NSObject*)context;
+			   name: (NSString*)itemName
+			context: (NSObject*)context;
 
 @end
 
 
 @interface ZNDictionaryXmlParser : NSObject {
-	NSObject<DictionaryXmlParserDelegate>* delegate;
+	NSObject<ZNDictionaryXmlParserDelegate>* delegate;
 	NSObject* context;
 	NSDictionary* schema;
 	
@@ -40,7 +40,7 @@
 
 @property (nonatomic, retain) NSDictionary* schema;
 @property (nonatomic, retain) NSObject* context;
-@property (nonatomic, retain) NSObject<DictionaryXmlParserDelegate>* delegate;
+@property (nonatomic, assign) NSObject<ZNDictionaryXmlParserDelegate>* delegate;
 
 // Initialized a parser for a schema, which can be used multiple times.
 - (id) initWithSchema: (NSDictionary*)schema;

@@ -29,7 +29,6 @@
 }
 
 - (void) dealloc {
-	[delegate release];
 	[context release];
 	[schema release];
 	[currentValue release];
@@ -92,7 +91,8 @@
 	else if (currentItemSchema = [schema objectForKey:elementName]) {
 		// parsing new item
 		currentItemName = [elementName retain];
-		currentItemHasOpenSchema = [currentItemSchema containsObject:@"<open>"];
+		currentItemHasOpenSchema = ![currentItemSchema
+									 isKindOfClass:[NSSet class]];
 	}
 }
 
@@ -121,8 +121,8 @@
 	else if ([currentItemName isEqualToString:elementName]) {
 		// done parsing an entire item
 		[delegate parsedItem:[NSDictionary dictionaryWithDictionary:currentItem]
-					withName:currentItemName
-						 for:context];
+						name:currentItemName
+					 context:context];
 		
 		[currentItem removeAllObjects];
 		currentItemSchema = nil;

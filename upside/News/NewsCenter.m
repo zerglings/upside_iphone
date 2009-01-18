@@ -8,16 +8,22 @@
 
 #import "NewsCenter.h"
 
-#import "ZNDictionaryXmlParser.h"
+#import "ModelSupport.h"
+#import "WebSupport.h"
+
 #import "NetworkProgress.h"
 #import "NewsItem.h"
 
+@interface NewsCenter ()
++ (NSDictionary*) rssModels;
+@end
+
 #pragma mark Internal Data Structure
 
-@interface NewsCenterData : NSObject {
+@interface NewsCenterFeed : NSObject {
 	NewsCenter* newsCenter;
 	NSString* title;
-	NSURL* url;
+	NSString* urlString;
 	NSTimeInterval refreshInterval;
 	NSArray* uids;
 	BOOL removed;
@@ -30,47 +36,63 @@
 @property (nonatomic, retain) NSString* title;
 
 // The URL for the RSS feed.
-@property (retain) NSURL* url;
+@property (nonatomic, retain) NSString* urlString;
 
 // The amount of time to wait between refreshes.
-@property (assign) NSTimeInterval refreshInterval;
+@property (nonatomic, assign) NSTimeInterval refreshInterval;
 
 // The UIDs of the articles in the RSS feed.
 @property (nonatomic, retain) NSArray* uids;
 
 // Set to YES when a feed is removed.
-@property (assign) BOOL removed;
+@property (nonatomic, assign) BOOL removed;
 
 @end
 
-@implementation NewsCenterData
+@implementation NewsCenterFeed
 
-@synthesize newsCenter;
-@synthesize title;
-@synthesize url;
-@synthesize refreshInterval;
-@synthesize removed;
-@synthesize uids;
+@synthesize newsCenter, title, urlString, refreshInterval, removed, uids;
 
 - (void) dealloc {
 	[title release];
-	[url release];
+	[urlString release];
 	[uids release];
 	[super dealloc];
 }
 
 - (void) integrateNews: (NSArray*)news {
-	[newsCenter integrateNews:news forTitle:title];
+	if (![news isKindOfClass:[NSError class]])
+		[newsCenter integrateNews:news forTitle:title];
+	
+	if ([self removed]) {
+		[self release];
+		return;
+	}
+	[self performSelector:@selector(fetchNews)
+			   withObject:nil
+			   afterDelay:[self refreshInterval]];
 }
 
+- (void) fetchNews {
+	if ([self removed]) {
+		[self release];
+		return;
+	}
+	
+	[ZNXmlHttpRequest issueRequestToService:[self urlString]
+									   data:nil
+							 responseModels:[NewsCenter rssModels]
+									 target:self
+									 action:@selector(integrateNews:)];
+}
 @end
 
 
 #pragma mark Private Methods
 
-@interface NewsCenter () <DictionaryXmlParserDelegate>
+@interface NewsCenter ()
 
-- (void) startFetchingNewsFor: (NewsCenterData*)feedData;
+- (void) startFetchingNewsFor: (NewsCenterFeed*)feedData;
 
 @end
 
@@ -86,30 +108,30 @@
 	return self;
 }
 - (void) dealloc {
-	[dataByTitle release];
-	for (NewsCenterData* data in [dataByTitle allValues]) {
+	for (NewsCenterFeed* data in [dataByTitle allValues]) {
 		data.removed = YES;
 	}
+	[dataByTitle release];
 	[newsByUid release];
 	[super dealloc];
 }
 
 - (void) addTitle: (NSString*)title
-		  withUrl: (NSURL*)url
+		  withUrl: (NSString*)urlString
 	   andRefresh: (NSTimeInterval)refreshInterval {
 	NSAssert([NSThread mainThread], @"Method called outside main thread");
 	
-	NewsCenterData* data = [dataByTitle objectForKey:title];
+	NewsCenterFeed* data = [dataByTitle objectForKey:title];
 	if (data != nil) {
-		data.url = url;
+		data.urlString = urlString;
 		data.refreshInterval = refreshInterval;
 		return;
 	}
 	
-	data = [[NewsCenterData alloc] init];
+	data = [[NewsCenterFeed alloc] init];
 	data.newsCenter = self;
 	data.title = title;
-	data.url = url;
+	data.urlString = urlString;
 	data.refreshInterval = refreshInterval;
 	data.removed = NO;
 	data.uids = [NSArray array];
@@ -120,7 +142,7 @@
 - (void) removeTitle: (NSString*) title {
 	NSAssert([NSThread mainThread], @"Method called outside main thread");
 	
-	NewsCenterData* data = [dataByTitle objectForKey:title];
+	NewsCenterFeed* data = [dataByTitle objectForKey:title];
 	if (data != nil) {
 		data.removed = YES;
 		for(NSString* uid in data.uids) {
@@ -147,7 +169,7 @@
 }
 
 - (NewsItem*) newsItemForTitle: (NSString*)title atIndex: (NSUInteger)index {
-	NewsCenterData* data = [dataByTitle objectForKey:title];
+	NewsCenterFeed* data = [dataByTitle objectForKey:title];
 	return [newsByUid objectForKey:[data.uids objectAtIndex:index]];
 }
 
@@ -165,7 +187,7 @@
 - (void) integrateNews: (NSArray*)news forTitle: (NSString*)title {
 	NSAssert([NSThread mainThread], @"Method called outside main thread");
 	
-	NewsCenterData* data = [dataByTitle objectForKey:title];
+	NewsCenterFeed* data = [dataByTitle objectForKey:title];
 	
 	NSMutableSet* oldUids = [[NSMutableSet alloc] initWithArray:data.uids];
 	NSMutableArray* newUids = [[NSMutableArray alloc]
@@ -192,70 +214,29 @@
 
 #pragma mark RSS Reading
 
-static NSDictionary* rssParserSchema = nil;
+static NSDictionary* rssModels = nil;
 
-+ (NSDictionary*) rssParserSchema {
++ (NSDictionary*) rssModels {
 	@synchronized ([NewsCenter class]) {
-		if (rssParserSchema == nil) {
-			rssParserSchema = [[NSDictionary alloc] initWithObjectsAndKeys:
-							   [[NSSet alloc] initWithObjects:@"<open>", nil],
-							   @"item", nil];
+		if (rssModels == nil) {
+			rssModels = [[NSDictionary alloc] initWithObjectsAndKeys:
+							   [NewsItem class], @"item", nil];
 		}
 	}
-	return rssParserSchema;
+	return rssModels;
 }
 
 - (void) parsedItem: (NSDictionary*)itemData
-		   withName: (NSString*)itemName
-				for: (NSObject*)context {
+			   name: (NSString*)itemName
+			context: (NSObject*)context {
 	NewsItem* newsItem = [[NewsItem alloc] initWithProperties:itemData];
 	[(NSMutableArray*)context addObject:newsItem];
 	[newsItem release];		
 }
 
-- (void) feedFetcherThreadMain: (NewsCenterData*)feedData {
-	NSAutoreleasePool* outerArp = [[NSAutoreleasePool alloc] init];
-	
-	NSMutableArray* newsItems = [[NSMutableArray alloc] init];
-	ZNDictionaryXmlParser* rssParser = [[ZNDictionaryXmlParser alloc]
-									  initWithSchema:
-									  [NewsCenter rssParserSchema]];
-	rssParser.context = newsItems;
-	rssParser.delegate = self;
-	
-	while (!feedData.removed) {
-		NSAutoreleasePool* arp = [[NSAutoreleasePool alloc] init];
-				
-		NSDate* sleepTimeout =
-		    [[NSDate alloc]
-			 initWithTimeIntervalSinceNow:feedData.refreshInterval];
-		[NetworkProgress connectionStarted];
-		BOOL parsingWorked = [rssParser parseURL:feedData.url];
-		[NetworkProgress connectionDone];
-		if (parsingWorked) {		
-			[feedData performSelectorOnMainThread:@selector(integrateNews:)
-									   withObject:newsItems
-									waitUntilDone:YES];
-		}
-		[newsItems removeAllObjects];
-		[arp release];
-		
-		NSAutoreleasePool* miniArp = [[NSAutoreleasePool alloc] init];		
-		[NSThread sleepUntilDate:sleepTimeout];
-		[sleepTimeout release];
-		[miniArp release];
-	}
-	[feedData release];
-	[newsItems release];
-	[rssParser release];
-	[outerArp release];
-}
-
-- (void) startFetchingNewsFor: (NewsCenterData*)feedData {
+- (void) startFetchingNewsFor: (NewsCenterFeed*)feedData {
 	[feedData retain];
-	[NSThread detachNewThreadSelector:@selector(feedFetcherThreadMain:)
-							 toTarget:self
-						   withObject:feedData];
+	[feedData fetchNews];
 }
 
 @end

@@ -10,8 +10,8 @@
 
 #include "ZNDictionaryXmlParser.h"
 
-@interface ZNDictionaryXmlParserTest : SenTestCase <DictionaryXmlParserDelegate>
-{
+@interface ZNDictionaryXmlParserTest
+    : SenTestCase <ZNDictionaryXmlParserDelegate> {
 	ZNDictionaryXmlParser* parser;
 
 	NSMutableArray* items;
@@ -28,7 +28,7 @@ NSString* kContextObject = @"This is the context";
 
 - (void) setUp {
 	NSDictionary* schema = [NSDictionary dictionaryWithObjectsAndKeys:
-							[NSSet setWithObjects:@"<open>", nil],
+							[NSNull null],
 							@"itemA",
 							[NSSet
 							 setWithObjects:@"keyB", @"keyC", nil],
@@ -84,7 +84,7 @@ NSString* kContextObject = @"This is the context";
 						 @"Failed to parse XML entities");
 }
 
-- (void) testParsing {
+- (void) testParsingURLs {
 	NSString *filePath = [[[NSBundle mainBundle] resourcePath]
 						  stringByAppendingPathComponent:
 						  @"ZNDictionaryXmlParserTest.xml"];
@@ -94,9 +94,19 @@ NSString* kContextObject = @"This is the context";
 	[self checkItems];
 }
 
-- (void) parsedItem: (NSDictionary*) itemData
-		   withName:(NSString*)itemName
-				for:(NSObject*)context {
+- (void) testParsingData {
+	NSString *filePath = [[[NSBundle mainBundle] resourcePath]
+						  stringByAppendingPathComponent:
+						  @"ZNDictionaryXmlParserTest.xml"];
+	BOOL success = [parser parseData:[NSData dataWithContentsOfFile:filePath]];
+	STAssertTrue(success, @"Parsing failed on ZNDictionaryXmlParserTest.xml");
+	
+	[self checkItems];
+}
+
+- (void) parsedItem: (NSDictionary*)itemData
+			   name: (NSString*)itemName
+			context: (NSObject*)context {
 	STAssertEquals(kContextObject, context,
 				  @"Wrong context passed to -parsedItem");
 		

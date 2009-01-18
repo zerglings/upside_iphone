@@ -123,4 +123,21 @@ attributeMutableDictionaryForcingStrings: (BOOL)forceStrings {
 			[[self attributeDictionaryForcingStrings:YES] description]];
 }
 
+
+#pragma mark Dynamic Instantiation
+
++ (BOOL) isModelClass: (id)maybeModelClass {
+	// Plain objects.
+	if (![maybeModelClass respondsToSelector:@selector(alloc)])
+		return NO;
+	
+	// Walk up the chain and find ZNModel
+	while (maybeModelClass != [NSObject class]) {
+		if (maybeModelClass == [ZNModel class])
+			return YES;
+		maybeModelClass = [maybeModelClass superclass];
+	}
+	return NO;
+}
+
 @end

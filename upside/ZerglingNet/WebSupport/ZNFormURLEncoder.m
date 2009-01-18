@@ -8,6 +8,7 @@
 
 #import "ZNFormURLEncoder.h"
 
+#import "ZNModel.h"
 
 @implementation ZNFormURLEncoder
 
@@ -19,13 +20,20 @@
 				 @"Attempting to encode non-String key!");
 		
 		NSObject* value = [dictionary objectForKey:key];
-		if ([value isKindOfClass:[NSDictionary class]]) {
+		if ([value isKindOfClass:[NSDictionary class]] ||
+			[value isKindOfClass:[ZNModel class]]) {
+			NSDictionary* realValue = [value isKindOfClass:[ZNModel class]] ?
+			    [(ZNModel*)value copyToDictionaryForcingStrings:YES] :
+			    (NSDictionary*)value;
+			
 			NSString* newFormat = [[NSString alloc]
 								   initWithFormat:@"%@[%@]", key, keyFormat];
-			[self createEncodingFor:(NSDictionary*)value
+			[self createEncodingFor:realValue
 								 to:output
 						  keyFormat:newFormat];
 			[newFormat release];
+			if (realValue != value)
+				[realValue release];
 		}
 		else {
 			NSAssert([value isKindOfClass:[NSString class]],

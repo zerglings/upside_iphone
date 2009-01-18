@@ -8,39 +8,30 @@
 
 #import "ActivationCommController.h"
 
-#import "ZNFormURLEncoder.h"
+#import "WebSupport.h"
 
 
 @implementation ActivationCommController
 
 - (void) init {
 	if ((self = [super init])) {
-		activationUrl = [[NSURL alloc] initWithString:
-						 @"http://moonstone.local:3000/devices/register.xml"];
+		activationService = @"http://moonstone.local:3000/devices/register.xml";
 	}
 }
 
 - (void) dealloc {
-	[activationUrl release];
+	[activationService release];
 	[super dealloc];
 }
 
 
 - (void) activateDevice {
 	NSString* uniqueID = [[UIDevice currentDevice] uniqueIdentifier];
-	
-	NSMutableURLRequest* request = [[NSMutableURLRequest alloc]
-									initWithURL:activationUrl];
-	[request setHTTPMethod:@"POST"];
-	NSData* encodedBody = [ZNFormURLEncoder createEncodingFor:
-						   [NSDictionary dictionaryWithObjectsAndKeys:
-							uniqueID, @"unique_id", nil]];
-	[request setHTTPBody:encodedBody];
-	[request addValue:@"application/x-www-form-urlencoded"
-   forHTTPHeaderField:@"Content-Type"];
-	[request addValue:[NSString stringWithFormat:@"%u", [encodedBody length]]
-   forHTTPHeaderField:@"Content-Length"];
-									 
+	NSURLRequest* request =
+	[ZNXmlHttpRequest createURLRequestToService:activationService
+										   data:
+	[NSDictionary dictionaryWithObjectsAndKeys:
+	  uniqueID, @"unique_id", nil]];
 		
 	NSURLConnection* connection = [[NSURLConnection alloc]
 								   initWithRequest:request

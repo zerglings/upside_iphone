@@ -8,6 +8,4 @@
 
 // Main header file for the Zergling.Net Model Support.
 
-#import <Foundation/Foundation.h>
-
 #import "ZNModel.h"

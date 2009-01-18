@@ -157,4 +157,19 @@
 	[thawedModel release];
 }
 
+- (void) testIsModelClass {
+	STAssertTrue([ZNModel isModelClass:[ZNTestDate class]],
+				 @"ZNTestDate is a model class");
+	STAssertTrue([ZNModel isModelClass:[ZNTestNumbers class]],
+				 @"ZNTestDate is a model class");
+	
+	STAssertFalse([ZNModel isModelClass:[NSObject class]],
+				  @"NSObject is not a model class");
+
+	STAssertFalse([ZNModel isModelClass:date],
+				  @"A date is not a model class");
+	STAssertFalse([ZNModel isModelClass:dateModel],
+				  @"A model instance is not a model class");
+}
+
 @end

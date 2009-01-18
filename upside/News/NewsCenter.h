@@ -16,7 +16,7 @@
 }
 
 - (void) addTitle: (NSString*)title
-		  withUrl: (NSURL*)url
+		  withUrl: (NSString*)urlString
 	   andRefresh: (NSTimeInterval)refreshInterval;
 
 - (void) removeTitle: (NSString*) title;

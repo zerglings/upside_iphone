@@ -34,4 +34,8 @@ copyToMutableDictionaryForcingStrings: (BOOL)forceStrings;
 - (NSMutableDictionary*)
 attributeMutableDictionaryForcingStrings: (BOOL)forceStrings;
 
+#pragma mark Dynamic Instantiation
+
++ (BOOL) isModelClass: (id)maybeModelClass;
+
 @end

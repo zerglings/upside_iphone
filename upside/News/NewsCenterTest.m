@@ -30,10 +30,10 @@
 	
 	NSString* badUrl = @"http://127.0.0.1/bad.bad";
 	[newsCenter addTitle:@"misc"
-				 withUrl:[NSURL URLWithString:badUrl]
+				 withUrl:badUrl
 			  andRefresh:1.0];
 	[newsCenter addTitle:@"test"
-				 withUrl:[NSURL URLWithString:badUrl]
+				 withUrl:badUrl
 			  andRefresh:1.0];
 	
 	item1 = [[NewsItem alloc] initWithProperties:
@@ -151,14 +151,15 @@
 }
 
 - (void) testFetching {
-	NSString *filePath = [[[NSBundle mainBundle] resourcePath]
+	NSString* filePath = [[[NSBundle mainBundle] resourcePath]
 						  stringByAppendingPathComponent:
 						  @"NewsCenterTest.xml"];
 	
-	[newsCenter addTitle:@"local" withUrl:[NSURL fileURLWithPath:filePath]
-			  andRefresh:0.5];
+	[newsCenter addTitle:@"local"
+				 withUrl:[[NSURL fileURLWithPath:filePath] absoluteString]
+			  andRefresh:2.0];
 	[[NSRunLoop currentRunLoop]
-	 runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];	
+	 runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];	
 	[self checkRssData];
 	[newsCenter removeTitle:@"local"];
 }

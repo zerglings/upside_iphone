@@ -12,7 +12,7 @@
 
 @interface Portfolio (RSS)
 
-+ (NSURL*) rssFeedUrlForTicker: (NSString*)ticker;
++ (NSString*) rssFeedUrlForTicker: (NSString*)ticker;
 
 + (NSString*) rssFeedTitleForTicker: (NSString*)ticker;
 

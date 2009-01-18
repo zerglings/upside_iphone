@@ -10,7 +10,7 @@
 
 
 @interface ActivationCommController : NSObject {
-	NSURL* activationUrl;
+	NSString* activationService;
 }
 
 - (void) activateDevice;

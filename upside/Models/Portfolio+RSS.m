@@ -13,13 +13,12 @@
 
 @implementation Portfolio (RSS)
 
-+ (NSURL*) rssFeedUrlForTicker: (NSString*)ticker {
++ (NSString*) rssFeedUrlForTicker: (NSString*)ticker {
 	NSInteger rating = 3;
 	NSInteger newsCount = 20;
-	return [NSURL URLWithString:
-			[NSString stringWithFormat:
-			 @"http://finance.google.com/finance?morenews=%d&rating=%d&q=%@&output=rss",
-			 newsCount, rating, ticker]];
+	return [NSString stringWithFormat:
+			@"http://finance.google.com/finance?morenews=%d&rating=%d&q=%@&output=rss",
+			newsCount, rating, ticker];
 }
 
 + (NSString*) rssFeedTitleForTicker: (NSString*)ticker {

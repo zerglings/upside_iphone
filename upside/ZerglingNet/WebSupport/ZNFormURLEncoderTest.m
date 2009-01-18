@@ -11,7 +11,31 @@
 
 #import "ZNFormURLEncoder.h"
 
+#import "ModelSupport.h"
+
+@interface ZNFormURLEncoderTestModel: ZNModel {
+	NSString* key11;
+	NSUInteger key12;
+}
+
+@property (nonatomic, retain) NSString* key11;
+@property (nonatomic) NSUInteger key12;
+@end
+
+@implementation ZNFormURLEncoderTestModel
+
+@synthesize key11, key12;
+
+- (void) dealloc {
+	[key11 release];
+	[super dealloc];
+}
+@end
+
+
+
 @interface ZNFormURLEncoderTest : SenTestCase {
+	ZNFormURLEncoderTestModel* testModel;
 }
 
 @end
@@ -19,6 +43,11 @@
 
 @implementation ZNFormURLEncoderTest
 
+- (void) setUp {
+	testModel = [[ZNFormURLEncoderTestModel alloc] initWithProperties:nil];
+	testModel.key11 = @"val11";
+	testModel.key12 = 31415;
+}
 - (void) dealloc {
 	[super dealloc];
 }
@@ -48,7 +77,20 @@
 	[string release];	
 }
 
-- (void) testEasyTwoLevels {
+- (void) testEncodedOneLevel {
+	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+						  @"val\0001", @"key\n1", @"val = 2", @"key&2", nil];
+	NSData* data = [ZNFormURLEncoder createEncodingFor:dict];
+	NSString* string = [[NSString alloc] initWithData:data
+											 encoding:NSUTF8StringEncoding];
+	STAssertEqualStrings(@"key%0A1=val%001&key%262=val%20%3D%202",
+						 string,
+						 @"Escapes in keys and values");
+	[data release];
+	[string release];
+}
+
+- (void) testSubDictionary {
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  @"val1", @"key1",
 						  [NSDictionary dictionaryWithObjectsAndKeys:
@@ -65,15 +107,16 @@
 	[string release];
 }
 
-- (void) testEncodedOneLevel {
+- (void) testModel {
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-						  @"val\0001", @"key\n1", @"val = 2", @"key&2", nil];
+						  testModel, @"key1", nil];
 	NSData* data = [ZNFormURLEncoder createEncodingFor:dict];
 	NSString* string = [[NSString alloc] initWithData:data
 											 encoding:NSUTF8StringEncoding];
-	STAssertEqualStrings(@"key%0A1=val%001&key%262=val%20%3D%202",
+	// This is dependent on how NSStrings hash. Wish it weren't.
+	STAssertEqualStrings(@"key1%5Bkey11%5D=val11&key1%5Bkey12%5D=31415",
 						 string,
-						 @"Escapes in keys and values");
+						 @"Empty dictionary");
 	[data release];
 	[string release];
 }

@@ -1,0 +1,10 @@
+ACCEPT: */*
+ACCEPT_ENCODING: gzip, deflate
+ACCEPT_LANGUAGE: en-us
+CONNECTION: keep-alive
+CONTENT_LENGTH: 123
+CONTENT_TYPE: application/x-www-form-urlencoded
+HOST: localhost:3000
+IF_NONE_MATCH: "03be5af88445525f702dc129420f704e"
+USER_AGENT: Zergling.Net Web Support/1.0
+VERSION: HTTP/1.1
