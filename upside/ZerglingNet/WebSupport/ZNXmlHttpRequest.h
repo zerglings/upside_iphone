@@ -27,8 +27,8 @@
 						target: (NSObject*)target
 						action: (SEL)action;
 
-+ (NSURLRequest*) createURLRequestToService: (NSString*)service
-									   data: (NSDictionary*)data;
++ (NSURLRequest*) newURLRequestToService: (NSString*)service
+									data: (NSDictionary*)data;
 
 - (id) initWithURLRequest: (NSURLRequest*)request
 		   responseModels: (NSDictionary*)responseModels

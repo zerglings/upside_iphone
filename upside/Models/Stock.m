@@ -12,6 +12,13 @@
 
 @synthesize ticker, name, askCents, bidCents, lastAskCents, lastBidCents;
 
+- (void) dealloc {
+	[ticker release];
+	[name release];
+
+	[super dealloc];
+}
+
 #pragma mark Accessors
 
 - (double)askPrice {

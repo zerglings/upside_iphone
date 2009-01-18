@@ -56,8 +56,8 @@
 				responseModels: (NSDictionary*)responseModels
 						target: (NSObject*)target
 						action: (SEL)action {
-	NSURLRequest* urlRequest = [self createURLRequestToService:service
-														  data:data];
+	NSURLRequest* urlRequest = [self newURLRequestToService:service
+													   data:data];
 	ZNXmlHttpRequest* request =
 	    [[ZNXmlHttpRequest alloc] initWithURLRequest:urlRequest
 									  responseModels:responseModels
@@ -192,8 +192,8 @@
 
 #pragma mark HTTP Request Creation
 
-+ (NSURLRequest*) createURLRequestToService: (NSString*)service
-									   data: (NSDictionary*)data {
++ (NSURLRequest*) newURLRequestToService: (NSString*)service
+									data: (NSDictionary*)data {
 	NSURL* url = [[NSURL alloc] initWithString:service];	
 	NSMutableURLRequest* request = [[NSMutableURLRequest alloc]
 									initWithURL:url];

@@ -13,10 +13,11 @@
 
 @implementation ActivationCommController
 
-- (void) init {
+- (id) init {
 	if ((self = [super init])) {
 		activationService = @"http://moonstone.local:3000/devices/register.xml";
 	}
+	return self;
 }
 
 - (void) dealloc {
@@ -28,8 +29,8 @@
 - (void) activateDevice {
 	NSString* uniqueID = [[UIDevice currentDevice] uniqueIdentifier];
 	NSURLRequest* request =
-	[ZNXmlHttpRequest createURLRequestToService:activationService
-										   data:
+	[ZNXmlHttpRequest newURLRequestToService:activationService
+										data:
 	[NSDictionary dictionaryWithObjectsAndKeys:
 	  uniqueID, @"unique_id", nil]];
 		

@@ -11,4 +11,9 @@
 
 @implementation Device
 
+- (void) dealloc {
+	[uniqueId release];
+	[super dealloc];
+}
+
 @end
