@@ -79,11 +79,12 @@
 		return;
 	}
 	
-	[ZNXmlHttpRequest issueRequestToService:[self urlString]
-									   data:nil
-							 responseModels:[NewsCenter rssModels]
-									 target:self
-									 action:@selector(integrateNews:)];
+	[ZNXmlHttpRequest callService:[self urlString]
+						   method:kZNHttpMethodGet
+							 data:nil
+				   responseModels:[NewsCenter rssModels]
+						   target:self
+						   action:@selector(integrateNews:)];
 }
 @end
 

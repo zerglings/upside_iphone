@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol ActivationCommDelegate
+- (void)activationFailed: (NSError*)error;
+- (void)activationSucceeded;
+@end
 
 @interface ActivationCommController : NSObject {
 	NSString* activationService;
+	NSDictionary* resposeModels;
+	
+	IBOutlet id<ActivationCommDelegate> delegate;
 }
 
 - (void) activateDevice;

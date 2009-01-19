@@ -51,12 +51,14 @@
 	[super dealloc];
 }
 
-+ (void) issueRequestToService: (NSString*)service
-						  data: (NSDictionary*)data
-				responseModels: (NSDictionary*)responseModels
-						target: (NSObject*)target
-						action: (SEL)action {
++ (void) callService: (NSString*)service
+			  method: (NSString*)method
+				data: (NSDictionary*)data
+	  responseModels: (NSDictionary*)responseModels
+			  target: (NSObject*)target
+			  action: (SEL)action {
 	NSURLRequest* urlRequest = [self newURLRequestToService:service
+													 method:method
 													   data:data];
 	ZNXmlHttpRequest* request =
 	    [[ZNXmlHttpRequest alloc] initWithURLRequest:urlRequest
@@ -193,16 +195,16 @@
 #pragma mark HTTP Request Creation
 
 + (NSURLRequest*) newURLRequestToService: (NSString*)service
+								  method: (NSString*)method
 									data: (NSDictionary*)data {
 	NSURL* url = [[NSURL alloc] initWithString:service];	
 	NSMutableURLRequest* request = [[NSMutableURLRequest alloc]
 									initWithURL:url];
 	[url release];
 	
-	[request setHTTPMethod:@"POST"];
+	[request setHTTPMethod:method];
 	NSData* encodedBody = [ZNFormURLEncoder createEncodingFor:data];
 	[request setHTTPBody:encodedBody];
-	[encodedBody release];
 	
 	[request addValue:@"application/x-www-form-urlencoded"
    forHTTPHeaderField:@"Content-Type"];
@@ -210,7 +212,15 @@
    forHTTPHeaderField:@"Content-Length"];
 	[request addValue:@"Zergling.Net Web Support/1.0"
    forHTTPHeaderField:@"User-Agent"];
+	
+	[encodedBody release];
 	return request;
 }
 
 @end
+#pragma mark Constants
+
+NSString* kZNHttpMethodGet = @"GET";
+NSString* kZNHttpMethodPost = @"POST";
+NSString* kZNHttpMethodPut = @"PUT";
+NSString* kZNHttpMethodDelete = @"DELETE";

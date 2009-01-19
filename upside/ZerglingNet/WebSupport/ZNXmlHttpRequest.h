@@ -21,13 +21,15 @@
 }
 
 // Convenience method for invoking the class.
-+ (void) issueRequestToService: (NSString*)service
-						  data: (NSDictionary*)data
-				responseModels: (NSDictionary*)responseModels
-						target: (NSObject*)target
-						action: (SEL)action;
++ (void) callService: (NSString*)service
+			  method: (NSString*)method
+				data: (NSDictionary*)data
+	  responseModels: (NSDictionary*)responseModels
+			  target: (NSObject*)target
+			  action: (SEL)action;
 
 + (NSURLRequest*) newURLRequestToService: (NSString*)service
+								  method: (NSString*)method
 									data: (NSDictionary*)data;
 
 - (id) initWithURLRequest: (NSURLRequest*)request
@@ -38,3 +40,12 @@
 - (void) start;
 
 @end
+
+// GET
+extern NSString* kZNHttpMethodGet;
+// POST
+extern NSString* kZNHttpMethodPost;
+// PUT
+extern NSString* kZNHttpMethodPut;
+// DELETE
+extern NSString* kZNHttpMethodDelete;

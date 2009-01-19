@@ -18,7 +18,7 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-	if ([[ActivationState sharedState] activated]) {
+	if ([[ActivationState sharedState] isActivated]) {
 		self.viewController = [TabBarController loadFromNib:@"TabBar"
 													  owner:self];
 	}

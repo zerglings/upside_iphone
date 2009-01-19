@@ -11,11 +11,10 @@
 @class ActivationCommController;
 
 @interface ActivationViewController : UIViewController {
-	IBOutlet UIButton* activateButton;
+	IBOutlet UIButton* abortButton;
 	
-	ActivationCommController* activationCommController;
+	IBOutlet ActivationCommController* commController;
 }
 
-- (IBAction) activateButtonWasTapped;
-
+- (IBAction) abortTapped: (id)sender;
 @end

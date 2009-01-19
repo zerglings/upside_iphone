@@ -8,9 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ModelSupport.h"
 
-@interface Device : NSObject {
+@interface Device : ZNModel {
+	NSUInteger modelId;
+	NSUInteger userId;
 	NSString* uniqueId;
 }
+
+// The id of this device in the database.
+@property (nonatomic, readonly) NSUInteger modelId;
+// The user that the device belongs to.
+@property (nonatomic, readonly) NSUInteger userId;
+// The device's 40-character UDID.
+@property (nonatomic, readonly, retain) NSString* uniqueId;
+
+// Wraps UIDevice, adjusting simulator IDs to be 40-characters. 
++ (NSString*) currentDeviceId;
 
 @end

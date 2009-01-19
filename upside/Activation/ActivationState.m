@@ -8,21 +8,26 @@
 
 #import "ActivationState.h"
 
+#import "Device.h"
 
 @implementation ActivationState
 
 # pragma mark I/O
 
 // Key for the activated property.
-NSString* kActivated = @"activated";
+NSString* kDeviceInfo = @"deviceInfo";
 
 NSString* kStateFileName = @".ActivationState";
 
 - (NSData*)archiveToData {
+	if (!deviceInfo)
+		return nil;
+	
 	NSMutableData* stateData = [NSMutableData data];
 	NSKeyedArchiver* archiver = [[NSKeyedArchiver alloc]
 								 initForWritingWithMutableData:stateData];
-	[archiver encodeBool:activated forKey:kActivated];
+	[archiver encodeObject:[deviceInfo attributeDictionaryForcingStrings:YES]
+					forKey:kDeviceInfo];
 	[archiver finishEncoding];
 	[archiver release];
 	
@@ -30,9 +35,18 @@ NSString* kStateFileName = @".ActivationState";
 }
 
 - (void)unarchiveFromData: (NSData*)data {
+	[deviceInfo release];
+	
+	if (!data) {
+		deviceInfo = nil;
+		return;
+	}
+	
 	NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc]
 									 initForReadingWithData:data];
-	activated = [unarchiver decodeBoolForKey:kActivated];
+	NSDictionary* deviceProperties = [unarchiver
+									  decodeObjectForKey:kDeviceInfo];
+	deviceInfo = [[Device alloc] initWithProperties:deviceProperties];
 	[unarchiver release];
 }
 
@@ -46,17 +60,18 @@ NSString* kStateFileName = @".ActivationState";
 
 - (void) load {
 	NSData* data = [NSData dataWithContentsOfFile:[ActivationState filePath]];
-	if (data) {
-		[self unarchiveFromData:data];
-	}
-	else {
-		activated = NO;
-	}
+	[self unarchiveFromData:data];
 }
 
 - (void) save {
 	NSData* data = [self archiveToData];
-	[data writeToFile:[ActivationState filePath] atomically:YES];
+	if (!data) {
+		[[NSFileManager defaultManager]
+		 removeItemAtPath:[ActivationState filePath] error:nil];
+	}
+	else {
+		[data writeToFile:[ActivationState filePath] atomically:YES];
+	}
 }
 
 + (void) removeSavedState {
@@ -74,10 +89,21 @@ NSString* kStateFileName = @".ActivationState";
 }
 
 - (void) dealloc {
+	[deviceInfo release];
 	[super dealloc];
 }
 
-@synthesize activated;
+@synthesize deviceInfo;
+
+- (BOOL) isActivated {
+	return deviceInfo != nil;
+}
+
+- (void) activateWithInfo: (Device*) theDeviceInfo {
+	[theDeviceInfo retain];
+	[deviceInfo release];
+	deviceInfo = theDeviceInfo;
+}
 
 #pragma mark Singleton
 

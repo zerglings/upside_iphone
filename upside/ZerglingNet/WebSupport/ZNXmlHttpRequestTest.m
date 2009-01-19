@@ -75,14 +75,15 @@
 						  requestModel, @"model",
 						  @"someString", @"stringKey",
 						  nil];
-	[ZNXmlHttpRequest issueRequestToService:service
-									   data:dict
-							 responseModels:[NSDictionary
-											 dictionaryWithObjectsAndKeys:
-											 [ZNXmlHttpRequestTestModel class],
-											 @"hash", nil]
-									 target:self
-									 action:@selector(checkOnlineResponse:)];
+	[ZNXmlHttpRequest callService:service
+						   method:kZNHttpMethodGet
+							 data:dict
+				   responseModels:[NSDictionary
+								   dictionaryWithObjectsAndKeys:
+								   [ZNXmlHttpRequestTestModel class], @"hash",
+								   nil]
+						   target:self
+						   action:@selector(checkOnlineResponse:)];
 	
 	[[NSRunLoop currentRunLoop] runUntilDate:
 	 [NSDate dateWithTimeIntervalSinceNow:1.0]];
@@ -122,17 +123,14 @@
 						  @"ZNXmlHttpRequestTest.xml"];
 	NSString* fileUrl = [[NSURL fileURLWithPath:filePath] absoluteString];
 	
-	[ZNXmlHttpRequest issueRequestToService:fileUrl
-									   data:nil
-							 responseModels:[NSDictionary
-											 dictionaryWithObjectsAndKeys:
-											 [ZNXmlHttpRequestTestModel class],
-											 @"model",
-											 [NSNull null],
-											 @"nonmodel",
-											 nil]
-									 target:self
-									 action:@selector(checkFileResponse:)];
+	[ZNXmlHttpRequest callService:fileUrl
+						   method:kZNHttpMethodGet
+							 data:nil
+				   responseModels:[NSDictionary dictionaryWithObjectsAndKeys:
+								   [ZNXmlHttpRequestTestModel class], @"model",
+								   [NSNull null], @"nonmodel", nil]
+						   target:self
+						   action:@selector(checkFileResponse:)];
 	
 	[[NSRunLoop currentRunLoop] runUntilDate:
 	 [NSDate dateWithTimeIntervalSinceNow:1.0]];
