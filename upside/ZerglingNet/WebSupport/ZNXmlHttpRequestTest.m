@@ -50,7 +50,7 @@
 @implementation ZNXmlHttpRequestTest
 
 - (void) setUp {
-	service = @"http://localhost:3000/web_support/echo.xml";
+	service = @"http://zn-testbed.zergling.net/web_support/echo.xml";
 	receivedResponse = NO;
 }
 
