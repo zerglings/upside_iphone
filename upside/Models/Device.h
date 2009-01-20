@@ -16,7 +16,7 @@
 	NSString* uniqueId;
 }
 
-// The id of this device in the database.
+// The id of this device in the server database.
 @property (nonatomic, readonly) NSUInteger modelId;
 // The user that the device belongs to.
 @property (nonatomic, readonly) NSUInteger userId;

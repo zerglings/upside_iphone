@@ -157,9 +157,9 @@
 	
 	[newsCenter addTitle:@"local"
 				 withUrl:[[NSURL fileURLWithPath:filePath] absoluteString]
-			  andRefresh:2.0];
+			  andRefresh:2.2];
 	[[NSRunLoop currentRunLoop]
-	 runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];	
+	 runUntilDate:[NSDate dateWithTimeIntervalSinceNow:2.0]];	
 	[self checkRssData];
 	[newsCenter removeTitle:@"local"];
 }

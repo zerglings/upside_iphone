@@ -9,15 +9,18 @@
 #import "ActivationState.h"
 
 #import "Device.h"
+#import "User.h"
 
 @implementation ActivationState
 
 # pragma mark I/O
 
-// Key for the activated property.
-NSString* kDeviceInfo = @"deviceInfo";
+// Key for the device information.
+static NSString* kDeviceInfo = @"deviceInfo";
+// Key for the current user.
+static NSString* kUser = @"user";
 
-NSString* kStateFileName = @".ActivationState";
+static NSString* kStateFileName = @".ActivationState";
 
 - (NSData*)archiveToData {
 	if (!deviceInfo)
@@ -26,8 +29,12 @@ NSString* kStateFileName = @".ActivationState";
 	NSMutableData* stateData = [NSMutableData data];
 	NSKeyedArchiver* archiver = [[NSKeyedArchiver alloc]
 								 initForWritingWithMutableData:stateData];
-	[archiver encodeObject:[deviceInfo attributeDictionaryForcingStrings:YES]
+	[archiver encodeObject:[deviceInfo attributeDictionaryForcingStrings:NO]
 					forKey:kDeviceInfo];
+	if (user != nil) {
+		[archiver encodeObject:[user attributeDictionaryForcingStrings:NO]
+						forKey:kUser];
+	}
 	[archiver finishEncoding];
 	[archiver release];
 	
@@ -36,17 +43,24 @@ NSString* kStateFileName = @".ActivationState";
 
 - (void)unarchiveFromData: (NSData*)data {
 	[deviceInfo release];
+	deviceInfo = nil;
+	[user release];
+	user = nil;
 	
-	if (!data) {
-		deviceInfo = nil;
+	if (!data)
 		return;
-	}
 	
 	NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc]
 									 initForReadingWithData:data];
 	NSDictionary* deviceProperties = [unarchiver
 									  decodeObjectForKey:kDeviceInfo];
-	deviceInfo = [[Device alloc] initWithProperties:deviceProperties];
+	if (deviceProperties)
+		deviceInfo = [[Device alloc] initWithProperties:deviceProperties];
+	
+	NSDictionary* userProperties = [unarchiver
+									decodeObjectForKey:kUser];
+	if (userProperties)
+		user = [[User alloc] initWithProperties:userProperties];
 	[unarchiver release];
 }
 
@@ -59,6 +73,13 @@ NSString* kStateFileName = @".ActivationState";
 }
 
 - (void) load {
+	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+	if ([defaults boolForKey:@"reset_activation"]) {
+		[defaults setBool:NO forKey:@"reset_activation"];
+		[defaults synchronize];
+		[ActivationState removeSavedState];
+	}
+	
 	NSData* data = [NSData dataWithContentsOfFile:[ActivationState filePath]];
 	[self unarchiveFromData:data];
 }
@@ -90,16 +111,30 @@ NSString* kStateFileName = @".ActivationState";
 
 - (void) dealloc {
 	[deviceInfo release];
+	[user release];
 	[super dealloc];
 }
 
-@synthesize deviceInfo;
+@synthesize deviceInfo, user;
 
-- (BOOL) isActivated {
+- (BOOL) isRegistered {
 	return deviceInfo != nil;
 }
 
-- (void) activateWithInfo: (Device*) theDeviceInfo {
+- (BOOL) canLogin {
+	return [user password] != nil;
+}
+
+- (BOOL) isActivated {
+	return [self isRegistered] && [self canLogin];
+}
+
+
+- (void) setDeviceInfo: (Device*) theDeviceInfo {
+	NSAssert(deviceInfo == nil,
+			 @"Trying to activate twice");
+	NSAssert(theDeviceInfo != nil,
+			 @"Trying to activate with nil device");
 	[theDeviceInfo retain];
 	[deviceInfo release];
 	deviceInfo = theDeviceInfo;

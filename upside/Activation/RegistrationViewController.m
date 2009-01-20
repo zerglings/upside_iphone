@@ -1,23 +1,23 @@
 //
-//  upsideViewController.m
+//  RegistrationViewController.m
 //  upside
 //
 //  Created by Victor Costan on 1/2/09.
 //  Copyright __MyCompanyName__ 2009. All rights reserved.
 //
 
-#import "ActivationViewController.h"
+#import "RegistrationViewController.h"
 
-#import "ActivationCommController.h"
+#import "RegistrationCommController.h"
 #import "ActivationState.h"
 #import "UpsideAppDelegate.h"
 
-@interface ActivationViewController ()
-    <ActivationCommDelegate, UIActionSheetDelegate>
+@interface RegistrationViewController ()
+    <RegistrationCommDelegate, UIActionSheetDelegate>
 @end
 
 
-@implementation ActivationViewController
+@implementation RegistrationViewController
 
 
 /*
@@ -30,14 +30,17 @@
 }
 */
 
+@synthesize activationState;
+
 - (void) dealloc {
+	[activationState release];
 	[super dealloc];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[commController activateDevice];
+	[commController registerDeviceUsing:activationState];
 }
 
 
@@ -82,7 +85,7 @@
 #pragma mark ActivationCommController Delegate
 
 - (void) activationSucceeded {
-	// load the next view
+	// The application delegate will proceed to the next step.
 	[self.view removeFromSuperview];
 	[[UpsideAppDelegate sharedDelegate]
 	 applicationDidFinishLaunching:[UIApplication sharedApplication]];
@@ -119,7 +122,7 @@
 		[self exitApplication];
 	}
 	else {
-		[commController activateDevice];
+		[commController registerDeviceUsing:activationState];
 	}
 }
 

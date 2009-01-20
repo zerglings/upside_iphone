@@ -32,6 +32,7 @@
 - (void) tearDown {
 	if (testProperties) {
 		free(testProperties);
+		testProperties = NULL;
 	}
 }
 

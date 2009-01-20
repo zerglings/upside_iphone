@@ -52,6 +52,7 @@
 - (void) setUp {
 	service = @"http://zn-testbed.zergling.net/web_support/echo.xml";
 	receivedResponse = NO;
+	[ZNXmlHttpRequest deleteCookiesForService:service];
 }
 
 - (void) tearDown {
@@ -60,8 +61,37 @@
 }
 
 - (void) dealloc {
-	[service release];
 	[super dealloc];
+}
+
+- (void) testOnlineGet {
+	[ZNXmlHttpRequest callService:service
+						   method:kZNHttpMethodGet
+							 data:nil
+				   responseModels:[NSDictionary
+								   dictionaryWithObjectsAndKeys:
+								   [ZNXmlHttpRequestTestModel class], @"hash",
+								   nil]
+						   target:self
+						   action:@selector(checkOnlineGetResponse:)];
+	[[NSRunLoop currentRunLoop] runUntilDate:
+	 [NSDate dateWithTimeIntervalSinceNow:1.0]];
+	
+	STAssertEquals(YES, receivedResponse,
+				   @"Response never received");
+}
+
+- (void) checkOnlineGetResponse: (NSArray*)responseArray {
+	receivedResponse = YES;
+	STAssertFalse([responseArray isKindOfClass:[NSError class]],
+				  @"Error occured %@", responseArray);
+	
+	ZNXmlHttpRequestTestModel* response = [responseArray objectAtIndex:0];
+	STAssertTrue([response isKindOfClass:[ZNXmlHttpRequestTestModel class]],
+				 @"Response not deserialized using proper model");
+	
+	STAssertEqualStrings(@"get", response.method,
+						 @"Request not issued using GET");
 }
 
 - (void) testOnlineRequest {
@@ -76,7 +106,7 @@
 						  @"someString", @"stringKey",
 						  nil];
 	[ZNXmlHttpRequest callService:service
-						   method:kZNHttpMethodGet
+						   method:kZNHttpMethodPut
 							 data:dict
 				   responseModels:[NSDictionary
 								   dictionaryWithObjectsAndKeys:
@@ -101,8 +131,8 @@
 	STAssertTrue([response isKindOfClass:[ZNXmlHttpRequestTestModel class]],
 				 @"Response not deserialized using proper model");
 	
-	STAssertEqualStrings(@"post", response.method,
-						 @"Request not issued using POST");
+	STAssertEqualStrings(@"put", response.method,
+						 @"Request not issued using PUT");
 	
 	NSString* headersPath = [[[NSBundle mainBundle] resourcePath]
 							 stringByAppendingPathComponent:

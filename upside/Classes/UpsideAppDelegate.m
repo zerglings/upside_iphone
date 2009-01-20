@@ -8,9 +8,12 @@
 
 #import "UpsideAppDelegate.h"
 
-#import "ActivationViewController.h"
+#import "ActivationLoginViewController.h"
 #import "ActivationState.h"
+#import "ActivationUserChoiceViewController.h"
+#import "RegistrationViewController.h"
 #import "TabBarController.h"
+#import "User.h"
 
 @implementation UpsideAppDelegate
 
@@ -18,14 +21,32 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-	if ([[ActivationState sharedState] isActivated]) {
-		self.viewController = [TabBarController loadFromNib:@"TabBar"
-													  owner:self];
+	if (![[ActivationState sharedState] isRegistered]) {		
+		self.viewController = [[[RegistrationViewController alloc]
+								initWithNibName:@"RegistrationViewController"
+								bundle:nil] autorelease];		
+	}
+	else if (![[ActivationState sharedState] isActivated]) {
+		if ([[[ActivationState sharedState] user] isPseudoUser]) {
+			self.viewController = [[[ActivationUserChoiceViewController alloc]
+									initWithNibName:@"ActivationUserChoiceViewController"
+									bundle:nil] autorelease];
+		}
+		else {
+			self.viewController = [[[ActivationLoginViewController alloc]
+									initWithNibName:@"ActivationLoginViewController"
+									bundle:nil] autorelease];
+		}
 	}
 	else {
-		self.viewController = [[[ActivationViewController alloc]
-								initWithNibName:@"ActivationViewController"
-								bundle:nil] autorelease];
+		self.viewController = [TabBarController loadFromNib:@"TabBar"
+													  owner:self];		
+	}
+	
+	SEL selector = @selector(setActivationState:);
+	if ([self.viewController respondsToSelector:selector]) {
+		[self.viewController performSelector:selector
+		                          withObject:[ActivationState sharedState]];
 	}
     [window addSubview:viewController.view];
 }

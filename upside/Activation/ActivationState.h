@@ -9,17 +9,25 @@
 #import <Foundation/Foundation.h>
 
 @class Device;
+@class User;
 
 @interface ActivationState : NSObject {
 	Device* deviceInfo;
+	User* user;
 }
 
-@property (nonatomic, readonly, retain) Device* deviceInfo;
+// Device data from the server. Nil if the device is not registered.
+@property (nonatomic, retain) Device* deviceInfo;
+// The user playing on this device. Nil if the device is not registered.
+@property (nonatomic, retain) User* user;
 
-// Activate the device with the given data from the server.
-- (void) activateWithInfo: (Device*)deviceFromServer;
+// YES if the device is registered, NO if it needs to be registered.
+- (BOOL) isRegistered;
 
-// YES if the device is activated, NO if it needs to be activated.
+// YES if we have enough information to login the device's user, NO otherwise.
+- (BOOL) canLogin;
+
+// YES if the application is activated and can be used.
 - (BOOL) isActivated;
 
 # pragma mark Singleton

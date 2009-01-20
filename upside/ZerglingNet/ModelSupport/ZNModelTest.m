@@ -157,6 +157,30 @@
 	[thawedModel release];
 }
 
+- (void) testNullBoxing {
+	ZNTestNumbers* nullCarrier = [[[ZNTestNumbers alloc] init] autorelease];
+	nullCarrier.stringVal = nil;
+	
+	NSDictionary* dict = [nullCarrier copyToDictionaryForcingStrings:NO];
+	STAssertNil([dict objectForKey:@"stringVal"],
+				@"Nil strings should be ignored while boxing");
+	ZNTestNumbers* thawedNulls = [[ZNTestNumbers alloc]
+								  initWithProperties:dict];
+	STAssertNil(thawedNulls.stringVal,
+				@"Nil strings should be unboxed to nil strings");
+	[dict release];
+	[thawedNulls release];
+
+	dict = [nullCarrier copyToDictionaryForcingStrings:YES];
+	STAssertNil([dict objectForKey:@"stringVal"],
+				@"Nil strings should be ignored while string-boxing");
+	thawedNulls = [[ZNTestNumbers alloc] initWithProperties:dict];
+	STAssertNil(thawedNulls.stringVal,
+				@"Nil strings should be string-unboxed to nil strings");
+	[dict release];
+	[thawedNulls release];
+}
+
 - (void) testIsModelClass {
 	STAssertTrue([ZNModel isModelClass:[ZNTestDate class]],
 				 @"ZNTestDate is a model class");

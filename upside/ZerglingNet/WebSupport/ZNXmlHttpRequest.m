@@ -217,6 +217,17 @@
 	return request;
 }
 
+#pragma mark Cookie Management
+
++ (void) deleteCookiesForService: (NSString*)service {
+	NSHTTPCookieStorage* cookieBox = [NSHTTPCookieStorage
+									  sharedHTTPCookieStorage];
+	NSArray* cookies = [cookieBox cookiesForURL:[NSURL URLWithString:service]];
+	for (NSHTTPCookie* cookie in cookies) {
+		[cookieBox deleteCookie:cookie];
+	}	
+}
+
 @end
 #pragma mark Constants
 

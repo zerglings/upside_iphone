@@ -28,6 +28,8 @@
 			  target: (NSObject*)target
 			  action: (SEL)action;
 
++ (void) deleteCookiesForService: (NSString*)service;
+
 + (NSURLRequest*) newURLRequestToService: (NSString*)service
 								  method: (NSString*)method
 									data: (NSDictionary*)data;

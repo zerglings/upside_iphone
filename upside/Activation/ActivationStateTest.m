@@ -10,10 +10,12 @@
 
 #import "ActivationState.h"
 #import "Device.h"
+#import "User.h"
 
 @interface ActivationStateTest : SenTestCase {
 	ActivationState* activationState;
 	Device* testDevice;
+	User* testUser;
 }
 
 @end
@@ -28,11 +30,16 @@
 	testDevice = [[Device alloc] initWithProperties:
 				  [NSDictionary dictionaryWithObjectsAndKeys:
 				   [Device currentDeviceId], @"uniqueId", nil]];
+	testUser = [[User alloc] initPseudoUser:testDevice];
+}
+
+- (void) tearDown {
+	[activationState release];
+	[testDevice release];
+	[testUser release];
 }
 
 - (void) dealloc {
-	[activationState release];
-	[testDevice release];
 	[super dealloc];
 }
 
@@ -43,41 +50,45 @@
 }
 
 - (void) testEncoding {
-	[activationState activateWithInfo:testDevice];
+	activationState.deviceInfo = testDevice;
+	activationState.user = testUser;
 	NSData* encoded = [activationState archiveToData];
 	
 	ActivationState* newActivationState = [[ActivationState alloc] init];
 	[newActivationState unarchiveFromData:encoded];	
-	STAssertTrue([newActivationState isActivated],
+	STAssertTrue([newActivationState isRegistered],
 				 @"-decodeFromData did not restore activation state");
 	
 	STAssertEqualStrings(testDevice.uniqueId,
 						 newActivationState.deviceInfo.uniqueId,
 						 @"Device's unique ID restored incorrectly");
+	STAssertEqualStrings(testUser.name,
+						 newActivationState.user.name,
+						 @"User's name restored incorrectly");
 	[newActivationState release];
 }
 
 - (void) testDecodingNil {	
 	[activationState unarchiveFromData:nil];
-	STAssertFalse([activationState isActivated],
+	STAssertFalse([activationState isRegistered],
 				  @"-decodeFromData with nil did not set de-activation state");
 }
 
 - (void) testLoadInitialization {
-	[activationState activateWithInfo:testDevice];
+	activationState.deviceInfo = testDevice;
 	[activationState load];
 	
-	STAssertEquals(NO, [activationState isActivated],
+	STAssertEquals(NO, [activationState isRegistered],
 				   @"dry -load does not set activated to NO");
 }
 
 - (void) testSaving {
-	[activationState activateWithInfo:testDevice];
+	activationState.deviceInfo = testDevice;
 	[activationState save];
 	
 	ActivationState* newActivationState = [[ActivationState alloc] init];
 	[newActivationState load];
-	STAssertTrue([newActivationState isActivated],
+	STAssertTrue([newActivationState isRegistered],
 				 @"-load does not restore activated state");
 	[newActivationState release];
 }

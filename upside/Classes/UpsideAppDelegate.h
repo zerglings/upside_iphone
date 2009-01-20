@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class ActivationViewController;
-
 @interface UpsideAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	UIViewController* viewController;

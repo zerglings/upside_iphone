@@ -25,10 +25,12 @@
 		 	 inInstance: (ZNModel*)instance
 			       from: (NSObject*)boxedObject {
 	NSString* string;
-	if ([boxedObject isKindOfClass:[NSString class]])
+	if ([boxedObject isKindOfClass:[NSString class]]) {
 		string = (NSString*)boxedObject;
-	else
+	}
+	else {
 		string = [boxedObject description];
+	}
 	
 	Ivar runtimeIvar = [attribute runtimeIvar];
 	switch ([attribute setterStrategy]) {

@@ -53,7 +53,7 @@
 	ZNModelDefinition* definition = [[ZNMSRegistry sharedRegistry]
 									 definitionForModelClass:[self class]];
 	NSDictionary* defAttributes = [definition attributes];
-	for(NSString* attributeName in dictionary) {
+	for(NSString* attributeName in defAttributes) {
 		NSObject* boxedObject = [dictionary objectForKey:attributeName];
 		ZNModelDefinitionAttribute* attribute = [defAttributes
 												 objectForKey:attributeName];
@@ -90,7 +90,8 @@ copyToMutableDictionaryForcingStrings: (BOOL)forceStrings {
 		NSObject* boxedValue = [attributeType boxAttribute:attribute															  
 												inInstance:self
 											   forceString:forceStrings];
-		[attributes setObject:boxedValue forKey:attributeName];
+		if (boxedValue != nil)
+			[attributes setObject:boxedValue forKey:attributeName];
 	}
 	return attributes;
 }
