@@ -77,8 +77,7 @@ static NSString* kContextObject = @"This is the context";
 	[self checkLines];
 }
 
-- (void) parsedLine: (NSArray*)lineData
-			context: (NSObject*)context {
+- (void) parsedLine: (NSArray*)lineData context: (id)context {
 	STAssertEquals(kContextObject, context,
 				   @"Wrong context passed to -parsedLine");
 		

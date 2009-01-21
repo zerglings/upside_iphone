@@ -66,11 +66,11 @@
 
 - (void) parsedItem: (NSDictionary*)itemData
 			   name: (NSString*)itemName
-			context: (NSObject*)context {
+			context: (id)context {
 	id modelClass = [responseModels objectForKey:itemName];
 	if ([ZNModel isModelClass:modelClass]) {
 		NSObject* responseModel = [[modelClass alloc]
-								   initWithProperties:itemData];
+								   initWithModel:nil properties:itemData];
 		[response addObject:responseModel];
 		[responseModel release];
 	}

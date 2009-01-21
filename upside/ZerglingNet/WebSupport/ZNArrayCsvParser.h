@@ -12,8 +12,7 @@
 @protocol ZNArrayCsvParserDelegate
 
 // Called when a CSV line is parsed.
-- (void) parsedLine: (NSArray*)lineData
-			context: (NSObject*)context;
+- (void) parsedLine: (NSArray*)lineData context: (id)context;
 @end
 
 @interface ZNArrayCsvParser : NSObject {
@@ -22,21 +21,17 @@
 	// Accumulates strings on a CSV line.
 	NSMutableArray* currentLine;
 	
-	NSObject<ZNArrayCsvParserDelegate>* delegate;
-	NSObject* context;
+	id<ZNArrayCsvParserDelegate> delegate;
+	id context;
 }
 
-@property (nonatomic, retain) NSObject* context;
-@property (nonatomic, assign) NSObject<ZNArrayCsvParserDelegate>* delegate;
+@property (nonatomic, assign) id context;
+@property (nonatomic, assign) id<ZNArrayCsvParserDelegate> delegate;
 
 // Initializes a parser, which can be used multiple times.
 - (id) init;
 
 // Parses a CSV document inside a NSData instance.
 - (BOOL) parseData: (NSData*) data;
-
-
-// Subclasses may override this to change the parsed line reporting mechanism.
-- (void) reportLine;
 
 @end

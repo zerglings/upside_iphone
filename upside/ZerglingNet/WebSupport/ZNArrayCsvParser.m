@@ -99,16 +99,12 @@
 			}
 			
 		}  // end of inner loop that parses a cell
-		[self reportLine];
+		NSArray* lineData = [[NSArray alloc] initWithArray:currentLine];
+		[delegate parsedLine:lineData context:context];
+		[lineData release];
 		[currentLine removeAllObjects];
 	}  // end of outer loop that parses a line
 	return YES;
-}
-
-- (void) reportLine {
-	NSArray* lineData = [[NSArray alloc] initWithArray:currentLine];
-	[delegate parsedLine:lineData context:context];
-	[lineData release];
 }
 
 @end

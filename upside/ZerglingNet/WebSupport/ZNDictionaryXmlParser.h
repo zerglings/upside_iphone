@@ -13,13 +13,13 @@
 // Called when an item corresponding to a known XML tag is parsed.
 - (void) parsedItem: (NSDictionary*)itemData
 			   name: (NSString*)itemName
-			context: (NSObject*)context;
+			context: (id)context;
 @end
 
 
 @interface ZNDictionaryXmlParser : NSObject {
-	NSObject<ZNDictionaryXmlParserDelegate>* delegate;
-	NSObject* context;
+	id<ZNDictionaryXmlParserDelegate> delegate;
+	id context;
 	NSDictionary* schema;
 	
 	// underlying XML parser
@@ -39,8 +39,8 @@
 }
 
 @property (nonatomic, retain) NSDictionary* schema;
-@property (nonatomic, assign) NSObject* context;
-@property (nonatomic, assign) NSObject<ZNDictionaryXmlParserDelegate>* delegate;
+@property (nonatomic, assign) id context;
+@property (nonatomic, assign) id<ZNDictionaryXmlParserDelegate> delegate;
 
 // Initialized a parser for a schema, which can be used multiple times.
 - (id) initWithSchema: (NSDictionary*)schema;
