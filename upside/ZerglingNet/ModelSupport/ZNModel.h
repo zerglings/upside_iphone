@@ -18,6 +18,8 @@
 #pragma mark Initializers
 
 // Designated initializer.
+- (id) initWithModel: (ZNModel*)model properties: (NSDictionary*)dictionary;
+
 - (id) initWithProperties: (NSDictionary*)dictionary;
 
 - (id) initWithModel: (ZNModel*)model;

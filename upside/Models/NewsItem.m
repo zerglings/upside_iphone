@@ -28,10 +28,10 @@
 }
 
 - (id) initWithItem: (NewsItem*)item markAsRead: (BOOL)isReadValue {
-	if ((self = [self initWithModel:item])) {
-		isRead = isReadValue;
-	}
-	return self;
+	return [self initWithModel:item properties:
+			[NSDictionary dictionaryWithObject:[NSNumber
+												numberWithBool:isReadValue]
+										forKey:@"isRead"]];
 }
 
 @end

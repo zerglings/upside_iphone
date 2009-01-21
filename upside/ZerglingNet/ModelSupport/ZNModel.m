@@ -24,20 +24,29 @@
 
 #pragma mark Lifecycle
 
-- (id) initWithProperties: (NSDictionary*)dictionary {
+// Designated initializer.
+- (id) initWithModel: (ZNModel*)model properties: (NSDictionary*)dictionary {
 	if ((self = [super init])) {
-		props = nil;
-		[self loadFromDictionary:dictionary];
+		if (!model) {
+			[self loadFromDictionary:dictionary];
+		}
+		else { 
+			NSMutableDictionary* dict =
+			    [model copyToMutableDictionaryForcingStrings:NO];
+			[dict addEntriesFromDictionary:dictionary];
+			[self loadFromDictionary:dict];
+			[dict release];
+		}
 	}
 	return self;
 }
 
+- (id) initWithProperties: (NSDictionary*)dictionary {
+	return [self initWithModel:nil properties:dictionary];
+}
+
 - (id) initWithModel: (ZNModel*)model {
-	NSMutableDictionary* modelAttributes =
-	    [model copyToMutableDictionaryForcingStrings:NO];
-	id returnModel = [self initWithProperties:modelAttributes];
-	[modelAttributes release];
-	return returnModel;
+	return [self initWithModel:model properties:nil];
 }
 
 - (void) dealloc {

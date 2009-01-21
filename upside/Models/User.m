@@ -37,27 +37,25 @@
 }
 
 - (id) initPseudoUser: (Device*)device {
-	return [self initWithProperties:[NSDictionary dictionaryWithObjectsAndKeys:
-									 [self hexDigest:device.uniqueId], @"name",
-									 device.uniqueId, @"password",
-									 [NSNumber numberWithBool:YES],
-									 @"isPseudoUser", nil]];
+	return [self initWithModel:nil
+					properties:[NSDictionary dictionaryWithObjectsAndKeys:
+								[self hexDigest:device.uniqueId], @"name",
+								device.uniqueId, @"password",
+								[NSNumber numberWithBool:YES], @"isPseudoUser",
+								nil]];
 }
 
 - (id) initWithName: (NSString*)theName password: (NSString*)thePassword {
-	return [self initWithProperties:[NSDictionary dictionaryWithObjectsAndKeys:
-									 theName, @"name", thePassword, @"password",
-									 [NSNumber numberWithBool:NO],
-									 @"isPseudoUser", nil]];
+	return [self initWithModel:nil
+					properties:[NSDictionary dictionaryWithObjectsAndKeys:
+								theName, @"name", thePassword, @"password",
+								[NSNumber numberWithBool:NO], @"isPseudoUser",
+								nil]];
 }
 
 - (id) initWithUser: (User*)user password: (NSString*)thePassword {
-	if ((self = [self initWithModel:user])) {
-		[password release];
-		password = [thePassword retain];
-	}
-	return self;
+	return [self initWithModel:user properties:
+			[NSDictionary dictionaryWithObject:thePassword forKey:@"password"]];
 }
-
 
 @end
