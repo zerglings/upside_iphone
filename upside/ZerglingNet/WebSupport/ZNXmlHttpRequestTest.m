@@ -6,11 +6,11 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "GTMSenTestCase.h"
-
-#import "ZNXmlHttpRequest.h"
+#import "TestSupport.h"
 
 #import "ModelSupport.h"
+#import "ZNXmlHttpRequest.h"
+
 
 // Model for the response returned by the testbed.
 @interface ZNXmlHttpRequestTestModel : ZNModel
@@ -134,12 +134,6 @@
 	STAssertEqualStrings(@"put", response.method,
 						 @"Request not issued using PUT");
 	
-	NSString* headersPath = [[[NSBundle mainBundle] resourcePath]
-							 stringByAppendingPathComponent:
-							 @"ZNXmlHttpRequestTest.hdrs"];
-	STAssertEqualStrings([NSString stringWithContentsOfFile:headersPath],
-						 response.headers, @"Wrong headers in request");
-
 	NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
 						  stringByAppendingPathComponent:
 						  @"ZNXmlHttpRequestTest.body"];
@@ -177,6 +171,12 @@
 	ZNXmlHttpRequestTestModel* model = [responseArray objectAtIndex:0];
 	STAssertTrue([model isKindOfClass:[ZNXmlHttpRequestTestModel class]],
 				 @"Model in response not deserialized properly");
+	STAssertEqualStrings(@"Body", model.body,
+						 @"Model's body not deserialized properly");
+	STAssertEqualStrings(@"Headers", model.headers,
+						 @"Model's headers not deserialized properly");
+	STAssertEqualStrings(@"Method", model.method,
+						 @"Model's method not deserialized properly");
 
 	NSDictionary* nonmodel = [responseArray objectAtIndex:1];
 	STAssertTrue([nonmodel isKindOfClass:[NSDictionary class]],

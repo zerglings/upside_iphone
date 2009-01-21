@@ -7,9 +7,7 @@
 //
 
 
-#import <Foundation/Foundation.h>
-
-#import "GTMSenTestCase.h"
+#import "TestSupport.h"
 
 #import "NewsItem.h"
 

@@ -6,9 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-#import "GTMSenTestCase.h"
+#import "TestSupport.h"
 
 #import "NewsCenter.h"
 #import "Portfolio.h"

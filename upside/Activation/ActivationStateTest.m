@@ -6,7 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "GTMSenTestCase.h"
+#import "TestSupport.h"
 
 #import "ActivationState.h"
 #import "Device.h"

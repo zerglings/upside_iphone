@@ -8,19 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ZNHttpRequest.h"
+
 @class ZNDictionaryXmlParser;
 
-@interface ZNXmlHttpRequest : NSObject {
+@interface ZNXmlHttpRequest : ZNHttpRequest {
 	NSMutableArray* response;
 	ZNDictionaryXmlParser* responseParser;
-	NSMutableData* responseData;
 	NSDictionary* responseModels;
-	NSURLRequest* urlRequest;
-	NSObject* target;
-	SEL action;
 }
 
-// Convenience method for invoking the class.
+// Convenience method for issuing a request.
 + (void) callService: (NSString*)service
 			  method: (NSString*)method
 				data: (NSDictionary*)data
@@ -28,26 +26,10 @@
 			  target: (NSObject*)target
 			  action: (SEL)action;
 
-+ (void) deleteCookiesForService: (NSString*)service;
-
-+ (NSURLRequest*) newURLRequestToService: (NSString*)service
-								  method: (NSString*)method
-									data: (NSDictionary*)data;
-
+// Designated initializer.
 - (id) initWithURLRequest: (NSURLRequest*)request
 		   responseModels: (NSDictionary*)responseModels
 				   target: (NSObject*)target
 				   action: (SEL)action;
 
-- (void) start;
-
 @end
-
-// GET
-extern NSString* kZNHttpMethodGet;
-// POST
-extern NSString* kZNHttpMethodPost;
-// PUT
-extern NSString* kZNHttpMethodPut;
-// DELETE
-extern NSString* kZNHttpMethodDelete;

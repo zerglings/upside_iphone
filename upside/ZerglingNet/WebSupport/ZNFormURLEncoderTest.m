@@ -6,12 +6,10 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-
-#import "GTMSenTestCase.h"
-
-#import "ZNFormURLEncoder.h"
+#import "TestSupport.h"
 
 #import "ModelSupport.h"
+#import "ZNFormURLEncoder.h"
 
 @interface ZNFormURLEncoderTestModel: ZNModel {
 	NSString* key11;

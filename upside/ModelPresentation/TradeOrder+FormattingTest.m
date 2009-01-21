@@ -6,9 +6,8 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "TestSupport.h"
 
-#import "GTMSenTestCase.h"
 #import "TradeOrder.h"
 #import "TradeOrder+Formatting.h"
 

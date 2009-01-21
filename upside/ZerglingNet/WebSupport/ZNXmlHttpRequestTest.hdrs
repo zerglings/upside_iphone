@@ -1,7 +1,0 @@
-ACCEPT: */*
-ACCEPT_ENCODING: gzip, deflate
-ACCEPT_LANGUAGE: en-us
-CONNECTION: close
-HOST: zn-testbed.zergling.net
-USER_AGENT: Zergling.Net Web Support/1.0
-VERSION: HTTP/1.0

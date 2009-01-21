@@ -6,7 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#include "GTMSenTestCase.h"
+#include "TestSupport.h"
 
 #include "ZNDictionaryXmlParser.h"
 

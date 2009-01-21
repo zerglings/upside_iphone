@@ -70,6 +70,10 @@
 		571A26930F19874500A996A2 /* NewsArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A26920F19874500A996A2 /* NewsArticleViewController.m */; };
 		571A27090F1ABA5000A996A2 /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
 		574CD0AC0F20275D002CEDDB /* ZNMSBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 574CD0AB0F20275D002CEDDB /* ZNMSBoolean.m */; };
+		575022240F27014600793ECE /* ZNHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022230F27014600793ECE /* ZNHttpRequest.m */; };
+		575022250F27014600793ECE /* ZNHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022230F27014600793ECE /* ZNHttpRequest.m */; };
+		575022270F27016200793ECE /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022260F27016200793ECE /* ZNHttpRequestTest.m */; };
+		575022280F27016200793ECE /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022260F27016200793ECE /* ZNHttpRequestTest.m */; };
 		575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */; };
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
@@ -88,7 +92,7 @@
 		57A1E7670F21815900B8179A /* ZNFormURLEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7650F21815900B8179A /* ZNFormURLEncoder.m */; };
 		57A1E82B0F219AC700B8179A /* ZNXmlHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E82A0F219AC700B8179A /* ZNXmlHttpRequest.m */; };
 		57A1E82C0F219AC700B8179A /* ZNXmlHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E82A0F219AC700B8179A /* ZNXmlHttpRequest.m */; };
-		57A1E8900F21AF6800B8179A /* ZNXmlHttpRequestTest.hdrs in Resources */ = {isa = PBXBuildFile; fileRef = 57A1E82D0F219B0F00B8179A /* ZNXmlHttpRequestTest.hdrs */; };
+		57A1E8900F21AF6800B8179A /* ZNHttpRequestTest.put in Resources */ = {isa = PBXBuildFile; fileRef = 57A1E82D0F219B0F00B8179A /* ZNHttpRequestTest.put */; };
 		57A1EAC60F22D76700B8179A /* ZNXmlHttpRequestTest.body in Resources */ = {isa = PBXBuildFile; fileRef = 57A1E91E0F22B9F700B8179A /* ZNXmlHttpRequestTest.body */; };
 		57A1EAE00F22D82B00B8179A /* ZNModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57119A0A0F1F3D2C00FD89EA /* ZNModelTest.m */; };
 		57A1EAE10F22D82B00B8179A /* ZNModelDefinitionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571198460F1E7D4800FD89EA /* ZNModelDefinitionTest.m */; };
@@ -255,6 +259,13 @@
 		571A27080F1ABA5000A996A2 /* NetworkProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkProgress.m; sourceTree = "<group>"; };
 		574CD0AA0F20275D002CEDDB /* ZNMSBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSBoolean.h; sourceTree = "<group>"; };
 		574CD0AB0F20275D002CEDDB /* ZNMSBoolean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSBoolean.m; sourceTree = "<group>"; };
+		575022220F27014600793ECE /* ZNHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNHttpRequest.h; sourceTree = "<group>"; };
+		575022230F27014600793ECE /* ZNHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNHttpRequest.m; sourceTree = "<group>"; };
+		575022260F27016200793ECE /* ZNHttpRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNHttpRequestTest.m; sourceTree = "<group>"; };
+		575022E80F2713AC00793ECE /* TestSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSupport.h; sourceTree = "<group>"; };
+		5750232D0F2715D900793ECE /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		575023300F27171E00793ECE /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		575023330F2718AD00793ECE /* MIT-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MIT-LICENSE"; sourceTree = "<group>"; };
 		575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenUpArrow.png; sourceTree = "<group>"; };
 		575E39630F0FA00700DEB8E3 /* RedDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDownArrow.png; sourceTree = "<group>"; };
 		577091AC0F0FA8B000069411 /* StockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTableViewCell.h; sourceTree = "<group>"; };
@@ -275,7 +286,7 @@
 		57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNFormURLEncoderTest.m; sourceTree = "<group>"; };
 		57A1E8290F219AC700B8179A /* ZNXmlHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNXmlHttpRequest.h; sourceTree = "<group>"; };
 		57A1E82A0F219AC700B8179A /* ZNXmlHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNXmlHttpRequest.m; sourceTree = "<group>"; };
-		57A1E82D0F219B0F00B8179A /* ZNXmlHttpRequestTest.hdrs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNXmlHttpRequestTest.hdrs; sourceTree = "<group>"; };
+		57A1E82D0F219B0F00B8179A /* ZNHttpRequestTest.put */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZNHttpRequestTest.put; sourceTree = "<group>"; };
 		57A1E82E0F219B0F00B8179A /* ZNXmlHttpRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNXmlHttpRequestTest.m; sourceTree = "<group>"; };
 		57A1E8360F21A12600B8179A /* WebSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSupport.h; sourceTree = "<group>"; };
 		57A1E91E0F22B9F700B8179A /* ZNXmlHttpRequestTest.body */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNXmlHttpRequestTest.body; sourceTree = "<group>"; };
@@ -396,7 +407,6 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				57CDB16D0F0F4769002C60C5 /* Images */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				57CB18C90F0F124700E95AE1 /* UnitTesting */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -507,8 +517,11 @@
 		571195500F1DC67C00FD89EA /* ZerglingNet */ = {
 			isa = PBXGroup;
 			children = (
+				575022E70F27138600793ECE /* TestSupport */,
 				57A1E7F70F21973800B8179A /* WebSupport */,
 				571195540F1DC8A800FD89EA /* ModelSupport */,
+				5750232D0F2715D900793ECE /* LICENSE */,
+				575023330F2718AD00793ECE /* MIT-LICENSE */,
 			);
 			path = ZerglingNet;
 			sourceTree = "<group>";
@@ -563,6 +576,30 @@
 			path = Orders;
 			sourceTree = "<group>";
 		};
+		575022E70F27138600793ECE /* TestSupport */ = {
+			isa = PBXGroup;
+			children = (
+				575022E80F2713AC00793ECE /* TestSupport.h */,
+				57CB19E10F0F17F400E95AE1 /* GTMGarbageCollection.h */,
+				57CB19C90F0F175600E95AE1 /* GTMSystemVersion.h */,
+				57CB19CA0F0F175600E95AE1 /* GTMSystemVersion.m */,
+				57CB198D0F0F136600E95AE1 /* RunIPhoneUnitTest.sh */,
+				57CB18CB0F0F128A00E95AE1 /* GTMCALayer+UnitTesting.h */,
+				57CB18CC0F0F128A00E95AE1 /* GTMCALayer+UnitTesting.m */,
+				57CB18CD0F0F128A00E95AE1 /* GTMIPhoneUnitTestDelegate.h */,
+				57CB18CE0F0F128A00E95AE1 /* GTMIPhoneUnitTestDelegate.m */,
+				57CB18CF0F0F128A00E95AE1 /* GTMIPhoneUnitTestMain.m */,
+				57CB18D00F0F128A00E95AE1 /* GTMNSObject+UnitTesting.h */,
+				57CB18D10F0F128A00E95AE1 /* GTMNSObject+UnitTesting.m */,
+				57CB18D20F0F128A00E95AE1 /* GTMSenTestCase.h */,
+				57CB18D30F0F128A00E95AE1 /* GTMSenTestCase.m */,
+				57CB18D40F0F128A00E95AE1 /* GTMUIKit+UnitTesting.h */,
+				57CB18D50F0F128A00E95AE1 /* GTMUIKit+UnitTesting.m */,
+				575023300F27171E00793ECE /* COPYING */,
+			);
+			path = TestSupport;
+			sourceTree = "<group>";
+		};
 		57A1E7F70F21973800B8179A /* WebSupport */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,10 +611,13 @@
 				57A1E7640F21815900B8179A /* ZNFormURLEncoder.h */,
 				57A1E7650F21815900B8179A /* ZNFormURLEncoder.m */,
 				57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */,
+				575022220F27014600793ECE /* ZNHttpRequest.h */,
+				575022230F27014600793ECE /* ZNHttpRequest.m */,
+				575022260F27016200793ECE /* ZNHttpRequestTest.m */,
+				57A1E82D0F219B0F00B8179A /* ZNHttpRequestTest.put */,
 				57A1E8290F219AC700B8179A /* ZNXmlHttpRequest.h */,
 				57A1E82A0F219AC700B8179A /* ZNXmlHttpRequest.m */,
 				57A1E82E0F219B0F00B8179A /* ZNXmlHttpRequestTest.m */,
-				57A1E82D0F219B0F00B8179A /* ZNXmlHttpRequestTest.hdrs */,
 				57A1E91E0F22B9F700B8179A /* ZNXmlHttpRequestTest.body */,
 				57A1EBD90F230ABB00B8179A /* ZNXmlHttpRequestTest.xml */,
 			);
@@ -621,28 +661,6 @@
 				57A1F1890F2599B000B8179A /* LoginCommController.m */,
 			);
 			path = Activation;
-			sourceTree = "<group>";
-		};
-		57CB18C90F0F124700E95AE1 /* UnitTesting */ = {
-			isa = PBXGroup;
-			children = (
-				57CB19E10F0F17F400E95AE1 /* GTMGarbageCollection.h */,
-				57CB19C90F0F175600E95AE1 /* GTMSystemVersion.h */,
-				57CB19CA0F0F175600E95AE1 /* GTMSystemVersion.m */,
-				57CB198D0F0F136600E95AE1 /* RunIPhoneUnitTest.sh */,
-				57CB18CB0F0F128A00E95AE1 /* GTMCALayer+UnitTesting.h */,
-				57CB18CC0F0F128A00E95AE1 /* GTMCALayer+UnitTesting.m */,
-				57CB18CD0F0F128A00E95AE1 /* GTMIPhoneUnitTestDelegate.h */,
-				57CB18CE0F0F128A00E95AE1 /* GTMIPhoneUnitTestDelegate.m */,
-				57CB18CF0F0F128A00E95AE1 /* GTMIPhoneUnitTestMain.m */,
-				57CB18D00F0F128A00E95AE1 /* GTMNSObject+UnitTesting.h */,
-				57CB18D10F0F128A00E95AE1 /* GTMNSObject+UnitTesting.m */,
-				57CB18D20F0F128A00E95AE1 /* GTMSenTestCase.h */,
-				57CB18D30F0F128A00E95AE1 /* GTMSenTestCase.m */,
-				57CB18D40F0F128A00E95AE1 /* GTMUIKit+UnitTesting.h */,
-				57CB18D50F0F128A00E95AE1 /* GTMUIKit+UnitTesting.m */,
-			);
-			path = UnitTesting;
 			sourceTree = "<group>";
 		};
 		57CDB16D0F0F4769002C60C5 /* Images */ = {
@@ -787,7 +805,7 @@
 			files = (
 				570D8A060F17465C00D54544 /* NewsCenterTest.xml in Resources */,
 				570D8ABE0F1816CE00D54544 /* ZNDictionaryXmlParserTest.xml in Resources */,
-				57A1E8900F21AF6800B8179A /* ZNXmlHttpRequestTest.hdrs in Resources */,
+				57A1E8900F21AF6800B8179A /* ZNHttpRequestTest.put in Resources */,
 				57A1EAC60F22D76700B8179A /* ZNXmlHttpRequestTest.body in Resources */,
 				57A1EBDA0F230ABB00B8179A /* ZNXmlHttpRequestTest.xml in Resources */,
 				57A1F0400F24C09000B8179A /* Settings.bundle in Resources */,
@@ -851,6 +869,8 @@
 				57A1F05B0F24C15D00B8179A /* ServerPaths.m in Sources */,
 				57A1F0BA0F25640A00B8179A /* ActivationLoginViewController.m in Sources */,
 				57A1F18B0F2599B000B8179A /* LoginCommController.m in Sources */,
+				575022240F27014600793ECE /* ZNHttpRequest.m in Sources */,
+				575022270F27016200793ECE /* ZNHttpRequestTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -913,6 +933,8 @@
 				57A1EF2A0F24948F00B8179A /* UserTest.m in Sources */,
 				57A1F05C0F24C15D00B8179A /* ServerPaths.m in Sources */,
 				57A1F18A0F2599B000B8179A /* LoginCommController.m in Sources */,
+				575022250F27014600793ECE /* ZNHttpRequest.m in Sources */,
+				575022280F27016200793ECE /* ZNHttpRequestTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
