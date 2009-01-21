@@ -11,7 +11,6 @@
 #import "ModelSupport.h"
 #import "ZNXmlHttpRequest.h"
 
-
 // Model for the response returned by the testbed.
 @interface ZNXmlHttpRequestTestModel : ZNModel
 {
@@ -37,8 +36,6 @@
 }
 
 @end
-
-
 
 @interface ZNXmlHttpRequestTest : SenTestCase {
 	NSString* service;

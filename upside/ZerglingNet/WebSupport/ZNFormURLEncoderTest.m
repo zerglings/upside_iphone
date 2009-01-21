@@ -100,9 +100,46 @@
 	// This is dependent on how NSStrings hash. Wish it weren't.
 	STAssertEqualStrings(@"key1=val1&key2%5Bkey22%5D=val22&key2%5Bkey21%5D=val21",
 						 string,
-						 @"Empty dictionary");
+						 @"Dictionary nested in another dictionary");
 	[data release];
 	[string release];
+}
+
+- (void) testSubSubDictionary {
+	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+						  @"val1", @"key1",
+						  [NSDictionary dictionaryWithObjectsAndKeys:
+						   [NSDictionary dictionaryWithObjectsAndKeys:
+							@"val211", @"key211", nil],
+						   @"key21", nil],
+						  @"key2", nil];
+	NSData* data = [ZNFormURLEncoder createEncodingFor:dict];
+	NSString* string = [[NSString alloc] initWithData:data
+											 encoding:NSUTF8StringEncoding];
+	STAssertEqualStrings(@"key1=val1&key2%5Bkey21%5D%5Bkey211%5D=val211",
+						 string,
+						 @"2 levels of nested dictionaries");
+	[data release];
+	[string release];
+}
+
+
+
+- (void) testSubArray {
+	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+						  @"val1", @"key1",
+						  [NSArray arrayWithObjects:
+						   @"val21", @"val22", nil],
+						  @"key2", nil];
+	NSData* data = [ZNFormURLEncoder createEncodingFor:dict];
+	NSString* string = [[NSString alloc] initWithData:data
+											 encoding:NSUTF8StringEncoding];
+	// This is dependent on how NSStrings hash. Wish it weren't.
+	STAssertEqualStrings(@"key1=val1&key2%5B%5D=val21&key2%5B%5D=val22",
+						 string,
+						 @"Array nested inside dictionary");
+	[data release];
+	[string release];	
 }
 
 - (void) testModel {

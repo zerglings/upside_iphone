@@ -15,8 +15,7 @@
 @protocol ZNModelCsvParserDelegate
 
 // Called when a model is parsed.
-- (void) parsedModel: (ZNModel*)model
-			 context: (id)context;
+- (void) parsedModel: (ZNModel*)model context: (id)context;
 @end
 
 @interface ZNModelCsvParser : NSObject {

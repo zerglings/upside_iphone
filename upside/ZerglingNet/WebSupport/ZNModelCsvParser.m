@@ -52,9 +52,7 @@
 
 #pragma mark Parsing
 
-- (void) parsedLine: (NSArray*)lineData
-			context: (id)context {
-	
+- (void) parsedLine: (NSArray*)lineData context: (id)context {
 	NSUInteger numValues = [lineData count];
 	NSDictionary* props;
 	if (numValues == numProperties) {

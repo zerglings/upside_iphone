@@ -76,26 +76,10 @@
 		575023B40F272D4A00793ECE /* ZNArrayCsvParserTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 575023560F271F3D00793ECE /* ZNArrayCsvParserTest.csv */; };
 		575024540F27352000793ECE /* ZNModelCsvParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 575024530F27352000793ECE /* ZNModelCsvParser.m */; };
 		575024550F27352000793ECE /* ZNModelCsvParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 575024530F27352000793ECE /* ZNModelCsvParser.m */; };
-		5750255B0F27497500793ECE /* ZNArrayCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575023540F271F2000793ECE /* ZNArrayCsvParserTest.m */; };
-		5750255C0F27497500793ECE /* ZNModelCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575024560F27353200793ECE /* ZNModelCsvParserTest.m */; };
 		575025860F274B1600793ECE /* ZNModelCsvParserTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 575024590F27356E00793ECE /* ZNModelCsvParserTest.csv */; };
-		5750259C0F274B7F00793ECE /* ZNDictionaryXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890E0F171AF500D54544 /* ZNDictionaryXmlParserTest.m */; };
-		575025B00F274C2400793ECE /* ZNFormURLEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */; };
-		575025B10F274C2400793ECE /* ZNXmlHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E82E0F219B0F00B8179A /* ZNXmlHttpRequestTest.m */; };
-		575025B20F274C2400793ECE /* ZNModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57119A0A0F1F3D2C00FD89EA /* ZNModelTest.m */; };
-		575025B30F274C2400793ECE /* ZNModelDefinitionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571198460F1E7D4800FD89EA /* ZNModelDefinitionTest.m */; };
-		575025B40F274C2400793ECE /* ZNModelDefinitionAttributeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956E0F1DCFA500FD89EA /* ZNModelDefinitionAttributeTest.m */; };
-		575025B50F274C2400793ECE /* ZNMSRegistryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571199370F1EBE9B00FD89EA /* ZNMSRegistryTest.m */; };
-		575025B60F274C2400793ECE /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1EF290F24948F00B8179A /* UserTest.m */; };
-		575025B70F274C2400793ECE /* NewsItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23DB0F18D9F400A996A2 /* NewsItemTest.m */; };
-		575025B80F274C2400793ECE /* PortfolioTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87980F14B99500D54544 /* PortfolioTest.m */; };
-		575025B90F274C2400793ECE /* TradeOrder+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */; };
-		575025BA0F274C2400793ECE /* Stock+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093E40F11049E00069411 /* Stock+FormattingTest.m */; };
-		575025BB0F274C2400793ECE /* Portfolio+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87470F145BBA00D54544 /* Portfolio+FormattingTest.m */; };
-		575025BC0F274C2400793ECE /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
-		575025BD0F274C2400793ECE /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
-		575025BE0F274C2400793ECE /* ActivationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */; };
-		575025BF0F274C2400793ECE /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022260F27016200793ECE /* ZNHttpRequestTest.m */; };
+		575025CE0F274E7700793ECE /* ZNCsvHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575025CD0F274E7700793ECE /* ZNCsvHttpRequest.m */; };
+		575025CF0F274E7700793ECE /* ZNCsvHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575025CD0F274E7700793ECE /* ZNCsvHttpRequest.m */; };
+		575025ED0F27522000793ECE /* ZNArrayCsvParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 575023520F271F0200793ECE /* ZNArrayCsvParser.m */; };
 		575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */; };
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
@@ -104,6 +88,9 @@
 		577091E30F10502F00069411 /* StockTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E20F10502F00069411 /* StockTableCellNarrow.xib */; };
 		577091E50F10503900069411 /* StockTableCellWide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E40F10503900069411 /* StockTableCellWide.xib */; };
 		577093620F1084D400069411 /* Stock+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* Stock+Formatting.m */; };
+		5791AC290F275D570036AB57 /* ZNCsvHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575025D00F274EA100793ECE /* ZNCsvHttpRequestTest.m */; };
+		5791AC6E0F275D870036AB57 /* ZNCsvHttpRequestTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 575025D40F274EBA00793ECE /* ZNCsvHttpRequestTest.csv */; };
+		5791AC8D0F2762240036AB57 /* ZNFormURLEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */; };
 		57A1E5AD0F20AC5800B8179A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
 		57A1E5AE0F20AC5800B8179A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
 		57A1E7080F2164D600B8179A /* RegistrationCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7070F2164D600B8179A /* RegistrationCommController.m */; };
@@ -280,6 +267,10 @@
 		575024530F27352000793ECE /* ZNModelCsvParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNModelCsvParser.m; sourceTree = "<group>"; };
 		575024560F27353200793ECE /* ZNModelCsvParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNModelCsvParserTest.m; sourceTree = "<group>"; };
 		575024590F27356E00793ECE /* ZNModelCsvParserTest.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNModelCsvParserTest.csv; sourceTree = "<group>"; };
+		575025CC0F274E7700793ECE /* ZNCsvHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNCsvHttpRequest.h; sourceTree = "<group>"; };
+		575025CD0F274E7700793ECE /* ZNCsvHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNCsvHttpRequest.m; sourceTree = "<group>"; };
+		575025D00F274EA100793ECE /* ZNCsvHttpRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNCsvHttpRequestTest.m; sourceTree = "<group>"; };
+		575025D40F274EBA00793ECE /* ZNCsvHttpRequestTest.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNCsvHttpRequestTest.csv; sourceTree = "<group>"; };
 		575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenUpArrow.png; sourceTree = "<group>"; };
 		575E39630F0FA00700DEB8E3 /* RedDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDownArrow.png; sourceTree = "<group>"; };
 		577091AC0F0FA8B000069411 /* StockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTableViewCell.h; sourceTree = "<group>"; };
@@ -637,6 +628,10 @@
 				575022230F27014600793ECE /* ZNHttpRequest.m */,
 				575022260F27016200793ECE /* ZNHttpRequestTest.m */,
 				57A1E82D0F219B0F00B8179A /* ZNHttpRequestTest.put */,
+				575025CC0F274E7700793ECE /* ZNCsvHttpRequest.h */,
+				575025CD0F274E7700793ECE /* ZNCsvHttpRequest.m */,
+				575025D00F274EA100793ECE /* ZNCsvHttpRequestTest.m */,
+				575025D40F274EBA00793ECE /* ZNCsvHttpRequestTest.csv */,
 				57A1E8290F219AC700B8179A /* ZNXmlHttpRequest.h */,
 				57A1E82A0F219AC700B8179A /* ZNXmlHttpRequest.m */,
 				57A1E82E0F219B0F00B8179A /* ZNXmlHttpRequestTest.m */,
@@ -833,6 +828,7 @@
 				57A1F0400F24C09000B8179A /* Settings.bundle in Resources */,
 				575023B40F272D4A00793ECE /* ZNArrayCsvParserTest.csv in Resources */,
 				575025860F274B1600793ECE /* ZNModelCsvParserTest.csv in Resources */,
+				5791AC6E0F275D870036AB57 /* ZNCsvHttpRequestTest.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +891,8 @@
 				57A1F18B0F2599B000B8179A /* LoginCommController.m in Sources */,
 				575022240F27014600793ECE /* ZNHttpRequest.m in Sources */,
 				575024550F27352000793ECE /* ZNModelCsvParser.m in Sources */,
+				575025CF0F274E7700793ECE /* ZNCsvHttpRequest.m in Sources */,
+				575025ED0F27522000793ECE /* ZNArrayCsvParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,25 +942,9 @@
 				575022250F27014600793ECE /* ZNHttpRequest.m in Sources */,
 				575023530F271F0200793ECE /* ZNArrayCsvParser.m in Sources */,
 				575024540F27352000793ECE /* ZNModelCsvParser.m in Sources */,
-				5750255B0F27497500793ECE /* ZNArrayCsvParserTest.m in Sources */,
-				5750255C0F27497500793ECE /* ZNModelCsvParserTest.m in Sources */,
-				5750259C0F274B7F00793ECE /* ZNDictionaryXmlParserTest.m in Sources */,
-				575025B00F274C2400793ECE /* ZNFormURLEncoderTest.m in Sources */,
-				575025B10F274C2400793ECE /* ZNXmlHttpRequestTest.m in Sources */,
-				575025B20F274C2400793ECE /* ZNModelTest.m in Sources */,
-				575025B30F274C2400793ECE /* ZNModelDefinitionTest.m in Sources */,
-				575025B40F274C2400793ECE /* ZNModelDefinitionAttributeTest.m in Sources */,
-				575025B50F274C2400793ECE /* ZNMSRegistryTest.m in Sources */,
-				575025B60F274C2400793ECE /* UserTest.m in Sources */,
-				575025B70F274C2400793ECE /* NewsItemTest.m in Sources */,
-				575025B80F274C2400793ECE /* PortfolioTest.m in Sources */,
-				575025B90F274C2400793ECE /* TradeOrder+FormattingTest.m in Sources */,
-				575025BA0F274C2400793ECE /* Stock+FormattingTest.m in Sources */,
-				575025BB0F274C2400793ECE /* Portfolio+FormattingTest.m in Sources */,
-				575025BC0F274C2400793ECE /* Portfolio+RSSTest.m in Sources */,
-				575025BD0F274C2400793ECE /* NewsCenterTest.m in Sources */,
-				575025BE0F274C2400793ECE /* ActivationStateTest.m in Sources */,
-				575025BF0F274C2400793ECE /* ZNHttpRequestTest.m in Sources */,
+				575025CE0F274E7700793ECE /* ZNCsvHttpRequest.m in Sources */,
+				5791AC290F275D570036AB57 /* ZNCsvHttpRequestTest.m in Sources */,
+				5791AC8D0F2762240036AB57 /* ZNFormURLEncoderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
