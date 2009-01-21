@@ -47,13 +47,10 @@
 @implementation ZNCsvHttpRequestTest
 
 - (void) setUp {
-	service = @"http://zn-testbed.zergling.net/web_support/csv.xml";
+	service = @"http://zn-testbed.zergling.net/web_support/csv.csv";
 	receivedResponse = NO;
 	[ZNCsvHttpRequest deleteCookiesForService:service];
-	onlineData = [[NSArray alloc] initWithObjects:
-				  [NSArray arrayWithObjects:@"foo", @"bar", @"xbar", nil],
-				  [NSArray arrayWithObjects:@"more,foo!s", @"more/bars", nil],
-				  nil];
+	onlineData = [[NSArray alloc] initWithObjects:@"foo", @"bar", @"xbar", nil];
 }
 
 - (void) tearDown {
@@ -87,7 +84,8 @@
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
 				  @"Error occured %@", responseArray);
 	
-	STAssertEqualObjects(onlineData, responseArray,
+	ZNCsvHttpRequestTestModel* array = [responseArray objectAtIndex:0];	
+	STAssertEqualObjects(onlineData, array,
 						 @"Response not deserialized properly");
 }
 
