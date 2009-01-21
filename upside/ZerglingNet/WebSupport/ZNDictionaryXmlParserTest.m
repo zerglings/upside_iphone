@@ -22,7 +22,7 @@
 
 @end
 
-NSString* kContextObject = @"This is the context";
+static NSString* kContextObject = @"This is the context";
 
 @implementation ZNDictionaryXmlParserTest
 

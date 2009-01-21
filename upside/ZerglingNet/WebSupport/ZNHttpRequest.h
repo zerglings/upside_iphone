@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-// Abstract superclass for HTTP request classes.
+// Superclass for HTTP request classes.
 @interface ZNHttpRequest : NSObject {
-@protected
 	NSMutableData* responseData;
 	NSURLRequest* urlRequest;
 	NSObject* target;

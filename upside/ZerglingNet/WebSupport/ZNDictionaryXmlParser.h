@@ -10,10 +10,10 @@
 
 @protocol ZNDictionaryXmlParserDelegate
 
+// Called when an item corresponding to a known XML tag is parsed.
 - (void) parsedItem: (NSDictionary*)itemData
 			   name: (NSString*)itemName
 			context: (NSObject*)context;
-
 @end
 
 
@@ -39,14 +39,16 @@
 }
 
 @property (nonatomic, retain) NSDictionary* schema;
-@property (nonatomic, retain) NSObject* context;
+@property (nonatomic, assign) NSObject* context;
 @property (nonatomic, assign) NSObject<ZNDictionaryXmlParserDelegate>* delegate;
 
 // Initialized a parser for a schema, which can be used multiple times.
 - (id) initWithSchema: (NSDictionary*)schema;
 
+// Parses an XML document inside an NSData instance.
 - (BOOL) parseData: (NSData*)data;
 
+// Parses an XML document at an URL.
 - (BOOL) parseURL: (NSURL*)url;
 
 @end

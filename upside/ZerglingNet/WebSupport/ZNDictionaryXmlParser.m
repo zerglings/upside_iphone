@@ -29,7 +29,6 @@
 }
 
 - (void) dealloc {
-	[context release];
 	[schema release];
 	[currentValue release];
 	[currentItem release];
