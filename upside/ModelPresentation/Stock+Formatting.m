@@ -48,68 +48,86 @@ static void SetupFormatters() {
 }
 
 - (NSString*) formattedAskPrice {
-	return [Stock formattedPrice:[self askPrice]];
+	return [Stock formattedPrice:askPrice];
 }
 
 - (NSString*) formattedBidPrice {
-	return [Stock formattedPrice:[self bidPrice]];
+	return [Stock formattedPrice:bidPrice];
+}
+
+- (NSString*) formattedTradePrice {
+	return [Stock formattedPrice:lastTradePrice];
 }
 
 + (NSString*) formatValueFor: (NSUInteger)count
-				  usingPrice: (NSUInteger)priceInCents {
+				  usingPrice: (double)price {
 	SetupFormatters();
 	return [priceFormatter stringFromNumber:[NSNumber numberWithDouble:
-											 ((count * priceInCents) / 100.0)]];
+											 (count * price)]];
 }
 
 - (NSString*) formattedValueUsingAskPriceFor: (NSUInteger)stockCount {
-	return [Stock formatValueFor:stockCount usingPrice:askCents];
+	return [Stock formatValueFor:stockCount usingPrice:askPrice];
 }
 - (NSString*) formattedValueUsingBidPriceFor: (NSUInteger)stockCount {
-	return [Stock formatValueFor:stockCount usingPrice:bidCents];
+	return [Stock formatValueFor:stockCount usingPrice:bidPrice];
+}
+- (NSString*) formattedValueUsingTradePriceFor: (NSUInteger)stockCount {
+	return [Stock formatValueFor:stockCount usingPrice:lastTradePrice];
 }
 
-+ (NSString*) formatChange: (NSUInteger)newPriceInCents
-					  from: (NSUInteger)oldPriceInCents
++ (NSString*) formatChange: (double)newPrice
+					  from: (double)oldPrice
 					 point: (BOOL)usePointChange {
 	SetupFormatters();
-	double change = ((double)newPriceInCents - oldPriceInCents) / 100.0;
+	double change = newPrice - oldPrice;
 	if (!usePointChange) {
 		return [netChangeFormatter stringFromNumber:[NSNumber
 													 numberWithDouble:change]];
 	}
-	double pointChange = (change * 100.0) / oldPriceInCents;
+	double pointChange = change / oldPrice;
 	return [pointChangeFormatter stringFromNumber:
 			[NSNumber numberWithDouble:pointChange]];
 }
 	
 - (NSString*) formattedNetAskChange {
-	return [Stock formatChange:askCents
-				 		  from:lastAskCents
+	return [Stock formatChange:askPrice
+				 		  from:previousClosePrice
 						 point:NO];
 }
 
 - (NSString*) formattedPointAskChange {
-	return [Stock formatChange:askCents
-						  from:lastAskCents
+	return [Stock formatChange:askPrice
+						  from:previousClosePrice
 						 point:YES];
 }
 
 - (NSString*) formattedNetBidChange {
-	return [Stock formatChange:bidCents
-						  from:lastBidCents
+	return [Stock formatChange:bidPrice
+						  from:previousClosePrice
 						 point:NO];
 }
 
-
 - (NSString*) formattedPointBidChange {
-	return [Stock formatChange:bidCents
-						  from:lastBidCents
+	return [Stock formatChange:bidPrice
+						  from:previousClosePrice
 						 point:YES];
 }
 
-+ (UIImage*) imageForChange: (NSUInteger)currentValue
-					   from: (NSUInteger)oldValue {
+- (NSString*) formattedNetTradeChange {
+	return [Stock formatChange:lastTradePrice
+						  from:previousClosePrice
+						 point:NO];
+}
+
+- (NSString*) formattedPointTradeChange {
+	return [Stock formatChange:lastTradePrice
+						  from:previousClosePrice
+						 point:YES];
+}
+
++ (UIImage*) imageForChange: (double)currentValue
+					   from: (double)oldValue {
 	if (oldValue < currentValue)
 		return [UIImage imageNamed:@"GreenUpArrow.png"];
 	if (oldValue > currentValue)
@@ -117,8 +135,8 @@ static void SetupFormatters() {
 	return nil;
 }
 
-+ (UIColor*) colorForChange: (NSUInteger)currentValue
-					   from: (NSUInteger)oldValue {
++ (UIColor*) colorForChange: (double)currentValue
+					   from: (double)oldValue {
 	if (oldValue < currentValue)
 		return [UIColor colorWithRed:0.0f green:0.5f blue:0.0f alpha:1.0f];
 	if (oldValue > currentValue)
@@ -127,20 +145,28 @@ static void SetupFormatters() {
 }
 
 - (UIColor*) colorForAskChange {
-	return [Stock colorForChange:askCents
-						    from:lastAskCents];	
+	return [Stock colorForChange:askPrice
+						    from:previousClosePrice];	
 }
 - (UIColor*) colorForBidChange {
-	return [Stock colorForChange:bidCents
-						    from:lastBidCents];	
+	return [Stock colorForChange:bidPrice
+						    from:previousClosePrice];	
 }
-- (UIImage*) imageForBidChange {
-	return [Stock imageForChange:askCents
-						    from:lastAskCents];	
+- (UIColor*) colorForTradeChange {
+	return [Stock colorForChange:lastTradePrice
+						    from:previousClosePrice];	
 }
 - (UIImage*) imageForAskChange {
-	return [Stock imageForChange:bidCents
-						    from:lastBidCents];
+	return [Stock imageForChange:askPrice
+						    from:previousClosePrice];
+}
+- (UIImage*) imageForBidChange {
+	return [Stock imageForChange:bidPrice
+						    from:previousClosePrice];	
+}
+- (UIImage*) imageForTradeChange {
+	return [Stock imageForChange:lastTradePrice
+						    from:previousClosePrice];	
 }
 
 @end

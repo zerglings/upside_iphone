@@ -11,6 +11,7 @@
 #import "NewsCenter.h"
 #import "Portfolio.h"
 #import "Portfolio+RSS.h"
+#import "Portfolio+StockCache.h"
 #import "StockCache.h"
 #import "TradeBook.h"
 
@@ -40,6 +41,9 @@
 
 - (void) setup {
 	[portfolio loadRssFeedsIntoCenter:newsCenter];
+	
+	[portfolio loadTickersIntoStockCache:stockCache];
+	[stockCache startUpdating];
 }
 
 #pragma mark Accessors

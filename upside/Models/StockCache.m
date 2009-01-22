@@ -9,11 +9,10 @@
 #import "StockCache.h"
 
 #import "Stock.h"
+#import "StockInfoCommController.h"
 
 @interface StockCache ()
-
-- (void) loadMockData;
-
+- (void) startUpdating;
 @end
 
 
@@ -22,50 +21,21 @@
 #pragma mark I/O
 
 - (void) load {
-	[self loadMockData];
+	// TODO(overmind): code this up
 }
 
 - (void) save {
-}
-
-#pragma mark Testing
-
-- (void) loadMockData {
-	NSDictionary* mockStocks = [NSDictionary dictionaryWithObjectsAndKeys:
-								[[[Stock alloc] initWithTicker:@"AAPL"
-														  name:@"Apple Inc"
-													  askCents:9100
-													  bidCents:9050
-												  lastAskCents:9050
-												  lastBidCents:9030]
-								 autorelease],
-								@"AAPL",
-								[[[Stock alloc] initWithTicker:@"GOOG"
-														  name:@"Google Inc"
-													  askCents:30000
-													  bidCents:29800
-												  lastAskCents:30100
-												  lastBidCents:29900]
-								 autorelease],
-								@"GOOG",
-								[[[Stock alloc] initWithTicker:@"MSFT"
-														  name:@"Microsoft Inc"
-													  askCents:2100
-													  bidCents:1995
-												  lastAskCents:2150
-												  lastBidCents:1950]
-								 autorelease],
-								@"MSFT",
-								nil];
-	
-	stocks = [mockStocks retain];
+	// TODO(overmind): code this up
 }
 
 #pragma mark Lifecycle
 
 - (id)init {
 	if ((self = [super init])) {
-		[self load];
+		stocks = [[NSMutableDictionary alloc] init];
+		commController = [[StockInfoCommController alloc]
+						  initWithTarget:self action:@selector(mergeStocks:)];
+		refreshPeriod = 60.0;
 	}
 	return self;
 }
@@ -75,10 +45,43 @@
 	[super dealloc];
 }
 
+#pragma mark Update Cycle
+
+- (void) update {
+	[commController fetchInfoForTickers:[stocks allKeys]];
+}
+
+- (void) mergeStocks: (NSArray*)newStocks {
+	if (![newStocks isKindOfClass:[NSError class]]) {
+		for (Stock* stock in newStocks) {
+			// TODO(overmind): merge new model info with what was there before
+			[stocks setObject:stock forKey:[stock ticker]];
+		}
+	}
+	
+	[self performSelector:@selector(update)
+			   withObject:nil
+			   afterDelay:refreshPeriod];
+}
+
+- (void) startUpdating {
+	[self update];
+}
+
 #pragma mark Cache Access
 
 - (Stock*)stockForTicker:(NSString*)stockTicker {
-	return [stocks objectForKey:stockTicker];
+	Stock* stockInfo = [stocks objectForKey:stockTicker];
+	if (stockInfo) {
+		if ([stockInfo isKindOfClass:[NSNull class]])
+			return nil;
+		else
+			return stockInfo;
+	}
+	
+	// We don't have stock information, so let's queue it up.
+	[stocks setObject:[NSNull null] forKey:stockTicker];
+	return nil;
 }
 
 @end

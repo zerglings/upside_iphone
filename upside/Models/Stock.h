@@ -14,10 +14,10 @@
 @interface Stock : ZNModel {
 	NSString* ticker;
 	NSString* name;
-	NSUInteger askCents;
-	NSUInteger bidCents;
-	NSUInteger lastAskCents;
-	NSUInteger lastBidCents;	
+	double askPrice;
+	double bidPrice;
+	double lastTradePrice;
+	double previousClosePrice;
 }
 
 // The stock's ticker, e.g. @"AAPL" for Apple.
@@ -26,32 +26,27 @@
 // The stock's name, e.g. @"Apple Inc."
 @property (nonatomic, readonly, retain) NSString* name;
 
-// The stock's asking price, in cents.
-@property (nonatomic, readonly) NSUInteger askCents;
+// The stock's asking price.
+@property (nonatomic, readonly) double askPrice;
 
-// The stock's bidding price, in cents.
-@property (nonatomic, readonly) NSUInteger bidCents;
+// The stock's bidding price.
+@property (nonatomic, readonly) double bidPrice;
 
-// The stock's last closing bidding price, in cents.
-@property (nonatomic, readonly) NSUInteger lastAskCents;
+// The closing price for the last trade involving the stock.
+@property (nonatomic, readonly) double lastTradePrice;
 
-// The stock's last closing asking price, in cents.
-@property (nonatomic, readonly) NSUInteger lastBidCents;
+// The stock's price (last trade) at the previous stock closing.
+@property (nonatomic, readonly) double previousClosePrice;
+
 
 #pragma mark Convenience Accessors
-
-// The stock's asking price, in dollars.
-- (double) askPrice;
-
-// The stock's bidding price, in dollars.
-- (double) bidPrice;
 
 #pragma mark Convenience Constructors
 
 - (id) initWithTicker: (NSString*)ticker
 				 name: (NSString*)name
-			 askCents: (NSUInteger)askCents
-			 bidCents: (NSUInteger)bidCents
-		 lastAskCents: (NSUInteger)lastAskCents
-		 lastBidCents: (NSUInteger)lastBidCents;
+			 askPrice: (double)askPrice
+			 bidPrice: (double)bidPrice
+	   lastTradePrice: (double)lastTradePrice
+   previousClosePrice: (double)previousClosePrice;
 @end

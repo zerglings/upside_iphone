@@ -179,22 +179,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">bidPriceLabel</string>
-						<reference key="source" ref="221175965"/>
-						<reference key="destination" ref="1023860691"/>
-					</object>
-					<int key="connectionID">10</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">bidPriceProgressIcon</string>
-						<reference key="source" ref="221175965"/>
-						<reference key="destination" ref="26257216"/>
-					</object>
-					<int key="connectionID">11</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">stockCountLabel</string>
 						<reference key="source" ref="221175965"/>
 						<reference key="destination" ref="485980092"/>
@@ -211,11 +195,27 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">bidChangeButton</string>
+						<string key="label">tradeChangeButton</string>
 						<reference key="source" ref="221175965"/>
 						<reference key="destination" ref="212331289"/>
 					</object>
-					<int key="connectionID">16</int>
+					<int key="connectionID">18</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tradePriceLabel</string>
+						<reference key="source" ref="221175965"/>
+						<reference key="destination" ref="1023860691"/>
+					</object>
+					<int key="connectionID">19</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tradePriceProgressIcon</string>
+						<reference key="source" ref="221175965"/>
+						<reference key="destination" ref="26257216"/>
+					</object>
+					<int key="connectionID">20</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -337,16 +337,24 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">17</int>
+			<int key="maxID">20</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
+					<string key="className">AutoRotatingTableViewController</string>
+					<string key="superclassName">UITableViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Util/AutoRotatingTableViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UnitTesting/GTMCALayer+UnitTesting.h</string>
+						<string key="minorKey">ZerglingNet/TestSupport/GTMCALayer+UnitTesting.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -357,12 +365,16 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UnitTesting/GTMNSObject+UnitTesting.h</string>
+						<string key="minorKey">ZerglingNet/TestSupport/GTMNSObject+UnitTesting.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">PortfolioTableViewController</string>
-					<string key="superclassName">UITableViewController</string>
+					<string key="superclassName">AutoRotatingTableViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">changeButtonWasTapped</string>
+						<string key="NS.object.0">id</string>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Portfolio/PortfolioTableViewController.h</string>
@@ -385,6 +397,9 @@
 							<string>stockCountLabel</string>
 							<string>stockValueLabel</string>
 							<string>tickerLabel</string>
+							<string>tradeChangeButton</string>
+							<string>tradePriceLabel</string>
+							<string>tradePriceProgressIcon</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -398,6 +413,9 @@
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
+							<string>UIButton</string>
+							<string>UILabel</string>
+							<string>UIImageView</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -409,7 +427,7 @@
 					<string key="className">UIView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UnitTesting/GTMUIKit+UnitTesting.h</string>
+						<string key="minorKey">ZerglingNet/TestSupport/GTMUIKit+UnitTesting.h</string>
 					</object>
 				</object>
 			</object>

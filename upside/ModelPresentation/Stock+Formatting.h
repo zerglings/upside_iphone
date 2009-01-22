@@ -16,6 +16,8 @@
 - (NSString*) formattedAskPrice;
 // Format the stock's bid price.
 - (NSString*) formattedBidPrice;
+// Format the stock's last trade price.
+- (NSString*) formattedTradePrice;
 
 // Format the value of some stocks, using the ask price.
 - (NSString*) formattedValueUsingAskPriceFor: (NSUInteger)stockCount;
@@ -27,18 +29,26 @@
 - (NSString*) formattedNetAskChange;
 // Format the net change in the stock's bid price.
 - (NSString*) formattedNetBidChange;
+// Format the net change in the stock's trade price.
+- (NSString*) formattedNetTradeChange;
 // Format the point change in the stock's ask price.
 - (NSString*) formattedPointAskChange;
 // Format the point change in the stock's bid price.
 - (NSString*) formattedPointBidChange;
+// Format the net change in the stock's trade price.
+- (NSString*) formattedPointTradeChange;
 
 // The color showing the change in the stock's ask price. 
 - (UIColor*) colorForAskChange;
 // The color showing the change in the stock's bid price. 
 - (UIColor*) colorForBidChange;
+// The color showing the change in the stock's bid price. 
+- (UIColor*) colorForTradeChange;
 // The image showing the change in the stock's ask price. 
 - (UIImage*) imageForAskChange;
 // The image showing the change in the stock's bid price. 
 - (UIImage*) imageForBidChange;
+// The color showing the change in the stock's bid price. 
+- (UIImage*) imageForTradeChange;
 
 @end

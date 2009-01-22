@@ -69,6 +69,28 @@
 		571A26900F19871C00A996A2 /* NewsArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571A268F0F19871C00A996A2 /* NewsArticleViewController.xib */; };
 		571A26930F19874500A996A2 /* NewsArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A26920F19874500A996A2 /* NewsArticleViewController.m */; };
 		571A27090F1ABA5000A996A2 /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
+		57402D9A0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402D990F2893C700B64A7C /* Portfolio+StockCache.m */; };
+		57402D9B0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402D990F2893C700B64A7C /* Portfolio+StockCache.m */; };
+		57402DFA0F28995400B64A7C /* Stock+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093E40F11049E00069411 /* Stock+FormattingTest.m */; };
+		57402E370F289DCE00B64A7C /* ZNArrayCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575023540F271F2000793ECE /* ZNArrayCsvParserTest.m */; };
+		57402E380F289DCE00B64A7C /* ZNModelCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575024560F27353200793ECE /* ZNModelCsvParserTest.m */; };
+		57402E390F289DCE00B64A7C /* ZNDictionaryXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890E0F171AF500D54544 /* ZNDictionaryXmlParserTest.m */; };
+		57402E3A0F289DCE00B64A7C /* ZNFormURLEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */; };
+		57402E3B0F289DCE00B64A7C /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022260F27016200793ECE /* ZNHttpRequestTest.m */; };
+		57402E3C0F289DCE00B64A7C /* ZNCsvHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575025D00F274EA100793ECE /* ZNCsvHttpRequestTest.m */; };
+		57402E3D0F289DCE00B64A7C /* ZNXmlHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E82E0F219B0F00B8179A /* ZNXmlHttpRequestTest.m */; };
+		57402E3E0F289DCE00B64A7C /* ZNModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57119A0A0F1F3D2C00FD89EA /* ZNModelTest.m */; };
+		57402E3F0F289DCE00B64A7C /* ZNModelDefinitionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571198460F1E7D4800FD89EA /* ZNModelDefinitionTest.m */; };
+		57402E400F289DCE00B64A7C /* ZNModelDefinitionAttributeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956E0F1DCFA500FD89EA /* ZNModelDefinitionAttributeTest.m */; };
+		57402E410F289DCE00B64A7C /* ZNMSRegistryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571199370F1EBE9B00FD89EA /* ZNMSRegistryTest.m */; };
+		57402E420F289DCE00B64A7C /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1EF290F24948F00B8179A /* UserTest.m */; };
+		57402E430F289DCE00B64A7C /* NewsItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23DB0F18D9F400A996A2 /* NewsItemTest.m */; };
+		57402E440F289DCE00B64A7C /* PortfolioTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87980F14B99500D54544 /* PortfolioTest.m */; };
+		57402E450F289DCE00B64A7C /* TradeOrder+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */; };
+		57402E460F289DCE00B64A7C /* Portfolio+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87470F145BBA00D54544 /* Portfolio+FormattingTest.m */; };
+		57402E470F289DCE00B64A7C /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
+		57402E480F289DCE00B64A7C /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
+		57402E490F289DCE00B64A7C /* ActivationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */; };
 		574CD0AC0F20275D002CEDDB /* ZNMSBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 574CD0AB0F20275D002CEDDB /* ZNMSBoolean.m */; };
 		575022240F27014600793ECE /* ZNHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022230F27014600793ECE /* ZNHttpRequest.m */; };
 		575022250F27014600793ECE /* ZNHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022230F27014600793ECE /* ZNHttpRequest.m */; };
@@ -88,27 +110,10 @@
 		577091E30F10502F00069411 /* StockTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E20F10502F00069411 /* StockTableCellNarrow.xib */; };
 		577091E50F10503900069411 /* StockTableCellWide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E40F10503900069411 /* StockTableCellWide.xib */; };
 		577093620F1084D400069411 /* Stock+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* Stock+Formatting.m */; };
-		5791AC290F275D570036AB57 /* ZNCsvHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575025D00F274EA100793ECE /* ZNCsvHttpRequestTest.m */; };
 		5791AC6E0F275D870036AB57 /* ZNCsvHttpRequestTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 575025D40F274EBA00793ECE /* ZNCsvHttpRequestTest.csv */; };
-		5791AC8D0F2762240036AB57 /* ZNFormURLEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */; };
-		5791ACCA0F276B450036AB57 /* ZNArrayCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575023540F271F2000793ECE /* ZNArrayCsvParserTest.m */; };
-		5791ACCB0F276B450036AB57 /* ZNModelCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575024560F27353200793ECE /* ZNModelCsvParserTest.m */; };
-		5791ACCC0F276B450036AB57 /* ZNDictionaryXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890E0F171AF500D54544 /* ZNDictionaryXmlParserTest.m */; };
-		5791ACCD0F276B450036AB57 /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022260F27016200793ECE /* ZNHttpRequestTest.m */; };
-		5791ACCE0F276B450036AB57 /* ZNXmlHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E82E0F219B0F00B8179A /* ZNXmlHttpRequestTest.m */; };
-		5791ACCF0F276B450036AB57 /* ZNModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57119A0A0F1F3D2C00FD89EA /* ZNModelTest.m */; };
-		5791ACD00F276B450036AB57 /* ZNModelDefinitionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571198460F1E7D4800FD89EA /* ZNModelDefinitionTest.m */; };
-		5791ACD10F276B450036AB57 /* ZNModelDefinitionAttributeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956E0F1DCFA500FD89EA /* ZNModelDefinitionAttributeTest.m */; };
-		5791ACD20F276B450036AB57 /* ZNMSRegistryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571199370F1EBE9B00FD89EA /* ZNMSRegistryTest.m */; };
-		5791ACD30F276B450036AB57 /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1EF290F24948F00B8179A /* UserTest.m */; };
-		5791ACD40F276B450036AB57 /* NewsItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23DB0F18D9F400A996A2 /* NewsItemTest.m */; };
-		5791ACD50F276B450036AB57 /* PortfolioTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87980F14B99500D54544 /* PortfolioTest.m */; };
-		5791ACD60F276B450036AB57 /* TradeOrder+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */; };
-		5791ACD70F276B450036AB57 /* Stock+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093E40F11049E00069411 /* Stock+FormattingTest.m */; };
-		5791ACD80F276B450036AB57 /* Portfolio+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87470F145BBA00D54544 /* Portfolio+FormattingTest.m */; };
-		5791ACD90F276B450036AB57 /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
-		5791ACDA0F276B450036AB57 /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
-		5791ACDB0F276B450036AB57 /* ActivationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */; };
+		5791AD260F285B3C0036AB57 /* StockInfoCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD250F285B3C0036AB57 /* StockInfoCommController.m */; };
+		5791AD270F285B3C0036AB57 /* StockInfoCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD250F285B3C0036AB57 /* StockInfoCommController.m */; };
+		5791AD500F2865E90036AB57 /* StockInfoCommControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */; };
 		57A1E5AD0F20AC5800B8179A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
 		57A1E5AE0F20AC5800B8179A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
 		57A1E7080F2164D600B8179A /* RegistrationCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7070F2164D600B8179A /* RegistrationCommController.m */; };
@@ -268,6 +273,8 @@
 		571A26920F19874500A996A2 /* NewsArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsArticleViewController.m; sourceTree = "<group>"; };
 		571A27070F1ABA5000A996A2 /* NetworkProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkProgress.h; sourceTree = "<group>"; };
 		571A27080F1ABA5000A996A2 /* NetworkProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkProgress.m; sourceTree = "<group>"; };
+		57402D980F2893C700B64A7C /* Portfolio+StockCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Portfolio+StockCache.h"; sourceTree = "<group>"; };
+		57402D990F2893C700B64A7C /* Portfolio+StockCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+StockCache.m"; sourceTree = "<group>"; };
 		574CD0AA0F20275D002CEDDB /* ZNMSBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSBoolean.h; sourceTree = "<group>"; };
 		574CD0AB0F20275D002CEDDB /* ZNMSBoolean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSBoolean.m; sourceTree = "<group>"; };
 		575022220F27014600793ECE /* ZNHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNHttpRequest.h; sourceTree = "<group>"; };
@@ -299,6 +306,9 @@
 		577093610F1084D400069411 /* Stock+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+Formatting.m"; sourceTree = "<group>"; };
 		577093E10F11032200069411 /* Stock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock.h; sourceTree = "<group>"; };
 		577093E40F11049E00069411 /* Stock+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+FormattingTest.m"; sourceTree = "<group>"; };
+		5791AD240F285B3C0036AB57 /* StockInfoCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInfoCommController.h; sourceTree = "<group>"; };
+		5791AD250F285B3C0036AB57 /* StockInfoCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInfoCommController.m; sourceTree = "<group>"; };
+		5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInfoCommControllerTest.m; sourceTree = "<group>"; };
 		57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		57A1E7060F2164D600B8179A /* RegistrationCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationCommController.h; sourceTree = "<group>"; };
 		57A1E7070F2164D600B8179A /* RegistrationCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationCommController.m; sourceTree = "<group>"; };
@@ -504,6 +514,9 @@
 				570D84EF0F133A7800D54544 /* Game.m */,
 				570D86D30F144BD900D54544 /* StockCache.h */,
 				570D86D40F144BD900D54544 /* StockCache.m */,
+				5791AD240F285B3C0036AB57 /* StockInfoCommController.h */,
+				5791AD250F285B3C0036AB57 /* StockInfoCommController.m */,
+				5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -726,6 +739,8 @@
 				577091AD0F0FA8B000069411 /* StockTableViewCell.m */,
 				577091E20F10502F00069411 /* StockTableCellNarrow.xib */,
 				577091E40F10503900069411 /* StockTableCellWide.xib */,
+				57402D980F2893C700B64A7C /* Portfolio+StockCache.h */,
+				57402D990F2893C700B64A7C /* Portfolio+StockCache.m */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
@@ -911,6 +926,8 @@
 				575024550F27352000793ECE /* ZNModelCsvParser.m in Sources */,
 				575025CF0F274E7700793ECE /* ZNCsvHttpRequest.m in Sources */,
 				575025ED0F27522000793ECE /* ZNArrayCsvParser.m in Sources */,
+				5791AD260F285B3C0036AB57 /* StockInfoCommController.m in Sources */,
+				57402D9B0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,26 +978,29 @@
 				575023530F271F0200793ECE /* ZNArrayCsvParser.m in Sources */,
 				575024540F27352000793ECE /* ZNModelCsvParser.m in Sources */,
 				575025CE0F274E7700793ECE /* ZNCsvHttpRequest.m in Sources */,
-				5791AC290F275D570036AB57 /* ZNCsvHttpRequestTest.m in Sources */,
-				5791AC8D0F2762240036AB57 /* ZNFormURLEncoderTest.m in Sources */,
-				5791ACCA0F276B450036AB57 /* ZNArrayCsvParserTest.m in Sources */,
-				5791ACCB0F276B450036AB57 /* ZNModelCsvParserTest.m in Sources */,
-				5791ACCC0F276B450036AB57 /* ZNDictionaryXmlParserTest.m in Sources */,
-				5791ACCD0F276B450036AB57 /* ZNHttpRequestTest.m in Sources */,
-				5791ACCE0F276B450036AB57 /* ZNXmlHttpRequestTest.m in Sources */,
-				5791ACCF0F276B450036AB57 /* ZNModelTest.m in Sources */,
-				5791ACD00F276B450036AB57 /* ZNModelDefinitionTest.m in Sources */,
-				5791ACD10F276B450036AB57 /* ZNModelDefinitionAttributeTest.m in Sources */,
-				5791ACD20F276B450036AB57 /* ZNMSRegistryTest.m in Sources */,
-				5791ACD30F276B450036AB57 /* UserTest.m in Sources */,
-				5791ACD40F276B450036AB57 /* NewsItemTest.m in Sources */,
-				5791ACD50F276B450036AB57 /* PortfolioTest.m in Sources */,
-				5791ACD60F276B450036AB57 /* TradeOrder+FormattingTest.m in Sources */,
-				5791ACD70F276B450036AB57 /* Stock+FormattingTest.m in Sources */,
-				5791ACD80F276B450036AB57 /* Portfolio+FormattingTest.m in Sources */,
-				5791ACD90F276B450036AB57 /* Portfolio+RSSTest.m in Sources */,
-				5791ACDA0F276B450036AB57 /* NewsCenterTest.m in Sources */,
-				5791ACDB0F276B450036AB57 /* ActivationStateTest.m in Sources */,
+				5791AD270F285B3C0036AB57 /* StockInfoCommController.m in Sources */,
+				5791AD500F2865E90036AB57 /* StockInfoCommControllerTest.m in Sources */,
+				57402D9A0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */,
+				57402DFA0F28995400B64A7C /* Stock+FormattingTest.m in Sources */,
+				57402E370F289DCE00B64A7C /* ZNArrayCsvParserTest.m in Sources */,
+				57402E380F289DCE00B64A7C /* ZNModelCsvParserTest.m in Sources */,
+				57402E390F289DCE00B64A7C /* ZNDictionaryXmlParserTest.m in Sources */,
+				57402E3A0F289DCE00B64A7C /* ZNFormURLEncoderTest.m in Sources */,
+				57402E3B0F289DCE00B64A7C /* ZNHttpRequestTest.m in Sources */,
+				57402E3C0F289DCE00B64A7C /* ZNCsvHttpRequestTest.m in Sources */,
+				57402E3D0F289DCE00B64A7C /* ZNXmlHttpRequestTest.m in Sources */,
+				57402E3E0F289DCE00B64A7C /* ZNModelTest.m in Sources */,
+				57402E3F0F289DCE00B64A7C /* ZNModelDefinitionTest.m in Sources */,
+				57402E400F289DCE00B64A7C /* ZNModelDefinitionAttributeTest.m in Sources */,
+				57402E410F289DCE00B64A7C /* ZNMSRegistryTest.m in Sources */,
+				57402E420F289DCE00B64A7C /* UserTest.m in Sources */,
+				57402E430F289DCE00B64A7C /* NewsItemTest.m in Sources */,
+				57402E440F289DCE00B64A7C /* PortfolioTest.m in Sources */,
+				57402E450F289DCE00B64A7C /* TradeOrder+FormattingTest.m in Sources */,
+				57402E460F289DCE00B64A7C /* Portfolio+FormattingTest.m in Sources */,
+				57402E470F289DCE00B64A7C /* Portfolio+RSSTest.m in Sources */,
+				57402E480F289DCE00B64A7C /* NewsCenterTest.m in Sources */,
+				57402E490F289DCE00B64A7C /* ActivationStateTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

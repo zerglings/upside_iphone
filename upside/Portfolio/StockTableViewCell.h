@@ -16,12 +16,15 @@
 	IBOutlet UILabel* nameLabel;
 	IBOutlet UILabel* askPriceLabel;
 	IBOutlet UILabel* bidPriceLabel;
+	IBOutlet UILabel* tradePriceLabel;
 	IBOutlet UIButton* askChangeButton;
 	IBOutlet UIButton* bidChangeButton;
+	IBOutlet UIButton* tradeChangeButton;
 	IBOutlet UILabel* stockCountLabel;
 	IBOutlet UILabel* stockValueLabel;
-	IBOutlet UIImageView* bidPriceProgressIcon;
 	IBOutlet UIImageView* askPriceProgressIcon;
+	IBOutlet UIImageView* bidPriceProgressIcon;
+	IBOutlet UIImageView* tradePriceProgressIcon;
 	
 	Stock *stock;
 	NSUInteger stockOwned;

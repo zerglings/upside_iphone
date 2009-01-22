@@ -10,7 +10,9 @@
 
 @implementation Stock
 
-@synthesize ticker, name, askCents, bidCents, lastAskCents, lastBidCents;
+@synthesize ticker, name, askPrice, bidPrice;
+@synthesize lastTradePrice, previousClosePrice;
+
 
 - (void) dealloc {
 	[ticker release];
@@ -19,32 +21,23 @@
 	[super dealloc];
 }
 
-#pragma mark Accessors
-
-- (double)askPrice {
-	return askCents / 100.0;
-}
-- (double)bidPrice {
-	return bidCents / 100.0;
-}
-
 #pragma mark Convenience Initializers
 
 - (id) initWithTicker: (NSString*)theTicker
 				 name: (NSString*)theName
-			 askCents: (NSUInteger)theAskCents
-			 bidCents: (NSUInteger)theBidCents
-		 lastAskCents: (NSUInteger)theLastAskCents
-		 lastBidCents: (NSUInteger)theLastBidCents {
-	if ((self = [self initWithProperties:nil])) {
-		ticker = theTicker;
-		name = theName;
-		askCents = theAskCents;
-		bidCents = theBidCents;
-		lastAskCents = theLastAskCents;
-		lastBidCents = theLastBidCents;
-	}
-	return self;
+			 askPrice: (double)theAskPrice
+			 bidPrice: (double)theBidPrice
+	   lastTradePrice: (double)theLastTradePrice
+   previousClosePrice: (double)thePreviousClosePrice {
+	return [self initWithModel:nil properties:
+			[NSDictionary dictionaryWithObjectsAndKeys:
+			 theTicker, @"ticker",
+			 theName, @"name",
+			 [NSNumber numberWithDouble:theAskPrice], @"askPrice",
+			 [NSNumber numberWithDouble:theBidPrice], @"bidPrice",
+			 [NSNumber numberWithDouble:theLastTradePrice], @"lastTradePrice",
+			 [NSNumber numberWithDouble:thePreviousClosePrice],
+			 @"previousClosePrice", nil]];
 }
 
 @end

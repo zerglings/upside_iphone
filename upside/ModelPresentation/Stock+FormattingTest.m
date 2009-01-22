@@ -24,17 +24,17 @@
 - (void) setUp {	
 	risingStock = [[Stock alloc] initWithTicker:@"AAPL"
 										   name:@"Apple Inc"
-									   askCents:109100
-									   bidCents:9050
-								   lastAskCents:9000
-								   lastBidCents:8500];
+									   askPrice:1091.50
+									   bidPrice:90.50
+								 lastTradePrice:90.00
+							 previousClosePrice:85.00];
 	
 	fallingStock = [[Stock alloc] initWithTicker:@"MSFT"
-											name:@"Microsoft Inc"
-										askCents:90
-										bidCents:9
-									lastAskCents:281
-									lastBidCents:11];
+											name:@"Microsoft Corp"
+										askPrice:0.90
+										bidPrice:0.09
+								  lastTradePrice:2.79
+							  previousClosePrice:2.81];
 }
 
 - (void) tearDown {
@@ -49,8 +49,10 @@
 - (void) testPrices {
 	STAssertEqualStrings(@"$90.50", [risingStock formattedBidPrice],
 						 @"Easy price formatting");
-	STAssertEqualStrings(@"$1,091.00", [risingStock formattedAskPrice],
+	STAssertEqualStrings(@"$1,091.50", [risingStock formattedAskPrice],
 						 @"Large price formatting");
+	STAssertEqualStrings(@"$90.00", [risingStock formattedTradePrice],
+						 @"Integer price formatting");
 
 	STAssertEqualStrings(@"$0.90", [fallingStock formattedAskPrice],
 						 @"Small price formatting");
@@ -61,26 +63,30 @@
 - (void) testNetChanges {
 	STAssertEqualStrings(@"+5.50", [risingStock formattedNetBidChange],
 						 @"Easy net change formatting");
-	STAssertEqualStrings(@"+1,001.00", [risingStock formattedNetAskChange],
+	STAssertEqualStrings(@"+1,006.50", [risingStock formattedNetAskChange],
 						 @"Large net change formatting");
+	STAssertEqualStrings(@"+5.00", [risingStock formattedNetTradeChange],
+						 @"Integer net change formatting");
 	
 	STAssertEqualStrings(@"-1.91", [fallingStock formattedNetAskChange],
 						 @"Negative net change formatting");
-	STAssertEqualStrings(@"-0.02", [fallingStock formattedNetBidChange],
+	STAssertEqualStrings(@"-0.02", [fallingStock formattedNetTradeChange],
 						 @"Tiny net change formatting");	
 }
 
 - (void) testPointChanges {
 	STAssertEqualStrings(@"+6.47%", [risingStock formattedPointBidChange],
 						 @"Easy point change formatting");
-	STAssertEqualStrings(@"+1,112.22%",
+	STAssertEqualStrings(@"+1,184.12%",
 						 [risingStock formattedPointAskChange],
 						 @"Large point change formatting");
 	
 	STAssertEqualStrings(@"-67.97%", [fallingStock formattedPointAskChange],
 						 @"Negative point change formatting");
-	STAssertEqualStrings(@"-18.18%", [fallingStock formattedPointBidChange],
+	STAssertEqualStrings(@"-96.80%", [fallingStock formattedPointBidChange],
 						 @"Negative point change formatting");	
+	STAssertEqualStrings(@"-0.71%", [fallingStock formattedPointTradeChange],
+						 @"Tiny negative point change formatting");	
 }
 
 - (void) testChangeColors {
