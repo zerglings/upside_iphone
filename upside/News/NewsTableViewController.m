@@ -76,29 +76,54 @@
 
 #pragma mark Table view methods
 
+// The section number for short positions.
+#define kShortsSection 0
+// The section number for long positions.
+#define kLongsSection 1
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	switch (section) {
-		case 0:
-			return [[[Game sharedGame] portfolio] count];
-		default:
-			return -1;
-	}
+    return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
-		case 0:
-			return @"Portfolio";
+		case kShortsSection:
+			return @"Short Positions";
+		case kLongsSection:
+			return @"Long Positions";
 		default:
 			break;
 	}
-	return @"Portfolio";
+	return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	switch (section) {
+		case kShortsSection:
+			return [[[Game sharedGame] portfolio] shortPositionCount];
+		case kLongsSection:
+			return [[[Game sharedGame] portfolio] longPositionCount];
+		default:
+			break;
+	}
+    return -1;
+}
+
+- (NSString*)feedTitleForRowAtIndexPath: (NSIndexPath*)indexPath {
+	Portfolio* portfolio = [[Game sharedGame] portfolio];
+	Position* position;
+	switch (indexPath.section) {
+		case kShortsSection:
+			position = [portfolio shortPositionAtIndex:indexPath.row];
+			break;
+		case kLongsSection:
+			position = [portfolio longPositionAtIndex:indexPath.row];
+			break;
+		default:
+			position = nil;
+			break;
+	}
+	return [Portfolio rssFeedTitleForTicker:[position ticker]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -106,8 +131,8 @@
     NewsTableViewCell* cell = (NewsTableViewCell*)[super tableView:tableView
 											 cellForRowAtIndexPath:indexPath];
 
-	[cell setFeedTitle:[[[Game sharedGame] portfolio]
-						stockTickerAtIndex:indexPath.row]];
+	
+	[cell setFeedTitle:[self feedTitleForRowAtIndexPath:indexPath]];
     return cell;
 }
 
@@ -116,9 +141,7 @@
 	    [[RssFeedTableViewController alloc]
 		 initWithNibName:@"RssFeedTableViewController" bundle:nil];
 	[self.navigationController pushViewController:feedController animated:YES];
-	[feedController setFeedTitle:
-	 [Portfolio rssFeedTitleForTicker:[[[Game sharedGame] portfolio]
-									   stockTickerAtIndex:indexPath.row]]];
+	[feedController setFeedTitle:[self feedTitleForRowAtIndexPath:indexPath]];
 	[feedController release];
 }
 

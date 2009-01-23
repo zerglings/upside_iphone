@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class PortfolioTableViewController;
+@class Position;
 @class Stock;
 
 @interface StockTableViewCell : UITableViewCell {
@@ -26,13 +26,13 @@
 	IBOutlet UIImageView* bidPriceProgressIcon;
 	IBOutlet UIImageView* tradePriceProgressIcon;
 	
-	Stock *stock;
-	NSUInteger stockOwned;
+	Position* position;
+	Stock *stockInfo;
 }
 
-- (Stock*) stock;
-- (NSUInteger) stockOwned;
+- (Stock*) stockInfo;
+- (Position*) position;
 
-- (void) setStock: (Stock*)stock owned:(NSUInteger)stockOwned;
+- (void) setPosition: (Position*)position stockInfo:(Stock*)stock;
 
 @end

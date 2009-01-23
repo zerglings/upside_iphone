@@ -6,10 +6,10 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "Portfolio.h"
 #import "Portfolio+RSS.h"
 
 #import "NewsCenter.h"
+#import "Position.h"
 
 @implementation Portfolio (RSS)
 
@@ -26,7 +26,8 @@
 }
 
 - (void) loadRssFeedsIntoCenter: (NewsCenter*)newsCenter {
-	for(NSString* ticker in stockTickers) {
+	for(Position* position in positions) {
+		NSString* ticker = [position ticker];
 		[newsCenter addTitle:[Portfolio rssFeedTitleForTicker:ticker]
 					 withUrl:[Portfolio rssFeedUrlForTicker:ticker]
 				  andRefresh:60];

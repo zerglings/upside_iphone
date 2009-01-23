@@ -34,7 +34,8 @@
 	if ((self = [super init])) {
 		stocks = [[NSMutableDictionary alloc] init];
 		commController = [[StockInfoCommController alloc]
-						  initWithTarget:self action:@selector(mergeStocks:)];
+						  initWithTarget:self
+								  action:@selector(integrateStocks:)];
 		refreshPeriod = 60.0;
 	}
 	return self;
@@ -51,7 +52,7 @@
 	[commController fetchInfoForTickers:[stocks allKeys]];
 }
 
-- (void) mergeStocks: (NSArray*)newStocks {
+- (void) integrateStocks: (NSArray*)newStocks {
 	if (![newStocks isKindOfClass:[NSError class]]) {
 		for (Stock* stock in newStocks) {
 			// TODO(overmind): merge new model info with what was there before

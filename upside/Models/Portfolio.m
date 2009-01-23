@@ -8,6 +8,8 @@
 
 #import "Portfolio.h"
 
+#import "Position.h"
+
 @interface Portfolio ()
 - (void) loadMockData;
 @end
@@ -23,26 +25,46 @@
 - (void) save {
 }
 
-#pragma mark Testing
+#pragma mark Data Processing
 
-- (void) loadData: (NSDictionary*)newStocksHeld {
-	[newStocksHeld retain];
-	[stockHeld release];
-	stockHeld = newStocksHeld;
-	
-	[stockTickers release];
-	stockTickers = [[[stockHeld allKeys] sortedArrayUsingSelector:
-					 @selector(localizedCompare:)] retain];
++ (NSArray*) selectPositions: (NSArray*)positions isLong: (BOOL)isLong {
+	NSMutableArray* selectedPositions = [[NSMutableArray alloc] init];
+	for (Position* position in positions) {
+		if ([position isLong] == isLong)
+			[selectedPositions addObject:position];
+	}
+	NSArray* returnVal = [[NSArray alloc] initWithArray:selectedPositions];
+	[selectedPositions release];
+	return returnVal;
 }
 
+- (void) loadData: (NSArray*)newPositions {
+	[positions release];
+	[longPositions release];
+	[shortPositions release];
+	
+	positions =
+	    [[newPositions sortedArrayUsingSelector:@selector(compare:)]
+		 retain];
+	
+	longPositions = [Portfolio selectPositions:positions isLong:YES];
+	shortPositions = [Portfolio selectPositions:positions isLong:NO];
+}
+
+#pragma mark Testing
+
+
 - (void) loadMockData {
-	[self loadData:[NSDictionary dictionaryWithObjectsAndKeys:
-					[NSNumber numberWithUnsignedInt:10000],
-					@"AAPL",
-					[NSNumber numberWithUnsignedInt:31415],
-					@"GOOG",
-					[NSNumber numberWithUnsignedInt:666],
-					@"MSFT",
+	[self loadData:[NSArray arrayWithObjects:
+					[[[Position alloc] initWithTicker:@"AAPL"
+											 quantity:10000
+											   isLong:YES] autorelease],
+					[[[Position alloc] initWithTicker:@"GOOG"
+											 quantity:31415
+											   isLong:YES] autorelease],
+					[[[Position alloc] initWithTicker:@"MSFT"
+											 quantity:666
+											   isLong:NO] autorelease],
 					nil]];
 }
 
@@ -56,23 +78,28 @@
 }
 
 - (void)dealloc {
-	[stockTickers release];
-	[stockHeld release];
+	[positions release];
+	[longPositions release];
+	[shortPositions release];
 	[super dealloc];
 }
 
-#pragma mark Properties
+#pragma mark Accessors
 
-- (NSUInteger)count {
-	return [stockTickers count];
+- (NSUInteger)longPositionCount {
+	return [longPositions count];
 }
 
-- (NSString*)stockTickerAtIndex:(NSUInteger)index {
-	return [stockTickers objectAtIndex:index];
+- (NSUInteger)shortPositionCount {
+	return [shortPositions count];
 }
 
-- (NSUInteger)stockOwnedForTicker: (NSString*)stockTicker {
-	return [[stockHeld objectForKey:stockTicker] unsignedIntValue];
+- (Position*)longPositionAtIndex: (NSUInteger)index {
+	return [longPositions objectAtIndex:index];
+}
+
+- (Position*)shortPositionAtIndex: (NSUInteger)index {
+	return [shortPositions objectAtIndex:index];
 }
 
 @end

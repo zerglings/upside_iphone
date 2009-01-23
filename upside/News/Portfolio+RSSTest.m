@@ -9,8 +9,8 @@
 #import "TestSupport.h"
 
 #import "NewsCenter.h"
-#import "Portfolio.h"
 #import "Portfolio+RSS.h"
+#import "Position.h"
 
 
 @interface PortfolioRSSTest : SenTestCase {
@@ -23,9 +23,10 @@
 
 - (void) setUp {
 	portfolio = [[Portfolio alloc] init];
-	[portfolio loadData:[NSDictionary dictionaryWithObjectsAndKeys:
-						 [NSNumber numberWithUnsignedInt:666],
-	   				     @"MSFT",
+	[portfolio loadData:[NSArray arrayWithObjects:
+						 [[[Position alloc] initWithTicker:@"MSFT"
+												  quantity:666
+													isLong:YES] autorelease],
 						 nil]];
 	newsCenter = [[NewsCenter alloc] init];
 }

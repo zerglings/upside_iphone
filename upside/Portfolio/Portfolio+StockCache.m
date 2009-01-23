@@ -8,13 +8,14 @@
 
 #import "Portfolio+StockCache.h"
 
+#import "Position.h"
 #import "StockCache.h"
 
 @implementation Portfolio (StockCache)
 
 - (void) loadTickersIntoStockCache: (StockCache*)stockCache {
-	for (NSString* ticker in stockTickers) {
-		[stockCache stockForTicker:ticker];
+	for (Position* position in positions) {
+		[stockCache stockForTicker:[position ticker]];
 	}
 }
 

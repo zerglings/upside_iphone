@@ -65,32 +65,62 @@
 
 #pragma mark Table view methods
 
+// The section number for short positions.
+#define kShortsSection 0
+// The section number for long positions.
+#define kLongsSection 1
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	switch (section) {
+		case kShortsSection:
+			return @"Shorts";
+		case kLongsSection:
+			return @"Longs";
+		default:
+			break;
+	}
+	return nil;
+}
 
-// Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[Game sharedGame] portfolio] count];
+	switch (section) {
+		case kShortsSection:
+			return [[[Game sharedGame] portfolio] shortPositionCount];
+		case kLongsSection:
+			return [[[Game sharedGame] portfolio] longPositionCount];
+		default:
+			break;
+	}
+    return -1;
 }
 
-
-// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	StockTableViewCell *cell = (StockTableViewCell*)[super tableView:tableView
 											   cellForRowAtIndexPath:indexPath];
     
-    // Set up the cell...
 	Portfolio* portfolio = [[Game sharedGame] portfolio];
-	StockCache* stockCache = [[Game sharedGame] stockCache]; 
-	NSString* ticker = [portfolio stockTickerAtIndex:indexPath.row];
-	[cell setStock:[stockCache stockForTicker:ticker]
-			 owned:[portfolio stockOwnedForTicker:ticker]];
-
+	StockCache* stockCache = [[Game sharedGame] stockCache];
+	Position* position;
+	switch (indexPath.section) {
+		case kShortsSection:
+			position = [portfolio shortPositionAtIndex:indexPath.row];
+			break;
+		case kLongsSection:
+			position = [portfolio longPositionAtIndex:indexPath.row];
+			break;
+		default:
+			position = nil;
+			break;
+	}
+	
+	[cell setPosition:position
+			stockInfo:[stockCache stockForTicker:[position ticker]]];
     return cell;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.

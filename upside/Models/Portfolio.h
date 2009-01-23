@@ -10,21 +10,28 @@
 
 #import "Stock.h"
 
+@class Position;
+
 @interface Portfolio : NSObject {
-	NSArray* stockTickers;
-	NSDictionary* stockHeld;
+	NSArray* positions;
+	
+	NSArray* longPositions;
+	NSArray* shortPositions;
 }
 
-// How many stocks in this portfolio.
-- (NSUInteger)count;
+// How many long positions in this portfolio.
+- (NSUInteger)longPositionCount;
 
-// The numeric stock ID for the stock at the given index.
-- (NSString*)stockTickerAtIndex: (NSUInteger)index;
+// How many short positions in this portfolio.
+- (NSUInteger)shortPositionCount;
 
-// How many stocks of a certain ticker are owned.
-- (NSUInteger)stockOwnedForTicker: (NSString*)stockTicker;
+// The long position at the given index.
+- (Position*)longPositionAtIndex: (NSUInteger)index;
+
+// The short position at the given index.
+- (Position*)shortPositionAtIndex: (NSUInteger)index;
 
 // Reloads the portfolio with the given data.
-- (void) loadData: (NSDictionary*)newStocksHeld;
+- (void) loadData: (NSArray*)newPositions;
 
 @end

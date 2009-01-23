@@ -9,7 +9,8 @@
 #import "StockTableViewCell.h"
 
 #import "Portfolio.h"
-#import "Portfolio+Formatting.h"
+#import "Position.h"
+#import "Position+Formatting.h"
 #import "Stock.h"
 #import "Stock+Formatting.h"
 
@@ -33,62 +34,64 @@
 
 
 - (void)dealloc {
-	[stock release];
+	[position release];
+	[stockInfo release];
     [super dealloc];
 }
 
-- (Stock*) stock {
-	return stock;
+- (Position*) position {
+	return position;
 }
 
-- (NSUInteger) stockOwned {
-	return stockOwned;
+- (Stock*) stockInfo {
+	return stockInfo;
 }
 
-- (void) setStock: (Stock*)newStock owned:(NSUInteger)newStockOwned {
-	[newStock retain];
-	[stock release];
-	stock = newStock;
-	stockOwned = newStockOwned;
+- (void) setPosition: (Position*)newPosition stockInfo:(Stock*)newStockInfo {
+	[position release];
+	[stockInfo release];
+	position = [newPosition retain];
+	stockInfo = [newStockInfo retain];
 	
-	tickerLabel.text = [stock ticker];
-	nameLabel.text = [stock name];
+	tickerLabel.text = [position ticker];
+	nameLabel.text = [stockInfo name];
 	
-	[askChangeButton setTitle:[stock formattedNetAskChange]
+	[askChangeButton setTitle:[stockInfo formattedNetAskChange]
 					 forState:UIControlStateNormal];
-	[askChangeButton setTitle:[stock formattedNetAskChange]
+	[askChangeButton setTitle:[stockInfo formattedNetAskChange]
 					 forState:UIControlStateHighlighted];
-	[bidChangeButton setTitle:[stock formattedNetBidChange]
+	[bidChangeButton setTitle:[stockInfo formattedNetBidChange]
 					 forState:UIControlStateNormal];
-	[bidChangeButton setTitle:[stock formattedNetBidChange]
+	[bidChangeButton setTitle:[stockInfo formattedNetBidChange]
 					 forState:UIControlStateHighlighted];
-	[tradeChangeButton setTitle:[stock formattedNetTradeChange]
+	[tradeChangeButton setTitle:[stockInfo formattedNetTradeChange]
 					 forState:UIControlStateNormal];
-	[tradeChangeButton setTitle:[stock formattedNetTradeChange]
+	[tradeChangeButton setTitle:[stockInfo formattedNetTradeChange]
 					 forState:UIControlStateHighlighted];
 	
-	[askChangeButton setTitleColor:[stock colorForAskChange]
+	[askChangeButton setTitleColor:[stockInfo colorForAskChange]
 					      forState:UIControlStateNormal];
-	[askChangeButton setTitleColor:[stock colorForAskChange]
+	[askChangeButton setTitleColor:[stockInfo colorForAskChange]
 					      forState:UIControlStateHighlighted];
-	[bidChangeButton setTitleColor:[stock colorForBidChange]
+	[bidChangeButton setTitleColor:[stockInfo colorForBidChange]
 					      forState:UIControlStateNormal];
-	[bidChangeButton setTitleColor:[stock colorForBidChange]
+	[bidChangeButton setTitleColor:[stockInfo colorForBidChange]
 					      forState:UIControlStateHighlighted];
-	[tradeChangeButton setTitleColor:[stock colorForTradeChange]
+	[tradeChangeButton setTitleColor:[stockInfo colorForTradeChange]
 					      forState:UIControlStateNormal];
-	[tradeChangeButton setTitleColor:[stock colorForTradeChange]
+	[tradeChangeButton setTitleColor:[stockInfo colorForTradeChange]
 					      forState:UIControlStateHighlighted];
 	
-	askPriceLabel.text = [stock formattedAskPrice];
-	bidPriceLabel.text = [stock formattedBidPrice];
-	tradePriceLabel.text = [stock formattedTradePrice];
-	stockValueLabel.text = [stock formattedValueUsingBidPriceFor:stockOwned];	
-	stockCountLabel.text = [Portfolio formatStockOwned:stockOwned];
+	askPriceLabel.text = [stockInfo formattedAskPrice];
+	bidPriceLabel.text = [stockInfo formattedBidPrice];
+	tradePriceLabel.text = [stockInfo formattedTradePrice];
+	stockValueLabel.text = [stockInfo formattedValueUsingTradePriceFor:
+							[position quantity]];	
+	stockCountLabel.text = [position formattedQuantity];
 						   
-	askPriceProgressIcon.image = [stock imageForAskChange];
-	bidPriceProgressIcon.image = [stock imageForBidChange];
-	tradePriceProgressIcon.image = [stock imageForTradeChange];
+	askPriceProgressIcon.image = [stockInfo imageForAskChange];
+	bidPriceProgressIcon.image = [stockInfo imageForBidChange];
+	tradePriceProgressIcon.image = [stockInfo imageForTradeChange];
 }
 
 @end
