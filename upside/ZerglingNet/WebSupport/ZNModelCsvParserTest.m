@@ -33,7 +33,6 @@
 }
 @end
 
-
 @interface ZNModelCsvParserTest : SenTestCase <ZNModelCsvParserDelegate> {
 	ZNModelCsvParser* parser;
 	
@@ -48,10 +47,9 @@ static NSString* kContextObject = @"This is the context";
 
 - (void) setUp {
 	parser = [[ZNModelCsvParser alloc]
-			  initWithModelClass:[ZNModelCsvParserTestModel class]
-			  propertyNames:[NSArray arrayWithObjects:
-							 @"name", @"askPrice", @"bidPrice",
-							 @"previousClose", nil]];
+            initWithModelClass:[ZNModelCsvParserTestModel class]
+            propertyNames:[NSArray arrayWithObjects:@"name", @"askPrice",
+                           @"bidPrice", @"previousClose", nil]];
 	parser.context = kContextObject;
 	parser.delegate = self;
 	
@@ -72,24 +70,24 @@ static NSString* kContextObject = @"This is the context";
 	ZNModelCsvParserTestModel* model = [models objectAtIndex:0];
 	STAssertEqualStrings(@"Apple Inc.", model.name, @"First stock name");
 	STAssertEqualsWithAccuracy(79.51, model.askPrice, 0.0001,
-							   @"First stock ask price");
+                             @"First stock ask price");
 	STAssertEqualsWithAccuracy(79.20, model.bidPrice, 0.0001,
-							   @"First stock bid price");
+                             @"First stock bid price");
 	STAssertEqualsWithAccuracy(78.20, model.previousClose, 0.0001,
-							   @"First stock previous close");
+                             @"First stock previous close");
 	
 	model = [models objectAtIndex:2];
 	STAssertEqualStrings(@"Microsoft Corpora", model.name, @"3rd stock name");
 	STAssertEqualsWithAccuracy(18.84, model.askPrice, 0.0001,
-							   @"3rd stock ask price");
+                             @"3rd stock ask price");
 	STAssertEqualsWithAccuracy(18.19, model.bidPrice, 0.0001,
-							   @"3rd stock bid price");
+                             @"3rd stock bid price");
 }
 
 - (void) testParsingData {
 	NSString *filePath = [[[NSBundle mainBundle] resourcePath]
-						  stringByAppendingPathComponent:
-						  @"ZNModelCsvParserTest.csv"];
+                        stringByAppendingPathComponent:
+                        @"ZNModelCsvParserTest.csv"];
 	BOOL success = [parser parseData:[NSData dataWithContentsOfFile:filePath]];
 	STAssertTrue(success, @"Parsing failed on ZNModelCsvParserTest.csv");
 	
@@ -98,9 +96,9 @@ static NSString* kContextObject = @"This is the context";
 
 - (void) parsedModel: (ZNModel*)model context: (id)context {
 	STAssertEquals(kContextObject, context,
-				   @"Wrong context passed to -parsedModel");
+                 @"Wrong context passed to -parsedModel");
 	STAssertTrue([model isKindOfClass:[ZNModelCsvParserTestModel class]],
-				 @"Wrong model class instantiated");
+               @"Wrong model class instantiated");
 	
 	[models addObject:model];
 }

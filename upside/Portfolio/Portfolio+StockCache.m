@@ -14,9 +14,13 @@
 @implementation Portfolio (StockCache)
 
 - (void) loadTickersIntoStockCache: (StockCache*)stockCache {
+  BOOL needsSync = NO;
 	for (Position* position in positions) {
-		[stockCache stockForTicker:[position ticker]];
+		if(![stockCache stockForTicker:[position ticker]])
+      needsSync = YES;
 	}
+  if (needsSync)
+    [stockCache syncOnce];
 }
 
 @end

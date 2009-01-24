@@ -12,31 +12,26 @@
 #import "Game.h"
 #import "LoginCommController.h"
 #import "Portfolio.h"
+#import "Portfolio+StockCache.h"
 #import "PortfolioCommController.h"
 #import "Position.h"
 #import "ServiceError.h"
 #import "TradeOrder.h"
 
 @interface GameSyncController () <LoginCommDelegate>
-- (void) startSyncing;
-- (void) sync;
-- (void) receivedSyncResults: (NSArray*)results;
-- (BOOL) integrateSyncResults: (NSArray*)results;
-- (void) handleServiceError: (ServiceError*)error;
 @end
-
 
 @implementation GameSyncController
 
 - (id) initWithGame: (Game*)theGame {
-	if ((self = [super init])) {
+	if ((self = [super initWithErrorModelClass:[ServiceError class]
+                                syncInterval:60.0])) {
 		game = theGame;
 		commController = [[PortfolioCommController alloc]
                       initWithTarget:self
-                      action:@selector(receivedSyncResults:)];
+                      action:@selector(receivedResults:)];
 		loginCommController = [[LoginCommController alloc] init];
 		loginCommController.delegate = self;
-		syncInterval = 60.0;
 	}
 	return self;
 }
@@ -46,40 +41,11 @@
 	[super dealloc];
 }
 
-- (void) startSyncing {
-	[self sync];
-}
-
 - (void) sync {
 	[commController sync];
 }
 
-- (void) receivedSyncResults: (NSArray*)results {
-	if ([self integrateSyncResults:results]) {
-		[self performSelector:@selector(sync)
-               withObject:nil
-               afterDelay:syncInterval]; 
-	}
-}
-
-- (BOOL) integrateSyncResults: (NSArray*)results {
-	if (![results isKindOfClass:[NSArray class]]) {
-		// comm error, retry later
-		return YES;
-	}
-	
-	if ([results count] == 0) {
-		// the server 500ed, retry later
-		return YES;
-	}
-	
-	ServiceError* maybeError = [results objectAtIndex:0];
-	if ([maybeError isKindOfClass:[ServiceError class]]) {
-		// error, will be handled separately
-		[self handleServiceError:maybeError];
-		return NO;
-	}
-  
+- (BOOL) integrateResults: (NSArray*)results {
 	NSMutableArray* positions = [[NSMutableArray alloc] init];
 	NSMutableArray* tradeOrders = [[NSMutableArray alloc] init];
 	NSMutableArray* trades = [[NSMutableArray alloc] init];
@@ -96,13 +62,18 @@
 	[positions release];
 	[tradeOrders release];
 	[trades release];
+  
+  [[game portfolio] loadTickersIntoStockCache:[game stockCache]];
 	return YES;
 }
 
-- (void) handleServiceError: (ServiceError*)error {
+- (BOOL) handleServiceError: (ServiceError*)error {
 	if ([error isLoginError]) {
 		[loginCommController loginUsing:[ActivationState sharedState]];
+    return NO;
 	}
+  
+  return YES;
 }
 
 - (void)loginFailed: (NSError*)error {

@@ -6,21 +6,20 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "CacheController.h"
 
 @class Game;
 @class LoginCommController;
 @class PortfolioCommController;
 
-@interface GameSyncController : NSObject {
+@interface GameSyncController : CacheController {
 	Game* game;
 	PortfolioCommController* commController;
 	LoginCommController* loginCommController;
-	double syncInterval;
 }
 
-- (id) initWithGame: (Game*)game;
 
-- (void) startSyncing;
+// Designated initializer.
+- (id) initWithGame: (Game*)game;
 
 @end

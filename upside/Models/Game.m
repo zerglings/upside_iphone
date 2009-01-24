@@ -45,7 +45,7 @@
 	[portfolio loadRssFeedsIntoCenter:newsCenter];
 	
 	[portfolio loadTickersIntoStockCache:stockCache];
-	[stockCache startUpdating];
+	[stockCache startSyncing];
 	[syncController startSyncing];
 }
 

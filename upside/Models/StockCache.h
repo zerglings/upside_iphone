@@ -6,12 +6,12 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "CacheController.h"
 
 @class Stock;
 @class StockInfoCommController;
 
-@interface StockCache : NSObject {
+@interface StockCache : CacheController {
 	NSMutableDictionary* stocks;
 	StockInfoCommController* commController;
 	NSTimeInterval refreshPeriod;
@@ -19,8 +19,5 @@
 
 // Information for the stock with the given ticker.
 - (Stock*)stockForTicker: (NSString*)stockTicker;
-
-// Instructs the stock cache to start updating its contents periodically.
-- (void) startUpdating;
 
 @end

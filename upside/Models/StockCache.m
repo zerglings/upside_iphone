@@ -11,11 +11,6 @@
 #import "Stock.h"
 #import "StockInfoCommController.h"
 
-@interface StockCache ()
-- (void) startUpdating;
-@end
-
-
 @implementation StockCache
 
 #pragma mark I/O
@@ -31,12 +26,11 @@
 #pragma mark Lifecycle
 
 - (id)init {
-	if ((self = [super init])) {
+	if ((self = [self initWithErrorModelClass:nil syncInterval:60.0])) {
 		stocks = [[NSMutableDictionary alloc] init];
 		commController = [[StockInfoCommController alloc]
 						  initWithTarget:self
-								  action:@selector(integrateStocks:)];
-		refreshPeriod = 60.0;
+								  action:@selector(receivedResults:)];
 	}
 	return self;
 }
@@ -48,25 +42,16 @@
 
 #pragma mark Update Cycle
 
-- (void) update {
+- (void) sync {
 	[commController fetchInfoForTickers:[stocks allKeys]];
 }
 
-- (void) integrateStocks: (NSArray*)newStocks {
-	if (![newStocks isKindOfClass:[NSError class]]) {
-		for (Stock* stock in newStocks) {
-			// TODO(overmind): merge new model info with what was there before
-			[stocks setObject:stock forKey:[stock ticker]];
-		}
+- (BOOL) integrateResults: (NSArray*)newStocks {
+	for (Stock* stock in newStocks) {
+		// TODO(overmind): merge new model info with what was there before
+		[stocks setObject:stock forKey:[stock ticker]];
 	}
-	
-	[self performSelector:@selector(update)
-			   withObject:nil
-			   afterDelay:refreshPeriod];
-}
-
-- (void) startUpdating {
-	[self update];
+  return YES;
 }
 
 #pragma mark Cache Access

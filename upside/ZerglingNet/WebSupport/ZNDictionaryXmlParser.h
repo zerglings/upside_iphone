@@ -12,8 +12,8 @@
 
 // Called when an item corresponding to a known XML tag is parsed.
 - (void) parsedItem: (NSDictionary*)itemData
-			   name: (NSString*)itemName
-			context: (id)context;
+               name: (NSString*)itemName
+            context: (id)context;
 @end
 
 

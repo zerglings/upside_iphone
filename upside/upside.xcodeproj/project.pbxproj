@@ -116,6 +116,8 @@
 		577093620F1084D400069411 /* Stock+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* Stock+Formatting.m */; };
 		578ECFA80F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		578ECFA90F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
+		578ED13A0F2B18FB0064E0F8 /* CacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ED1390F2B18FB0064E0F8 /* CacheController.m */; };
+		578ED13B0F2B18FB0064E0F8 /* CacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ED1390F2B18FB0064E0F8 /* CacheController.m */; };
 		5791AC6E0F275D870036AB57 /* ZNCsvHttpRequestTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 575025D40F274EBA00793ECE /* ZNCsvHttpRequestTest.csv */; };
 		5791AD260F285B3C0036AB57 /* StockInfoCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD250F285B3C0036AB57 /* StockInfoCommController.m */; };
 		5791AD270F285B3C0036AB57 /* StockInfoCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD250F285B3C0036AB57 /* StockInfoCommController.m */; };
@@ -320,6 +322,8 @@
 		577093E40F11049E00069411 /* Stock+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+FormattingTest.m"; sourceTree = "<group>"; };
 		578ECFA60F2AF93B0064E0F8 /* GameSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSyncController.h; sourceTree = "<group>"; };
 		578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSyncController.m; sourceTree = "<group>"; };
+		578ED1380F2B18FB0064E0F8 /* CacheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheController.h; sourceTree = "<group>"; };
+		578ED1390F2B18FB0064E0F8 /* CacheController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheController.m; sourceTree = "<group>"; };
 		5791AD240F285B3C0036AB57 /* StockInfoCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInfoCommController.h; sourceTree = "<group>"; };
 		5791AD250F285B3C0036AB57 /* StockInfoCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInfoCommController.m; sourceTree = "<group>"; };
 		5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInfoCommControllerTest.m; sourceTree = "<group>"; };
@@ -501,6 +505,8 @@
 				570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */,
 				571A27070F1ABA5000A996A2 /* NetworkProgress.h */,
 				571A27080F1ABA5000A996A2 /* NetworkProgress.m */,
+				578ED1380F2B18FB0064E0F8 /* CacheController.h */,
+				578ED1390F2B18FB0064E0F8 /* CacheController.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -964,6 +970,7 @@
 				57402F9F0F29956E00B64A7C /* PortfolioCommController.m in Sources */,
 				5798B9CF0F2AD66600C6FDF5 /* ServiceError.m in Sources */,
 				578ECFA90F2AF93B0064E0F8 /* GameSyncController.m in Sources */,
+				578ED13B0F2B18FB0064E0F8 /* CacheController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,6 +1048,7 @@
 				57402F9E0F29956E00B64A7C /* PortfolioCommController.m in Sources */,
 				5798B9CE0F2AD66600C6FDF5 /* ServiceError.m in Sources */,
 				578ECFA80F2AF93B0064E0F8 /* GameSyncController.m in Sources */,
+				578ED13A0F2B18FB0064E0F8 /* CacheController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -75,23 +75,22 @@
 
 #pragma mark NSXMLParser Delegate
 
-- (void) parser: (NSXMLParser *)parser didStartElement: (NSString *)elementName
+- (void) parser: (NSXMLParser *)parser
+didStartElement: (NSString *)elementName
    namespaceURI: (NSString *)namespaceURI
   qualifiedName: (NSString *)qName
-	 attributes: (NSDictionary *)attributeDict {
-	
+     attributes: (NSDictionary *)attributeDict {
 	if (currentItemSchema != nil) {
 		// already parsing an item, see if it's among the keys
-		if (currentItemHasOpenSchema || [currentItemSchema
-										 containsObject:elementName]) {
+		if (currentItemHasOpenSchema || [currentItemSchema containsObject:
+                                     elementName]) {
 			currentProperty = [elementName retain];
 		}
 	}
 	else if (currentItemSchema = [schema objectForKey:elementName]) {
 		// parsing new item
 		currentItemName = [elementName retain];
-		currentItemHasOpenSchema = ![currentItemSchema
-									 isKindOfClass:[NSSet class]];
+		currentItemHasOpenSchema = ![currentItemSchema isKindOfClass:[NSSet class]];
 	}
 }
 
@@ -101,16 +100,16 @@
 	}
 }
 
-- (void) parser: (NSXMLParser *)parser didEndElement: (NSString *)elementName
+- (void) parser: (NSXMLParser *)parser
+  didEndElement: (NSString *)elementName
    namespaceURI: (NSString *)namespaceURI
   qualifiedName: (NSString *)qName {
-	
 	if (currentProperty != nil) {
 		// parsing a property
 		if ([currentProperty isEqualToString:elementName]) {
 			// done parsing the property
 			[currentItem setObject:[NSString stringWithString:currentValue]
-							forKey:currentProperty];
+                      forKey:currentProperty];
 			
 			[currentProperty release];
 			currentProperty = nil;
@@ -120,8 +119,8 @@
 	else if ([currentItemName isEqualToString:elementName]) {
 		// done parsing an entire item
 		[delegate parsedItem:[NSDictionary dictionaryWithDictionary:currentItem]
-						name:currentItemName
-					 context:context];
+                    name:currentItemName
+                 context:context];
 		
 		[currentItem removeAllObjects];
 		currentItemSchema = nil;
