@@ -58,7 +58,7 @@
 	}
 	
 	[[game portfolio] loadData:positions];
-	//[[game tradeBook] loadData:tradeOrders];
+	[[game tradeBook] loadData:tradeOrders];
 	[positions release];
 	[tradeOrders release];
 	[trades release];

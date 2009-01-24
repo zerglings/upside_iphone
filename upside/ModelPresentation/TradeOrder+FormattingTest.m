@@ -21,17 +21,19 @@
 
 - (void) setUp {
 	buyOrder = [[TradeOrder alloc] initWithTicker:@"AAPL"
-										 quantity:10000
-								   quantityFilled:1000
-									   isBuyOrder:YES
-									   limitCents:131050
-										 serverId:kTradeOrderInvalidServerId];
-
+                                       quantity:10000
+                               quantityUnfilled:9000
+                                          isBuy:YES
+                                         isLong:YES
+                                     limitPrice:1310.50
+                                        modelId:kTradeOrderInvalidModelId];
+  
 	sellOrder = [[TradeOrder alloc] initWithTicker:@"MSFT"
-										  quantity:35
-									quantityFilled:0
-										isBuyOrder:NO
-										  serverId:6];
+                                        quantity:35
+                                quantityUnfilled:35
+                                           isBuy:NO
+                                          isLong:YES
+                                         modelId:6];
 }
 
 - (void) tearDown {
@@ -45,28 +47,28 @@
 
 - (void) testQuantities {
 	STAssertEqualStrings(@"35", [sellOrder formattedQuantity],
-						 @"Easy quantity");
+                       @"Easy quantity");
 	STAssertEqualStrings(@"10,000", [buyOrder formattedQuantity],
-						 @"Large quantity");
-
+                       @"Large quantity");
+  
 	STAssertEqualStrings(@"0", [sellOrder formattedQuantityFilled],
-						 @"Zero filled quantity");
+                       @"Zero filled quantity");
 	STAssertEqualStrings(@"1,000", [buyOrder formattedQuantityFilled],
-						 @"Large filled quantity");
+                       @"Large filled quantity");
 }
 
 - (void) testFillPercentages {
 	STAssertEqualStrings(@"10.00%", [buyOrder formattedPercentFilled],
-						 @"Easy fill percent");
+                       @"Easy fill percent");
 	STAssertEqualStrings(@"0.00%", [sellOrder formattedPercentFilled],
-						 @"Zero fill percent");
+                       @"Zero fill percent");
 }
-	
+
 - (void) testLimits {
 	STAssertEqualStrings(@"$1,310.50", [buyOrder formattedLimitPrice],
-						 @"Large limit");
+                       @"Large limit");
 	STAssertEqualStrings(@"mkt", [sellOrder formattedLimitPrice],
-						 @"Market order limit");
+                       @"Market order limit");
 }
 
 @end

@@ -6,6 +6,8 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
+#import <objc/runtime.h>
+
 #import "CacheController.h"
 
 @interface CacheController ()
@@ -89,13 +91,13 @@
 #pragma mark Subclass Methods.
 
 - (void) sync {
-  NSAssert1(NO, @"CacheController %@ did not implement -integrateResults:",
-            [self className]);  
+  NSAssert1(NO, @"CacheController %s did not implement -integrateResults:",
+            class_getName([self class]));  
 }
 
 - (BOOL) integrateResults: (NSArray*)results {
-  NSAssert1(NO, @"CacheController %@ did not implement -integrateResults:",
-            [self className]);
+  NSAssert1(NO, @"CacheController %s did not implement -integrateResults:",
+            class_getName([self class]));  
   return YES;
 }
 - (BOOL) handleServiceError: (ZNModel*)error {

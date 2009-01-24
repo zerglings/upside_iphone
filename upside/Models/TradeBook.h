@@ -20,4 +20,6 @@
 // Information for the trade order at the given index.
 - (TradeOrder*) orderAtIndex: (NSUInteger)index;
 
+- (void) loadData: (NSArray*) tradeOrders;
+
 @end

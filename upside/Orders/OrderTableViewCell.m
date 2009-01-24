@@ -54,12 +54,12 @@
 	stock = newStock;
 	
 	tickerLabel.text = [order ticker];
-	buyOrSellLabel.text = [order isBuyOrder] ? @"buy" : @"sell";
+	buyOrSellLabel.text = [order isBuy] ? @"buy" : @"sell";
 	limitPriceLabel.text = [order formattedLimitPrice];
 	quantityLabel.text = [order formattedQuantity];
 	quantityFilledLabel.text = [order formattedQuantityFilled];
 	percentFilledLabel.text = [order formattedPercentFilled];
-	marketAskOrSellLabel.text = [order isBuyOrder] ?
+	marketAskOrSellLabel.text = [order isBuy] ?
 	    [stock formattedAskPrice] : [stock formattedBidPrice];
 	[fillProgressView setProgress:[order fillRatio]];
 }

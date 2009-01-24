@@ -44,7 +44,7 @@ static void SetupFormatters() {
 - (NSString*) formattedQuantityFilled {
 	SetupFormatters();
 	return [quantityFormatter stringFromNumber:[NSNumber numberWithUnsignedInt:
-												quantityFilled]];
+                                              [self quantityFilled]]];
 }
 
 - (NSString*) formattedPercentFilled {

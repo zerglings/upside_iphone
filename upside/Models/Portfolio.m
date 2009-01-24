@@ -10,22 +10,19 @@
 
 #import "Position.h"
 
-@interface Portfolio ()
-- (void) loadMockData;
-@end
-
 @implementation Portfolio
 
 #pragma mark I/O
 
 - (void) load {
-	[self loadMockData];
+  // TODO(overmind): implement I/O
 }
 
 - (void) save {
+  // TODO(overmind): implement I/O
 }
 
-#pragma mark Data Processing
+#pragma mark Synchronizing
 
 + (NSArray*) selectPositions: (NSArray*)positions isLong: (BOOL)isLong {
 	NSMutableArray* selectedPositions = [[NSMutableArray alloc] init];
@@ -43,29 +40,11 @@
 	[longPositions release];
 	[shortPositions release];
 	
-	positions =
-	    [[newPositions sortedArrayUsingSelector:@selector(compare:)]
-		 retain];
+	positions = [[newPositions sortedArrayUsingSelector:@selector(compare:)]
+               retain];
 	
 	longPositions = [Portfolio selectPositions:positions isLong:YES];
 	shortPositions = [Portfolio selectPositions:positions isLong:NO];
-}
-
-#pragma mark Testing
-
-
-- (void) loadMockData {
-	[self loadData:[NSArray arrayWithObjects:
-					[[[Position alloc] initWithTicker:@"AAPL"
-											 quantity:10000
-											   isLong:YES] autorelease],
-					[[[Position alloc] initWithTicker:@"GOOG"
-											 quantity:31415
-											   isLong:YES] autorelease],
-					[[[Position alloc] initWithTicker:@"MSFT"
-											 quantity:666
-											   isLong:NO] autorelease],
-					nil]];
 }
 
 #pragma mark Lifecycle

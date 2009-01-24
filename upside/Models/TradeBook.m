@@ -10,52 +10,23 @@
 
 #import "TradeOrder.h"
 
-@interface TradeBook ()
-
-- (void) loadMockData;
-
-@end
-
-
 @implementation TradeBook
 
 #pragma mark I/O
 
 - (void) load {
-	[self loadMockData];
+	// TODO(overmind): real I/O
 }
 
 - (void) save {
+	// TODO(overmind): real I/O
 }
 
-#pragma mark Testing
+#pragma mark Synchronizing
 
-- (void) loadMockData {
-	NSArray* mockOrders =
-	    [NSArray arrayWithObjects:
-		 [[[TradeOrder alloc] initWithTicker:@"AAPL"
-									quantity:150
-							  quantityFilled:0
-								  isBuyOrder:YES
-									serverId:kTradeOrderInvalidServerId]
-		  autorelease],
-		 [[[TradeOrder alloc] initWithTicker:@"GOOG"
-									quantity:10000
-							  quantityFilled:3500
-								  isBuyOrder:NO
-								  limitCents:29505
-									serverId:332]
-		  autorelease],
-		 [[[TradeOrder alloc] initWithTicker:@"MSFT"
-									quantity:32
-							  quantityFilled:32
-								  isBuyOrder:NO
-								  limitCents:2300
-									serverId:kTradeOrderInvalidServerId]
-		  autorelease],
-		 nil];
-	
-	tradeOrders = [mockOrders retain];
+- (void) loadData: (NSArray*)newTradeOrders {
+  [tradeOrders release];
+  tradeOrders = [newTradeOrders retain];
 }
 
 #pragma mark Lifecycle

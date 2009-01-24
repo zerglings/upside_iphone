@@ -10,6 +10,8 @@
 
 @implementation ServiceError
 
+@synthesize message, reason;
+
 - (BOOL) isLoginError {
 	return [reason isEqualToString:@"login"];
 }
@@ -19,8 +21,8 @@
 }
 
 - (id) initWithReason: (NSString*)theReason message: (NSString*)theMessage {
-	NSDictionary* props = [[NSDictionary alloc] initWithObjectsAndKeys:
-						   theMessage, @"message", theReason, @"reason", nil];
+	NSDictionary* properties = [[NSDictionary alloc] initWithObjectsAndKeys:
+						   theMessage, @"message", properties, @"reason", nil];
 	self = [self initWithModel:nil properties:props];
 	[props release];
 	return self;
