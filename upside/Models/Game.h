@@ -12,12 +12,14 @@
 @class StockCache;
 @class TradeBook;
 @class NewsCenter;
+@class GameSyncController;
 
 @interface Game : NSObject {
 	Portfolio* portfolio;
 	TradeBook* tradeBook;
 	StockCache* stockCache;
 	NewsCenter* newsCenter;
+	GameSyncController* syncController;
 }
 
 // The singleton Game instance.

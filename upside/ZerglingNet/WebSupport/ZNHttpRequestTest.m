@@ -50,7 +50,7 @@
 @implementation ZNHttpRequestTest
 
 - (void) setUp {
-	service = @"http://zn-testbed.zergling.net/web_support/echo.xml";
+	service = @"http://zn-testbed.herokugarden.com/web_support/echo.xml";
 	receivedResponse = NO;
 	[ZNHttpRequest deleteCookiesForService:service];
 }

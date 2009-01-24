@@ -25,4 +25,9 @@
 // Method to use for the login service.
 + (NSString*) loginMethod;
 
+// Points to the portfolio sync service.
++ (NSString*) portfolioSyncUrl;
+// Method to use for the portfolio sync service.
++ (NSString*) portfolioSyncMethod;
+	
 @end

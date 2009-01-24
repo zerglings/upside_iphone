@@ -47,7 +47,7 @@
 @implementation ZNXmlHttpRequestTest
 
 - (void) setUp {
-	service = @"http://zn-testbed.zergling.net/web_support/echo.xml";
+	service = @"http://zn-testbed.herokugarden.com/web_support/echo.xml";
 	receivedResponse = NO;
 	[ZNXmlHttpRequest deleteCookiesForService:service];
 }
@@ -67,7 +67,7 @@
 							 data:nil
 				   responseModels:[NSDictionary
 								   dictionaryWithObjectsAndKeys:
-								   [ZNXmlHttpRequestTestModel class], @"hash",
+								   [ZNXmlHttpRequestTestModel class], @"echo",
 								   nil]
 						   target:self
 						   action:@selector(checkOnlineGetResponse:)];
@@ -107,7 +107,7 @@
 							 data:dict
 				   responseModels:[NSDictionary
 								   dictionaryWithObjectsAndKeys:
-								   [ZNXmlHttpRequestTestModel class], @"hash",
+								   [ZNXmlHttpRequestTestModel class], @"echo",
 								   nil]
 						   target:self
 						   action:@selector(checkOnlineResponse:)];

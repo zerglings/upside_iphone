@@ -28,7 +28,6 @@
 }
 
 - (void) dealloc {
-	[service release];
 	[responseProperties release];
 	[formatString release];
 	[super dealloc];

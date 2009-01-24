@@ -93,6 +93,8 @@
 		57402E490F289DCE00B64A7C /* ActivationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */; };
 		57402E600F28A17300B64A7C /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402E5F0F28A17300B64A7C /* Position.m */; };
 		57402E610F28A17300B64A7C /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402E5F0F28A17300B64A7C /* Position.m */; };
+		57402F9E0F29956E00B64A7C /* PortfolioCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402F9D0F29956E00B64A7C /* PortfolioCommController.m */; };
+		57402F9F0F29956E00B64A7C /* PortfolioCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402F9D0F29956E00B64A7C /* PortfolioCommController.m */; };
 		574CD0AC0F20275D002CEDDB /* ZNMSBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 574CD0AB0F20275D002CEDDB /* ZNMSBoolean.m */; };
 		575022240F27014600793ECE /* ZNHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022230F27014600793ECE /* ZNHttpRequest.m */; };
 		575022250F27014600793ECE /* ZNHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022230F27014600793ECE /* ZNHttpRequest.m */; };
@@ -112,10 +114,14 @@
 		577091E30F10502F00069411 /* StockTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E20F10502F00069411 /* StockTableCellNarrow.xib */; };
 		577091E50F10503900069411 /* StockTableCellWide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E40F10503900069411 /* StockTableCellWide.xib */; };
 		577093620F1084D400069411 /* Stock+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* Stock+Formatting.m */; };
+		578ECFA80F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
+		578ECFA90F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		5791AC6E0F275D870036AB57 /* ZNCsvHttpRequestTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 575025D40F274EBA00793ECE /* ZNCsvHttpRequestTest.csv */; };
 		5791AD260F285B3C0036AB57 /* StockInfoCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD250F285B3C0036AB57 /* StockInfoCommController.m */; };
 		5791AD270F285B3C0036AB57 /* StockInfoCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD250F285B3C0036AB57 /* StockInfoCommController.m */; };
 		5791AD500F2865E90036AB57 /* StockInfoCommControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */; };
+		5798B9CE0F2AD66600C6FDF5 /* ServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798B9CD0F2AD66600C6FDF5 /* ServiceError.m */; };
+		5798B9CF0F2AD66600C6FDF5 /* ServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798B9CD0F2AD66600C6FDF5 /* ServiceError.m */; };
 		57A1E5AD0F20AC5800B8179A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
 		57A1E5AE0F20AC5800B8179A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
 		57A1E7080F2164D600B8179A /* RegistrationCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7070F2164D600B8179A /* RegistrationCommController.m */; };
@@ -279,6 +285,8 @@
 		57402D990F2893C700B64A7C /* Portfolio+StockCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+StockCache.m"; sourceTree = "<group>"; };
 		57402E5E0F28A17300B64A7C /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
 		57402E5F0F28A17300B64A7C /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
+		57402F9C0F29956E00B64A7C /* PortfolioCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortfolioCommController.h; sourceTree = "<group>"; };
+		57402F9D0F29956E00B64A7C /* PortfolioCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortfolioCommController.m; sourceTree = "<group>"; };
 		574CD0AA0F20275D002CEDDB /* ZNMSBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSBoolean.h; sourceTree = "<group>"; };
 		574CD0AB0F20275D002CEDDB /* ZNMSBoolean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSBoolean.m; sourceTree = "<group>"; };
 		575022220F27014600793ECE /* ZNHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNHttpRequest.h; sourceTree = "<group>"; };
@@ -310,9 +318,13 @@
 		577093610F1084D400069411 /* Stock+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+Formatting.m"; sourceTree = "<group>"; };
 		577093E10F11032200069411 /* Stock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock.h; sourceTree = "<group>"; };
 		577093E40F11049E00069411 /* Stock+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+FormattingTest.m"; sourceTree = "<group>"; };
+		578ECFA60F2AF93B0064E0F8 /* GameSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSyncController.h; sourceTree = "<group>"; };
+		578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSyncController.m; sourceTree = "<group>"; };
 		5791AD240F285B3C0036AB57 /* StockInfoCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInfoCommController.h; sourceTree = "<group>"; };
 		5791AD250F285B3C0036AB57 /* StockInfoCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInfoCommController.m; sourceTree = "<group>"; };
 		5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInfoCommControllerTest.m; sourceTree = "<group>"; };
+		5798B9CC0F2AD66600C6FDF5 /* ServiceError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceError.h; sourceTree = "<group>"; };
+		5798B9CD0F2AD66600C6FDF5 /* ServiceError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceError.m; sourceTree = "<group>"; };
 		57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		57A1E7060F2164D600B8179A /* RegistrationCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationCommController.h; sourceTree = "<group>"; };
 		57A1E7070F2164D600B8179A /* RegistrationCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationCommController.m; sourceTree = "<group>"; };
@@ -434,6 +446,7 @@
 				571195500F1DC67C00FD89EA /* ZerglingNet */,
 				570D84C70F1336EE00D54544 /* Models */,
 				57A1EF070F248D3200B8179A /* ModelPresentation */,
+				57402FA80F29967800B64A7C /* CommControllers */,
 				570D88BC0F16ABDD00D54544 /* News */,
 				570D82EC0F11A5BB00D54544 /* Util */,
 				5732104C0F117B9E003D97D8 /* Orders */,
@@ -488,8 +501,6 @@
 				570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */,
 				571A27070F1ABA5000A996A2 /* NetworkProgress.h */,
 				571A27080F1ABA5000A996A2 /* NetworkProgress.m */,
-				57A1F0590F24C15D00B8179A /* ServerPaths.h */,
-				57A1F05A0F24C15D00B8179A /* ServerPaths.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -520,9 +531,8 @@
 				570D84EF0F133A7800D54544 /* Game.m */,
 				570D86D30F144BD900D54544 /* StockCache.h */,
 				570D86D40F144BD900D54544 /* StockCache.m */,
-				5791AD240F285B3C0036AB57 /* StockInfoCommController.h */,
-				5791AD250F285B3C0036AB57 /* StockInfoCommController.m */,
-				5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */,
+				5798B9CC0F2AD66600C6FDF5 /* ServiceError.h */,
+				5798B9CD0F2AD66600C6FDF5 /* ServiceError.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -618,6 +628,26 @@
 			path = Orders;
 			sourceTree = "<group>";
 		};
+		57402FA80F29967800B64A7C /* CommControllers */ = {
+			isa = PBXGroup;
+			children = (
+				57A1F0590F24C15D00B8179A /* ServerPaths.h */,
+				57A1F05A0F24C15D00B8179A /* ServerPaths.m */,
+				57402F9C0F29956E00B64A7C /* PortfolioCommController.h */,
+				57402F9D0F29956E00B64A7C /* PortfolioCommController.m */,
+				5791AD240F285B3C0036AB57 /* StockInfoCommController.h */,
+				5791AD250F285B3C0036AB57 /* StockInfoCommController.m */,
+				5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */,
+				57A1E7060F2164D600B8179A /* RegistrationCommController.h */,
+				57A1E7070F2164D600B8179A /* RegistrationCommController.m */,
+				57A1F1880F2599B000B8179A /* LoginCommController.h */,
+				57A1F1890F2599B000B8179A /* LoginCommController.m */,
+				578ECFA60F2AF93B0064E0F8 /* GameSyncController.h */,
+				578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */,
+			);
+			path = CommControllers;
+			sourceTree = "<group>";
+		};
 		575022E70F27138600793ECE /* TestSupport */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,16 +733,12 @@
 				28D7ACF60DDB3853001CB0EB /* RegistrationViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* RegistrationViewController.m */,
 				2899E5210DE3E06400AC0155 /* RegistrationViewController.xib */,
-				57A1E7060F2164D600B8179A /* RegistrationCommController.h */,
-				57A1E7070F2164D600B8179A /* RegistrationCommController.m */,
 				57A1EFBD0F24ABB500B8179A /* ActivationUserChoiceViewController.h */,
 				57A1EFBE0F24ABB500B8179A /* ActivationUserChoiceViewController.m */,
 				57A1EFBA0F24AB7D00B8179A /* ActivationUserChoiceViewController.xib */,
 				57A1F0B70F25640A00B8179A /* ActivationLoginViewController.h */,
 				57A1F0B80F25640A00B8179A /* ActivationLoginViewController.m */,
 				57A1F0BB0F25642300B8179A /* ActivationLoginViewController.xib */,
-				57A1F1880F2599B000B8179A /* LoginCommController.h */,
-				57A1F1890F2599B000B8179A /* LoginCommController.m */,
 			);
 			path = Activation;
 			sourceTree = "<group>";
@@ -935,6 +961,9 @@
 				5791AD260F285B3C0036AB57 /* StockInfoCommController.m in Sources */,
 				57402D9B0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */,
 				57402E610F28A17300B64A7C /* Position.m in Sources */,
+				57402F9F0F29956E00B64A7C /* PortfolioCommController.m in Sources */,
+				5798B9CF0F2AD66600C6FDF5 /* ServiceError.m in Sources */,
+				578ECFA90F2AF93B0064E0F8 /* GameSyncController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,6 +1038,9 @@
 				57402E480F289DCE00B64A7C /* NewsCenterTest.m in Sources */,
 				57402E490F289DCE00B64A7C /* ActivationStateTest.m in Sources */,
 				57402E600F28A17300B64A7C /* Position.m in Sources */,
+				57402F9E0F29956E00B64A7C /* PortfolioCommController.m in Sources */,
+				5798B9CE0F2AD66600C6FDF5 /* ServiceError.m in Sources */,
+				578ECFA80F2AF93B0064E0F8 /* GameSyncController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

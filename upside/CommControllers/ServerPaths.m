@@ -37,5 +37,12 @@
 + (NSString*) loginMethod {
 	return kZNHttpMethodPost;
 }
++ (NSString*) portfolioSyncUrl {
+	return [NSString stringWithFormat:@"%@/portfolios/sync/0.xml",
+			[self serverUrl]];
+}
++ (NSString*) portfolioSyncMethod {
+	return kZNHttpMethodPut;
+}
 
 @end

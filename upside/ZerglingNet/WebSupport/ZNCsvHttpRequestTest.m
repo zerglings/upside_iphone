@@ -47,7 +47,7 @@
 @implementation ZNCsvHttpRequestTest
 
 - (void) setUp {
-	service = @"http://zn-testbed.zergling.net/web_support/csv.csv";
+	service = @"http://zn-testbed.herokugarden.com/web_support/csv.csv";
 	receivedResponse = NO;
 	[ZNCsvHttpRequest deleteCookiesForService:service];
 	onlineData = [[NSArray alloc] initWithObjects:@"foo", @"bar", @"xbar", nil];

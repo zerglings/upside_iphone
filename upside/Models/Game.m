@@ -8,6 +8,7 @@
 
 #import "Game.h"
 
+#import "GameSyncController.h"
 #import "NewsCenter.h"
 #import "Portfolio.h"
 #import "Portfolio+RSS.h"
@@ -25,6 +26,7 @@
 		stockCache = [[StockCache alloc] init];
 		portfolio = [[Portfolio alloc] init];
 		tradeBook = [[TradeBook alloc] init];
+		syncController = [[GameSyncController alloc] initWithGame:self];
 	}
 	return self;
 }
@@ -44,6 +46,7 @@
 	
 	[portfolio loadTickersIntoStockCache:stockCache];
 	[stockCache startUpdating];
+	[syncController startSyncing];
 }
 
 #pragma mark Accessors

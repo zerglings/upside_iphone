@@ -77,8 +77,7 @@
 			
 			// append the cell value to the line
 			NSString* currentCellString =
-			[[NSString alloc] initWithData:currentCell
-								  encoding:NSUTF8StringEncoding];
+			[[NSString alloc] initWithData:currentCell encoding:NSUTF8StringEncoding];
 			[currentLine addObject:currentCellString];
 			[currentCellString release];
 			[currentCell setLength:0];

@@ -26,4 +26,6 @@
 // Try to login. Sends outcome via a message to the delegate.
 - (void) loginUsing: (ActivationState*)activationState;
 
+@property (nonatomic, assign) id<LoginCommDelegate> delegate;
+
 @end

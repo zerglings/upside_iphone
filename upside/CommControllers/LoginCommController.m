@@ -12,16 +12,19 @@
 #import "Device.h"
 #import "LoginCommController.h"
 #import "ServerPaths.h"
+#import "ServiceError.h"
 #import "User.h"
 #import "WebSupport.h"
 
 @implementation LoginCommController
 
+@synthesize delegate;
+
 - (id) init {
 	if ((self = [super init])) {
 		resposeModels = [[NSDictionary alloc] initWithObjectsAndKeys:
-						 [User class], @"user",
-						 [NSNull null], @"error", nil];
+                     [User class], @"user",
+                     [ServiceError class], @"error", nil];
 	}
 	return self;
 }
@@ -36,16 +39,16 @@
 	activationState = theActivationState;
 	
 	NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
-							 activationState.user.name, @"name",
-							 activationState.user.password, @"password",
-							 activationState.deviceInfo.uniqueId, @"device_id",
-							 nil];
+                           activationState.user.name, @"name",
+                           activationState.user.password, @"password",
+                           activationState.deviceInfo.uniqueId, @"device_id",
+                           nil];
 	[ZNXmlHttpRequest callService:[ServerPaths loginUrl]
-						   method:[ServerPaths loginMethod]
-							 data:request
-				   responseModels:resposeModels
-						   target:self
-						   action:@selector(serverResponded:)];
+                         method:[ServerPaths loginMethod]
+                           data:request
+                 responseModels:resposeModels
+                         target:self
+                         action:@selector(serverResponded:)];
 	[request release];
 }
 
@@ -58,26 +61,23 @@
 		[delegate loginFailed:
 		 [NSError errorWithDomain:@"StockPlay" code:0 userInfo:
 		  [NSDictionary dictionaryWithObjectsAndKeys:
-		   @"Login Failure",
-		   NSLocalizedDescriptionKey,
+		   @"Login Failure", NSLocalizedDescriptionKey,
 		   @"Our server returned an invalid response.",
-		   NSLocalizedFailureReasonErrorKey,
+       NSLocalizedFailureReasonErrorKey,
 		   nil]]];
 		return;
 	}
 	User* user = [response objectAtIndex:0];
-	if (![user isKindOfClass:[User class]]) {
+	if ([user isKindOfClass:[ServiceError class]]) {
 		[delegate loginFailed:
 		 [NSError errorWithDomain:@"StockPlay" code:1 userInfo:
 		  [NSDictionary dictionaryWithObjectsAndKeys:
 		   @"Login Rejected", NSLocalizedDescriptionKey,
-		   [(NSDictionary*)user objectForKey:@"message"],
-		   NSLocalizedFailureReasonErrorKey,
-		   nil]]];
+		   [(ServiceError*)user message], NSLocalizedFailureReasonErrorKey, nil]]];
 		return;
 	}
 	User* finalUser = [[User alloc] initWithUser:user
-										password:activationState.user.password];
+                                      password:activationState.user.password];
 	[activationState setUser:finalUser];
 	[finalUser release];	
 	[activationState save];	

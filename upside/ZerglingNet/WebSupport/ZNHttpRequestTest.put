@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<hash>
-  <method type="symbol">put</method>
-  <body>stringKey=someString&amp;model%5BtrueVal%5D=true&amp;model%5BuintVal%5D=3141592&amp;model%5BtextVal%5D=Something%00special</body>
+<echo>
+  <method>put</method>
   <headers>ACCEPT: */*
 ACCEPT_ENCODING: gzip, deflate
 ACCEPT_LANGUAGE: en-us
 CONNECTION: close
-HOST: zn-testbed.zergling.net
+HOST: zn-testbed.herokugarden.com
 USER_AGENT: Zergling.Net Web Support/1.0
 VERSION: HTTP/1.0
 </headers>
-</hash>
+  <body>stringKey=someString&amp;model%5BtrueVal%5D=true&amp;model%5BuintVal%5D=3141592&amp;model%5BtextVal%5D=Something%00special</body>
+</echo>
