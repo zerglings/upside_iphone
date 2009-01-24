@@ -10,6 +10,7 @@
 
 #import "ActivationState.h"
 #import "Device.h"
+#import "NetworkProgress.h"
 #import "ServerPaths.h"
 #import "User.h"
 #import "WebSupport.h"
@@ -20,8 +21,8 @@
 - (id) init {
 	if ((self = [super init])) {
 		resposeModels = [[NSDictionary alloc] initWithObjectsAndKeys:
-						 [Device class], @"device",
-						 [User class], @"user", nil];
+                     [Device class], @"device",
+                     [User class], @"user", nil];
 	}
 	return self;
 }
@@ -37,17 +38,20 @@
 	NSString* deviceID = [Device currentDeviceId];
 	
 	NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
-							 deviceID, @"unique_id", nil];
+                           deviceID, @"unique_id", nil];
+  [NetworkProgress connectionStarted];
 	[ZNXmlHttpRequest callService:[ServerPaths registrationUrl]
-						   method:[ServerPaths registrationMethod]
-							 data:request
-				   responseModels:resposeModels
-						   target:self
-						   action:@selector(serverResponded:)];
+                         method:[ServerPaths registrationMethod]
+                           data:request
+                 responseModels:resposeModels
+                         target:self
+                         action:@selector(serverResponded:)];
 	[request release];
 }
 
 - (void) serverResponded: (NSArray*)response {
+  [NetworkProgress connectionDone];
+  
 	if ([response isKindOfClass:[NSError class]]) {
 		[delegate activationFailed:(NSError*)response];
 		return;
@@ -66,12 +70,12 @@
 	
 	Device* deviceInfo = [response objectAtIndex:0];
 	NSAssert([deviceInfo isKindOfClass:[Device class]],
-			 @"The server's response did not have a device");
+           @"The server's response did not have a device");
 	[activationState setDeviceInfo:deviceInfo];
-
+  
 	User* user = [response objectAtIndex:1];
 	NSAssert([user isKindOfClass:[User class]],
-			 @"The server's response did not have a user");
+           @"The server's response did not have a user");
 	[activationState setUser:user];
 	
 	[activationState save];	

@@ -11,6 +11,7 @@
 #import "ActivationState.h"
 #import "Device.h"
 #import "LoginCommController.h"
+#import "NetworkProgress.h"
 #import "ServerPaths.h"
 #import "ServiceError.h"
 #import "User.h"
@@ -43,6 +44,7 @@
                            activationState.user.password, @"password",
                            activationState.deviceInfo.uniqueId, @"device_id",
                            nil];
+  [NetworkProgress connectionStarted];
 	[ZNXmlHttpRequest callService:[ServerPaths loginUrl]
                          method:[ServerPaths loginMethod]
                            data:request
@@ -53,6 +55,8 @@
 }
 
 - (void) serverResponded: (NSArray*)response {
+  [NetworkProgress connectionDone];
+  
 	if ([response isKindOfClass:[NSError class]]) {
 		[delegate loginFailed:(NSError*)response];
 		return;
@@ -63,8 +67,7 @@
 		  [NSDictionary dictionaryWithObjectsAndKeys:
 		   @"Login Failure", NSLocalizedDescriptionKey,
 		   @"Our server returned an invalid response.",
-       NSLocalizedFailureReasonErrorKey,
-		   nil]]];
+       NSLocalizedFailureReasonErrorKey, nil]]];
 		return;
 	}
 	User* user = [response objectAtIndex:0];

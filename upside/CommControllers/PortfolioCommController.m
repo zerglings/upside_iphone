@@ -8,6 +8,7 @@
 
 #import "PortfolioCommController.h"
 
+#import "NetworkProgress.h"
 #import "Position.h"
 #import "TradeOrder.h"
 #import "ServiceError.h"
@@ -16,16 +17,16 @@
 
 @implementation PortfolioCommController
 
-- (id)initWithTarget: (id)theTarget action: (SEL)theAction {
+- (id) initWithTarget: (id)theTarget action: (SEL)theAction {
 	if ((self = [super init])) {
 		target = theTarget;
 		action = theAction;
 		
 		responseModels = [[NSDictionary alloc] initWithObjectsAndKeys:
-						  [Position class], @"position",
-						  [TradeOrder class], @"trade_order",
-						  [ServiceError class], @"error",
-						  nil];
+                      [Position class], @"position",
+                      [TradeOrder class], @"trade_order",
+                      [ServiceError class], @"error",
+                      nil];
 	}
 	return self;
 }
@@ -35,13 +36,19 @@
 	[super dealloc];
 }
 
-- (void)sync {
+- (void) sync {
+  [NetworkProgress connectionStarted];
 	[ZNXmlHttpRequest callService:[ServerPaths portfolioSyncUrl]
                          method:[ServerPaths portfolioSyncMethod]
                            data:nil
                  responseModels:responseModels
-                         target:target
-                         action:action];
+                         target:self
+                         action:@selector(processResponse:)];
+}
+
+- (void) processResponse: (NSObject*)response {
+  [NetworkProgress connectionDone];
+  [target performSelector:action withObject:response];
 }
 
 @end

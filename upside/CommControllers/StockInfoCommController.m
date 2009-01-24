@@ -8,6 +8,7 @@
 
 #import "StockInfoCommController.h"
 
+#import "NetworkProgress.h"
 #import "Stock.h"
 #import "WebSupport.h"
 
@@ -21,8 +22,8 @@
 		service = @"http://download.finance.yahoo.com/d/";
 		formatString = @"snb2b3l1p";
 		responseProperties = [[NSArray alloc] initWithObjects:
-							  @"ticker", @"name", @"askPrice", @"bidPrice",
-							  @"lastTradePrice", @"previousClosePrice", nil];
+                          @"ticker", @"name", @"askPrice", @"bidPrice",
+                          @"lastTradePrice", @"previousClosePrice", nil];
 	}
 	return self;
 }
@@ -42,16 +43,21 @@
 	
 	NSString* tickerQuery = [tickers componentsJoinedByString:@"+"];
 	NSDictionary* requestData = [[NSDictionary alloc] initWithObjectsAndKeys:
-								 tickerQuery, @"s",
-								 formatString, @"f", nil];
+                               tickerQuery, @"s", formatString, @"f", nil];
+  [NetworkProgress connectionStarted];
 	[ZNCsvHttpRequest callService:service
-						   method:kZNHttpMethodPost
-							 data:requestData
-					responseClass:[Stock class]
-			   responseProperties:responseProperties
-						   target:target
-						   action:action];
+                         method:kZNHttpMethodPost
+                           data:requestData
+                  responseClass:[Stock class]
+             responseProperties:responseProperties
+                         target:self
+                         action:@selector(processResponse:)];
 	[tickerQuery release];
+}
+
+- (void)processResponse: (NSObject*)response {
+  [NetworkProgress connectionDone];
+  [target performSelector:action withObject:response];  
 }
 
 @end
