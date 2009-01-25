@@ -63,126 +63,118 @@
 
 - (void) testOnlineGet {
 	[ZNXmlHttpRequest callService:service
-						   method:kZNHttpMethodGet
-							 data:nil
-				   responseModels:[NSDictionary
-								   dictionaryWithObjectsAndKeys:
-								   [ZNXmlHttpRequestTestModel class], @"echo",
-								   nil]
-						   target:self
-						   action:@selector(checkOnlineGetResponse:)];
-	[[NSRunLoop currentRunLoop] runUntilDate:
-	 [NSDate dateWithTimeIntervalSinceNow:1.0]];
+                         method:kZNHttpMethodGet
+                           data:nil
+                 responseModels:[NSDictionary dictionaryWithObjectsAndKeys:
+                                 [ZNXmlHttpRequestTestModel class], @"echo",
+                                 nil]
+                         target:self
+                         action:@selector(checkOnlineGetResponse:)];
+	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                            1.0]];
 	
-	STAssertEquals(YES, receivedResponse,
-				   @"Response never received");
+	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
 - (void) checkOnlineGetResponse: (NSArray*)responseArray {
 	receivedResponse = YES;
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
-				  @"Error occured %@", responseArray);
+                @"Error occured %@", responseArray);
 	
 	ZNXmlHttpRequestTestModel* response = [responseArray objectAtIndex:0];
 	STAssertTrue([response isKindOfClass:[ZNXmlHttpRequestTestModel class]],
-				 @"Response not deserialized using proper model");
+               @"Response not deserialized using proper model");
 	
 	STAssertEqualStrings(@"get", response.method,
-						 @"Request not issued using GET");
+                       @"Request not issued using GET");
 }
 
 - (void) testOnlineRequest {
 	ZNXmlHttpRequestTestModel* requestModel = [[[ZNXmlHttpRequestTestModel
-												 alloc] init] autorelease];
+                                               alloc] init] autorelease];
 	requestModel.method = @"Awesome method";
 	requestModel.headers = @"Awesome headers";
 	requestModel.body = @"Awesome body";
 	
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-						  requestModel, @"model",
-						  @"someString", @"stringKey",
-						  nil];
+                        requestModel, @"model",
+                        @"someString", @"stringKey", nil];
 	[ZNXmlHttpRequest callService:service
-						   method:kZNHttpMethodPut
-							 data:dict
-				   responseModels:[NSDictionary
-								   dictionaryWithObjectsAndKeys:
-								   [ZNXmlHttpRequestTestModel class], @"echo",
-								   nil]
-						   target:self
-						   action:@selector(checkOnlineResponse:)];
+                         method:kZNHttpMethodPut
+                           data:dict
+                 responseModels:[NSDictionary dictionaryWithObjectsAndKeys:
+                                 [ZNXmlHttpRequestTestModel class], @"echo",
+                                 nil]
+                         target:self
+                         action:@selector(checkOnlineResponse:)];
 	
-	[[NSRunLoop currentRunLoop] runUntilDate:
-	 [NSDate dateWithTimeIntervalSinceNow:1.0]];
-	
-	STAssertEquals(YES, receivedResponse,
-				   @"Response never received");
+	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                            1.0]];
+	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
 - (void) checkOnlineResponse: (NSArray*)responseArray {
 	receivedResponse = YES;
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
-				  @"Error occured %@", responseArray);
+                @"Error occured %@", responseArray);
 	
 	ZNXmlHttpRequestTestModel* response = [responseArray objectAtIndex:0];
 	STAssertTrue([response isKindOfClass:[ZNXmlHttpRequestTestModel class]],
-				 @"Response not deserialized using proper model");
+               @"Response not deserialized using proper model");
 	
 	STAssertEqualStrings(@"put", response.method,
-						 @"Request not issued using PUT");
+                       @"Request not issued using PUT");
 	
 	NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
-						  stringByAppendingPathComponent:
-						  @"ZNXmlHttpRequestTest.body"];
+                        stringByAppendingPathComponent:
+                        @"ZNXmlHttpRequestTest.body"];
 	STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
-						 response.body, @"Wrong body in request");
+                       response.body, @"Wrong body in request");
 }
 
 - (void) testFileRequest {
 	NSString* filePath = [[[NSBundle mainBundle] resourcePath]
-						  stringByAppendingPathComponent:
-						  @"ZNXmlHttpRequestTest.xml"];
+                        stringByAppendingPathComponent:
+                        @"ZNXmlHttpRequestTest.xml"];
 	NSString* fileUrl = [[NSURL fileURLWithPath:filePath] absoluteString];
 	
 	[ZNXmlHttpRequest callService:fileUrl
-						   method:kZNHttpMethodGet
-							 data:nil
-				   responseModels:[NSDictionary dictionaryWithObjectsAndKeys:
-								   [ZNXmlHttpRequestTestModel class], @"model",
-								   [NSNull null], @"nonmodel", nil]
-						   target:self
-						   action:@selector(checkFileResponse:)];
+                         method:kZNHttpMethodGet
+                           data:nil
+                 responseModels:[NSDictionary dictionaryWithObjectsAndKeys:
+                                 [ZNXmlHttpRequestTestModel class], @"model",
+                                 [NSNull null], @"nonmodel", nil]
+                         target:self
+                         action:@selector(checkFileResponse:)];
 	
-	[[NSRunLoop currentRunLoop] runUntilDate:
-	 [NSDate dateWithTimeIntervalSinceNow:1.0]];
-	
-	STAssertEquals(YES, receivedResponse,
-				   @"Response never received");
+	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                             1.0]];	
+	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
 - (void) checkFileResponse: (NSArray*)responseArray {
 	receivedResponse = YES;	
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
-				  @"Error occured %@", responseArray);
+                @"Error occured %@", responseArray);
 	
 	ZNXmlHttpRequestTestModel* model = [responseArray objectAtIndex:0];
 	STAssertTrue([model isKindOfClass:[ZNXmlHttpRequestTestModel class]],
-				 @"Model in response not deserialized properly");
+               @"Model in response not deserialized properly");
 	STAssertEqualStrings(@"Body", model.body,
-						 @"Model's body not deserialized properly");
+                       @"Model's body not deserialized properly");
 	STAssertEqualStrings(@"Headers", model.headers,
-						 @"Model's headers not deserialized properly");
+                       @"Model's headers not deserialized properly");
 	STAssertEqualStrings(@"Method", model.method,
-						 @"Model's method not deserialized properly");
-
+                       @"Model's method not deserialized properly");
+  
 	NSDictionary* nonmodel = [responseArray objectAtIndex:1];
 	STAssertTrue([nonmodel isKindOfClass:[NSDictionary class]],
-				 @"Non-model in response not deserialized with NSDictionary");
+               @"Non-model in response not deserialized with NSDictionary");
 	
 	NSDictionary* golden_nonmodel = [NSDictionary dictionaryWithObjectsAndKeys:
-									 @"val1", @"key1", @"val2", @"key2", nil];
+                                   @"val1", @"key1", @"val2", @"key2", nil];
 	STAssertEqualObjects(golden_nonmodel, nonmodel,
-						 @"Non-model deserialized incorrectly");	
+                       @"Non-model deserialized incorrectly");	
 }
 
 @end

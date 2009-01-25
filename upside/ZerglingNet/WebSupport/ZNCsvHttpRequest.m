@@ -13,7 +13,7 @@
 #import "ZNModelCsvParser.h"
 
 @interface ZNCsvHttpRequest ()
-     <ZNArrayCsvParserDelegate, ZNModelCsvParserDelegate> 
+<ZNArrayCsvParserDelegate, ZNModelCsvParserDelegate> 
 @end
 
 @implementation ZNCsvHttpRequest
@@ -21,18 +21,18 @@
 #pragma mark Lifecycle
 
 - (id) initWithURLRequest: (NSURLRequest*)theRequest
-			responseClass: (Class)modelClass
-	   responseProperties: (NSArray*)modelPropertyNames
-				   target: (NSObject*)theTarget
-				   action: (SEL)theAction {
+            responseClass: (Class)modelClass
+       responseProperties: (NSArray*)modelPropertyNames
+                   target: (NSObject*)theTarget
+                   action: (SEL)theAction {
 	if ((self = [super initWithURLRequest:theRequest
-								   target:theTarget
-								   action:theAction])) {
+                                 target:theTarget
+                                 action:theAction])) {
 		response = [[NSMutableArray alloc] init];
 		if ([ZNModel isModelClass:modelClass]) {
 			modelParser = [[ZNModelCsvParser alloc]
-						   initWithModelClass:modelClass
-						   propertyNames:modelPropertyNames];
+                     initWithModelClass:modelClass
+                     propertyNames:modelPropertyNames];
 			modelParser.delegate = self;
 		}
 		else {
@@ -51,21 +51,21 @@
 }
 
 + (void) callService: (NSString*)service
-			  method: (NSString*)method
-				data: (NSDictionary*)data
-	   responseClass: (Class)modelClass
+              method: (NSString*)method
+                data: (NSDictionary*)data
+       responseClass: (Class)modelClass
   responseProperties: (NSArray*)modelPropertyNames
-			  target: (NSObject*)target
-			  action: (SEL)action {
+              target: (NSObject*)target
+              action: (SEL)action {
 	NSURLRequest* urlRequest = [self newURLRequestToService:service
-													 method:method
-													   data:data];
+                                                   method:method
+                                                     data:data];
 	ZNCsvHttpRequest* request =
-	[[ZNCsvHttpRequest alloc] initWithURLRequest:urlRequest
-								   responseClass:modelClass
-							  responseProperties:modelPropertyNames
-										  target:target
-										  action:action];
+      [[ZNCsvHttpRequest alloc] initWithURLRequest:urlRequest
+                                     responseClass:modelClass
+                                responseProperties:modelPropertyNames
+                                            target:target
+                                            action:action];
 	[request start];
 	[urlRequest release];
 	

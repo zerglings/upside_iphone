@@ -64,69 +64,67 @@
 
 - (void) testOnlineRequest {
 	[ZNCsvHttpRequest callService:service
-						   method:kZNHttpMethodPut
-							 data:[NSDictionary dictionaryWithObject:onlineData
-															  forKey:@"data"]
-					responseClass:nil
-			   responseProperties:nil
-						   target:self
-						   action:@selector(checkOnlineResponse:)];
+                         method:kZNHttpMethodPut
+                           data:[NSDictionary dictionaryWithObject:onlineData
+                                                            forKey:@"data"]
+                  responseClass:nil
+             responseProperties:nil
+                         target:self
+                         action:@selector(checkOnlineResponse:)];
 	
-	[[NSRunLoop currentRunLoop] runUntilDate:
-	 [NSDate dateWithTimeIntervalSinceNow:1.0]];
+	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                            1.0]];
 	
-	STAssertEquals(YES, receivedResponse,
-				   @"Response never received");
+	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
 - (void) checkOnlineResponse: (NSArray*)responseArray {
 	receivedResponse = YES;
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
-				  @"Error occured %@", responseArray);
+                @"Error occured %@", responseArray);
 	
 	ZNCsvHttpRequestTestModel* array = [responseArray objectAtIndex:0];	
 	STAssertEqualObjects(onlineData, array,
-						 @"Response not deserialized properly");
+                       @"Response not deserialized properly");
 }
 
 - (void) testFileRequest {
 	NSString* filePath = [[[NSBundle mainBundle] resourcePath]
-						  stringByAppendingPathComponent:
-						  @"ZNCsvHttpRequestTest.csv"];
+                        stringByAppendingPathComponent:
+                        @"ZNCsvHttpRequestTest.csv"];
 	NSString* fileUrl = [[NSURL fileURLWithPath:filePath] absoluteString];
 	
 	[ZNCsvHttpRequest callService:fileUrl
-						   method:kZNHttpMethodGet
-							 data:nil
-					responseClass:[ZNCsvHttpRequestTestModel class]
-			   responseProperties:[NSArray arrayWithObjects:
-								   @"name", @"askPrice", @"bidPrice",
-								   @"previousClose", nil]
-						   target:self
-						   action:@selector(checkFileResponse:)];
+                         method:kZNHttpMethodGet
+                           data:nil
+                  responseClass:[ZNCsvHttpRequestTestModel class]
+             responseProperties:[NSArray arrayWithObjects:
+                                 @"name", @"askPrice", @"bidPrice",
+                                 @"previousClose", nil]
+                         target:self
+                         action:@selector(checkFileResponse:)];
 	
-	[[NSRunLoop currentRunLoop] runUntilDate:
-	 [NSDate dateWithTimeIntervalSinceNow:1.0]];
+	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                            1.0]];
 	
-	STAssertEquals(YES, receivedResponse,
-				   @"Response never received");
+	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
 - (void) checkFileResponse: (NSArray*)responseArray {
 	receivedResponse = YES;	
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
-				  @"Error occured %@", responseArray);
+                @"Error occured %@", responseArray);
 	
 	ZNCsvHttpRequestTestModel* model = [responseArray objectAtIndex:0];
 	STAssertTrue([model isKindOfClass:[ZNCsvHttpRequestTestModel class]],
-				 @"Model in response not deserialized properly");
+               @"Model in response not deserialized properly");
 	STAssertEqualStrings(@"Apple Inc.", model.name, @"First stock name");
 	STAssertEqualsWithAccuracy(79.51, model.askPrice, 0.0001,
-							   @"First stock ask price");
+                             @"First stock ask price");
 	STAssertEqualsWithAccuracy(79.20, model.bidPrice, 0.0001,
-							   @"First stock bid price");
+                             @"First stock bid price");
 	STAssertEqualsWithAccuracy(78.20, model.previousClose, 0.0001,
-							   @"First stock previous close");	
+                             @"First stock previous close");	
 }
 
 @end

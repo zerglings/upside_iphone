@@ -20,16 +20,16 @@
 
 // Convenience method for issuing a request.
 + (void) callService: (NSString*)service
-			  method: (NSString*)method
-				data: (NSDictionary*)data
-	  responseModels: (NSDictionary*)responseModels
-			  target: (NSObject*)target
-			  action: (SEL)action;
+              method: (NSString*)method
+                data: (NSDictionary*)data
+      responseModels: (NSDictionary*)responseModels
+              target: (NSObject*)target
+              action: (SEL)action;
 
 // Designated initializer.
 - (id) initWithURLRequest: (NSURLRequest*)request
-		   responseModels: (NSDictionary*)responseModels
-				   target: (NSObject*)target
-				   action: (SEL)action;
+           responseModels: (NSDictionary*)responseModels
+                   target: (NSObject*)target
+                   action: (SEL)action;
 
 @end

@@ -28,23 +28,23 @@
 //
 // Subclasses should provide a convenience method like this.
 + (void) callService: (NSString*)service
-			  method: (NSString*)method
-				data: (NSDictionary*)data
-			  target: (NSObject*)target
-			  action: (SEL)action;
+              method: (NSString*)method
+                data: (NSDictionary*)data
+              target: (NSObject*)target
+              action: (SEL)action;
 
 // Designated initializer.
 - (id) initWithURLRequest: (NSURLRequest*)request
-				   target: (id)target
-				   action: (SEL)action;
+                   target: (id)target
+                   action: (SEL)action;
 
 // Creates a NSURLRequest encapsulating data coming from a model.
 //
 // Subclasses should use this in a convenience method that assembles the request
 // and starts it.
 + (NSURLRequest*) newURLRequestToService: (NSString*)service
-								  method: (NSString*)method
-									data: (NSDictionary*)data;
+                                  method: (NSString*)method
+                                    data: (NSDictionary*)data;
 
 // Subclasses should call this on the assembled request.
 - (void) start;

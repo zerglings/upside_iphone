@@ -65,62 +65,58 @@
 }
 
 - (void) testOnlineRequest {
-	ZNHttpRequestTestModel* requestModel = [[[ZNHttpRequestTestModel alloc]
-											 init] autorelease];
+	ZNHttpRequestTestModel* requestModel = [[[ZNHttpRequestTestModel alloc] init]
+                                          autorelease];
 	requestModel.textVal = @"Something\0special";
 	requestModel.uintVal = 3141592;
 	requestModel.trueVal = YES;
 	requestModel.nilVal = nil;
 	
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-						  requestModel, @"model",
-						  @"someString", @"stringKey",
-						  nil];
+                        requestModel, @"model",
+                        @"someString", @"stringKey", nil];
 	[ZNHttpRequest callService:service
-						method:kZNHttpMethodPut
-						  data:dict
-						target:self
-						action:@selector(checkOnlineAndFileResponse:)];
+                      method:kZNHttpMethodPut
+                        data:dict
+                      target:self
+                      action:@selector(checkOnlineAndFileResponse:)];
 	
-	[[NSRunLoop currentRunLoop] runUntilDate:
-	 [NSDate dateWithTimeIntervalSinceNow:1.0]];
+	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                            1.0]];
 	
-	STAssertEquals(YES, receivedResponse,
-				   @"Response never received");
+	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
 - (void) checkOnlineAndFileResponse: (NSData*)response {
 	receivedResponse = YES;
 	STAssertFalse([response isKindOfClass:[NSError class]],
-				  @"Error occured %@", response);
+                @"Error occured %@", response);
 	
 	NSString* responseString =
-	    [[NSString alloc] initWithData:response
-							  encoding:NSUTF8StringEncoding];	
+  [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];	
 	NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
-						  stringByAppendingPathComponent:
-						  @"ZNHttpRequestTest.put"];
+                        stringByAppendingPathComponent:
+                        @"ZNHttpRequestTest.put"];
 	STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
-						 responseString, @"Wrong request");
+                       responseString, @"Wrong request");
 }
 
 - (void) testFileRequest {
 	NSString* filePath = [[[NSBundle mainBundle] resourcePath]
-						  stringByAppendingPathComponent:
-						  @"ZNHttpRequestTest.put"];
+                        stringByAppendingPathComponent:
+                        @"ZNHttpRequestTest.put"];
 	NSString* fileUrl = [[NSURL fileURLWithPath:filePath] absoluteString];
 	
 	[ZNHttpRequest callService:fileUrl
-						method:kZNHttpMethodGet
-						  data:nil
-						target:self
-						action:@selector(checkOnlineAndFileResponse:)];
+                      method:kZNHttpMethodGet
+                        data:nil
+                      target:self
+                      action:@selector(checkOnlineAndFileResponse:)];
 	
-	[[NSRunLoop currentRunLoop] runUntilDate:
-	 [NSDate dateWithTimeIntervalSinceNow:1.0]];
+	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                            1.0]];
 	
-	STAssertEquals(YES, receivedResponse,
-				   @"Response never received");
+	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
 @end
