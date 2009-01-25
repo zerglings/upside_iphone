@@ -18,7 +18,7 @@
 	    @"custom_server_url" : @"server_url";
 	NSString* serverUrl = [defaults stringForKey:urlPrefKey];
 	if (!serverUrl)
-		serverUrl = @"http://upside.zerg.me";
+		serverUrl = @"http://istockplay.com";
 	    
 	return serverUrl;
 }

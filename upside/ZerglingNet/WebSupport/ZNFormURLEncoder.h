@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class ZNFormFieldFormatter;
+
 // Convert form data into the application/x-www-form-urlencoded MIME encoding.
 @interface ZNFormURLEncoder : NSObject {
-
+  NSMutableData* output;
+  ZNFormFieldFormatter* fieldFormatter;
 }
 
-+ (NSData*) createEncodingFor: (NSDictionary*) dictionary;
++ (NSData*) copyEncodingFor: (NSDictionary*)dictionary
+        usingFieldFormatter: (ZNFormFieldFormatter*)formatter;
 
 @end

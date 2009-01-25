@@ -78,6 +78,7 @@
 	[ZNHttpRequest callService:service
                       method:kZNHttpMethodPut
                         data:dict
+                 fieldCasing:kZNFormatterSnakeCase
                       target:self
                       action:@selector(checkOnlineAndFileResponse:)];
 	
@@ -110,6 +111,7 @@
 	[ZNHttpRequest callService:fileUrl
                       method:kZNHttpMethodGet
                         data:nil
+                 fieldCasing:kZNFormatterSnakeCase   
                       target:self
                       action:@selector(checkOnlineAndFileResponse:)];
 	

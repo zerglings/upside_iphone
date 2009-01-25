@@ -8,6 +8,7 @@
 
 #import "ZNHttpRequest.h"
 
+#import "ZNFormFieldFormatter.h"
 #import "ZNFormURLEncoder.h"
 
 @implementation ZNHttpRequest
@@ -39,14 +40,19 @@
 
 + (NSURLRequest*) newURLRequestToService: (NSString*)service
                                   method: (NSString*)method
-                                    data: (NSDictionary*)data {
+                                    data: (NSDictionary*)data
+                             fieldCasing: (ZNFormatterCasing)fieldCasing {
 	NSURL* url = [[NSURL alloc] initWithString:service];	
 	NSMutableURLRequest* request = [[NSMutableURLRequest alloc]
                                   initWithURL:url];
 	[url release];
 	
 	[request setHTTPMethod:method];
-	NSData* encodedBody = [ZNFormURLEncoder createEncodingFor:data];
+  ZNFormFieldFormatter* fieldFormatter =
+      [ZNFormFieldFormatter formatterFromPropertiesTo:fieldCasing];
+	NSData* encodedBody = [ZNFormURLEncoder copyEncodingFor:data
+                                      usingFieldFormatter:fieldFormatter];
+  
 	[request setHTTPBody:encodedBody];
 	
 	[request addValue:@"application/x-www-form-urlencoded"
@@ -175,11 +181,13 @@
 + (void) callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
+         fieldCasing: (ZNFormatterCasing)fieldCasing
               target: (NSObject*)target
               action: (SEL)action {
 	NSURLRequest* urlRequest = [self newURLRequestToService:service
                                                    method:method
-                                                     data:data];
+                                                     data:data
+                                              fieldCasing:fieldCasing];
 	ZNHttpRequest* request =
 	[[ZNHttpRequest alloc] initWithURLRequest:urlRequest
                                      target:target

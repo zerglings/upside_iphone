@@ -71,26 +71,6 @@
 		571A27090F1ABA5000A996A2 /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
 		57402D9A0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402D990F2893C700B64A7C /* Portfolio+StockCache.m */; };
 		57402D9B0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402D990F2893C700B64A7C /* Portfolio+StockCache.m */; };
-		57402DFA0F28995400B64A7C /* Stock+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093E40F11049E00069411 /* Stock+FormattingTest.m */; };
-		57402E370F289DCE00B64A7C /* ZNArrayCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575023540F271F2000793ECE /* ZNArrayCsvParserTest.m */; };
-		57402E380F289DCE00B64A7C /* ZNModelCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575024560F27353200793ECE /* ZNModelCsvParserTest.m */; };
-		57402E390F289DCE00B64A7C /* ZNDictionaryXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890E0F171AF500D54544 /* ZNDictionaryXmlParserTest.m */; };
-		57402E3A0F289DCE00B64A7C /* ZNFormURLEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */; };
-		57402E3B0F289DCE00B64A7C /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022260F27016200793ECE /* ZNHttpRequestTest.m */; };
-		57402E3C0F289DCE00B64A7C /* ZNCsvHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575025D00F274EA100793ECE /* ZNCsvHttpRequestTest.m */; };
-		57402E3D0F289DCE00B64A7C /* ZNXmlHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E82E0F219B0F00B8179A /* ZNXmlHttpRequestTest.m */; };
-		57402E3E0F289DCE00B64A7C /* ZNModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57119A0A0F1F3D2C00FD89EA /* ZNModelTest.m */; };
-		57402E3F0F289DCE00B64A7C /* ZNModelDefinitionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571198460F1E7D4800FD89EA /* ZNModelDefinitionTest.m */; };
-		57402E400F289DCE00B64A7C /* ZNModelDefinitionAttributeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956E0F1DCFA500FD89EA /* ZNModelDefinitionAttributeTest.m */; };
-		57402E410F289DCE00B64A7C /* ZNMSRegistryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571199370F1EBE9B00FD89EA /* ZNMSRegistryTest.m */; };
-		57402E420F289DCE00B64A7C /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1EF290F24948F00B8179A /* UserTest.m */; };
-		57402E430F289DCE00B64A7C /* NewsItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23DB0F18D9F400A996A2 /* NewsItemTest.m */; };
-		57402E440F289DCE00B64A7C /* PortfolioTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87980F14B99500D54544 /* PortfolioTest.m */; };
-		57402E450F289DCE00B64A7C /* TradeOrder+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */; };
-		57402E460F289DCE00B64A7C /* Position+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87470F145BBA00D54544 /* Position+FormattingTest.m */; };
-		57402E470F289DCE00B64A7C /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
-		57402E480F289DCE00B64A7C /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
-		57402E490F289DCE00B64A7C /* ActivationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */; };
 		57402E600F28A17300B64A7C /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402E5F0F28A17300B64A7C /* Position.m */; };
 		57402E610F28A17300B64A7C /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402E5F0F28A17300B64A7C /* Position.m */; };
 		57402F9E0F29956E00B64A7C /* PortfolioCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402F9D0F29956E00B64A7C /* PortfolioCommController.m */; };
@@ -114,6 +94,32 @@
 		577091E30F10502F00069411 /* StockTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E20F10502F00069411 /* StockTableCellNarrow.xib */; };
 		577091E50F10503900069411 /* StockTableCellWide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E40F10503900069411 /* StockTableCellWide.xib */; };
 		577093620F1084D400069411 /* Stock+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* Stock+Formatting.m */; };
+		5782650D0F2C062D00B53703 /* ZNFormFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5782650C0F2C062D00B53703 /* ZNFormFieldFormatter.m */; };
+		5782650E0F2C062D00B53703 /* ZNFormFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5782650C0F2C062D00B53703 /* ZNFormFieldFormatter.m */; };
+		578265130F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.m in Sources */ = {isa = PBXBuildFile; fileRef = 578265120F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.m */; };
+		578265140F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.m in Sources */ = {isa = PBXBuildFile; fileRef = 578265120F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.m */; };
+		5782658F0F2C5D7000B53703 /* ZNFormFieldFormatter+Snake2LCamelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5782656F0F2C57B000B53703 /* ZNFormFieldFormatter+Snake2LCamelTest.m */; };
+		578266040F2C731700B53703 /* ZNFormURLEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */; };
+		578266570F2C771000B53703 /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575022260F27016200793ECE /* ZNHttpRequestTest.m */; };
+		5782667F0F2C787900B53703 /* ZNCsvHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575025D00F274EA100793ECE /* ZNCsvHttpRequestTest.m */; };
+		578266A00F2C799200B53703 /* ZNXmlHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E82E0F219B0F00B8179A /* ZNXmlHttpRequestTest.m */; };
+		578266B50F2C79C200B53703 /* ZNArrayCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575023540F271F2000793ECE /* ZNArrayCsvParserTest.m */; };
+		578266B60F2C79C200B53703 /* ZNModelCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 575024560F27353200793ECE /* ZNModelCsvParserTest.m */; };
+		578266B70F2C79C200B53703 /* ZNDictionaryXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D890E0F171AF500D54544 /* ZNDictionaryXmlParserTest.m */; };
+		578266B80F2C79C200B53703 /* ZNModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57119A0A0F1F3D2C00FD89EA /* ZNModelTest.m */; };
+		578266B90F2C79C200B53703 /* ZNModelDefinitionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571198460F1E7D4800FD89EA /* ZNModelDefinitionTest.m */; };
+		578266BA0F2C79C200B53703 /* ZNModelDefinitionAttributeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956E0F1DCFA500FD89EA /* ZNModelDefinitionAttributeTest.m */; };
+		578266BB0F2C79C200B53703 /* ZNMSRegistryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571199370F1EBE9B00FD89EA /* ZNMSRegistryTest.m */; };
+		578266BC0F2C79C200B53703 /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1EF290F24948F00B8179A /* UserTest.m */; };
+		578266BD0F2C79C200B53703 /* NewsItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23DB0F18D9F400A996A2 /* NewsItemTest.m */; };
+		578266BE0F2C79C200B53703 /* PortfolioTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87980F14B99500D54544 /* PortfolioTest.m */; };
+		578266BF0F2C79C200B53703 /* TradeOrder+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */; };
+		578266C00F2C79C200B53703 /* Stock+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093E40F11049E00069411 /* Stock+FormattingTest.m */; };
+		578266C10F2C79C200B53703 /* Position+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87470F145BBA00D54544 /* Position+FormattingTest.m */; };
+		578266C20F2C79C200B53703 /* StockInfoCommControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */; };
+		578266C30F2C79C200B53703 /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
+		578266C40F2C79C200B53703 /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
+		578266C50F2C79C200B53703 /* ActivationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */; };
 		578ECFA80F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		578ECFA90F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		578ED13A0F2B18FB0064E0F8 /* CacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ED1390F2B18FB0064E0F8 /* CacheController.m */; };
@@ -121,7 +127,6 @@
 		5791AC6E0F275D870036AB57 /* ZNCsvHttpRequestTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 575025D40F274EBA00793ECE /* ZNCsvHttpRequestTest.csv */; };
 		5791AD260F285B3C0036AB57 /* StockInfoCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD250F285B3C0036AB57 /* StockInfoCommController.m */; };
 		5791AD270F285B3C0036AB57 /* StockInfoCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD250F285B3C0036AB57 /* StockInfoCommController.m */; };
-		5791AD500F2865E90036AB57 /* StockInfoCommControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */; };
 		5798B9CE0F2AD66600C6FDF5 /* ServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798B9CD0F2AD66600C6FDF5 /* ServiceError.m */; };
 		5798B9CF0F2AD66600C6FDF5 /* ServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798B9CD0F2AD66600C6FDF5 /* ServiceError.m */; };
 		57A1E5AD0F20AC5800B8179A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
@@ -190,7 +195,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* UpsideAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpsideAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* UpsideAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpsideAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* Stock Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stock Play.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* StockPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* RegistrationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
@@ -320,6 +325,12 @@
 		577093610F1084D400069411 /* Stock+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+Formatting.m"; sourceTree = "<group>"; };
 		577093E10F11032200069411 /* Stock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock.h; sourceTree = "<group>"; };
 		577093E40F11049E00069411 /* Stock+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+FormattingTest.m"; sourceTree = "<group>"; };
+		5782650B0F2C062D00B53703 /* ZNFormFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNFormFieldFormatter.h; sourceTree = "<group>"; };
+		5782650C0F2C062D00B53703 /* ZNFormFieldFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNFormFieldFormatter.m; sourceTree = "<group>"; };
+		578265110F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZNFormFieldFormatter+Snake2LCamel.h"; sourceTree = "<group>"; };
+		578265120F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZNFormFieldFormatter+Snake2LCamel.m"; sourceTree = "<group>"; };
+		5782656F0F2C57B000B53703 /* ZNFormFieldFormatter+Snake2LCamelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZNFormFieldFormatter+Snake2LCamelTest.m"; sourceTree = "<group>"; };
+		5782663B0F2C755C00B53703 /* ZNFormatterCasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNFormatterCasing.h; sourceTree = "<group>"; };
 		578ECFA60F2AF93B0064E0F8 /* GameSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSyncController.h; sourceTree = "<group>"; };
 		578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSyncController.m; sourceTree = "<group>"; };
 		578ED1380F2B18FB0064E0F8 /* CacheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheController.h; sourceTree = "<group>"; };
@@ -438,7 +449,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Stock Play.app */,
+				1D6058910D05DD3D006BFB54 /* StockPlay.app */,
 				57CB1A040F0F1ADE00E95AE1 /* UpsideTests.app */,
 			);
 			name = Products;
@@ -702,6 +713,12 @@
 				570D890C0F17183B00D54544 /* ZNDictionaryXmlParser.m */,
 				570D890E0F171AF500D54544 /* ZNDictionaryXmlParserTest.m */,
 				570D8ABD0F1816CE00D54544 /* ZNDictionaryXmlParserTest.xml */,
+				5782663B0F2C755C00B53703 /* ZNFormatterCasing.h */,
+				5782650B0F2C062D00B53703 /* ZNFormFieldFormatter.h */,
+				5782650C0F2C062D00B53703 /* ZNFormFieldFormatter.m */,
+				578265110F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.h */,
+				578265120F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.m */,
+				5782656F0F2C57B000B53703 /* ZNFormFieldFormatter+Snake2LCamelTest.m */,
 				57A1E7640F21815900B8179A /* ZNFormURLEncoder.h */,
 				57A1E7650F21815900B8179A /* ZNFormURLEncoder.m */,
 				57A1E7850F2184A800B8179A /* ZNFormURLEncoderTest.m */,
@@ -821,7 +838,7 @@
 			);
 			name = Upside;
 			productName = upside;
-			productReference = 1D6058910D05DD3D006BFB54 /* Stock Play.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* StockPlay.app */;
 			productType = "com.apple.product-type.application";
 		};
 		57CB1A030F0F1ADE00E95AE1 /* UpsideTests */ = {
@@ -979,6 +996,8 @@
 				5798B9CF0F2AD66600C6FDF5 /* ServiceError.m in Sources */,
 				578ECFA90F2AF93B0064E0F8 /* GameSyncController.m in Sources */,
 				578ED13B0F2B18FB0064E0F8 /* CacheController.m in Sources */,
+				5782650E0F2C062D00B53703 /* ZNFormFieldFormatter.m in Sources */,
+				578265140F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,33 +1049,36 @@
 				575024540F27352000793ECE /* ZNModelCsvParser.m in Sources */,
 				575025CE0F274E7700793ECE /* ZNCsvHttpRequest.m in Sources */,
 				5791AD270F285B3C0036AB57 /* StockInfoCommController.m in Sources */,
-				5791AD500F2865E90036AB57 /* StockInfoCommControllerTest.m in Sources */,
 				57402D9A0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */,
-				57402DFA0F28995400B64A7C /* Stock+FormattingTest.m in Sources */,
-				57402E370F289DCE00B64A7C /* ZNArrayCsvParserTest.m in Sources */,
-				57402E380F289DCE00B64A7C /* ZNModelCsvParserTest.m in Sources */,
-				57402E390F289DCE00B64A7C /* ZNDictionaryXmlParserTest.m in Sources */,
-				57402E3A0F289DCE00B64A7C /* ZNFormURLEncoderTest.m in Sources */,
-				57402E3B0F289DCE00B64A7C /* ZNHttpRequestTest.m in Sources */,
-				57402E3C0F289DCE00B64A7C /* ZNCsvHttpRequestTest.m in Sources */,
-				57402E3D0F289DCE00B64A7C /* ZNXmlHttpRequestTest.m in Sources */,
-				57402E3E0F289DCE00B64A7C /* ZNModelTest.m in Sources */,
-				57402E3F0F289DCE00B64A7C /* ZNModelDefinitionTest.m in Sources */,
-				57402E400F289DCE00B64A7C /* ZNModelDefinitionAttributeTest.m in Sources */,
-				57402E410F289DCE00B64A7C /* ZNMSRegistryTest.m in Sources */,
-				57402E420F289DCE00B64A7C /* UserTest.m in Sources */,
-				57402E430F289DCE00B64A7C /* NewsItemTest.m in Sources */,
-				57402E440F289DCE00B64A7C /* PortfolioTest.m in Sources */,
-				57402E450F289DCE00B64A7C /* TradeOrder+FormattingTest.m in Sources */,
-				57402E460F289DCE00B64A7C /* Position+FormattingTest.m in Sources */,
-				57402E470F289DCE00B64A7C /* Portfolio+RSSTest.m in Sources */,
-				57402E480F289DCE00B64A7C /* NewsCenterTest.m in Sources */,
-				57402E490F289DCE00B64A7C /* ActivationStateTest.m in Sources */,
 				57402E600F28A17300B64A7C /* Position.m in Sources */,
 				57402F9E0F29956E00B64A7C /* PortfolioCommController.m in Sources */,
 				5798B9CE0F2AD66600C6FDF5 /* ServiceError.m in Sources */,
 				578ECFA80F2AF93B0064E0F8 /* GameSyncController.m in Sources */,
 				578ED13A0F2B18FB0064E0F8 /* CacheController.m in Sources */,
+				5782650D0F2C062D00B53703 /* ZNFormFieldFormatter.m in Sources */,
+				578265130F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.m in Sources */,
+				5782658F0F2C5D7000B53703 /* ZNFormFieldFormatter+Snake2LCamelTest.m in Sources */,
+				578266040F2C731700B53703 /* ZNFormURLEncoderTest.m in Sources */,
+				578266570F2C771000B53703 /* ZNHttpRequestTest.m in Sources */,
+				5782667F0F2C787900B53703 /* ZNCsvHttpRequestTest.m in Sources */,
+				578266A00F2C799200B53703 /* ZNXmlHttpRequestTest.m in Sources */,
+				578266B50F2C79C200B53703 /* ZNArrayCsvParserTest.m in Sources */,
+				578266B60F2C79C200B53703 /* ZNModelCsvParserTest.m in Sources */,
+				578266B70F2C79C200B53703 /* ZNDictionaryXmlParserTest.m in Sources */,
+				578266B80F2C79C200B53703 /* ZNModelTest.m in Sources */,
+				578266B90F2C79C200B53703 /* ZNModelDefinitionTest.m in Sources */,
+				578266BA0F2C79C200B53703 /* ZNModelDefinitionAttributeTest.m in Sources */,
+				578266BB0F2C79C200B53703 /* ZNMSRegistryTest.m in Sources */,
+				578266BC0F2C79C200B53703 /* UserTest.m in Sources */,
+				578266BD0F2C79C200B53703 /* NewsItemTest.m in Sources */,
+				578266BE0F2C79C200B53703 /* PortfolioTest.m in Sources */,
+				578266BF0F2C79C200B53703 /* TradeOrder+FormattingTest.m in Sources */,
+				578266C00F2C79C200B53703 /* Stock+FormattingTest.m in Sources */,
+				578266C10F2C79C200B53703 /* Position+FormattingTest.m in Sources */,
+				578266C20F2C79C200B53703 /* StockInfoCommControllerTest.m in Sources */,
+				578266C30F2C79C200B53703 /* Portfolio+RSSTest.m in Sources */,
+				578266C40F2C79C200B53703 /* NewsCenterTest.m in Sources */,
+				578266C50F2C79C200B53703 /* ActivationStateTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,7 +1095,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = upside_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = "Stock Play";
+				PRODUCT_NAME = StockPlay;
 			};
 			name = Debug;
 		};
@@ -1085,7 +1107,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = upside_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = "Stock Play";
+				PRODUCT_NAME = StockPlay;
 			};
 			name = Release;
 		};

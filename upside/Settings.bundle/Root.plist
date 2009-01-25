@@ -34,7 +34,7 @@
 			<key>Key</key>
 			<string>server_url</string>
 			<key>DefaultValue</key>
-			<string>http://upside.zerg.me</string>
+			<string>http://istockplay.com</string>
 			<key>Titles</key>
 			<array>
 				<string>Production</string>
@@ -43,7 +43,7 @@
 			</array>
 			<key>Values</key>
 			<array>
-				<string>http://upside.zerg.me</string>
+				<string>http://istockplay.com</string>
 				<string>http://moonstone.local:3000</string>
 				<string>http://twinkle.local:3000</string>
 			</array>
