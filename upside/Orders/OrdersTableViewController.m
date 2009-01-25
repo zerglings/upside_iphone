@@ -9,6 +9,7 @@
 #import "OrdersTableViewController.h"
 
 #import "Game.h"
+#import "NewOrderViewController.h"
 #import "OrderTableViewCell.h"
 #import "StockCache.h"
 #import "TradeBook.h"
@@ -36,6 +37,10 @@
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  self.navigationItem.leftBarButtonItem =
+      [[UIBarButtonItem alloc] 
+       initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+       target:self action:@selector(tappedAddTradeButton:)];
 }
 
 /*
@@ -163,6 +168,15 @@
     [super dealloc];
 }
 
+- (void) tappedAddTradeButton: (id)sender {
+  NewOrderViewController* newOrderViewController =
+      [[NewOrderViewController alloc] initWithNibName:@"NewOrderViewController"
+                                               bundle:nil];
+  [self.navigationController pushViewController:newOrderViewController
+                                       animated:YES];
+  // TODO(overmind): setup controller
+  [newOrderViewController release];
+}
 
 @end
 

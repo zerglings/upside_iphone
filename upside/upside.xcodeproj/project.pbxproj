@@ -120,6 +120,8 @@
 		578266C30F2C79C200B53703 /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
 		578266C40F2C79C200B53703 /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
 		578266C50F2C79C200B53703 /* ActivationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */; };
+		578266EE0F2C95A200B53703 /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578266ED0F2C95A200B53703 /* NewOrderViewController.m */; };
+		578266F00F2C95B000B53703 /* NewOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578266EF0F2C95B000B53703 /* NewOrderViewController.xib */; };
 		578ECFA80F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		578ECFA90F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		578ED13A0F2B18FB0064E0F8 /* CacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ED1390F2B18FB0064E0F8 /* CacheController.m */; };
@@ -331,6 +333,9 @@
 		578265120F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZNFormFieldFormatter+Snake2LCamel.m"; sourceTree = "<group>"; };
 		5782656F0F2C57B000B53703 /* ZNFormFieldFormatter+Snake2LCamelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZNFormFieldFormatter+Snake2LCamelTest.m"; sourceTree = "<group>"; };
 		5782663B0F2C755C00B53703 /* ZNFormatterCasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNFormatterCasing.h; sourceTree = "<group>"; };
+		578266EC0F2C95A200B53703 /* NewOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrderViewController.h; sourceTree = "<group>"; };
+		578266ED0F2C95A200B53703 /* NewOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderViewController.m; sourceTree = "<group>"; };
+		578266EF0F2C95B000B53703 /* NewOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewOrderViewController.xib; sourceTree = "<group>"; };
 		578ECFA60F2AF93B0064E0F8 /* GameSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSyncController.h; sourceTree = "<group>"; };
 		578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSyncController.m; sourceTree = "<group>"; };
 		578ED1380F2B18FB0064E0F8 /* CacheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheController.h; sourceTree = "<group>"; };
@@ -641,6 +646,9 @@
 				570D83310F11B0E700D54544 /* OrderTableCellWide.xib */,
 				570D83330F11B10A00D54544 /* OrderTableViewCell.h */,
 				570D83340F11B10A00D54544 /* OrderTableViewCell.m */,
+				578266EC0F2C95A200B53703 /* NewOrderViewController.h */,
+				578266ED0F2C95A200B53703 /* NewOrderViewController.m */,
+				578266EF0F2C95B000B53703 /* NewOrderViewController.xib */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
@@ -909,6 +917,7 @@
 				577091E30F10502F00069411 /* StockTableCellNarrow.xib in Resources */,
 				577091E50F10503900069411 /* StockTableCellWide.xib in Resources */,
 				57CDB17A0F0F4941002C60C5 /* TabBar.xib in Resources */,
+				578266F00F2C95B000B53703 /* NewOrderViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,6 +1007,7 @@
 				578ED13B0F2B18FB0064E0F8 /* CacheController.m in Sources */,
 				5782650E0F2C062D00B53703 /* ZNFormFieldFormatter.m in Sources */,
 				578265140F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.m in Sources */,
+				578266EE0F2C95A200B53703 /* NewOrderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

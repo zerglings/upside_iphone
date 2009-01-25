@@ -29,8 +29,8 @@
 	CC_SHA256([stringBytes bytes], [stringBytes length], digestBuffer);
 	NSMutableString* hexDigest = [[NSMutableString alloc] init];
 	for (NSUInteger i = 0;
-		 i < sizeof(digestBuffer) / sizeof(*digestBuffer);
-		 i++) {
+       i < sizeof(digestBuffer) / sizeof(*digestBuffer);
+       i++) {
 		[hexDigest appendFormat:@"%02x", digestBuffer[i]];
 	}
 	return [hexDigest autorelease];
@@ -38,24 +38,26 @@
 
 - (id) initPseudoUser: (Device*)device {
 	return [self initWithModel:nil
-					properties:[NSDictionary dictionaryWithObjectsAndKeys:
-								[self hexDigest:device.uniqueId], @"name",
-								device.uniqueId, @"password",
-								[NSNumber numberWithBool:YES], @"isPseudoUser",
-								nil]];
+                  properties:[NSDictionary dictionaryWithObjectsAndKeys:
+                              [self hexDigest:device.uniqueId], @"name",
+                              device.uniqueId, @"password",
+                              [NSNumber numberWithBool:YES], @"isPseudoUser",
+                              nil]];
 }
 
 - (id) initWithName: (NSString*)theName password: (NSString*)thePassword {
 	return [self initWithModel:nil
-					properties:[NSDictionary dictionaryWithObjectsAndKeys:
-								theName, @"name", thePassword, @"password",
-								[NSNumber numberWithBool:NO], @"isPseudoUser",
-								nil]];
+                  properties:[NSDictionary dictionaryWithObjectsAndKeys:
+                              theName, @"name", thePassword, @"password",
+                              [NSNumber numberWithBool:NO], @"isPseudoUser",
+                              nil]];
 }
 
 - (id) initWithUser: (User*)user password: (NSString*)thePassword {
 	return [self initWithModel:user properties:
-			[NSDictionary dictionaryWithObject:thePassword forKey:@"password"]];
+          [NSDictionary dictionaryWithObject:(thePassword ? (id)thePassword :
+                                              (id)[NSNull null])
+                                      forKey:@"password"]];
 }
 
 @end

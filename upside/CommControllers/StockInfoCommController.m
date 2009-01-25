@@ -20,10 +20,11 @@
 		action = theAction;
 		
 		service = @"http://download.finance.yahoo.com/d/";
-		formatString = @"snb2b3l1p";
+		formatString = @"snxb2b3l1p";
 		responseProperties = [[NSArray alloc] initWithObjects:
-                          @"ticker", @"name", @"askPrice", @"bidPrice",
-                          @"lastTradePrice", @"previousClosePrice", nil];
+                          @"ticker", @"name", @"market", @"askPrice",
+                          @"bidPrice", @"lastTradePrice", @"previousClosePrice",
+                          nil];
 	}
 	return self;
 }

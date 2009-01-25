@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="47"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -34,18 +34,37 @@
 			<object class="IBUITabBarController" id="98304440">
 				<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-				<object class="IBUIViewController" key="IBUISelectedViewController" id="647360675">
-					<string key="IBUITitle">Sync</string>
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="1008587858">
-						<string key="IBUITitle">Sync</string>
+				<object class="IBUINavigationController" key="IBUISelectedViewController" id="1722607">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="983203261">
+						<string key="IBUITitle">Orders</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">SyncTabIcon.png</string>
+							<string key="NSResourceName">TransactionsTabIcon.png</string>
 						</object>
 						<reference key="IBUITabBar"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="98304440"/>
-					<string key="IBUINibName">OverviewViewController</string>
+					<object class="IBUINavigationBar" key="IBUINavigationBar" id="491917729">
+						<nil key="NSNextResponder"/>
+						<int key="NSvFlags">256</int>
+						<string key="NSFrameSize">{320, 44}</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+					</object>
+					<object class="NSMutableArray" key="IBUIViewControllers">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="IBUITableViewController" id="835197989">
+							<string key="IBUITitle">Orders</string>
+							<object class="IBUINavigationItem" key="IBUINavigationItem" id="589760937">
+								<reference key="IBUINavigationBar"/>
+								<string key="IBUITitle">Orders</string>
+							</object>
+							<reference key="IBUIParentViewController" ref="1722607"/>
+							<string key="IBUINibName">OrdersTableViewController</string>
+							<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+						</object>
+					</object>
 				</object>
 				<object class="NSMutableArray" key="IBUIViewControllers">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -92,37 +111,7 @@
 							</object>
 						</object>
 					</object>
-					<object class="IBUINavigationController" id="1722607">
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="983203261">
-							<string key="IBUITitle">Orders</string>
-							<object class="NSCustomResource" key="IBUIImage">
-								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">TransactionsTabIcon.png</string>
-							</object>
-							<reference key="IBUITabBar"/>
-						</object>
-						<reference key="IBUIParentViewController" ref="98304440"/>
-						<object class="IBUINavigationBar" key="IBUINavigationBar" id="491917729">
-							<nil key="NSNextResponder"/>
-							<int key="NSvFlags">256</int>
-							<string key="NSFrameSize">{320, 44}</string>
-							<bool key="IBUIOpaque">NO</bool>
-							<bool key="IBUIClipsSubviews">YES</bool>
-							<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						</object>
-						<object class="NSMutableArray" key="IBUIViewControllers">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUITableViewController" id="835197989">
-								<string key="IBUITitle">Orders</string>
-								<object class="IBUINavigationItem" key="IBUINavigationItem" id="589760937">
-									<string key="IBUITitle">Orders</string>
-								</object>
-								<reference key="IBUIParentViewController" ref="1722607"/>
-								<string key="IBUINibName">OrdersTableViewController</string>
-								<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-							</object>
-						</object>
-					</object>
+					<reference ref="1722607"/>
 					<object class="IBUINavigationController" id="402685605">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="288072951">
 							<string key="IBUITitle">News</string>
@@ -154,7 +143,19 @@
 							</object>
 						</object>
 					</object>
-					<reference ref="647360675"/>
+					<object class="IBUIViewController" id="647360675">
+						<string key="IBUITitle">Sync</string>
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="1008587858">
+							<string key="IBUITitle">Sync</string>
+							<object class="NSCustomResource" key="IBUIImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">SyncTabIcon.png</string>
+							</object>
+							<reference key="IBUITabBar"/>
+						</object>
+						<reference key="IBUIParentViewController" ref="98304440"/>
+						<string key="IBUINibName">OverviewViewController</string>
+					</object>
 				</object>
 				<object class="IBUITabBar" key="IBUITabBar" id="990339854">
 					<nil key="NSNextResponder"/>
@@ -309,6 +310,9 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">51</int>
 						<reference key="object" ref="589760937"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+						</object>
 						<reference key="parent" ref="835197989"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -405,7 +409,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">61</int>
+			<int key="maxID">63</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -422,7 +426,7 @@
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">ZerglingNet/TestSupport/GTMCALayer+UnitTesting.h</string>
+						<string key="minorKey">ZerglingNet/TestSupport/GTM/GTMCALayer+UnitTesting.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -433,7 +437,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">ZerglingNet/TestSupport/GTMNSObject+UnitTesting.h</string>
+						<string key="minorKey">ZerglingNet/TestSupport/GTM/GTMNSObject+UnitTesting.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -492,7 +496,7 @@
 					<string key="className">UIView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">ZerglingNet/TestSupport/GTMUIKit+UnitTesting.h</string>
+						<string key="minorKey">ZerglingNet/TestSupport/GTM/GTMUIKit+UnitTesting.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

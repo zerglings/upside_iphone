@@ -96,15 +96,17 @@
 	[self flipControls];
 }
 			
-- (BOOL)textFieldShouldReturn: (UITextField *)theTextField {
-	[theTextField resignFirstResponder];
-	if (theTextField == userNameText) {		
+- (BOOL)textFieldShouldReturn: (UITextField *)textField {
+	[textField resignFirstResponder];
+	if (textField == userNameText) {
 		[passwordText becomeFirstResponder];
 	}
-	else {
-		[self loginTapped:nil];
-	}
 	return YES;
+}
+
+- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
+  [userNameText resignFirstResponder];
+  [passwordText resignFirstResponder];
 }
 
 #pragma mark LoginCommController Delegate
@@ -141,7 +143,7 @@
 	[alertView release];
 }
 
-- (void) alertView: (UIAlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex {
+- (void)alertView: (UIAlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex {
 	switch (buttonIndex) {
 		case 0: {
 			User* rollbackUser = [[User alloc] initWithUser:activationState.user

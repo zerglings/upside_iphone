@@ -14,6 +14,7 @@
 @interface StockInfoCommControllerTest : SenTestCase {
 	StockInfoCommController* commController;
 	NSArray* tickers;
+  BOOL validStocksExpected;
 	BOOL receivedResponse;
 }
 
@@ -24,6 +25,7 @@
 - (void) setUp {
 	commController = [[StockInfoCommController alloc]
 					  initWithTarget:self action:@selector(checkResponse:)];
+  validStocksExpected = YES;
 	receivedResponse = NO;
 }
 
@@ -61,6 +63,15 @@
 	STAssertTrue(receivedResponse, @"Did not receive response");
 }
 
+- (void) testInvalidStock {
+  validStocksExpected = NO;
+	tickers = [[NSArray alloc] initWithObjects:
+             @"QWERTY", nil];
+	[commController fetchInfoForTickers:tickers];
+	[self waitForResponse];
+	STAssertTrue(receivedResponse, @"Did not receive response");
+}
+
 - (void) checkResponse: (NSArray*)response {
 	receivedResponse = YES;
 	STAssertFalse([response isKindOfClass:[NSError class]],
@@ -72,6 +83,12 @@
 		STAssertEqualStrings([tickers objectAtIndex:i], [stock ticker],
 							 @"Response ticker doesn't match request");
 
+    STAssertEquals(validStocksExpected, [stock isValid],
+                   @"Is stock valid when it's supposed to be");
+    
+    if (!validStocksExpected)
+      continue;
+    
 		STAssertTrue([[stock name] length] != 0,
 					 @"Response did not contain company name");
 		
@@ -87,4 +104,5 @@
 							@"Response did not contain previous close price");
 	}
 }
+
 @end
