@@ -85,8 +85,7 @@
 
 - (void)loginSucceeded {
 	// This happens if we login after syncing failed.
-	// So we need to resume syncing.
-	[self sync];
+	[self resumeSyncing];
 }
 
 @end

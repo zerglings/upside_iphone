@@ -60,8 +60,7 @@
                                         action:action];
 	[request start];
 	[urlRequest release];
-	
-	// The request will release itself when it is completed.
+	[request release];
 }
 
 + (void) callService: (NSString*)service

@@ -65,8 +65,7 @@
 
 - (void) testInvalidStock {
   validStocksExpected = NO;
-	tickers = [[NSArray alloc] initWithObjects:
-             @"QWERTY", nil];
+	tickers = [[NSArray alloc] initWithObjects:@"QWERTY", nil];
 	[commController fetchInfoForTickers:tickers];
 	[self waitForResponse];
 	STAssertTrue(receivedResponse, @"Did not receive response");

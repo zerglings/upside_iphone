@@ -175,7 +175,9 @@
 		NSURLConnection* connection =
     [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
 		[connection release];
-	}	
+	}
+  [self retain];
+ 	// The request will release itself when it is completed.
 }
 
 + (void) callService: (NSString*)service
@@ -194,8 +196,7 @@
                                      action:action];
 	[request start];
 	[urlRequest release];
-	
-	// The request will release itself when it is completed.
+	[request release];
 }
 
 

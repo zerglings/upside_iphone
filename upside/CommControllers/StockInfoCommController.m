@@ -53,7 +53,7 @@
              responseProperties:responseProperties
                          target:self
                          action:@selector(processResponse:)];
-	[tickerQuery release];
+  [requestData release];
 }
 
 - (void)processResponse: (NSObject*)response {

@@ -29,10 +29,11 @@
 
 #pragma mark Accessors
 
-@property (nonatomic, readonly) Portfolio* portfolio;
-@property (nonatomic, readonly) TradeBook* tradeBook;
-@property (nonatomic, readonly) StockCache* stockCache;
-@property (nonatomic, readonly) NewsCenter* newsCenter;
-@property (nonatomic, readonly) PendingOrdersSubmittingController* orderSubmittingController;
+@property (nonatomic, readonly, retain) Portfolio* portfolio;
+@property (nonatomic, readonly, retain) TradeBook* tradeBook;
+@property (nonatomic, readonly, retain) StockCache* stockCache;
+@property (nonatomic, readonly, retain) NewsCenter* newsCenter;
+@property (nonatomic, readonly, retain)
+    PendingOrdersSubmittingController* orderSubmittingController;
 
 @end

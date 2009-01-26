@@ -96,9 +96,7 @@
 }
 
 - (TradeOrder*) firstPendingOrder {
-  if ([pendingOrders count] == 0)
-    return nil;
-  return [pendingOrders objectAtIndex:0];
+  return [pendingOrders count] ? [pendingOrders objectAtIndex:0] : nil;
 }
 
 - (BOOL) dequeuePendingOrder: (TradeOrder*)order

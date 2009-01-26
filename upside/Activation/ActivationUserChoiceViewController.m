@@ -61,8 +61,9 @@
 
 
 - (IBAction) newAccountTapped: (id)sender {
-	[activationState setUser:[[User alloc]
-							  initPseudoUser:activationState.deviceInfo]];
+  User* newUser = [[User alloc] initPseudoUser:activationState.deviceInfo];
+	[activationState setUser:newUser];
+  [newUser release];
 	[self switchToLoginView];
 }
 
@@ -76,6 +77,7 @@
 		 initWithNibName:@"ActivationLoginViewController" bundle:nil];
 	[loginViewController setActivationState:activationState];
 	[self.view.superview addSubview:loginViewController.view];
+  [loginViewController release];
 	[self.view removeFromSuperview];
 }
 

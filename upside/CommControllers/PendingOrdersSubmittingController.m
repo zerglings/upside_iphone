@@ -42,21 +42,27 @@
 }
 
 - (void) sync {
-  if (lastSubmittedOrder)
-    return;  // pending order not submitted yet
-  
   TradeOrder* nextOrder = [tradeBook firstPendingOrder];
-  if (nextOrder == nil)
-    return;
+  if (lastSubmittedOrder || nextOrder == nil) {
+    [self receivedResults:nil];
+    return;  // pending order not submitted yet
+  }
   lastSubmittedOrder = nextOrder;
 	[commController submitOrder:nextOrder];
 }
 
 
 - (BOOL) integrateResults: (NSArray*)results {
+  if ([results count] != 1)
+    return YES; // communication error in disguise
+  
   TradeOrder* submittedOrder = [results objectAtIndex:0];
 	[tradeBook dequeuePendingOrder:lastSubmittedOrder submitted:submittedOrder];
   lastSubmittedOrder = nil;
+  
+  if (![tradeBook firstPendingOrder])
+    return YES; // submitted all orders, go to sleep until needed
+  
   [self sync];
   return NO;
 }
@@ -90,8 +96,7 @@
 
 - (void)loginSucceeded {
 	// This happens if we login after syncing failed.
-	// So we need to resume syncing.
-	[self sync];
+	[self resumeSyncing];
 }
 
 

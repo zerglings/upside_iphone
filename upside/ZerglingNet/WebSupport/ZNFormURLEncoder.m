@@ -31,6 +31,7 @@
   ZNFormURLEncoder* encoder =
       [[ZNFormURLEncoder alloc] initWithOutput:output fieldFormatter:formatter];
 	[encoder encode:dictionary keyPrefix:@""];
+  [encoder release];
 	return output;
 }
 

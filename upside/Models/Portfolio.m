@@ -24,7 +24,7 @@
 
 #pragma mark Synchronizing
 
-+ (NSArray*) selectPositions: (NSArray*)positions isLong: (BOOL)isLong {
++ (NSArray*) copyPositions: (NSArray*)positions whereIsLong: (BOOL)isLong {
 	NSMutableArray* selectedPositions = [[NSMutableArray alloc] init];
 	for (Position* position in positions) {
 		if ([position isLong] == isLong)
@@ -43,8 +43,8 @@
 	positions = [[newPositions sortedArrayUsingSelector:@selector(compare:)]
                retain];
 	
-	longPositions = [Portfolio selectPositions:positions isLong:YES];
-	shortPositions = [Portfolio selectPositions:positions isLong:NO];
+	longPositions = [Portfolio copyPositions:positions whereIsLong:YES];
+	shortPositions = [Portfolio copyPositions:positions whereIsLong:NO];
 }
 
 #pragma mark Lifecycle

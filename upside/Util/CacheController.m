@@ -32,6 +32,10 @@
   return self;
 }
 
+- (void) dealloc {
+  [super dealloc];
+}
+
 - (void) startSyncing {
   stopped = NO;
   [self doScheduledSync];
@@ -44,6 +48,7 @@
 
 - (void) resumeSyncing {
   paused = NO;
+  [self sync];
 }
 
 - (void) doScheduledSync {
@@ -63,6 +68,9 @@
 - (BOOL) processResults: (NSObject*)results {
   if (![results isKindOfClass:[NSArray class]]) {
     // communication error -- try again later
+    NSError* error = [results isKindOfClass:[NSError class]] ?
+        (NSError*)results : nil;
+    [self handleSystemError:error];
     return YES;
   }
   if ([(NSArray*)results count] == 1) {
