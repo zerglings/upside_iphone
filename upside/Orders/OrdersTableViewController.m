@@ -79,28 +79,40 @@
 
 #pragma mark Table view methods
 
+#define kNotSubmittedSection 0
+#define kSubmittedSection 1
+#define kFilledSection 2
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch(section) {
-		case 0:
-			return @"Buy";
-		case 1:
-			return @"Sell";
+		case kNotSubmittedSection:
+			return @"Not submitted to server";
+		case kSubmittedSection:
+			return @"Waiting to be filled";
+		case kFilledSection:
+			return @"Filled";
 		default:
-			return nil;
-			
+			return nil;			
 	}
 }
 
-
-// Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[Game sharedGame] tradeBook] count];
+  TradeBook* tradeBook = [[Game sharedGame] tradeBook];
+	switch(section) {
+		case kNotSubmittedSection:
+			return [tradeBook pendingCount];
+		case kSubmittedSection:
+			return [tradeBook submittedCount];
+		case kFilledSection:
+			return [tradeBook filledCount];
+		default:
+			return -1;
+	}
 }
-
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -108,11 +120,24 @@
 											   cellForRowAtIndexPath:indexPath];
 		
 	TradeBook* tradeBook = [[Game sharedGame] tradeBook];
-	TradeOrder* order = [tradeBook orderAtIndex:indexPath.row];
+	TradeOrder* order;
+	switch(indexPath.section) {
+		case kNotSubmittedSection:
+			order = [tradeBook pendingAtIndex:indexPath.row];
+      break;
+		case kSubmittedSection:
+			order = [tradeBook submittedAtIndex:indexPath.row];
+      break;
+		case kFilledSection:
+			order = [tradeBook filledAtIndex:indexPath.row];
+      break;
+		default:
+			order = nil;
+	}
 	Stock* stock = [[[Game sharedGame] stockCache] stockForTicker:order.ticker];
 	[cell setOrder:order forStock:stock];
 
-    return cell;
+  return cell;
 }
 
 

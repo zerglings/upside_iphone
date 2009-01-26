@@ -35,6 +35,11 @@
 	return (modelId != kTradeOrderInvalidModelId);
 }
 
+- (BOOL) isFilled {
+  return (quantityUnfilled == 0);
+}
+
+
 #pragma mark Convenience Constructors
 
 - (TradeOrder*) initWithTicker:(NSString*)theTicker
@@ -85,6 +90,20 @@
                        isLong:theIsLong
                    limitPrice:kTradeOrderInvalidLimit
                       modelId:theModelId];
+}
+
+- (TradeOrder*) initWithTicker:(NSString*)theTicker
+                      quantity:(NSUInteger)theQuantity
+                         isBuy:(BOOL)theIsBuy
+                        isLong:(BOOL)theIsLong
+                    limitPrice:(double)theLimitPrice {
+  return [self initWithTicker:theTicker
+                     quantity:theQuantity
+             quantityUnfilled:0
+                        isBuy:theIsBuy
+                       isLong:theIsLong
+                   limitPrice:theLimitPrice
+                      modelId:kTradeOrderInvalidModelId];
 }
 
 @end

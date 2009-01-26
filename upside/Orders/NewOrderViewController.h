@@ -30,7 +30,8 @@
   IBOutlet UIImageView* bidPriceChangeImage;
   IBOutlet UILabel* availableCashLabel;
   IBOutlet UILabel* estimatedCostLabel;
-  
+
+  NSNumberFormatter* inputFormatter;
   StockInfoCommController* stockInfoCommController;
   Stock* stockInfo;
 }

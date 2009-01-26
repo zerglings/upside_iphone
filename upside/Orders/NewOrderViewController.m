@@ -8,26 +8,30 @@
 
 #import "NewOrderViewController.h"
 
+#import "Game.h"
 #import "Stock.h"
 #import "Stock+Formatting.h"
 #import "StockInfoCommController.h"
+#import "TradeBook.h"
+#import "TradeOrder.h"
 
 @implementation NewOrderViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        stockInfoCommController = [[StockInfoCommController alloc] 
-                                   initWithTarget:self
-                                   action:@selector(receivedStockInfo:)];
-    }
-    return self;
+  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+    inputFormatter = [[NSNumberFormatter alloc] init];      
+    stockInfoCommController = [[StockInfoCommController alloc] 
+                               initWithTarget:self
+                               action:@selector(receivedStockInfo:)];
+  }
+  return self;
 }
 
 /*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
+ // Implement loadView to create a view hierarchy programmatically, without using a nib.
+ - (void)loadView {
+ }
+ */
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -36,23 +40,23 @@
       [[UIBarButtonItem alloc] initWithTitle:@"Place"
                                        style:UIBarButtonItemStyleDone
                                       target:self
-                                      action:@selector(boo:)];
+                                      action:@selector(tappedPlace:)];
   
   [self limitTypeChanged:nil];
   [self orderTypeChanged:nil];
 }
 
 /*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
+ // Override to allow orientations other than the default portrait orientation.
+ - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+ // Return YES for supported orientations
+ return (interfaceOrientation == UIInterfaceOrientationPortrait);
+ }
+ */
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
+  [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+  // Release anything that's not essential, such as cached data
 }
 
 
@@ -75,6 +79,17 @@
 - (BOOL)chosenIsLong {
   NSInteger selectedSegment = [orderTypeSegmentedControl selectedSegmentIndex];
   return (selectedSegment == 0) || (selectedSegment == 1);
+}
+
+- (NSUInteger)chosenQuantity {
+  return [[inputFormatter numberFromString:quantityText.text]
+          unsignedIntegerValue];
+}
+
+- (NSUInteger)chosenLimitPrice {
+  if (![self chosenIsLimit])
+    return kTradeOrderInvalidLimit;
+  return [[inputFormatter numberFromString:limitText.text] doubleValue];  
 }
 
 - (IBAction)limitTypeChanged: (id)sender {
@@ -105,7 +120,7 @@
     estimatedCostLabel.text = @"";
     return;
   }
-  NSUInteger quantity = [quantityString integerValue];
+  NSUInteger quantity = [self chosenQuantity];
   
 }
 
@@ -172,10 +187,62 @@
     // Delayed info -- the user already typed something else 
     return;
   }
-
+  
   [stockInfo release];
   stockInfo = [receivedInfo retain];
   [self updatedStockInfo];
 }
 
+- (void)validationFailed: (NSString*) message {
+  UIAlertView* alert = [[UIAlertView alloc]
+                        initWithTitle:@"Your order is invalid"
+                        message:message
+                        delegate:nil
+                        cancelButtonTitle:@"OK"
+                        otherButtonTitles:nil];
+  [alert show];
+  [alert release];
+}
+
+- (BOOL)validate {
+  if (stockInfo != nil && ![stockInfo isValid]) {
+    [self validationFailed:@"The ticker you have entered does not exist"];
+    return NO;
+  }
+  if ([tickerText.text length] == 0) {
+    [self validationFailed:@"You have to enter a stock ticker"];
+    return NO;
+  }
+  if ([quantityText.text length] == 0) {
+    [self validationFailed:
+     @"You have to specify how many shares you want to trade"];
+    return NO;
+  }
+  if ([self chosenIsLimit] && [limitText.text length] == 0) {
+    [self validationFailed:
+     @"You have not entered a limit price. You can either enter a limit "
+     @"price, or place a market order."];
+    return NO;
+  }
+  return YES;
+}
+
+- (TradeOrder*)newOrderFromUserChoices {
+  return [[TradeOrder alloc] initWithTicker:tickerText.text
+                                   quantity:[self chosenQuantity]
+                                      isBuy:[self chosenIsBuy]
+                                     isLong:[self chosenIsLong]
+                                 limitPrice:[self chosenIsLimit]];
+}
+
+- (void)tappedPlace: (id)sender {
+  if (![self validate])
+    return;
+  
+  TradeOrder* order = [self newOrderFromUserChoices];
+  [[[Game sharedGame] tradeBook] queuePendingOrder:order];
+  [order release];
+  
+  [self.navigationController popViewControllerAnimated:YES];
+}
 @end

@@ -25,8 +25,22 @@
 #pragma mark Synchronizing
 
 - (void) loadData: (NSArray*)newTradeOrders {
-  [tradeOrders release];
-  tradeOrders = [newTradeOrders retain];
+  NSMutableArray* theFilledOrders = [[NSMutableArray alloc] init];
+  NSMutableArray* theSubmittedOrders = [[NSMutableArray alloc] init];
+  
+  for (TradeOrder* order in newTradeOrders) {
+    if ([order isFilled])
+      [theFilledOrders addObject:order];
+    else
+      [theSubmittedOrders addObject:order];
+  }
+  
+  [filledOrders release];
+  filledOrders = [[NSArray alloc] initWithArray:theFilledOrders];
+  [theFilledOrders release];
+  [submittedOrders release];
+  submittedOrders = [[NSArray alloc] initWithArray:theSubmittedOrders];
+  [theSubmittedOrders release];
 }
 
 #pragma mark Lifecycle
@@ -34,23 +48,66 @@
 - (id) init {
 	if ((self = [super init])) {
 		[self load];
+    pendingOrders = [[NSMutableArray alloc] init];
 	}
 	return self;
 }
 
 - (void) dealloc {
-	[tradeOrders release];
+	[filledOrders release];
+  [submittedOrders release];
+  [pendingOrders release];
 	[super dealloc];
 }
 
 #pragma mark Properties
 
-- (NSUInteger) count {
-	return [tradeOrders count];
+- (NSUInteger) filledCount {
+  return [filledOrders count];
 }
 
-- (TradeOrder*) orderAtIndex: (NSUInteger)index {
-	return [tradeOrders objectAtIndex:index];
+- (NSUInteger) submittedCount {
+  return [submittedOrders count];
+}
+
+- (NSUInteger) pendingCount {
+  return [pendingOrders count];
+}
+
+- (TradeOrder*) filledAtIndex: (NSUInteger)index {
+  return [filledOrders objectAtIndex:index];
+}
+
+- (TradeOrder*) submittedAtIndex: (NSUInteger)index {
+  return [submittedOrders objectAtIndex:index];
+}
+
+- (TradeOrder*) pendingAtIndex: (NSUInteger)index {
+  return [pendingOrders objectAtIndex:index];
+}
+
+#pragma mark Order Submission Queue
+
+- (void) queuePendingOrder: (TradeOrder*)order {
+  [pendingOrders addObject:order];
+}
+
+- (TradeOrder*) firstPendingOrder {
+  TradeOrder* firstOrder = [pendingOrders objectAtIndex:0];
+  [pendingOrders removeObjectAtIndex:0];
+  return firstOrder;
+}
+
+- (BOOL) dequeuePendingOrder: (TradeOrder*)order {
+  NSUInteger orderIndex = [pendingOrders indexOfObject:order];
+  if (orderIndex == NSNotFound)
+    return NO;
+  [pendingOrders removeObjectAtIndex:orderIndex];
+  return YES;
+}
+
+- (NSArray*) copyPendingOrders {
+  return [[NSArray alloc] initWithArray:pendingOrders];
 }
 
 @end

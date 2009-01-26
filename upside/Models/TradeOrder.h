@@ -42,9 +42,9 @@
 // The number of stocks in the order that are not yet filled.
 @property (nonatomic, readonly) NSUInteger quantityUnfilled;
 
-#pragma mark Convenience Constructors
+#pragma mark Convenience Initializers
 
-// Convenience constructor for limit orders.
+// Convenience initializer for limit orders.
 - (TradeOrder*) initWithTicker:(NSString*)ticker
                       quantity:(NSUInteger)quantity
               quantityUnfilled:(NSUInteger)quantityUnfilled
@@ -53,13 +53,20 @@
                     limitPrice:(double)limitPrice
                        modelId:(NSUInteger)modelId;
 
-// Convenience constructor for market orders.
+// Convenience initializer for market orders.
 - (TradeOrder*) initWithTicker:(NSString*)ticker
                       quantity:(NSUInteger)quantity
               quantityUnfilled:(NSUInteger)quantityUnfilled
                          isBuy:(BOOL)isBuy
                         isLong:(BOOL)isLong
                        modelId:(NSUInteger)modelId;
+
+// Convenience initializer for new orders.
+- (TradeOrder*) initWithTicker:(NSString*)ticker
+                      quantity:(NSUInteger)quantity
+                         isBuy:(BOOL)isBuy
+                        isLong:(BOOL)isLong
+                    limitPrice:(double)limitPrice;
 
 #pragma mark Conveience Accessors
 
@@ -77,6 +84,9 @@
 
 // YES for submitted orders, NO for orders pending submission.
 - (BOOL) isSubmitted;
+
+// YES for filled orders, NO for orders that have not been filled.
+- (BOOL) isFilled;
 
 @end
 
