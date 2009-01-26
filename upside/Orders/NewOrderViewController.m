@@ -110,6 +110,7 @@
 }
 
 - (void)updatedStockInfo {
+  tickerValidityImage.image = [stockInfo imageForValidity];
   if ([stockInfo isValid]) {
     askPriceLabel.text = [stockInfo formattedAskPrice];
     bidPriceLabel.text = [stockInfo formattedBidPrice];

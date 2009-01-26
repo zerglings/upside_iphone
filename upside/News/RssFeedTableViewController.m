@@ -169,13 +169,11 @@
 @synthesize feedTitle;
 
 - (void) setFeedTitle: (NSString*) newFeedTitle {
-	[newFeedTitle retain];
 	[feedTitle release];
-	feedTitle = newFeedTitle;
+	feedTitle = [newFeedTitle retain];
 	
 	self.navigationItem.title = feedTitle;
 	[(UITableView*)self.view reloadData];
 }
 
 @end
-

@@ -14,6 +14,7 @@
 @interface StockFormattingTest : SenTestCase {
 	Stock* risingStock;
 	Stock* fallingStock;
+  Stock* invalidStock;
 }
 
 @end
@@ -37,11 +38,19 @@
                                       bidPrice:0.09
                                 lastTradePrice:2.79
                             previousClosePrice:2.81];
+  invalidStock = [[Stock alloc] initWithTicker:@"YYYY"
+                                          name:@"YYYY"
+                                        market:@"N/A"
+                                      askPrice:0
+                                      bidPrice:0
+                                lastTradePrice:0
+                            previousClosePrice:0];
 }
 
 - (void) tearDown {
 	[risingStock release];
 	[fallingStock release];
+  [invalidStock release];
 }
 
 - (void) dealloc {
@@ -115,6 +124,15 @@
 	STAssertEqualObjects([UIImage imageNamed:@"GreenUpArrow.png"],
                        [risingStock imageForAskChange],
                        @"Rising stocks should have a green up arrow");
+}
+
+- (void) testValidityImages {
+	STAssertEqualObjects([UIImage imageNamed:@"GreenTick.png"],
+                       [fallingStock imageForValidity],
+                       @"Valid stocks should have a green tick");
+	STAssertEqualObjects([UIImage imageNamed:@"RedX.png"],
+                       [invalidStock imageForValidity],
+                       @"Invalid stocks should have a red X");  
 }
 
 @end

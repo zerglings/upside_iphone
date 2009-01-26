@@ -46,9 +46,15 @@
 
 @implementation ZNXmlHttpRequestTest
 
+- (void) warmUpHerokuService: (NSString*)herokuService {
+  // Issues a request to the testbed, so heroku loads it up on a machine
+  [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]];
+}
+
 - (void) setUp {
 	service = @"http://zn-testbed.herokugarden.com/web_support/echo.xml";
 	receivedResponse = NO;
+  [self warmUpHerokuService:service];
 	[ZNXmlHttpRequest deleteCookiesForService:service];
 }
 

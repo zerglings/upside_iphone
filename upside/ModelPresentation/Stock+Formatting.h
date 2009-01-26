@@ -53,4 +53,7 @@
 // The color showing the change in the stock's bid price. 
 - (UIImage*) imageForTradeChange;
 
+// The image showing the stock's validity.
+- (UIImage*) imageForValidity;
+
 @end

@@ -12,6 +12,7 @@
 #import "Game.h"
 #import "LoginCommController.h"
 #import "Portfolio.h"
+#import "Portfolio+RSS.h"
 #import "Portfolio+StockCache.h"
 #import "PortfolioCommController.h"
 #import "Position.h"
@@ -64,6 +65,7 @@
 	[trades release];
   
   [[game portfolio] loadTickersIntoStockCache:[game stockCache]];
+  [[game portfolio] loadRssFeedsIntoCenter:[game newsCenter]];
 	return YES;
 }
 

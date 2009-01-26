@@ -122,6 +122,12 @@
 		578266C50F2C79C200B53703 /* ActivationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */; };
 		578266EE0F2C95A200B53703 /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578266ED0F2C95A200B53703 /* NewOrderViewController.m */; };
 		578266F00F2C95B000B53703 /* NewOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578266EF0F2C95B000B53703 /* NewOrderViewController.xib */; };
+		578268380F2D949F00B53703 /* GreenTick.png in Resources */ = {isa = PBXBuildFile; fileRef = 578268360F2D949F00B53703 /* GreenTick.png */; };
+		578268390F2D949F00B53703 /* RedX.png in Resources */ = {isa = PBXBuildFile; fileRef = 578268370F2D949F00B53703 /* RedX.png */; };
+		5782688A0F2DA2D500B53703 /* GreenTick.png in Resources */ = {isa = PBXBuildFile; fileRef = 578268360F2D949F00B53703 /* GreenTick.png */; };
+		5782688B0F2DA2D500B53703 /* RedX.png in Resources */ = {isa = PBXBuildFile; fileRef = 578268370F2D949F00B53703 /* RedX.png */; };
+		578268910F2DA2E400B53703 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
+		578268920F2DA2E400B53703 /* RedDownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39630F0FA00700DEB8E3 /* RedDownArrow.png */; };
 		578ECFA80F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		578ECFA90F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		578ED13A0F2B18FB0064E0F8 /* CacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ED1390F2B18FB0064E0F8 /* CacheController.m */; };
@@ -336,6 +342,8 @@
 		578266EC0F2C95A200B53703 /* NewOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrderViewController.h; sourceTree = "<group>"; };
 		578266ED0F2C95A200B53703 /* NewOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderViewController.m; sourceTree = "<group>"; };
 		578266EF0F2C95B000B53703 /* NewOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewOrderViewController.xib; sourceTree = "<group>"; };
+		578268360F2D949F00B53703 /* GreenTick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenTick.png; sourceTree = "<group>"; };
+		578268370F2D949F00B53703 /* RedX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedX.png; sourceTree = "<group>"; };
 		578ECFA60F2AF93B0064E0F8 /* GameSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSyncController.h; sourceTree = "<group>"; };
 		578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSyncController.m; sourceTree = "<group>"; };
 		578ED1380F2B18FB0064E0F8 /* CacheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheController.h; sourceTree = "<group>"; };
@@ -786,8 +794,10 @@
 			isa = PBXGroup;
 			children = (
 				570D84F40F133E9C00D54544 /* Default.png */,
+				578268360F2D949F00B53703 /* GreenTick.png */,
 				575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */,
 				575E39630F0FA00700DEB8E3 /* RedDownArrow.png */,
+				578268370F2D949F00B53703 /* RedX.png */,
 				57CDB2D40F0F8CA4002C60C5 /* Icon.png */,
 				57CDB2D50F0F8CA4002C60C5 /* iTunesArtwork */,
 				57CDB1B00F0F68D9002C60C5 /* NewsTabIcon.png */,
@@ -918,6 +928,8 @@
 				577091E50F10503900069411 /* StockTableCellWide.xib in Resources */,
 				57CDB17A0F0F4941002C60C5 /* TabBar.xib in Resources */,
 				578266F00F2C95B000B53703 /* NewOrderViewController.xib in Resources */,
+				578268380F2D949F00B53703 /* GreenTick.png in Resources */,
+				578268390F2D949F00B53703 /* RedX.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,6 +946,10 @@
 				575023B40F272D4A00793ECE /* ZNArrayCsvParserTest.csv in Resources */,
 				575025860F274B1600793ECE /* ZNModelCsvParserTest.csv in Resources */,
 				5791AC6E0F275D870036AB57 /* ZNCsvHttpRequestTest.csv in Resources */,
+				5782688A0F2DA2D500B53703 /* GreenTick.png in Resources */,
+				5782688B0F2DA2D500B53703 /* RedX.png in Resources */,
+				578268910F2DA2E400B53703 /* GreenUpArrow.png in Resources */,
+				578268920F2DA2E400B53703 /* RedDownArrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -126,20 +126,19 @@
 	return [Portfolio rssFeedTitleForTicker:[position ticker]];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {    
-    NewsTableViewCell* cell = (NewsTableViewCell*)[super tableView:tableView
-											 cellForRowAtIndexPath:indexPath];
-
-	
+- (UITableViewCell *)tableView: (UITableView *)tableView
+         cellForRowAtIndexPath: (NSIndexPath *)indexPath {    
+  NewsTableViewCell* cell = (NewsTableViewCell*)[super tableView:tableView
+                                           cellForRowAtIndexPath:indexPath];
+  
 	[cell setFeedTitle:[self feedTitleForRowAtIndexPath:indexPath]];
-    return cell;
+  return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
 	RssFeedTableViewController *feedController =
-	    [[RssFeedTableViewController alloc]
-		 initWithNibName:@"RssFeedTableViewController" bundle:nil];
+      [[RssFeedTableViewController alloc]
+       initWithNibName:@"RssFeedTableViewController" bundle:nil];
 	[self.navigationController pushViewController:feedController animated:YES];
 	[feedController setFeedTitle:[self feedTitleForRowAtIndexPath:indexPath]];
 	[feedController release];

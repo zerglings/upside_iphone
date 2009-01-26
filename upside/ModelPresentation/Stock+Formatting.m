@@ -6,7 +6,6 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "Stock.h"
 #import "Stock+Formatting.h"
 
 
@@ -128,6 +127,11 @@ static void SetupFormatters() {
 
 + (UIImage*) imageForChange: (double)currentValue
 					   from: (double)oldValue {
+  NSAssert([UIImage imageNamed:@"GreenUpArrow.png"] != nil,
+           @"GreenUpArrow.png not available");
+  NSAssert([UIImage imageNamed:@"RedDownArrow.png"] != nil,
+           @"RedDownArrow.png not available");
+  
 	if (oldValue < currentValue)
 		return [UIImage imageNamed:@"GreenUpArrow.png"];
 	if (oldValue > currentValue)
@@ -167,6 +171,18 @@ static void SetupFormatters() {
 - (UIImage*) imageForTradeChange {
 	return [Stock imageForChange:lastTradePrice
 						    from:previousClosePrice];	
+}
+
+- (UIImage*) imageForValidity {
+  NSAssert([UIImage imageNamed:@"GreenTick.png"] != nil,
+           @"GreenTick.png not available");
+  NSAssert([UIImage imageNamed:@"RedX.png"] != nil,
+           @"RedX.png not available");
+  
+  if ([self isValid])
+    return [UIImage imageNamed:@"GreenTick.png"];
+  else
+    return [UIImage imageNamed:@"RedX.png"];
 }
 
 @end

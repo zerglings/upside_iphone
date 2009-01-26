@@ -105,8 +105,10 @@
 }
 
 - (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
-  [userNameText resignFirstResponder];
-  [passwordText resignFirstResponder];
+  for (UIView* view in self.view.subviews) {
+    if ([view isKindOfClass:[UITextField class]])
+      [view resignFirstResponder];
+  }
 }
 
 #pragma mark LoginCommController Delegate

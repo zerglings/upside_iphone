@@ -46,9 +46,15 @@
 
 @implementation ZNCsvHttpRequestTest
 
+- (void) warmUpHerokuService: (NSString*)herokuService {
+  // Issues a request to the testbed, so heroku loads it up on a machine
+  [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]];
+}
+
 - (void) setUp {
 	service = @"http://zn-testbed.herokugarden.com/web_support/csv.csv";
 	receivedResponse = NO;
+  [self warmUpHerokuService:service];
 	[ZNCsvHttpRequest deleteCookiesForService:service];
 	onlineData = [[NSArray alloc] initWithObjects:@"foo", @"bar", @"xbar", nil];
 }
