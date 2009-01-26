@@ -28,7 +28,9 @@
   NSMutableArray* theFilledOrders = [[NSMutableArray alloc] init];
   NSMutableArray* theSubmittedOrders = [[NSMutableArray alloc] init];
   
-  for (TradeOrder* order in newTradeOrders) {
+  [serverOrders release];
+  serverOrders = [newTradeOrders retain];
+  for (TradeOrder* order in serverOrders) {
     if ([order isFilled])
       [theFilledOrders addObject:order];
     else
@@ -54,6 +56,7 @@
 }
 
 - (void) dealloc {
+  [serverOrders release];
 	[filledOrders release];
   [submittedOrders release];
   [pendingOrders release];
@@ -93,16 +96,20 @@
 }
 
 - (TradeOrder*) firstPendingOrder {
-  TradeOrder* firstOrder = [pendingOrders objectAtIndex:0];
-  [pendingOrders removeObjectAtIndex:0];
-  return firstOrder;
+  if ([pendingOrders count] == 0)
+    return nil;
+  return [pendingOrders objectAtIndex:0];
 }
 
-- (BOOL) dequeuePendingOrder: (TradeOrder*)order {
+- (BOOL) dequeuePendingOrder: (TradeOrder*)order
+                   submitted:(TradeOrder*)submittedOrder {
   NSUInteger orderIndex = [pendingOrders indexOfObject:order];
   if (orderIndex == NSNotFound)
     return NO;
   [pendingOrders removeObjectAtIndex:orderIndex];
+  
+  NSArray* newServerOrders = [serverOrders arrayByAddingObject:submittedOrder];
+  [self loadData:newServerOrders];
   return YES;
 }
 

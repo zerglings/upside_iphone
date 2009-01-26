@@ -13,6 +13,7 @@
 @class TradeBook;
 @class NewsCenter;
 @class GameSyncController;
+@class PendingOrdersSubmittingController;
 
 @interface Game : NSObject {
 	Portfolio* portfolio;
@@ -20,6 +21,7 @@
 	StockCache* stockCache;
 	NewsCenter* newsCenter;
 	GameSyncController* syncController;
+  PendingOrdersSubmittingController* orderSubmittingController;
 }
 
 // The singleton Game instance.
@@ -31,5 +33,6 @@
 @property (nonatomic, readonly) TradeBook* tradeBook;
 @property (nonatomic, readonly) StockCache* stockCache;
 @property (nonatomic, readonly) NewsCenter* newsCenter;
+@property (nonatomic, readonly) PendingOrdersSubmittingController* orderSubmittingController;
 
 @end

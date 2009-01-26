@@ -11,6 +11,7 @@
 @class TradeOrder;
 
 @interface TradeBook : NSObject {
+  NSArray* serverOrders;
   NSArray* filledOrders;
 	NSArray* submittedOrders;
   NSMutableArray* pendingOrders;
@@ -44,7 +45,8 @@
 - (TradeOrder*) firstPendingOrder;
 
 // Dequeues a pending order, when the order has been submitted.
-- (BOOL) dequeuePendingOrder: (TradeOrder*)order;
+- (BOOL) dequeuePendingOrder: (TradeOrder*)pendingOrder
+                   submitted: (TradeOrder*)submittedOrder;
 
 // Creates a copy of the pending orders array.
 - (NSArray*) copyPendingOrders;

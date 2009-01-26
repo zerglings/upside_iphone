@@ -44,5 +44,13 @@
 + (NSString*) portfolioSyncMethod {
 	return kZNHttpMethodPut;
 }
++ (NSString*) orderSubmissionUrl {
+	return [NSString stringWithFormat:@"%@/trade_orders.xml",
+          [self serverUrl]];
+}
+// Method to use for submitting trade orders.
++ (NSString*) orderSubmissionMethod {
+  return kZNHttpMethodPost;
+}
 
 @end

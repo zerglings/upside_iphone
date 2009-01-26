@@ -20,6 +20,10 @@
 	return [reason isEqualToString:@"auth"];
 }
 
+- (BOOL) isValidationError {
+	return [reason isEqualToString:@"validation"];
+}
+
 - (id) initWithReason: (NSString*)theReason message: (NSString*)theMessage {
 	NSDictionary* properties = [[NSDictionary alloc] initWithObjectsAndKeys:
 						   theMessage, @"message", properties, @"reason", nil];

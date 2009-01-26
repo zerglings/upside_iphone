@@ -24,6 +24,9 @@
 // YES if the error is an authentication error (bad login credentials).
 - (BOOL) isAuthError;
 
+// YES if the error is a model validation error.
+- (BOOL) isValidationError;
+
 // Convenience initializer for testing.
 - (id) initWithReason: (NSString*)reason message: (NSString*)error;
 

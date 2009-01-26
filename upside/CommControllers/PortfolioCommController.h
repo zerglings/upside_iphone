@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
+// Retrieves portfolio sync data.
 @interface PortfolioCommController : NSObject {
 	NSDictionary* responseModels;
 	SEL action;

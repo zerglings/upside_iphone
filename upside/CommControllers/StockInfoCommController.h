@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+// Communication controller for fetching stock data.
+//
+// Currently uses Yahoo finance.
 @interface StockInfoCommController : NSObject {
 	NSString* service;
 	NSArray* responseProperties;

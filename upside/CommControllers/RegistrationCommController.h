@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+// Communication controller for registering the device with the game server.
 @protocol RegistrationCommDelegate
 - (void)activationFailed: (NSError*)error;
 - (void)activationSucceeded;

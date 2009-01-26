@@ -39,6 +39,7 @@
 
 - (void) dealloc {
 	[commController release];
+  [loginCommController release];
 	[super dealloc];
 }
 

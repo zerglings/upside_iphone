@@ -10,6 +10,7 @@
 
 #import "GameSyncController.h"
 #import "NewsCenter.h"
+#import "PendingOrdersSubmittingController.h"
 #import "Portfolio.h"
 #import "Portfolio+RSS.h"
 #import "Portfolio+StockCache.h"
@@ -27,11 +28,17 @@
 		portfolio = [[Portfolio alloc] init];
 		tradeBook = [[TradeBook alloc] init];
 		syncController = [[GameSyncController alloc] initWithGame:self];
+    orderSubmittingController = [[PendingOrdersSubmittingController alloc]
+                                 initWithTradeBook:tradeBook];
 	}
 	return self;
 }
 
 - (void) dealloc {
+  [orderSubmittingController stopSyncing];
+  [orderSubmittingController release];
+  [syncController stopSyncing];
+  [syncController release];
 	[newsCenter release];
 	[stockCache release];
 	[portfolio release];
@@ -47,6 +54,7 @@
 	[portfolio loadTickersIntoStockCache:stockCache];
 	[stockCache startSyncing];
 	[syncController startSyncing];
+  [orderSubmittingController startSyncing];
 }
 
 #pragma mark Accessors
@@ -55,6 +63,7 @@
 @synthesize tradeBook;
 @synthesize stockCache;
 @synthesize newsCenter;
+@synthesize orderSubmittingController;
 
 #pragma mark Singleton
 

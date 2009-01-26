@@ -128,6 +128,10 @@
 		5782688B0F2DA2D500B53703 /* RedX.png in Resources */ = {isa = PBXBuildFile; fileRef = 578268370F2D949F00B53703 /* RedX.png */; };
 		578268910F2DA2E400B53703 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
 		578268920F2DA2E400B53703 /* RedDownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39630F0FA00700DEB8E3 /* RedDownArrow.png */; };
+		578269480F2E070800B53703 /* TradeOrderCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578269470F2E070800B53703 /* TradeOrderCommController.m */; };
+		578269490F2E070800B53703 /* TradeOrderCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578269470F2E070800B53703 /* TradeOrderCommController.m */; };
+		578269690F2E2BE300B53703 /* PendingOrdersSubmittingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578269680F2E2BE300B53703 /* PendingOrdersSubmittingController.m */; };
+		5782696A0F2E2BE300B53703 /* PendingOrdersSubmittingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578269680F2E2BE300B53703 /* PendingOrdersSubmittingController.m */; };
 		578ECFA80F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		578ECFA90F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		578ED13A0F2B18FB0064E0F8 /* CacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ED1390F2B18FB0064E0F8 /* CacheController.m */; };
@@ -344,6 +348,10 @@
 		578266EF0F2C95B000B53703 /* NewOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewOrderViewController.xib; sourceTree = "<group>"; };
 		578268360F2D949F00B53703 /* GreenTick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenTick.png; sourceTree = "<group>"; };
 		578268370F2D949F00B53703 /* RedX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedX.png; sourceTree = "<group>"; };
+		578269460F2E070800B53703 /* TradeOrderCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeOrderCommController.h; sourceTree = "<group>"; };
+		578269470F2E070800B53703 /* TradeOrderCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeOrderCommController.m; sourceTree = "<group>"; };
+		578269670F2E2BE300B53703 /* PendingOrdersSubmittingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingOrdersSubmittingController.h; sourceTree = "<group>"; };
+		578269680F2E2BE300B53703 /* PendingOrdersSubmittingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingOrdersSubmittingController.m; sourceTree = "<group>"; };
 		578ECFA60F2AF93B0064E0F8 /* GameSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSyncController.h; sourceTree = "<group>"; };
 		578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSyncController.m; sourceTree = "<group>"; };
 		578ED1380F2B18FB0064E0F8 /* CacheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheController.h; sourceTree = "<group>"; };
@@ -666,8 +674,6 @@
 			children = (
 				57A1F0590F24C15D00B8179A /* ServerPaths.h */,
 				57A1F05A0F24C15D00B8179A /* ServerPaths.m */,
-				57402F9C0F29956E00B64A7C /* PortfolioCommController.h */,
-				57402F9D0F29956E00B64A7C /* PortfolioCommController.m */,
 				5791AD240F285B3C0036AB57 /* StockInfoCommController.h */,
 				5791AD250F285B3C0036AB57 /* StockInfoCommController.m */,
 				5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */,
@@ -675,8 +681,14 @@
 				57A1E7070F2164D600B8179A /* RegistrationCommController.m */,
 				57A1F1880F2599B000B8179A /* LoginCommController.h */,
 				57A1F1890F2599B000B8179A /* LoginCommController.m */,
+				57402F9C0F29956E00B64A7C /* PortfolioCommController.h */,
+				57402F9D0F29956E00B64A7C /* PortfolioCommController.m */,
+				578269460F2E070800B53703 /* TradeOrderCommController.h */,
+				578269470F2E070800B53703 /* TradeOrderCommController.m */,
 				578ECFA60F2AF93B0064E0F8 /* GameSyncController.h */,
 				578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */,
+				578269670F2E2BE300B53703 /* PendingOrdersSubmittingController.h */,
+				578269680F2E2BE300B53703 /* PendingOrdersSubmittingController.m */,
 			);
 			path = CommControllers;
 			sourceTree = "<group>";
@@ -1024,6 +1036,8 @@
 				5782650E0F2C062D00B53703 /* ZNFormFieldFormatter.m in Sources */,
 				578265140F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.m in Sources */,
 				578266EE0F2C95A200B53703 /* NewOrderViewController.m in Sources */,
+				578269480F2E070800B53703 /* TradeOrderCommController.m in Sources */,
+				578269690F2E2BE300B53703 /* PendingOrdersSubmittingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1105,6 +1119,8 @@
 				578266C30F2C79C200B53703 /* Portfolio+RSSTest.m in Sources */,
 				578266C40F2C79C200B53703 /* NewsCenterTest.m in Sources */,
 				578266C50F2C79C200B53703 /* ActivationStateTest.m in Sources */,
+				578269490F2E070800B53703 /* TradeOrderCommController.m in Sources */,
+				5782696A0F2E2BE300B53703 /* PendingOrdersSubmittingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

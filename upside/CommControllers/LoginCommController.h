@@ -16,6 +16,7 @@
 @class ActivationState;
 
 
+// Communication controller that performs user logins on the game server.
 @interface LoginCommController : NSObject {
 	IBOutlet id<LoginCommDelegate> delegate;
 	

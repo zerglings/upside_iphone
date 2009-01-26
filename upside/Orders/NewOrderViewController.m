@@ -9,6 +9,7 @@
 #import "NewOrderViewController.h"
 
 #import "Game.h"
+#import "PendingOrdersSubmittingController.h"
 #import "Stock.h"
 #import "Stock+Formatting.h"
 #import "StockInfoCommController.h"
@@ -146,6 +147,7 @@
 
 - (BOOL)textFieldDidEndEditing: (UITextField*)textField {
   if (textField == tickerText) {
+    tickerText.text = [tickerText.text uppercaseString];
     [stockInfoCommController fetchInfoForTickers:
      [NSArray arrayWithObject:tickerText.text]];
   }
@@ -242,6 +244,7 @@
   TradeOrder* order = [self newOrderFromUserChoices];
   [[[Game sharedGame] tradeBook] queuePendingOrder:order];
   [order release];
+  [[[Game sharedGame] orderSubmittingController] syncOnce];
   
   [self.navigationController popViewControllerAnimated:YES];
 }

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
+// Interface to all the server paths used by the iPhone application.
 @interface ServerPaths : NSObject {
 }
 
@@ -29,5 +29,10 @@
 + (NSString*) portfolioSyncUrl;
 // Method to use for the portfolio sync service.
 + (NSString*) portfolioSyncMethod;
-	
+
+// Points to the trade order submission service.
++ (NSString*) orderSubmissionUrl;
+// Method to use for submitting trade orders.
++ (NSString*) orderSubmissionMethod;
+
 @end
