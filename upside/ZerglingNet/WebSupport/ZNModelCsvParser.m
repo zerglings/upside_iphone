@@ -11,6 +11,10 @@
 #import "ModelSupport.h"
 #import "ZNArrayCsvParser.h"
 
+
+@interface ZNModelCsvParser () <ZNArrayCsvParserDelegate>
+@end
+
 @implementation ZNModelCsvParser
 
 #pragma mark Lifecycle

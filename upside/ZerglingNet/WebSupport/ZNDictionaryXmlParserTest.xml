@@ -20,4 +20,8 @@
   <keyC>Entity fun &#39;&gt;</keyC> 
   <keyB>B third</keyB>
 </itemA>
+<itemD>
+  <key_one>value_one</key_one>
+  <key_two>value_two</key_two>
+</itemD>
 </testdata>

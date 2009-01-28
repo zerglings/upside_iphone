@@ -6,12 +6,12 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "CacheController.h"
+#import "SyncController.h"
 
 @class Stock;
 @class StockInfoCommController;
 
-@interface StockCache : CacheController {
+@interface StockCache : SyncController {
 	NSMutableDictionary* stocks;
 	StockInfoCommController* commController;
 	NSTimeInterval refreshPeriod;

@@ -178,7 +178,8 @@
                @"Non-model in response not deserialized with NSDictionary");
 	
 	NSDictionary* golden_nonmodel = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   @"val1", @"key1", @"val2", @"key2", nil];
+                                   @"val1", @"key1", @"val2", @"key2",
+                                   @"val3", @"keyThree", nil];
 	STAssertEqualObjects(golden_nonmodel, nonmodel,
                        @"Non-model deserialized incorrectly");	
 }

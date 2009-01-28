@@ -9,11 +9,12 @@
 #include "TestSupport.h"
 
 #include "ZNDictionaryXmlParser.h"
+#include "ZNFormFieldFormatter.h"
 
 @interface ZNDictionaryXmlParserTest
     : SenTestCase <ZNDictionaryXmlParserDelegate> {
 	ZNDictionaryXmlParser* parser;
-
+  
 	NSMutableArray* items;
 	NSMutableArray* dupItems;
 	NSMutableArray* names;
@@ -27,13 +28,15 @@ static NSString* kContextObject = @"This is the context";
 @implementation ZNDictionaryXmlParserTest
 
 - (void) setUp {
+  ZNFormFieldFormatter* fromSnake =
+      [ZNFormFieldFormatter formatterToPropertiesFrom:kZNFormatterSnakeCase];
 	NSDictionary* schema = [NSDictionary dictionaryWithObjectsAndKeys:
-							[NSNull null],
-							@"itemA",
-							[NSSet
-							 setWithObjects:@"keyB", @"keyC", nil],
-							@"itemB",
-							nil];
+                          [NSNull null], @"itemA",
+                          [NSSet setWithObjects:@"keyB", @"keyC", nil],
+                          @"itemB",
+                          [NSArray arrayWithObjects:
+                           fromSnake, [NSNull null], nil], @"itemD",
+                          nil];
 	
 	parser = [[ZNDictionaryXmlParser alloc] initWithSchema:schema];
 	parser.context = kContextObject;
@@ -63,31 +66,37 @@ static NSString* kContextObject = @"This is the context";
 	STAssertEqualObjects(items, dupItems, @"Item data changed during parsing");
 	
 	NSArray* goldenNames = [NSArray arrayWithObjects:@"itemA",
-							@"itemB", @"itemA", nil];
+                          @"itemB", @"itemA", @"itemD", nil];
 	STAssertEqualObjects(goldenNames, names,
-						 @"Failed to parse all the right items");
+                       @"Failed to parse all the right items");
 	
 	NSDictionary* goldenFirst = [NSDictionary dictionaryWithObjectsAndKeys:
-								 @"A prime", @"keyA", @"B prime", @"keyB", nil];
+                               @"A prime", @"keyA", @"B prime", @"keyB", nil];
 	STAssertEqualObjects(goldenFirst, [items objectAtIndex:0],
-						 @"Failed to parse item with open schema");
-
+                       @"Failed to parse item with open schema");
+  
 	NSDictionary* goldenSecond = [NSDictionary dictionaryWithObjectsAndKeys:
-								 @"B second", @"keyB", nil];
+                                @"B second", @"keyB", nil];
 	STAssertEqualObjects(goldenSecond, [items objectAtIndex:1],
-						 @"Failed to parse item with closed schema");
-
+                       @"Failed to parse item with closed schema");
+  
 	NSDictionary* goldenThird = [NSDictionary dictionaryWithObjectsAndKeys:
-								 @"B third", @"keyB",
-								 @"Entity fun '>", @"keyC", nil];
+                               @"B third", @"keyB",
+                               @"Entity fun '>", @"keyC", nil];
 	STAssertEqualObjects(goldenThird, [items objectAtIndex:2],
-						 @"Failed to parse XML entities");
+                       @"Failed to parse XML entities");
+
+	NSDictionary* goldenFourth = [NSDictionary dictionaryWithObjectsAndKeys:
+                                @"value_one", @"keyOne",
+                                @"value_two", @"keyTwo", nil];
+	STAssertEqualObjects(goldenFourth, [items objectAtIndex:3],
+                       @"Failed to format XML elements");
 }
 
 - (void) testParsingURLs {
 	NSString *filePath = [[[NSBundle mainBundle] resourcePath]
-						  stringByAppendingPathComponent:
-						  @"ZNDictionaryXmlParserTest.xml"];
+                        stringByAppendingPathComponent:
+                        @"ZNDictionaryXmlParserTest.xml"];
 	BOOL success = [parser parseURL:[NSURL fileURLWithPath:filePath]];	
 	STAssertTrue(success, @"Parsing failed on ZNDictionaryXmlParserTest.xml");
 	
@@ -96,8 +105,8 @@ static NSString* kContextObject = @"This is the context";
 
 - (void) testParsingData {
 	NSString *filePath = [[[NSBundle mainBundle] resourcePath]
-						  stringByAppendingPathComponent:
-						  @"ZNDictionaryXmlParserTest.xml"];
+                        stringByAppendingPathComponent:
+                        @"ZNDictionaryXmlParserTest.xml"];
 	BOOL success = [parser parseData:[NSData dataWithContentsOfFile:filePath]];
 	STAssertTrue(success, @"Parsing failed on ZNDictionaryXmlParserTest.xml");
 	
@@ -105,11 +114,11 @@ static NSString* kContextObject = @"This is the context";
 }
 
 - (void) parsedItem: (NSDictionary*)itemData
-			   name: (NSString*)itemName
-			context: (id)context {
+               name: (NSString*)itemName
+            context: (id)context {
 	STAssertEquals(kContextObject, context,
-				  @"Wrong context passed to -parsedItem");
-		
+                 @"Wrong context passed to -parsedItem");
+  
 	[names addObject:itemName];
 	[dupNames addObject:[NSString stringWithString:itemName]];
 	

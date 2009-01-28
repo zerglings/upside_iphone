@@ -8,6 +8,8 @@
 
 #import "ZNDictionaryXmlParser.h"
 
+#import "ZNFormFieldFormatter.h"
+
 
 @implementation ZNDictionaryXmlParser
 
@@ -73,6 +75,33 @@
 	return success;
 }
 
+#pragma mark Schema management
+
+- (void) loadSchemaDirective: (NSObject*)schemaDirective
+                     forName: (NSString*)name {
+  currentItemName = [name retain];
+  
+  if ([schemaDirective isKindOfClass:[NSArray class]]) {
+    NSArray* arrayDirective = (NSArray*)schemaDirective;
+    NSAssert([arrayDirective count] >= 2, @"Array schema directive needs to at "
+             @"least contain a key formatter and interpretation information!");
+    
+    currentKeyFormatter = [arrayDirective objectAtIndex:0];
+    NSAssert([currentKeyFormatter respondsToSelector:
+             @selector(copyFormattedName:)], @"Formatter object in schema "
+             @" directive does not respond to -copyFormattedName:");
+    schemaDirective = [arrayDirective objectAtIndex:1];
+  }
+  else
+    currentKeyFormatter = nil;
+  
+  currentItemHasOpenSchema = ![schemaDirective isKindOfClass:[NSSet class]];
+  if (currentItemHasOpenSchema)
+    currentItemSchema = nil;
+  else
+    currentItemSchema = (NSSet*)schemaDirective;
+}
+
 #pragma mark NSXMLParser Delegate
 
 - (void) parser: (NSXMLParser *)parser
@@ -80,7 +109,7 @@ didStartElement: (NSString *)elementName
    namespaceURI: (NSString *)namespaceURI
   qualifiedName: (NSString *)qName
      attributes: (NSDictionary *)attributeDict {
-	if (currentItemSchema != nil) {
+	if (currentItemName != nil) {
 		// already parsing an item, see if it's among the keys
 		if (currentItemHasOpenSchema || [currentItemSchema containsObject:
                                      elementName]) {
@@ -89,8 +118,7 @@ didStartElement: (NSString *)elementName
 	}
 	else if (currentItemSchema = [schema objectForKey:elementName]) {
 		// parsing new item
-		currentItemName = [elementName retain];
-		currentItemHasOpenSchema = ![currentItemSchema isKindOfClass:[NSSet class]];
+    [self loadSchemaDirective:currentItemSchema forName:elementName];
 	}
 }
 
@@ -108,8 +136,17 @@ didStartElement: (NSString *)elementName
 		// parsing a property
 		if ([currentProperty isEqualToString:elementName]) {
 			// done parsing the property
-			[currentItem setObject:[NSString stringWithString:currentValue]
-                      forKey:currentProperty];
+      NSString* propertyKey;
+      if (currentKeyFormatter)
+        propertyKey = [currentKeyFormatter copyFormattedName:currentProperty];
+      else
+        propertyKey = currentProperty;
+      NSString* propertyValue = [[NSString alloc] initWithString:currentValue];
+			[currentItem setObject:[NSString stringWithString:propertyValue]
+                      forKey:propertyKey];
+      if (propertyKey != currentProperty)
+        [propertyKey release];
+      [propertyValue release];
 			
 			[currentProperty release];
 			currentProperty = nil;
@@ -126,6 +163,7 @@ didStartElement: (NSString *)elementName
 		currentItemSchema = nil;
 		[currentItemName release];
 		currentItemName = nil;
+    currentKeyFormatter = nil;
 	}	
 }
 

@@ -1,5 +1,5 @@
 //
-//  CacheController.h
+//  SyncController.h
 //  upside
 //
 //  Created by Victor Costan on 1/24/09.
@@ -10,9 +10,9 @@
 
 @class ZNModel;
 
-// Generic superclass for controllers that update some a cache periodically
-// using a communication controller.
-@interface CacheController : NSObject {
+// Generic superclass for controllers that synchronize some cached data with a
+// server periodically, using a communication controller.
+@interface SyncController : NSObject {
   Class errorModelClass;
   NSTimeInterval syncInterval;
 
@@ -37,11 +37,12 @@
 // Called by cache clients to force a one-time sync.
 - (void) syncOnce;
 
+// Subclasses should configure their communication controllers to invoke this
+// method to report results.
+- (void) receivedResults: (NSObject*)results;
+
 // Subclasses should override this method to issue a communication request.
 - (void) sync;
-
-// The communication controller should invoke this method to report results.
-- (void) receivedResults: (NSObject*)results;
 
 // Subclasses should override this method to update the cache. Implementations
 // can return NO to indicate an error has occured, and periodic syncing should

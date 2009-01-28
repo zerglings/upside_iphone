@@ -1,5 +1,5 @@
 //
-//  CacheController.m
+//  SyncController.m
 //  upside
 //
 //  Created by Victor Costan on 1/24/09.
@@ -8,15 +8,15 @@
 
 #import <objc/runtime.h>
 
-#import "CacheController.h"
+#import "SyncController.h"
 
-@interface CacheController ()
+@interface SyncController ()
 - (void) doScheduledSync;
 - (BOOL) processResults: (NSObject*)results;
 @end
 
 
-@implementation CacheController
+@implementation SyncController
 
 @synthesize syncInterval;
 

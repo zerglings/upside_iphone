@@ -6,7 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "CacheController.h"
+#import "SyncController.h"
 
 @class LoginCommController;
 @class TradeBook;
@@ -14,7 +14,7 @@
 @class TradeOrderCommController;
 
 // Submits pending orders to the game server.
-@interface PendingOrdersSubmittingController : CacheController {
+@interface PendingOrdersSubmittingController : SyncController {
   TradeBook* tradeBook;
   TradeOrder* lastSubmittedOrder;
   TradeOrderCommController* commController;

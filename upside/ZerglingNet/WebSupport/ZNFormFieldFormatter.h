@@ -22,6 +22,9 @@
 // A formatter that transforms property names to the given casing.
 + (ZNFormFieldFormatter*) formatterFromPropertiesTo: (ZNFormatterCasing)casing;
 
+// A formatter that transforms names in the given casing to property names.
++ (ZNFormFieldFormatter*) formatterToPropertiesFrom: (ZNFormatterCasing)casing;
+
 @end
 
 @interface ZNFormFieldFormatter (Identity)

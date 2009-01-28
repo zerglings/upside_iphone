@@ -21,10 +21,22 @@
 
 + (ZNFormFieldFormatter*) formatterFromPropertiesTo: (ZNFormatterCasing)casing {
   switch (casing) {
-    case kZNFormatterNoCase:
-      return [self identityFormatter];
     case kZNFormatterSnakeCase:
       return [self lCamelToSnakeFormatter];
+    case kZNFormatterLCamelCase:
+    case kZNFormatterNoCase:
+      return [self identityFormatter];
+    default:
+      NSAssert(NO, @"Unsupported casing");
+      return nil;
+  }
+}
+
++ (ZNFormFieldFormatter*) formatterToPropertiesFrom: (ZNFormatterCasing)casing {
+  switch (casing) {
+    case kZNFormatterSnakeCase:
+      return [self snakeToLCamelFormatter];
+    case kZNFormatterNoCase:
     case kZNFormatterLCamelCase:
       return [self identityFormatter];
     default:
@@ -32,6 +44,7 @@
       return nil;
   }
 }
+
 @end
 
 

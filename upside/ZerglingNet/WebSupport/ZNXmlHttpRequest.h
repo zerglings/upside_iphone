@@ -24,10 +24,11 @@
                 data: (NSDictionary*)data
          fieldCasing: (ZNFormatterCasing)fieldCasing
       responseModels: (NSDictionary*)responseModels
+      responseCasing: (ZNFormatterCasing)responseCasing
               target: (NSObject*)target
               action: (SEL)action;
 
-// Convenience method for issuing a request with snake-cased form fields.
+// Convenience method for issuing a request with a snake-cased server.
 + (void) callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
@@ -38,6 +39,7 @@
 // Designated initializer.
 - (id) initWithURLRequest: (NSURLRequest*)request
            responseModels: (NSDictionary*)responseModels
+           responseCasing: (ZNFormatterCasing)responseCasing
                    target: (NSObject*)target
                    action: (SEL)action;
 
