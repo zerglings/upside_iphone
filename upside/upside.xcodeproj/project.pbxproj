@@ -80,6 +80,14 @@
 		573E670F0F30FAA00041F4DC /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
 		573E67100F30FAA00041F4DC /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
 		573E67110F30FAA00041F4DC /* ActivationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */; };
+		573E67340F30FB8C0041F4DC /* ZNTargetActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E67330F30FB8C0041F4DC /* ZNTargetActionCell.m */; };
+		573E67350F30FB8C0041F4DC /* ZNTargetActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E67330F30FB8C0041F4DC /* ZNTargetActionCell.m */; };
+		573E67360F30FB8C0041F4DC /* ZNTargetActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E67330F30FB8C0041F4DC /* ZNTargetActionCell.m */; };
+		573E673E0F30FD180041F4DC /* ZNTargetActionPairTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E673C0F30FD180041F4DC /* ZNTargetActionPairTest.m */; };
+		573E67410F30FF330041F4DC /* ZNTargetActionPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E67400F30FF330041F4DC /* ZNTargetActionPair.m */; };
+		573E67420F30FF330041F4DC /* ZNTargetActionPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E67400F30FF330041F4DC /* ZNTargetActionPair.m */; };
+		573E67460F3103600041F4DC /* ZNTargetActionPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E67400F30FF330041F4DC /* ZNTargetActionPair.m */; };
+		573E67B80F3110210041F4DC /* ZNTargetActionCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E67B60F3110210041F4DC /* ZNTargetActionCellTest.m */; };
 		57402D9A0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402D990F2893C700B64A7C /* Portfolio+StockCache.m */; };
 		57402D9B0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402D990F2893C700B64A7C /* Portfolio+StockCache.m */; };
 		57402E600F28A17300B64A7C /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402E5F0F28A17300B64A7C /* Position.m */; };
@@ -374,6 +382,12 @@
 		571A27070F1ABA5000A996A2 /* NetworkProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkProgress.h; sourceTree = "<group>"; };
 		571A27080F1ABA5000A996A2 /* NetworkProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkProgress.m; sourceTree = "<group>"; };
 		573E66EE0F30F9910041F4DC /* ControllerSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerSupport.h; sourceTree = "<group>"; };
+		573E67320F30FB8C0041F4DC /* ZNTargetActionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNTargetActionCell.h; sourceTree = "<group>"; };
+		573E67330F30FB8C0041F4DC /* ZNTargetActionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNTargetActionCell.m; sourceTree = "<group>"; };
+		573E673C0F30FD180041F4DC /* ZNTargetActionPairTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNTargetActionPairTest.m; sourceTree = "<group>"; };
+		573E673F0F30FF330041F4DC /* ZNTargetActionPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNTargetActionPair.h; sourceTree = "<group>"; };
+		573E67400F30FF330041F4DC /* ZNTargetActionPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNTargetActionPair.m; sourceTree = "<group>"; };
+		573E67B60F3110210041F4DC /* ZNTargetActionCellTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNTargetActionCellTest.m; sourceTree = "<group>"; };
 		57402D980F2893C700B64A7C /* Portfolio+StockCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Portfolio+StockCache.h"; sourceTree = "<group>"; };
 		57402D990F2893C700B64A7C /* Portfolio+StockCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+StockCache.m"; sourceTree = "<group>"; };
 		57402E5E0F28A17300B64A7C /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
@@ -766,6 +780,12 @@
 				578ED1380F2B18FB0064E0F8 /* ZNSyncController.h */,
 				578ED1390F2B18FB0064E0F8 /* ZNSyncController.m */,
 				57A377FA0F30C4DC00B329CC /* ZNSyncControllerTest.m */,
+				573E673F0F30FF330041F4DC /* ZNTargetActionPair.h */,
+				573E67400F30FF330041F4DC /* ZNTargetActionPair.m */,
+				573E673C0F30FD180041F4DC /* ZNTargetActionPairTest.m */,
+				573E67320F30FB8C0041F4DC /* ZNTargetActionCell.h */,
+				573E67330F30FB8C0041F4DC /* ZNTargetActionCell.m */,
+				573E67B60F3110210041F4DC /* ZNTargetActionCellTest.m */,
 			);
 			path = ControllerSupport;
 			sourceTree = "<group>";
@@ -1178,6 +1198,8 @@
 				578266EE0F2C95A200B53703 /* NewOrderViewController.m in Sources */,
 				578269480F2E070800B53703 /* TradeOrderCommController.m in Sources */,
 				578269690F2E2BE300B53703 /* PendingOrdersSubmittingController.m in Sources */,
+				573E67350F30FB8C0041F4DC /* ZNTargetActionCell.m in Sources */,
+				573E67410F30FF330041F4DC /* ZNTargetActionPair.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1253,6 +1275,10 @@
 				57A3789C0F30E92400B329CC /* PendingOrdersSubmittingController.m in Sources */,
 				57A3789D0F30E92400B329CC /* ZNFormFieldFormatterTest.m in Sources */,
 				573E66D10F30F8A70041F4DC /* ZNSyncControllerTest.m in Sources */,
+				573E67340F30FB8C0041F4DC /* ZNTargetActionCell.m in Sources */,
+				573E673E0F30FD180041F4DC /* ZNTargetActionPairTest.m in Sources */,
+				573E67420F30FF330041F4DC /* ZNTargetActionPair.m in Sources */,
+				573E67B80F3110210041F4DC /* ZNTargetActionCellTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1324,6 +1350,8 @@
 				573E670F0F30FAA00041F4DC /* Portfolio+RSSTest.m in Sources */,
 				573E67100F30FAA00041F4DC /* NewsCenterTest.m in Sources */,
 				573E67110F30FAA00041F4DC /* ActivationStateTest.m in Sources */,
+				573E67360F30FB8C0041F4DC /* ZNTargetActionCell.m in Sources */,
+				573E67460F3103600041F4DC /* ZNTargetActionPair.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
