@@ -1,5 +1,5 @@
 //
-//  SyncController.h
+//  ZNSyncController.h
 //  upside
 //
 //  Created by Victor Costan on 1/24/09.
@@ -12,7 +12,7 @@
 
 // Generic superclass for controllers that synchronize some cached data with a
 // server periodically, using a communication controller.
-@interface SyncController : NSObject {
+@interface ZNSyncController : NSObject {
   Class errorModelClass;
   NSTimeInterval syncInterval;
 

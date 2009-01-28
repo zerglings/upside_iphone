@@ -6,13 +6,13 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "SyncController.h"
+#import "ControllerSupport.h"
 
 @class Game;
 @class LoginCommController;
 @class PortfolioCommController;
 
-@interface GameSyncController : SyncController {
+@interface GameSyncController : ZNSyncController {
 	Game* game;
 	PortfolioCommController* commController;
 	LoginCommController* loginCommController;

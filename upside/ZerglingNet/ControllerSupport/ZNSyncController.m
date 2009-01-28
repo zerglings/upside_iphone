@@ -1,5 +1,5 @@
 //
-//  SyncController.m
+//  ZNSyncController.m
 //  upside
 //
 //  Created by Victor Costan on 1/24/09.
@@ -8,15 +8,15 @@
 
 #import <objc/runtime.h>
 
-#import "SyncController.h"
+#import "ZNSyncController.h"
 
-@interface SyncController ()
+@interface ZNSyncController ()
 - (void) doScheduledSync;
 - (BOOL) processResults: (NSObject*)results;
 @end
 
 
-@implementation SyncController
+@implementation ZNSyncController
 
 @synthesize syncInterval;
 

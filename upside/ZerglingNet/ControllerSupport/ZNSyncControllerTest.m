@@ -1,5 +1,5 @@
 //
-//  SyncControllerTest.m
+//  ZNSyncControllerTest.m
 //  upside
 //
 //  Created by Victor Costan on 1/28/09.
@@ -9,12 +9,12 @@
 #import "TestSupport.h"
 
 #import "ModelSupport.h"
-#import "SyncController.h"
+#import "ZNSyncController.h"
 #import "WebSupport.h"
 
 
 // Result class for testing.
-@interface SyncControllerTestModel : ZNModel {
+@interface ZNSyncControllerTestModel : ZNModel {
   NSTimeInterval responseDelay;
   NSTimeInterval resumeDelay;
 }
@@ -25,7 +25,7 @@
                resumeDelay: (NSTimeInterval)resumeDelay;
 @end
 
-@implementation SyncControllerTestModel
+@implementation ZNSyncControllerTestModel
 @synthesize responseDelay, resumeDelay;
 
 -(id)initWithResponseDelay: (NSTimeInterval)theResponseDelay {
@@ -45,39 +45,39 @@
 @end
 
 // Error class for testing.
-@interface SyncControllerTestError : SyncControllerTestModel
+@interface ZNSyncControllerTestError : ZNSyncControllerTestModel
 @end
-@implementation SyncControllerTestError
+@implementation ZNSyncControllerTestError
 @end
 
 
 // Test implementation of CacheController
-@protocol SyncControllerTestDelegate
+@protocol ZNSyncControllerTestDelegate
 - (void)checkSync;
 - (void)checkIntegrate: (NSArray*)results;
-- (void)checkServiceError: (SyncControllerTestError*)error;
+- (void)checkServiceError: (ZNSyncControllerTestError*)error;
 - (void)checkSystemError: (NSError*)error;
 @end
 
 
-@interface SyncControllerTestBox : SyncController {
+@interface ZNSyncControllerTestBox : ZNSyncController {
   NSArray* scenario;
   NSInteger currentStep;
   BOOL pendingResponse;
-  id<SyncControllerTestDelegate> delegate;
+  id<ZNSyncControllerTestDelegate> delegate;
 }
 @property (nonatomic, readonly, retain) NSArray* scenario;
 @property (nonatomic, readonly) NSInteger currentStep;
 @property (nonatomic, readonly) BOOL pendingResponse;
 - (id)initWithScenario: (NSArray*)scenario
-              delegate: (id<SyncControllerTestDelegate>)delegate;
+              delegate: (id<ZNSyncControllerTestDelegate>)delegate;
 @end
 
-@implementation SyncControllerTestBox
+@implementation ZNSyncControllerTestBox
 @synthesize scenario, currentStep, pendingResponse;
 - (id)initWithScenario: (NSArray*)theScenario
-              delegate: (id<SyncControllerTestDelegate>)theDelegate {
-  if ((self = [super initWithErrorModelClass:[SyncControllerTestError class]
+              delegate: (id<ZNSyncControllerTestDelegate>)theDelegate {
+  if ((self = [super initWithErrorModelClass:[ZNSyncControllerTestError class]
                                 syncInterval:0.1])) {
     scenario = theScenario;
     currentStep = 0;
@@ -93,10 +93,10 @@
   NSObject* scenarioStep = [scenario objectAtIndex:currentStep];
   NSArray* results = [NSArray arrayWithObject:scenarioStep];
   pendingResponse = YES;
-  if ([scenarioStep isKindOfClass:[SyncControllerTestModel class]]) {
+  if ([scenarioStep isKindOfClass:[ZNSyncControllerTestModel class]]) {
     [self performSelector:@selector(receivedResults:)
                withObject:results
-               afterDelay:[(SyncControllerTestModel*)scenarioStep
+               afterDelay:[(ZNSyncControllerTestModel*)scenarioStep
                            responseDelay]];
   }
   else {
@@ -112,7 +112,7 @@
   return (currentStep < [scenario count]);
 }
 
-- (BOOL)handleServiceError: (SyncControllerTestError*)error {
+- (BOOL)handleServiceError: (ZNSyncControllerTestError*)error {
   [delegate checkServiceError:error];
   pendingResponse = NO;
   currentStep++;
@@ -138,12 +138,12 @@
 @end
 
 
-@interface SyncControllerTest : SenTestCase <SyncControllerTestDelegate> {
-  SyncControllerTestBox* testBox;
+@interface ZNSyncControllerTest : SenTestCase <ZNSyncControllerTestDelegate> {
+  ZNSyncControllerTestBox* testBox;
 }
 @end
 
-@implementation SyncControllerTest
+@implementation ZNSyncControllerTest
 
 #pragma mark Delegate
 
@@ -160,7 +160,7 @@
                  [results objectAtIndex:0],
                  @"Wrong result given to -integrate:");
 }
-- (void)checkServiceError: (SyncControllerTestError*)error {
+- (void)checkServiceError: (ZNSyncControllerTestError*)error {
   STAssertTrue([testBox pendingResponse],
                @"Spurious -handleServiceError: call at step %s",
                [testBox currentStep]);
@@ -188,9 +188,9 @@
 }
 
 - (void)testResponsePausing {
-  testBox = [[SyncControllerTestBox alloc] initWithScenario:
+  testBox = [[ZNSyncControllerTestBox alloc] initWithScenario:
              [NSArray arrayWithObject:
-              [[[SyncControllerTestModel alloc] initWithResponseDelay:0.1]
+              [[[ZNSyncControllerTestModel alloc] initWithResponseDelay:0.1]
                autorelease]]
                                                     delegate:self];
   [testBox startSyncing];
@@ -200,11 +200,11 @@
   STAssertEquals(1, [testBox currentStep], @"Test scenario did not complete");
 }
 - (void)testErrorPausing {
-  testBox = [[SyncControllerTestBox alloc] initWithScenario:
+  testBox = [[ZNSyncControllerTestBox alloc] initWithScenario:
              [NSArray arrayWithObjects:
-              [[[SyncControllerTestModel alloc] initWithResponseDelay:0.1]
+              [[[ZNSyncControllerTestModel alloc] initWithResponseDelay:0.1]
                autorelease],
-              [[[SyncControllerTestError alloc] initWithResponseDelay:0.1]
+              [[[ZNSyncControllerTestError alloc] initWithResponseDelay:0.1]
                autorelease],
               nil]
              
@@ -216,16 +216,16 @@
   STAssertEquals(2, [testBox currentStep], @"Test scenario did not complete");
 }
 - (void)testAllResponses {
-  testBox = [[SyncControllerTestBox alloc] initWithScenario:
+  testBox = [[ZNSyncControllerTestBox alloc] initWithScenario:
              [NSArray arrayWithObjects:
-              [[[SyncControllerTestModel alloc] initWithResponseDelay:0.1]
+              [[[ZNSyncControllerTestModel alloc] initWithResponseDelay:0.1]
                autorelease],
-              [[[SyncControllerTestError alloc] initWithResponseDelay:0.1]
+              [[[ZNSyncControllerTestError alloc] initWithResponseDelay:0.1]
                autorelease],
               [NSError errorWithDomain:@"testing"
                                   code:0
                               userInfo:nil],
-              [[[SyncControllerTestModel alloc] initWithResponseDelay:0.1]
+              [[[ZNSyncControllerTestModel alloc] initWithResponseDelay:0.1]
                autorelease],
               nil]
              
@@ -235,12 +235,12 @@
                                             dateWithTimeIntervalSinceNow:1.4]];
 }
 - (void)testErrorResuming {
-  testBox = [[SyncControllerTestBox alloc] initWithScenario:
+  testBox = [[ZNSyncControllerTestBox alloc] initWithScenario:
              [NSArray arrayWithObjects:
-              [[[SyncControllerTestError alloc] initWithResponseDelay:0.1
+              [[[ZNSyncControllerTestError alloc] initWithResponseDelay:0.1
                                                           resumeDelay:0.2]
                autorelease],
-              [[[SyncControllerTestModel alloc] initWithResponseDelay:0.1]
+              [[[ZNSyncControllerTestModel alloc] initWithResponseDelay:0.1]
                autorelease],
               nil]
              
