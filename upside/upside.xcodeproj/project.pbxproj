@@ -584,7 +584,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				571195500F1DC67C00FD89EA /* ZerglingNet */,
+				571195500F1DC67C00FD89EA /* ZergSupport */,
 				570D84C70F1336EE00D54544 /* Models */,
 				57A1EF070F248D3200B8179A /* ModelPresentation */,
 				57402FA80F29967800B64A7C /* CommControllers */,
@@ -708,7 +708,7 @@
 			path = News;
 			sourceTree = "<group>";
 		};
-		571195500F1DC67C00FD89EA /* ZerglingNet */ = {
+		571195500F1DC67C00FD89EA /* ZergSupport */ = {
 			isa = PBXGroup;
 			children = (
 				573E66CD0F30F67F0041F4DC /* ControllerSupport */,
@@ -718,7 +718,7 @@
 				5750232D0F2715D900793ECE /* LICENSE */,
 				575023330F2718AD00793ECE /* MIT-LICENSE */,
 			);
-			path = ZerglingNet;
+			path = ZergSupport;
 			sourceTree = "<group>";
 		};
 		571195540F1DC8A800FD89EA /* ModelSupport */ = {
