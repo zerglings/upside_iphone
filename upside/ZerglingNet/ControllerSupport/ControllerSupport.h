@@ -7,3 +7,6 @@
 //
 
 #import "ZNSyncController.h"
+#import "ZNTargetActionPair.h"
+#import "ZNTargetActionSet.h"
+#import "ZNTargetActionSite.h"

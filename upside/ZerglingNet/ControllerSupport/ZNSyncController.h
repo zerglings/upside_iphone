@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @class ZNModel;
+@protocol ZNTargetActionSite;
 
 // Generic superclass for controllers that synchronize some cached data with a
 // server periodically, using a communication controller.
 @interface ZNSyncController : NSObject {
   Class errorModelClass;
   NSTimeInterval syncInterval;
+  id<ZNTargetActionSite> syncSite;
 
  @private
   BOOL needsSyncScheduling;
@@ -23,6 +25,7 @@
 }
 
 @property (nonatomic) NSTimeInterval syncInterval;
+@property (nonatomic, retain) id<ZNTargetActionSite> syncSite;
 
 // Designated initializer.
 - (id) initWithErrorModelClass: (Class)errorModelClass

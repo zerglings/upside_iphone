@@ -10,6 +10,8 @@
 
 #import "ZNSyncController.h"
 
+#import "ZNTargetActionPair.h"
+
 @interface ZNSyncController ()
 - (void) doScheduledSync;
 - (BOOL) processResults: (NSObject*)results;
@@ -18,7 +20,7 @@
 
 @implementation ZNSyncController
 
-@synthesize syncInterval;
+@synthesize syncInterval, syncSite;
 
 - (id) initWithErrorModelClass: (Class)theErrorModelClass
                   syncInterval: (NSTimeInterval)theSyncInterval {
@@ -79,7 +81,12 @@
     if ([maybeError isKindOfClass:errorModelClass])
       return [self handleServiceError:(ZNModel*)maybeError];
   }
-  return [self integrateResults:(NSArray*)results];
+  if ([self integrateResults:(NSArray*)results]) {    
+    [syncSite perform];
+    return YES;
+  }
+  else
+    return NO;
 }
 
 - (void) receivedResults: (NSObject*)results {

@@ -1,16 +1,16 @@
 //
-//  ZNTargetActionCell.m
+//  ZNTargetActionSet.m
 //  upside
 //
 //  Created by Victor Costan on 1/28/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "ZNTargetActionCell.h"
+#import "ZNTargetActionSet.h"
 
 #import "ZNTargetActionPair.h"
 
-@implementation ZNTargetActionCell
+@implementation ZNTargetActionSet
 
 - (id)init {
   if ((self = [super init])) {

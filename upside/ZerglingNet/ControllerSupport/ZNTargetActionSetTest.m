@@ -1,5 +1,5 @@
 //
-//  ZNTargetActionCellTest.m
+//  ZNTargetActionSetTest.m
 //  upside
 //
 //  Created by Victor Costan on 1/28/09.
@@ -8,10 +8,10 @@
 
 #import "TestSupport.h"
 
-#import "ZNTargetActionCell.h"
+#import "ZNTargetActionSet.h"
 
-@interface ZNTargetActionCellTest : SenTestCase {
-  ZNTargetActionCell* cell;
+@interface ZNTargetActionSetTest : SenTestCase {
+  ZNTargetActionSet* cell;
   BOOL invokedOne;
   BOOL invokedTwo;
   BOOL invokedThree;
@@ -20,7 +20,7 @@
 
 static const NSString* kArgumentObject = @"Action argument";
 
-@implementation ZNTargetActionCellTest
+@implementation ZNTargetActionSetTest
 
 - (void)one {
   invokedOne = YES;
@@ -43,7 +43,7 @@ static const NSString* kArgumentObject = @"Action argument";
 }
 
 - (void)setUp {
-  cell = [[ZNTargetActionCell alloc] init];
+  cell = [[ZNTargetActionSet alloc] init];
   invokedOne = NO;
   invokedTwo = NO;
   invokedThree = NO;
