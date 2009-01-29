@@ -9,6 +9,7 @@
 #import "RegistrationCommController.h"
 
 #import "ActivationState.h"
+#import "ActivationState+Signature.h"
 #import "Device.h"
 #import "NetworkProgress.h"
 #import "ServerPaths.h"
@@ -37,8 +38,10 @@
 	activationState = theActivationState;
 	NSString* deviceID = [Device currentDeviceId];
 	
-	NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
-                           deviceID, @"unique_id", nil];
+	NSMutableDictionary* request =
+      [[NSMutableDictionary alloc] initWithDictionary:[theActivationState
+                                                       requestSignature]];
+  [request setObject:deviceID forKey:@"unique_id"];
   [NetworkProgress connectionStarted];
 	[ZNXmlHttpRequest callService:[ServerPaths registrationUrl]
                          method:[ServerPaths registrationMethod]
