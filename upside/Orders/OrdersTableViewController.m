@@ -8,6 +8,7 @@
 
 #import "OrdersTableViewController.h"
 
+#import "ControllerSupport.h"
 #import "Game.h"
 #import "NewOrderViewController.h"
 #import "OrderTableViewCell.h"
@@ -27,7 +28,7 @@
 */
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
 	
 	self.narrowCellNib = @"OrderTableCellNarrow";
 	self.wideCellNib = @"OrderTableCellWide";
@@ -38,26 +39,29 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
   self.navigationItem.leftBarButtonItem =
-      [[UIBarButtonItem alloc] 
+      [[UIBarButtonItem alloc]
        initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
        target:self action:@selector(tappedAddTradeButton:)];
 }
 
-/*
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
+  [[Game sharedGame].newDataSite addTarget:self action:@selector(newGameData)];
 }
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
+  [[Game sharedGame].newDataSite removeTarget:self
+                                       action:@selector(newGameData)];
 }
-*/
+- (void) newGameData {
+  [(UITableView*)self.view reloadData];
+}
+
+/*
+ - (void)viewDidAppear:(BOOL)animated {
+ [super viewDidAppear:animated];
+ }
+ */
 /*
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];

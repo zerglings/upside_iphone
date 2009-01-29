@@ -14,6 +14,8 @@
 @class NewsCenter;
 @class GameSyncController;
 @class PendingOrdersSubmittingController;
+@class ZNTargetActionSet;
+
 
 @interface Game : NSObject {
 	Portfolio* portfolio;
@@ -22,6 +24,7 @@
 	NewsCenter* newsCenter;
 	GameSyncController* syncController;
   PendingOrdersSubmittingController* orderSubmittingController;
+  ZNTargetActionSet* newDataSite;
 }
 
 // The singleton Game instance.
@@ -35,5 +38,8 @@
 @property (nonatomic, readonly, retain) NewsCenter* newsCenter;
 @property (nonatomic, readonly, retain)
     PendingOrdersSubmittingController* orderSubmittingController;
+
+// Called when new game data becomes available. 
+@property (nonatomic, readonly, retain) ZNTargetActionSet* newDataSite;
 
 @end

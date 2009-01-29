@@ -8,6 +8,7 @@
 
 #import "Game.h"
 
+#import "ControllerSupport.h"
 #import "GameSyncController.h"
 #import "NewsCenter.h"
 #import "PendingOrdersSubmittingController.h"
@@ -27,9 +28,18 @@
 		stockCache = [[StockCache alloc] init];
 		portfolio = [[Portfolio alloc] init];
 		tradeBook = [[TradeBook alloc] init];
+    
+    ZNTargetActionPair* syncSite =
+        [[ZNTargetActionPair alloc] initWithTarget:self
+                                            action:@selector(newGameData)];
 		syncController = [[GameSyncController alloc] initWithGame:self];
+    syncController.syncSite = syncSite;
     orderSubmittingController = [[PendingOrdersSubmittingController alloc]
                                  initWithTradeBook:tradeBook];
+    orderSubmittingController.syncSite = syncSite;
+    [syncSite release];
+    
+    newDataSite = [[ZNTargetActionSet alloc] init];
 	}
 	return self;
 }
@@ -59,11 +69,15 @@
 
 #pragma mark Accessors
 
-@synthesize portfolio;
-@synthesize tradeBook;
-@synthesize stockCache;
-@synthesize newsCenter;
+@synthesize portfolio, tradeBook, stockCache, newsCenter;
 @synthesize orderSubmittingController;
+@synthesize newDataSite;
+
+#pragma mark New Game Data Site
+
+- (void) newGameData {
+  [newDataSite perform];
+}
 
 #pragma mark Singleton
 

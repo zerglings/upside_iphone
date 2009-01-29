@@ -21,24 +21,23 @@
 @implementation ActivationLoginViewController
 
 /*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
+ // The designated initializer. Override to perform setup that is required before the view is loaded.
+ - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+ if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+ // Custom initialization
+ }
+ return self;
+ }
+ */
 
 /*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
+ // Implement loadView to create a view hierarchy programmatically, without using a nib.
+ - (void)loadView {
+ }
+ */
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
 	[self flipControls];
 	
 	if (![activationState canLogin]) {
@@ -54,19 +53,19 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
+  return YES;
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
+  [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+  // Release anything that's not essential, such as cached data
 }
 
 @synthesize activationState;
 
 - (void)dealloc {
 	[activationState release];
-    [super dealloc];
+  [super dealloc];
 }
 
 - (void)flipControls {
@@ -89,13 +88,13 @@
 
 - (IBAction)loginTapped: (id)sender {
 	User* newUser = [[User alloc] initWithName:userNameText.text
-									  password:passwordText.text];
+                                    password:passwordText.text];
 	activationState.user = newUser;
 	[newUser release];
 	
 	[self flipControls];
 }
-			
+
 - (BOOL)textFieldShouldReturn: (UITextField *)textField {
 	[textField resignFirstResponder];
 	if (textField == userNameText) {
@@ -137,10 +136,10 @@
 	}
 	UIAlertView* alertView =
 	[[UIAlertView alloc] initWithTitle:title
-							   message:message
-							  delegate:self
-					 cancelButtonTitle:@"Re-enter info"
-					 otherButtonTitles:@"Retry request", nil];
+                             message:message
+                            delegate:self
+                   cancelButtonTitle:@"Re-enter info"
+                   otherButtonTitles:@"Retry request", nil];
 	[alertView show];
 	[alertView release];
 }
@@ -149,7 +148,7 @@
 	switch (buttonIndex) {
 		case 0: {
 			User* rollbackUser = [[User alloc] initWithUser:activationState.user
-												   password:nil];
+                                             password:nil];
 			activationState.user = rollbackUser;
 			[rollbackUser release];
 			[self flipControls];

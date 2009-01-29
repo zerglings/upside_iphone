@@ -42,7 +42,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[(UITableView*)self.view reloadData];
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
 }
  
 /*
