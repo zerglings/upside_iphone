@@ -2,36 +2,22 @@
 //  Portfolio.h
 //  upside
 //
-//  Created by Victor Costan on 1/3/09.
+//  Created by Victor Costan on 1/29/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ModelSupport.h"
 
-#import "Stock.h"
 
-@class Position;
-
-@interface Portfolio : NSObject {
-	NSArray* positions;
-	
-	NSArray* longPositions;
-	NSArray* shortPositions;
+// Mirrors server-side Portfolio model.
+@interface Portfolio : ZNModel {
+  double cash;
 }
 
-// How many long positions in this portfolio.
-- (NSUInteger)longPositionCount;
+// The cash balance in a portfolio, in USD.
+@property (nonatomic, readonly) double cash;
 
-// How many short positions in this portfolio.
-- (NSUInteger)shortPositionCount;
-
-// The long position at the given index.
-- (Position*)longPositionAtIndex: (NSUInteger)index;
-
-// The short position at the given index.
-- (Position*)shortPositionAtIndex: (NSUInteger)index;
-
-// Reloads the portfolio with the given data.
-- (void) loadData: (NSArray*)newPositions;
+// Convenience initializer for testing.
+- (id)initWithCash: (double)cash;
 
 @end

@@ -8,13 +8,14 @@
 
 #import "Game.h"
 
+#import "AssetBook.h"
+#import "AssetBook+RSS.h"
+#import "AssetBook+StockCache.h"
 #import "ControllerSupport.h"
 #import "GameSyncController.h"
 #import "NewsCenter.h"
 #import "PendingOrdersSubmittingController.h"
 #import "Portfolio.h"
-#import "Portfolio+RSS.h"
-#import "Portfolio+StockCache.h"
 #import "StockCache.h"
 #import "TradeBook.h"
 
@@ -24,10 +25,11 @@
 
 - (id) init {
 	if ((self = [super init])) {
+		assetBook = [[AssetBook alloc] init];
+		tradeBook = [[TradeBook alloc] init];
+    
 		newsCenter = [[NewsCenter alloc] init];
 		stockCache = [[StockCache alloc] init];
-		portfolio = [[Portfolio alloc] init];
-		tradeBook = [[TradeBook alloc] init];
     
     ZNTargetActionPair* syncSite =
         [[ZNTargetActionPair alloc] initWithTarget:self
@@ -51,7 +53,7 @@
   [syncController release];
 	[newsCenter release];
 	[stockCache release];
-	[portfolio release];
+	[assetBook release];
 	[tradeBook release];
 	[super dealloc];
 }
@@ -59,9 +61,9 @@
 # pragma mark Setup
 
 - (void) setup {
-	[portfolio loadRssFeedsIntoCenter:newsCenter];
+	[assetBook loadRssFeedsIntoCenter:newsCenter];
 	
-	[portfolio loadTickersIntoStockCache:stockCache];
+	[assetBook loadTickersIntoStockCache:stockCache];
 	[stockCache startSyncing];
 	[syncController startSyncing];
   [orderSubmittingController startSyncing];
@@ -69,7 +71,7 @@
 
 #pragma mark Accessors
 
-@synthesize portfolio, tradeBook, stockCache, newsCenter;
+@synthesize assetBook, tradeBook, stockCache, newsCenter;
 @synthesize orderSubmittingController;
 @synthesize newDataSite;
 

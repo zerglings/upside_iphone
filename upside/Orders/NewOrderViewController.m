@@ -8,13 +8,21 @@
 
 #import "NewOrderViewController.h"
 
+#import "AssetBook.h"
 #import "Game.h"
 #import "PendingOrdersSubmittingController.h"
+#import "Portfolio+Formatting.h"
 #import "Stock.h"
 #import "Stock+Formatting.h"
 #import "StockInfoCommController.h"
 #import "TradeBook.h"
 #import "TradeOrder.h"
+
+@interface NewOrderViewController ()
+- (void)reloadData;
+- (void)updatedStockInfo;
+@end
+
 
 @implementation NewOrderViewController
 
@@ -41,10 +49,8 @@
       [[UIBarButtonItem alloc] initWithTitle:@"Place"
                                        style:UIBarButtonItemStyleDone
                                       target:self
-                                      action:@selector(tappedPlace:)];
-  
-  [self limitTypeChanged:nil];
-  [self orderTypeChanged:nil];
+                                      action:@selector(tappedPlace:)];  
+  [self reloadData];
 }
 
 /*
@@ -116,6 +122,16 @@
 }
 
 - (void)updateEstimatedPrice {
+  Portfolio* portfolio = [[[Game sharedGame] assetBook] portfolio];
+  if (portfolio) {
+    availableCashLabel.text = [portfolio formattedCash];
+    availableCashLabel.textColor = [portfolio colorForCash];    
+  }
+  else {
+    availableCashLabel.text = @"N/A";
+    availableCashLabel.textColor = [UIColor darkGrayColor];
+  }
+  
   NSString* quantityString = quantityText.text;
   if ([quantityString length] == 0) {
     estimatedCostLabel.text = @"";
@@ -143,6 +159,13 @@
     askPriceChangeImage.image = nil;
     bidPriceChangeImage.image = nil;
   }
+}
+
+- (void) reloadData {
+  [self limitTypeChanged:nil];
+  [self orderTypeChanged:nil];
+  [self updatedStockInfo];
+  [self updateEstimatedPrice];
 }
 
 - (BOOL)textFieldDidEndEditing: (UITextField*)textField {

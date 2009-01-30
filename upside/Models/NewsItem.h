@@ -10,6 +10,8 @@
 
 #import "ModelSupport.h"
 
+
+// A single piece of news.
 @interface NewsItem : ZNModel {
 	NSString* title;
 	NSDate* pubDate;

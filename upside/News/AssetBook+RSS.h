@@ -1,16 +1,16 @@
 //
-//  Portfolio+RSS.h
+//  AssetBook+RSS.h
 //  upside
 //
 //  Created by Victor Costan on 1/10/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "Portfolio.h"
+#import "AssetBook.h"
 
 @class NewsCenter;
 
-@interface Portfolio (RSS)
+@interface AssetBook (RSS)
 
 + (NSString*) rssFeedUrlForTicker: (NSString*)ticker;
 

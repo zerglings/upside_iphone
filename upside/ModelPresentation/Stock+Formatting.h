@@ -10,6 +10,8 @@
 
 #import "Stock.h"
 
+
+// Presentation aspect for stock information.
 @interface Stock (Formatting)
 
 // Format the stock's ask price.
@@ -55,5 +57,4 @@
 
 // The image showing the stock's validity.
 - (UIImage*) imageForValidity;
-
 @end

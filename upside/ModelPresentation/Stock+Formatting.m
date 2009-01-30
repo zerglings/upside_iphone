@@ -11,14 +11,12 @@
 
 @implementation Stock (Formatting)
 
-#pragma mark Lifecycle
+#pragma mark Formatting
 
 static NSNumberFormatter* countFormatter = nil;
 static NSNumberFormatter* priceFormatter = nil;
 static NSNumberFormatter* netChangeFormatter = nil;
 static NSNumberFormatter* pointChangeFormatter = nil;
-
-#pragma mark Formatting
 
 static void SetupFormatters() {
 	@synchronized([Stock class]) {

@@ -8,7 +8,7 @@
 
 #import "StockTableViewCell.h"
 
-#import "Portfolio.h"
+#import "AssetBook.h"
 #import "Position.h"
 #import "Position+Formatting.h"
 #import "Stock.h"

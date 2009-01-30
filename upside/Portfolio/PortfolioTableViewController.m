@@ -9,7 +9,7 @@
 #import "PortfolioTableViewController.h"
 
 #import "Game.h"
-#import "Portfolio.h"
+#import "AssetBook.h"
 #import "StockCache.h"
 #import "StockTableViewCell.h"
 
@@ -89,9 +89,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case kShortsSection:
-			return [[[Game sharedGame] portfolio] shortPositionCount];
+			return [[[Game sharedGame] assetBook] shortPositionCount];
 		case kLongsSection:
-			return [[[Game sharedGame] portfolio] longPositionCount];
+			return [[[Game sharedGame] assetBook] longPositionCount];
 		default:
 			break;
 	}
@@ -102,7 +102,7 @@
 	StockTableViewCell *cell = (StockTableViewCell*)[super tableView:tableView
 											   cellForRowAtIndexPath:indexPath];
     
-	Portfolio* portfolio = [[Game sharedGame] portfolio];
+	AssetBook* portfolio = [[Game sharedGame] assetBook];
 	StockCache* stockCache = [[Game sharedGame] stockCache];
 	Position* position;
 	switch (indexPath.section) {

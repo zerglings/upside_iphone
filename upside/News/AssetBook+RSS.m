@@ -1,17 +1,17 @@
 //
-//  Portfolio+RSS.m
+//  AssetBook+RSS.m
 //  upside
 //
 //  Created by Victor Costan on 1/10/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "Portfolio+RSS.h"
+#import "AssetBook+RSS.h"
 
 #import "NewsCenter.h"
 #import "Position.h"
 
-@implementation Portfolio (RSS)
+@implementation AssetBook (RSS)
 
 + (NSString*) rssFeedUrlForTicker: (NSString*)ticker {
 	NSInteger rating = 3;
@@ -28,8 +28,8 @@
 - (void) loadRssFeedsIntoCenter: (NewsCenter*)newsCenter {
 	for(Position* position in positions) {
 		NSString* ticker = [position ticker];
-		[newsCenter addTitle:[Portfolio rssFeedTitleForTicker:ticker]
-					 withUrl:[Portfolio rssFeedUrlForTicker:ticker]
+		[newsCenter addTitle:[AssetBook rssFeedTitleForTicker:ticker]
+					 withUrl:[AssetBook rssFeedUrlForTicker:ticker]
 				  andRefresh:60];
 	}
 }

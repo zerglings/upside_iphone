@@ -10,6 +10,7 @@
 
 #import "NetworkProgress.h"
 #import "Position.h"
+#import "Portfolio.h"
 #import "TradeOrder.h"
 #import "ServiceError.h"
 #import "ServerPaths.h"
@@ -24,6 +25,7 @@
 		
 		responseModels = [[NSDictionary alloc] initWithObjectsAndKeys:
                       [Position class], @"position",
+                      [Portfolio class], @"portfolio",
                       [TradeOrder class], @"trade_order",
                       [ServiceError class], @"error",
                       nil];

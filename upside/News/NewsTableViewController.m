@@ -8,10 +8,10 @@
 
 #import "NewsTableViewController.h"
 
+#import "AssetBook.h"
+#import "AssetBook+RSS.h"
 #import "Game.h"
 #import "NewsTableViewCell.h"
-#import "Portfolio.h"
-#import "Portfolio+RSS.h"
 #import "RssFeedTableViewController.h"
 
 
@@ -100,9 +100,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case kShortsSection:
-			return [[[Game sharedGame] portfolio] shortPositionCount];
+			return [[[Game sharedGame] assetBook] shortPositionCount];
 		case kLongsSection:
-			return [[[Game sharedGame] portfolio] longPositionCount];
+			return [[[Game sharedGame] assetBook] longPositionCount];
 		default:
 			break;
 	}
@@ -110,7 +110,7 @@
 }
 
 - (NSString*)feedTitleForRowAtIndexPath: (NSIndexPath*)indexPath {
-	Portfolio* portfolio = [[Game sharedGame] portfolio];
+	AssetBook* portfolio = [[Game sharedGame] assetBook];
 	Position* position;
 	switch (indexPath.section) {
 		case kShortsSection:
@@ -123,7 +123,7 @@
 			position = nil;
 			break;
 	}
-	return [Portfolio rssFeedTitleForTicker:[position ticker]];
+	return [AssetBook rssFeedTitleForTicker:[position ticker]];
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView

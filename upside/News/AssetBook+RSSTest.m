@@ -1,5 +1,5 @@
 //
-//  Portfolio+RSSTest.m
+//  AssetBook+RSSTest.m
 //  upside
 //
 //  Created by Victor Costan on 1/10/09.
@@ -8,22 +8,22 @@
 
 #import "TestSupport.h"
 
+#import "AssetBook+RSS.h"
 #import "NewsCenter.h"
-#import "Portfolio+RSS.h"
 #import "Position.h"
 
 
-@interface PortfolioRSSTest : SenTestCase {
-	Portfolio* portfolio;
+@interface AssetBookRSSTest : SenTestCase {
+	AssetBook* assetBook;
 	NewsCenter* newsCenter;
 }
 @end
 
-@implementation PortfolioRSSTest
+@implementation AssetBookRSSTest
 
 - (void) setUp {
-	portfolio = [[Portfolio alloc] init];
-	[portfolio loadData:[NSArray arrayWithObjects:
+	assetBook = [[AssetBook alloc] init];
+	[assetBook loadData:[NSArray arrayWithObjects:
 						 [[[Position alloc] initWithTicker:@"MSFT"
 												  quantity:666
 													isLong:YES] autorelease],
@@ -32,7 +32,7 @@
 }
 
 - (void) tearDown {
-	[portfolio release];
+	[assetBook release];
 	[newsCenter release];
 }
 
@@ -41,8 +41,8 @@
 }
 
 - (void) testSetup {
-	[portfolio loadRssFeedsIntoCenter:newsCenter];
-	NSString* title = [Portfolio rssFeedTitleForTicker:@"MSFT"];
+	[assetBook loadRssFeedsIntoCenter:newsCenter];
+	NSString* title = [AssetBook rssFeedTitleForTicker:@"MSFT"];
 	
 	while(true) {
 		[[NSRunLoop currentRunLoop]

@@ -8,20 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-@class Portfolio;
+@class AssetBook;
+@class GameSyncController;
+@class NewsCenter;
+@class PendingOrdersSubmittingController;
 @class StockCache;
 @class TradeBook;
-@class NewsCenter;
-@class GameSyncController;
-@class PendingOrdersSubmittingController;
 @class ZNTargetActionSet;
 
 
+// Data making up a player's perspective of the game.
 @interface Game : NSObject {
-	Portfolio* portfolio;
+	AssetBook* assetBook;
 	TradeBook* tradeBook;
-	StockCache* stockCache;
+  
 	NewsCenter* newsCenter;
+	StockCache* stockCache;
+  
 	GameSyncController* syncController;
   PendingOrdersSubmittingController* orderSubmittingController;
   ZNTargetActionSet* newDataSite;
@@ -32,7 +35,7 @@
 
 #pragma mark Accessors
 
-@property (nonatomic, readonly, retain) Portfolio* portfolio;
+@property (nonatomic, readonly, retain) AssetBook* assetBook;
 @property (nonatomic, readonly, retain) TradeBook* tradeBook;
 @property (nonatomic, readonly, retain) StockCache* stockCache;
 @property (nonatomic, readonly, retain) NewsCenter* newsCenter;

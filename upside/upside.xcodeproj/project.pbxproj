@@ -35,7 +35,7 @@
 		570D86D60F144BD900D54544 /* StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D86D40F144BD900D54544 /* StockCache.m */; };
 		570D87190F14549100D54544 /* Position+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87180F14549100D54544 /* Position+Formatting.m */; };
 		570D871A0F14549100D54544 /* Position+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87180F14549100D54544 /* Position+Formatting.m */; };
-		570D87D50F14BD8B00D54544 /* Portfolio.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB1AA0F0F5ECE002C60C5 /* Portfolio.m */; };
+		570D87D50F14BD8B00D54544 /* AssetBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB1AA0F0F5ECE002C60C5 /* AssetBook.m */; };
 		570D88BF0F16C73D00D54544 /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88BE0F16C73D00D54544 /* NewsTableViewController.m */; };
 		570D88C90F16C8E800D54544 /* NewsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D88C80F16C8E800D54544 /* NewsTableViewController.xib */; };
 		570D88F60F16EA6400D54544 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88F50F16EA6400D54544 /* NewsItem.m */; };
@@ -58,8 +58,8 @@
 		571199B00F1F2F0200FD89EA /* ZNModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711955C0F1DC97800FD89EA /* ZNModel.m */; };
 		571A234C0F189EB700A996A2 /* NewsCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A234B0F189EB700A996A2 /* NewsCenter.m */; };
 		571A23B70F18BA4B00A996A2 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88F50F16EA6400D54544 /* NewsItem.m */; };
-		571A258F0F19729D00A996A2 /* Portfolio+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A258E0F19729D00A996A2 /* Portfolio+RSS.m */; };
-		571A25B80F1978A400A996A2 /* Portfolio+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A258E0F19729D00A996A2 /* Portfolio+RSS.m */; };
+		571A258F0F19729D00A996A2 /* AssetBook+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A258E0F19729D00A996A2 /* AssetBook+RSS.m */; };
+		571A25B80F1978A400A996A2 /* AssetBook+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A258E0F19729D00A996A2 /* AssetBook+RSS.m */; };
 		571A25B90F1978C300A996A2 /* NewsCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A234B0F189EB700A996A2 /* NewsCenter.m */; };
 		571A25CE0F19798000A996A2 /* RssFeedTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571A25CD0F19798000A996A2 /* RssFeedTableViewController.xib */; };
 		571A25D10F19799D00A996A2 /* RssFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25D00F19799D00A996A2 /* RssFeedTableViewController.m */; };
@@ -71,12 +71,12 @@
 		573E66D10F30F8A70041F4DC /* ZNSyncControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A377FA0F30C4DC00B329CC /* ZNSyncControllerTest.m */; };
 		573E67080F30FAA00041F4DC /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1EF290F24948F00B8179A /* UserTest.m */; };
 		573E67090F30FAA00041F4DC /* NewsItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23DB0F18D9F400A996A2 /* NewsItemTest.m */; };
-		573E670A0F30FAA00041F4DC /* PortfolioTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87980F14B99500D54544 /* PortfolioTest.m */; };
+		573E670A0F30FAA00041F4DC /* AssetBookTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87980F14B99500D54544 /* AssetBookTest.m */; };
 		573E670B0F30FAA00041F4DC /* TradeOrder+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */; };
 		573E670C0F30FAA00041F4DC /* Stock+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093E40F11049E00069411 /* Stock+FormattingTest.m */; };
 		573E670D0F30FAA00041F4DC /* Position+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87470F145BBA00D54544 /* Position+FormattingTest.m */; };
 		573E670E0F30FAA00041F4DC /* StockInfoCommControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */; };
-		573E670F0F30FAA00041F4DC /* Portfolio+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */; };
+		573E670F0F30FAA00041F4DC /* AssetBook+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* AssetBook+RSSTest.m */; };
 		573E67100F30FAA00041F4DC /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
 		573E67110F30FAA00041F4DC /* ActivationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */; };
 		573E67340F30FB8C0041F4DC /* ZNTargetActionSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E67330F30FB8C0041F4DC /* ZNTargetActionSet.m */; };
@@ -90,8 +90,13 @@
 		573E6A000F3217B60041F4DC /* ActivationState+Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E69FF0F3217B60041F4DC /* ActivationState+Signature.m */; };
 		573E6A020F3217B60041F4DC /* ActivationState+Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E69FF0F3217B60041F4DC /* ActivationState+Signature.m */; };
 		573E6AC70F321B380041F4DC /* ActivationState+SignatureTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E6AC60F321B380041F4DC /* ActivationState+SignatureTest.m */; };
-		57402D9A0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402D990F2893C700B64A7C /* Portfolio+StockCache.m */; };
-		57402D9B0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402D990F2893C700B64A7C /* Portfolio+StockCache.m */; };
+		573E6B900F32A1AE0041F4DC /* Portfolio.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E6B8F0F32A1AE0041F4DC /* Portfolio.m */; };
+		573E6B910F32A1AE0041F4DC /* Portfolio.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E6B8F0F32A1AE0041F4DC /* Portfolio.m */; };
+		573E6C0A0F32C98E0041F4DC /* Portfolio+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E6C090F32C98E0041F4DC /* Portfolio+Formatting.m */; };
+		573E6C0B0F32C98E0041F4DC /* Portfolio+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E6C090F32C98E0041F4DC /* Portfolio+Formatting.m */; };
+		573E6C0D0F32C99F0041F4DC /* Portfolio+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E6C0C0F32C99F0041F4DC /* Portfolio+FormattingTest.m */; };
+		57402D9A0F2893C700B64A7C /* AssetBook+StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402D990F2893C700B64A7C /* AssetBook+StockCache.m */; };
+		57402D9B0F2893C700B64A7C /* AssetBook+StockCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402D990F2893C700B64A7C /* AssetBook+StockCache.m */; };
 		57402E600F28A17300B64A7C /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402E5F0F28A17300B64A7C /* Position.m */; };
 		57402E610F28A17300B64A7C /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402E5F0F28A17300B64A7C /* Position.m */; };
 		57402F9E0F29956E00B64A7C /* PortfolioCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402F9D0F29956E00B64A7C /* PortfolioCommController.m */; };
@@ -230,7 +235,7 @@
 		57CDB1AD0F0F6321002C60C5 /* SyncTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB18F0F0F5219002C60C5 /* SyncTabIcon.png */; };
 		57CDB1B10F0F68D9002C60C5 /* NewsTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1B00F0F68D9002C60C5 /* NewsTabIcon.png */; };
 		57CDB1B70F0F7608002C60C5 /* PortfolioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB1A10F0F5A1D002C60C5 /* PortfolioTableViewController.m */; };
-		57CDB1B90F0F7608002C60C5 /* Portfolio.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB1AA0F0F5ECE002C60C5 /* Portfolio.m */; };
+		57CDB1B90F0F7608002C60C5 /* AssetBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB1AA0F0F5ECE002C60C5 /* AssetBook.m */; };
 		57CDB21D0F0F7DD2002C60C5 /* OverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB21C0F0F7DD2002C60C5 /* OverviewViewController.m */; };
 		57CDB2210F0F7DEB002C60C5 /* OverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2200F0F7DEB002C60C5 /* OverviewViewController.xib */; };
 		57CDB2860F0F8554002C60C5 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB2850F0F8554002C60C5 /* TabBarController.m */; };
@@ -286,7 +291,7 @@
 		570D87170F14549100D54544 /* Position+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Position+Formatting.h"; sourceTree = "<group>"; };
 		570D87180F14549100D54544 /* Position+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Position+Formatting.m"; sourceTree = "<group>"; };
 		570D87470F145BBA00D54544 /* Position+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Position+FormattingTest.m"; sourceTree = "<group>"; };
-		570D87980F14B99500D54544 /* PortfolioTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortfolioTest.m; sourceTree = "<group>"; };
+		570D87980F14B99500D54544 /* AssetBookTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetBookTest.m; sourceTree = "<group>"; };
 		570D88BD0F16C73D00D54544 /* NewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewController.h; sourceTree = "<group>"; };
 		570D88BE0F16C73D00D54544 /* NewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewController.m; sourceTree = "<group>"; };
 		570D88C80F16C8E800D54544 /* NewsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewController.xib; sourceTree = "<group>"; };
@@ -331,9 +336,9 @@
 		571A234B0F189EB700A996A2 /* NewsCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenter.m; sourceTree = "<group>"; };
 		571A23D60F18D5B400A996A2 /* NewsCenterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenterTest.m; sourceTree = "<group>"; };
 		571A23DB0F18D9F400A996A2 /* NewsItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsItemTest.m; sourceTree = "<group>"; };
-		571A258D0F19729D00A996A2 /* Portfolio+RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Portfolio+RSS.h"; sourceTree = "<group>"; };
-		571A258E0F19729D00A996A2 /* Portfolio+RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+RSS.m"; sourceTree = "<group>"; };
-		571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+RSSTest.m"; sourceTree = "<group>"; };
+		571A258D0F19729D00A996A2 /* AssetBook+RSS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AssetBook+RSS.h"; sourceTree = "<group>"; };
+		571A258E0F19729D00A996A2 /* AssetBook+RSS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetBook+RSS.m"; sourceTree = "<group>"; };
+		571A25960F19759A00A996A2 /* AssetBook+RSSTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetBook+RSSTest.m"; sourceTree = "<group>"; };
 		571A25CD0F19798000A996A2 /* RssFeedTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RssFeedTableViewController.xib; sourceTree = "<group>"; };
 		571A25CF0F19799D00A996A2 /* RssFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RssFeedTableViewController.h; sourceTree = "<group>"; };
 		571A25D00F19799D00A996A2 /* RssFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RssFeedTableViewController.m; sourceTree = "<group>"; };
@@ -356,8 +361,13 @@
 		573E69FE0F3217B60041F4DC /* ActivationState+Signature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ActivationState+Signature.h"; sourceTree = "<group>"; };
 		573E69FF0F3217B60041F4DC /* ActivationState+Signature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ActivationState+Signature.m"; sourceTree = "<group>"; };
 		573E6AC60F321B380041F4DC /* ActivationState+SignatureTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ActivationState+SignatureTest.m"; sourceTree = "<group>"; };
-		57402D980F2893C700B64A7C /* Portfolio+StockCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Portfolio+StockCache.h"; sourceTree = "<group>"; };
-		57402D990F2893C700B64A7C /* Portfolio+StockCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+StockCache.m"; sourceTree = "<group>"; };
+		573E6B8E0F32A1AE0041F4DC /* Portfolio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Portfolio.h; sourceTree = "<group>"; };
+		573E6B8F0F32A1AE0041F4DC /* Portfolio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Portfolio.m; sourceTree = "<group>"; };
+		573E6C080F32C98E0041F4DC /* Portfolio+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Portfolio+Formatting.h"; sourceTree = "<group>"; };
+		573E6C090F32C98E0041F4DC /* Portfolio+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+Formatting.m"; sourceTree = "<group>"; };
+		573E6C0C0F32C99F0041F4DC /* Portfolio+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Portfolio+FormattingTest.m"; sourceTree = "<group>"; };
+		57402D980F2893C700B64A7C /* AssetBook+StockCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AssetBook+StockCache.h"; sourceTree = "<group>"; };
+		57402D990F2893C700B64A7C /* AssetBook+StockCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetBook+StockCache.m"; sourceTree = "<group>"; };
 		57402E5E0F28A17300B64A7C /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
 		57402E5F0F28A17300B64A7C /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
 		57402F9C0F29956E00B64A7C /* PortfolioCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortfolioCommController.h; sourceTree = "<group>"; };
@@ -478,8 +488,8 @@
 		57CDB1A00F0F5A1D002C60C5 /* PortfolioTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortfolioTableViewController.h; sourceTree = "<group>"; };
 		57CDB1A10F0F5A1D002C60C5 /* PortfolioTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortfolioTableViewController.m; sourceTree = "<group>"; };
 		57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioTableViewController.xib; sourceTree = "<group>"; };
-		57CDB1A90F0F5ECE002C60C5 /* Portfolio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Portfolio.h; sourceTree = "<group>"; };
-		57CDB1AA0F0F5ECE002C60C5 /* Portfolio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Portfolio.m; sourceTree = "<group>"; };
+		57CDB1A90F0F5ECE002C60C5 /* AssetBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetBook.h; sourceTree = "<group>"; };
+		57CDB1AA0F0F5ECE002C60C5 /* AssetBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetBook.m; sourceTree = "<group>"; };
 		57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DashboardTabIcon.png; sourceTree = "<group>"; };
 		57CDB1B00F0F68D9002C60C5 /* NewsTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsTabIcon.png; sourceTree = "<group>"; };
 		57CDB21B0F0F7DD2002C60C5 /* OverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewViewController.h; sourceTree = "<group>"; };
@@ -616,31 +626,33 @@
 		570D84C70F1336EE00D54544 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				57CDB1A90F0F5ECE002C60C5 /* AssetBook.h */,
+				57CDB1AA0F0F5ECE002C60C5 /* AssetBook.m */,
+				570D87980F14B99500D54544 /* AssetBookTest.m */,
 				57A1E70A0F21656800B8179A /* Device.h */,
 				57A1E70B0F21656800B8179A /* Device.m */,
-				57A1EEFC0F248CBF00B8179A /* User.h */,
-				57A1EEFD0F248CBF00B8179A /* User.m */,
-				57A1EF290F24948F00B8179A /* UserTest.m */,
+				570D84EE0F133A7800D54544 /* Game.h */,
+				570D84EF0F133A7800D54544 /* Game.m */,
 				570D88F40F16EA6400D54544 /* NewsItem.h */,
 				570D88F50F16EA6400D54544 /* NewsItem.m */,
 				571A23DB0F18D9F400A996A2 /* NewsItemTest.m */,
-				570D82DB0F1196F800D54544 /* TradeOrder.h */,
-				570D82DC0F1196F800D54544 /* TradeOrder.m */,
-				577093E10F11032200069411 /* Stock.h */,
-				570C70B20F11217E00DC666C /* Stock.m */,
-				57CDB1A90F0F5ECE002C60C5 /* Portfolio.h */,
-				57CDB1AA0F0F5ECE002C60C5 /* Portfolio.m */,
-				570D87980F14B99500D54544 /* PortfolioTest.m */,
+				573E6B8E0F32A1AE0041F4DC /* Portfolio.h */,
+				573E6B8F0F32A1AE0041F4DC /* Portfolio.m */,
 				57402E5E0F28A17300B64A7C /* Position.h */,
 				57402E5F0F28A17300B64A7C /* Position.m */,
-				570D84E80F1338EA00D54544 /* TradeBook.h */,
-				570D84E90F1338EA00D54544 /* TradeBook.m */,
-				570D84EE0F133A7800D54544 /* Game.h */,
-				570D84EF0F133A7800D54544 /* Game.m */,
-				570D86D30F144BD900D54544 /* StockCache.h */,
-				570D86D40F144BD900D54544 /* StockCache.m */,
 				5798B9CC0F2AD66600C6FDF5 /* ServiceError.h */,
 				5798B9CD0F2AD66600C6FDF5 /* ServiceError.m */,
+				577093E10F11032200069411 /* Stock.h */,
+				570C70B20F11217E00DC666C /* Stock.m */,
+				570D86D30F144BD900D54544 /* StockCache.h */,
+				570D86D40F144BD900D54544 /* StockCache.m */,
+				570D84E80F1338EA00D54544 /* TradeBook.h */,
+				570D84E90F1338EA00D54544 /* TradeBook.m */,
+				570D82DB0F1196F800D54544 /* TradeOrder.h */,
+				570D82DC0F1196F800D54544 /* TradeOrder.m */,
+				57A1EEFC0F248CBF00B8179A /* User.h */,
+				57A1EEFD0F248CBF00B8179A /* User.m */,
+				57A1EF290F24948F00B8179A /* UserTest.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -648,9 +660,9 @@
 		570D88BC0F16ABDD00D54544 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				571A258D0F19729D00A996A2 /* Portfolio+RSS.h */,
-				571A258E0F19729D00A996A2 /* Portfolio+RSS.m */,
-				571A25960F19759A00A996A2 /* Portfolio+RSSTest.m */,
+				571A258D0F19729D00A996A2 /* AssetBook+RSS.h */,
+				571A258E0F19729D00A996A2 /* AssetBook+RSS.m */,
+				571A25960F19759A00A996A2 /* AssetBook+RSSTest.m */,
 				570D88BD0F16C73D00D54544 /* NewsTableViewController.h */,
 				570D88BE0F16C73D00D54544 /* NewsTableViewController.m */,
 				570D88C80F16C8E800D54544 /* NewsTableViewController.xib */,
@@ -869,6 +881,9 @@
 				570D87170F14549100D54544 /* Position+Formatting.h */,
 				570D87180F14549100D54544 /* Position+Formatting.m */,
 				570D87470F145BBA00D54544 /* Position+FormattingTest.m */,
+				573E6C080F32C98E0041F4DC /* Portfolio+Formatting.h */,
+				573E6C090F32C98E0041F4DC /* Portfolio+Formatting.m */,
+				573E6C0C0F32C99F0041F4DC /* Portfolio+FormattingTest.m */,
 			);
 			path = ModelPresentation;
 			sourceTree = "<group>";
@@ -918,6 +933,8 @@
 		57CDB19E0F0F56CB002C60C5 /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
+				57402D980F2893C700B64A7C /* AssetBook+StockCache.h */,
+				57402D990F2893C700B64A7C /* AssetBook+StockCache.m */,
 				57CDB1A00F0F5A1D002C60C5 /* PortfolioTableViewController.h */,
 				57CDB1A10F0F5A1D002C60C5 /* PortfolioTableViewController.m */,
 				57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */,
@@ -925,8 +942,6 @@
 				577091AD0F0FA8B000069411 /* StockTableViewCell.m */,
 				577091E20F10502F00069411 /* StockTableCellNarrow.xib */,
 				577091E40F10503900069411 /* StockTableCellWide.xib */,
-				57402D980F2893C700B64A7C /* Portfolio+StockCache.h */,
-				57402D990F2893C700B64A7C /* Portfolio+StockCache.m */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
@@ -1110,8 +1125,8 @@
 				570D88F60F16EA6400D54544 /* NewsItem.m in Sources */,
 				570D88BF0F16C73D00D54544 /* NewsTableViewController.m in Sources */,
 				570D890D0F17183B00D54544 /* ZNDictionaryXmlParser.m in Sources */,
-				57CDB1B90F0F7608002C60C5 /* Portfolio.m in Sources */,
-				571A25B80F1978A400A996A2 /* Portfolio+RSS.m in Sources */,
+				57CDB1B90F0F7608002C60C5 /* AssetBook.m in Sources */,
+				571A25B80F1978A400A996A2 /* AssetBook+RSS.m in Sources */,
 				570D87190F14549100D54544 /* Position+Formatting.m in Sources */,
 				57CDB1B70F0F7608002C60C5 /* PortfolioTableViewController.m in Sources */,
 				571A25D10F19799D00A996A2 /* RssFeedTableViewController.m in Sources */,
@@ -1145,7 +1160,7 @@
 				575025CF0F274E7700793ECE /* ZNCsvHttpRequest.m in Sources */,
 				575025ED0F27522000793ECE /* ZNArrayCsvParser.m in Sources */,
 				5791AD260F285B3C0036AB57 /* StockInfoCommController.m in Sources */,
-				57402D9B0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */,
+				57402D9B0F2893C700B64A7C /* AssetBook+StockCache.m in Sources */,
 				57402E610F28A17300B64A7C /* Position.m in Sources */,
 				57402F9F0F29956E00B64A7C /* PortfolioCommController.m in Sources */,
 				5798B9CF0F2AD66600C6FDF5 /* ServiceError.m in Sources */,
@@ -1159,6 +1174,8 @@
 				573E67350F30FB8C0041F4DC /* ZNTargetActionSet.m in Sources */,
 				573E67410F30FF330041F4DC /* ZNTargetActionPair.m in Sources */,
 				573E6A000F3217B60041F4DC /* ActivationState+Signature.m in Sources */,
+				573E6B910F32A1AE0041F4DC /* Portfolio.m in Sources */,
+				573E6C0A0F32C98E0041F4DC /* Portfolio+Formatting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1227,7 +1244,7 @@
 				570C70870F11203300DC666C /* Stock+Formatting.m in Sources */,
 				570D843D0F131BAA00D54544 /* TradeOrder.m in Sources */,
 				570D843E0F131BB900D54544 /* TradeOrder+Formatting.m in Sources */,
-				570D87D50F14BD8B00D54544 /* Portfolio.m in Sources */,
+				570D87D50F14BD8B00D54544 /* AssetBook.m in Sources */,
 				570D871A0F14549100D54544 /* Position+Formatting.m in Sources */,
 				57CB1A0D0F0F1B0C00E95AE1 /* GTMSystemVersion.m in Sources */,
 				57CB1A0E0F0F1B0C00E95AE1 /* GTMCALayer+UnitTesting.m in Sources */,
@@ -1238,7 +1255,7 @@
 				57CB1A130F0F1B0C00E95AE1 /* GTMUIKit+UnitTesting.m in Sources */,
 				571A234C0F189EB700A996A2 /* NewsCenter.m in Sources */,
 				571A23B70F18BA4B00A996A2 /* NewsItem.m in Sources */,
-				571A258F0F19729D00A996A2 /* Portfolio+RSS.m in Sources */,
+				571A258F0F19729D00A996A2 /* AssetBook+RSS.m in Sources */,
 				5711926B0F1BA38400FD89EA /* NetworkProgress.m in Sources */,
 				571195660F1DCC3600FD89EA /* ZNTestModels.m in Sources */,
 				5711956C0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m in Sources */,
@@ -1264,7 +1281,7 @@
 				575024540F27352000793ECE /* ZNModelCsvParser.m in Sources */,
 				575025CE0F274E7700793ECE /* ZNCsvHttpRequest.m in Sources */,
 				5791AD270F285B3C0036AB57 /* StockInfoCommController.m in Sources */,
-				57402D9A0F2893C700B64A7C /* Portfolio+StockCache.m in Sources */,
+				57402D9A0F2893C700B64A7C /* AssetBook+StockCache.m in Sources */,
 				57402E600F28A17300B64A7C /* Position.m in Sources */,
 				57402F9E0F29956E00B64A7C /* PortfolioCommController.m in Sources */,
 				5798B9CE0F2AD66600C6FDF5 /* ServiceError.m in Sources */,
@@ -1276,18 +1293,21 @@
 				5782696A0F2E2BE300B53703 /* PendingOrdersSubmittingController.m in Sources */,
 				573E67080F30FAA00041F4DC /* UserTest.m in Sources */,
 				573E67090F30FAA00041F4DC /* NewsItemTest.m in Sources */,
-				573E670A0F30FAA00041F4DC /* PortfolioTest.m in Sources */,
+				573E670A0F30FAA00041F4DC /* AssetBookTest.m in Sources */,
 				573E670B0F30FAA00041F4DC /* TradeOrder+FormattingTest.m in Sources */,
 				573E670C0F30FAA00041F4DC /* Stock+FormattingTest.m in Sources */,
 				573E670D0F30FAA00041F4DC /* Position+FormattingTest.m in Sources */,
 				573E670E0F30FAA00041F4DC /* StockInfoCommControllerTest.m in Sources */,
-				573E670F0F30FAA00041F4DC /* Portfolio+RSSTest.m in Sources */,
+				573E670F0F30FAA00041F4DC /* AssetBook+RSSTest.m in Sources */,
 				573E67100F30FAA00041F4DC /* NewsCenterTest.m in Sources */,
 				573E67110F30FAA00041F4DC /* ActivationStateTest.m in Sources */,
 				573E67360F30FB8C0041F4DC /* ZNTargetActionSet.m in Sources */,
 				573E67460F3103600041F4DC /* ZNTargetActionPair.m in Sources */,
 				573E6A020F3217B60041F4DC /* ActivationState+Signature.m in Sources */,
 				573E6AC70F321B380041F4DC /* ActivationState+SignatureTest.m in Sources */,
+				573E6B900F32A1AE0041F4DC /* Portfolio.m in Sources */,
+				573E6C0B0F32C98E0041F4DC /* Portfolio+Formatting.m in Sources */,
+				573E6C0D0F32C99F0041F4DC /* Portfolio+FormattingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

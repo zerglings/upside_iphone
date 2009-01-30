@@ -9,11 +9,12 @@
 #import "GameSyncController.h"
 
 #import "ActivationState.h"
+#import "AssetBook.h"
+#import "AssetBook+RSS.h"
+#import "AssetBook+StockCache.h"
 #import "Game.h"
 #import "LoginCommController.h"
 #import "Portfolio.h"
-#import "Portfolio+RSS.h"
-#import "Portfolio+StockCache.h"
 #import "PortfolioCommController.h"
 #import "Position.h"
 #import "ServiceError.h"
@@ -48,25 +49,28 @@
 }
 
 - (BOOL) integrateResults: (NSArray*)results {
-	NSMutableArray* positions = [[NSMutableArray alloc] init];
+	NSMutableArray* assets = [[NSMutableArray alloc] init];
 	NSMutableArray* tradeOrders = [[NSMutableArray alloc] init];
 	NSMutableArray* trades = [[NSMutableArray alloc] init];
 	for (ZNModel* model in results) {
-		if ([model isKindOfClass:[Position class]])
-			[positions addObject:model];
-		if ([model isKindOfClass:[TradeOrder class]])
-			[tradeOrders addObject:model];
-		// TODO(overmind): handle trades and cash here
+		if ([model isKindOfClass:[Position class]] ||
+        [model isKindOfClass:[Portfolio class]]) {
+			[assets addObject:model];
+    }
+    else if ([model isKindOfClass:[TradeOrder class]]) {
+			[tradeOrders addObject:model];      
+    }
+		// TODO(overmind): handle trades here
 	}
 	
-	[[game portfolio] loadData:positions];
+	[[game assetBook] loadData:assets];
 	[[game tradeBook] loadData:tradeOrders];
-	[positions release];
+	[assets release];
 	[tradeOrders release];
 	[trades release];
   
-  [[game portfolio] loadTickersIntoStockCache:[game stockCache]];
-  [[game portfolio] loadRssFeedsIntoCenter:[game newsCenter]];
+  [[game assetBook] loadTickersIntoStockCache:[game stockCache]];
+  [[game assetBook] loadRssFeedsIntoCenter:[game newsCenter]];
 	return YES;
 }
 

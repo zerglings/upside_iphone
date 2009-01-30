@@ -1,17 +1,17 @@
 //
-//  Portfolio+StockCache.m
+//  AssetBook+StockCache.m
 //  upside
 //
 //  Created by Victor Costan on 1/22/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "Portfolio+StockCache.h"
+#import "AssetBook+StockCache.h"
 
 #import "Position.h"
 #import "StockCache.h"
 
-@implementation Portfolio (StockCache)
+@implementation AssetBook (StockCache)
 
 - (void) loadTickersIntoStockCache: (StockCache*)stockCache {
   BOOL needsSync = NO;

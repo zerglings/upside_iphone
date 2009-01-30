@@ -10,13 +10,13 @@
 
 #import "Position+Formatting.h"
 
-@interface PortfolioFormattingTest : SenTestCase {
+@interface PositionFormattingTest : SenTestCase {
 	Position* smallPosition;
 	Position* largePosition;
 }
 @end
 
-@implementation PortfolioFormattingTest
+@implementation PositionFormattingTest
 
 - (void) setUp {
 	smallPosition = [[Position alloc] initWithTicker:@"MSFT"
