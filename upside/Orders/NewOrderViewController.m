@@ -21,6 +21,7 @@
 @interface NewOrderViewController ()
 - (void)reloadData;
 - (void)updatedStockInfo;
+- (void)updateEstimatedPrice;
 @end
 
 
@@ -108,6 +109,7 @@
     [limitText setEnabled:NO];
     limitText.text = @"market price";
   }
+  [self updateEstimatedPrice];  
 }
 
 - (IBAction)orderTypeChanged: (id)sender {
@@ -119,6 +121,7 @@
     limitDescriptionLabel.text = @"Ask";
     [quantityAllButton setHidden:NO];
   }
+  [self updateEstimatedPrice];
 }
 
 - (void)updateEstimatedPrice {
@@ -138,7 +141,19 @@
     return;
   }
   NSUInteger quantity = [self chosenQuantity];
-  
+  if (stockInfo) {
+    if ([self chosenIsLong] == [self chosenIsBuy]) {
+      estimatedCostLabel.text = [stockInfo formattedValueUsingAskPriceFor:
+                                 quantity];
+    }
+    else {
+      estimatedCostLabel.text = [stockInfo formattedValueUsingBidPriceFor:
+                                 quantity];            
+    }
+  }
+  else {
+    estimatedCostLabel.text = @"";
+  }
 }
 
 - (void)updatedStockInfo {
