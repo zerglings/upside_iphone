@@ -1,9 +1,9 @@
 //
 //  TabBarController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/3/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TabBarController.h"
@@ -55,7 +55,7 @@
     [super dealloc];
 }
 
-+ (UITabBarController*) loadFromNib: (NSString*)nibName
++(UITabBarController*)loadFromNib: (NSString*)nibName
 	  						  owner: (UpsideAppDelegate*)owner {
 	NSArray* nibContents = [[NSBundle mainBundle] loadNibNamed:nibName
 														 owner:owner

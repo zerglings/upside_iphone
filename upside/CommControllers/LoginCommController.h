@@ -1,9 +1,9 @@
 //
 //  LoginCommController.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/20/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -25,7 +25,7 @@
 }
 
 // Try to login. Sends outcome via a message to the delegate.
-- (void) loginUsing: (ActivationState*)activationState;
+-(void)loginUsing: (ActivationState*)activationState;
 
 @property (nonatomic, assign) id<LoginCommDelegate> delegate;
 

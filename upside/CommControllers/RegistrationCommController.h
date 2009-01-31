@@ -1,9 +1,9 @@
 //
 //  RegistrationCommController.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/16/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -24,6 +24,6 @@
 }
 
 // Try to register. Sends outcome via a message to the delegate.
-- (void) registerDeviceUsing: (ActivationState*)activationState;
+-(void)registerDeviceUsing: (ActivationState*)activationState;
 
 @end

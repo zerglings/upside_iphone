@@ -1,9 +1,9 @@
 //
 //  TradeBook.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/6/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TradeBook.h"
@@ -14,17 +14,17 @@
 
 #pragma mark I/O
 
-- (void) load {
+-(void)load {
 	// TODO(overmind): real I/O
 }
 
-- (void) save {
+-(void)save {
 	// TODO(overmind): real I/O
 }
 
 #pragma mark Synchronizing
 
-- (void) loadData: (NSArray*)newTradeOrders {
+-(void)loadData: (NSArray*)newTradeOrders {
   NSMutableArray* theFilledOrders = [[NSMutableArray alloc] init];
   NSMutableArray* theSubmittedOrders = [[NSMutableArray alloc] init];
   
@@ -47,7 +47,7 @@
 
 #pragma mark Lifecycle
 
-- (id) init {
+-(id)init {
 	if ((self = [super init])) {
 		[self load];
     pendingOrders = [[NSMutableArray alloc] init];
@@ -55,7 +55,7 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
   [serverOrders release];
 	[filledOrders release];
   [submittedOrders release];
@@ -65,41 +65,41 @@
 
 #pragma mark Properties
 
-- (NSUInteger) filledCount {
+-(NSUInteger)filledCount {
   return [filledOrders count];
 }
 
-- (NSUInteger) submittedCount {
+-(NSUInteger)submittedCount {
   return [submittedOrders count];
 }
 
-- (NSUInteger) pendingCount {
+-(NSUInteger)pendingCount {
   return [pendingOrders count];
 }
 
-- (TradeOrder*) filledAtIndex: (NSUInteger)index {
+-(TradeOrder*)filledAtIndex: (NSUInteger)index {
   return [filledOrders objectAtIndex:index];
 }
 
-- (TradeOrder*) submittedAtIndex: (NSUInteger)index {
+-(TradeOrder*)submittedAtIndex: (NSUInteger)index {
   return [submittedOrders objectAtIndex:index];
 }
 
-- (TradeOrder*) pendingAtIndex: (NSUInteger)index {
+-(TradeOrder*)pendingAtIndex: (NSUInteger)index {
   return [pendingOrders objectAtIndex:index];
 }
 
 #pragma mark Order Submission Queue
 
-- (void) queuePendingOrder: (TradeOrder*)order {
+-(void)queuePendingOrder: (TradeOrder*)order {
   [pendingOrders addObject:order];
 }
 
-- (TradeOrder*) firstPendingOrder {
+-(TradeOrder*)firstPendingOrder {
   return [pendingOrders count] ? [pendingOrders objectAtIndex:0] : nil;
 }
 
-- (BOOL) dequeuePendingOrder: (TradeOrder*)order
+-(BOOL)dequeuePendingOrder: (TradeOrder*)order
                    submitted:(TradeOrder*)submittedOrder {
   NSUInteger orderIndex = [pendingOrders indexOfObject:order];
   if (orderIndex == NSNotFound)
@@ -111,7 +111,7 @@
   return YES;
 }
 
-- (NSArray*) copyPendingOrders {
+-(NSArray*)copyPendingOrders {
   return [[NSArray alloc] initWithArray:pendingOrders];
 }
 

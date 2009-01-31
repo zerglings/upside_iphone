@@ -11,7 +11,7 @@
 
 //
 //  TestSupport.h
-//  upside
+//  ZergSupport
 //
 
 // Main header file for the Zergling.Net Test Support.

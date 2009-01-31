@@ -1,9 +1,9 @@
 //
 //  ZNMSString.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNMSString.h"
@@ -14,14 +14,14 @@
 
 #pragma mark Boxing
 
-- (NSObject*) boxAttribute: (ZNModelDefinitionAttribute*)attribute
+-(NSObject*)boxAttribute: (ZNModelDefinitionAttribute*)attribute
 				inInstance: (ZNModel*)instance
 			   forceString: (BOOL)forceString {
 	NSString* string = object_getIvar(instance, [attribute runtimeIvar]);
 	return string;
 }
 
-- (void) unboxAttribute: (ZNModelDefinitionAttribute*)attribute
+-(void)unboxAttribute: (ZNModelDefinitionAttribute*)attribute
 		 	 inInstance: (ZNModel*)instance
 			       from: (NSObject*)boxedObject {
 	NSString* string;

@@ -1,9 +1,9 @@
 //
 //  ZNFormFieldFormatter+Snake2LCamelTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/25/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -18,19 +18,19 @@
 
 @implementation ZNFormFieldFormatter_Snake2LCamelTest
 
-- (void) setUp {
+-(void)setUp {
   snake2lCamel = [ZNFormFieldFormatter snakeToLCamelFormatter];
   lCamel2snake = [ZNFormFieldFormatter lCamelToSnakeFormatter];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 }
 
-- (void) dealloc {
+-(void)dealloc {
   [super dealloc];
 }
 
-- (void) testGenerics {
+-(void)testGenerics {
   NSString* testBattery[][2] = {
     {@"", @""}, {@"simple", @"simple"}, {@"twoWords", @"two_words"},
     {@"randomUAndV", @"random_u_and_v"}};
@@ -45,7 +45,7 @@
   }
 }
 
-- (void) testSpecialCamels {
+-(void)testSpecialCamels {
   NSString* testBattery[][2] = {
     {@"SomeHTTP", @"some_http"},
     {@"SomeHTTPRequest", @"some_http_request"}
@@ -58,7 +58,7 @@
   }
 }
 
-- (void) testSpecialSnakes {
+-(void)testSpecialSnakes {
   NSString* testBattery[][2] = {
     {@"twoWords", @"two__words"},
     {@"word", @"__word"},

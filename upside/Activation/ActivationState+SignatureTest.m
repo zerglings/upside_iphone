@@ -1,9 +1,9 @@
 //
 //  ActivationState+SignatureTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/29/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TestSupport.h"
@@ -20,7 +20,7 @@
 
 @implementation ActivationStateSignatureTest
 
-- (void) setUp {
+-(void)setUp {
   testUdid = @"1234512345123451234512345123451234512345";
   testDevice = [[Device alloc] initWithProperties:
                 [NSDictionary dictionaryWithObjectsAndKeys:
@@ -29,12 +29,12 @@
   [testState setDeviceInfo:testDevice];
 }
 
-- (void) tearDown {
+-(void)tearDown {
   [testDevice release];
   [testState release];
 }
 
-- (void) testSignature {
+-(void)testSignature {
   NSDictionary* goldenSig =
       [[NSDictionary alloc] initWithObjectsAndKeys:
        testUdid, @"uniqueID",

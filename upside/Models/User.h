@@ -1,9 +1,9 @@
 //
 //  User.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/19/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -29,12 +29,12 @@
 @property (nonatomic, readonly) BOOL isPseudoUser;
 
 // Initialize a user with the information of a device's pseudo-user.
-- (id) initPseudoUser: (Device*)device;
+-(id)initPseudoUser: (Device*)device;
 
 // Initialize a user with information from a login box.
-- (id) initWithName: (NSString*)name password: (NSString*)password;
+-(id)initWithName: (NSString*)name password: (NSString*)password;
 
 // Initialize with information from an existing user, plus a password.
-- (id) initWithUser: (User*)user password: (NSString*)password;
+-(id)initWithUser: (User*)user password: (NSString*)password;
 
 @end

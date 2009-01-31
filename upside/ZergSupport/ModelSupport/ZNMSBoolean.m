@@ -1,9 +1,9 @@
 //
 //  ZNMSBoolean.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/15/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNMSBoolean.h"
@@ -14,7 +14,7 @@
 
 #pragma mark Boxing
 
-- (NSObject*) boxAttribute: (ZNModelDefinitionAttribute*)attribute
+-(NSObject*)boxAttribute: (ZNModelDefinitionAttribute*)attribute
 				inInstance: (ZNModel*)instance
 			   forceString: (BOOL)forceString {
 	BOOL value = *((BOOL*)((uint8_t*)instance +
@@ -25,7 +25,7 @@
 		return [NSNumber numberWithBool:value];
 }
 
-- (void) unboxAttribute: (ZNModelDefinitionAttribute*)attribute
+-(void)unboxAttribute: (ZNModelDefinitionAttribute*)attribute
 		 	 inInstance: (ZNModel*)instance
 			       from: (NSObject*)boxedObject {
 	BOOL value;

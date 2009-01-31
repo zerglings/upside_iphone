@@ -1,9 +1,9 @@
 //
 //  ActivationStateTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/2/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TestSupport.h"
@@ -23,7 +23,7 @@
 
 @implementation ActivationStateTest
 
-- (void) setUp {
+-(void)setUp {
 	[ActivationState removeSavedState];
 	activationState = [[ActivationState alloc] init];
 	
@@ -33,23 +33,23 @@
 	testUser = [[User alloc] initPseudoUser:testDevice];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[activationState release];
 	[testDevice release];
 	[testUser release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testSingleton {
+-(void)testSingleton {
 	STAssertEqualObjects([ActivationState sharedState],
 						 [ActivationState sharedState],
 						 @"+sharedState vends different objects");
 }
 
-- (void) testEncoding {
+-(void)testEncoding {
 	activationState.deviceInfo = testDevice;
 	activationState.user = testUser;
 	NSData* encoded = [activationState archiveToData];
@@ -68,13 +68,13 @@
 	[newActivationState release];
 }
 
-- (void) testDecodingNil {	
+-(void)testDecodingNil {	
 	[activationState unarchiveFromData:nil];
 	STAssertFalse([activationState isRegistered],
 				  @"-decodeFromData with nil did not set de-activation state");
 }
 
-- (void) testLoadInitialization {
+-(void)testLoadInitialization {
 	activationState.deviceInfo = testDevice;
 	[activationState load];
 	
@@ -82,7 +82,7 @@
 				   @"dry -load does not set activated to NO");
 }
 
-- (void) testSaving {
+-(void)testSaving {
 	activationState.deviceInfo = testDevice;
 	[activationState save];
 	

@@ -1,9 +1,9 @@
 //
 //  ZNFormURLEncoder.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/16/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNFormURLEncoder.h"
@@ -12,12 +12,12 @@
 #import "ZNFormFieldFormatter.h"
 
 @interface ZNFormURLEncoder ()
-- (id) initWithOutput: (NSMutableData*)theOutput
+-(id)initWithOutput: (NSMutableData*)theOutput
        fieldFormatter: (ZNFormFieldFormatter*)theFieldFormatter;
 
-- (void) encode: (NSObject*)object keyPrefix: (NSString*)keyPrefix;
+-(void)encode: (NSObject*)object keyPrefix: (NSString*)keyPrefix;
 
-- (void) encodeKey: (NSString*)key
+-(void)encodeKey: (NSString*)key
              value: (NSObject*)value
          keyPrefix: (NSString*)keyPrefix;
 @end
@@ -25,7 +25,7 @@
 
 @implementation ZNFormURLEncoder
 
-+ (NSData*) copyEncodingFor: (NSDictionary*)dictionary
++(NSData*)copyEncodingFor: (NSDictionary*)dictionary
         usingFieldFormatter: (ZNFormFieldFormatter*)formatter {
   NSMutableData* output = [[NSMutableData alloc] init];
   ZNFormURLEncoder* encoder =
@@ -35,7 +35,7 @@
 	return output;
 }
 
-- (id) initWithOutput: (NSMutableData*)theOutput
+-(id)initWithOutput: (NSMutableData*)theOutput
        fieldFormatter: (ZNFormFieldFormatter*)theFieldFormatter {
   if ((self = [super init])) {
     output = theOutput;
@@ -44,11 +44,11 @@
   return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
   [super dealloc];
 }
 
-- (void) encode: (NSObject*)object keyPrefix: (NSString*)keyPrefix {	
+-(void)encode: (NSObject*)object keyPrefix: (NSString*)keyPrefix {	
 	if ([object isKindOfClass:[NSArray class]]) {
 		NSUInteger count = [(NSArray*)object count];
 		for (NSUInteger i = 0; i < count; i++) {
@@ -68,7 +68,7 @@
 	}
 }
 
-- (void) encodeKey: (NSString*)key
+-(void)encodeKey: (NSString*)key
              value: (NSObject*)value
          keyPrefix: (NSString*)keyPrefix {
 	NSAssert([key isKindOfClass:[NSString class]],

@@ -1,9 +1,9 @@
 //
 //  StockTableViewCell.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/3/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "StockTableViewCell.h"
@@ -39,15 +39,15 @@
     [super dealloc];
 }
 
-- (Position*) position {
+-(Position*)position {
 	return position;
 }
 
-- (Stock*) stockInfo {
+-(Stock*)stockInfo {
 	return stockInfo;
 }
 
-- (void) setPosition: (Position*)newPosition stockInfo:(Stock*)newStockInfo {
+-(void)setPosition: (Position*)newPosition stockInfo:(Stock*)newStockInfo {
 	[position release];
 	[stockInfo release];
 	position = [newPosition retain];

@@ -1,9 +1,9 @@
 //
 //  ServerPaths.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/19/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,26 +13,26 @@
 }
 
 // The root server URL.
-+ (NSString*) serverUrl;
++(NSString*)serverUrl;
 
 // Points to the device registration service.
-+ (NSString*) registrationUrl;
++(NSString*)registrationUrl;
 // Method to use for the registration service.
-+ (NSString*) registrationMethod;
++(NSString*)registrationMethod;
 
 // Points to the user login service.
-+ (NSString*) loginUrl;
++(NSString*)loginUrl;
 // Method to use for the login service.
-+ (NSString*) loginMethod;
++(NSString*)loginMethod;
 
 // Points to the portfolio sync service.
-+ (NSString*) portfolioSyncUrl;
++(NSString*)portfolioSyncUrl;
 // Method to use for the portfolio sync service.
-+ (NSString*) portfolioSyncMethod;
++(NSString*)portfolioSyncMethod;
 
 // Points to the trade order submission service.
-+ (NSString*) orderSubmissionUrl;
++(NSString*)orderSubmissionUrl;
 // Method to use for submitting trade orders.
-+ (NSString*) orderSubmissionMethod;
++(NSString*)orderSubmissionMethod;
 
 @end

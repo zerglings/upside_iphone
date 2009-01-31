@@ -1,9 +1,9 @@
 //
 //  Stock.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -45,11 +45,11 @@
 #pragma mark Convenience Accessors
 
 // NO if the stock represents Yahoo's "can't find this" answer.
-- (BOOL) isValid;
+-(BOOL)isValid;
 
 #pragma mark Convenience Constructors
 
-- (id) initWithTicker: (NSString*)ticker
+-(id)initWithTicker: (NSString*)ticker
                  name: (NSString*)name
                market: (NSString*)market
              askPrice: (double)askPrice

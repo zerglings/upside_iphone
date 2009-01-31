@@ -1,9 +1,9 @@
 //
 //  ZNMSRegistryTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -19,19 +19,19 @@
 
 @implementation ZNMSRegistryTest
 
-- (void) setUp {
+-(void)setUp {
 	registry = [[ZNMSRegistry alloc] init];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[registry release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testNamedClassRegistration {
+-(void)testNamedClassRegistration {
 	ZNModelDefinition *defn =
 	   [registry definitionForModelClassNamed:@"ZNTestParsing"];
 	
@@ -41,7 +41,7 @@
 				   @"Registering named model definition located wrong class");	
 }
 
-- (void) testObjectClassRegistration {
+-(void)testObjectClassRegistration {
 	ZNModelDefinition *defn =
 	    [registry definitionForModelClass:[ZNTestParsing class]];
 	
@@ -51,7 +51,7 @@
 				   @"Registering named model definition located wrong class");	
 }
 
-- (void) testRegistrationCachesDefinitions {
+-(void)testRegistrationCachesDefinitions {
 	STAssertEquals([registry definitionForModelClassNamed:@"ZNTestParsing"],
 				   [registry definitionForModelClass:[ZNTestParsing class]],
 				   @"Looking up same class twice gave different definitions");

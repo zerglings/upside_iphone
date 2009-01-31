@@ -1,9 +1,9 @@
 //
 //  ActivationState+Signature.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/29/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "ActivationState+Signature.h"
@@ -20,7 +20,7 @@ static const int8_t kDeviceSecret[] =
 
 static const NSString* kDeviceSignatureVersion = @"1";
 
-- (NSDictionary*) requestSignature {
+-(NSDictionary*)requestSignature {
   NSString* udid = deviceInfo ? [deviceInfo uniqueId] :
       [Device currentDeviceId];
   

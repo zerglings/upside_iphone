@@ -1,9 +1,9 @@
 //
 //  Position+Formatting.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/6/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "Position+Formatting.h"
@@ -26,7 +26,7 @@ static void SetupFormatters() {
 	}
 }
 
-- (NSString*) formattedQuantity {
+-(NSString*)formattedQuantity {
 	SetupFormatters();
 	return [countFormatter stringFromNumber:[NSNumber
 											 numberWithUnsignedInt:quantity]];

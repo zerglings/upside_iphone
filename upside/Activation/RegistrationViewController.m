@@ -1,9 +1,9 @@
 //
 //  RegistrationViewController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/2/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright Zergling.Net 2009. All rights reserved.
 //
 
 #import "RegistrationViewController.h"
@@ -32,7 +32,7 @@
 
 @synthesize activationState;
 
-- (void) dealloc {
+-(void)dealloc {
 	[activationState release];
 	[super dealloc];
 }
@@ -44,16 +44,16 @@
 }
 
 
-- (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 
-- (void) didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data	
 }
 
-- (void) exitApplication {
+-(void)exitApplication {
 	UIApplication* application = [UIApplication sharedApplication];
 	if ([application respondsToSelector:@selector(terminate)]) {
 		[application performSelector:@selector(terminate)];
@@ -65,7 +65,7 @@
 
 #pragma mark Aborting
 
-- (IBAction) abortTapped: (id)sender {
+-(IBAction)abortTapped: (id)sender {
 	UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:@"Exit and try again later?"
 													   delegate:self
 											  cancelButtonTitle:@"No"
@@ -76,7 +76,7 @@
 	[sheet release];
 }
 
-- (void) actionSheet: (UIActionSheet*)actionSheet didDismissWithButtonIndex: (NSInteger)buttonIndex {
+-(void)actionSheet: (UIActionSheet*)actionSheet didDismissWithButtonIndex: (NSInteger)buttonIndex {
 	if (buttonIndex == 0) { // the "Yes" button
 		[self exitApplication];
 	}
@@ -84,14 +84,14 @@
 
 #pragma mark ActivationCommController Delegate
 
-- (void) activationSucceeded {
+-(void)activationSucceeded {
 	// The application delegate will proceed to the next step.
 	[self.view removeFromSuperview];
 	[[UpsideAppDelegate sharedDelegate]
 	 applicationDidFinishLaunching:[UIApplication sharedApplication]];
 }
 
-- (void) activationFailed: (NSError*)error {
+-(void)activationFailed: (NSError*)error {
 	NSString* title = [error localizedDescription];
 	NSString* message = [error localizedFailureReason];
 	if (!message) {
@@ -117,7 +117,7 @@
 	[alertView release];
 }
 
-- (void) alertView: (UIAlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex {
+-(void)alertView: (UIAlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex {
 	if (buttonIndex == 0) {
 		[self exitApplication];
 	}

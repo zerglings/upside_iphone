@@ -1,9 +1,9 @@
 //
 //  ZNMSAttributeTypes.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNMSRegistry.h"
@@ -25,7 +25,7 @@
 
 #pragma mark Lifecycle
 
-- (id) init {
+-(id)init {
 	if ((self = [super init])) {
 		modelDefinitions = [[NSMutableDictionary alloc] init];
 		
@@ -39,7 +39,7 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[modelDefinitions release];
 	
 	[booleanType release];
@@ -54,7 +54,7 @@
 
 #pragma mark Model Definition Registry
 
-- (ZNModelDefinition*) definitionForModelClass: (Class)klass {	
+-(ZNModelDefinition*)definitionForModelClass: (Class)klass {	
 	// TODO(overmind): There has to be a faster way.
 	NSString* className = [NSString stringWithCString:class_getName(klass)];
 
@@ -69,7 +69,7 @@
 	return definition;
 }
 
-- (ZNModelDefinition*) definitionForModelClassNamed: (NSString*)className {
+-(ZNModelDefinition*)definitionForModelClassNamed: (NSString*)className {
 	ZNModelDefinition* definition;
 	@synchronized (self) {
 		definition = [modelDefinitions objectForKey:className];
@@ -86,7 +86,7 @@
 
 static ZNMSRegistry* sharedInstance = nil;
 
-+ (ZNMSRegistry*) sharedRegistry {
++(ZNMSRegistry*)sharedRegistry {
 	@synchronized ([ZNMSRegistry class]) {
 		if (sharedInstance == nil) {
 			sharedInstance = [[ZNMSRegistry alloc] init];

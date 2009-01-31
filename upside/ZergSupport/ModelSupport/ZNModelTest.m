@@ -1,9 +1,9 @@
 //
 //  ZNModelTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/15/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -30,7 +30,7 @@
 
 @implementation ZNModelTest
 
-- (void) setUp {
+-(void)setUp {
 	date = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
 	dateModel = [[ZNTestDate alloc] initWithProperties: nil];
 	dateModel.pubDate = date;
@@ -53,7 +53,7 @@
 	uintegerObject = [[NSNumber alloc] initWithUnsignedInteger:testUInteger];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[date release];
 	[dateModel release];
 	[numbersModel release];
@@ -64,11 +64,11 @@
 	[uintegerObject release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testPrimitiveBoxing {
+-(void)testPrimitiveBoxing {
 	NSDictionary* numbersDict = [numbersModel
 								 copyToDictionaryForcingStrings:NO];
 	STAssertEqualObjects(trueObject, [numbersDict objectForKey:@"trueVal"],
@@ -133,7 +133,7 @@
 	[thawedModel release];
 }
 
-- (void) testDateBoxing {
+-(void)testDateBoxing {
 	NSDictionary* dateDict = [dateModel copyToDictionaryForcingStrings:NO];
 	STAssertEqualObjects(date, [dateDict objectForKey:@"pubDate"],
 						 @"Boxed date should equal original date");
@@ -157,7 +157,7 @@
 	[thawedModel release];
 }
 
-- (void) testNullBoxing {
+-(void)testNullBoxing {
 	ZNTestNumbers* nullCarrier = [[[ZNTestNumbers alloc] init] autorelease];
 	nullCarrier.stringVal = nil;
 	
@@ -181,7 +181,7 @@
 	[thawedNulls release];
 }
 
-- (void) testIsModelClass {
+-(void)testIsModelClass {
 	STAssertTrue([ZNModel isModelClass:[ZNTestDate class]],
 				 @"ZNTestDate is a model class");
 	STAssertTrue([ZNModel isModelClass:[ZNTestNumbers class]],

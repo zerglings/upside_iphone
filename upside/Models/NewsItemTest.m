@@ -1,9 +1,9 @@
 //
 //  NewsItemTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/10/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 
@@ -19,7 +19,7 @@
 
 @implementation NewsItemTest
 
-- (void) setUp {
+-(void)setUp {
 	unreadItem = [[NewsItem alloc] initWithProperties:
 				   [NSDictionary dictionaryWithObjectsAndKeys:
 					@"Title1", @"title",
@@ -30,20 +30,20 @@
 					nil]];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[unreadItem release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testDefaultIsUnread {
+-(void)testDefaultIsUnread {
 	STAssertEquals(NO, [unreadItem isRead],
 				   @"Items should be marked unread by default");
 }
 
-- (void) testInitMarkAsRead {
+-(void)testInitMarkAsRead {
 	NewsItem* unreadItem2 = [[NewsItem alloc] initWithItem:unreadItem
 												markAsRead:NO];
 	STAssertEquals(NO, [unreadItem2 isRead],

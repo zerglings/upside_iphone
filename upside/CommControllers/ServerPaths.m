@@ -1,9 +1,9 @@
 //
 //  ServerPaths.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/19/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "ServerPaths.h"
@@ -12,7 +12,7 @@
 
 @implementation ServerPaths
 
-+ (NSString*) serverUrl {
++(NSString*)serverUrl {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSString* urlPrefKey = [defaults boolForKey:@"use_custom_server"] ?
 	    @"custom_server_url" : @"server_url";
@@ -23,33 +23,33 @@
 	return serverUrl;
 }
 
-+ (NSString*) registrationUrl {
++(NSString*)registrationUrl {
 	return [NSString stringWithFormat:@"%@/devices/register.xml",
 			[self serverUrl]];
 }
-+ (NSString*) registrationMethod {
++(NSString*)registrationMethod {
 	return kZNHttpMethodPut;
 }
-+ (NSString*) loginUrl {
++(NSString*)loginUrl {
 	return [NSString stringWithFormat:@"%@/sessions.xml",
 			[self serverUrl]];
 }
-+ (NSString*) loginMethod {
++(NSString*)loginMethod {
 	return kZNHttpMethodPost;
 }
-+ (NSString*) portfolioSyncUrl {
++(NSString*)portfolioSyncUrl {
 	return [NSString stringWithFormat:@"%@/portfolios/sync/0.xml",
 			[self serverUrl]];
 }
-+ (NSString*) portfolioSyncMethod {
++(NSString*)portfolioSyncMethod {
 	return kZNHttpMethodPut;
 }
-+ (NSString*) orderSubmissionUrl {
++(NSString*)orderSubmissionUrl {
 	return [NSString stringWithFormat:@"%@/trade_orders.xml",
           [self serverUrl]];
 }
 // Method to use for submitting trade orders.
-+ (NSString*) orderSubmissionMethod {
++(NSString*)orderSubmissionMethod {
   return kZNHttpMethodPost;
 }
 

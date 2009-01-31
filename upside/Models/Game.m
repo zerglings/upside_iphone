@@ -1,9 +1,9 @@
 //
 //  Game.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/6/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "Game.h"
@@ -23,7 +23,7 @@
 
 #pragma mark Lifecycle
 
-- (id) init {
+-(id)init {
 	if ((self = [super init])) {
 		assetBook = [[AssetBook alloc] init];
 		tradeBook = [[TradeBook alloc] init];
@@ -46,7 +46,7 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
   [orderSubmittingController stopSyncing];
   [orderSubmittingController release];
   [syncController stopSyncing];
@@ -60,7 +60,7 @@
 
 # pragma mark Setup
 
-- (void) setup {
+-(void)setup {
 	[assetBook loadRssFeedsIntoCenter:newsCenter];
 	
 	[assetBook loadTickersIntoStockCache:stockCache];
@@ -77,7 +77,7 @@
 
 #pragma mark New Game Data Site
 
-- (void) newGameData {
+-(void)newGameData {
   [newDataSite perform];
 }
 
@@ -85,7 +85,7 @@
 
 static Game* sharedGame = nil;
 
-+ (Game*) sharedGame {
++(Game*)sharedGame {
 	@synchronized(self) {
 		if (sharedGame == nil) {
 			sharedGame = [[Game alloc] init];

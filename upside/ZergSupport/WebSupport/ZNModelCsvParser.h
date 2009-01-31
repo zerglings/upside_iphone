@@ -1,9 +1,9 @@
 //
 //  ZNModelCsvParser.h
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/21/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,7 +15,7 @@
 @protocol ZNModelCsvParserDelegate
 
 // Called when a model is parsed.
-- (void) parsedModel: (ZNModel*)model context: (id)context;
+-(void)parsedModel: (ZNModel*)model context: (id)context;
 @end
 
 @interface ZNModelCsvParser : NSObject {
@@ -33,10 +33,10 @@
 @property (nonatomic, assign) id<ZNModelCsvParserDelegate> delegate;
 
 // Initializes a parser, which can be used multiple times.
-- (id) initWithModelClass: (Class)modelClass
+-(id)initWithModelClass: (Class)modelClass
 			propertyNames: (NSArray*)modelPropertyNames;
 
 // Parses a CSV document inside a NSData instance.
-- (BOOL) parseData: (NSData*) data;
+-(BOOL)parseData: (NSData*) data;
 
 @end

@@ -1,9 +1,9 @@
 //
 //  ZNModelDefinitionAttribute.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNModelDefinitionAttribute.h"
@@ -15,7 +15,7 @@
 @synthesize name, getterName, setterName, type, runtimeIvar;
 @synthesize isAtomic, isReadOnly, setterStrategy;
 
-- (id) initWithName: (NSString*)theName
+-(id)initWithName: (NSString*)theName
 			   type: (ZNMSAttributeType*)theType
 		runtimeIvar: (Ivar)theIvar
 		   isAtomic: (BOOL)theIsAtomic
@@ -36,7 +36,7 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[name release];
 	[getterName release];
 	[setterName release];
@@ -44,7 +44,7 @@
 	[super dealloc];
 }
 
-+ (ZNModelDefinitionAttribute*) newAttributeFromProperty: (objc_property_t)property
++(ZNModelDefinitionAttribute*)newAttributeFromProperty: (objc_property_t)property
 												 ofClass: (Class)klass {
 	const char* propertyName = property_getName(property);
 	const char* propertyAttributes = property_getAttributes(property);

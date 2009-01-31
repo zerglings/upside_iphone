@@ -1,9 +1,9 @@
 //
 //  ZNArrayCsvParser.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/21/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNArrayCsvParser.h"
@@ -12,7 +12,7 @@
 
 #pragma mark Lifecycle
 
-- (id) init {
+-(id)init {
 	if ((self = [super init])) {
 		currentLine = [[NSMutableArray alloc] init];
 		currentCell = [[NSMutableData alloc] init];
@@ -22,7 +22,7 @@
 
 @synthesize delegate, context;
 
-- (void) dealloc {
+-(void)dealloc {
 	[currentCell release];
 	[currentLine release];
 	[super dealloc];
@@ -30,7 +30,7 @@
 
 #pragma mark CSV Parser
 
-- (BOOL) parseData: (NSData*) data {
+-(BOOL)parseData: (NSData*) data {
 	const uint8_t *bytes = [data bytes];
 	const uint8_t *endOfBytes = bytes + [data length];
 		

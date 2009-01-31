@@ -1,9 +1,9 @@
 //
 //  ActivationState.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/2/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "ActivationState.h"
@@ -72,7 +72,7 @@ static NSString* kStateFileName = @".ActivationState";
 			stringByAppendingPathComponent:kStateFileName];
 }
 
-- (void) load {
+-(void)load {
 	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 	if ([defaults boolForKey:@"reset_activation"]) {
 		[defaults setBool:NO forKey:@"reset_activation"];
@@ -84,7 +84,7 @@ static NSString* kStateFileName = @".ActivationState";
 	[self unarchiveFromData:data];
 }
 
-- (void) save {
+-(void)save {
 	NSData* data = [self archiveToData];
 	if (!data) {
 		[[NSFileManager defaultManager]
@@ -95,21 +95,21 @@ static NSString* kStateFileName = @".ActivationState";
 	}
 }
 
-+ (void) removeSavedState {
++(void)removeSavedState {
 	[[NSFileManager defaultManager] removeItemAtPath:[ActivationState filePath]
 											   error:nil];
 }
 
 # pragma mark Lifecycle
 
-- (id) init {
+-(id)init {
 	if ((self = [super init])) {
 		[self load];
 	}
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[deviceInfo release];
 	[user release];
 	[super dealloc];
@@ -117,20 +117,20 @@ static NSString* kStateFileName = @".ActivationState";
 
 @synthesize deviceInfo, user;
 
-- (BOOL) isRegistered {
+-(BOOL)isRegistered {
 	return deviceInfo != nil;
 }
 
-- (BOOL) canLogin {
+-(BOOL)canLogin {
 	return [user password] != nil;
 }
 
-- (BOOL) isActivated {
+-(BOOL)isActivated {
 	return [self isRegistered] && [self canLogin];
 }
 
 
-- (void) setDeviceInfo: (Device*) theDeviceInfo {
+-(void)setDeviceInfo: (Device*) theDeviceInfo {
 	NSAssert(deviceInfo == nil,
 			 @"Trying to activate twice");
 	NSAssert(theDeviceInfo != nil,
@@ -144,7 +144,7 @@ static NSString* kStateFileName = @".ActivationState";
 
 static ActivationState* sharedState = nil;
 
-+ (ActivationState*) sharedState {
++(ActivationState*)sharedState {
 	@synchronized(self) {
 		if (sharedState == nil) {
 			sharedState = [[ActivationState alloc] init];

@@ -1,9 +1,9 @@
 //
 //  Position.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/22/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "Position.h"
@@ -11,7 +11,7 @@
 
 @implementation Position
 
-- (id) initWithTicker: (NSString*)theTicker
+-(id)initWithTicker: (NSString*)theTicker
 			 quantity: (NSUInteger)theQuantity
 			   isLong: (BOOL)theIsLong {
 	return [self initWithModel:nil properties:
@@ -23,12 +23,12 @@
 
 @synthesize ticker, quantity, isLong;
 
-- (void) dealloc {
+-(void)dealloc {
 	[ticker release];
 	[super dealloc];
 }
 
-- (NSComparisonResult) compare: (Position*)other {
+-(NSComparisonResult)compare: (Position*)other {
 	NSComparisonResult tickerCompare = [ticker localizedCompare:[other ticker]];
 	if (tickerCompare != NSOrderedSame)
 		return tickerCompare;

@@ -1,9 +1,9 @@
 //
 //  AsserBookTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/7/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TestSupport.h"
@@ -26,7 +26,7 @@
 
 @implementation AsserBookTest
 
-- (void) setUp {
+-(void)setUp {
   portfolio = [[Portfolio alloc] initWithCash:31415.92];
 
 	aaplLong = [[Position alloc] initWithTicker:@"AAPL"
@@ -50,7 +50,7 @@
                        eneShort, googLong, msftShort, cShort, aaplLong, nil]];
 }
 
-- (void) tearDown {
+-(void)tearDown {
   
   [aaplLong release];
   [cShort release];
@@ -60,23 +60,23 @@
   [assetBook release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
   [super dealloc];
 }
 
-- (void) testCounts {
+-(void)testCounts {
   STAssertEquals(2U, [assetBook longPositionCount],
                  @"-longPositionCount called right after -loadData");
   STAssertEquals(3U, [assetBook shortPositionCount],
                  @"-shortPositionCount called right after -loadData");
 }
 
-- (void) testCash {
+-(void)testCash {
   STAssertEqualsWithAccuracy(31415.92, [assetBook cash], 0.001,
                              @"Cash in portfolio");
 }
 
-- (void) testTickersAreSortedAndFiltered {
+-(void)testTickersAreSortedAndFiltered {
   STAssertEquals(aaplLong, [assetBook longPositionAtIndex:0],
                  @"First long position");
   STAssertEquals(googLong, [assetBook longPositionAtIndex:1],

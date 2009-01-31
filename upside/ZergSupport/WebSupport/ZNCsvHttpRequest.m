@@ -1,9 +1,9 @@
 //
 //  ZNCsvHttpRequest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/21/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNCsvHttpRequest.h"
@@ -20,7 +20,7 @@
 
 #pragma mark Lifecycle
 
-- (id) initWithURLRequest: (NSURLRequest*)theRequest
+-(id)initWithURLRequest: (NSURLRequest*)theRequest
             responseClass: (Class)modelClass
        responseProperties: (NSArray*)modelPropertyNames
                    target: (NSObject*)theTarget
@@ -43,14 +43,14 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[response release];
 	[arrayParser release];
 	[modelParser release];
 	[super dealloc];
 }
 
-+ (void) callService: (NSString*)service
++(void)callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
          fieldCasing: (ZNFormatterCasing)fieldCasing
@@ -73,7 +73,7 @@
 	[request release];
 }
 
-+ (void) callService: (NSString*)service
++(void)callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
        responseClass: (Class)modelClass
@@ -92,17 +92,17 @@
 
 #pragma mark Parser Delegates
 
-- (void) parsedLine: (NSArray*)lineData context: (id)context {
+-(void)parsedLine: (NSArray*)lineData context: (id)context {
 	[response addObject:lineData];
 }
 
-- (void) parsedModel: (ZNModel*)model context: (id)context {
+-(void)parsedModel: (ZNModel*)model context: (id)context {
 	[response addObject:model];
 }
 
 #pragma mark Delegate Invocation
 
-- (void) reportData {
+-(void)reportData {
 	NSAutoreleasePool* arp = [[NSAutoreleasePool alloc] init];
 	if (arrayParser)
 		[arrayParser parseData:responseData];

@@ -1,9 +1,9 @@
 //
 //  ZNModelDefinition.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNModelDefinition.h"
@@ -18,7 +18,7 @@
 
 #pragma mark Lifecycle
 
-- (id) initWithName: (NSString*)theName
+-(id)initWithName: (NSString*)theName
 		 attributes: (NSDictionary*)theAttributes {
 	if ((self = [super init])) {
 		name = [theName retain];
@@ -27,17 +27,17 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[name release];
 	[attributes release];
 	[super dealloc];
 }
 
-- (ZNModelDefinitionAttribute*) attributeNamed: (NSString*)attributeName {
+-(ZNModelDefinitionAttribute*)attributeNamed: (NSString*)attributeName {
 	return [attributes objectForKey:attributeName];
 }
 
-- (NSString*) description {
+-(NSString*)description {
 	return [NSString
 			stringWithFormat:@"<ZNModel definition name=%@ attributes=%@>",
 			[name description], [attributes description]];
@@ -45,7 +45,7 @@
 
 #pragma mark ObjC Metadata Parsing
 
-+ (objc_property_t*) copyModelPropertiesForClass: (Class)klass
++(objc_property_t*)copyModelPropertiesForClass: (Class)klass
 										outCount: (unsigned int*)outCount {
 	// Iterate through implemented protocols, see if one of them is named
 	// ClassName_ZNMS.
@@ -70,7 +70,7 @@
 	return class_copyPropertyList(klass, outCount);
 }
 
-+ (ZNModelDefinition*) newDefinitionForClass: (Class)klass {
++(ZNModelDefinition*)newDefinitionForClass: (Class)klass {
 	unsigned int propertyCount;
 	const objc_property_t* properties =
 	    [self copyModelPropertiesForClass:klass outCount:&propertyCount];

@@ -1,9 +1,9 @@
 //
 //  NewsTableViewCell.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/12/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -16,6 +16,6 @@
 	NSString* feedTitle;
 }
 
-- (void) setFeedTitle: (NSString*)title;
+-(void)setFeedTitle: (NSString*)title;
 
 @end

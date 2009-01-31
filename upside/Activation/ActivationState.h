@@ -1,9 +1,9 @@
 //
 //  ActivationState.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/2/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -22,34 +22,34 @@
 @property (nonatomic, retain) User* user;
 
 // YES if the device is registered, NO if it needs to be registered.
-- (BOOL) isRegistered;
+-(BOOL)isRegistered;
 
 // YES if we have enough information to login the device's user, NO otherwise.
-- (BOOL) canLogin;
+-(BOOL)canLogin;
 
 // YES if the application is activated and can be used.
-- (BOOL) isActivated;
+-(BOOL)isActivated;
 
 # pragma mark Singleton
 
 // The singleton ActivationState instance.
-+ (ActivationState*) sharedState;
++(ActivationState*)sharedState;
 
 #pragma mark I/O
 
 // Archives state into an NSData instance.
-- (NSData*) archiveToData;
+-(NSData*)archiveToData;
 
 // Restores previously archived state from an NSData instance.
-- (void) unarchiveFromData: (NSData*)data;
+-(void)unarchiveFromData: (NSData*)data;
 
 // Saves state on disk.
-- (void) save;
+-(void)save;
 
 // Loads state from disk.
-- (void) load;
+-(void)load;
 
 // Removes the state saved on disk. Intended for testing.
-+ (void) removeSavedState;
++(void)removeSavedState;
 
 @end

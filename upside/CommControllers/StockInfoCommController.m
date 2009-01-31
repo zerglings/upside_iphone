@@ -1,9 +1,9 @@
 //
 //  StockInfoCommController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/22/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "StockInfoCommController.h"
@@ -29,7 +29,7 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[responseProperties release];
 	[formatString release];
 	[super dealloc];

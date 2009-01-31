@@ -1,9 +1,9 @@
 //
 //  GameSyncController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/24/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "GameSyncController.h"
@@ -25,7 +25,7 @@
 
 @implementation GameSyncController
 
-- (id) initWithGame: (Game*)theGame {
+-(id)initWithGame: (Game*)theGame {
 	if ((self = [super initWithErrorModelClass:[ServiceError class]
                                 syncInterval:60.0])) {
 		game = theGame;
@@ -38,17 +38,17 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[commController release];
   [loginCommController release];
 	[super dealloc];
 }
 
-- (void) sync {
+-(void)sync {
 	[commController sync];
 }
 
-- (BOOL) integrateResults: (NSArray*)results {
+-(BOOL)integrateResults: (NSArray*)results {
 	NSMutableArray* assets = [[NSMutableArray alloc] init];
 	NSMutableArray* tradeOrders = [[NSMutableArray alloc] init];
 	NSMutableArray* trades = [[NSMutableArray alloc] init];
@@ -74,7 +74,7 @@
 	return YES;
 }
 
-- (BOOL) handleServiceError: (ServiceError*)error {
+-(BOOL)handleServiceError: (ServiceError*)error {
 	if ([error isLoginError]) {
 		[loginCommController loginUsing:[ActivationState sharedState]];
     return NO;

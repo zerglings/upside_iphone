@@ -1,9 +1,9 @@
 //
 //  ZNModelDefinitionAttributeTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -21,24 +21,24 @@
 @end
 
 @implementation ZNModelDefinitionAttributeTest
-- (void) setUp {
+-(void)setUp {
 	testClass = [ZNTestParsing class];
 	testProperties = class_copyPropertyList(testClass,
 											&numTestProperties);
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	if (testProperties) {
 		free(testProperties);
 		testProperties = NULL;
 	}
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (objc_property_t) propertyNamed: (const char*)name {
+-(objc_property_t)propertyNamed: (const char*)name {
 	for(unsigned int i = 0; i < numTestProperties; i++) {
 		const char* propertyName = property_getName(testProperties[i]);
 		if (!strcmp(propertyName, name))
@@ -47,7 +47,7 @@
 	return 0;
 }
 
-- (void) testSetterStrategy {
+-(void)testSetterStrategy {
 	const char* properties[] = {"assign", "copy", "retain",
 	                            "ro_assign", "ro_copy", "ro_retain"};
 	enum ZNPropertySetterStrategy golden_strategies[] = {
@@ -75,7 +75,7 @@
 	}
 }
 
-- (void) testType {
+-(void)testType {
 	const char* properties[] = {"bool_prop", "date_prop",
 	    "double_prop", "integer_prop", "string_prop", "uinteger_prop"};
 	ZNMSRegistry* t = [ZNMSRegistry sharedRegistry];
@@ -97,7 +97,7 @@
 	}
 }
 
-- (void) testCustomGetterSetter {
+-(void)testCustomGetterSetter {
 	const char* properties[] =
 	    {"string_prop", "getter", "setter", "accessor"};
 	NSString* golden_getters[] = 

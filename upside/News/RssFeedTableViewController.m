@@ -1,9 +1,9 @@
 //
 //  RssFeedTableViewController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/10/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "RssFeedTableViewController.h"
@@ -84,7 +84,7 @@
     return [[[Game sharedGame] newsCenter] totalNewsForTitle:feedTitle];
 }
 
-- (void) setUpCell: (RssFeedTableViewCell*)cell 
+-(void)setUpCell: (RssFeedTableViewCell*)cell 
 	  forIndexPath: (NSIndexPath*)indexPath {	
 	NewsItem* newsItem = [[[Game sharedGame] newsCenter]
 						  newsItemForTitle:feedTitle
@@ -168,7 +168,7 @@
 
 @synthesize feedTitle;
 
-- (void) setFeedTitle: (NSString*) newFeedTitle {
+-(void)setFeedTitle: (NSString*) newFeedTitle {
 	[feedTitle release];
 	feedTitle = [newFeedTitle retain];
 	

@@ -1,9 +1,9 @@
 //
 //  ZNArrayCsvParserTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/21/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -23,7 +23,7 @@ static NSString* kContextObject = @"This is the context";
 
 @implementation ZNArrayCsvParserTest
 
-- (void) setUp {
+-(void)setUp {
 	parser = [[ZNArrayCsvParser alloc] init];
 	parser.context = kContextObject;
 	parser.delegate = self;
@@ -33,17 +33,17 @@ static NSString* kContextObject = @"This is the context";
 	
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[parser release];
 	[lines release];
 	[dupLines release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) checkLines {
+-(void)checkLines {
 	STAssertEqualObjects(lines, dupLines, @"Line data changed during parsing");
 	
 	NSArray* goldenFirst = [NSArray arrayWithObjects:
@@ -67,7 +67,7 @@ static NSString* kContextObject = @"This is the context";
                        @"Failed to parse line with edge cases");
 }
 
-- (void) testParsingData {
+-(void)testParsingData {
 	NSString *filePath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNArrayCsvParserTest.csv"];
@@ -77,7 +77,7 @@ static NSString* kContextObject = @"This is the context";
 	[self checkLines];
 }
 
-- (void) parsedLine: (NSArray*)lineData context: (id)context {
+-(void)parsedLine: (NSArray*)lineData context: (id)context {
 	STAssertEquals(kContextObject, context, @"Wrong context for -parsedLine");
   
 	[lines addObject:lineData];

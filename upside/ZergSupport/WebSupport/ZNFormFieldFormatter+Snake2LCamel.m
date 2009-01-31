@@ -1,9 +1,9 @@
 //
 //  ZNFormFieldFormatter+Snake2LCamel.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/24/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNFormFieldFormatter+Snake2LCamel.h"
@@ -16,7 +16,7 @@
 
 @implementation ZNFormFieldFormatterSnake2LCamel
 
-- (NSString*) copyFormattedName: (NSString*)name {
+-(NSString*)copyFormattedName: (NSString*)name {
   NSUInteger nameLength = [name length];
   unichar* nameChars = (unichar*)calloc(nameLength, sizeof(unichar));
   [name getCharacters:nameChars];
@@ -47,7 +47,7 @@
 
 @implementation ZNFormFieldFormatterLCamel2Snake
 
-- (NSString*) copyFormattedName: (NSString*)name {
+-(NSString*)copyFormattedName: (NSString*)name {
   NSMutableString* formattedName = [[NSMutableString alloc] init];
   NSUInteger nameLength = [name length];
   unichar* nameChars = (unichar*)calloc(nameLength, sizeof(unichar));
@@ -96,7 +96,7 @@
 static ZNFormFieldFormatter* snakeToLCamelFormatterSingleton;
 static ZNFormFieldFormatter* lCamelToSnakeFormatterSingleton;
 
-+ (ZNFormFieldFormatter*) snakeToLCamelFormatter {
++(ZNFormFieldFormatter*)snakeToLCamelFormatter {
   @synchronized ([ZNFormFieldFormatterSnake2LCamel class]) {
     if (snakeToLCamelFormatterSingleton == nil) {
       snakeToLCamelFormatterSingleton =
@@ -106,7 +106,7 @@ static ZNFormFieldFormatter* lCamelToSnakeFormatterSingleton;
   return snakeToLCamelFormatterSingleton;
 }
 
-+ (ZNFormFieldFormatter*) lCamelToSnakeFormatter {
++(ZNFormFieldFormatter*)lCamelToSnakeFormatter {
   @synchronized ([ZNFormFieldFormatterLCamel2Snake class]) {
     if (lCamelToSnakeFormatterSingleton == nil) {
       lCamelToSnakeFormatterSingleton =

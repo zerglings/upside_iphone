@@ -1,9 +1,9 @@
 //
 //  StockCache.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/6/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "StockCache.h"
@@ -15,11 +15,11 @@
 
 #pragma mark I/O
 
-- (void) load {
+-(void)load {
 	// TODO(overmind): code this up
 }
 
-- (void) save {
+-(void)save {
 	// TODO(overmind): code this up
 }
 
@@ -42,11 +42,11 @@
 
 #pragma mark Update Cycle
 
-- (void) sync {
+-(void)sync {
 	[commController fetchInfoForTickers:[stocks allKeys]];
 }
 
-- (BOOL) integrateResults: (NSArray*)newStocks {
+-(BOOL)integrateResults: (NSArray*)newStocks {
 	for (Stock* stock in newStocks) {
 		// TODO(overmind): merge new model info with what was there before
 		[stocks setObject:stock forKey:[stock ticker]];

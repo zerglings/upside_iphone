@@ -1,9 +1,9 @@
 //
 //  ZNCsvHttpRequest.h
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/21/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>
@@ -20,7 +20,7 @@
 }
 
 // Convenience method for issuing a request.
-+ (void) callService: (NSString*)service
++(void)callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
          fieldCasing: (ZNFormatterCasing)fieldCasing
@@ -30,7 +30,7 @@
               action: (SEL)action;
 
 // Convenience method for issuing a request with snake-cased form fields.
-+ (void) callService: (NSString*)service
++(void)callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
        responseClass: (Class)modelClass
@@ -39,7 +39,7 @@
               action: (SEL)action;
 
 // Designated initializer.
-- (id) initWithURLRequest: (NSURLRequest*)request
+-(id)initWithURLRequest: (NSURLRequest*)request
             responseClass: (Class)modelClass
        responseProperties: (NSArray*)modelPropertyNames
                    target: (NSObject*)target

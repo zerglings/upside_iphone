@@ -1,9 +1,9 @@
 //
 //  TradeBook.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/6/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -18,37 +18,37 @@
 }
 
 // How many filled trade orders there are in this trade book.
-- (NSUInteger) filledCount;
+-(NSUInteger)filledCount;
 
 // How many submitted trade orders there are in this trade book.
-- (NSUInteger) submittedCount;
+-(NSUInteger)submittedCount;
 
 // How many trade orders pending submission there are in this trade book.
-- (NSUInteger) pendingCount;
+-(NSUInteger)pendingCount;
 
 // Information for the filled trade order at the given index.
-- (TradeOrder*) filledAtIndex: (NSUInteger)index;
+-(TradeOrder*)filledAtIndex: (NSUInteger)index;
 
 // Information for the submitted trade order at the given index.
-- (TradeOrder*) submittedAtIndex: (NSUInteger)index;
+-(TradeOrder*)submittedAtIndex: (NSUInteger)index;
 
 // Information for the trade order pending submission at the given index.
-- (TradeOrder*) pendingAtIndex: (NSUInteger)index;
+-(TradeOrder*)pendingAtIndex: (NSUInteger)index;
 
 // Integrates new trade order data from the game server.
-- (void) loadData: (NSArray*) tradeOrders;
+-(void)loadData: (NSArray*) tradeOrders;
 
 // Adds a trade order to the submit queue queue.
-- (void) queuePendingOrder: (TradeOrder*)order;
+-(void)queuePendingOrder: (TradeOrder*)order;
 
 // The "topmost" pending order (first to be submitted).
-- (TradeOrder*) firstPendingOrder;
+-(TradeOrder*)firstPendingOrder;
 
 // Dequeues a pending order, when the order has been submitted.
-- (BOOL) dequeuePendingOrder: (TradeOrder*)pendingOrder
+-(BOOL)dequeuePendingOrder: (TradeOrder*)pendingOrder
                    submitted: (TradeOrder*)submittedOrder;
 
 // Creates a copy of the pending orders array.
-- (NSArray*) copyPendingOrders;
+-(NSArray*)copyPendingOrders;
 
 @end

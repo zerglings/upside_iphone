@@ -1,9 +1,9 @@
 //
 //  ZNModelCsvParser.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/21/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNModelCsvParser.h"
@@ -19,7 +19,7 @@
 
 #pragma mark Lifecycle
 
-- (id) initWithModelClass: (Class)theModelClass
+-(id)initWithModelClass: (Class)theModelClass
             propertyNames: (NSArray*)theModelPropertyNames {
 	if ((self = [super init])) {
 		parser = [[ZNArrayCsvParser alloc] init];
@@ -33,7 +33,7 @@
 
 @synthesize delegate;
 
-- (void) dealloc {
+-(void)dealloc {
 	[parser release];
 	[modelPropertyNames release];
 	[super dealloc];
@@ -41,17 +41,17 @@
 
 #pragma mark Context Proxy
 
-- (id) context {
+-(id)context {
 	return parser.context;
 }
 
-- (void) setContext: (id)context {
+-(void)setContext: (id)context {
 	parser.context = context;
 }
 
 #pragma mark Parsing
 
-- (void) parsedLine: (NSArray*)lineData context: (id)context {
+-(void)parsedLine: (NSArray*)lineData context: (id)context {
 	NSUInteger numValues = [lineData count];
 	NSDictionary* props;
 	if (numValues == numProperties) {
@@ -73,7 +73,7 @@
 	[model release];
 }
 
-- (BOOL) parseData: (NSData*)data {
+-(BOOL)parseData: (NSData*)data {
 	return [parser parseData:data];
 }
 

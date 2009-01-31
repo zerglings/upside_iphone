@@ -1,9 +1,9 @@
 //
 //  PendingOrdersSubmittingController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/26/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "PendingOrdersSubmittingController.h"
@@ -41,7 +41,7 @@
   [super dealloc];
 }
 
-- (void) sync {
+-(void)sync {
   TradeOrder* nextOrder = [tradeBook firstPendingOrder];
   if (lastSubmittedOrder || nextOrder == nil) {
     [self receivedResults:nil];
@@ -52,7 +52,7 @@
 }
 
 
-- (BOOL) integrateResults: (NSArray*)results {
+-(BOOL)integrateResults: (NSArray*)results {
   if ([results count] != 1)
     return YES; // communication error in disguise
   
@@ -67,7 +67,7 @@
   return NO;
 }
 
-- (BOOL) handleServiceError: (ServiceError*)error {
+-(BOOL)handleServiceError: (ServiceError*)error {
 	if ([error isLoginError]) {
     lastSubmittedOrder = nil;
 		[loginCommController loginUsing:[ActivationState sharedState]];
@@ -85,7 +85,7 @@
   return YES;
 }
     
-- (void) handleSystemError: (NSError*)error {
+-(void)handleSystemError: (NSError*)error {
     lastSubmittedOrder = nil;
 }
 

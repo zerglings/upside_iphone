@@ -1,9 +1,9 @@
 //
 //  NetworkProgress.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/11/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "NetworkProgress.h"
@@ -13,7 +13,7 @@
 
 #pragma mark Connection Accounting
 
-- (void) connectionStarted {
+-(void)connectionStarted {
 	if ([NSThread isMainThread]) {
 		if (workingConnections == 0) {
 			app.networkActivityIndicatorVisible = YES;
@@ -27,7 +27,7 @@
 	}
 }
 
-- (void) connectionDone {
+-(void)connectionDone {
 	if ([NSThread isMainThread]) {
 		workingConnections--;
 		if (workingConnections == 0) {
@@ -43,14 +43,14 @@
 
 #pragma mark Lifecycle
 
-- (id) init {
+-(id)init {
 	if ((self = [super init])) {
 		app = [[UIApplication sharedApplication] retain];
 	}
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[app release];
 	[super dealloc];
 }
@@ -58,7 +58,7 @@
 #pragma mark Singleton
 static NetworkProgress* sharedInstance = nil;
 
-+ (NetworkProgress*) sharedInstance {
++(NetworkProgress*)sharedInstance {
 	@synchronized ([NetworkProgress class]) {
 		if (sharedInstance == nil)
 			sharedInstance = [[NetworkProgress alloc] init];
@@ -66,10 +66,10 @@ static NetworkProgress* sharedInstance = nil;
 	return sharedInstance;
 }
 
-+ (void) connectionStarted {
++(void)connectionStarted {
 	return [[self sharedInstance] connectionStarted];
 }
-+ (void) connectionDone {
++(void)connectionDone {
 	return [[self sharedInstance] connectionDone];
 }
 

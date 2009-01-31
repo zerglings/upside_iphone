@@ -1,9 +1,9 @@
 //
 //  ZNFormFieldFormatter.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/24/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNFormFieldFormatter.h"
@@ -13,13 +13,13 @@
 
 @implementation ZNFormFieldFormatter
 
-- (NSString*) copyFormattedName: (NSString*)name {
+-(NSString*)copyFormattedName: (NSString*)name {
   NSAssert1(NO, @"Form formatter %s did not implement -copyFormattedName",
             class_getName([self class]));
   return nil;
 }
 
-+ (ZNFormFieldFormatter*) formatterFromPropertiesTo: (ZNFormatterCasing)casing {
++(ZNFormFieldFormatter*)formatterFromPropertiesTo: (ZNFormatterCasing)casing {
   switch (casing) {
     case kZNFormatterSnakeCase:
       return [self lCamelToSnakeFormatter];
@@ -32,7 +32,7 @@
   }
 }
 
-+ (ZNFormFieldFormatter*) formatterToPropertiesFrom: (ZNFormatterCasing)casing {
++(ZNFormFieldFormatter*)formatterToPropertiesFrom: (ZNFormatterCasing)casing {
   switch (casing) {
     case kZNFormatterSnakeCase:
       return [self snakeToLCamelFormatter];
@@ -55,7 +55,7 @@
 
 @implementation ZNFormFieldFormatterIdentity
 
-- (NSString*) copyFormattedName: (NSString*)name {
+-(NSString*)copyFormattedName: (NSString*)name {
   return [name copy];
 }
 @end
@@ -66,7 +66,7 @@
 
 static ZNFormFieldFormatter* identityFormatterSingleton;
 
-+ (ZNFormFieldFormatter*) identityFormatter {
++(ZNFormFieldFormatter*)identityFormatter {
   @synchronized ([ZNFormFieldFormatterIdentity class]) {
     if (identityFormatterSingleton == nil) {
       identityFormatterSingleton =

@@ -1,9 +1,9 @@
 //
 //  UserTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/19/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TestSupport.h"
@@ -20,22 +20,22 @@
 
 @implementation UserTest
 
-- (void) setUp {
+-(void)setUp {
 	testDevice = [[Device alloc] initWithProperties:
 				  [NSDictionary dictionaryWithObjectsAndKeys:
 				   @"3141531415314153141531415314153141531415", @"uniqueId",
 				   nil]];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[testDevice release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testPseudoUserGeneration {
+-(void)testPseudoUserGeneration {
 	User* pseudoUser = [[[User alloc] initPseudoUser:testDevice] autorelease];
 	
 	STAssertEqualStrings(testDevice.uniqueId, pseudoUser.password,

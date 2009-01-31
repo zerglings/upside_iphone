@@ -1,9 +1,9 @@
 //
 //  RssFeedTableViewCell.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/10/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "RssFeedTableViewCell.h"
@@ -33,7 +33,7 @@
     [super dealloc];
 }
 
-- (void) setNewsItem: (NewsItem*)theNewsItem {
+-(void)setNewsItem: (NewsItem*)theNewsItem {
 	[theNewsItem retain];
 	[newsItem release];
 	newsItem = theNewsItem;

@@ -1,9 +1,9 @@
 //
 //  ActivationLoginViewController.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/19/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -27,6 +27,6 @@
 
 @property (nonatomic, retain) ActivationState* activationState;
 
-- (IBAction) loginTapped: (id)sender;
+-(IBAction)loginTapped: (id)sender;
 
 @end

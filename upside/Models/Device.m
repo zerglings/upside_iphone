@@ -1,9 +1,9 @@
 //
 //  Device.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/16/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "Device.h"
@@ -12,12 +12,12 @@
 
 @synthesize modelId, userId, uniqueId;
 
-- (void) dealloc {
+-(void)dealloc {
 	[uniqueId release];
 	[super dealloc];
 }
 
-+ (NSString*) currentDeviceId {
++(NSString*)currentDeviceId {
 	NSString* udid = [[UIDevice currentDevice] uniqueIdentifier];
 	if ([udid length] == 40)
 		return udid;

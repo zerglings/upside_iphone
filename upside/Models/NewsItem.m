@@ -1,9 +1,9 @@
 //
 //  NewsItem.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/8/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "NewsItem.h"
@@ -18,7 +18,7 @@
 
 @synthesize isRead;
 
-- (void) dealloc {
+-(void)dealloc {
 	[title release];
 	[pubDate release];
 	[guid release];
@@ -27,7 +27,7 @@
 	[super dealloc];
 }
 
-- (id) initWithItem: (NewsItem*)item markAsRead: (BOOL)isReadValue {
+-(id)initWithItem: (NewsItem*)item markAsRead: (BOOL)isReadValue {
 	return [self initWithModel:item properties:
 			[NSDictionary dictionaryWithObject:[NSNumber
 												numberWithBool:isReadValue]

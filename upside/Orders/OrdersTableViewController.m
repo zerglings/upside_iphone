@@ -1,9 +1,9 @@
 //
 //  OrdersViewController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "OrdersTableViewController.h"
@@ -53,7 +53,7 @@
   [[Game sharedGame].newDataSite removeTarget:self
                                        action:@selector(newGameData)];
 }
-- (void) newGameData {
+-(void)newGameData {
   [(UITableView*)self.view reloadData];
 }
 
@@ -197,7 +197,7 @@
     [super dealloc];
 }
 
-- (void) tappedAddTradeButton: (id)sender {
+-(void)tappedAddTradeButton: (id)sender {
   NewOrderViewController* newOrderViewController =
       [[NewOrderViewController alloc] initWithNibName:@"NewOrderViewController"
                                                bundle:nil];

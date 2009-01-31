@@ -1,9 +1,9 @@
 //
 //  MarketOrder.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -45,7 +45,7 @@
 #pragma mark Convenience Initializers
 
 // Convenience initializer for limit orders.
-- (TradeOrder*) initWithTicker:(NSString*)ticker
+-(TradeOrder*)initWithTicker:(NSString*)ticker
                       quantity:(NSUInteger)quantity
               quantityUnfilled:(NSUInteger)quantityUnfilled
                          isBuy:(BOOL)isBuy
@@ -54,7 +54,7 @@
                        modelId:(NSUInteger)modelId;
 
 // Convenience initializer for market orders.
-- (TradeOrder*) initWithTicker:(NSString*)ticker
+-(TradeOrder*)initWithTicker:(NSString*)ticker
                       quantity:(NSUInteger)quantity
               quantityUnfilled:(NSUInteger)quantityUnfilled
                          isBuy:(BOOL)isBuy
@@ -62,7 +62,7 @@
                        modelId:(NSUInteger)modelId;
 
 // Convenience initializer for new orders.
-- (TradeOrder*) initWithTicker:(NSString*)ticker
+-(TradeOrder*)initWithTicker:(NSString*)ticker
                       quantity:(NSUInteger)quantity
                          isBuy:(BOOL)isBuy
                         isLong:(BOOL)isLong
@@ -71,22 +71,22 @@
 #pragma mark Conveience Accessors
 
 // The numebr of unfilled stocks in this order.
-- (NSUInteger) quantityFilled;
+-(NSUInteger)quantityFilled;
 
 // The ratio of filled to ordered stocks in this order.
-- (double) fillRatio;
+-(double)fillRatio;
 
 // The limit on the order, in dollars.
-- (double) limitPrice;
+-(double)limitPrice;
 
 // YES for limit orders, NO for market orders. 
-- (BOOL) isLimitOrder;
+-(BOOL)isLimitOrder;
 
 // YES for submitted orders, NO for orders pending submission.
-- (BOOL) isSubmitted;
+-(BOOL)isSubmitted;
 
 // YES for filled orders, NO for orders that have not been filled.
-- (BOOL) isFilled;
+-(BOOL)isFilled;
 
 @end
 

@@ -1,9 +1,9 @@
 //
 //  ZNModelDefinitionTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -18,7 +18,7 @@
 
 @implementation ZNModelDefinitionTest
 
-- (void) testDefinitionUsesProtocol {
+-(void)testDefinitionUsesProtocol {
 	ZNModelDefinition *defn = [[ZNModelDefinition
 							    newDefinitionForClass:[ZNTestProtocolDef class]]
 							   autorelease];
@@ -33,7 +33,7 @@
 				   @"Parsing metadata for model using protocol - has win3");
 }
 
-- (void) testDefinitionFallsBackToClass {
+-(void)testDefinitionFallsBackToClass {
 	ZNModelDefinition *defn = [[ZNModelDefinition
 							    newDefinitionForClass:[ZNTestParsing class]]
 							   autorelease];

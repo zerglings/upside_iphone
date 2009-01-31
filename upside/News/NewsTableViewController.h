@@ -1,9 +1,9 @@
 //
 //  NewsTableViewController.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/8/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

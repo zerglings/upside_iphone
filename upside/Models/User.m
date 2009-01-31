@@ -1,9 +1,9 @@
 //
 //  User.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/19/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "User.h"
@@ -16,13 +16,13 @@
 
 @synthesize name, password, isPseudoUser, modelId;
 
-- (void) dealloc {
+-(void)dealloc {
 	[name release];
 	[password release];
 	[super dealloc];
 }
 
-- (NSString*) hexDigest: (NSString*)string {
+-(NSString*)hexDigest: (NSString*)string {
 	uint8_t digestBuffer[CC_SHA256_DIGEST_LENGTH];
 	NSData* stringBytes = [string dataUsingEncoding:NSUTF8StringEncoding];
 	
@@ -36,7 +36,7 @@
 	return [hexDigest autorelease];
 }
 
-- (id) initPseudoUser: (Device*)device {
+-(id)initPseudoUser: (Device*)device {
 	return [self initWithModel:nil
                   properties:[NSDictionary dictionaryWithObjectsAndKeys:
                               [self hexDigest:device.uniqueId], @"name",
@@ -45,7 +45,7 @@
                               nil]];
 }
 
-- (id) initWithName: (NSString*)theName password: (NSString*)thePassword {
+-(id)initWithName: (NSString*)theName password: (NSString*)thePassword {
 	return [self initWithModel:nil
                   properties:[NSDictionary dictionaryWithObjectsAndKeys:
                               theName, @"name", thePassword, @"password",
@@ -53,7 +53,7 @@
                               nil]];
 }
 
-- (id) initWithUser: (User*)user password: (NSString*)thePassword {
+-(id)initWithUser: (User*)user password: (NSString*)thePassword {
 	return [self initWithModel:user properties:
           [NSDictionary dictionaryWithObject:(thePassword ? (id)thePassword :
                                               (id)[NSNull null])

@@ -1,9 +1,9 @@
 //
 //  StockInfoCommControllerTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/22/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TestSupport.h"
@@ -22,23 +22,23 @@
 
 @implementation StockInfoCommControllerTest
 
-- (void) setUp {
+-(void)setUp {
 	commController = [[StockInfoCommController alloc]
 					  initWithTarget:self action:@selector(checkResponse:)];
   validStocksExpected = YES;
 	receivedResponse = NO;
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[tickers release];
 	[commController release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) waitForResponse {
+-(void)waitForResponse {
 	for (int i = 0; i < 15; i++) {
 		[[NSRunLoop currentRunLoop] runUntilDate:
 		 [NSDate dateWithTimeIntervalSinceNow:1.0]];
@@ -47,14 +47,14 @@
 	}
 }
 
-- (void) testTechStocks {
+-(void)testTechStocks {
 	tickers = [[NSArray alloc] initWithObjects: @"AAPL", @"MSFT", @"GOOG", nil];
 	[commController fetchInfoForTickers:tickers];
 	[self waitForResponse];
 	STAssertTrue(receivedResponse, @"Did not receive response");
 }
 
-- (void) testTenStocks {
+-(void)testTenStocks {
 	tickers = [[NSArray alloc] initWithObjects:
 			   @"CSCO", @"EWJ", @"F", @"INTC", @"IWN", @"JPM",
 			   @"MSFT", @"SPY", @"SNE", @"BAC", nil];
@@ -63,7 +63,7 @@
 	STAssertTrue(receivedResponse, @"Did not receive response");
 }
 
-- (void) testInvalidStock {
+-(void)testInvalidStock {
   validStocksExpected = NO;
 	tickers = [[NSArray alloc] initWithObjects:@"QWERTY", nil];
 	[commController fetchInfoForTickers:tickers];
@@ -71,7 +71,7 @@
 	STAssertTrue(receivedResponse, @"Did not receive response");
 }
 
-- (void) checkResponse: (NSArray*)response {
+-(void)checkResponse: (NSArray*)response {
 	receivedResponse = YES;
 	STAssertFalse([response isKindOfClass:[NSError class]],
 				  @"Fetching stocks failed: %@", [response description]);

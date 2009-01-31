@@ -1,9 +1,9 @@
 //
 //  ActivationUserChoiceViewController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/19/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "ActivationUserChoiceViewController.h"
@@ -14,7 +14,7 @@
 #import "User.h"
 
 @interface ActivationUserChoiceViewController ()
-- (void) switchToLoginView;
+-(void)switchToLoginView;
 @end
 
 
@@ -37,7 +37,7 @@
  */
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void) viewDidLoad {
+-(void)viewDidLoad {
   [super viewDidLoad];
 	if (![activationState.user isPseudoUser]) {
 		[self switchToLoginView];
@@ -61,18 +61,18 @@
 }
 
 
-- (IBAction) newAccountTapped: (id)sender {
+-(IBAction)newAccountTapped: (id)sender {
   User* newUser = [[User alloc] initPseudoUser:activationState.deviceInfo];
 	[activationState setUser:newUser];
   [newUser release];  
 	[self switchToLoginView];
 }
 
-- (IBAction) loginTapped: (id)sender {
+-(IBAction)loginTapped: (id)sender {
 	[self switchToLoginView];
 }
 
-- (void) switchToLoginView {
+-(void)switchToLoginView {
 	ActivationLoginViewController* loginViewController =
       [[ActivationLoginViewController alloc]
        initWithNibName:@"ActivationLoginViewController" bundle:nil];

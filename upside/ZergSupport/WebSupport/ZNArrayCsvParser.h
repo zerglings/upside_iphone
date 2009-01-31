@@ -1,9 +1,9 @@
 //
 //  ZNArrayCsvParser.h
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/21/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,7 +12,7 @@
 @protocol ZNArrayCsvParserDelegate
 
 // Called when a CSV line is parsed.
-- (void) parsedLine: (NSArray*)lineData context: (id)context;
+-(void)parsedLine: (NSArray*)lineData context: (id)context;
 @end
 
 @interface ZNArrayCsvParser : NSObject {
@@ -29,9 +29,9 @@
 @property (nonatomic, assign) id<ZNArrayCsvParserDelegate> delegate;
 
 // Initializes a parser, which can be used multiple times.
-- (id) init;
+-(id)init;
 
 // Parses a CSV document inside a NSData instance.
-- (BOOL) parseData: (NSData*) data;
+-(BOOL)parseData: (NSData*) data;
 
 @end

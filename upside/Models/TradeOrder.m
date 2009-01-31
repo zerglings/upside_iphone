@@ -1,9 +1,9 @@
 //
 //  MarketOrder.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TradeOrder.h"
@@ -11,7 +11,7 @@
 
 @implementation TradeOrder
 
-- (void) dealloc {
+-(void)dealloc {
 	[ticker release];	
 	[super dealloc];
 }
@@ -19,30 +19,30 @@
 @synthesize ticker, quantity, quantityUnfilled, isBuy, isLong, limitPrice;
 @synthesize modelId;
 
-- (NSUInteger) quantityFilled {
+-(NSUInteger)quantityFilled {
   return quantity - quantityUnfilled;
 }
 
-- (double) fillRatio {
+-(double)fillRatio {
 	return (double)[self quantityFilled] / quantity;
 }
 
-- (BOOL) isLimitOrder {
+-(BOOL)isLimitOrder {
 	return (limitPrice != kTradeOrderInvalidLimit);
 }
 
-- (BOOL) isSubmitted {
+-(BOOL)isSubmitted {
 	return (modelId != kTradeOrderInvalidModelId);
 }
 
-- (BOOL) isFilled {
+-(BOOL)isFilled {
   return (quantityUnfilled == 0);
 }
 
 
 #pragma mark Convenience Constructors
 
-- (TradeOrder*) initWithTicker:(NSString*)theTicker
+-(TradeOrder*)initWithTicker:(NSString*)theTicker
                       quantity:(NSUInteger)theQuantity
               quantityUnfilled:(NSUInteger)theQuantityUnfilled
                          isBuy:(BOOL)theIsBuy
@@ -77,7 +77,7 @@
   return self;
 }
 
-- (TradeOrder*) initWithTicker:(NSString*)theTicker
+-(TradeOrder*)initWithTicker:(NSString*)theTicker
                       quantity:(NSUInteger)theQuantity
               quantityUnfilled:(NSUInteger)theQuantityUnfilled
                          isBuy:(BOOL)theIsBuy
@@ -92,7 +92,7 @@
                       modelId:theModelId];
 }
 
-- (TradeOrder*) initWithTicker:(NSString*)theTicker
+-(TradeOrder*)initWithTicker:(NSString*)theTicker
                       quantity:(NSUInteger)theQuantity
                          isBuy:(BOOL)theIsBuy
                         isLong:(BOOL)theIsLong

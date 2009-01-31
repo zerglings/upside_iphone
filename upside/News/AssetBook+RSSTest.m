@@ -1,9 +1,9 @@
 //
 //  AssetBook+RSSTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/10/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TestSupport.h"
@@ -21,7 +21,7 @@
 
 @implementation AssetBookRSSTest
 
-- (void) setUp {
+-(void)setUp {
 	assetBook = [[AssetBook alloc] init];
 	[assetBook loadData:[NSArray arrayWithObjects:
 						 [[[Position alloc] initWithTicker:@"MSFT"
@@ -31,16 +31,16 @@
 	newsCenter = [[NewsCenter alloc] init];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[assetBook release];
 	[newsCenter release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testSetup {
+-(void)testSetup {
 	[assetBook loadRssFeedsIntoCenter:newsCenter];
 	NSString* title = [AssetBook rssFeedTitleForTicker:@"MSFT"];
 	

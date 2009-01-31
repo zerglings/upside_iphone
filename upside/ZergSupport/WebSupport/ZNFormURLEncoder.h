@@ -1,9 +1,9 @@
 //
 //  ZNFormURLEncoder.h
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/16/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>
@@ -16,7 +16,7 @@
   ZNFormFieldFormatter* fieldFormatter;
 }
 
-+ (NSData*) copyEncodingFor: (NSDictionary*)dictionary
++(NSData*)copyEncodingFor: (NSDictionary*)dictionary
         usingFieldFormatter: (ZNFormFieldFormatter*)formatter;
 
 @end

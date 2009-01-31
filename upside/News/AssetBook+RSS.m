@@ -1,9 +1,9 @@
 //
 //  AssetBook+RSS.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/10/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "AssetBook+RSS.h"
@@ -13,7 +13,7 @@
 
 @implementation AssetBook (RSS)
 
-+ (NSString*) rssFeedUrlForTicker: (NSString*)ticker {
++(NSString*)rssFeedUrlForTicker: (NSString*)ticker {
 	NSInteger rating = 3;
 	NSInteger newsCount = 20;
 	return [NSString stringWithFormat:
@@ -21,11 +21,11 @@
 			newsCount, rating, ticker];
 }
 
-+ (NSString*) rssFeedTitleForTicker: (NSString*)ticker {
++(NSString*)rssFeedTitleForTicker: (NSString*)ticker {
 	return [NSString stringWithFormat:@"Stock %@", ticker];
 }
 
-- (void) loadRssFeedsIntoCenter: (NewsCenter*)newsCenter {
+-(void)loadRssFeedsIntoCenter: (NewsCenter*)newsCenter {
 	for(Position* position in positions) {
 		NSString* ticker = [position ticker];
 		[newsCenter addTitle:[AssetBook rssFeedTitleForTicker:ticker]

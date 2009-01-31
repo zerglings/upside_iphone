@@ -1,9 +1,9 @@
 //
 //  NewsCenterTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/10/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TestSupport.h"
@@ -23,7 +23,7 @@
 
 @implementation NewsCenterTest
 
-- (void) setUp {
+-(void)setUp {
 	newsCenter = [[NewsCenter alloc] init];
 	
 	NSString* badUrl = @"http://127.0.0.1/bad.bad";
@@ -61,18 +61,18 @@
 			  nil]];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[newsCenter release];
 	[item1 release];
 	[item2 release];
 	[item3 release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testTotalAndUnreadCount {
+-(void)testTotalAndUnreadCount {
 	[newsCenter integrateNews:[NSArray arrayWithObjects:
 							   item1, item2, item3, nil]
 					 forTitle:@"misc"];
@@ -88,7 +88,7 @@
 				   @"-unreadNewsForTitle: after -markAsRead");
 }
 
-- (void) testConsecutiveUnreadBug {
+-(void)testConsecutiveUnreadBug {
 	[newsCenter integrateNews:[NSArray arrayWithObjects:
 							   item1, item2, item3, nil]
 					 forTitle:@"misc"];
@@ -98,7 +98,7 @@
 				   @"-unreadNewsForTitle: after 2 -markAsRead calls");
 }
 
-- (void) testIntegrate {
+-(void)testIntegrate {
 	[newsCenter integrateNews:[NSArray arrayWithObjects:item2, item1, nil]
 					 forTitle:@"misc"];
 	[newsCenter markAsReadItemWithId:[item2 uid]];
@@ -121,7 +121,7 @@
 						 @"2nd integrate respects news order");
 }
 
-- (void) checkRssData {
+-(void)checkRssData {
 	 STAssertEquals(3U, [newsCenter totalNewsForTitle:@"local"],
 					@"Didn't parse all the items");
 	 
@@ -148,7 +148,7 @@
 						  @"Title with escaped XML entities");		 
 }
 
-- (void) testFetching {
+-(void)testFetching {
 	NSString* filePath = [[[NSBundle mainBundle] resourcePath]
 						  stringByAppendingPathComponent:
 						  @"NewsCenterTest.xml"];

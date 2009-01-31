@@ -1,9 +1,9 @@
 //
 //  RegistrationCommController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/16/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "RegistrationCommController.h"
@@ -19,7 +19,7 @@
 
 @implementation RegistrationCommController
 
-- (id) init {
+-(id)init {
 	if ((self = [super init])) {
 		resposeModels = [[NSDictionary alloc] initWithObjectsAndKeys:
                      [Device class], @"device",
@@ -28,13 +28,13 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[resposeModels release];
 	[super dealloc];
 }
 
 
-- (void) registerDeviceUsing: (ActivationState*)theActivationState {
+-(void)registerDeviceUsing: (ActivationState*)theActivationState {
 	activationState = theActivationState;
 	NSString* deviceID = [Device currentDeviceId];
 	
@@ -52,7 +52,7 @@
 	[request release];
 }
 
-- (void) serverResponded: (NSArray*)response {
+-(void)serverResponded: (NSArray*)response {
   [NetworkProgress connectionDone];
   
 	if ([response isKindOfClass:[NSError class]]) {

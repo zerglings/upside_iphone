@@ -1,9 +1,9 @@
 //
 //  ZNModelDefinitionAttribute.h
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>
@@ -38,6 +38,6 @@ enum ZNPropertySetterStrategy {
 @property (nonatomic, readonly) BOOL isReadOnly;
 @property (nonatomic, readonly) enum ZNPropertySetterStrategy setterStrategy;
 
-+ (ZNModelDefinitionAttribute*) newAttributeFromProperty:(objc_property_t)property
++(ZNModelDefinitionAttribute*)newAttributeFromProperty:(objc_property_t)property
 												 ofClass: (Class)klass;
 @end

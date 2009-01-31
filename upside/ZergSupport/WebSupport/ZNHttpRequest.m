@@ -1,9 +1,9 @@
 //
 //  ZNHttpRequest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/21/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNHttpRequest.h"
@@ -15,7 +15,7 @@
 
 #pragma mark Lifecycle
 
-- (id) initWithURLRequest: (NSURLRequest*)theRequest
+-(id)initWithURLRequest: (NSURLRequest*)theRequest
                    target: (id)theTarget
                    action: (SEL)theAction {
 	if ((self = [super init])) {
@@ -28,7 +28,7 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[responseData release];
 	[urlRequest release];
 	[target release];	
@@ -38,7 +38,7 @@
 
 #pragma mark HTTP Request Creation
 
-+ (NSURLRequest*) newURLRequestToService: (NSString*)service
++(NSURLRequest*)newURLRequestToService: (NSString*)service
                                   method: (NSString*)method
                                     data: (NSDictionary*)data
                              fieldCasing: (ZNFormatterCasing)fieldCasing {
@@ -68,7 +68,7 @@
 
 #pragma mark Cookie Management
 
-+ (void) deleteCookiesForService: (NSString*)service {
++(void)deleteCookiesForService: (NSString*)service {
 	NSHTTPCookieStorage* cookieBox = [NSHTTPCookieStorage
                                     sharedHTTPCookieStorage];
 	NSArray* cookies = [cookieBox cookiesForURL:[NSURL URLWithString:service]];
@@ -79,44 +79,44 @@
 
 #pragma mark Delegate Invocation
 
-- (void) reportData {
+-(void)reportData {
 	[target performSelector:action withObject:responseData];
 }
 
-- (void) reportError: (NSError*) error {
+-(void)reportError: (NSError*) error {
 	[target performSelector:action withObject:error];
 }
 
 #pragma mark NSURLConnection Delegate
 
-- (NSURLRequest*) connection: (NSURLConnection*)connection
+-(NSURLRequest*)connection: (NSURLConnection*)connection
              willSendRequest: (NSURLRequest*)request
             redirectResponse: (NSURLResponse*)redirectResponse {
 	return request;
 }
 
-- (void) connection: (NSURLConnection*)connection
+-(void)connection: (NSURLConnection*)connection
  didReceiveResponse: (NSURLResponse*)response {
 	[responseData setLength:0];
 }
 
-- (void) connection: (NSURLConnection*)connection
+-(void)connection: (NSURLConnection*)connection
      didReceiveData: (NSData*)data {
 	[responseData appendData:data];
 }
 
-- (void) connectionDidFinishLoading: (NSURLConnection*)connection {
+-(void)connectionDidFinishLoading: (NSURLConnection*)connection {
 	[self reportData];
 	[self release];
 }
 
-- (void) connection: (NSURLConnection*)connection
+-(void)connection: (NSURLConnection*)connection
    didFailWithError: (NSError*)error {
 	[target performSelector:action withObject:error];
 	[self release];
 }
 
-- (NSCachedURLResponse*) connection: (NSURLConnection*)connection
+-(NSCachedURLResponse*)connection: (NSURLConnection*)connection
                   willCacheResponse: (NSCachedURLResponse*)cachedResponse {
 	// It's usually a bad idea to cache queries to Web services.
 	return nil;
@@ -124,7 +124,7 @@
 
 #pragma mark NSInputStream Delegate
 
-- (void) stream: (NSStream *)theStream handleEvent: (NSStreamEvent)event {
+-(void)stream: (NSStream *)theStream handleEvent: (NSStreamEvent)event {
 	NSInputStream* stream = (NSInputStream*)theStream;
 	switch (event) {
     case NSStreamEventHasBytesAvailable: {
@@ -160,7 +160,7 @@
 
 #pragma mark Connection
 
-- (void) start {
+-(void)start {
 	NSURL* url = [urlRequest URL];
 	if([url isFileURL]) {
 		NSInputStream* stream = [[NSInputStream alloc] initWithFileAtPath:[url
@@ -180,7 +180,7 @@
  	// The request will release itself when it is completed.
 }
 
-+ (void) callService: (NSString*)service
++(void)callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
          fieldCasing: (ZNFormatterCasing)fieldCasing

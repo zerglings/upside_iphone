@@ -1,9 +1,9 @@
 //
 //  Stock.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "Stock.h"
@@ -14,7 +14,7 @@
 @synthesize lastTradePrice, previousClosePrice;
 
 
-- (void) dealloc {
+-(void)dealloc {
 	[ticker release];
 	[name release];
 
@@ -23,7 +23,7 @@
 
 #pragma mark Convenience Initializers
 
-- (id) initWithTicker: (NSString*)theTicker
+-(id)initWithTicker: (NSString*)theTicker
                  name: (NSString*)theName
                market: (NSString*)theMarket
              askPrice: (double)theAskPrice
@@ -42,7 +42,7 @@
            @"previousClosePrice", nil]];
 }
 
-- (BOOL) isValid {
+-(BOOL)isValid {
   return [market isEqualToString:@"N/A"] ? NO : YES;
 }
 

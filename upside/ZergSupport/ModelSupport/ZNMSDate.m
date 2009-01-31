@@ -1,9 +1,9 @@
 //
 //  NZMSDate.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNMSDate.h"
@@ -14,7 +14,7 @@
 
 #pragma mark Lifecycle
 
-- (id) init {
+-(id)init {
 	if ((self = [super init])) {
 		osxFormatter = [[NSDateFormatter alloc] init];
 		[osxFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
@@ -24,7 +24,7 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[osxFormatter release];
 	[rssFormatter release];
 	[super dealloc];
@@ -32,7 +32,7 @@
 
 #pragma mark Boxing
 
-- (NSObject*) boxAttribute: (ZNModelDefinitionAttribute*)attribute
+-(NSObject*)boxAttribute: (ZNModelDefinitionAttribute*)attribute
 				inInstance: (ZNModel*)instance
 			   forceString: (BOOL)forceString {
 	NSDate* date = object_getIvar(instance, [attribute runtimeIvar]);
@@ -42,7 +42,7 @@
 		return date;
 }
 
-- (void) unboxAttribute: (ZNModelDefinitionAttribute*)attribute
+-(void)unboxAttribute: (ZNModelDefinitionAttribute*)attribute
 		 	 inInstance: (ZNModel*)instance
 			       from: (NSObject*)boxedObject {
 	NSDate* date;

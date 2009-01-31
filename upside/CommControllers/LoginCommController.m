@@ -1,9 +1,9 @@
 //
 //  LoginCommController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/20/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "LoginCommController.h"
@@ -21,7 +21,7 @@
 
 @synthesize delegate;
 
-- (id) init {
+-(id)init {
 	if ((self = [super init])) {
 		resposeModels = [[NSDictionary alloc] initWithObjectsAndKeys:
                      [User class], @"user",
@@ -30,13 +30,13 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[resposeModels release];
 	[super dealloc];
 }
 
 
-- (void) loginUsing: (ActivationState*)theActivationState {
+-(void)loginUsing: (ActivationState*)theActivationState {
 	activationState = theActivationState;
 	
 	NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -54,7 +54,7 @@
 	[request release];
 }
 
-- (void) serverResponded: (NSArray*)response {
+-(void)serverResponded: (NSArray*)response {
   [NetworkProgress connectionDone];
   
 	if ([response isKindOfClass:[NSError class]]) {

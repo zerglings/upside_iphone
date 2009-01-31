@@ -1,9 +1,9 @@
 //
 //  Position+FormattingTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/6/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TestSupport.h"
@@ -18,7 +18,7 @@
 
 @implementation PositionFormattingTest
 
-- (void) setUp {
+-(void)setUp {
 	smallPosition = [[Position alloc] initWithTicker:@"MSFT"
 											quantity:35
 											  isLong:YES];
@@ -27,16 +27,16 @@
 											  isLong:YES];	
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[smallPosition release];
 	[largePosition release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testQuantities {
+-(void)testQuantities {
 	STAssertEqualStrings(@"35", [smallPosition formattedQuantity],
 						 @"Easy quantity formatting");
 	STAssertEqualStrings(@"10,000", [largePosition formattedQuantity],

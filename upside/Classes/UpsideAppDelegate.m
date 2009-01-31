@@ -3,7 +3,7 @@
 //  Upside
 //
 //  Created by Victor Costan on 1/2/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright Zergling.Net 2009. All rights reserved.
 //
 
 #import "UpsideAppDelegate.h"
@@ -57,7 +57,7 @@
     [super dealloc];
 }
 
-+ (UpsideAppDelegate*) sharedDelegate {
++(UpsideAppDelegate*)sharedDelegate {
 	return (UpsideAppDelegate*)[[UIApplication sharedApplication] delegate];	
 }
 

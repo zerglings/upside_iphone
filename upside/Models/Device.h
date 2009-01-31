@@ -1,9 +1,9 @@
 //
 //  Device.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/16/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -26,6 +26,6 @@
 @property (nonatomic, readonly, retain) NSString* uniqueId;
 
 // Wraps UIDevice, adjusting simulator IDs to be 40-characters. 
-+ (NSString*) currentDeviceId;
++(NSString*)currentDeviceId;
 
 @end

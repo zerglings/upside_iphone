@@ -1,9 +1,9 @@
 //
 //  ZNXmlHttpRequest.h
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/16/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>
@@ -19,7 +19,7 @@
 }
 
 // Convenience method for issuing a request.
-+ (void) callService: (NSString*)service
++(void)callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
          fieldCasing: (ZNFormatterCasing)fieldCasing
@@ -29,7 +29,7 @@
               action: (SEL)action;
 
 // Convenience method for issuing a request with a snake-cased server.
-+ (void) callService: (NSString*)service
++(void)callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
       responseModels: (NSDictionary*)responseModels
@@ -37,7 +37,7 @@
               action: (SEL)action;
 
 // Designated initializer.
-- (id) initWithURLRequest: (NSURLRequest*)request
+-(id)initWithURLRequest: (NSURLRequest*)request
            responseModels: (NSDictionary*)responseModels
            responseCasing: (ZNFormatterCasing)responseCasing
                    target: (NSObject*)target

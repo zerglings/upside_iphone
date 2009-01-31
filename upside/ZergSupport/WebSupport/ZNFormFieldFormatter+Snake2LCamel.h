@@ -1,9 +1,9 @@
 //
 //  ZNFormFieldFormatter+Snake2LCamel.h
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/24/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNFormFieldFormatter.h"
@@ -11,8 +11,8 @@
 
 @interface ZNFormFieldFormatter (Snake2LCamel)
 
-+ (ZNFormFieldFormatter*) snakeToLCamelFormatter;
++(ZNFormFieldFormatter*)snakeToLCamelFormatter;
 
-+ (ZNFormFieldFormatter*) lCamelToSnakeFormatter;
++(ZNFormFieldFormatter*)lCamelToSnakeFormatter;
 
 @end

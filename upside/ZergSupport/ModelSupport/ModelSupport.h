@@ -1,9 +1,9 @@
 //
 //  ModelSupport.h
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 // Main header file for the Zergling.Net Model Support.

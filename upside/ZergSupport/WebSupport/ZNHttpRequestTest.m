@@ -1,9 +1,9 @@
 //
 //  ZNHttpRequestTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/21/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -31,7 +31,7 @@
 
 @synthesize textVal, uintVal, trueVal, nilVal;
 
-- (void) dealloc {
+-(void)dealloc {
 	[textVal release];
 	[nilVal release];
 	[super dealloc];
@@ -49,28 +49,28 @@
 
 @implementation ZNHttpRequestTest
 
-- (void) warmUpHerokuService: (NSString*)herokuService {
+-(void)warmUpHerokuService: (NSString*)herokuService {
   // Issues a request to the testbed, so heroku loads it up on a machine
   [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]];
 }
 
-- (void) setUp {
+-(void)setUp {
 	service = @"http://zn-testbed.herokugarden.com/web_support/echo.xml";
 	receivedResponse = NO;
   [self warmUpHerokuService:service];
 	[ZNHttpRequest deleteCookiesForService:service];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[service release];
 	service = nil;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testOnlineRequest {
+-(void)testOnlineRequest {
 	ZNHttpRequestTestModel* requestModel = [[[ZNHttpRequestTestModel alloc] init]
                                           autorelease];
 	requestModel.textVal = @"Something\0special";
@@ -94,7 +94,7 @@
 	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
-- (void) checkOnlineAndFileResponse: (NSData*)response {
+-(void)checkOnlineAndFileResponse: (NSData*)response {
 	receivedResponse = YES;
 	STAssertFalse([response isKindOfClass:[NSError class]],
                 @"Error occured %@", response);
@@ -108,7 +108,7 @@
                        responseString, @"Wrong request");
 }
 
-- (void) testFileRequest {
+-(void)testFileRequest {
 	NSString* filePath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNHttpRequestTest.put"];

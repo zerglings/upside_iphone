@@ -1,9 +1,9 @@
 //
 //  ZNAttributeType.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNMSAttributeType.h"
@@ -14,7 +14,7 @@
 
 @implementation ZNMSAttributeType
 
-+ (ZNMSAttributeType*) newTypeFromString: (const char*)encodedType {
++(ZNMSAttributeType*)newTypeFromString: (const char*)encodedType {
 	switch (*encodedType) {
 		case '@':
 			encodedType++;
@@ -42,7 +42,7 @@
 	}
 }
 
-- (NSObject*) boxAttribute: (ZNModelDefinitionAttribute*)attribute
+-(NSObject*)boxAttribute: (ZNModelDefinitionAttribute*)attribute
 				inInstance: (ZNModel*)instance
 			   forceString: (BOOL)forceString {
 	NSAssert1(FALSE,
@@ -51,7 +51,7 @@
 	return [NSNull null];
 }
 
-- (void) unboxAttribute: (ZNModelDefinitionAttribute*)attribute
+-(void)unboxAttribute: (ZNModelDefinitionAttribute*)attribute
 			 inInstance: (ZNModel*)instance
 				   from: (NSObject*)boxedObject {
 	NSAssert1(FALSE,

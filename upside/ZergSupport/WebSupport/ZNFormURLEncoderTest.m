@@ -1,9 +1,9 @@
 //
 //  ZNFormURLEncoderTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/16/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -25,7 +25,7 @@
 
 @synthesize key11, key12;
 
-- (void) dealloc {
+-(void)dealloc {
 	[key11 release];
 	[super dealloc];
 }
@@ -44,7 +44,7 @@
 
 @implementation ZNFormURLEncoderTest
 
-- (void) setUp {
+-(void)setUp {
 	testModel = [[ZNFormURLEncoderTestModel alloc] initWithProperties:nil];
 	testModel.key11 = @"val11";
 	testModel.key12 = 31415;
@@ -54,15 +54,15 @@
                     kZNFormatterSnakeCase];
 }
 
-- (void) tearDown {
+-(void)tearDown {
   [testModel release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testEmptyEncoding {
+-(void)testEmptyEncoding {
 	NSDictionary* dict = [NSDictionary dictionary];
 	NSData* data = [ZNFormURLEncoder copyEncodingFor:dict
                                usingFieldFormatter:identityFormatter];
@@ -75,7 +75,7 @@
 	[string release];
 }
 
-- (void) testEasyOneLevel {
+-(void)testEasyOneLevel {
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  @"val1", @"key1", @"val2", @"key2", nil];
 	NSData* data = [ZNFormURLEncoder copyEncodingFor:dict
@@ -89,7 +89,7 @@
 	[string release];	
 }
 
-- (void) testEncodedOneLevel {
+-(void)testEncodedOneLevel {
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  @"val\0001", @"key\n1", @"val = 2", @"key&2", nil];
 	NSData* data = [ZNFormURLEncoder copyEncodingFor:dict
@@ -103,7 +103,7 @@
 	[string release];
 }
 
-- (void) testSubDictionary {
+-(void)testSubDictionary {
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  @"val1", @"key1",
 						  [NSDictionary dictionaryWithObjectsAndKeys:
@@ -121,7 +121,7 @@
 	[string release];
 }
 
-- (void) testSubSubDictionary {
+-(void)testSubSubDictionary {
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  @"val1", @"key1",
 						  [NSDictionary dictionaryWithObjectsAndKeys:
@@ -140,7 +140,7 @@
 	[string release];
 }
 
-- (void) testSubArray {
+-(void)testSubArray {
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  @"val1", @"key1",
 						  [NSArray arrayWithObjects:
@@ -158,7 +158,7 @@
 	[string release];	
 }
 
-- (void) testModel {
+-(void)testModel {
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  testModel, @"key1", nil];
 	NSData* data = [ZNFormURLEncoder copyEncodingFor:dict
@@ -173,7 +173,7 @@
 	[string release];
 }
 
-- (void) testKeyFormatting {
+-(void)testKeyFormatting {
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
                         @"val1", @"keyOne",
                         [NSDictionary dictionaryWithObjectsAndKeys:

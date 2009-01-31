@@ -1,9 +1,9 @@
 //
 //  OrderTableViewCell.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -25,8 +25,8 @@
 	Stock* stock;
 }
 
-- (TradeOrder*) order;
-- (Stock*) stock;
-- (void) setOrder: (TradeOrder*)order forStock: (Stock*)stock;
+-(TradeOrder*)order;
+-(Stock*)stock;
+-(void)setOrder: (TradeOrder*)order forStock: (Stock*)stock;
 
 @end

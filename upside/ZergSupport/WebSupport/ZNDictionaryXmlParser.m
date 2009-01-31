@@ -1,9 +1,9 @@
 //
 //  DictionaryXmlParser.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/9/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNDictionaryXmlParser.h"
@@ -15,7 +15,7 @@
 
 #pragma mark Lifecycle
 
-- (id) initWithSchema: (NSDictionary*) theSchema {
+-(id)initWithSchema: (NSDictionary*) theSchema {
 	if ((self = [super init])) {
 		self.schema = theSchema;
 		
@@ -30,7 +30,7 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[schema release];
 	[currentValue release];
 	[currentItem release];
@@ -45,7 +45,7 @@
 
 #pragma mark Parsing Lifecycle
 
-- (void) cleanUpAfterParsing {
+-(void)cleanUpAfterParsing {
 	currentItemSchema = nil;
 	[currentItemName release];
 	currentItemName = nil;
@@ -59,7 +59,7 @@
 	parser = nil;
 }
 
-- (BOOL) parseData: (NSData*)data {
+-(BOOL)parseData: (NSData*)data {
 	parser = [[NSXMLParser alloc] initWithData:data];
 	parser.delegate = self;
 	BOOL success = [parser parse];
@@ -67,7 +67,7 @@
 	return success;
 }
 
-- (BOOL) parseURL: (NSURL*)url {
+-(BOOL)parseURL: (NSURL*)url {
 	parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
 	parser.delegate = self;
 	BOOL success = [parser parse];
@@ -77,7 +77,7 @@
 
 #pragma mark Schema management
 
-- (void) loadSchemaDirective: (NSObject*)schemaDirective
+-(void)loadSchemaDirective: (NSObject*)schemaDirective
                      forName: (NSString*)name {
   currentItemName = [name retain];
   
@@ -104,7 +104,7 @@
 
 #pragma mark NSXMLParser Delegate
 
-- (void) parser: (NSXMLParser *)parser
+-(void)parser: (NSXMLParser *)parser
 didStartElement: (NSString *)elementName
    namespaceURI: (NSString *)namespaceURI
   qualifiedName: (NSString *)qName
@@ -122,13 +122,13 @@ didStartElement: (NSString *)elementName
 	}
 }
 
-- (void) parser: (NSXMLParser *)parser foundCharacters: (NSString *)string {
+-(void)parser: (NSXMLParser *)parser foundCharacters: (NSString *)string {
 	if (currentProperty != nil) {
 		[currentValue appendString:string];
 	}
 }
 
-- (void) parser: (NSXMLParser *)parser
+-(void)parser: (NSXMLParser *)parser
   didEndElement: (NSString *)elementName
    namespaceURI: (NSString *)namespaceURI
   qualifiedName: (NSString *)qName {

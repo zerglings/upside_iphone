@@ -1,9 +1,9 @@
 //
 //  AssetBook.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/3/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -43,6 +43,6 @@
 // Reloads the asset book with the given data.
 //
 // The data should consist of Positions and a Portfolio.
-- (void) loadData: (NSArray*)newPositions;
+-(void)loadData: (NSArray*)newPositions;
 
 @end

@@ -1,9 +1,9 @@
 //
 //  AssetBook+StockCache.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/22/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "AssetBook+StockCache.h"
@@ -13,7 +13,7 @@
 
 @implementation AssetBook (StockCache)
 
-- (void) loadTickersIntoStockCache: (StockCache*)stockCache {
+-(void)loadTickersIntoStockCache: (StockCache*)stockCache {
   BOOL needsSync = NO;
 	for (Position* position in positions) {
 		if(![stockCache stockForTicker:[position ticker]])

@@ -1,9 +1,9 @@
 //
 //  ZNTargetActionSite.h
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/28/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>

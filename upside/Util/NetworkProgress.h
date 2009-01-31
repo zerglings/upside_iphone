@@ -1,9 +1,9 @@
 //
 //  NetworkProgress.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/11/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,16 +15,16 @@
 }
 
 // Called when a new network connection starts.
-+ (void) connectionStarted;
++(void)connectionStarted;
 // Called when a network connection has done its work.
-+ (void) connectionDone;
++(void)connectionDone;
 
 // The singleton NetworkProgress instance.
-+ (NetworkProgress*) sharedInstance;
++(NetworkProgress*)sharedInstance;
 
 // Called when a new network connection starts.
-- (void) connectionStarted;
+-(void)connectionStarted;
 // Called when a network connection has done its work.
-- (void) connectionDone;
+-(void)connectionDone;
 
 @end

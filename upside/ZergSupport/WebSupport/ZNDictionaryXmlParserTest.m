@@ -1,9 +1,9 @@
 //
 //  DictionaryXmlParserTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/9/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #include "TestSupport.h"
@@ -27,7 +27,7 @@ static NSString* kContextObject = @"This is the context";
 
 @implementation ZNDictionaryXmlParserTest
 
-- (void) setUp {
+-(void)setUp {
   ZNFormFieldFormatter* fromSnake =
       [ZNFormFieldFormatter formatterToPropertiesFrom:kZNFormatterSnakeCase];
 	NSDictionary* schema = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -49,7 +49,7 @@ static NSString* kContextObject = @"This is the context";
 	
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[parser release];
 	[items release];
 	[dupItems release];
@@ -57,11 +57,11 @@ static NSString* kContextObject = @"This is the context";
 	[dupNames release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) checkItems {
+-(void)checkItems {
 	STAssertEqualObjects(names, dupNames, @"Item names changed during parsing");
 	STAssertEqualObjects(items, dupItems, @"Item data changed during parsing");
 	
@@ -93,7 +93,7 @@ static NSString* kContextObject = @"This is the context";
                        @"Failed to format XML elements");
 }
 
-- (void) testParsingURLs {
+-(void)testParsingURLs {
 	NSString *filePath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNDictionaryXmlParserTest.xml"];
@@ -103,7 +103,7 @@ static NSString* kContextObject = @"This is the context";
 	[self checkItems];
 }
 
-- (void) testParsingData {
+-(void)testParsingData {
 	NSString *filePath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNDictionaryXmlParserTest.xml"];
@@ -113,7 +113,7 @@ static NSString* kContextObject = @"This is the context";
 	[self checkItems];
 }
 
-- (void) parsedItem: (NSDictionary*)itemData
+-(void)parsedItem: (NSDictionary*)itemData
                name: (NSString*)itemName
             context: (id)context {
 	STAssertEquals(kContextObject, context,

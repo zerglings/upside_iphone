@@ -1,9 +1,9 @@
 //
 //  ZNCsvHttpRequestTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/21/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -29,7 +29,7 @@
 @implementation ZNCsvHttpRequestTestModel
 
 @synthesize name, askPrice, bidPrice, previousClose;
-- (void) dealloc {
+-(void)dealloc {
 	[name release];
 	[super dealloc];
 }
@@ -46,12 +46,12 @@
 
 @implementation ZNCsvHttpRequestTest
 
-- (void) warmUpHerokuService: (NSString*)herokuService {
+-(void)warmUpHerokuService: (NSString*)herokuService {
   // Issues a request to the testbed, so heroku loads it up on a machine
   [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]];
 }
 
-- (void) setUp {
+-(void)setUp {
 	service = @"http://zn-testbed.herokugarden.com/web_support/csv.csv";
 	receivedResponse = NO;
   [self warmUpHerokuService:service];
@@ -59,16 +59,16 @@
 	onlineData = [[NSArray alloc] initWithObjects:@"foo", @"bar", @"xbar", nil];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[service release];
 	[onlineData release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testOnlineRequest {
+-(void)testOnlineRequest {
 	[ZNCsvHttpRequest callService:service
                          method:kZNHttpMethodPut
                            data:[NSDictionary dictionaryWithObject:onlineData
@@ -84,7 +84,7 @@
 	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
-- (void) checkOnlineResponse: (NSArray*)responseArray {
+-(void)checkOnlineResponse: (NSArray*)responseArray {
 	receivedResponse = YES;
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
@@ -94,7 +94,7 @@
                        @"Response not deserialized properly");
 }
 
-- (void) testFileRequest {
+-(void)testFileRequest {
 	NSString* filePath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNCsvHttpRequestTest.csv"];
@@ -116,7 +116,7 @@
 	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
-- (void) checkFileResponse: (NSArray*)responseArray {
+-(void)checkFileResponse: (NSArray*)responseArray {
 	receivedResponse = YES;	
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);

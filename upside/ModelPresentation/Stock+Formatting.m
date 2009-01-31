@@ -1,9 +1,9 @@
 //
 //  StockFormatter.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "Stock+Formatting.h"
@@ -39,41 +39,41 @@ static void SetupFormatters() {
 	}
 }
 
-+ (NSString*) formattedPrice: (double)price {
++(NSString*)formattedPrice: (double)price {
 	SetupFormatters();
 	return [priceFormatter stringFromNumber:[NSNumber numberWithDouble:price]];
 }
 
-- (NSString*) formattedAskPrice {
+-(NSString*)formattedAskPrice {
 	return [Stock formattedPrice:askPrice];
 }
 
-- (NSString*) formattedBidPrice {
+-(NSString*)formattedBidPrice {
 	return [Stock formattedPrice:bidPrice];
 }
 
-- (NSString*) formattedTradePrice {
+-(NSString*)formattedTradePrice {
 	return [Stock formattedPrice:lastTradePrice];
 }
 
-+ (NSString*) formatValueFor: (NSUInteger)count
++(NSString*)formatValueFor: (NSUInteger)count
 				  usingPrice: (double)price {
 	SetupFormatters();
 	return [priceFormatter stringFromNumber:[NSNumber numberWithDouble:
 											 (count * price)]];
 }
 
-- (NSString*) formattedValueUsingAskPriceFor: (NSUInteger)stockCount {
+-(NSString*)formattedValueUsingAskPriceFor: (NSUInteger)stockCount {
 	return [Stock formatValueFor:stockCount usingPrice:askPrice];
 }
-- (NSString*) formattedValueUsingBidPriceFor: (NSUInteger)stockCount {
+-(NSString*)formattedValueUsingBidPriceFor: (NSUInteger)stockCount {
 	return [Stock formatValueFor:stockCount usingPrice:bidPrice];
 }
-- (NSString*) formattedValueUsingTradePriceFor: (NSUInteger)stockCount {
+-(NSString*)formattedValueUsingTradePriceFor: (NSUInteger)stockCount {
 	return [Stock formatValueFor:stockCount usingPrice:lastTradePrice];
 }
 
-+ (NSString*) formatChange: (double)newPrice
++(NSString*)formatChange: (double)newPrice
 					  from: (double)oldPrice
 					 point: (BOOL)usePointChange {
 	SetupFormatters();
@@ -87,43 +87,43 @@ static void SetupFormatters() {
 			[NSNumber numberWithDouble:pointChange]];
 }
 	
-- (NSString*) formattedNetAskChange {
+-(NSString*)formattedNetAskChange {
 	return [Stock formatChange:askPrice
 				 		  from:previousClosePrice
 						 point:NO];
 }
 
-- (NSString*) formattedPointAskChange {
+-(NSString*)formattedPointAskChange {
 	return [Stock formatChange:askPrice
 						  from:previousClosePrice
 						 point:YES];
 }
 
-- (NSString*) formattedNetBidChange {
+-(NSString*)formattedNetBidChange {
 	return [Stock formatChange:bidPrice
 						  from:previousClosePrice
 						 point:NO];
 }
 
-- (NSString*) formattedPointBidChange {
+-(NSString*)formattedPointBidChange {
 	return [Stock formatChange:bidPrice
 						  from:previousClosePrice
 						 point:YES];
 }
 
-- (NSString*) formattedNetTradeChange {
+-(NSString*)formattedNetTradeChange {
 	return [Stock formatChange:lastTradePrice
 						  from:previousClosePrice
 						 point:NO];
 }
 
-- (NSString*) formattedPointTradeChange {
+-(NSString*)formattedPointTradeChange {
 	return [Stock formatChange:lastTradePrice
 						  from:previousClosePrice
 						 point:YES];
 }
 
-+ (UIImage*) imageForChange: (double)currentValue
++(UIImage*)imageForChange: (double)currentValue
 					   from: (double)oldValue {
   NSAssert([UIImage imageNamed:@"GreenUpArrow.png"] != nil,
            @"GreenUpArrow.png not available");
@@ -137,7 +137,7 @@ static void SetupFormatters() {
 	return nil;
 }
 
-+ (UIColor*) colorForChange: (double)currentValue
++(UIColor*)colorForChange: (double)currentValue
 					   from: (double)oldValue {
 	if (oldValue < currentValue)
 		return [UIColor colorWithRed:0.0f green:0.5f blue:0.0f alpha:1.0f];
@@ -146,32 +146,32 @@ static void SetupFormatters() {
 	return [UIColor darkGrayColor];
 }
 
-- (UIColor*) colorForAskChange {
+-(UIColor*)colorForAskChange {
 	return [Stock colorForChange:askPrice
 						    from:previousClosePrice];	
 }
-- (UIColor*) colorForBidChange {
+-(UIColor*)colorForBidChange {
 	return [Stock colorForChange:bidPrice
 						    from:previousClosePrice];	
 }
-- (UIColor*) colorForTradeChange {
+-(UIColor*)colorForTradeChange {
 	return [Stock colorForChange:lastTradePrice
 						    from:previousClosePrice];	
 }
-- (UIImage*) imageForAskChange {
+-(UIImage*)imageForAskChange {
 	return [Stock imageForChange:askPrice
 						    from:previousClosePrice];
 }
-- (UIImage*) imageForBidChange {
+-(UIImage*)imageForBidChange {
 	return [Stock imageForChange:bidPrice
 						    from:previousClosePrice];	
 }
-- (UIImage*) imageForTradeChange {
+-(UIImage*)imageForTradeChange {
 	return [Stock imageForChange:lastTradePrice
 						    from:previousClosePrice];	
 }
 
-- (UIImage*) imageForValidity {
+-(UIImage*)imageForValidity {
   NSAssert([UIImage imageNamed:@"GreenTick.png"] != nil,
            @"GreenTick.png not available");
   NSAssert([UIImage imageNamed:@"RedX.png"] != nil,

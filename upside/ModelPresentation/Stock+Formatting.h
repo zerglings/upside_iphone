@@ -1,9 +1,9 @@
 //
 //  StockFormatter.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,46 +15,46 @@
 @interface Stock (Formatting)
 
 // Format the stock's ask price.
-- (NSString*) formattedAskPrice;
+-(NSString*)formattedAskPrice;
 // Format the stock's bid price.
-- (NSString*) formattedBidPrice;
+-(NSString*)formattedBidPrice;
 // Format the stock's last trade price.
-- (NSString*) formattedTradePrice;
+-(NSString*)formattedTradePrice;
 
 // Format the value of some stocks, using the ask price.
-- (NSString*) formattedValueUsingAskPriceFor: (NSUInteger)stockCount;
+-(NSString*)formattedValueUsingAskPriceFor: (NSUInteger)stockCount;
 // Format the value of some stocks, using the bid price.
-- (NSString*) formattedValueUsingBidPriceFor: (NSUInteger)stockCount;
+-(NSString*)formattedValueUsingBidPriceFor: (NSUInteger)stockCount;
 // Format the value of some stocks, using the stock's last trade price.
-- (NSString*) formattedValueUsingTradePriceFor: (NSUInteger)stockCount;
+-(NSString*)formattedValueUsingTradePriceFor: (NSUInteger)stockCount;
 
 
 // Format the net change in the stock's ask price.
-- (NSString*) formattedNetAskChange;
+-(NSString*)formattedNetAskChange;
 // Format the net change in the stock's bid price.
-- (NSString*) formattedNetBidChange;
+-(NSString*)formattedNetBidChange;
 // Format the net change in the stock's trade price.
-- (NSString*) formattedNetTradeChange;
+-(NSString*)formattedNetTradeChange;
 // Format the point change in the stock's ask price.
-- (NSString*) formattedPointAskChange;
+-(NSString*)formattedPointAskChange;
 // Format the point change in the stock's bid price.
-- (NSString*) formattedPointBidChange;
+-(NSString*)formattedPointBidChange;
 // Format the net change in the stock's trade price.
-- (NSString*) formattedPointTradeChange;
+-(NSString*)formattedPointTradeChange;
 
 // The color showing the change in the stock's ask price. 
-- (UIColor*) colorForAskChange;
+-(UIColor*)colorForAskChange;
 // The color showing the change in the stock's bid price. 
-- (UIColor*) colorForBidChange;
+-(UIColor*)colorForBidChange;
 // The color showing the change in the stock's bid price. 
-- (UIColor*) colorForTradeChange;
+-(UIColor*)colorForTradeChange;
 // The image showing the change in the stock's ask price. 
-- (UIImage*) imageForAskChange;
+-(UIImage*)imageForAskChange;
 // The image showing the change in the stock's bid price. 
-- (UIImage*) imageForBidChange;
+-(UIImage*)imageForBidChange;
 // The color showing the change in the stock's bid price. 
-- (UIImage*) imageForTradeChange;
+-(UIImage*)imageForTradeChange;
 
 // The image showing the stock's validity.
-- (UIImage*) imageForValidity;
+-(UIImage*)imageForValidity;
 @end

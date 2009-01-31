@@ -1,9 +1,9 @@
 //
 //  AutoRotatingTableViewController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "AutoRotatingTableViewController.h"
@@ -11,7 +11,7 @@
 
 @implementation AutoRotatingTableViewController
 
-- (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
 	// Will rotate any way the user wants us to.
     return YES;
 }
@@ -25,7 +25,7 @@
 	[super viewWillAppear:animated];
 }
 
-- (void) willAnimateSecondHalfOfRotationFromInterfaceOrientation: (UIInterfaceOrientation)fromInterfaceOrientation
+-(void)willAnimateSecondHalfOfRotationFromInterfaceOrientation: (UIInterfaceOrientation)fromInterfaceOrientation
 													    duration: (NSTimeInterval)duration {
 	if (![self.wideCellReuseIdentifier
 		  isEqualToString:self.narrowCellReuseIdentifier]) {
@@ -42,7 +42,7 @@
 @synthesize narrowCellNib;
 @synthesize cellClass;
 
-+ (UITableViewCell*) loadCellFromNib: (NSString*)nibName
++(UITableViewCell*)loadCellFromNib: (NSString*)nibName
 					      identifier: (NSString*)identifier
 						       class: (Class)cellClass
 						       owner: (id)owner {
@@ -88,7 +88,7 @@
 	return cell;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[wideCellReuseIdentifier release];
 	[wideCellNib release];
 	[narrowCellReuseIdentifier release];

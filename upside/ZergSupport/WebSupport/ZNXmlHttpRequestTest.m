@@ -1,9 +1,9 @@
 //
 //  ZNXmlHttpRequestTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/16/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -28,7 +28,7 @@
 @implementation ZNXmlHttpRequestTestModel
 
 @synthesize method, headers, body;
-- (void) dealloc {
+-(void)dealloc {
 	[method release];
 	[headers release];
 	[body release];
@@ -46,28 +46,28 @@
 
 @implementation ZNXmlHttpRequestTest
 
-- (void) warmUpHerokuService: (NSString*)herokuService {
+-(void)warmUpHerokuService: (NSString*)herokuService {
   // Issues a request to the testbed, so heroku loads it up on a machine
   [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]];
 }
 
-- (void) setUp {
+-(void)setUp {
 	service = @"http://zn-testbed.herokugarden.com/web_support/echo.xml";
 	receivedResponse = NO;
   [self warmUpHerokuService:service];
 	[ZNXmlHttpRequest deleteCookiesForService:service];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[service release];
 	service = nil;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testOnlineGet {
+-(void)testOnlineGet {
 	[ZNXmlHttpRequest callService:service
                          method:kZNHttpMethodGet
                            data:nil
@@ -82,7 +82,7 @@
 	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
-- (void) checkOnlineGetResponse: (NSArray*)responseArray {
+-(void)checkOnlineGetResponse: (NSArray*)responseArray {
 	receivedResponse = YES;
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
@@ -95,7 +95,7 @@
                        @"Request not issued using GET");
 }
 
-- (void) testOnlineRequest {
+-(void)testOnlineRequest {
 	ZNXmlHttpRequestTestModel* requestModel = [[[ZNXmlHttpRequestTestModel
                                                alloc] init] autorelease];
 	requestModel.method = @"Awesome method";
@@ -119,7 +119,7 @@
 	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
-- (void) checkOnlineResponse: (NSArray*)responseArray {
+-(void)checkOnlineResponse: (NSArray*)responseArray {
 	receivedResponse = YES;
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
@@ -138,7 +138,7 @@
                        response.body, @"Wrong body in request");
 }
 
-- (void) testFileRequest {
+-(void)testFileRequest {
 	NSString* filePath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNXmlHttpRequestTest.xml"];
@@ -158,7 +158,7 @@
 	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
-- (void) checkFileResponse: (NSArray*)responseArray {
+-(void)checkFileResponse: (NSArray*)responseArray {
 	receivedResponse = YES;	
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);

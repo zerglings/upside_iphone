@@ -1,9 +1,9 @@
 //
 //  OrderTableViewCell.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "OrderTableViewCell.h"
@@ -37,14 +37,14 @@
     [super dealloc];
 }
 
-- (TradeOrder*) order {
+-(TradeOrder*)order {
 	return order;
 }
-- (Stock*) stock {
+-(Stock*)stock {
 	return stock;
 }
 
-- (void) setOrder: (TradeOrder*)newOrder forStock: (Stock*)newStock {
+-(void)setOrder: (TradeOrder*)newOrder forStock: (Stock*)newStock {
 	[newOrder retain];
 	[order release];
 	order = newOrder;

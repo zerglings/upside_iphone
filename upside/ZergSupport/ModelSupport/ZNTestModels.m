@@ -1,9 +1,9 @@
 //
 //  ZNTestModels.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/14/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNTestModels.h"
@@ -26,7 +26,7 @@
 @implementation ZNTestDate
 @synthesize pubDate;
 
-- (void) dealloc {
+-(void)dealloc {
 	[pubDate release];
 	[super dealloc];
 }
@@ -37,7 +37,7 @@
 @synthesize trueVal, falseVal;
 @synthesize doubleVal, integerVal, uintegerVal, stringVal;
 
-- (void) dealloc {
+-(void)dealloc {
 	[stringVal release];
 	[super dealloc];
 }

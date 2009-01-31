@@ -1,9 +1,9 @@
 //
 //  ZNModelCsvParserTest.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/21/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -27,7 +27,7 @@
 @implementation ZNModelCsvParserTestModel
 
 @synthesize name, askPrice, bidPrice, previousClose;
-- (void) dealloc {
+-(void)dealloc {
 	[name release];
 	[super dealloc];
 }
@@ -45,7 +45,7 @@ static NSString* kContextObject = @"This is the context";
 
 @implementation ZNModelCsvParserTest
 
-- (void) setUp {
+-(void)setUp {
 	parser = [[ZNModelCsvParser alloc]
             initWithModelClass:[ZNModelCsvParserTestModel class]
             propertyNames:[NSArray arrayWithObjects:@"name", @"askPrice",
@@ -57,16 +57,16 @@ static NSString* kContextObject = @"This is the context";
 	
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[parser release];
 	[models release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) checkModels {
+-(void)checkModels {
 	ZNModelCsvParserTestModel* model = [models objectAtIndex:0];
 	STAssertEqualStrings(@"Apple Inc.", model.name, @"First stock name");
 	STAssertEqualsWithAccuracy(79.51, model.askPrice, 0.0001,
@@ -84,7 +84,7 @@ static NSString* kContextObject = @"This is the context";
                              @"3rd stock bid price");
 }
 
-- (void) testParsingData {
+-(void)testParsingData {
 	NSString *filePath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNModelCsvParserTest.csv"];
@@ -94,7 +94,7 @@ static NSString* kContextObject = @"This is the context";
 	[self checkModels];
 }
 
-- (void) parsedModel: (ZNModel*)model context: (id)context {
+-(void)parsedModel: (ZNModel*)model context: (id)context {
 	STAssertEquals(kContextObject, context,
                  @"Wrong context passed to -parsedModel");
 	STAssertTrue([model isKindOfClass:[ZNModelCsvParserTestModel class]],

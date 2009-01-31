@@ -1,9 +1,9 @@
 //
 //  TradeOrder+Formatting.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/5/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TradeOrder.h"
@@ -35,26 +35,26 @@ static void SetupFormatters() {
 	}
 }
 
-- (NSString*) formattedQuantity {
+-(NSString*)formattedQuantity {
 	SetupFormatters();
 	return [quantityFormatter stringFromNumber:[NSNumber numberWithUnsignedInt:
 												quantity]];
 }
 
-- (NSString*) formattedQuantityFilled {
+-(NSString*)formattedQuantityFilled {
 	SetupFormatters();
 	return [quantityFormatter stringFromNumber:[NSNumber numberWithUnsignedInt:
                                               [self quantityFilled]]];
 }
 
-- (NSString*) formattedPercentFilled {
+-(NSString*)formattedPercentFilled {
 	SetupFormatters();
 	return [percentFormatter stringFromNumber:[NSNumber numberWithDouble:
 											   [self fillRatio]]];
 }
 
 
-- (NSString*) formattedLimitPrice {
+-(NSString*)formattedLimitPrice {
 	SetupFormatters();
 	
 	if(![self isLimitOrder]) {

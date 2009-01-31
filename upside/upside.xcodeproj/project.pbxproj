@@ -251,6 +251,7 @@
 		57F5F3B10F20745C00AFCB29 /* ZNMSInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = 571196970F1DF3F800FD89EA /* ZNMSInteger.m */; };
 		57F5F3B20F20745C00AFCB29 /* ZNMSString.m in Sources */ = {isa = PBXBuildFile; fileRef = 571196A30F1DF45300FD89EA /* ZNMSString.m */; };
 		57F5F3B30F20745C00AFCB29 /* ZNMSUInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711969F0F1DF44600FD89EA /* ZNMSUInteger.m */; };
+		57FAC3A90F34A261000C2DDB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -520,6 +521,7 @@
 			files = (
 				57A378A00F30E92400B329CC /* UIKit.framework in Frameworks */,
 				57A378A10F30E92400B329CC /* Foundation.framework in Frameworks */,
+				57FAC3A90F34A261000C2DDB /* QuartzCore.framework in Frameworks */,
 				57A378A20F30E92400B329CC /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

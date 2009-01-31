@@ -1,9 +1,9 @@
 //
 //  StockFormatterTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TestSupport.h"
@@ -22,7 +22,7 @@
 
 @implementation StockFormattingTest
 
-- (void) setUp {	
+-(void)setUp {	
 	risingStock = [[Stock alloc] initWithTicker:@"AAPL"
                                          name:@"Apple Inc"
                                        market:@"NasdaqNM"
@@ -47,17 +47,17 @@
                             previousClosePrice:0];
 }
 
-- (void) tearDown {
+-(void)tearDown {
 	[risingStock release];
 	[fallingStock release];
   [invalidStock release];
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[super dealloc];
 }
 
-- (void) testPrices {
+-(void)testPrices {
 	STAssertEqualStrings(@"$90.50", [risingStock formattedBidPrice],
                        @"Easy price formatting");
 	STAssertEqualStrings(@"$1,091.50", [risingStock formattedAskPrice],
@@ -71,7 +71,7 @@
                        @"Tiny price formatting");	
 }
 
-- (void) testNetChanges {
+-(void)testNetChanges {
 	STAssertEqualStrings(@"+5.50", [risingStock formattedNetBidChange],
                        @"Easy net change formatting");
 	STAssertEqualStrings(@"+1,006.50", [risingStock formattedNetAskChange],
@@ -85,7 +85,7 @@
                        @"Tiny net change formatting");	
 }
 
-- (void) testPointChanges {
+-(void)testPointChanges {
 	STAssertEqualStrings(@"+6.47%", [risingStock formattedPointBidChange],
                        @"Easy point change formatting");
 	STAssertEqualStrings(@"+1,184.12%",
@@ -100,7 +100,7 @@
                        @"Tiny negative point change formatting");	
 }
 
-- (void) testChangeColors {
+-(void)testChangeColors {
 	STAssertEqualObjects([UIColor colorWithRed:0.5f green:0.0f
                                         blue:0.0f alpha:1.0f],
                        [fallingStock colorForBidChange],
@@ -111,7 +111,7 @@
                        @"Rising stocks should be green");	
 }
 
-- (void) testChangeImages {
+-(void)testChangeImages {
 	STAssertEqualObjects([UIImage imageNamed:@"RedDownArrow.png"],
                        [fallingStock imageForBidChange],
                        @"Falling stocks should have a red down arrow");
@@ -126,7 +126,7 @@
                        @"Rising stocks should have a green up arrow");
 }
 
-- (void) testValidityImages {
+-(void)testValidityImages {
 	STAssertEqualObjects([UIImage imageNamed:@"GreenTick.png"],
                        [fallingStock imageForValidity],
                        @"Valid stocks should have a green tick");

@@ -1,9 +1,9 @@
 //
 //  PortfolioCommController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 1/23/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "PortfolioCommController.h"
@@ -18,7 +18,7 @@
 
 @implementation PortfolioCommController
 
-- (id) initWithTarget: (id)theTarget action: (SEL)theAction {
+-(id)initWithTarget: (id)theTarget action: (SEL)theAction {
 	if ((self = [super init])) {
 		target = theTarget;
 		action = theAction;
@@ -33,12 +33,12 @@
 	return self;
 }
 
-- (void) dealloc {
+-(void)dealloc {
 	[responseModels release];
 	[super dealloc];
 }
 
-- (void) sync {
+-(void)sync {
   [NetworkProgress connectionStarted];
 	[ZNXmlHttpRequest callService:[ServerPaths portfolioSyncUrl]
                          method:[ServerPaths portfolioSyncMethod]
@@ -48,7 +48,7 @@
                          action:@selector(processResponse:)];
 }
 
-- (void) processResponse: (NSObject*)response {
+-(void)processResponse: (NSObject*)response {
   [NetworkProgress connectionDone];
   [target performSelector:action withObject:response];
 }
