@@ -43,7 +43,7 @@
 
 -(void)sync {
   TradeOrder* nextOrder = [tradeBook firstPendingOrder];
-  if (lastSubmittedOrder || nextOrder == nil) {
+  if (lastSubmittedOrder || !nextOrder) {
     [self receivedResults:nil];
     return;  // pending order not submitted yet
   }

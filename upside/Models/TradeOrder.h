@@ -18,7 +18,7 @@
   BOOL isLimit;
   double limitPrice;
 	NSUInteger modelId;
-	NSUInteger quantityUnfilled;
+	NSUInteger unfilledQuantity;
 }
 
 // The ticker of the stock. 
@@ -40,14 +40,14 @@
 @property (nonatomic, readonly)  NSUInteger modelId;
 
 // The number of stocks in the order that are not yet filled.
-@property (nonatomic, readonly) NSUInteger quantityUnfilled;
+@property (nonatomic, readonly) NSUInteger unfilledQuantity;
 
 #pragma mark Convenience Initializers
 
 // Convenience initializer for limit orders.
 -(TradeOrder*)initWithTicker:(NSString*)ticker
                       quantity:(NSUInteger)quantity
-              quantityUnfilled:(NSUInteger)quantityUnfilled
+              unfilledQuantity:(NSUInteger)unfilledQuantity
                          isBuy:(BOOL)isBuy
                         isLong:(BOOL)isLong
                     limitPrice:(double)limitPrice
@@ -56,7 +56,7 @@
 // Convenience initializer for market orders.
 -(TradeOrder*)initWithTicker:(NSString*)ticker
                       quantity:(NSUInteger)quantity
-              quantityUnfilled:(NSUInteger)quantityUnfilled
+            unfilledQuantity:(NSUInteger)unfilledQuantity
                          isBuy:(BOOL)isBuy
                         isLong:(BOOL)isLong
                        modelId:(NSUInteger)modelId;
@@ -70,8 +70,8 @@
 
 #pragma mark Conveience Accessors
 
-// The numebr of unfilled stocks in this order.
--(NSUInteger)quantityFilled;
+// The numebr of filled stocks in this order.
+-(NSUInteger)filledQuantity;
 
 // The ratio of filled to ordered stocks in this order.
 -(double)fillRatio;

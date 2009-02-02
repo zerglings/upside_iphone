@@ -16,15 +16,15 @@
 	[super dealloc];
 }
 
-@synthesize ticker, quantity, quantityUnfilled, isBuy, isLong, limitPrice;
+@synthesize ticker, quantity, unfilledQuantity, isBuy, isLong, limitPrice;
 @synthesize modelId;
 
--(NSUInteger)quantityFilled {
-  return quantity - quantityUnfilled;
+-(NSUInteger)filledQuantity {
+  return quantity - unfilledQuantity;
 }
 
 -(double)fillRatio {
-	return (double)[self quantityFilled] / quantity;
+	return (double)[self filledQuantity] / quantity;
 }
 
 -(BOOL)isLimitOrder {
@@ -36,7 +36,7 @@
 }
 
 -(BOOL)isFilled {
-  return (quantityUnfilled == 0);
+  return (unfilledQuantity == 0);
 }
 
 
@@ -44,7 +44,7 @@
 
 -(TradeOrder*)initWithTicker:(NSString*)theTicker
                       quantity:(NSUInteger)theQuantity
-              quantityUnfilled:(NSUInteger)theQuantityUnfilled
+              unfilledQuantity:(NSUInteger)theUnfilledQuantity
                          isBuy:(BOOL)theIsBuy
                         isLong:(BOOL)theIsLong
                     limitPrice:(double)theLimitPrice
@@ -52,7 +52,7 @@
   NSNumber* quantityNum = [[NSNumber alloc] initWithUnsignedInteger:
                            theQuantity];
   NSNumber* quantityUnfilledNum = [[NSNumber alloc] initWithUnsignedInteger:
-                                   theQuantityUnfilled];
+                                   theUnfilledQuantity];
   NSNumber* isBuyNum = [[NSNumber alloc] initWithBool:theIsBuy];
   NSNumber* isLongNum = [[NSNumber alloc] initWithBool:theIsLong];
   NSNumber* limitPriceNum = [[NSNumber alloc] initWithDouble:theLimitPrice];
@@ -79,13 +79,13 @@
 
 -(TradeOrder*)initWithTicker:(NSString*)theTicker
                       quantity:(NSUInteger)theQuantity
-              quantityUnfilled:(NSUInteger)theQuantityUnfilled
+              unfilledQuantity:(NSUInteger)theUnfilledQuantity
                          isBuy:(BOOL)theIsBuy
                         isLong:(BOOL)theIsLong
                        modelId:(NSUInteger)theModelId {
   return [self initWithTicker:theTicker
                      quantity:theQuantity
-             quantityUnfilled:theQuantityUnfilled
+             unfilledQuantity:theUnfilledQuantity
                         isBuy:theIsBuy
                        isLong:theIsLong
                    limitPrice:kTradeOrderInvalidLimit
@@ -99,7 +99,7 @@
                     limitPrice:(double)theLimitPrice {
   return [self initWithTicker:theTicker
                      quantity:theQuantity
-             quantityUnfilled:0
+             unfilledQuantity:0
                         isBuy:theIsBuy
                        isLong:theIsLong
                    limitPrice:theLimitPrice
