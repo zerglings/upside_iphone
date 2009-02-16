@@ -1,22 +1,21 @@
-// Copyright 2009 Zergling.Net
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//   http://www.apache.org/licenses/LICENSE-2.0
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License. 
-
 //
 //  TestSupport.h
 //  ZergSupport
 //
+//  Created by Victor Costan on 1/17/09.
+//  Copyright Zergling.Net. Licensed under the MIT license.
+//
 
 // Main header file for the Zergling.Net Test Support.
 
-// Currently, Test Support repackages the minimum set of files needed to run
-// unit tests on the iPhone, from the Google Toolbox for Mac.
 
+// TestSupport repackages the minimum set of files needed to run unit tests on
+// the iPhone, from the Google Toolbox for Mac. These files are released by 
+// Google under the Apache License 2.0, reproduced in GTM/COPYING.
 #import "GTMSenTestCase.h"
+
+// The rest of TestSupport is copyright Zergling.Net, and licensed under the
+// MIT license.
+
+
+#import "SenTestCase+Fixtures.h"

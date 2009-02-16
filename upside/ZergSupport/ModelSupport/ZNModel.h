@@ -38,4 +38,6 @@
 
 +(BOOL)isModelClass: (id)maybeModelClass;
 
++(NSArray*)allModelClasses;
+
 @end

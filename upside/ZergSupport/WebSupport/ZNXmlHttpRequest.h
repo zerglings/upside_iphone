@@ -10,21 +10,20 @@
 
 #import "ZNHttpRequest.h"
 
-@class ZNDictionaryXmlParser;
+@class ZNModelXmlParser;
 
 @interface ZNXmlHttpRequest : ZNHttpRequest {
 	NSMutableArray* response;
-	ZNDictionaryXmlParser* responseParser;
-	NSDictionary* responseModels;
+	ZNModelXmlParser* responseParser;
 }
 
 // Convenience method for issuing a request.
 +(void)callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
-         fieldCasing: (ZNFormatterCasing)fieldCasing
+         fieldCasing: (enum ZNFormatterCasing)fieldCasing
       responseModels: (NSDictionary*)responseModels
-      responseCasing: (ZNFormatterCasing)responseCasing
+      responseCasing: (enum ZNFormatterCasing)responseCasing
               target: (NSObject*)target
               action: (SEL)action;
 
@@ -39,7 +38,7 @@
 // Designated initializer.
 -(id)initWithURLRequest: (NSURLRequest*)request
            responseModels: (NSDictionary*)responseModels
-           responseCasing: (ZNFormatterCasing)responseCasing
+           responseCasing: (enum ZNFormatterCasing)responseCasing
                    target: (NSObject*)target
                    action: (SEL)action;
 

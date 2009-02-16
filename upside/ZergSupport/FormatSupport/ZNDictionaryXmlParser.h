@@ -58,7 +58,6 @@
   ZNFormFieldFormatter* currentKeyFormatter;
 }
 
-@property (nonatomic, retain) NSDictionary* schema;
 @property (nonatomic, assign) id context;
 @property (nonatomic, assign) id<ZNDictionaryXmlParserDelegate> delegate;
 
@@ -77,9 +76,8 @@
 // The interface between ZNDictionaryXMLParser and its delegate.
 @protocol ZNDictionaryXmlParserDelegate
 
-// Called when an item corresponding to a known XML tag is parsed.
+// Called after parsing an item corresponding to a known XML tag.
 -(void)parsedItem: (NSDictionary*)itemData
-               name: (NSString*)itemName
-            context: (id)context;
+             name: (NSString*)itemName
+          context: (id)context;
 @end
-

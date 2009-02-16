@@ -23,7 +23,7 @@
 +(void)callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
-         fieldCasing: (ZNFormatterCasing)fieldCasing
+         fieldCasing: (enum ZNFormatterCasing)fieldCasing
        responseClass: (Class)modelClass
   responseProperties: (NSArray*)modelPropertyNames
               target: (NSObject*)target

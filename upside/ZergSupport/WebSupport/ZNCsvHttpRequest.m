@@ -8,12 +8,11 @@
 
 #import "ZNCsvHttpRequest.h"
 
+#import "FormatSupport.h"
 #import "ModelSupport.h"
-#import "ZNArrayCsvParser.h"
-#import "ZNModelCsvParser.h"
 
 @interface ZNCsvHttpRequest ()
-<ZNArrayCsvParserDelegate, ZNModelCsvParserDelegate> 
+    <ZNArrayCsvParserDelegate, ZNModelCsvParserDelegate> 
 @end
 
 @implementation ZNCsvHttpRequest

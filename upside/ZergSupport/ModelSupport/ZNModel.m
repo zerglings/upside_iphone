@@ -140,12 +140,34 @@
 		return NO;
 	
 	// Walk up the chain and find ZNModel
-	while (maybeModelClass != [NSObject class]) {
+	while (maybeModelClass && maybeModelClass != [NSObject class]) {
 		if (maybeModelClass == [ZNModel class])
 			return YES;
 		maybeModelClass = [maybeModelClass superclass];
 	}
 	return NO;
 }
+
++(NSArray*)allModelClasses {
+  // Get all the classes from the Objective C runtime. 
+  int numClasses = objc_getClassList(NULL, 0);
+  Class* classes = (Class*)calloc(sizeof(Class), numClasses);
+  numClasses = objc_getClassList(classes, numClasses);
+  
+  // Filter the classes descending from ZNModel.
+  int modelClasses = 0;
+  SEL mss = @selector(methodSignatureForSelector:);
+  for (int i = 0; i < numClasses; i++) {
+    Class klass = classes[i];
+    if (class_respondsToSelector(klass, mss) && [ZNModel isModelClass:klass])
+      classes[modelClasses++] = klass;
+  }
+  
+  // Wrap the result in an NSArray.
+  NSArray* returnValue = [NSArray arrayWithObjects:classes count:modelClasses];
+  free(classes);
+  return returnValue;
+}
+
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ZNFormatterCasing.h"
+enum ZNFormatterCasing;
 
 // Superclass for HTTP request classes.
 @interface ZNHttpRequest : NSObject {
@@ -32,7 +32,7 @@
 +(void)callService: (NSString*)service
               method: (NSString*)method
                 data: (NSDictionary*)data
-         fieldCasing: (ZNFormatterCasing)fieldCasing
+         fieldCasing: (enum ZNFormatterCasing)fieldCasing
               target: (NSObject*)target
               action: (SEL)action;
 
@@ -48,7 +48,7 @@
 +(NSURLRequest*)newURLRequestToService: (NSString*)service
                                   method: (NSString*)method
                                     data: (NSDictionary*)data
-                             fieldCasing: (ZNFormatterCasing)fieldCasing;
+                             fieldCasing: (enum ZNFormatterCasing)fieldCasing;
 
 // Subclasses should call this on the assembled request.
 -(void)start;

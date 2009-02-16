@@ -17,7 +17,7 @@
 
 -(id)initWithSchema: (NSDictionary*) theSchema {
 	if ((self = [super init])) {
-		self.schema = theSchema;
+		schema = [theSchema retain];
 		
 		currentValue = [[NSMutableString alloc] init];
 		currentItem = [[NSMutableDictionary alloc] init];
@@ -41,7 +41,6 @@
 
 @synthesize context;
 @synthesize delegate;
-@synthesize schema;
 
 #pragma mark Parsing Lifecycle
 

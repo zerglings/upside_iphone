@@ -8,6 +8,7 @@
 
 #import "TestSupport.h"
 
+#import "FormatSupport.h"
 #import "ModelSupport.h"
 #import "ZNHttpRequest.h"
 

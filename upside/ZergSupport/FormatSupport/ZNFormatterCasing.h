@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
+enum ZNFormatterCasing {
   // no particular casing convetion
   kZNFormatterNoCase = 0,
   // snake_case
   kZNFormatterSnakeCase = 1,  
   // camelCase, except the first letter is lower case
   kZNFormatterLCamelCase = 2
-} ZNFormatterCasing;
+};
+typedef enum ZNFormatterCasing ZNFormatterCasing;

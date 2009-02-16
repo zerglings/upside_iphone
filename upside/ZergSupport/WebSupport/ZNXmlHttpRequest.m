@@ -8,14 +8,10 @@
 
 #import "ZNXmlHttpRequest.h"
 
+#import "FormatSupport.h"
 #import "ModelSupport.h"
-#import "ZNDictionaryXmlParser.h"
-#import "ZNFormFieldFormatter.h"
 
-
-@interface ZNXmlHttpRequest () <ZNDictionaryXmlParserDelegate> 
-+(NSDictionary*)copyParserSchemaFor: (NSDictionary*)responseModels
-                               casing: (ZNFormatterCasing)responseCasing;
+@interface ZNXmlHttpRequest () <ZNModelXmlParserDelegate> 
 @end
 
 @implementation ZNXmlHttpRequest
@@ -23,22 +19,18 @@
 #pragma mark Lifecycle
 
 -(id)initWithURLRequest: (NSURLRequest*)theRequest
-           responseModels: (NSDictionary*)theResponseModels
-           responseCasing: (ZNFormatterCasing)responseCasing
-                   target: (NSObject*)theTarget
-                   action: (SEL)theAction {
+         responseModels: (NSDictionary*)theResponseModels
+         responseCasing: (ZNFormatterCasing)responseCasing
+                 target: (NSObject*)theTarget
+                 action: (SEL)theAction {
 	if ((self = [super initWithURLRequest:theRequest
                                  target:theTarget
                                  action:theAction])) {
 		response = [[NSMutableArray alloc] init];
-    NSDictionary* parserSchema =
-        [ZNXmlHttpRequest copyParserSchemaFor:theResponseModels
-                                       casing:responseCasing];
-		responseParser = [[ZNDictionaryXmlParser alloc]
-                      initWithSchema:parserSchema];
+		responseParser = [[ZNModelXmlParser alloc]
+                      initWithSchema:theResponseModels
+                      documentCasing:responseCasing];
 		responseParser.delegate = self;
-    [parserSchema release];
-		responseModels = [theResponseModels retain];		
 	}
 	return self;
 }
@@ -46,18 +38,17 @@
 -(void)dealloc {
 	[response release];
 	[responseParser release];
-	[responseModels release];
 	[super dealloc];
 }
 
 +(void)callService: (NSString*)service
-              method: (NSString*)method
-                data: (NSDictionary*)data
-         fieldCasing: (ZNFormatterCasing)fieldCasing
-      responseModels: (NSDictionary*)responseModels
-      responseCasing: (ZNFormatterCasing)responseCasing
-              target: (NSObject*)target
-              action: (SEL)action {
+            method: (NSString*)method
+              data: (NSDictionary*)data
+       fieldCasing: (ZNFormatterCasing)fieldCasing
+    responseModels: (NSDictionary*)responseModels
+    responseCasing: (ZNFormatterCasing)responseCasing
+            target: (NSObject*)target
+            action: (SEL)action {
 	NSURLRequest* urlRequest = [self newURLRequestToService:service
                                                    method:method
                                                      data:data
@@ -74,11 +65,11 @@
 }
 
 +(void)callService: (NSString*)service
-              method: (NSString*)method
-                data: (NSDictionary*)data
-      responseModels: (NSDictionary*)responseModels
-              target: (NSObject*)target
-              action: (SEL)action {
+            method: (NSString*)method
+              data: (NSDictionary*)data
+    responseModels: (NSDictionary*)responseModels
+            target: (NSObject*)target
+            action: (SEL)action {
   return [self callService:service
                     method:method
                       data:data
@@ -89,44 +80,16 @@
                     action:action];
 }
 
-#pragma mark ZNDictionaryXmlParser Delegate
+#pragma mark ZNModelXmlParser Delegate
 
 -(void)parsedItem: (NSDictionary*)itemData
-               name: (NSString*)itemName
-            context: (id)context {
-	id modelClass = [responseModels objectForKey:itemName];
-	if ([ZNModel isModelClass:modelClass]) {
-		NSObject* responseModel = [[modelClass alloc]
-                               initWithModel:nil properties:itemData];
-		[response addObject:responseModel];
-		[responseModel release];
-	}
-	else {
-		[response addObject:itemData];
-	}
+             name: (NSString*)itemName
+          context: (id)context {
+  [response addObject:itemData];  
 }
-
-+(NSDictionary*)copyParserSchemaFor: (NSDictionary*)responseModels
-                               casing: (ZNFormatterCasing)responseCasing {
-  ZNFormFieldFormatter* formatter =
-      [ZNFormFieldFormatter formatterToPropertiesFrom:responseCasing];
-  NSMutableArray* keys = [[NSMutableArray alloc]
-                          initWithCapacity:[responseModels count]];
-  NSMutableArray* values = [[NSMutableArray alloc]
-                            initWithCapacity:[responseModels count]];
-  for (NSString* modelName in responseModels) {
-    [keys addObject:modelName];
-    NSArray* directions = [[NSArray alloc] initWithObjects:
-                           formatter, [responseModels objectForKey:modelName],
-                           nil];
-    [values addObject:directions];
-    [directions release];
-  }
-  NSDictionary* schema = [[NSDictionary alloc] initWithObjects:values
-                                                       forKeys:keys];
-  [keys release];
-  [values release];
-  return schema;
+-(void)parsedModel: (ZNModel*)model
+           context: (id)context {
+  [response addObject:model];
 }
 
 #pragma mark Delegate Invocation

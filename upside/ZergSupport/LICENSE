@@ -6,7 +6,7 @@ such.
 
 TestSupport contains code from the Google Toolbox for Mac, which is copyrighted
 to Google Inc., and is released under the Apache License, Version 2.0, contained
-in the file TestSupport/COPYING. 
+in the file TestSupport/GTM/COPYING.
 
 
 NOT TO BE TAKEN AS LEGAL ADVICE: you should be able to safely ignore the
