@@ -46,27 +46,27 @@
 
 // Convenience initializer for limit orders.
 -(TradeOrder*)initWithTicker:(NSString*)ticker
-                      quantity:(NSUInteger)quantity
-              unfilledQuantity:(NSUInteger)unfilledQuantity
-                         isBuy:(BOOL)isBuy
-                        isLong:(BOOL)isLong
-                    limitPrice:(double)limitPrice
-                       modelId:(NSUInteger)modelId;
+                    quantity:(NSUInteger)quantity
+            unfilledQuantity:(NSUInteger)unfilledQuantity
+                       isBuy:(BOOL)isBuy
+                      isLong:(BOOL)isLong
+                  limitPrice:(double)limitPrice
+                     modelId:(NSUInteger)modelId;
 
 // Convenience initializer for market orders.
 -(TradeOrder*)initWithTicker:(NSString*)ticker
-                      quantity:(NSUInteger)quantity
+                    quantity:(NSUInteger)quantity
             unfilledQuantity:(NSUInteger)unfilledQuantity
-                         isBuy:(BOOL)isBuy
-                        isLong:(BOOL)isLong
-                       modelId:(NSUInteger)modelId;
+                       isBuy:(BOOL)isBuy
+                      isLong:(BOOL)isLong
+                     modelId:(NSUInteger)modelId;
 
 // Convenience initializer for new orders.
 -(TradeOrder*)initWithTicker:(NSString*)ticker
-                      quantity:(NSUInteger)quantity
-                         isBuy:(BOOL)isBuy
-                        isLong:(BOOL)isLong
-                    limitPrice:(double)limitPrice;
+                    quantity:(NSUInteger)quantity
+                       isBuy:(BOOL)isBuy
+                      isLong:(BOOL)isLong
+                  limitPrice:(double)limitPrice;
 
 #pragma mark Conveience Accessors
 

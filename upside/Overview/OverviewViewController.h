@@ -10,7 +10,12 @@
 
 
 @interface OverviewViewController : UIViewController {
-
+  IBOutlet UILabel* userNameLabel;
+  IBOutlet UILabel* lastSyncLabel;
+  IBOutlet UILabel* cashLabel;
+  IBOutlet UIImageView* cashImage;
+  IBOutlet UILabel* stockWorthLabel;
+  IBOutlet UILabel* netWorthLabel;
 }
 
 @end

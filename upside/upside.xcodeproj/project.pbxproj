@@ -73,7 +73,6 @@
 		57203C0C0F4954D600B3A00C /* SenTestCase+Fixtures.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C0A0F4954D600B3A00C /* SenTestCase+Fixtures.m */; };
 		57203C0D0F4954D600B3A00C /* SenTestCase+Fixtures.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C0A0F4954D600B3A00C /* SenTestCase+Fixtures.m */; };
 		57203C110F4954F100B3A00C /* SenTestCase+FixturesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C0F0F4954F100B3A00C /* SenTestCase+FixturesTest.m */; };
-		57203C120F4954F100B3A00C /* SenTestCase+FixturesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C0F0F4954F100B3A00C /* SenTestCase+FixturesTest.m */; };
 		57203C140F4955FF00B3A00C /* SenTestCase+FixturesTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 57203C130F4955FF00B3A00C /* SenTestCase+FixturesTest.xml */; };
 		57203D870F49662300B3A00C /* ZNModelXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203D860F49662300B3A00C /* ZNModelXmlParser.m */; };
 		57203D8A0F49668C00B3A00C /* ZNModelXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203D890F49668C00B3A00C /* ZNModelXmlParserTest.m */; };
@@ -255,6 +254,9 @@
 		57CDB2210F0F7DEB002C60C5 /* OverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2200F0F7DEB002C60C5 /* OverviewViewController.xib */; };
 		57CDB2860F0F8554002C60C5 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB2850F0F8554002C60C5 /* TabBarController.m */; };
 		57CDB2D60F0F8CA4002C60C5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2D40F0F8CA4002C60C5 /* Icon.png */; };
+		57E4516E0F498A8900DA71BC /* AssetBookStocks.xml in Resources */ = {isa = PBXBuildFile; fileRef = 57E4516D0F498A8900DA71BC /* AssetBookStocks.xml */; };
+		57E451700F498B7300DA71BC /* AssetBookPortfolio.xml in Resources */ = {isa = PBXBuildFile; fileRef = 57E4516F0F498B7300DA71BC /* AssetBookPortfolio.xml */; };
+		57E4524B0F49C0D000DA71BC /* AssetBook+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E4524A0F49C0D000DA71BC /* AssetBook+FormattingTest.m */; };
 		57F5F3A90F20745C00AFCB29 /* ZNModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711955C0F1DC97800FD89EA /* ZNModel.m */; };
 		57F5F3AA0F20745C00AFCB29 /* ZNModelDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711955F0F1DCA0B00FD89EA /* ZNModelDefinition.m */; };
 		57F5F3AB0F20745C00AFCB29 /* ZNModelDefinitionAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956A0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m */; };
@@ -430,9 +432,9 @@
 		577093610F1084D400069411 /* Stock+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+Formatting.m"; sourceTree = "<group>"; };
 		577093E10F11032200069411 /* Stock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock.h; sourceTree = "<group>"; };
 		577093E40F11049E00069411 /* Stock+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+FormattingTest.m"; sourceTree = "<group>"; };
-		5780611F0F3A8019001BF3AF /* AssetBook+NetWorth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AssetBook+NetWorth.h"; sourceTree = "<group>"; };
-		578061200F3A8019001BF3AF /* AssetBook+NetWorth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetBook+NetWorth.m"; sourceTree = "<group>"; };
-		578061230F3A804A001BF3AF /* AssetBook+NetWorthTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetBook+NetWorthTest.m"; sourceTree = "<group>"; };
+		5780611F0F3A8019001BF3AF /* AssetBook+NetWorth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AssetBook+NetWorth.h"; path = "../Models/AssetBook+NetWorth.h"; sourceTree = "<group>"; };
+		578061200F3A8019001BF3AF /* AssetBook+NetWorth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AssetBook+NetWorth.m"; path = "../Models/AssetBook+NetWorth.m"; sourceTree = "<group>"; };
+		578061230F3A804A001BF3AF /* AssetBook+NetWorthTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AssetBook+NetWorthTest.m"; path = "../Models/AssetBook+NetWorthTest.m"; sourceTree = "<group>"; };
 		5782650B0F2C062D00B53703 /* ZNFormFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNFormFieldFormatter.h; sourceTree = "<group>"; };
 		5782650C0F2C062D00B53703 /* ZNFormFieldFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNFormFieldFormatter.m; sourceTree = "<group>"; };
 		578265110F2C08A300B53703 /* ZNFormFieldFormatter+Snake2LCamel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZNFormFieldFormatter+Snake2LCamel.h"; sourceTree = "<group>"; };
@@ -529,6 +531,9 @@
 		57CDB2850F0F8554002C60C5 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		57CDB2D40F0F8CA4002C60C5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		57CDB2D50F0F8CA4002C60C5 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		57E4516D0F498A8900DA71BC /* AssetBookStocks.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AssetBookStocks.xml; sourceTree = "<group>"; };
+		57E4516F0F498B7300DA71BC /* AssetBookPortfolio.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AssetBookPortfolio.xml; sourceTree = "<group>"; };
+		57E4524A0F49C0D000DA71BC /* AssetBook+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetBook+FormattingTest.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -660,9 +665,6 @@
 				57CDB1A90F0F5ECE002C60C5 /* AssetBook.h */,
 				57CDB1AA0F0F5ECE002C60C5 /* AssetBook.m */,
 				570D87980F14B99500D54544 /* AssetBookTest.m */,
-				5780611F0F3A8019001BF3AF /* AssetBook+NetWorth.h */,
-				578061200F3A8019001BF3AF /* AssetBook+NetWorth.m */,
-				578061230F3A804A001BF3AF /* AssetBook+NetWorthTest.m */,
 				57A1E70A0F21656800B8179A /* Device.h */,
 				57A1E70B0F21656800B8179A /* Device.m */,
 				570D84EE0F133A7800D54544 /* Game.h */,
@@ -925,6 +927,12 @@
 			children = (
 				57203C040F4942EF00B3A00C /* AssetBook+Formatting.h */,
 				57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */,
+				57E4524A0F49C0D000DA71BC /* AssetBook+FormattingTest.m */,
+				57E4516F0F498B7300DA71BC /* AssetBookPortfolio.xml */,
+				57E4516D0F498A8900DA71BC /* AssetBookStocks.xml */,
+				5780611F0F3A8019001BF3AF /* AssetBook+NetWorth.h */,
+				578061200F3A8019001BF3AF /* AssetBook+NetWorth.m */,
+				578061230F3A804A001BF3AF /* AssetBook+NetWorthTest.m */,
 				573E6C080F32C98E0041F4DC /* Portfolio+Formatting.h */,
 				573E6C090F32C98E0041F4DC /* Portfolio+Formatting.m */,
 				573E6C0C0F32C99F0041F4DC /* Portfolio+FormattingTest.m */,
@@ -1150,6 +1158,8 @@
 				5782688B0F2DA2D500B53703 /* RedX.png in Resources */,
 				578268910F2DA2E400B53703 /* GreenUpArrow.png in Resources */,
 				578268920F2DA2E400B53703 /* RedDownArrow.png in Resources */,
+				57E4516E0F498A8900DA71BC /* AssetBookStocks.xml in Resources */,
+				57E451700F498B7300DA71BC /* AssetBookPortfolio.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1374,8 +1384,8 @@
 				578061250F3A805C001BF3AF /* AssetBook+NetWorth.m in Sources */,
 				57203C070F4942EF00B3A00C /* AssetBook+Formatting.m in Sources */,
 				57203C0C0F4954D600B3A00C /* SenTestCase+Fixtures.m in Sources */,
-				57203C120F4954F100B3A00C /* SenTestCase+FixturesTest.m in Sources */,
 				57203EE80F49838100B3A00C /* ZNModelXmlParser.m in Sources */,
+				57E4524B0F49C0D000DA71BC /* AssetBook+FormattingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

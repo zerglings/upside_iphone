@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fixture>
+  <Stock>
+    <ticker>AAPL</ticker>
+    <name>Apple Inc.</name>
+    <market>NASDAQ</market>
+    <askPrice>95.00</askPrice>
+    <bidPrice>90.00</bidPrice>
+    <lastTradePrice>93.50</lastTradePrice>
+    <previousClosePrice>92.50</previousClosePrice>
+  </Stock>
+  <Stock>
+    <ticker>MSFT</ticker>
+    <name>Microsoft Corp.</name>
+    <market>NASDAQ</market>
+    <askPrice>26.00</askPrice>
+    <bidPrice>22.00</bidPrice>
+    <lastTradePrice>27.25</lastTradePrice>
+    <previousClosePrice>27.28</previousClosePrice>
+  </Stock>
+</fixture>

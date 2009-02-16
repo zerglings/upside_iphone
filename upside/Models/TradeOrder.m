@@ -51,7 +51,7 @@
                        modelId:(NSUInteger)theModelId {
   NSNumber* quantityNum = [[NSNumber alloc] initWithUnsignedInteger:
                            theQuantity];
-  NSNumber* quantityUnfilledNum = [[NSNumber alloc] initWithUnsignedInteger:
+  NSNumber* unfilledQuantityNum = [[NSNumber alloc] initWithUnsignedInteger:
                                    theUnfilledQuantity];
   NSNumber* isBuyNum = [[NSNumber alloc] initWithBool:theIsBuy];
   NSNumber* isLongNum = [[NSNumber alloc] initWithBool:theIsLong];
@@ -60,13 +60,13 @@
   NSDictionary* properties = [[NSDictionary alloc] initWithObjectsAndKeys:
                               theTicker, @"ticker",
                               quantityNum, @"quantity",
-                              quantityUnfilledNum, @"quantityUnfilled",
+                              unfilledQuantityNum, @"unfilledQuantity",
                               isBuyNum, @"isBuy",
                               isLongNum, @"isLong",
                               limitPriceNum, @"limitPrice",
                               modelIdNum, @"modelId", nil];
   [quantityNum release];
-  [quantityUnfilledNum release];
+  [unfilledQuantityNum release];
   [isBuyNum release];
   [isLongNum release];
   [limitPriceNum release];

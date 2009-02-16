@@ -60,7 +60,7 @@
 					</object>
 					<object class="IBUILabel" id="974263808">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{20, 173}, {100, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -110,7 +110,7 @@
 					</object>
 					<object class="IBUILabel" id="144427142">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">291</int>
+						<int key="NSvFlags">-2147483357</int>
 						<string key="NSFrame">{{130, 174}, {150, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -125,7 +125,7 @@
 					</object>
 					<object class="IBUILabel" id="670403576">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{20, 115}, {100, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -139,7 +139,7 @@
 					</object>
 					<object class="IBUILabel" id="94724958">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">291</int>
+						<int key="NSvFlags">-2147483357</int>
 						<string key="NSFrame">{{130, 116}, {150, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -154,7 +154,7 @@
 					</object>
 					<object class="IBUILabel" id="1040302033">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{20, 144}, {100, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -169,7 +169,7 @@
 					</object>
 					<object class="IBUILabel" id="113287524">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">291</int>
+						<int key="NSvFlags">-2147483357</int>
 						<string key="NSFrame">{{130, 145}, {150, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -319,7 +319,7 @@
 					</object>
 					<object class="IBUIImageView" id="336045110">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">289</int>
+						<int key="NSvFlags">-2147483359</int>
 						<string key="NSFrame">{{280, 116}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -341,7 +341,7 @@
 					</object>
 					<object class="IBUIImageView" id="349715061">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">289</int>
+						<int key="NSvFlags">-2147483359</int>
 						<string key="NSFrame">{{280, 145}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -352,7 +352,7 @@
 					</object>
 					<object class="IBUIImageView" id="660597255">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">289</int>
+						<int key="NSvFlags">-2147483359</int>
 						<string key="NSFrame">{{280, 174}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -399,6 +399,46 @@
 						<reference key="destination" ref="191373211"/>
 					</object>
 					<int key="connectionID">21</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">cashLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="596993188"/>
+					</object>
+					<int key="connectionID">29</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">stockWorthLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="77534279"/>
+					</object>
+					<int key="connectionID">30</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">netWorthLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="249285353"/>
+					</object>
+					<int key="connectionID">31</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lastSyncLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="232630561"/>
+					</object>
+					<int key="connectionID">32</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">userNameLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="79390255"/>
+					</object>
+					<int key="connectionID">33</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -607,7 +647,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>OverviewViewController</string>
 					<string>UIResponder</string>
-					<string>{{429, 376}, {320, 480}}</string>
+					<string>{{523, 369}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -654,7 +694,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">28</int>
+			<int key="maxID">33</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -663,7 +703,7 @@
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UnitTesting/GTMCALayer+UnitTesting.h</string>
+						<string key="minorKey">ZergSupport/TestSupport/GTM/GTMCALayer+UnitTesting.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -674,12 +714,33 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UnitTesting/GTMNSObject+UnitTesting.h</string>
+						<string key="minorKey">ZergSupport/TestSupport/GTM/GTMNSObject+UnitTesting.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">OverviewViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>cashImage</string>
+							<string>cashLabel</string>
+							<string>lastSyncLabel</string>
+							<string>netWorthLabel</string>
+							<string>stockWorthLabel</string>
+							<string>userNameLabel</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIImageView</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Overview/OverviewViewController.h</string>
@@ -689,7 +750,7 @@
 					<string key="className">UIView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UnitTesting/GTMUIKit+UnitTesting.h</string>
+						<string key="minorKey">ZergSupport/TestSupport/GTM/GTMUIKit+UnitTesting.h</string>
 					</object>
 				</object>
 			</object>

@@ -8,6 +8,15 @@
 
 #import "OverviewViewController.h"
 
+#import "AssetBook.h"
+#import "AssetBook+Formatting.h"
+#import "Game.h"
+#import "GameSyncController.h"
+
+@interface OverviewViewController ()
+-(void)newGameData;
+@end
+
 
 @implementation OverviewViewController
 
@@ -29,10 +38,33 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
+  [self newGameData];
+  
+  // TODO(overmind): do we need these?
 	self.view.autoresizesSubviews = YES;
-	self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;  
 }
+  
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [[Game sharedGame].newDataSite addTarget:self action:@selector(newGameData)];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  [[Game sharedGame].newDataSite removeTarget:self
+   action:@selector(newGameData)];
+}
+-(void)newGameData {
+  Game* game = [Game sharedGame];
+  AssetBook* assetBook = [game assetBook];
+  StockCache* stockCache = [game stockCache];
+  
+  cashLabel.text = [[assetBook portfolio] formattedCash];
+  stockWorthLabel.text = [assetBook formattedStockWorthWithCache:stockCache];
+  netWorthLabel.text = [assetBook formattedNetWorthWithCache:stockCache];
+}
+  
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

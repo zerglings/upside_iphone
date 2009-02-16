@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fixture>
+  <!-- The first position is for the uncached asset book. -->
+  <Position>
+    <ticker>GOOG</ticker>
+    <quantity>68</quantity>
+    <isLong>YES</isLong>
+  </Position>
+  <Position>
+    <ticker>AAPL</ticker>
+    <quantity>35</quantity>
+    <isLong>YES</isLong>
+  </Position>
+  <Position>
+    <ticker>MSFT</ticker>
+    <quantity>21</quantity>
+    <isLong>NO</isLong>
+  </Position>
+  <Portfolio>
+    <cash>730.51</cash>
+  </Portfolio>
+</fixture>

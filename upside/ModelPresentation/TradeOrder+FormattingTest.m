@@ -22,7 +22,7 @@
 -(void)setUp {
 	buyOrder = [[TradeOrder alloc] initWithTicker:@"AAPL"
                                        quantity:10000
-                               quantityUnfilled:9000
+                               unfilledQuantity:9000
                                           isBuy:YES
                                          isLong:YES
                                      limitPrice:1310.50
@@ -30,7 +30,7 @@
   
 	sellOrder = [[TradeOrder alloc] initWithTicker:@"MSFT"
                                         quantity:35
-                                quantityUnfilled:35
+                                unfilledQuantity:35
                                            isBuy:NO
                                           isLong:YES
                                          modelId:6];
