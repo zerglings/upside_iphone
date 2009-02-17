@@ -9,10 +9,8 @@
 #import "TestSupport.h"
 
 #import "AssetBook+NetWorth.h"
-#import "Portfolio.h"
-#import "Position.h"
-#import "Stock.h"
 #import "StockCache.h"
+
 
 @interface AssetBookNetWorthTest : SenTestCase {
   StockCache* stockCache;
@@ -21,8 +19,6 @@
 }
 
 @end
-
-
 
 @implementation AssetBookNetWorthTest 
 

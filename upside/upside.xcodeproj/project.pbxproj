@@ -259,6 +259,14 @@
 		57E4524B0F49C0D000DA71BC /* AssetBook+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E4524A0F49C0D000DA71BC /* AssetBook+FormattingTest.m */; };
 		57E452FE0F4ABC8B00DA71BC /* GameAwareTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E452FD0F4ABC8B00DA71BC /* GameAwareTableViewController.m */; };
 		57E4530F0F4AC1CF00DA71BC /* GameAwareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E4530E0F4AC1CF00DA71BC /* GameAwareViewController.m */; };
+		57E453CC0F4ACFBC00DA71BC /* TradeBook+Worth.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E453CB0F4ACFBC00DA71BC /* TradeBook+Worth.m */; };
+		57E453CE0F4AD1B200DA71BC /* TradeBook+Worth.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E453CB0F4ACFBC00DA71BC /* TradeBook+Worth.m */; };
+		57E4540F0F4AD54600DA71BC /* TradeBookOrders.xml in Resources */ = {isa = PBXBuildFile; fileRef = 57E453EA0F4AD21900DA71BC /* TradeBookOrders.xml */; };
+		57E454290F4AD83000DA71BC /* TradeBook+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E454280F4AD83000DA71BC /* TradeBook+Formatting.m */; };
+		57E4542A0F4AD83000DA71BC /* TradeBook+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E454280F4AD83000DA71BC /* TradeBook+Formatting.m */; };
+		57E454370F4AD9FD00DA71BC /* TradeBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D84E90F1338EA00D54544 /* TradeBook.m */; };
+		57E4543A0F4ADA1700DA71BC /* TradeBook+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E454390F4ADA1700DA71BC /* TradeBook+FormattingTest.m */; };
+		57E4543B0F4ADA6000DA71BC /* TradeBook+WorthTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E453EB0F4AD21900DA71BC /* TradeBook+WorthTest.m */; };
 		57F5F3A90F20745C00AFCB29 /* ZNModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711955C0F1DC97800FD89EA /* ZNModel.m */; };
 		57F5F3AA0F20745C00AFCB29 /* ZNModelDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711955F0F1DCA0B00FD89EA /* ZNModelDefinition.m */; };
 		57F5F3AB0F20745C00AFCB29 /* ZNModelDefinitionAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956A0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m */; };
@@ -540,6 +548,13 @@
 		57E452FD0F4ABC8B00DA71BC /* GameAwareTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameAwareTableViewController.m; sourceTree = "<group>"; };
 		57E4530D0F4AC1CF00DA71BC /* GameAwareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameAwareViewController.h; sourceTree = "<group>"; };
 		57E4530E0F4AC1CF00DA71BC /* GameAwareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameAwareViewController.m; sourceTree = "<group>"; };
+		57E453CA0F4ACFBC00DA71BC /* TradeBook+Worth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TradeBook+Worth.h"; sourceTree = "<group>"; };
+		57E453CB0F4ACFBC00DA71BC /* TradeBook+Worth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TradeBook+Worth.m"; sourceTree = "<group>"; };
+		57E453EA0F4AD21900DA71BC /* TradeBookOrders.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TradeBookOrders.xml; sourceTree = "<group>"; };
+		57E453EB0F4AD21900DA71BC /* TradeBook+WorthTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TradeBook+WorthTest.m"; sourceTree = "<group>"; };
+		57E454270F4AD83000DA71BC /* TradeBook+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TradeBook+Formatting.h"; sourceTree = "<group>"; };
+		57E454280F4AD83000DA71BC /* TradeBook+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TradeBook+Formatting.m"; sourceTree = "<group>"; };
+		57E454390F4ADA1700DA71BC /* TradeBook+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TradeBook+FormattingTest.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -952,6 +967,13 @@
 				577093600F1084D400069411 /* Stock+Formatting.h */,
 				577093610F1084D400069411 /* Stock+Formatting.m */,
 				577093E40F11049E00069411 /* Stock+FormattingTest.m */,
+				57E454270F4AD83000DA71BC /* TradeBook+Formatting.h */,
+				57E454280F4AD83000DA71BC /* TradeBook+Formatting.m */,
+				57E454390F4ADA1700DA71BC /* TradeBook+FormattingTest.m */,
+				57E453EA0F4AD21900DA71BC /* TradeBookOrders.xml */,
+				57E453CA0F4ACFBC00DA71BC /* TradeBook+Worth.h */,
+				57E453CB0F4ACFBC00DA71BC /* TradeBook+Worth.m */,
+				57E453EB0F4AD21900DA71BC /* TradeBook+WorthTest.m */,
 				570D842E0F130FA300D54544 /* TradeOrder+Formatting.h */,
 				570D842F0F130FA300D54544 /* TradeOrder+Formatting.m */,
 				570D84320F1312B200D54544 /* TradeOrder+FormattingTest.m */,
@@ -1170,6 +1192,7 @@
 				578268920F2DA2E400B53703 /* RedDownArrow.png in Resources */,
 				57E4516E0F498A8900DA71BC /* AssetBookStocks.xml in Resources */,
 				57E451700F498B7300DA71BC /* AssetBookPortfolio.xml in Resources */,
+				57E4540F0F4AD54600DA71BC /* TradeBookOrders.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1256,6 +1279,8 @@
 				57203EE70F49838000B3A00C /* ZNModelXmlParser.m in Sources */,
 				57E452FE0F4ABC8B00DA71BC /* GameAwareTableViewController.m in Sources */,
 				57E4530F0F4AC1CF00DA71BC /* GameAwareViewController.m in Sources */,
+				57E453CC0F4ACFBC00DA71BC /* TradeBook+Worth.m in Sources */,
+				57E4542A0F4AD83000DA71BC /* TradeBook+Formatting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1398,6 +1423,11 @@
 				57203C0C0F4954D600B3A00C /* SenTestCase+Fixtures.m in Sources */,
 				57203EE80F49838100B3A00C /* ZNModelXmlParser.m in Sources */,
 				57E4524B0F49C0D000DA71BC /* AssetBook+FormattingTest.m in Sources */,
+				57E453CE0F4AD1B200DA71BC /* TradeBook+Worth.m in Sources */,
+				57E454290F4AD83000DA71BC /* TradeBook+Formatting.m in Sources */,
+				57E454370F4AD9FD00DA71BC /* TradeBook.m in Sources */,
+				57E4543A0F4ADA1700DA71BC /* TradeBook+FormattingTest.m in Sources */,
+				57E4543B0F4ADA6000DA71BC /* TradeBook+WorthTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

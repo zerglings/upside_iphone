@@ -20,20 +20,9 @@
 @implementation TradeOrderFormattingTest
 
 -(void)setUp {
-	buyOrder = [[TradeOrder alloc] initWithTicker:@"AAPL"
-                                       quantity:10000
-                               unfilledQuantity:9000
-                                          isBuy:YES
-                                         isLong:YES
-                                     limitPrice:1310.50
-                                        modelId:kTradeOrderInvalidModelId];
-  
-	sellOrder = [[TradeOrder alloc] initWithTicker:@"MSFT"
-                                        quantity:35
-                                unfilledQuantity:35
-                                           isBuy:NO
-                                          isLong:YES
-                                         modelId:6];
+  NSArray* orders = [self fixturesFrom:@"TradeBookOrders.xml"];
+  buyOrder = [[orders objectAtIndex:1] retain];
+  sellOrder = [[orders objectAtIndex:2] retain];
 }
 
 -(void)tearDown {

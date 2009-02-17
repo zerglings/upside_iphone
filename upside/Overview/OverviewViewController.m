@@ -8,10 +8,10 @@
 
 #import "OverviewViewController.h"
 
-#import "AssetBook.h"
 #import "AssetBook+Formatting.h"
 #import "Game.h"
 #import "GameSyncController.h"
+#import "TradeBook+Formatting.h"
 
 
 @interface OverviewViewController ()
@@ -48,7 +48,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  [self updateLastSyncTime];
+  [self newGameData];
 }
 
 -(void)updateLastSyncTime {
@@ -67,10 +67,13 @@
 -(void)newGameData {
   AssetBook* assetBook = [game assetBook];
   StockCache* stockCache = [game stockCache];
+  TradeBook* tradeBook = [game tradeBook];
   
   cashLabel.text = [[assetBook portfolio] formattedCash];
   stockWorthLabel.text = [assetBook formattedStockWorthWithCache:stockCache];
   netWorthLabel.text = [assetBook formattedNetWorthWithCache:stockCache];
+  orderProceedsLabel.text = [tradeBook
+                             formattedOrderProceedsWithCache:stockCache];
   [self updateLastSyncTime];
 }
   

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fixture>
+  <!-- The first order is for the uncached trade book. -->
+  <TradeOrder>
+    <ticker>GOOG</ticker>
+    <quantity>10000</quantity>
+    <unfilledQuantity>9000</unfilledQuantity>
+    <isBuy>YES</isBuy>
+    <isLong>YES</isLong>
+    <limitPrice>1310.50</limitPrice>
+    <modelId>0</modelId>
+  </TradeOrder>
+  <TradeOrder>
+    <ticker>AAPL</ticker>
+    <quantity>10000</quantity>
+    <unfilledQuantity>9000</unfilledQuantity>
+    <isBuy>YES</isBuy>
+    <isLong>YES</isLong>
+    <limitPrice>1310.50</limitPrice>
+    <modelId>0</modelId>
+  </TradeOrder>
+  <TradeOrder>
+    <ticker>MSFT</ticker>
+    <quantity>35</quantity>
+    <unfilledQuantity>35</unfilledQuantity>
+    <isBuy>NO</isBuy>
+    <isLong>YES</isLong>
+    <limitPrice>0</limitPrice>
+    <modelId>6</modelId>
+  </TradeOrder>
+</fixture>

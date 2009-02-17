@@ -31,7 +31,9 @@
   [serverOrders release];
   serverOrders = [newTradeOrders retain];
   for (TradeOrder* order in serverOrders) {
-    if ([order isFilled])
+    if (![order isSubmitted])
+      [pendingOrders addObject:order];
+    else if ([order isFilled])
       [theFilledOrders addObject:order];
     else
       [theSubmittedOrders addObject:order];
