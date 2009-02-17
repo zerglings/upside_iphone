@@ -29,7 +29,6 @@
 		tradeBook = [[TradeBook alloc] init];
     
 		newsCenter = [[NewsCenter alloc] init];
-		stockCache = [[StockCache alloc] init];
     
     ZNTargetActionPair* syncSite =
         [[ZNTargetActionPair alloc] initWithTarget:self
@@ -39,6 +38,8 @@
     orderSubmittingController = [[PendingOrdersSubmittingController alloc]
                                  initWithTradeBook:tradeBook];
     orderSubmittingController.syncSite = syncSite;
+		stockCache = [[StockCache alloc] init];
+    stockCache.syncSite = syncSite;
     [syncSite release];
     
     newDataSite = [[ZNTargetActionSet alloc] init];
