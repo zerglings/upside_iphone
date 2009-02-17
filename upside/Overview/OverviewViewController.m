@@ -74,6 +74,11 @@
   netWorthLabel.text = [assetBook formattedNetWorthWithCache:stockCache];
   orderProceedsLabel.text = [tradeBook
                              formattedOrderProceedsWithCache:stockCache];
+  
+  cashImage.image = nil;
+  stockWorthImage.image = nil;
+  netWorthImage.image = nil;
+  
   [self updateLastSyncTime];
 }
   

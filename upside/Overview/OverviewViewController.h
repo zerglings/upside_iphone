@@ -15,7 +15,9 @@
   IBOutlet UILabel* cashLabel;
   IBOutlet UIImageView* cashImage;
   IBOutlet UILabel* stockWorthLabel;
+  IBOutlet UIImageView* stockWorthImage;
   IBOutlet UILabel* netWorthLabel;
+  IBOutlet UIImageView* netWorthImage;
   IBOutlet UILabel* orderProceedsLabel;
 }
 

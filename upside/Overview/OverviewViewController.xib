@@ -448,6 +448,30 @@
 					</object>
 					<int key="connectionID">34</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">cashImage</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="18474737"/>
+					</object>
+					<int key="connectionID">35</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">netWorthImage</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="638926396"/>
+					</object>
+					<int key="connectionID">36</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">stockWorthImage</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="294204200"/>
+					</object>
+					<int key="connectionID">37</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -702,7 +726,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">34</int>
+			<int key="maxID">37</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -755,8 +779,10 @@
 							<string>cashImage</string>
 							<string>cashLabel</string>
 							<string>lastSyncLabel</string>
+							<string>netWorthImage</string>
 							<string>netWorthLabel</string>
 							<string>orderProceedsLabel</string>
+							<string>stockWorthImage</string>
 							<string>stockWorthLabel</string>
 							<string>userNameLabel</string>
 						</object>
@@ -765,8 +791,10 @@
 							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 						</object>
