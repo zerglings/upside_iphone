@@ -25,9 +25,9 @@
 
 #pragma mark Synchronizing
 
-+(NSArray*)copyObjects: (NSArray*)array
-                  where: (SEL)predicate
-                     is: (id)predicateValue {
++(NSArray*)copyObjects:(NSArray*)array
+                  where:(SEL)predicate
+                     is:(id)predicateValue {
 	NSMutableArray* selectedPositions = [[NSMutableArray alloc] init];
   for (NSObject* object in array) {
     if ([object performSelector:predicate] == predicateValue)
@@ -38,7 +38,7 @@
 	return returnVal;
 }
 
--(void)loadData: (NSArray*)newPositions {
+-(void)loadData:(NSArray*)newPositions {
   NSArray* portfolios = [AssetBook copyObjects:newPositions
                                          where:@selector(class)
                                             is:[Portfolio class]];
@@ -101,11 +101,11 @@
 	return [shortPositions count];
 }
 
--(Position*)longPositionAtIndex: (NSUInteger)index {
+-(Position*)longPositionAtIndex:(NSUInteger)index {
 	return [longPositions objectAtIndex:index];
 }
 
--(Position*)shortPositionAtIndex: (NSUInteger)index {
+-(Position*)shortPositionAtIndex:(NSUInteger)index {
 	return [shortPositions objectAtIndex:index];
 }
 

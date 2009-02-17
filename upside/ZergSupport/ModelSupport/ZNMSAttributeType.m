@@ -14,7 +14,7 @@
 
 @implementation ZNMSAttributeType
 
-+(ZNMSAttributeType*)newTypeFromString: (const char*)encodedType {
++(ZNMSAttributeType*)newTypeFromString:(const char*)encodedType {
 	switch (*encodedType) {
 		case '@':
 			encodedType++;
@@ -42,18 +42,18 @@
 	}
 }
 
--(NSObject*)boxAttribute: (ZNModelDefinitionAttribute*)attribute
-				inInstance: (ZNModel*)instance
-			   forceString: (BOOL)forceString {
+-(NSObject*)boxAttribute:(ZNModelDefinitionAttribute*)attribute
+				inInstance:(ZNModel*)instance
+			   forceString:(BOOL)forceString {
 	NSAssert1(FALSE,
 			  @"Attribute type %s did not implement -boxInstanceVar",
 			  class_getName([self class]));
 	return [NSNull null];
 }
 
--(void)unboxAttribute: (ZNModelDefinitionAttribute*)attribute
-			 inInstance: (ZNModel*)instance
-				   from: (NSObject*)boxedObject {
+-(void)unboxAttribute:(ZNModelDefinitionAttribute*)attribute
+			 inInstance:(ZNModel*)instance
+				   from:(NSObject*)boxedObject {
 	NSAssert1(FALSE,
 			  @"Attribute type %s did not implement -unboxInstanceVar",
 			  class_getName([self class]));

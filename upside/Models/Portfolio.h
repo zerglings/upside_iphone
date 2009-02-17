@@ -18,6 +18,6 @@
 @property (nonatomic, readonly) double cash;
 
 // Convenience initializer for testing.
--(id)initWithCash: (double)cash;
+-(id)initWithCash:(double)cash;
 
 @end

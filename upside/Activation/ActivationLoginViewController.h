@@ -27,6 +27,6 @@
 
 @property (nonatomic, retain) ActivationState* activationState;
 
--(IBAction)loginTapped: (id)sender;
+-(IBAction)loginTapped:(id)sender;
 
 @end

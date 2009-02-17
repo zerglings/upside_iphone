@@ -27,7 +27,7 @@
 	[super dealloc];
 }
 
--(id)initWithItem: (NewsItem*)item markAsRead: (BOOL)isReadValue {
+-(id)initWithItem:(NewsItem*)item markAsRead:(BOOL)isReadValue {
 	return [self initWithModel:item properties:
 			[NSDictionary dictionaryWithObject:[NSNumber
 												numberWithBool:isReadValue]

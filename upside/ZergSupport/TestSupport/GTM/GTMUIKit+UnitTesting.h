@@ -69,20 +69,20 @@
 //
 //  Returns:
 //    an image of the object
-- (CGImageRef)gtm_createUnitTestImage;
+-(CGImageRef)gtm_createUnitTestImage;
 
 //  Encodes the state of an object in a manner suitable for comparing against a master state file
 //  This enables us to determine whether the object is in a suitable state.
 //
 //  Arguments:
 //    inCoder - the coder to encode our state into
-- (void)gtm_unitTestEncodeState:(NSCoder*)inCoder;
+-(void)gtm_unitTestEncodeState:(NSCoder*)inCoder;
 
 //  Returns whether gtm_unitTestEncodeState should recurse into subviews
 //
 //  Returns:
 //    should gtm_unitTestEncodeState pick up subview state.
-- (BOOL)gtm_shouldEncodeStateForSubviews;
+-(BOOL)gtm_shouldEncodeStateForSubviews;
 @end
 
 // Category to help UIImage testing. UIImage can be tested using
@@ -94,14 +94,14 @@
 //
 //  Returns:
 //    an image of the object
-- (CGImageRef)gtm_createUnitTestImage;
+-(CGImageRef)gtm_createUnitTestImage;
 @end
 
 //  A view that allows you to delegate out drawing using the formal 
 //  GTMUnitTestViewDelegate protocol
 //  This is useful when writing up unit tests for visual elements.
 //  Your test will often end up looking like this:
-//  - (void)testFoo {
+//  -(void)testFoo {
 //   GTMAssertDrawingEqualToFile(self, CGSizeMake(200, 200), @"Foo", nil, nil);
 //  }
 //  and your testSuite will also implement the unitTestViewDrawRect method to do
@@ -121,7 +121,7 @@
 //    drawer: the object that will do the drawing via the GTMUnitTestViewDrawer
 //            protocol
 //    contextInfo: 
-- (id)initWithFrame:(CGRect)frame drawer:(id<GTMUnitTestViewDrawer>)drawer contextInfo:(void*)contextInfo;
+-(id)initWithFrame:(CGRect)frame drawer:(id<GTMUnitTestViewDrawer>)drawer contextInfo:(void*)contextInfo;
 
 @end
 
@@ -135,6 +135,6 @@
 //
 //  Args:
 //    rect: the area to draw.
-- (void)gtm_unitTestViewDrawRect:(CGRect)rect contextInfo:(void*)contextInfo;
+-(void)gtm_unitTestViewDrawRect:(CGRect)rect contextInfo:(void*)contextInfo;
 
 @end

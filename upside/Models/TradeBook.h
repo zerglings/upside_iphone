@@ -27,26 +27,26 @@
 -(NSUInteger)pendingCount;
 
 // Information for the filled trade order at the given index.
--(TradeOrder*)filledAtIndex: (NSUInteger)index;
+-(TradeOrder*)filledAtIndex:(NSUInteger)index;
 
 // Information for the submitted trade order at the given index.
--(TradeOrder*)submittedAtIndex: (NSUInteger)index;
+-(TradeOrder*)submittedAtIndex:(NSUInteger)index;
 
 // Information for the trade order pending submission at the given index.
--(TradeOrder*)pendingAtIndex: (NSUInteger)index;
+-(TradeOrder*)pendingAtIndex:(NSUInteger)index;
 
 // Integrates new trade order data from the game server.
--(void)loadData: (NSArray*) tradeOrders;
+-(void)loadData:(NSArray*) tradeOrders;
 
 // Adds a trade order to the submit queue queue.
--(void)queuePendingOrder: (TradeOrder*)order;
+-(void)queuePendingOrder:(TradeOrder*)order;
 
 // The "topmost" pending order (first to be submitted).
 -(TradeOrder*)firstPendingOrder;
 
 // Dequeues a pending order, when the order has been submitted.
--(BOOL)dequeuePendingOrder: (TradeOrder*)pendingOrder
-                   submitted: (TradeOrder*)submittedOrder;
+-(BOOL)dequeuePendingOrder:(TradeOrder*)pendingOrder
+                   submitted:(TradeOrder*)submittedOrder;
 
 // Creates a copy of the pending orders array.
 -(NSArray*)copyPendingOrders;

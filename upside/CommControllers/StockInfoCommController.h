@@ -19,8 +19,8 @@
 	id target;
 }
 
--(id)initWithTarget: (id)target action: (SEL)action;
+-(id)initWithTarget:(id)target action:(SEL)action;
 
--(void)fetchInfoForTickers: (NSArray*)tickers;
+-(void)fetchInfoForTickers:(NSArray*)tickers;
 
 @end

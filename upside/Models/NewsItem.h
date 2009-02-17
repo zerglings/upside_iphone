@@ -43,6 +43,6 @@
 @property (nonatomic, readonly) BOOL isRead;
 
 
--(id)initWithItem: (NewsItem*)item markAsRead: (BOOL)isRead;
+-(id)initWithItem:(NewsItem*)item markAsRead:(BOOL)isRead;
 
 @end

@@ -49,11 +49,11 @@
 
 #pragma mark Convenience Constructors
 
--(id)initWithTicker: (NSString*)ticker
-                 name: (NSString*)name
-               market: (NSString*)market
-             askPrice: (double)askPrice
-             bidPrice: (double)bidPrice
-       lastTradePrice: (double)lastTradePrice
-   previousClosePrice: (double)previousClosePrice;
+-(id)initWithTicker:(NSString*)ticker
+                 name:(NSString*)name
+               market:(NSString*)market
+             askPrice:(double)askPrice
+             bidPrice:(double)bidPrice
+       lastTradePrice:(double)lastTradePrice
+   previousClosePrice:(double)previousClosePrice;
 @end

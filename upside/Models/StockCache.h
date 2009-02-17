@@ -18,6 +18,6 @@
 }
 
 // Information for the stock with the given ticker.
--(Stock*)stockForTicker: (NSString*)stockTicker;
+-(Stock*)stockForTicker:(NSString*)stockTicker;
 
 @end

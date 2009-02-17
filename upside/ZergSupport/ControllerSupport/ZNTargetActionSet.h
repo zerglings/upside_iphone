@@ -19,9 +19,9 @@
 }
 
 // Adds a Target-Action to this cell.
--(void)addTarget: (id)target action: (SEL)action;
+-(void)addTarget:(id)target action:(SEL)action;
 
 // Removes a Target-Action from this cell.
--(void)removeTarget: (id)target action: (SEL)action;
+-(void)removeTarget:(id)target action:(SEL)action;
 
 @end

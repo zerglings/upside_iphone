@@ -46,7 +46,7 @@
 	[commController fetchInfoForTickers:[stocks allKeys]];
 }
 
--(BOOL)integrateResults: (NSArray*)newStocks {
+-(BOOL)integrateResults:(NSArray*)newStocks {
 	for (Stock* stock in newStocks) {
 		// TODO(overmind): merge new model info with what was there before
 		[stocks setObject:stock forKey:[stock ticker]];

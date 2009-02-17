@@ -22,14 +22,14 @@
   [targetActionPairs release];
 }
 
--(void)addTarget: (id)target action: (SEL)action {
+-(void)addTarget:(id)target action:(SEL)action {
   ZNTargetActionPair* pair =
       [[ZNTargetActionPair alloc] initWithTarget:target action:action];
   [targetActionPairs addObject:pair];
   [pair release];
 }
 
--(void)removeTarget: (id)target action: (SEL)action {
+-(void)removeTarget:(id)target action:(SEL)action {
   ZNTargetActionPair* pair =
       [[ZNTargetActionPair alloc] initWithTarget:target action:action];
   [targetActionPairs removeObject:pair];
@@ -44,7 +44,7 @@
   }
 }
 
--(void)performWithObject: (id)object {
+-(void)performWithObject:(id)object {
   for (ZNTargetActionPair* pair in targetActionPairs) {
     NSAssert([pair isKindOfClass:[ZNTargetActionPair class]],
              @"A foreign object managed to sneak in");

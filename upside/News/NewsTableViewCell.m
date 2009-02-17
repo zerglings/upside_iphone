@@ -35,7 +35,7 @@
     [super dealloc];
 }
 
--(void)setFeedTitle: (NSString*)title {
+-(void)setFeedTitle:(NSString*)title {
 	[title retain];
 	[feedTitle release];
 	feedTitle = title;

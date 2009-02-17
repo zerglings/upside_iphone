@@ -16,7 +16,7 @@
   ZNFormFieldFormatter* fieldFormatter;
 }
 
-+(NSData*)copyEncodingFor: (NSDictionary*)dictionary
-        usingFieldFormatter: (ZNFormFieldFormatter*)formatter;
++(NSData*)copyEncodingFor:(NSDictionary*)dictionary
+        usingFieldFormatter:(ZNFormFieldFormatter*)formatter;
 
 @end

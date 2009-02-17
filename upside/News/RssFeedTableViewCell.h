@@ -17,6 +17,6 @@
 	NewsItem* newsItem;
 }
 
--(void)setNewsItem: (NewsItem*)newsItem;
+-(void)setNewsItem:(NewsItem*)newsItem;
 
 @end

@@ -41,7 +41,7 @@ static NSString* kStateFileName = @".ActivationState";
 	return stateData;
 }
 
--(void)unarchiveFromData: (NSData*)data {
+-(void)unarchiveFromData:(NSData*)data {
 	[deviceInfo release];
 	deviceInfo = nil;
 	[user release];
@@ -130,7 +130,7 @@ static NSString* kStateFileName = @".ActivationState";
 }
 
 
--(void)setDeviceInfo: (Device*) theDeviceInfo {
+-(void)setDeviceInfo:(Device*) theDeviceInfo {
 	NSAssert(deviceInfo == nil,
 			 @"Trying to activate twice");
 	NSAssert(theDeviceInfo != nil,

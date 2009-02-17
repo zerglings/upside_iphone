@@ -481,7 +481,7 @@ do { \
     if (a1value == a2value) continue; \
     if ( (@encode(__typeof__(a1value)) == @encode(id)) && \
          (@encode(__typeof__(a2value)) == @encode(id)) && \
-         [(id)a1value isEqual: (id)a2value] ) continue; \
+         [(id)a1value isEqual:(id)a2value] ) continue; \
     [self failWithException:[NSException failureInEqualityBetweenObject: a1value \
                                                               andObject: a2value \
                                                                  inFile: [NSString stringWithUTF8String:__FILE__] \
@@ -947,30 +947,30 @@ do { \
 
 
 @interface NSException (GTMSenTestAdditions)
-+ (NSException *)failureInFile:(NSString *)filename 
++(NSException *)failureInFile:(NSString *)filename 
                         atLine:(int)lineNumber 
                withDescription:(NSString *)formatString, ...;
-+ (NSException *)failureInCondition:(NSString *)condition 
++(NSException *)failureInCondition:(NSString *)condition 
                              isTrue:(BOOL)isTrue 
                              inFile:(NSString *)filename 
                              atLine:(int)lineNumber 
                     withDescription:(NSString *)formatString, ...;
-+ (NSException *)failureInEqualityBetweenObject:(id)left
++(NSException *)failureInEqualityBetweenObject:(id)left
                                       andObject:(id)right
                                          inFile:(NSString *)filename
                                          atLine:(int)lineNumber
                                 withDescription:(NSString *)formatString, ...;
-+ (NSException *)failureInEqualityBetweenValue:(NSValue *)left 
++(NSException *)failureInEqualityBetweenValue:(NSValue *)left 
                                       andValue:(NSValue *)right 
                                   withAccuracy:(NSValue *)accuracy 
                                         inFile:(NSString *)filename 
                                         atLine:(int) ineNumber
                                withDescription:(NSString *)formatString, ...;
-+ (NSException *)failureInRaise:(NSString *)expression 
++(NSException *)failureInRaise:(NSString *)expression 
                          inFile:(NSString *)filename 
                          atLine:(int)lineNumber
                 withDescription:(NSString *)formatString, ...;
-+ (NSException *)failureInRaise:(NSString *)expression 
++(NSException *)failureInRaise:(NSString *)expression 
                       exception:(NSException *)exception 
                          inFile:(NSString *)filename 
                          atLine:(int)lineNumber 
@@ -983,11 +983,11 @@ do { \
   SEL currentSelector_;
 }
 
-- (void)setUp;
-- (void)invokeTest;
-- (void)tearDown;
-- (void)performTest:(SEL)sel;
-- (void)failWithException:(NSException*)exception;
+-(void)setUp;
+-(void)invokeTest;
+-(void)tearDown;
+-(void)performTest:(SEL)sel;
+-(void)failWithException:(NSException*)exception;
 @end
 
 GTM_EXTERN NSString *const SenTestFailureException;

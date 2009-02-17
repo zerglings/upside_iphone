@@ -16,6 +16,6 @@
 	NSString* feedTitle;
 }
 
--(void)setFeedTitle: (NSString*)title;
+-(void)setFeedTitle:(NSString*)title;
 
 @end

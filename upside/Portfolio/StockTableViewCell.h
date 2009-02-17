@@ -33,6 +33,6 @@
 -(Stock*)stockInfo;
 -(Position*)position;
 
--(void)setPosition: (Position*)position stockInfo:(Stock*)stock;
+-(void)setPosition:(Position*)position stockInfo:(Stock*)stock;
 
 @end

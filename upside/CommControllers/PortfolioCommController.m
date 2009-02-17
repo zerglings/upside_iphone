@@ -18,7 +18,7 @@
 
 @implementation PortfolioCommController
 
--(id)initWithTarget: (id)theTarget action: (SEL)theAction {
+-(id)initWithTarget:(id)theTarget action:(SEL)theAction {
 	if ((self = [super init])) {
 		target = theTarget;
 		action = theAction;
@@ -48,7 +48,7 @@
                          action:@selector(processResponse:)];
 }
 
--(void)processResponse: (NSObject*)response {
+-(void)processResponse:(NSObject*)response {
   [NetworkProgress connectionDone];
   [target performSelector:action withObject:response];
 }

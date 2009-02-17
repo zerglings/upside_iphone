@@ -34,7 +34,7 @@
 }
 
 
--(void)registerDeviceUsing: (ActivationState*)theActivationState {
+-(void)registerDeviceUsing:(ActivationState*)theActivationState {
 	activationState = theActivationState;
 	NSString* deviceID = [Device currentDeviceId];
 	
@@ -52,7 +52,7 @@
 	[request release];
 }
 
--(void)serverResponded: (NSArray*)response {
+-(void)serverResponded:(NSArray*)response {
   [NetworkProgress connectionDone];
   
 	if ([response isKindOfClass:[NSError class]]) {

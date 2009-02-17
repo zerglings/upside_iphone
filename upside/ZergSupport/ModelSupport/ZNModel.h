@@ -18,25 +18,25 @@
 #pragma mark Initializers
 
 // Designated initializer.
--(id)initWithModel: (ZNModel*)model properties: (NSDictionary*)dictionary;
+-(id)initWithModel:(ZNModel*)model properties:(NSDictionary*)dictionary;
 
--(id)initWithProperties: (NSDictionary*)dictionary;
+-(id)initWithProperties:(NSDictionary*)dictionary;
 
--(id)initWithModel: (ZNModel*)model;
+-(id)initWithModel:(ZNModel*)model;
 
 #pragma mark Saving Attributes
 
--(NSDictionary*)copyToDictionaryForcingStrings: (BOOL)forceStrings;
+-(NSDictionary*)copyToDictionaryForcingStrings:(BOOL)forceStrings;
 
--(NSMutableDictionary*)copyToMutableDictionaryForcingStrings: (BOOL)forceStrings;
+-(NSMutableDictionary*)copyToMutableDictionaryForcingStrings:(BOOL)forceStrings;
 
--(NSDictionary*)attributeDictionaryForcingStrings: (BOOL)forceStrings;
+-(NSDictionary*)attributeDictionaryForcingStrings:(BOOL)forceStrings;
 
--(NSMutableDictionary*)attributeMutableDictionaryForcingStrings: (BOOL)forceStrings;
+-(NSMutableDictionary*)attributeMutableDictionaryForcingStrings:(BOOL)forceStrings;
 
 #pragma mark Dynamic Instantiation
 
-+(BOOL)isModelClass: (id)maybeModelClass;
++(BOOL)isModelClass:(id)maybeModelClass;
 
 +(NSArray*)allModelClasses;
 

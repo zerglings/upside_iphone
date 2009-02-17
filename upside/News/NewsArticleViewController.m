@@ -63,7 +63,7 @@
 
 @synthesize newsItem;
 
--(void)setNewsItem: (NewsItem*) theNewsItem {
+-(void)setNewsItem:(NewsItem*) theNewsItem {
 	[theNewsItem retain];
 	[newsItem release];
 	newsItem = theNewsItem;
@@ -73,21 +73,21 @@
 										[NSURL URLWithString:[newsItem url]]]];
 }
 
--(void)webViewDidStartLoad: (UIWebView *)webView {
+-(void)webViewDidStartLoad:(UIWebView *)webView {
 	if (!connectionIndicator) {
 		connectionIndicator = YES;
 		[NetworkProgress connectionStarted];
 	}
 }
 
--(void)webViewDidFinishLoad: (UIWebView *)webView {
+-(void)webViewDidFinishLoad:(UIWebView *)webView {
 	if (connectionIndicator) {
 		connectionIndicator = NO;
 		[NetworkProgress connectionDone];		
 	}
 }
 
--(void)webView: (UIWebView *)webView didFailLoadWithError: (NSError *)error {
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
 	if (connectionIndicator) {
 		connectionIndicator = NO;
 		[NetworkProgress connectionDone];		

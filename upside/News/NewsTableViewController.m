@@ -116,7 +116,7 @@
     return -1;
 }
 
--(NSString*)feedTitleForRowAtIndexPath: (NSIndexPath*)indexPath {
+-(NSString*)feedTitleForRowAtIndexPath:(NSIndexPath*)indexPath {
 	AssetBook* portfolio = [[Game sharedGame] assetBook];
 	Position* position;
 	switch (indexPath.section) {
@@ -135,15 +135,15 @@
 	return [AssetBook rssFeedTitleForTicker:[position ticker]];
 }
 
--(UITableViewCell *)tableView: (UITableView *)tableView
-         cellForRowAtIndexPath: (NSIndexPath *)indexPath {    
+-(UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {    
   NewsTableViewCell* cell = (NewsTableViewCell*)[super tableView:tableView
                                            cellForRowAtIndexPath:indexPath];  
   [cell setFeedTitle:[self feedTitleForRowAtIndexPath:indexPath]];
   return cell;
 }
 
--(void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	RssFeedTableViewController *feedController =
       [[RssFeedTableViewController alloc]
        initWithNibName:@"RssFeedTableViewController" bundle:nil];

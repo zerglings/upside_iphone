@@ -21,8 +21,8 @@
   -(UIColor*)colorForCash;  
 
   // Format the stock worth.
-  -(NSString*)formattedStockWorthWithCache: (StockCache*)stockCache;
+  -(NSString*)formattedStockWorthWithCache:(StockCache*)stockCache;
 
   // Format the net worth.
-  -(NSString*)formattedNetWorthWithCache: (StockCache*)stockCache;
+  -(NSString*)formattedNetWorthWithCache:(StockCache*)stockCache;
 @end

@@ -135,9 +135,9 @@ static NSString* kContextObject = @"This is the context";
 	[self checkItems];
 }
 
--(void)parsedItem: (NSDictionary*)itemData
-             name: (NSString*)itemName
-          context: (id)context {
+-(void)parsedItem:(NSDictionary*)itemData
+             name:(NSString*)itemName
+          context:(id)context {
 	STAssertEquals(kContextObject, context,
                  @"Wrong context passed to -parsedItem");
   
@@ -148,8 +148,8 @@ static NSString* kContextObject = @"This is the context";
 	[dupItems addObject:[NSDictionary dictionaryWithDictionary:itemData]];	
 }
 
--(void)parsedModel: (ZNModel*)model
-           context: (id)context {
+-(void)parsedModel:(ZNModel*)model
+           context:(id)context {
 	STAssertEquals(kContextObject, context,
                  @"Wrong context passed to -parsedModel");
   

@@ -84,8 +84,8 @@
     return [[[Game sharedGame] newsCenter] totalNewsForTitle:feedTitle];
 }
 
--(void)setUpCell: (RssFeedTableViewCell*)cell 
-	  forIndexPath: (NSIndexPath*)indexPath {	
+-(void)setUpCell:(RssFeedTableViewCell*)cell 
+	  forIndexPath:(NSIndexPath*)indexPath {	
 	NewsItem* newsItem = [[[Game sharedGame] newsCenter]
 						  newsItemForTitle:feedTitle
 						  atIndex:indexPath.row];
@@ -168,7 +168,7 @@
 
 @synthesize feedTitle;
 
--(void)setFeedTitle: (NSString*) newFeedTitle {
+-(void)setFeedTitle:(NSString*) newFeedTitle {
 	[feedTitle release];
 	feedTitle = [newFeedTitle retain];
 	

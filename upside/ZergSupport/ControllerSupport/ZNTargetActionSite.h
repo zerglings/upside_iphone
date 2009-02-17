@@ -15,5 +15,5 @@
 -(void)perform;
 
 // Performs the actions on the targets, supplying an argument.
--(void)performWithObject: (id)object;
+-(void)performWithObject:(id)object;
 @end

@@ -41,7 +41,7 @@
 -(NSData*)archiveToData;
 
 // Restores previously archived state from an NSData instance.
--(void)unarchiveFromData: (NSData*)data;
+-(void)unarchiveFromData:(NSData*)data;
 
 // Saves state on disk.
 -(void)save;

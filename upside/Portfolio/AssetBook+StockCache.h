@@ -12,5 +12,5 @@
 
 @interface AssetBook (StockCache)
 
--(void)loadTickersIntoStockCache: (StockCache*)stockCache;
+-(void)loadTickersIntoStockCache:(StockCache*)stockCache;
 @end

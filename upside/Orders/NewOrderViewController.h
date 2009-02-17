@@ -36,7 +36,7 @@
   Stock* stockInfo;
 }
 
--(IBAction)orderTypeChanged: (id)sender;
--(IBAction)limitTypeChanged: (id)sender;
+-(IBAction)orderTypeChanged:(id)sender;
+-(IBAction)limitTypeChanged:(id)sender;
 
 @end

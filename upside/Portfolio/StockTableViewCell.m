@@ -47,7 +47,7 @@
 	return stockInfo;
 }
 
--(void)setPosition: (Position*)newPosition stockInfo:(Stock*)newStockInfo {
+-(void)setPosition:(Position*)newPosition stockInfo:(Stock*)newStockInfo {
 	[position release];
 	[stockInfo release];
 	position = [newPosition retain];

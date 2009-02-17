@@ -25,7 +25,7 @@
 
 @implementation GameSyncController
 
--(id)initWithGame: (Game*)theGame {
+-(id)initWithGame:(Game*)theGame {
 	if ((self = [super initWithErrorModelClass:[ServiceError class]
                                 syncInterval:60.0])) {
 		game = theGame;
@@ -48,7 +48,7 @@
 	[commController sync];
 }
 
--(BOOL)integrateResults: (NSArray*)results {
+-(BOOL)integrateResults:(NSArray*)results {
 	NSMutableArray* assets = [[NSMutableArray alloc] init];
 	NSMutableArray* tradeOrders = [[NSMutableArray alloc] init];
 	NSMutableArray* trades = [[NSMutableArray alloc] init];
@@ -74,7 +74,7 @@
 	return YES;
 }
 
--(BOOL)handleServiceError: (ServiceError*)error {
+-(BOOL)handleServiceError:(ServiceError*)error {
 	if ([error isLoginError]) {
 		[loginCommController loginUsing:[ActivationState sharedState]];
     return NO;
@@ -83,7 +83,7 @@
   return YES;
 }
 
--(void)loginFailed: (NSError*)error {
+-(void)loginFailed:(NSError*)error {
 	// TODO(overmind): user changed their password, recover from this
 }
 

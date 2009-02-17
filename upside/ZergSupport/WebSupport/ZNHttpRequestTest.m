@@ -50,7 +50,7 @@
 
 @implementation ZNHttpRequestTest
 
--(void)warmUpHerokuService: (NSString*)herokuService {
+-(void)warmUpHerokuService:(NSString*)herokuService {
   // Issues a request to the testbed, so heroku loads it up on a machine
   [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]];
 }
@@ -95,7 +95,7 @@
 	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
--(void)checkOnlineAndFileResponse: (NSData*)response {
+-(void)checkOnlineAndFileResponse:(NSData*)response {
 	receivedResponse = YES;
 	STAssertFalse([response isKindOfClass:[NSError class]],
                 @"Error occured %@", response);

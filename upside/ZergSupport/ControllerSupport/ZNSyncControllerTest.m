@@ -21,23 +21,23 @@
 }
 @property (nonatomic, readonly) NSTimeInterval responseDelay;
 @property (nonatomic, readonly) NSTimeInterval resumeDelay;
--(id)initWithResponseDelay: (NSTimeInterval)responseDelay;
--(id)initWithResponseDelay: (NSTimeInterval)responseDelay
-               resumeDelay: (NSTimeInterval)resumeDelay;
+-(id)initWithResponseDelay:(NSTimeInterval)responseDelay;
+-(id)initWithResponseDelay:(NSTimeInterval)responseDelay
+               resumeDelay:(NSTimeInterval)resumeDelay;
 @end
 
 @implementation ZNSyncControllerTestModel
 @synthesize responseDelay, resumeDelay;
 
--(id)initWithResponseDelay: (NSTimeInterval)theResponseDelay {
+-(id)initWithResponseDelay:(NSTimeInterval)theResponseDelay {
   return [self initWithModel:nil properties:
           [NSDictionary dictionaryWithObjectsAndKeys:
            [NSNumber numberWithDouble:theResponseDelay], @"responseDelay",
            nil]];
 }
 
--(id)initWithResponseDelay: (NSTimeInterval)theResponseDelay
-               resumeDelay: (NSTimeInterval)theResumeDelay {
+-(id)initWithResponseDelay:(NSTimeInterval)theResponseDelay
+               resumeDelay:(NSTimeInterval)theResumeDelay {
   return [self initWithModel:nil properties:
           [NSDictionary dictionaryWithObjectsAndKeys:
            [NSNumber numberWithDouble:theResponseDelay], @"responseDelay",
@@ -55,9 +55,9 @@
 // Test implementation of CacheController
 @protocol ZNSyncControllerTestDelegate
 -(void)checkSync;
--(void)checkIntegrate: (NSArray*)results;
--(void)checkServiceError: (ZNSyncControllerTestError*)error;
--(void)checkSystemError: (NSError*)error;
+-(void)checkIntegrate:(NSArray*)results;
+-(void)checkServiceError:(ZNSyncControllerTestError*)error;
+-(void)checkSystemError:(NSError*)error;
 @end
 
 
@@ -70,14 +70,14 @@
 @property (nonatomic, readonly, retain) NSArray* scenario;
 @property (nonatomic, readonly) NSInteger currentStep;
 @property (nonatomic, readonly) BOOL pendingResponse;
--(id)initWithScenario: (NSArray*)scenario
-              delegate: (id<ZNSyncControllerTestDelegate>)delegate;
+-(id)initWithScenario:(NSArray*)scenario
+              delegate:(id<ZNSyncControllerTestDelegate>)delegate;
 @end
 
 @implementation ZNSyncControllerTestBox
 @synthesize scenario, currentStep, pendingResponse;
--(id)initWithScenario: (NSArray*)theScenario
-              delegate: (id<ZNSyncControllerTestDelegate>)theDelegate {
+-(id)initWithScenario:(NSArray*)theScenario
+              delegate:(id<ZNSyncControllerTestDelegate>)theDelegate {
   if ((self = [super initWithErrorModelClass:[ZNSyncControllerTestError class]
                                 syncInterval:0.1])) {
     scenario = theScenario;
@@ -106,7 +106,7 @@
   }
 }
 
--(BOOL)integrateResults: (NSArray*)results {
+-(BOOL)integrateResults:(NSArray*)results {
   [delegate checkIntegrate:results];
   pendingResponse = NO;
   currentStep++;
@@ -114,7 +114,7 @@
   return (currentStep < [scenario count]);
 }
 
--(BOOL)handleServiceError: (ZNSyncControllerTestError*)error {
+-(BOOL)handleServiceError:(ZNSyncControllerTestError*)error {
   [delegate checkServiceError:error];
   pendingResponse = NO;
   currentStep++;
@@ -129,7 +129,7 @@
     return (currentStep < [scenario count]);
 }
 
--(void)handleSystemError: (NSError*)error {
+-(void)handleSystemError:(NSError*)error {
   [delegate checkSystemError:error];
   pendingResponse = NO;
   currentStep++;
@@ -152,7 +152,7 @@
   STAssertFalse([testBox pendingResponse],
                 @"Spurious -sync call at step %s", [testBox currentStep]);
 }
--(void)checkIntegrate: (NSArray*)results {
+-(void)checkIntegrate:(NSArray*)results {
   STAssertTrue([testBox pendingResponse],
                @"Spurious -integrate: call at step %s", [testBox currentStep]);
   STAssertEquals(1U, [results count],
@@ -161,7 +161,7 @@
                  [results objectAtIndex:0],
                  @"Wrong result given to -integrate:");
 }
--(void)checkServiceError: (ZNSyncControllerTestError*)error {
+-(void)checkServiceError:(ZNSyncControllerTestError*)error {
   STAssertTrue([testBox pendingResponse],
                @"Spurious -handleServiceError: call at step %s",
                [testBox currentStep]);
@@ -170,7 +170,7 @@
                  @"Wrong error given to -handleServiceError:");
   
 }
--(void)checkSystemError: (NSError*)error {
+-(void)checkSystemError:(NSError*)error {
   STAssertTrue([testBox pendingResponse],
                @"Spurious -handleSystemError: call at step %s",
                [testBox currentStep]);
@@ -205,7 +205,7 @@
                       @"Sync controller didn't update lastSyncTime");
 }
 
--(void)checkCompletedSteps: (NSInteger)steps {
+-(void)checkCompletedSteps:(NSInteger)steps {
   STAssertEquals(steps, [testBox currentStep],
                  @"Test scenario did not complete");
   [self advanceSyncedStep];

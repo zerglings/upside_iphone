@@ -19,8 +19,8 @@
 
 #pragma mark Lifecycle
 
--(id)initWithModelClass: (Class)theModelClass
-            propertyNames: (NSArray*)theModelPropertyNames {
+-(id)initWithModelClass:(Class)theModelClass
+            propertyNames:(NSArray*)theModelPropertyNames {
 	if ((self = [super init])) {
 		parser = [[ZNArrayCsvParser alloc] init];
 		parser.delegate = self;
@@ -45,13 +45,13 @@
 	return parser.context;
 }
 
--(void)setContext: (id)context {
+-(void)setContext:(id)context {
 	parser.context = context;
 }
 
 #pragma mark Parsing
 
--(void)parsedLine: (NSArray*)lineData context: (id)context {
+-(void)parsedLine:(NSArray*)lineData context:(id)context {
 	NSUInteger numValues = [lineData count];
 	NSDictionary* props;
 	if (numValues == numProperties) {
@@ -73,7 +73,7 @@
 	[model release];
 }
 
--(BOOL)parseData: (NSData*)data {
+-(BOOL)parseData:(NSData*)data {
 	return [parser parseData:data];
 }
 

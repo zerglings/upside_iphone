@@ -11,7 +11,7 @@
 
 @implementation AutoRotatingTableViewController
 
--(BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Will rotate any way the user wants us to.
     return YES;
 }
@@ -25,8 +25,8 @@
 	[super viewWillAppear:animated];
 }
 
--(void)willAnimateSecondHalfOfRotationFromInterfaceOrientation: (UIInterfaceOrientation)fromInterfaceOrientation
-													    duration: (NSTimeInterval)duration {
+-(void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+													    duration:(NSTimeInterval)duration {
 	if (![self.wideCellReuseIdentifier
 		  isEqualToString:self.narrowCellReuseIdentifier]) {
 		[(UITableView*)self.view reloadData];
@@ -42,10 +42,10 @@
 @synthesize narrowCellNib;
 @synthesize cellClass;
 
-+(UITableViewCell*)loadCellFromNib: (NSString*)nibName
-					      identifier: (NSString*)identifier
-						       class: (Class)cellClass
-						       owner: (id)owner {
++(UITableViewCell*)loadCellFromNib:(NSString*)nibName
+					      identifier:(NSString*)identifier
+						       class:(Class)cellClass
+						       owner:(id)owner {
 	NSArray* nibContents = [[NSBundle mainBundle] loadNibNamed:nibName
 														 owner:owner
 													   options:nil];

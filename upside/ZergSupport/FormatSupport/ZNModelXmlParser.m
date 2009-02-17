@@ -14,8 +14,8 @@
 
 @interface ZNModelXmlParser () <ZNDictionaryXmlParserDelegate>
 
-+(NSDictionary*)copyParserSchemaFor: (NSDictionary*)responseModels
-                             casing: (ZNFormatterCasing)responseCasing;
++(NSDictionary*)copyParserSchemaFor:(NSDictionary*)responseModels
+                             casing:(ZNFormatterCasing)responseCasing;
 @end
 
 
@@ -23,8 +23,8 @@
 
 #pragma mark Lifecycle
 
--(id)initWithSchema: (NSDictionary*)theSchema
-     documentCasing: (ZNFormatterCasing)documentCasing {
+-(id)initWithSchema:(NSDictionary*)theSchema
+     documentCasing:(ZNFormatterCasing)documentCasing {
   if ((self = [super init])) {
     NSDictionary* parserSchema =
         [ZNModelXmlParser copyParserSchemaFor:theSchema
@@ -45,26 +45,26 @@
 
 @synthesize delegate;
 
--(void)setContext: (id)context {
+-(void)setContext:(id)context {
   parser.context = context; 
 }
 -(id)context {
   return parser.context;
 }
 
--(BOOL)parseData: (NSData*)data {
+-(BOOL)parseData:(NSData*)data {
 	return [parser parseData:data];
 }
--(BOOL)parseURL: (NSURL*)url {
+-(BOOL)parseURL:(NSURL*)url {
 	return [parser parseURL:url];
 }
 
 
 #pragma mark ZNDictionaryXmlParser Delegate
 
--(void)parsedItem: (NSDictionary*)itemData
-             name: (NSString*)itemName
-          context: (id)context {
+-(void)parsedItem:(NSDictionary*)itemData
+             name:(NSString*)itemName
+          context:(id)context {
 	id modelClass = [schema objectForKey:itemName];
 	if ([ZNModel isModelClass:modelClass]) {
 		ZNModel* model = [[modelClass alloc]
@@ -77,8 +77,8 @@
 	}
 }
 
-+(NSDictionary*)copyParserSchemaFor: (NSDictionary*)models
-                             casing: (ZNFormatterCasing)documentCasing {
++(NSDictionary*)copyParserSchemaFor:(NSDictionary*)models
+                             casing:(ZNFormatterCasing)documentCasing {
   ZNFormFieldFormatter* formatter =
   [ZNFormFieldFormatter formatterToPropertiesFrom:documentCasing];
   NSMutableArray* keys = [[NSMutableArray alloc]

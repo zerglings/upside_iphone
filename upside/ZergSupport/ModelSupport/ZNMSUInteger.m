@@ -14,9 +14,9 @@
 
 #pragma mark Boxing
 
--(NSObject*)boxAttribute: (ZNModelDefinitionAttribute*)attribute
-				inInstance: (ZNModel*)instance
-			   forceString: (BOOL)forceString {
+-(NSObject*)boxAttribute:(ZNModelDefinitionAttribute*)attribute
+				inInstance:(ZNModel*)instance
+			   forceString:(BOOL)forceString {
 	NSUInteger value = *((NSInteger*)((uint8_t*)instance +
 									  ivar_getOffset([attribute runtimeIvar])));
 	if (forceString)
@@ -25,9 +25,9 @@
 		return [NSNumber numberWithUnsignedInteger:value];
 }
 
--(void)unboxAttribute: (ZNModelDefinitionAttribute*)attribute
-		 	 inInstance: (ZNModel*)instance
-			       from: (NSObject*)boxedObject {
+-(void)unboxAttribute:(ZNModelDefinitionAttribute*)attribute
+		 	 inInstance:(ZNModel*)instance
+			       from:(NSObject*)boxedObject {
 	NSUInteger value;
 	if ([boxedObject isKindOfClass:[NSString class]]) {
 		NSDecimalNumber* decimal = [[NSDecimalNumber alloc]

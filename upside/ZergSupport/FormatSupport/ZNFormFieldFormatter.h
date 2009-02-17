@@ -17,13 +17,13 @@
 }
 
 // Produces the formatted version of a form field.
--(NSString*)copyFormattedName: (NSString*)name;
+-(NSString*)copyFormattedName:(NSString*)name;
 
 // A formatter that transforms property names to the given casing.
-+(ZNFormFieldFormatter*)formatterFromPropertiesTo: (ZNFormatterCasing)casing;
++(ZNFormFieldFormatter*)formatterFromPropertiesTo:(ZNFormatterCasing)casing;
 
 // A formatter that transforms names in the given casing to property names.
-+(ZNFormFieldFormatter*)formatterToPropertiesFrom: (ZNFormatterCasing)casing;
++(ZNFormFieldFormatter*)formatterToPropertiesFrom:(ZNFormatterCasing)casing;
 
 @end
 

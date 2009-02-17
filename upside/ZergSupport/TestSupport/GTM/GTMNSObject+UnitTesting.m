@@ -198,12 +198,12 @@ BOOL GTMIsObjectStateEqualToStateNamed(id object,
 //    the path if the file exists in your bundle
 //    or nil if no file is found
 //
-- (NSString *)gtm_pathForFileNamed:(NSString*)name extension:(NSString*)extension;
-- (NSString *)gtm_saveToPathForFileNamed:(NSString*)name 
+-(NSString *)gtm_pathForFileNamed:(NSString*)name extension:(NSString*)extension;
+-(NSString *)gtm_saveToPathForFileNamed:(NSString*)name 
                                extension:(NSString*)extension;
-- (CGImageRef)gtm_createUnitTestImage;
+-(CGImageRef)gtm_createUnitTestImage;
 // Returns nil if there is no override
-- (NSString *)gtm_getOverrideDefaultUnitTestSaveToDirectory;
+-(NSString *)gtm_getOverrideDefaultUnitTestSaveToDirectory;
 @end
 
 // This is a keyed coder for storing unit test state data. It is used only by
@@ -217,7 +217,7 @@ BOOL GTMIsObjectStateEqualToStateNamed(id object,
 //
 //  Returns:
 //    NSDictionary with currently stored data.
-- (NSDictionary*)dictionary; 
+-(NSDictionary*)dictionary; 
 @end
 
 // Small utility function for checking to see if a is b +/- 1.
@@ -234,7 +234,7 @@ GTM_INLINE BOOL almostEqual(unsigned char a, unsigned char b) {
 // 
 //  Returns:
 //    self
-- (id)init {
+-(id)init {
   self = [super init];
   if (self != nil) {
     dictionary_ = [[NSMutableDictionary alloc] initWithCapacity:2];
@@ -247,7 +247,7 @@ GTM_INLINE BOOL almostEqual(unsigned char a, unsigned char b) {
 }
 
 // Standard dealloc
-- (void)dealloc {
+-(void)dealloc {
   [dictionary_ release];
   [super dealloc];
 }
@@ -258,7 +258,7 @@ GTM_INLINE BOOL almostEqual(unsigned char a, unsigned char b) {
 //
 //  Arguments:
 //    key - key to check for in dictionary
-- (void)checkForKey:(NSString*)key {
+-(void)checkForKey:(NSString*)key {
   _GTMDevAssert(![dictionary_ objectForKey:key], @"Key already exists for %@", key);
 }
 
@@ -272,7 +272,7 @@ GTM_INLINE BOOL almostEqual(unsigned char a, unsigned char b) {
 //    objv - object to be encoded
 //    key - key to encode it with
 //
-- (void)encodeObject:(id)objv forKey:(NSString *)key {
+-(void)encodeObject:(id)objv forKey:(NSString *)key {
   // Sanity checks
   if (!objv) return;
   [self checkForKey:key];
@@ -319,37 +319,37 @@ GTM_INLINE BOOL almostEqual(unsigned char a, unsigned char b) {
 //    *v - value to encode
 //    key - key to encode it in
 
-- (void)encodeBool:(BOOL)boolv forKey:(NSString *)key {
+-(void)encodeBool:(BOOL)boolv forKey:(NSString *)key {
   [self checkForKey:key];
   [dictionary_ setObject:[NSNumber numberWithBool:boolv] forKey:key];
 }
 
-- (void)encodeInt:(int)intv forKey:(NSString *)key {
+-(void)encodeInt:(int)intv forKey:(NSString *)key {
   [self checkForKey:key];
   [dictionary_ setObject:[NSNumber numberWithInt:intv] forKey:key];
 }
 
-- (void)encodeInt32:(int32_t)intv forKey:(NSString *)key {
+-(void)encodeInt32:(int32_t)intv forKey:(NSString *)key {
   [self checkForKey:key];
   [dictionary_ setObject:[NSNumber numberWithLong:intv] forKey:key];
 }
 
-- (void)encodeInt64:(int64_t)intv forKey:(NSString *)key {
+-(void)encodeInt64:(int64_t)intv forKey:(NSString *)key {
   [self checkForKey:key];
   [dictionary_ setObject:[NSNumber numberWithLongLong:intv] forKey:key];
 }
 
-- (void)encodeFloat:(float)realv forKey:(NSString *)key {
+-(void)encodeFloat:(float)realv forKey:(NSString *)key {
   [self checkForKey:key];
   [dictionary_ setObject:[NSNumber numberWithFloat:realv] forKey:key];
 }
 
-- (void)encodeDouble:(double)realv forKey:(NSString *)key {
+-(void)encodeDouble:(double)realv forKey:(NSString *)key {
   [self checkForKey:key];
   [dictionary_ setObject:[NSNumber numberWithDouble:realv] forKey:key];
 }
 
-- (void)encodeBytes:(const uint8_t *)bytesp 
+-(void)encodeBytes:(const uint8_t *)bytesp 
              length:(unsigned)lenv 
              forKey:(NSString *)key {
   [self checkForKey:key];
@@ -372,14 +372,14 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 
 @implementation NSObject (GTMUnitTestingAdditions)
 
-+ (void)gtm_setUnitTestSaveToDirectory:(NSString*)path {
++(void)gtm_setUnitTestSaveToDirectory:(NSString*)path {
   @synchronized([self class]) {
     [gGTMUnitTestSaveToDirectory autorelease];
     gGTMUnitTestSaveToDirectory = [path copy];
   }
 }
 
-+ (NSString *)gtm_getUnitTestSaveToDirectory {
++(NSString *)gtm_getUnitTestSaveToDirectory {
   NSString *result = nil;
   @synchronized([self class]) {
     if (!gGTMUnitTestSaveToDirectory) {
@@ -410,7 +410,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 }
 
 // Return nil if there is no override
-- (NSString *)gtm_getOverrideDefaultUnitTestSaveToDirectory {
+-(NSString *)gtm_getOverrideDefaultUnitTestSaveToDirectory {
   NSString *result = nil;
 
   // If we have an environment variable that ends in "BUILD_NUMBER" odds are
@@ -456,7 +456,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //    the path if the file exists in your bundle
 //    or nil if no file is found
 //
-- (NSString *)gtm_pathForFileNamed:(NSString*)name 
+-(NSString *)gtm_pathForFileNamed:(NSString*)name 
                          extension:(NSString*)extension {
   NSString *thePath = nil;
   Class bundleClass = [GTMUnitTestingAdditionsBundleFinder class];
@@ -498,7 +498,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
   return thePath;
 }  
 
-- (NSString *)gtm_saveToPathForFileNamed:(NSString*)name 
+-(NSString *)gtm_saveToPathForFileNamed:(NSString*)name 
                                extension:(NSString*)extension {  
   NSString *systemArchitecture = [GTMSystemVersion runtimeArchitecture];
   
@@ -519,7 +519,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 // iPhone uses device colorspace.
 //  Returns:
 //    an CGColorSpaceRef of the object. Caller must release
-- (CGColorSpaceRef)gtm_createUnitTestColorspace {
+-(CGColorSpaceRef)gtm_createUnitTestColorspace {
 #if GTM_IPHONE_SDK
   return CGColorSpaceCreateDeviceRGB();
 #else
@@ -534,7 +534,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //
 //  Returns:
 //    an CGContextRef of the object. Caller must release
-- (CGContextRef)gtm_createUnitTestBitmapContextOfSize:(CGSize)size 
+-(CGContextRef)gtm_createUnitTestBitmapContextOfSize:(CGSize)size 
                                                  data:(unsigned char**)data {
   CGContextRef context = NULL;
   size_t height = size.height;
@@ -567,11 +567,11 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 // To be overridden by subclasses.
 // Returns:
 //  YES if we can do image comparisons for this object type.
-- (BOOL)gtm_areSystemSettingsValidForDoingImage {
+-(BOOL)gtm_areSystemSettingsValidForDoingImage {
   return YES;
 }
 
-- (CFStringRef)gtm_imageUTI {
+-(CFStringRef)gtm_imageUTI {
 #if GTM_IPHONE_SDK
   return kUTTypePNG;
 #else
@@ -585,7 +585,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //
 // Returns
 //  An extension (e.g. "png")
-- (NSString*)gtm_imageExtension {
+-(NSString*)gtm_imageExtension {
   CFStringRef uti = [self gtm_imageUTI];
 #if GTM_IPHONE_SDK
   if (CFEqual(uti, kUTTypePNG)) {
@@ -610,7 +610,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //
 // Returns
 //  NSData for image
-- (NSData*)gtm_imageDataForImage:(CGImageRef)image {
+-(NSData*)gtm_imageDataForImage:(CGImageRef)image {
   NSData *data = nil;
 #if GTM_IPHONE_SDK
   // iPhone support
@@ -658,7 +658,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //  Returns:
 //    YES if the file was successfully saved.
 //
-- (BOOL)gtm_saveToImageNamed:(NSString*)name {
+-(BOOL)gtm_saveToImageNamed:(NSString*)name {
   NSString *newPath = [self gtm_saveToPathForImageNamed:name];
   return [self gtm_saveToImageAt:newPath];
 }
@@ -671,7 +671,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //  Returns:
 //    YES if the file was successfully saved.
 //
-- (BOOL)gtm_saveToImageAt:(NSString*)path {
+-(BOOL)gtm_saveToImageAt:(NSString*)path {
   if (!path) return NO;
   NSData *data = [self gtm_imageRepresentation];
   return [data writeToFile:path atomically:YES];
@@ -683,7 +683,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //
 // Returns:
 //  A CGImageRef that you own, or nil if no image at path
-- (CGImageRef)gtm_createImageUsingPath:(NSString*)path {
+-(CGImageRef)gtm_createImageUsingPath:(NSString*)path {
   CGImageRef imageRef = nil;
 #if GTM_IPHONE_SDK
   UIImage *image = [UIImage imageWithContentsOfFile:path];
@@ -715,7 +715,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //    YES if they are equal, NO is they are not
 //    If diff is non-nil, it will contain an auto-released diff of the images.
 //
-- (BOOL)gtm_compareWithImageAt:(NSString*)path diffImage:(CGImageRef*)diff {
+-(BOOL)gtm_compareWithImageAt:(NSString*)path diffImage:(CGImageRef*)diff {
   BOOL answer = NO;
   if (diff) {
     *diff = nil;
@@ -835,12 +835,12 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //    the path if the image exists in your bundle
 //    or nil if no image to be found
 //
-- (NSString *)gtm_pathForImageNamed:(NSString*)name {
+-(NSString *)gtm_pathForImageNamed:(NSString*)name {
   return [self gtm_pathForFileNamed:name 
                           extension:[self gtm_imageExtension]];
 }
 
-- (NSString *)gtm_saveToPathForImageNamed:(NSString*)name {
+-(NSString *)gtm_saveToPathForImageNamed:(NSString*)name {
   return [self gtm_saveToPathForFileNamed:name 
                                 extension:[self gtm_imageExtension]];
 }
@@ -851,7 +851,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //    a representation of image if successful
 //    nil if failed
 //
-- (NSData *)gtm_imageRepresentation {
+-(NSData *)gtm_imageRepresentation {
   CGImageRef imageRep = [self gtm_createUnitTestImage];
   NSData *data = [self gtm_imageDataForImage:imageRep];
   _GTMDevAssert(data, @"unable to create %@ from %@", [self gtm_imageExtension], self);
@@ -865,7 +865,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //
 // Returns
 //  An extension (e.g. "gtmUTState")
-- (NSString*)gtm_stateExtension {
+-(NSString*)gtm_stateExtension {
   return @"gtmUTState";
 }
 
@@ -881,7 +881,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //  Returns:
 //    YES if the file was successfully saved.
 //
-- (BOOL)gtm_saveToStateNamed:(NSString*)name {
+-(BOOL)gtm_saveToStateNamed:(NSString*)name {
   NSString *newPath = [self gtm_saveToPathForStateNamed:name];
   return [self gtm_saveToStateAt:newPath];
 }
@@ -894,7 +894,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //  Returns:
 //    YES if the file was successfully saved.
 //
-- (BOOL)gtm_saveToStateAt:(NSString*)path {
+-(BOOL)gtm_saveToStateAt:(NSString*)path {
   if (!path) return NO;
   NSDictionary *dictionary = [self gtm_stateRepresentation];
   return [dictionary writeToFile:path atomically:YES];
@@ -909,7 +909,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //  Returns:
 //    YES if they are equal, NO is they are not
 //
-- (BOOL)gtm_compareWithStateAt:(NSString*)path {
+-(BOOL)gtm_compareWithStateAt:(NSString*)path {
   NSDictionary *masterDict = [NSDictionary dictionaryWithContentsOfFile:path];
   _GTMDevAssert(masterDict, @"Unable to create dictionary from %@", path);
   NSDictionary *selfDict = [self gtm_stateRepresentation];
@@ -926,11 +926,11 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //    the path if the state exists in your bundle
 //    or nil if no state to be found
 //
-- (NSString *)gtm_pathForStateNamed:(NSString*)name {
+-(NSString *)gtm_pathForStateNamed:(NSString*)name {
   return [self gtm_pathForFileNamed:name extension:[self gtm_stateExtension]];
 }
 
-- (NSString *)gtm_saveToPathForStateNamed:(NSString*)name {
+-(NSString *)gtm_saveToPathForStateNamed:(NSString*)name {
   return [self gtm_saveToPathForFileNamed:name 
                                 extension:[self gtm_stateExtension]];
 }
@@ -941,7 +941,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //    the encoded state if successful
 //    nil if failed
 //
-- (NSDictionary *)gtm_stateRepresentation {
+-(NSDictionary *)gtm_stateRepresentation {
   NSDictionary *dictionary = nil;
   if ([self conformsToProtocol:@protocol(GTMUnitTestingEncoding)]) {
     id<GTMUnitTestingEncoding> encoder = (id<GTMUnitTestingEncoding>)self;
@@ -960,7 +960,7 @@ static NSString *gGTMUnitTestSaveToDirectory = nil;
 //
 //  Arguments:
 //    inCoder - the coder to encode our state into
-- (void)gtm_unitTestEncodeState:(NSCoder*)inCoder {
+-(void)gtm_unitTestEncodeState:(NSCoder*)inCoder {
   // All impls of gtm_unitTestEncodeState
   // should be calling [super gtm_unitTestEncodeState] as their first action.
   _GTMDevAssert([inCoder isKindOfClass:[GTMUnitTestingKeyedCoder class]], 

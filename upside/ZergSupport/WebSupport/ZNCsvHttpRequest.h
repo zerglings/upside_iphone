@@ -20,29 +20,29 @@
 }
 
 // Convenience method for issuing a request.
-+(void)callService: (NSString*)service
-              method: (NSString*)method
-                data: (NSDictionary*)data
-         fieldCasing: (enum ZNFormatterCasing)fieldCasing
-       responseClass: (Class)modelClass
-  responseProperties: (NSArray*)modelPropertyNames
-              target: (NSObject*)target
-              action: (SEL)action;
++(void)callService:(NSString*)service
+              method:(NSString*)method
+                data:(NSDictionary*)data
+         fieldCasing:(enum ZNFormatterCasing)fieldCasing
+       responseClass:(Class)modelClass
+  responseProperties:(NSArray*)modelPropertyNames
+              target:(NSObject*)target
+              action:(SEL)action;
 
 // Convenience method for issuing a request with snake-cased form fields.
-+(void)callService: (NSString*)service
-              method: (NSString*)method
-                data: (NSDictionary*)data
-       responseClass: (Class)modelClass
-  responseProperties: (NSArray*)modelPropertyNames
-              target: (NSObject*)target
-              action: (SEL)action;
++(void)callService:(NSString*)service
+              method:(NSString*)method
+                data:(NSDictionary*)data
+       responseClass:(Class)modelClass
+  responseProperties:(NSArray*)modelPropertyNames
+              target:(NSObject*)target
+              action:(SEL)action;
 
 // Designated initializer.
--(id)initWithURLRequest: (NSURLRequest*)request
-            responseClass: (Class)modelClass
-       responseProperties: (NSArray*)modelPropertyNames
-                   target: (NSObject*)target
-                   action: (SEL)action;
+-(id)initWithURLRequest:(NSURLRequest*)request
+            responseClass:(Class)modelClass
+       responseProperties:(NSArray*)modelPropertyNames
+                   target:(NSObject*)target
+                   action:(SEL)action;
 
 @end

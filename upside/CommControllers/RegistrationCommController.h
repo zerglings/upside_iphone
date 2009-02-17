@@ -10,7 +10,7 @@
 
 // Communication controller for registering the device with the game server.
 @protocol RegistrationCommDelegate
--(void)activationFailed: (NSError*)error;
+-(void)activationFailed:(NSError*)error;
 -(void)activationSucceeded;
 @end
 
@@ -24,6 +24,6 @@
 }
 
 // Try to register. Sends outcome via a message to the delegate.
--(void)registerDeviceUsing: (ActivationState*)activationState;
+-(void)registerDeviceUsing:(ActivationState*)activationState;
 
 @end

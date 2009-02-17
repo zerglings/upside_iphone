@@ -14,7 +14,7 @@
 
 @interface ZNSyncController ()
 -(void)doScheduledSync;
--(BOOL)processResults: (NSObject*)results;
+-(BOOL)processResults:(NSObject*)results;
 @end
 
 
@@ -22,8 +22,8 @@
 
 @synthesize syncInterval, syncSite, lastSyncTime;
 
--(id)initWithErrorModelClass: (Class)theErrorModelClass
-                  syncInterval: (NSTimeInterval)theSyncInterval {
+-(id)initWithErrorModelClass:(Class)theErrorModelClass
+                  syncInterval:(NSTimeInterval)theSyncInterval {
   if ((self = [super init])) {
     errorModelClass = theErrorModelClass;
     syncInterval = theSyncInterval;
@@ -67,7 +67,7 @@
   [self sync];
 }
 
--(BOOL)processResults: (NSObject*)results {
+-(BOOL)processResults:(NSObject*)results {
   if (![results isKindOfClass:[NSArray class]]) {
     // communication error -- try again later
     NSError* error = [results isKindOfClass:[NSError class]] ?
@@ -91,7 +91,7 @@
     return NO;
 }
 
--(void)receivedResults: (NSObject*)results {
+-(void)receivedResults:(NSObject*)results {
   if ([self processResults:results]) {
     if (!paused && !stopped && needsSyncScheduling) {
       needsSyncScheduling = NO;
@@ -112,16 +112,16 @@
             class_getName([self class]));  
 }
 
--(BOOL)integrateResults: (NSArray*)results {
+-(BOOL)integrateResults:(NSArray*)results {
   NSAssert1(NO, @"CacheController %s did not implement -integrateResults:",
             class_getName([self class]));  
   return YES;
 }
--(BOOL)handleServiceError: (ZNModel*)error {
+-(BOOL)handleServiceError:(ZNModel*)error {
   // by default assume service errors are temporary in nature
   return YES;
 }
--(void)handleSystemError: (NSError*)error {
+-(void)handleSystemError:(NSError*)error {
   return;
 }
 

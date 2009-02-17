@@ -100,7 +100,7 @@
   return [[inputFormatter numberFromString:limitText.text] doubleValue];  
 }
 
--(IBAction)limitTypeChanged: (id)sender {
+-(IBAction)limitTypeChanged:(id)sender {
   if ([self chosenIsLimit]) {
     [limitText setEnabled:YES];
     limitText.text = @"";
@@ -112,7 +112,7 @@
   [self updateEstimatedPrice];  
 }
 
--(IBAction)orderTypeChanged: (id)sender {
+-(IBAction)orderTypeChanged:(id)sender {
   if ([self chosenIsBuy]) {
     limitDescriptionLabel.text = @"Bid";
     [quantityAllButton setHidden:YES];
@@ -183,7 +183,7 @@
   [self updateEstimatedPrice];
 }
 
--(BOOL)textFieldDidEndEditing: (UITextField*)textField {
+-(BOOL)textFieldDidEndEditing:(UITextField*)textField {
   if (textField == tickerText) {
     tickerText.text = [tickerText.text uppercaseString];
     [stockInfoCommController fetchInfoForTickers:
@@ -198,12 +198,12 @@
   return YES;  
 }
 
--(BOOL)textFieldShouldReturn: (UITextField*)textField {
+-(BOOL)textFieldShouldReturn:(UITextField*)textField {
   [textField resignFirstResponder];
   return YES;
 }
 
--(void)touchesEnded: (NSSet*)touches withEvent: (UIEvent*)event {
+-(void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
   [tickerText resignFirstResponder];
   [quantityText resignFirstResponder];
   [limitText resignFirstResponder];
@@ -233,7 +233,7 @@
   [self updatedStockInfo];
 }
 
--(void)validationFailed: (NSString*) message {
+-(void)validationFailed:(NSString*) message {
   UIAlertView* alert = [[UIAlertView alloc]
                         initWithTitle:@"Your order is invalid"
                         message:message
@@ -275,7 +275,7 @@
                                  limitPrice:[self chosenIsLimit]];
 }
 
--(void)tappedPlace: (id)sender {
+-(void)tappedPlace:(id)sender {
   if (![self validate])
     return;
   

@@ -37,7 +37,7 @@ static int MethodSort(const void *a, const void *b) {
 @implementation GTMIPhoneUnitTestDelegate
 
 // Return YES if class is subclass (1 or more generations) of SenTestCase
-- (BOOL)isTestFixture:(Class)aClass {
+-(BOOL)isTestFixture:(Class)aClass {
   BOOL iscase = NO;
   Class testCaseClass = [SenTestCase class];
   Class superclass;
@@ -52,7 +52,7 @@ static int MethodSort(const void *a, const void *b) {
 // Run through all the registered classes and run test methods on any
 // that are subclasses of SenTestCase. Terminate the application upon
 // test completion.
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
+-(void)applicationDidFinishLaunching:(UIApplication *)application {
   [self runTests];
   
   // Using private call to end our tests
@@ -64,7 +64,7 @@ static int MethodSort(const void *a, const void *b) {
 // Run through all the registered classes and run test methods on any
 // that are subclasses of SenTestCase. Print results and run time to
 // the default output.
-- (void)runTests {
+-(void)runTests {
   int count = objc_getClassList(NULL, 0);
   NSMutableData *classData = [NSMutableData dataWithLength:sizeof(Class) * count];
   Class *classes = (Class*)[classData mutableBytes];

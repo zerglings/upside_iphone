@@ -32,7 +32,7 @@
 //  GTMUnitTestViewDelegate protocol above. This is useful when writing up unit
 //  tests for visual elements.
 //  Your test will often end up looking like this:
-//  - (void)testFoo {
+//  -(void)testFoo {
 //   GTMAssertDrawingEqualToFile(self, CGSizeMake(200, 200), @"Foo", nil, nil);
 //  }
 //  and your testSuite will also implement the unitTestViewDrawRect method to do
@@ -41,7 +41,7 @@
 //  the contents of the file Foo.tif to make sure it's valid
 @implementation GTMUnitTestView
 
-- (id)initWithFrame:(CGRect)frame 
+-(id)initWithFrame:(CGRect)frame 
              drawer:(id<GTMUnitTestViewDrawer>)drawer 
         contextInfo:(void*)contextInfo{
   self = [super initWithFrame:frame];
@@ -52,12 +52,12 @@
   return self;
 }
 
-- (void)dealloc {
+-(void)dealloc {
   [drawer_ release];
   [super dealloc];
 }
 
-- (void)drawRect:(CGRect)rect {
+-(void)drawRect:(CGRect)rect {
   [drawer_ gtm_unitTestViewDrawRect:rect contextInfo:contextInfo_];
 }
 
@@ -74,7 +74,7 @@
 //
 //  Returns:
 //    an image of the object
-- (CGImageRef)gtm_createUnitTestImage {
+-(CGImageRef)gtm_createUnitTestImage {
   CALayer* layer = [self layer];
   return [layer gtm_createUnitTestImage];
 }
@@ -85,7 +85,7 @@
 //
 //  Arguments:
 //    inCoder - the coder to encode our state into
-- (void)gtm_unitTestEncodeState:(NSCoder*)inCoder {
+-(void)gtm_unitTestEncodeState:(NSCoder*)inCoder {
   [super gtm_unitTestEncodeState:inCoder];
   [inCoder encodeBool:[self isHidden] forKey:@"ViewIsHidden"];
   CALayer* layer = [self layer];
@@ -108,17 +108,17 @@
 //
 //  Returns:
 //    should gtm_unitTestEncodeState pick up subview state.
-- (BOOL)gtm_shouldEncodeStateForSubviews {
+-(BOOL)gtm_shouldEncodeStateForSubviews {
   return YES;
 }
 
-- (BOOL)gtm_shouldEncodeStateForSublayersOfLayer:(CALayer*)layer {
+-(BOOL)gtm_shouldEncodeStateForSublayersOfLayer:(CALayer*)layer {
   return NO;
 }
 @end
 
 @implementation UIImage (GTMUnitTestingAdditions)
-- (CGImageRef)gtm_createUnitTestImage {
+-(CGImageRef)gtm_createUnitTestImage {
   CGImageRef imageRef = [self CGImage];
   CGImageRetain(imageRef);
   return imageRef;

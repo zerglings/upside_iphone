@@ -39,5 +39,5 @@ enum ZNPropertySetterStrategy {
 @property (nonatomic, readonly) enum ZNPropertySetterStrategy setterStrategy;
 
 +(ZNModelDefinitionAttribute*)newAttributeFromProperty:(objc_property_t)property
-												 ofClass: (Class)klass;
+												 ofClass:(Class)klass;
 @end

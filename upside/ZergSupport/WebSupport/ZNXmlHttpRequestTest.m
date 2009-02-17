@@ -46,7 +46,7 @@
 
 @implementation ZNXmlHttpRequestTest
 
--(void)warmUpHerokuService: (NSString*)herokuService {
+-(void)warmUpHerokuService:(NSString*)herokuService {
   // Issues a request to the testbed, so heroku loads it up on a machine
   [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]];
 }
@@ -82,7 +82,7 @@
 	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
--(void)checkOnlineGetResponse: (NSArray*)responseArray {
+-(void)checkOnlineGetResponse:(NSArray*)responseArray {
 	receivedResponse = YES;
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
@@ -119,7 +119,7 @@
 	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
--(void)checkOnlineResponse: (NSArray*)responseArray {
+-(void)checkOnlineResponse:(NSArray*)responseArray {
 	receivedResponse = YES;
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
@@ -158,7 +158,7 @@
 	STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
--(void)checkFileResponse: (NSArray*)responseArray {
+-(void)checkFileResponse:(NSArray*)responseArray {
 	receivedResponse = YES;	
 	STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);

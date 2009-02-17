@@ -16,7 +16,7 @@
 
 @implementation AssetBook (NetWorth)
 
--(double)stockWorth: (BOOL*)succeeded usingStockCache:(StockCache*)stockCache {
+-(double)stockWorth:(BOOL*)succeeded usingStockCache:(StockCache*)stockCache {
   double stockWorth = 0;
   if (succeeded)
     *succeeded = YES;
@@ -33,7 +33,7 @@
   return stockWorth;
 }
 
--(double)netWorth: (BOOL*)succeeded usingStockCache:(StockCache*)stockCache {
+-(double)netWorth:(BOOL*)succeeded usingStockCache:(StockCache*)stockCache {
   return [self stockWorth: succeeded usingStockCache:stockCache] +
       [portfolio cash];
 }

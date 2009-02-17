@@ -20,7 +20,7 @@ enum ZNFormatterCasing;
 
 #pragma mark Public Interface
 
-+(void)deleteCookiesForService: (NSString*)service;
++(void)deleteCookiesForService:(NSString*)service;
 
 #pragma mark Methods for Subclasses
 
@@ -29,26 +29,26 @@ enum ZNFormatterCasing;
 // in case of success, or an NSError if something went wrong.
 //
 // Subclasses should provide a convenience method like this.
-+(void)callService: (NSString*)service
-              method: (NSString*)method
-                data: (NSDictionary*)data
-         fieldCasing: (enum ZNFormatterCasing)fieldCasing
-              target: (NSObject*)target
-              action: (SEL)action;
++(void)callService:(NSString*)service
+              method:(NSString*)method
+                data:(NSDictionary*)data
+         fieldCasing:(enum ZNFormatterCasing)fieldCasing
+              target:(NSObject*)target
+              action:(SEL)action;
 
 // Designated initializer.
--(id)initWithURLRequest: (NSURLRequest*)request
-                   target: (id)target
-                   action: (SEL)action;
+-(id)initWithURLRequest:(NSURLRequest*)request
+                   target:(id)target
+                   action:(SEL)action;
 
 // Creates a NSURLRequest encapsulating data coming from a model.
 //
 // Subclasses should use this in a convenience method that assembles the request
 // and starts it.
-+(NSURLRequest*)newURLRequestToService: (NSString*)service
-                                  method: (NSString*)method
-                                    data: (NSDictionary*)data
-                             fieldCasing: (enum ZNFormatterCasing)fieldCasing;
++(NSURLRequest*)newURLRequestToService:(NSString*)service
+                                  method:(NSString*)method
+                                    data:(NSDictionary*)data
+                             fieldCasing:(enum ZNFormatterCasing)fieldCasing;
 
 // Subclasses should call this on the assembled request.
 -(void)start;
@@ -57,7 +57,7 @@ enum ZNFormatterCasing;
 -(void)reportData;
 
 // Subclasses can override this to provide custom parsing for the error.
--(void)reportError: (NSError*) error;
+-(void)reportError:(NSError*) error;
 
 @end
 

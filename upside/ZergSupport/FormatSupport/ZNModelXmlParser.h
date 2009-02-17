@@ -29,14 +29,14 @@
 @property (nonatomic, assign) id<ZNModelXmlParserDelegate> delegate;
 
 // Initializes a parser with a schema, which can be used multiple times.
--(id)initWithSchema: (NSDictionary*)schema
-     documentCasing: (ZNFormatterCasing)documentCasing;
+-(id)initWithSchema:(NSDictionary*)schema
+     documentCasing:(ZNFormatterCasing)documentCasing;
 
 // Parses an XML document inside an NSData instance.
--(BOOL)parseData: (NSData*)data;
+-(BOOL)parseData:(NSData*)data;
 
 // Parses an XML document at an URL.
--(BOOL)parseURL: (NSURL*)url;
+-(BOOL)parseURL:(NSURL*)url;
 
 @end
 
@@ -44,11 +44,11 @@
 @protocol ZNModelXmlParserDelegate
 
 // Called after parsing a model out of an XML tag.
--(void)parsedModel: (ZNModel*)model
-           context: (id)context;
+-(void)parsedModel:(ZNModel*)model
+           context:(id)context;
 
 // Called after parsing an item corresponding to a known XML tag with no model.
--(void)parsedItem: (NSDictionary*)itemData
-             name: (NSString*)itemName
-          context: (id)context;
+-(void)parsedItem:(NSDictionary*)itemData
+             name:(NSString*)itemName
+          context:(id)context;
 @end

@@ -12,7 +12,7 @@
 @implementation ZNTargetActionPair
 @synthesize target, action;
 
--(id)initWithTarget: (id)theTarget action: (SEL)theAction {
+-(id)initWithTarget:(id)theTarget action:(SEL)theAction {
   if ((self = [super init])) {
     target = theTarget;
     action = theAction;
@@ -24,7 +24,7 @@
   [super dealloc];
 }
 
-+(id)pairWithTarget: (id)theTarget action: (SEL)theAction {
++(id)pairWithTarget:(id)theTarget action:(SEL)theAction {
   return [[[ZNTargetActionPair alloc] initWithTarget:theTarget
                                               action:theAction] autorelease];
 }
@@ -33,11 +33,11 @@
   [target performSelector:action];
 }
 
--(void)performWithObject: (id)object {
+-(void)performWithObject:(id)object {
   [target performSelector:action withObject:object];
 }
 
--(BOOL)isEqual: (id)other {
+-(BOOL)isEqual:(id)other {
   if (!other || other->isa != self->isa)
     return NO;
   ZNTargetActionPair* otherPair = (ZNTargetActionPair*)other;

@@ -23,13 +23,13 @@
 
 #pragma mark Convenience Initializers
 
--(id)initWithTicker: (NSString*)theTicker
-                 name: (NSString*)theName
-               market: (NSString*)theMarket
-             askPrice: (double)theAskPrice
-             bidPrice: (double)theBidPrice
-       lastTradePrice: (double)theLastTradePrice
-   previousClosePrice: (double)thePreviousClosePrice {
+-(id)initWithTicker:(NSString*)theTicker
+                 name:(NSString*)theName
+               market:(NSString*)theMarket
+             askPrice:(double)theAskPrice
+             bidPrice:(double)theBidPrice
+       lastTradePrice:(double)theLastTradePrice
+   previousClosePrice:(double)thePreviousClosePrice {
 	return [self initWithModel:nil properties:
           [NSDictionary dictionaryWithObjectsAndKeys:
            theTicker, @"ticker",

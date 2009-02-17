@@ -11,9 +11,9 @@
 
 @implementation Position
 
--(id)initWithTicker: (NSString*)theTicker
-			 quantity: (NSUInteger)theQuantity
-			   isLong: (BOOL)theIsLong {
+-(id)initWithTicker:(NSString*)theTicker
+			 quantity:(NSUInteger)theQuantity
+			   isLong:(BOOL)theIsLong {
 	return [self initWithModel:nil properties:
 			[NSDictionary dictionaryWithObjectsAndKeys:
 			 theTicker, @"ticker",
@@ -28,7 +28,7 @@
 	[super dealloc];
 }
 
--(NSComparisonResult)compare: (Position*)other {
+-(NSComparisonResult)compare:(Position*)other {
 	NSComparisonResult tickerCompare = [ticker localizedCompare:[other ticker]];
 	if (tickerCompare != NSOrderedSame)
 		return tickerCompare;

@@ -14,7 +14,7 @@
 #import "ZNMSRegistry.h"
 
 @interface ZNModel ()
--(void)loadFromDictionary: (NSDictionary*)dictionary;
+-(void)loadFromDictionary:(NSDictionary*)dictionary;
 @end
 
 
@@ -25,7 +25,7 @@
 #pragma mark Lifecycle
 
 // Designated initializer.
--(id)initWithModel: (ZNModel*)model properties: (NSDictionary*)dictionary {
+-(id)initWithModel:(ZNModel*)model properties:(NSDictionary*)dictionary {
 	if ((self = [super init])) {
 		if (!model) {
 			[self loadFromDictionary:dictionary];
@@ -41,11 +41,11 @@
 	return self;
 }
 
--(id)initWithProperties: (NSDictionary*)dictionary {
+-(id)initWithProperties:(NSDictionary*)dictionary {
 	return [self initWithModel:nil properties:dictionary];
 }
 
--(id)initWithModel: (ZNModel*)model {
+-(id)initWithModel:(ZNModel*)model {
 	return [self initWithModel:model properties:nil];
 }
 
@@ -56,7 +56,7 @@
 
 #pragma mark Boxing
 
--(void)loadFromDictionary: (NSDictionary*)dictionary {
+-(void)loadFromDictionary:(NSDictionary*)dictionary {
 	NSMutableDictionary* supplementalProps = [[NSMutableDictionary alloc] init];
 
 	ZNModelDefinition* definition = [[ZNMSRegistry sharedRegistry]
@@ -84,7 +84,7 @@
 
 
 
--(NSMutableDictionary*)copyToMutableDictionaryForcingStrings: (BOOL)forceStrings {
+-(NSMutableDictionary*)copyToMutableDictionaryForcingStrings:(BOOL)forceStrings {
 	NSMutableDictionary* attributes = [[NSMutableDictionary alloc]
 						 			   initWithDictionary:props];
 	ZNModelDefinition* definition = [[ZNMSRegistry sharedRegistry]
@@ -104,7 +104,7 @@
 	return attributes;
 }
 
--(NSDictionary*)copyToDictionaryForcingStrings: (BOOL)forceStrings {
+-(NSDictionary*)copyToDictionaryForcingStrings:(BOOL)forceStrings {
 	NSMutableDictionary* attributes =
 	    [self copyToMutableDictionaryForcingStrings:forceStrings];
 	
@@ -114,11 +114,11 @@
 	return dictionary;
 }
 
--(NSDictionary*)attributeDictionaryForcingStrings: (BOOL)forceStrings {
+-(NSDictionary*)attributeDictionaryForcingStrings:(BOOL)forceStrings {
 	return [[self copyToDictionaryForcingStrings:forceStrings] autorelease];
 }
 
--(NSMutableDictionary*)attributeMutableDictionaryForcingStrings: (BOOL)forceStrings {
+-(NSMutableDictionary*)attributeMutableDictionaryForcingStrings:(BOOL)forceStrings {
 	return [[self copyToMutableDictionaryForcingStrings:forceStrings]
 			autorelease];
 }
@@ -134,7 +134,7 @@
 
 #pragma mark Dynamic Instantiation
 
-+(BOOL)isModelClass: (id)maybeModelClass {
++(BOOL)isModelClass:(id)maybeModelClass {
 	// Plain objects.
 	if (![maybeModelClass respondsToSelector:@selector(alloc)])
 		return NO;

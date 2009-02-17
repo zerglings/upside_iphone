@@ -29,9 +29,9 @@
 @property (nonatomic, readonly) ZNMSAttributeType* stringType;
 @property (nonatomic, readonly) ZNMSAttributeType* uintegerType;
 
--(ZNModelDefinition*)definitionForModelClass: (Class)klass;
+-(ZNModelDefinition*)definitionForModelClass:(Class)klass;
 
--(ZNModelDefinition*)definitionForModelClassNamed: (NSString*)className;
+-(ZNModelDefinition*)definitionForModelClassNamed:(NSString*)className;
 
 // The singleton ZNMSRegistry instance.
 +(ZNMSRegistry*)sharedRegistry;

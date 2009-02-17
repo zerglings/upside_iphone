@@ -12,10 +12,10 @@
 
 @interface AssetBook (RSS)
 
-+(NSString*)rssFeedUrlForTicker: (NSString*)ticker;
++(NSString*)rssFeedUrlForTicker:(NSString*)ticker;
 
-+(NSString*)rssFeedTitleForTicker: (NSString*)ticker;
++(NSString*)rssFeedTitleForTicker:(NSString*)ticker;
 
--(void)loadRssFeedsIntoCenter: (NewsCenter*)newsCenter;
+-(void)loadRssFeedsIntoCenter:(NewsCenter*)newsCenter;
 
 @end

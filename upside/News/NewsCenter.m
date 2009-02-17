@@ -60,7 +60,7 @@
 	[super dealloc];
 }
 
--(void)integrateNews: (NSArray*)news {
+-(void)integrateNews:(NSArray*)news {
 	if (![news isKindOfClass:[NSError class]])
 		[newsCenter integrateNews:news forTitle:title];
 	
@@ -93,7 +93,7 @@
 
 @interface NewsCenter ()
 
--(void)startFetchingNewsFor: (NewsCenterFeed*)feedData;
+-(void)startFetchingNewsFor:(NewsCenterFeed*)feedData;
 
 @end
 
@@ -117,9 +117,9 @@
 	[super dealloc];
 }
 
--(void)addTitle: (NSString*)title
-		  withUrl: (NSString*)urlString
-	   andRefresh: (NSTimeInterval)refreshInterval {
+-(void)addTitle:(NSString*)title
+		  withUrl:(NSString*)urlString
+	   andRefresh:(NSTimeInterval)refreshInterval {
 	NSAssert([NSThread mainThread], @"Method called outside main thread");
 	
 	NewsCenterFeed* data = [dataByTitle objectForKey:title];
@@ -140,7 +140,7 @@
 	[self startFetchingNewsFor:data];
 }
 
--(void)removeTitle: (NSString*) title {
+-(void)removeTitle:(NSString*) title {
 	NSAssert([NSThread mainThread], @"Method called outside main thread");
 	
 	NewsCenterFeed* data = [dataByTitle objectForKey:title];
@@ -153,13 +153,13 @@
 	}
 }
 
--(NSUInteger)totalNewsForTitle: (NSString*) title {
+-(NSUInteger)totalNewsForTitle:(NSString*) title {
 	NSAssert([NSThread mainThread], @"Method called outside main thread");
 	
 	return [[[dataByTitle objectForKey:title] uids] count];
 }
 
--(NSUInteger)unreadNewsForTitle: (NSString*) title {
+-(NSUInteger)unreadNewsForTitle:(NSString*) title {
 	NSAssert([NSThread mainThread], @"Method called outside main thread");
 	
 	NSUInteger unread = 0;
@@ -169,12 +169,12 @@
 	return unread;
 }
 
--(NewsItem*)newsItemForTitle: (NSString*)title atIndex: (NSUInteger)index {
+-(NewsItem*)newsItemForTitle:(NSString*)title atIndex:(NSUInteger)index {
 	NewsCenterFeed* data = [dataByTitle objectForKey:title];
 	return [newsByUid objectForKey:[data.uids objectAtIndex:index]];
 }
 
--(void)markAsReadItemWithId: (NSString*) uid {
+-(void)markAsReadItemWithId:(NSString*) uid {
 	NSAssert([NSThread mainThread], @"Method called outside main thread");
 	
 	NewsItem* newItem = [[NewsItem alloc] initWithItem:[newsByUid
@@ -185,7 +185,7 @@
 	[newItem release];
 }
 
--(void)integrateNews: (NSArray*)news forTitle: (NSString*)title {
+-(void)integrateNews:(NSArray*)news forTitle:(NSString*)title {
 	NSAssert([NSThread mainThread], @"Method called outside main thread");
 	
 	NewsCenterFeed* data = [dataByTitle objectForKey:title];
@@ -227,15 +227,15 @@ static NSDictionary* rssModels = nil;
 	return rssModels;
 }
 
--(void)parsedItem: (NSDictionary*)itemData
-			   name: (NSString*)itemName
-			context: (NSObject*)context {
+-(void)parsedItem:(NSDictionary*)itemData
+			   name:(NSString*)itemName
+			context:(NSObject*)context {
 	NewsItem* newsItem = [[NewsItem alloc] initWithProperties:itemData];
 	[(NSMutableArray*)context addObject:newsItem];
 	[newsItem release];		
 }
 
--(void)startFetchingNewsFor: (NewsCenterFeed*)feedData {
+-(void)startFetchingNewsFor:(NewsCenterFeed*)feedData {
 	[feedData retain];
 	[feedData fetchNews];
 }

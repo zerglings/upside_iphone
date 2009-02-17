@@ -61,14 +61,14 @@
 }
 
 
--(IBAction)newAccountTapped: (id)sender {
+-(IBAction)newAccountTapped:(id)sender {
   User* newUser = [[User alloc] initPseudoUser:activationState.deviceInfo];
 	[activationState setUser:newUser];
   [newUser release];  
 	[self switchToLoginView];
 }
 
--(IBAction)loginTapped: (id)sender {
+-(IBAction)loginTapped:(id)sender {
 	[self switchToLoginView];
 }
 

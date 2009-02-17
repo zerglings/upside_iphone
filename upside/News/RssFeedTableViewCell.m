@@ -33,7 +33,7 @@
     [super dealloc];
 }
 
--(void)setNewsItem: (NewsItem*)theNewsItem {
+-(void)setNewsItem:(NewsItem*)theNewsItem {
 	[theNewsItem retain];
 	[newsItem release];
 	newsItem = theNewsItem;

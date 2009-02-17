@@ -35,14 +35,14 @@
 -(NSUInteger)shortPositionCount;
 
 // The long position at the given index.
--(Position*)longPositionAtIndex: (NSUInteger)index;
+-(Position*)longPositionAtIndex:(NSUInteger)index;
 
 // The short position at the given index.
--(Position*)shortPositionAtIndex: (NSUInteger)index;
+-(Position*)shortPositionAtIndex:(NSUInteger)index;
 
 // Reloads the asset book with the given data.
 //
 // The data should consist of Positions and a Portfolio.
--(void)loadData: (NSArray*)newPositions;
+-(void)loadData:(NSArray*)newPositions;
 
 @end

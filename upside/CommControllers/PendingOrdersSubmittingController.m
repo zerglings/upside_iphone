@@ -20,7 +20,7 @@
 
 @implementation PendingOrdersSubmittingController
 
--(id)initWithTradeBook: (TradeBook*)theTradeBook {
+-(id)initWithTradeBook:(TradeBook*)theTradeBook {
   if ((self = [super initWithErrorModelClass:[ServiceError class]
                                 syncInterval:60.0])) {
     tradeBook = theTradeBook;
@@ -52,7 +52,7 @@
 }
 
 
--(BOOL)integrateResults: (NSArray*)results {
+-(BOOL)integrateResults:(NSArray*)results {
   if ([results count] != 1)
     return YES; // communication error in disguise
   
@@ -67,7 +67,7 @@
   return NO;
 }
 
--(BOOL)handleServiceError: (ServiceError*)error {
+-(BOOL)handleServiceError:(ServiceError*)error {
 	if ([error isLoginError]) {
     lastSubmittedOrder = nil;
 		[loginCommController loginUsing:[ActivationState sharedState]];
@@ -85,12 +85,12 @@
   return YES;
 }
     
--(void)handleSystemError: (NSError*)error {
+-(void)handleSystemError:(NSError*)error {
     lastSubmittedOrder = nil;
 }
 
 
--(void)loginFailed: (NSError*)error {
+-(void)loginFailed:(NSError*)error {
 	// TODO(overmind): user changed their password, recover from this
 }
 

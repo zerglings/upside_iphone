@@ -15,14 +15,14 @@
 @synthesize name, getterName, setterName, type, runtimeIvar;
 @synthesize isAtomic, isReadOnly, setterStrategy;
 
--(id)initWithName: (NSString*)theName
-			   type: (ZNMSAttributeType*)theType
-		runtimeIvar: (Ivar)theIvar
-		   isAtomic: (BOOL)theIsAtomic
-		 isReadOnly: (BOOL)theIsReadOnly
-		 getterName: (NSString*)theGetter
-		 setterName: (NSString*)theSetter
-	 setterStrategy: (enum ZNPropertySetterStrategy)theStrategy {
+-(id)initWithName:(NSString*)theName
+			   type:(ZNMSAttributeType*)theType
+		runtimeIvar:(Ivar)theIvar
+		   isAtomic:(BOOL)theIsAtomic
+		 isReadOnly:(BOOL)theIsReadOnly
+		 getterName:(NSString*)theGetter
+		 setterName:(NSString*)theSetter
+	 setterStrategy:(enum ZNPropertySetterStrategy)theStrategy {
 	if ((self = [super init])) {
 		name = [theName retain];
 		getterName = [theGetter retain];
@@ -44,8 +44,8 @@
 	[super dealloc];
 }
 
-+(ZNModelDefinitionAttribute*)newAttributeFromProperty: (objc_property_t)property
-												 ofClass: (Class)klass {
++(ZNModelDefinitionAttribute*)newAttributeFromProperty:(objc_property_t)property
+												 ofClass:(Class)klass {
 	const char* propertyName = property_getName(property);
 	const char* propertyAttributes = property_getAttributes(property);
 	

@@ -18,8 +18,8 @@
 
 #pragma mark Lifecycle
 
--(id)initWithName: (NSString*)theName
-		 attributes: (NSDictionary*)theAttributes {
+-(id)initWithName:(NSString*)theName
+		 attributes:(NSDictionary*)theAttributes {
 	if ((self = [super init])) {
 		name = [theName retain];
 		attributes = [theAttributes retain];
@@ -33,7 +33,7 @@
 	[super dealloc];
 }
 
--(ZNModelDefinitionAttribute*)attributeNamed: (NSString*)attributeName {
+-(ZNModelDefinitionAttribute*)attributeNamed:(NSString*)attributeName {
 	return [attributes objectForKey:attributeName];
 }
 
@@ -45,8 +45,8 @@
 
 #pragma mark ObjC Metadata Parsing
 
-+(objc_property_t*)copyModelPropertiesForClass: (Class)klass
-										outCount: (unsigned int*)outCount {
++(objc_property_t*)copyModelPropertiesForClass:(Class)klass
+										outCount:(unsigned int*)outCount {
 	// Iterate through implemented protocols, see if one of them is named
 	// ClassName_ZNMS.
 	const char* className = class_getName(klass);
@@ -70,7 +70,7 @@
 	return class_copyPropertyList(klass, outCount);
 }
 
-+(ZNModelDefinition*)newDefinitionForClass: (Class)klass {
++(ZNModelDefinition*)newDefinitionForClass:(Class)klass {
 	unsigned int propertyCount;
 	const objc_property_t* properties =
 	    [self copyModelPropertiesForClass:klass outCount:&propertyCount];

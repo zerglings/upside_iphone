@@ -16,7 +16,7 @@
 
 @implementation TradeOrderCommController
 
--(id)initWithTarget: (id)theTarget action: (SEL)theAction {
+-(id)initWithTarget:(id)theTarget action:(SEL)theAction {
 	if ((self = [super init])) {
 		target = theTarget;
 		action = theAction;
@@ -34,7 +34,7 @@
 	[super dealloc];
 }
 
--(void)submitOrder: (TradeOrder*)order {
+-(void)submitOrder:(TradeOrder*)order {
   NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
                            order, @"trade_order", nil];
   [NetworkProgress connectionStarted];
@@ -47,7 +47,7 @@
   [request release];
 }
 
--(void)processResponse: (NSObject*)response {
+-(void)processResponse:(NSObject*)response {
   [NetworkProgress connectionDone];
   [target performSelector:action withObject:response];
 }

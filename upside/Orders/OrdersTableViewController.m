@@ -184,7 +184,7 @@
     [super dealloc];
 }
 
--(void)tappedAddTradeButton: (id)sender {
+-(void)tappedAddTradeButton:(id)sender {
   NewOrderViewController* newOrderViewController =
       [[NewOrderViewController alloc] initWithNibName:@"NewOrderViewController"
                                                bundle:nil];

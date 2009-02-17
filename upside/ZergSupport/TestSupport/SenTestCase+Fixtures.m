@@ -17,7 +17,7 @@
   ZNModelXmlParser* xmlParser;
 }
 
--(NSArray*)parseData: (NSData*)data;
+-(NSArray*)parseData:(NSData*)data;
 
 +(NSDictionary*)parserSchema;
 
@@ -39,7 +39,7 @@
   [super dealloc];
 }
 
--(NSArray*)parseData: (NSData*)data {
+-(NSArray*)parseData:(NSData*)data {
   NSMutableArray* fixtures = [[NSMutableArray alloc] init];
   xmlParser.context = fixtures;
   BOOL parseSuccess = [xmlParser parseData:data];
@@ -67,13 +67,13 @@
   return schema;
 }
 
--(void)parsedModel: (ZNModel*)model
-           context: (id)context {
+-(void)parsedModel:(ZNModel*)model
+           context:(id)context {
   [(NSMutableArray*)context addObject:model];
 }
--(void)parsedItem: (NSDictionary*)itemData
-             name: (NSString*)itemName
-          context: (id)context {
+-(void)parsedItem:(NSDictionary*)itemData
+             name:(NSString*)itemName
+          context:(id)context {
   NSAssert(NO, @"-parsedItem called while parsing fixtures");
 }
 
@@ -83,7 +83,7 @@
 @implementation SenTestCase (Fixtures)
 
 // Loads fixtures (models) from the given file.  
--(NSArray*)fixturesFrom: (NSString*)fileName {
+-(NSArray*)fixturesFrom:(NSString*)fileName {
 	NSString* fixturePath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:fileName];
   NSData* fixtureData = [NSData dataWithContentsOfFile:fixturePath];

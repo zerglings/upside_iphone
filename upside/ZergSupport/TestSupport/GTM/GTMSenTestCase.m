@@ -27,13 +27,13 @@
 #import <stdarg.h>
 
 @interface NSException (GTMSenTestPrivateAdditions)
-+ (NSException *)failureInFile:(NSString *)filename
++(NSException *)failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                         reason:(NSString *)reason;
 @end
 
 @implementation NSException (GTMSenTestPrivateAdditions)
-+ (NSException *)failureInFile:(NSString *)filename
++(NSException *)failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                         reason:(NSString *)reason {
   NSDictionary *userInfo =
@@ -50,7 +50,7 @@
 
 @implementation NSException (GTMSenTestAdditions)
 
-+ (NSException *)failureInFile:(NSString *)filename
++(NSException *)failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                withDescription:(NSString *)formatString, ... {
 
@@ -68,7 +68,7 @@
   return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
 
-+ (NSException *)failureInCondition:(NSString *)condition
++(NSException *)failureInCondition:(NSString *)condition
                              isTrue:(BOOL)isTrue
                              inFile:(NSString *)filename
                              atLine:(int)lineNumber
@@ -89,7 +89,7 @@
   return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
 
-+ (NSException *)failureInEqualityBetweenObject:(id)left
++(NSException *)failureInEqualityBetweenObject:(id)left
                                       andObject:(id)right
                                          inFile:(NSString *)filename
                                          atLine:(int)lineNumber
@@ -111,7 +111,7 @@
   return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
 
-+ (NSException *)failureInEqualityBetweenValue:(NSValue *)left
++(NSException *)failureInEqualityBetweenValue:(NSValue *)left
                                       andValue:(NSValue *)right
                                   withAccuracy:(NSValue *)accuracy
                                         inFile:(NSString *)filename
@@ -141,7 +141,7 @@
   return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
 
-+ (NSException *)failureInRaise:(NSString *)expression
++(NSException *)failureInRaise:(NSString *)expression
                          inFile:(NSString *)filename
                          atLine:(int)lineNumber
                 withDescription:(NSString *)formatString, ... {
@@ -161,7 +161,7 @@
   return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
 
-+ (NSException *)failureInRaise:(NSString *)expression
++(NSException *)failureInRaise:(NSString *)expression
                       exception:(NSException *)exception
                          inFile:(NSString *)filename
                          atLine:(int)lineNumber
@@ -209,18 +209,18 @@ NSString *const SenTestLineNumberKey = @"SenTestLineNumberKey";
 
 @interface SenTestCase (SenTestCasePrivate)
 // our method of logging errors
-+ (void)printException:(NSException *)exception fromTestName:(NSString *)name;
++(void)printException:(NSException *)exception fromTestName:(NSString *)name;
 @end
 
 @implementation SenTestCase
-- (void)failWithException:(NSException*)exception {
+-(void)failWithException:(NSException*)exception {
   [exception raise];
 }
 
-- (void)setUp {
+-(void)setUp {
 }
 
-- (void)performTest:(SEL)sel {
+-(void)performTest:(SEL)sel {
   currentSelector_ = sel;
   @try {
     [self invokeTest];
@@ -231,7 +231,7 @@ NSString *const SenTestLineNumberKey = @"SenTestLineNumberKey";
   }
 }
 
-+ (void)printException:(NSException *)exception fromTestName:(NSString *)name {
++(void)printException:(NSException *)exception fromTestName:(NSString *)name {
   NSDictionary *userInfo = [exception userInfo];
   NSString *filename = [userInfo objectForKey:SenTestFilenameKey];
   NSNumber *lineNumber = [userInfo objectForKey:SenTestLineNumberKey];
@@ -248,7 +248,7 @@ NSString *const SenTestLineNumberKey = @"SenTestLineNumberKey";
   fflush(stderr);
 }
 
-- (void)invokeTest {
+-(void)invokeTest {
   NSException *e = nil;
   @try {
     // Wrap things in autorelease pools because they may
@@ -279,14 +279,14 @@ NSString *const SenTestLineNumberKey = @"SenTestLineNumberKey";
   }
 }
 
-- (void)tearDown {
+-(void)tearDown {
 }
 @end
 
 #endif  // GTM_IPHONE_SDK
 
 @implementation GTMTestCase : SenTestCase
-- (void)invokeTest {
+-(void)invokeTest {
   Class devLogClass = NSClassFromString(@"GTMUnitTestDevLog");
   if (devLogClass) {
     [devLogClass performSelector:@selector(enableTracking)];

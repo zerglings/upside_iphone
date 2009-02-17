@@ -71,7 +71,7 @@
 	STAssertTrue(receivedResponse, @"Did not receive response");
 }
 
--(void)checkResponse: (NSArray*)response {
+-(void)checkResponse:(NSArray*)response {
 	receivedResponse = YES;
 	STAssertFalse([response isKindOfClass:[NSError class]],
 				  @"Fetching stocks failed: %@", [response description]);

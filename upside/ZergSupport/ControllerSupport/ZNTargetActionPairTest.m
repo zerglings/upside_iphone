@@ -53,7 +53,7 @@ static const NSString* kArgumentObject = @"Argument for TargetAction pair";
   STAssertTrue(invoked, @"Pair did not invoke action");  
 }
 
--(void)checkArgument: (NSString*)argument {
+-(void)checkArgument:(NSString*)argument {
   STAssertEqualObjects(kArgumentObject, argument, @"Incorrect argument received");
   invoked = YES;
 }

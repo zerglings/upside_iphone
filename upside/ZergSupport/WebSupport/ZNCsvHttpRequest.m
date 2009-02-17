@@ -19,11 +19,11 @@
 
 #pragma mark Lifecycle
 
--(id)initWithURLRequest: (NSURLRequest*)theRequest
-            responseClass: (Class)modelClass
-       responseProperties: (NSArray*)modelPropertyNames
-                   target: (NSObject*)theTarget
-                   action: (SEL)theAction {
+-(id)initWithURLRequest:(NSURLRequest*)theRequest
+            responseClass:(Class)modelClass
+       responseProperties:(NSArray*)modelPropertyNames
+                   target:(NSObject*)theTarget
+                   action:(SEL)theAction {
 	if ((self = [super initWithURLRequest:theRequest
                                  target:theTarget
                                  action:theAction])) {
@@ -49,14 +49,14 @@
 	[super dealloc];
 }
 
-+(void)callService: (NSString*)service
-              method: (NSString*)method
-                data: (NSDictionary*)data
-         fieldCasing: (ZNFormatterCasing)fieldCasing
-       responseClass: (Class)modelClass
-  responseProperties: (NSArray*)modelPropertyNames
-              target: (NSObject*)target
-              action: (SEL)action {
++(void)callService:(NSString*)service
+              method:(NSString*)method
+                data:(NSDictionary*)data
+         fieldCasing:(ZNFormatterCasing)fieldCasing
+       responseClass:(Class)modelClass
+  responseProperties:(NSArray*)modelPropertyNames
+              target:(NSObject*)target
+              action:(SEL)action {
 	NSURLRequest* urlRequest = [self newURLRequestToService:service
                                                    method:method
                                                      data:data
@@ -72,13 +72,13 @@
 	[request release];
 }
 
-+(void)callService: (NSString*)service
-              method: (NSString*)method
-                data: (NSDictionary*)data
-       responseClass: (Class)modelClass
-  responseProperties: (NSArray*)modelPropertyNames
-              target: (NSObject*)target
-              action: (SEL)action {
++(void)callService:(NSString*)service
+              method:(NSString*)method
+                data:(NSDictionary*)data
+       responseClass:(Class)modelClass
+  responseProperties:(NSArray*)modelPropertyNames
+              target:(NSObject*)target
+              action:(SEL)action {
   return [self callService:service
                     method:method
                       data:data
@@ -91,11 +91,11 @@
 
 #pragma mark Parser Delegates
 
--(void)parsedLine: (NSArray*)lineData context: (id)context {
+-(void)parsedLine:(NSArray*)lineData context:(id)context {
 	[response addObject:lineData];
 }
 
--(void)parsedModel: (ZNModel*)model context: (id)context {
+-(void)parsedModel:(ZNModel*)model context:(id)context {
 	[response addObject:model];
 }
 

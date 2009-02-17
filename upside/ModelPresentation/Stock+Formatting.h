@@ -22,11 +22,11 @@
 -(NSString*)formattedTradePrice;
 
 // Format the value of some stocks, using the ask price.
--(NSString*)formattedValueUsingAskPriceFor: (NSUInteger)stockCount;
+-(NSString*)formattedValueUsingAskPriceFor:(NSUInteger)stockCount;
 // Format the value of some stocks, using the bid price.
--(NSString*)formattedValueUsingBidPriceFor: (NSUInteger)stockCount;
+-(NSString*)formattedValueUsingBidPriceFor:(NSUInteger)stockCount;
 // Format the value of some stocks, using the stock's last trade price.
--(NSString*)formattedValueUsingTradePriceFor: (NSUInteger)stockCount;
+-(NSString*)formattedValueUsingTradePriceFor:(NSUInteger)stockCount;
 
 
 // Format the net change in the stock's ask price.

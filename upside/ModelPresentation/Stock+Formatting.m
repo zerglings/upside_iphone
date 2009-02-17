@@ -39,7 +39,7 @@ static void SetupFormatters() {
 	}
 }
 
-+(NSString*)formattedPrice: (double)price {
++(NSString*)formattedPrice:(double)price {
 	SetupFormatters();
 	return [priceFormatter stringFromNumber:[NSNumber numberWithDouble:price]];
 }
@@ -56,26 +56,26 @@ static void SetupFormatters() {
 	return [Stock formattedPrice:lastTradePrice];
 }
 
-+(NSString*)formatValueFor: (NSUInteger)count
-				  usingPrice: (double)price {
++(NSString*)formatValueFor:(NSUInteger)count
+				  usingPrice:(double)price {
 	SetupFormatters();
 	return [priceFormatter stringFromNumber:[NSNumber numberWithDouble:
 											 (count * price)]];
 }
 
--(NSString*)formattedValueUsingAskPriceFor: (NSUInteger)stockCount {
+-(NSString*)formattedValueUsingAskPriceFor:(NSUInteger)stockCount {
 	return [Stock formatValueFor:stockCount usingPrice:askPrice];
 }
--(NSString*)formattedValueUsingBidPriceFor: (NSUInteger)stockCount {
+-(NSString*)formattedValueUsingBidPriceFor:(NSUInteger)stockCount {
 	return [Stock formatValueFor:stockCount usingPrice:bidPrice];
 }
--(NSString*)formattedValueUsingTradePriceFor: (NSUInteger)stockCount {
+-(NSString*)formattedValueUsingTradePriceFor:(NSUInteger)stockCount {
 	return [Stock formatValueFor:stockCount usingPrice:lastTradePrice];
 }
 
-+(NSString*)formatChange: (double)newPrice
-					  from: (double)oldPrice
-					 point: (BOOL)usePointChange {
++(NSString*)formatChange:(double)newPrice
+					  from:(double)oldPrice
+					 point:(BOOL)usePointChange {
 	SetupFormatters();
 	double change = newPrice - oldPrice;
 	if (!usePointChange) {
@@ -123,8 +123,8 @@ static void SetupFormatters() {
 						 point:YES];
 }
 
-+(UIImage*)imageForChange: (double)currentValue
-					   from: (double)oldValue {
++(UIImage*)imageForChange:(double)currentValue
+					   from:(double)oldValue {
   NSAssert([UIImage imageNamed:@"GreenUpArrow.png"] != nil,
            @"GreenUpArrow.png not available");
   NSAssert([UIImage imageNamed:@"RedDownArrow.png"] != nil,
@@ -137,8 +137,8 @@ static void SetupFormatters() {
 	return nil;
 }
 
-+(UIColor*)colorForChange: (double)currentValue
-					   from: (double)oldValue {
++(UIColor*)colorForChange:(double)currentValue
+					   from:(double)oldValue {
 	if (oldValue < currentValue)
 		return [UIColor colorWithRed:0.0f green:0.5f blue:0.0f alpha:1.0f];
 	if (oldValue > currentValue)

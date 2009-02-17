@@ -13,7 +13,7 @@
 
 @implementation AssetBook (StockCache)
 
--(void)loadTickersIntoStockCache: (StockCache*)stockCache {
+-(void)loadTickersIntoStockCache:(StockCache*)stockCache {
   BOOL needsSync = NO;
 	for (Position* position in positions) {
 		if(![stockCache stockForTicker:[position ticker]])

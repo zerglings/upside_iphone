@@ -18,11 +18,11 @@
 
 #pragma mark Lifecycle
 
--(id)initWithURLRequest: (NSURLRequest*)theRequest
-         responseModels: (NSDictionary*)theResponseModels
-         responseCasing: (ZNFormatterCasing)responseCasing
-                 target: (NSObject*)theTarget
-                 action: (SEL)theAction {
+-(id)initWithURLRequest:(NSURLRequest*)theRequest
+         responseModels:(NSDictionary*)theResponseModels
+         responseCasing:(ZNFormatterCasing)responseCasing
+                 target:(NSObject*)theTarget
+                 action:(SEL)theAction {
 	if ((self = [super initWithURLRequest:theRequest
                                  target:theTarget
                                  action:theAction])) {
@@ -41,14 +41,14 @@
 	[super dealloc];
 }
 
-+(void)callService: (NSString*)service
-            method: (NSString*)method
-              data: (NSDictionary*)data
-       fieldCasing: (ZNFormatterCasing)fieldCasing
-    responseModels: (NSDictionary*)responseModels
-    responseCasing: (ZNFormatterCasing)responseCasing
-            target: (NSObject*)target
-            action: (SEL)action {
++(void)callService:(NSString*)service
+            method:(NSString*)method
+              data:(NSDictionary*)data
+       fieldCasing:(ZNFormatterCasing)fieldCasing
+    responseModels:(NSDictionary*)responseModels
+    responseCasing:(ZNFormatterCasing)responseCasing
+            target:(NSObject*)target
+            action:(SEL)action {
 	NSURLRequest* urlRequest = [self newURLRequestToService:service
                                                    method:method
                                                      data:data
@@ -64,12 +64,12 @@
 	[request release];
 }
 
-+(void)callService: (NSString*)service
-            method: (NSString*)method
-              data: (NSDictionary*)data
-    responseModels: (NSDictionary*)responseModels
-            target: (NSObject*)target
-            action: (SEL)action {
++(void)callService:(NSString*)service
+            method:(NSString*)method
+              data:(NSDictionary*)data
+    responseModels:(NSDictionary*)responseModels
+            target:(NSObject*)target
+            action:(SEL)action {
   return [self callService:service
                     method:method
                       data:data
@@ -82,13 +82,13 @@
 
 #pragma mark ZNModelXmlParser Delegate
 
--(void)parsedItem: (NSDictionary*)itemData
-             name: (NSString*)itemName
-          context: (id)context {
+-(void)parsedItem:(NSDictionary*)itemData
+             name:(NSString*)itemName
+          context:(id)context {
   [response addObject:itemData];  
 }
--(void)parsedModel: (ZNModel*)model
-           context: (id)context {
+-(void)parsedModel:(ZNModel*)model
+           context:(id)context {
   [response addObject:model];
 }
 

@@ -54,7 +54,7 @@
 
 #pragma mark Model Definition Registry
 
--(ZNModelDefinition*)definitionForModelClass: (Class)klass {	
+-(ZNModelDefinition*)definitionForModelClass:(Class)klass {	
 	// TODO(overmind): There has to be a faster way.
 	NSString* className = [NSString stringWithCString:class_getName(klass)];
 
@@ -69,7 +69,7 @@
 	return definition;
 }
 
--(ZNModelDefinition*)definitionForModelClassNamed: (NSString*)className {
+-(ZNModelDefinition*)definitionForModelClassNamed:(NSString*)className {
 	ZNModelDefinition* definition;
 	@synchronized (self) {
 		definition = [modelDefinitions objectForKey:className];

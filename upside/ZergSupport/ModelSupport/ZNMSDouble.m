@@ -14,9 +14,9 @@
 
 #pragma mark Boxing
 
--(NSObject*)boxAttribute: (ZNModelDefinitionAttribute*)attribute
-				inInstance: (ZNModel*)instance
-			   forceString: (BOOL)forceString {
+-(NSObject*)boxAttribute:(ZNModelDefinitionAttribute*)attribute
+				inInstance:(ZNModel*)instance
+			   forceString:(BOOL)forceString {
 	double value = *((double*)((uint8_t*)instance +
 							   ivar_getOffset([attribute runtimeIvar])));
 	if (forceString)
@@ -25,9 +25,9 @@
 		return [NSNumber numberWithDouble:value];
 }
 
--(void)unboxAttribute: (ZNModelDefinitionAttribute*)attribute
-		 	 inInstance: (ZNModel*)instance
-			       from: (NSObject*)boxedObject {
+-(void)unboxAttribute:(ZNModelDefinitionAttribute*)attribute
+		 	 inInstance:(ZNModel*)instance
+			       from:(NSObject*)boxedObject {
 	double value;
 	if ([boxedObject isKindOfClass:[NSString class]])
 		value = [(NSString*)boxedObject doubleValue];

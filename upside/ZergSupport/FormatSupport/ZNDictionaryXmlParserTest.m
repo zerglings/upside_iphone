@@ -113,9 +113,9 @@ static NSString* kContextObject = @"This is the context";
 	[self checkItems];
 }
 
--(void)parsedItem: (NSDictionary*)itemData
-               name: (NSString*)itemName
-            context: (id)context {
+-(void)parsedItem:(NSDictionary*)itemData
+               name:(NSString*)itemName
+            context:(id)context {
 	STAssertEquals(kContextObject, context,
                  @"Wrong context passed to -parsedItem");
   

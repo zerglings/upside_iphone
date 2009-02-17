@@ -28,6 +28,6 @@
 -(BOOL)isValidationError;
 
 // Convenience initializer for testing.
--(id)initWithReason: (NSString*)reason message: (NSString*)error;
+-(id)initWithReason:(NSString*)reason message:(NSString*)error;
 
 @end

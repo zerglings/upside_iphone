@@ -15,7 +15,7 @@
 	id target;
 }
 
--(id)initWithTarget: (id)target action: (SEL)action;
+-(id)initWithTarget:(id)target action:(SEL)action;
 
 -(void)sync;
 

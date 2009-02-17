@@ -12,7 +12,7 @@
 @protocol ZNArrayCsvParserDelegate
 
 // Called when a CSV line is parsed.
--(void)parsedLine: (NSArray*)lineData context: (id)context;
+-(void)parsedLine:(NSArray*)lineData context:(id)context;
 @end
 
 @interface ZNArrayCsvParser : NSObject {
@@ -32,6 +32,6 @@
 -(id)init;
 
 // Parses a CSV document inside a NSData instance.
--(BOOL)parseData: (NSData*) data;
+-(BOOL)parseData:(NSData*) data;
 
 @end

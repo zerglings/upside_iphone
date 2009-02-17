@@ -133,7 +133,7 @@ do { \
 //
 //  Returns:
 //    an CGImageRef of the object. Caller must release
-- (CGImageRef)gtm_createUnitTestImage;
+-(CGImageRef)gtm_createUnitTestImage;
 @end
 
 // GTMUnitTestingEncoding protocol is for objects which need to save their
@@ -146,7 +146,7 @@ do { \
 //
 //  Arguments:
 //    inCoder - the coder to encode our state into
-- (void)gtm_unitTestEncodeState:(NSCoder*)inCoder;
+-(void)gtm_unitTestEncodeState:(NSCoder*)inCoder;
 @end
 
 // Category for saving and comparing object state and image for unit tests
@@ -173,14 +173,14 @@ do { \
 // Allows you to control where the unit test utilities save any files
 // (image or state) that they create on your behalf. By default they
 // will save to the desktop.
-+ (void)gtm_setUnitTestSaveToDirectory:(NSString*)path;
-+ (NSString *)gtm_getUnitTestSaveToDirectory;
++(void)gtm_setUnitTestSaveToDirectory:(NSString*)path;
++(NSString *)gtm_getUnitTestSaveToDirectory;
 
 // Create a CGColorSpaceRef appropriate for using in creating a unit test image
 // iPhone uses device colorspace.
 //  Returns:
 //    an CGColorSpaceRef of the object. Caller must release
-- (CGColorSpaceRef)gtm_createUnitTestColorspace;
+-(CGColorSpaceRef)gtm_createUnitTestColorspace;
 
 // Create a CGBitmapContextRef appropriate for using in creating a unit test 
 // image. If data is non-NULL, returns the buffer that the bitmap is
@@ -190,7 +190,7 @@ do { \
 //
 //  Returns:
 //    an CGContextRef of the object. Caller must release
-- (CGContextRef)gtm_createUnitTestBitmapContextOfSize:(CGSize)size
+-(CGContextRef)gtm_createUnitTestBitmapContextOfSize:(CGSize)size
                                                  data:(unsigned char **)data;
 
 // Checks to see that system settings are valid for doing an image comparison.
@@ -199,24 +199,24 @@ do { \
 //
 // Returns:
 //  YES if we can do image comparisons for this object type.
-- (BOOL)gtm_areSystemSettingsValidForDoingImage;
+-(BOOL)gtm_areSystemSettingsValidForDoingImage;
 
 // Return the type of image to work with. Only valid types on the iPhone
 // are kUTTypeJPEG and kUTTypePNG. MacOS supports several more.
-- (CFStringRef)gtm_imageUTI;
+-(CFStringRef)gtm_imageUTI;
 
 // Return the extension to be used for saving unittest images
 //
 // Returns
 //  An extension (e.g. "png")
-- (NSString*)gtm_imageExtension;
+-(NSString*)gtm_imageExtension;
 
 // Return image data in the format expected for gtm_imageExtension
 // So for a "png" extension I would expect "png" data
 //
 // Returns
 //  NSData for image
-- (NSData*)gtm_imageDataForImage:(CGImageRef)image;
+-(NSData*)gtm_imageDataForImage:(CGImageRef)image;
 
 // Save the unitTestImage to a image file with name 
 // |name|.arch.OSVersionMajor.OSVersionMinor.OSVersionBugfix.extension
@@ -228,7 +228,7 @@ do { \
 //  Returns:
 //    YES if the file was successfully saved.
 //
-- (BOOL)gtm_saveToImageNamed:(NSString*)name;
+-(BOOL)gtm_saveToImageNamed:(NSString*)name;
 
 // Save unitTestImage of |self| to an image file at path |path|. 
 // All non-drawn areas will be transparent.
@@ -239,7 +239,7 @@ do { \
 //  Returns:
 //    YES if the file was successfully saved.
 //
-- (BOOL)gtm_saveToImageAt:(NSString*)path;
+-(BOOL)gtm_saveToImageAt:(NSString*)path;
 
 //  Compares unitTestImage of |self| to the image located at |path|
 //
@@ -252,7 +252,7 @@ do { \
 //    If diff is non-nil, it will contain a diff of the images. Must
 //    be released by caller.
 //
-- (BOOL)gtm_compareWithImageAt:(NSString*)path diffImage:(CGImageRef*)diff;
+-(BOOL)gtm_compareWithImageAt:(NSString*)path diffImage:(CGImageRef*)diff;
 
 //  Find the path for a image by name in your bundle.
 //  Searches for the following:
@@ -276,7 +276,7 @@ do { \
 //    the path if the image exists in your bundle
 //    or nil if no image to be found
 //
-- (NSString *)gtm_pathForImageNamed:(NSString*)name;
+-(NSString *)gtm_pathForImageNamed:(NSString*)name;
 
 // Generates a CGImageRef from the image at |path|
 // Args:
@@ -284,7 +284,7 @@ do { \
 //
 // Returns:
 //  A CGImageRef that you own, or nil if no image at path
-- (CGImageRef)gtm_createImageUsingPath:(NSString*)path;
+-(CGImageRef)gtm_createImageUsingPath:(NSString*)path;
 
 //  Generates a path for a image in the save directory, which is desktop
 //  by default.
@@ -297,7 +297,7 @@ do { \
 //  Returns:
 //    the path
 //
-- (NSString *)gtm_saveToPathForImageNamed:(NSString*)name;
+-(NSString *)gtm_saveToPathForImageNamed:(NSString*)name;
 
 //  Gives us a representation of unitTestImage of |self|.
 //
@@ -305,13 +305,13 @@ do { \
 //    a representation if successful
 //    nil if failed
 //
-- (NSData *)gtm_imageRepresentation;
+-(NSData *)gtm_imageRepresentation;
 
 // Return the extension to be used for saving unittest states
 //
 // Returns
 //  An extension (e.g. "gtmUTState")
-- (NSString*)gtm_stateExtension;
+-(NSString*)gtm_stateExtension;
 
 // Save the encoded unit test state to a state file with name 
 // |name|.arch.OSVersionMajor.OSVersionMinor.OSVersionBugfix.extension
@@ -323,7 +323,7 @@ do { \
 //  Returns:
 //    YES if the file was successfully saved.
 //
-- (BOOL)gtm_saveToStateNamed:(NSString*)name;
+-(BOOL)gtm_saveToStateNamed:(NSString*)name;
 
 //  Save encoded unit test state of |self| to a state file at path |path|.
 //
@@ -333,7 +333,7 @@ do { \
 //  Returns:
 //    YES if the file was successfully saved.
 //
-- (BOOL)gtm_saveToStateAt:(NSString*)path;
+-(BOOL)gtm_saveToStateAt:(NSString*)path;
 
 // Compares encoded unit test state of |self| to the state file located at |path|
 //
@@ -343,7 +343,7 @@ do { \
 //  Returns:
 //    YES if they are equal, NO is they are not
 //
-- (BOOL)gtm_compareWithStateAt:(NSString*)path;
+-(BOOL)gtm_compareWithStateAt:(NSString*)path;
 
 
 // Find the path for a state by name in your bundle.
@@ -368,7 +368,7 @@ do { \
 //    the path if the state exists in your bundle
 //    or nil if no state to be found
 //
-- (NSString *)gtm_pathForStateNamed:(NSString*)name;
+-(NSString *)gtm_pathForStateNamed:(NSString*)name;
 
 //  Generates a path for a state in the save directory, which is desktop
 //  by default.
@@ -381,7 +381,7 @@ do { \
 //  Returns:
 //    the path
 //
-- (NSString *)gtm_saveToPathForStateNamed:(NSString*)name;
+-(NSString *)gtm_saveToPathForStateNamed:(NSString*)name;
 
 //  Gives us the encoded unit test state for |self|
 //
@@ -389,7 +389,7 @@ do { \
 //    the encoded state if successful
 //    nil if failed
 //
-- (NSDictionary *)gtm_stateRepresentation;
+-(NSDictionary *)gtm_stateRepresentation;
 
 //  Encodes the state of an object in a manner suitable for comparing
 //  against a master state file so we can determine whether the
@@ -398,7 +398,7 @@ do { \
 //
 //  Arguments:
 //    inCoder - the coder to encode our state into
-- (void)gtm_unitTestEncodeState:(NSCoder*)inCoder;  
+-(void)gtm_unitTestEncodeState:(NSCoder*)inCoder;  
 @end
 
 // Informal protocol for delegates that wanst to be able to add state info
@@ -407,7 +407,7 @@ do { \
 // Delegate function for unit test objects that have delegates. Delegates have
 // the option of encoding more data into the coder to store their state for
 // unittest usage.
-- (void)gtm_unitTestEncoderWillEncode:(id)sender inCoder:(NSCoder*)inCoder;
+-(void)gtm_unitTestEncoderWillEncode:(id)sender inCoder:(NSCoder*)inCoder;
 @end
 
 // Whenever an object is encoded by the unit test encoder, it send out a

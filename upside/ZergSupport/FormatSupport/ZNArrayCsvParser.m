@@ -30,7 +30,7 @@
 
 #pragma mark CSV Parser
 
--(BOOL)parseData: (NSData*) data {
+-(BOOL)parseData:(NSData*) data {
 	const uint8_t *bytes = [data bytes];
 	const uint8_t *endOfBytes = bytes + [data length];
 		

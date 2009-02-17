@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol LoginCommDelegate
--(void)loginFailed: (NSError*)error;
+-(void)loginFailed:(NSError*)error;
 -(void)loginSucceeded;
 @end
 
@@ -25,7 +25,7 @@
 }
 
 // Try to login. Sends outcome via a message to the delegate.
--(void)loginUsing: (ActivationState*)activationState;
+-(void)loginUsing:(ActivationState*)activationState;
 
 @property (nonatomic, assign) id<LoginCommDelegate> delegate;
 

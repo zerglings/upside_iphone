@@ -44,7 +44,7 @@
 }
 
 
--(BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 
@@ -65,7 +65,7 @@
 
 #pragma mark Aborting
 
--(IBAction)abortTapped: (id)sender {
+-(IBAction)abortTapped:(id)sender {
 	UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:@"Exit and try again later?"
 													   delegate:self
 											  cancelButtonTitle:@"No"
@@ -76,7 +76,7 @@
 	[sheet release];
 }
 
--(void)actionSheet: (UIActionSheet*)actionSheet didDismissWithButtonIndex: (NSInteger)buttonIndex {
+-(void)actionSheet:(UIActionSheet*)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	if (buttonIndex == 0) { // the "Yes" button
 		[self exitApplication];
 	}
@@ -91,7 +91,7 @@
 	 applicationDidFinishLaunching:[UIApplication sharedApplication]];
 }
 
--(void)activationFailed: (NSError*)error {
+-(void)activationFailed:(NSError*)error {
 	NSString* title = [error localizedDescription];
 	NSString* message = [error localizedFailureReason];
 	if (!message) {
@@ -117,7 +117,7 @@
 	[alertView release];
 }
 
--(void)alertView: (UIAlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex {
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (buttonIndex == 0) {
 		[self exitApplication];
 	}

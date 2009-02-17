@@ -16,7 +16,7 @@
 
 @implementation ZNFormFieldFormatterSnake2LCamel
 
--(NSString*)copyFormattedName: (NSString*)name {
+-(NSString*)copyFormattedName:(NSString*)name {
   NSUInteger nameLength = [name length];
   unichar* nameChars = (unichar*)calloc(nameLength, sizeof(unichar));
   [name getCharacters:nameChars];
@@ -47,7 +47,7 @@
 
 @implementation ZNFormFieldFormatterLCamel2Snake
 
--(NSString*)copyFormattedName: (NSString*)name {
+-(NSString*)copyFormattedName:(NSString*)name {
   NSMutableString* formattedName = [[NSMutableString alloc] init];
   NSUInteger nameLength = [name length];
   unichar* nameChars = (unichar*)calloc(nameLength, sizeof(unichar));

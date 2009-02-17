@@ -20,6 +20,6 @@
 
 
 // Designated initializer.
--(id)initWithGame: (Game*)game;
+-(id)initWithGame:(Game*)game;
 
 @end

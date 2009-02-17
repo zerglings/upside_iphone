@@ -26,11 +26,11 @@
 @property (nonatomic, readonly) BOOL isLong;
 
 // Convenience initializer for testing.
--(id)initWithTicker: (NSString*)ticker
-			 quantity: (NSUInteger)quantity
-			   isLong: (BOOL)isLong;
+-(id)initWithTicker:(NSString*)ticker
+			 quantity:(NSUInteger)quantity
+			   isLong:(BOOL)isLong;
 
 // Comparator for sorting positions.
--(NSComparisonResult)compare: (Position*)other;
+-(NSComparisonResult)compare:(Position*)other;
 
 @end

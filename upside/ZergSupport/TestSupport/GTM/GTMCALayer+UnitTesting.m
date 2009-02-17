@@ -33,7 +33,7 @@
 //
 //  Returns:
 //    an image of the object
-- (CGImageRef)gtm_createUnitTestImage {
+-(CGImageRef)gtm_createUnitTestImage {
   CGRect bounds = [self bounds];
   CGSize size = CGSizeMake(CGRectGetWidth(bounds), CGRectGetHeight(bounds));
   CGContextRef context = [self gtm_createUnitTestBitmapContextOfSize:size
@@ -57,7 +57,7 @@
 //
 //  Arguments:
 //    inCoder - the coder to encode our state into
-- (void)gtm_unitTestEncodeState:(NSCoder*)inCoder {
+-(void)gtm_unitTestEncodeState:(NSCoder*)inCoder {
   [super gtm_unitTestEncodeState:inCoder];
   [inCoder encodeBool:[self isHidden] forKey:@"LayerIsHidden"];
   [inCoder encodeBool:[self isDoubleSided] forKey:@"LayerIsDoublesided"];
@@ -78,7 +78,7 @@
 //
 //  Returns:
 //    should gtm_unitTestEncodeState pick up sublayer state.
-- (BOOL)gtm_shouldEncodeStateForSublayers {
+-(BOOL)gtm_shouldEncodeStateForSublayers {
   BOOL value = YES;
   if([self.delegate respondsToSelector:@selector(gtm_shouldEncodeStateForSublayersOfLayer:)]) {
     value = [self.delegate gtm_shouldEncodeStateForSublayersOfLayer:self];

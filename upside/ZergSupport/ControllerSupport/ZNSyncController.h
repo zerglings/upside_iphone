@@ -33,8 +33,8 @@
 @property (nonatomic, retain) id<ZNTargetActionSite> syncSite;
 
 // Designated initializer.
--(id)initWithErrorModelClass: (Class)errorModelClass
-                  syncInterval: (NSTimeInterval)syncInterval;
+-(id)initWithErrorModelClass:(Class)errorModelClass
+                  syncInterval:(NSTimeInterval)syncInterval;
 
 // Called by cache clients to start the periodic syncing.
 -(void)startSyncing;
@@ -47,7 +47,7 @@
 
 // Subclasses should configure their communication controllers to invoke this
 // method to report results.
--(void)receivedResults: (NSObject*)results;
+-(void)receivedResults:(NSObject*)results;
 
 // Subclasses should override this method to issue a communication request.
 -(void)sync;
@@ -56,15 +56,15 @@
 // can return NO to indicate an error has occured, and periodic syncing should
 // stop. In that case, implementations must call -resumeSyncing to resume
 // periodic syncing once the error is handled.
--(BOOL)integrateResults: (NSArray*)results;
+-(BOOL)integrateResults:(NSArray*)results;
 
 // Subclasses can override this method to handle an error returned by the
 // service. The return value has the same semantics as for the
 // -integrateResults: method.
--(BOOL)handleServiceError: (ZNModel*)error;
+-(BOOL)handleServiceError:(ZNModel*)error;
 
 // Subclasses should override this method to handle a system error.
--(void)handleSystemError: (NSError*)error;
+-(void)handleSystemError:(NSError*)error;
 
 // Called by subclasses to resume periodic syncing stopped when
 // -integrateResults: returns false.

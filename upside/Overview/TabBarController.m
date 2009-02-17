@@ -55,8 +55,8 @@
     [super dealloc];
 }
 
-+(UITabBarController*)loadFromNib: (NSString*)nibName
-	  						  owner: (UpsideAppDelegate*)owner {
++(UITabBarController*)loadFromNib:(NSString*)nibName
+	  						  owner:(UpsideAppDelegate*)owner {
 	NSArray* nibContents = [[NSBundle mainBundle] loadNibNamed:nibName
 														 owner:owner
 													   options:nil];

@@ -27,6 +27,6 @@
 
 -(TradeOrder*)order;
 -(Stock*)stock;
--(void)setOrder: (TradeOrder*)order forStock: (Stock*)stock;
+-(void)setOrder:(TradeOrder*)order forStock:(Stock*)stock;
 
 @end

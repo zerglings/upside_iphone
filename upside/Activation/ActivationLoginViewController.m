@@ -86,7 +86,7 @@
 		[activityIndicator stopAnimating];
 }
 
--(IBAction)loginTapped: (id)sender {
+-(IBAction)loginTapped:(id)sender {
 	User* newUser = [[User alloc] initWithName:userNameText.text
                                     password:passwordText.text];
 	activationState.user = newUser;
@@ -95,7 +95,7 @@
 	[self flipControls];
 }
 
--(BOOL)textFieldShouldReturn: (UITextField *)textField {
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
 	[textField resignFirstResponder];
 	if (textField == userNameText) {
 		[passwordText becomeFirstResponder];
@@ -103,7 +103,7 @@
 	return YES;
 }
 
--(void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   for (UIView* view in self.view.subviews) {
     if ([view isKindOfClass:[UITextField class]])
       [view resignFirstResponder];
@@ -118,7 +118,7 @@
 	 applicationDidFinishLaunching:[UIApplication sharedApplication]];
 }
 
--(void)loginFailed: (NSError*)error {
+-(void)loginFailed:(NSError*)error {
 	NSString* title = [error localizedDescription];
 	NSString* message = [error localizedFailureReason];
 	if (!message) {
@@ -144,7 +144,7 @@
 	[alertView release];
 }
 
--(void)alertView: (UIAlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex {
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	switch (buttonIndex) {
 		case 0: {
 			User* rollbackUser = [[User alloc] initWithUser:activationState.user

@@ -24,7 +24,7 @@
 
 #pragma mark Synchronizing
 
--(void)loadData: (NSArray*)newTradeOrders {
+-(void)loadData:(NSArray*)newTradeOrders {
   NSMutableArray* theFilledOrders = [[NSMutableArray alloc] init];
   NSMutableArray* theSubmittedOrders = [[NSMutableArray alloc] init];
   
@@ -77,21 +77,21 @@
   return [pendingOrders count];
 }
 
--(TradeOrder*)filledAtIndex: (NSUInteger)index {
+-(TradeOrder*)filledAtIndex:(NSUInteger)index {
   return [filledOrders objectAtIndex:index];
 }
 
--(TradeOrder*)submittedAtIndex: (NSUInteger)index {
+-(TradeOrder*)submittedAtIndex:(NSUInteger)index {
   return [submittedOrders objectAtIndex:index];
 }
 
--(TradeOrder*)pendingAtIndex: (NSUInteger)index {
+-(TradeOrder*)pendingAtIndex:(NSUInteger)index {
   return [pendingOrders objectAtIndex:index];
 }
 
 #pragma mark Order Submission Queue
 
--(void)queuePendingOrder: (TradeOrder*)order {
+-(void)queuePendingOrder:(TradeOrder*)order {
   [pendingOrders addObject:order];
 }
 
@@ -99,7 +99,7 @@
   return [pendingOrders count] ? [pendingOrders objectAtIndex:0] : nil;
 }
 
--(BOOL)dequeuePendingOrder: (TradeOrder*)order
+-(BOOL)dequeuePendingOrder:(TradeOrder*)order
                    submitted:(TradeOrder*)submittedOrder {
   NSUInteger orderIndex = [pendingOrders indexOfObject:order];
   if (orderIndex == NSNotFound)

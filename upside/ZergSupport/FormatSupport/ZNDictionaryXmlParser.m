@@ -15,7 +15,7 @@
 
 #pragma mark Lifecycle
 
--(id)initWithSchema: (NSDictionary*) theSchema {
+-(id)initWithSchema:(NSDictionary*) theSchema {
 	if ((self = [super init])) {
 		schema = [theSchema retain];
 		
@@ -58,7 +58,7 @@
 	parser = nil;
 }
 
--(BOOL)parseData: (NSData*)data {
+-(BOOL)parseData:(NSData*)data {
 	parser = [[NSXMLParser alloc] initWithData:data];
 	parser.delegate = self;
 	BOOL success = [parser parse];
@@ -66,7 +66,7 @@
 	return success;
 }
 
--(BOOL)parseURL: (NSURL*)url {
+-(BOOL)parseURL:(NSURL*)url {
 	parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
 	parser.delegate = self;
 	BOOL success = [parser parse];
@@ -76,8 +76,8 @@
 
 #pragma mark Schema management
 
--(void)loadSchemaDirective: (NSObject*)schemaDirective
-                     forName: (NSString*)name {
+-(void)loadSchemaDirective:(NSObject*)schemaDirective
+                     forName:(NSString*)name {
   currentItemName = [name retain];
   
   if ([schemaDirective isKindOfClass:[NSArray class]]) {
@@ -103,11 +103,11 @@
 
 #pragma mark NSXMLParser Delegate
 
--(void)parser: (NSXMLParser *)parser
-didStartElement: (NSString *)elementName
-   namespaceURI: (NSString *)namespaceURI
-  qualifiedName: (NSString *)qName
-     attributes: (NSDictionary *)attributeDict {
+-(void)parser:(NSXMLParser *)parser
+didStartElement:(NSString *)elementName
+   namespaceURI:(NSString *)namespaceURI
+  qualifiedName:(NSString *)qName
+     attributes:(NSDictionary *)attributeDict {
 	if (currentItemName != nil) {
 		// already parsing an item, see if it's among the keys
 		if (currentItemHasOpenSchema || [currentItemSchema containsObject:
@@ -121,16 +121,16 @@ didStartElement: (NSString *)elementName
 	}
 }
 
--(void)parser: (NSXMLParser *)parser foundCharacters: (NSString *)string {
+-(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
 	if (currentProperty != nil) {
 		[currentValue appendString:string];
 	}
 }
 
--(void)parser: (NSXMLParser *)parser
-  didEndElement: (NSString *)elementName
-   namespaceURI: (NSString *)namespaceURI
-  qualifiedName: (NSString *)qName {
+-(void)parser:(NSXMLParser *)parser
+  didEndElement:(NSString *)elementName
+   namespaceURI:(NSString *)namespaceURI
+  qualifiedName:(NSString *)qName {
 	if (currentProperty != nil) {
 		// parsing a property
 		if ([currentProperty isEqualToString:elementName]) {

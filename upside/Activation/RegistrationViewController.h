@@ -20,6 +20,6 @@
 
 @property (nonatomic, retain) ActivationState* activationState;
 
--(IBAction)abortTapped: (id)sender;
+-(IBAction)abortTapped:(id)sender;
 
 @end

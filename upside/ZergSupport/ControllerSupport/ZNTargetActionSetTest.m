@@ -31,9 +31,9 @@ static const NSString* kArgumentObject = @"Action argument";
 -(void)three {
   invokedThree = YES;
 }
--(void)checkStateOne: (BOOL)expectedOne
-                  two: (BOOL)expectedTwo
-                three: (BOOL)expectedThree {
+-(void)checkStateOne:(BOOL)expectedOne
+                  two:(BOOL)expectedTwo
+                three:(BOOL)expectedThree {
   STAssertEquals(expectedOne, invokedOne,
                  @"-one wasn't invoked as expected");
   STAssertEquals(expectedTwo, invokedTwo,
@@ -85,7 +85,7 @@ static const NSString* kArgumentObject = @"Action argument";
   [self checkStateOne:YES two:NO three:NO];
 }
 
--(void)checkArgument: (NSString*)argument {
+-(void)checkArgument:(NSString*)argument {
   NSLog(@"Argument: %@\n", argument);
   
   STAssertEqualObjects(kArgumentObject, argument, @"Incorrect argument received");

@@ -15,7 +15,7 @@
 }
 
 // Loads the controller from a nib containing the tab bar.
-+(UITabBarController*)loadFromNib: (NSString*)nibName
++(UITabBarController*)loadFromNib:(NSString*)nibName
 							  owner:(UpsideAppDelegate*)owner;
 
 @end

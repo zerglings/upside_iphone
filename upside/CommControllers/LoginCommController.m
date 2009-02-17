@@ -36,7 +36,7 @@
 }
 
 
--(void)loginUsing: (ActivationState*)theActivationState {
+-(void)loginUsing:(ActivationState*)theActivationState {
 	activationState = theActivationState;
 	
 	NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -54,7 +54,7 @@
 	[request release];
 }
 
--(void)serverResponded: (NSArray*)response {
+-(void)serverResponded:(NSArray*)response {
   [NetworkProgress connectionDone];
   
 	if ([response isKindOfClass:[NSError class]]) {

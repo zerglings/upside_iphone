@@ -18,8 +18,8 @@
 @property (nonatomic, readonly, retain) NSString* name;
 @property (nonatomic, readonly, retain) NSDictionary* attributes;
 
--(ZNModelDefinitionAttribute*)attributeNamed: (NSString*)name;
+-(ZNModelDefinitionAttribute*)attributeNamed:(NSString*)name;
 
-+(ZNModelDefinition*)newDefinitionForClass: (Class)klass;
++(ZNModelDefinition*)newDefinitionForClass:(Class)klass;
 
 @end

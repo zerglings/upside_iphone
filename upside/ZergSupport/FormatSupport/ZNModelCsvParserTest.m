@@ -94,7 +94,7 @@ static NSString* kContextObject = @"This is the context";
 	[self checkModels];
 }
 
--(void)parsedModel: (ZNModel*)model context: (id)context {
+-(void)parsedModel:(ZNModel*)model context:(id)context {
 	STAssertEquals(kContextObject, context,
                  @"Wrong context passed to -parsedModel");
 	STAssertTrue([model isKindOfClass:[ZNModelCsvParserTestModel class]],

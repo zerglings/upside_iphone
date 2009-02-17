@@ -44,7 +44,7 @@
 	return stock;
 }
 
--(void)setOrder: (TradeOrder*)newOrder forStock: (Stock*)newStock {
+-(void)setOrder:(TradeOrder*)newOrder forStock:(Stock*)newStock {
 	[newOrder retain];
 	[order release];
 	order = newOrder;

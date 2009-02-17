@@ -12,21 +12,21 @@
 #import "ZNFormFieldFormatter.h"
 
 @interface ZNFormURLEncoder ()
--(id)initWithOutput: (NSMutableData*)theOutput
-       fieldFormatter: (ZNFormFieldFormatter*)theFieldFormatter;
+-(id)initWithOutput:(NSMutableData*)theOutput
+       fieldFormatter:(ZNFormFieldFormatter*)theFieldFormatter;
 
--(void)encode: (NSObject*)object keyPrefix: (NSString*)keyPrefix;
+-(void)encode:(NSObject*)object keyPrefix:(NSString*)keyPrefix;
 
--(void)encodeKey: (NSString*)key
-             value: (NSObject*)value
-         keyPrefix: (NSString*)keyPrefix;
+-(void)encodeKey:(NSString*)key
+             value:(NSObject*)value
+         keyPrefix:(NSString*)keyPrefix;
 @end
 
 
 @implementation ZNFormURLEncoder
 
-+(NSData*)copyEncodingFor: (NSDictionary*)dictionary
-        usingFieldFormatter: (ZNFormFieldFormatter*)formatter {
++(NSData*)copyEncodingFor:(NSDictionary*)dictionary
+        usingFieldFormatter:(ZNFormFieldFormatter*)formatter {
   NSMutableData* output = [[NSMutableData alloc] init];
   ZNFormURLEncoder* encoder =
       [[ZNFormURLEncoder alloc] initWithOutput:output fieldFormatter:formatter];
@@ -35,8 +35,8 @@
 	return output;
 }
 
--(id)initWithOutput: (NSMutableData*)theOutput
-       fieldFormatter: (ZNFormFieldFormatter*)theFieldFormatter {
+-(id)initWithOutput:(NSMutableData*)theOutput
+       fieldFormatter:(ZNFormFieldFormatter*)theFieldFormatter {
   if ((self = [super init])) {
     output = theOutput;
     fieldFormatter = theFieldFormatter;
@@ -48,7 +48,7 @@
   [super dealloc];
 }
 
--(void)encode: (NSObject*)object keyPrefix: (NSString*)keyPrefix {	
+-(void)encode:(NSObject*)object keyPrefix:(NSString*)keyPrefix {	
 	if ([object isKindOfClass:[NSArray class]]) {
 		NSUInteger count = [(NSArray*)object count];
 		for (NSUInteger i = 0; i < count; i++) {
@@ -68,9 +68,9 @@
 	}
 }
 
--(void)encodeKey: (NSString*)key
-             value: (NSObject*)value
-         keyPrefix: (NSString*)keyPrefix {
+-(void)encodeKey:(NSString*)key
+             value:(NSObject*)value
+         keyPrefix:(NSString*)keyPrefix {
 	NSAssert([key isKindOfClass:[NSString class]],
            @"Attempting to encode non-String key!");
 	
