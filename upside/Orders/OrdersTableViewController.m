@@ -44,19 +44,6 @@
        target:self action:@selector(tappedAddTradeButton:)];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  [[Game sharedGame].newDataSite addTarget:self action:@selector(newGameData)];
-}
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-  [[Game sharedGame].newDataSite removeTarget:self
-                                       action:@selector(newGameData)];
-}
--(void)newGameData {
-  [(UITableView*)self.view reloadData];
-}
-
 /*
  - (void)viewDidAppear:(BOOL)animated {
  [super viewDidAppear:animated];

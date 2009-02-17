@@ -1,9 +1,9 @@
 //
 //  ZNModelXmlParser.m
-//  upside
+//  ZergSupport
 //
 //  Created by Victor Costan on 2/16/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNModelXmlParser.h"

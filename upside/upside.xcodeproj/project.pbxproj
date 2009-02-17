@@ -257,6 +257,8 @@
 		57E4516E0F498A8900DA71BC /* AssetBookStocks.xml in Resources */ = {isa = PBXBuildFile; fileRef = 57E4516D0F498A8900DA71BC /* AssetBookStocks.xml */; };
 		57E451700F498B7300DA71BC /* AssetBookPortfolio.xml in Resources */ = {isa = PBXBuildFile; fileRef = 57E4516F0F498B7300DA71BC /* AssetBookPortfolio.xml */; };
 		57E4524B0F49C0D000DA71BC /* AssetBook+FormattingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E4524A0F49C0D000DA71BC /* AssetBook+FormattingTest.m */; };
+		57E452FE0F4ABC8B00DA71BC /* GameAwareTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E452FD0F4ABC8B00DA71BC /* GameAwareTableViewController.m */; };
+		57E4530F0F4AC1CF00DA71BC /* GameAwareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E4530E0F4AC1CF00DA71BC /* GameAwareViewController.m */; };
 		57F5F3A90F20745C00AFCB29 /* ZNModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711955C0F1DC97800FD89EA /* ZNModel.m */; };
 		57F5F3AA0F20745C00AFCB29 /* ZNModelDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711955F0F1DCA0B00FD89EA /* ZNModelDefinition.m */; };
 		57F5F3AB0F20745C00AFCB29 /* ZNModelDefinitionAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711956A0F1DCF9200FD89EA /* ZNModelDefinitionAttribute.m */; };
@@ -534,6 +536,10 @@
 		57E4516D0F498A8900DA71BC /* AssetBookStocks.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AssetBookStocks.xml; sourceTree = "<group>"; };
 		57E4516F0F498B7300DA71BC /* AssetBookPortfolio.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AssetBookPortfolio.xml; sourceTree = "<group>"; };
 		57E4524A0F49C0D000DA71BC /* AssetBook+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetBook+FormattingTest.m"; sourceTree = "<group>"; };
+		57E452FC0F4ABC8B00DA71BC /* GameAwareTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameAwareTableViewController.h; sourceTree = "<group>"; };
+		57E452FD0F4ABC8B00DA71BC /* GameAwareTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameAwareTableViewController.m; sourceTree = "<group>"; };
+		57E4530D0F4AC1CF00DA71BC /* GameAwareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameAwareViewController.h; sourceTree = "<group>"; };
+		57E4530E0F4AC1CF00DA71BC /* GameAwareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameAwareViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -651,6 +657,10 @@
 		570D82EC0F11A5BB00D54544 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				57E4530D0F4AC1CF00DA71BC /* GameAwareViewController.h */,
+				57E4530E0F4AC1CF00DA71BC /* GameAwareViewController.m */,
+				57E452FC0F4ABC8B00DA71BC /* GameAwareTableViewController.h */,
+				57E452FD0F4ABC8B00DA71BC /* GameAwareTableViewController.m */,
 				570D82ED0F11A5F000D54544 /* AutoRotatingTableViewController.h */,
 				570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */,
 				571A27070F1ABA5000A996A2 /* NetworkProgress.h */,
@@ -1244,6 +1254,8 @@
 				578061260F3A805C001BF3AF /* AssetBook+NetWorth.m in Sources */,
 				57203C060F4942EF00B3A00C /* AssetBook+Formatting.m in Sources */,
 				57203EE70F49838000B3A00C /* ZNModelXmlParser.m in Sources */,
+				57E452FE0F4ABC8B00DA71BC /* GameAwareTableViewController.m in Sources */,
+				57E4530F0F4AC1CF00DA71BC /* GameAwareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

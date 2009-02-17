@@ -6,10 +6,10 @@
 //  Copyright Zergling.Net. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "GameAwareViewController.h"
 
 
-@interface OverviewViewController : UIViewController {
+@interface OverviewViewController : GameAwareViewController {
   IBOutlet UILabel* userNameLabel;
   IBOutlet UILabel* lastSyncLabel;
   IBOutlet UILabel* cashLabel;

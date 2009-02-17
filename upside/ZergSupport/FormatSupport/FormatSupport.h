@@ -3,7 +3,7 @@
  *  upside
  *
  *  Created by Victor Costan on 2/16/09.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
+ *  Copyright 2009 Zergling.Net. All rights reserved.
  *
  */
 

@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AutoRotatingTableViewController.h"
+#import "GameAwareTableViewController.h"
 
 
-@interface PortfolioTableViewController : AutoRotatingTableViewController {
+@interface PortfolioTableViewController : GameAwareTableViewController {
 
 }
 

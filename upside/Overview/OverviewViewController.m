@@ -13,10 +13,6 @@
 #import "Game.h"
 #import "GameSyncController.h"
 
-@interface OverviewViewController ()
--(void)newGameData;
-@end
-
 
 @implementation OverviewViewController
 
@@ -46,15 +42,6 @@
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;  
 }
   
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  [[Game sharedGame].newDataSite addTarget:self action:@selector(newGameData)];
-}
-- (void)viewWillDisappear:(BOOL)animated {
-  [super viewWillDisappear:animated];
-  [[Game sharedGame].newDataSite removeTarget:self
-   action:@selector(newGameData)];
-}
 -(void)newGameData {
   Game* game = [Game sharedGame];
   AssetBook* assetBook = [game assetBook];

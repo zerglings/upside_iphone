@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AutoRotatingTableViewController.h"
+#import "GameAwareTableViewController.h"
 
-@interface OrdersTableViewController : AutoRotatingTableViewController {
+@interface OrdersTableViewController : GameAwareTableViewController {
 }
 
 @end
