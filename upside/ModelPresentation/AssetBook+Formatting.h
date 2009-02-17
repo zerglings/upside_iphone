@@ -15,14 +15,14 @@
 // Presentation aspect for overall assets.
 @interface AssetBook (Formatting)
   // Format the available cash.
-  - (NSString*)formattedCash;
+  -(NSString*)formattedCash;
   
   // The color showing the available cash.
-  - (UIColor*)colorForCash;  
+  -(UIColor*)colorForCash;  
 
   // Format the stock worth.
-  - (NSString*)formattedStockWorthWithCache: (StockCache*)stockCache;
+  -(NSString*)formattedStockWorthWithCache: (StockCache*)stockCache;
 
   // Format the net worth.
-  - (NSString*)formattedNetWorthWithCache: (StockCache*)stockCache;
+  -(NSString*)formattedNetWorthWithCache: (StockCache*)stockCache;
 @end

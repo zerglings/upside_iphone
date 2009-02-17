@@ -19,15 +19,15 @@
 #import "TradeOrder.h"
 
 @interface NewOrderViewController ()
-- (void)reloadData;
-- (void)updatedStockInfo;
-- (void)updateEstimatedPrice;
+-(void)reloadData;
+-(void)updatedStockInfo;
+-(void)updateEstimatedPrice;
 @end
 
 
 @implementation NewOrderViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
     inputFormatter = [[NSNumberFormatter alloc] init];      
     stockInfoCommController = [[StockInfoCommController alloc] 
@@ -39,11 +39,11 @@
 
 /*
  // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView {
+ -(void)loadView {
  }
  */
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
   [super viewDidLoad];
   self.title = @"New Order";
   self.navigationItem.rightBarButtonItem =
@@ -56,51 +56,51 @@
 
 /*
  // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+ -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
  // Return YES for supported orientations
  return (interfaceOrientation == UIInterfaceOrientationPortrait);
  }
  */
 
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
   // Release anything that's not essential, such as cached data
 }
 
 
-- (void)dealloc {
+-(void)dealloc {
   [stockInfo release];
   [stockInfoCommController release];
   [super dealloc];
 }
 
 
-- (BOOL)chosenIsLimit {
+-(BOOL)chosenIsLimit {
   return [limitTypeSegmentedControl selectedSegmentIndex] == 1;
 }
 
-- (BOOL)chosenIsBuy {
+-(BOOL)chosenIsBuy {
   NSInteger selectedSegment = [orderTypeSegmentedControl selectedSegmentIndex];
   return (selectedSegment == 0) || (selectedSegment == 3);
 }
 
-- (BOOL)chosenIsLong {
+-(BOOL)chosenIsLong {
   NSInteger selectedSegment = [orderTypeSegmentedControl selectedSegmentIndex];
   return (selectedSegment == 0) || (selectedSegment == 1);
 }
 
-- (NSUInteger)chosenQuantity {
+-(NSUInteger)chosenQuantity {
   return [[inputFormatter numberFromString:quantityText.text]
           unsignedIntegerValue];
 }
 
-- (NSUInteger)chosenLimitPrice {
+-(NSUInteger)chosenLimitPrice {
   if (![self chosenIsLimit])
     return kTradeOrderInvalidLimit;
   return [[inputFormatter numberFromString:limitText.text] doubleValue];  
 }
 
-- (IBAction)limitTypeChanged: (id)sender {
+-(IBAction)limitTypeChanged: (id)sender {
   if ([self chosenIsLimit]) {
     [limitText setEnabled:YES];
     limitText.text = @"";
@@ -112,7 +112,7 @@
   [self updateEstimatedPrice];  
 }
 
-- (IBAction)orderTypeChanged: (id)sender {
+-(IBAction)orderTypeChanged: (id)sender {
   if ([self chosenIsBuy]) {
     limitDescriptionLabel.text = @"Bid";
     [quantityAllButton setHidden:YES];
@@ -124,7 +124,7 @@
   [self updateEstimatedPrice];
 }
 
-- (void)updateEstimatedPrice {
+-(void)updateEstimatedPrice {
   Portfolio* portfolio = [[[Game sharedGame] assetBook] portfolio];
   if (portfolio) {
     availableCashLabel.text = [portfolio formattedCash];
@@ -156,7 +156,7 @@
   }
 }
 
-- (void)updatedStockInfo {
+-(void)updatedStockInfo {
   tickerValidityImage.image = [stockInfo imageForValidity];
   if ([stockInfo isValid]) {
     askPriceLabel.text = [stockInfo formattedAskPrice];
@@ -183,7 +183,7 @@
   [self updateEstimatedPrice];
 }
 
-- (BOOL)textFieldDidEndEditing: (UITextField*)textField {
+-(BOOL)textFieldDidEndEditing: (UITextField*)textField {
   if (textField == tickerText) {
     tickerText.text = [tickerText.text uppercaseString];
     [stockInfoCommController fetchInfoForTickers:
@@ -198,18 +198,18 @@
   return YES;  
 }
 
-- (BOOL)textFieldShouldReturn: (UITextField*)textField {
+-(BOOL)textFieldShouldReturn: (UITextField*)textField {
   [textField resignFirstResponder];
   return YES;
 }
 
-- (void)touchesEnded: (NSSet*)touches withEvent: (UIEvent*)event {
+-(void)touchesEnded: (NSSet*)touches withEvent: (UIEvent*)event {
   [tickerText resignFirstResponder];
   [quantityText resignFirstResponder];
   [limitText resignFirstResponder];
 }
 
-- (void)receivedStockInfo:(NSArray*)info {
+-(void)receivedStockInfo:(NSArray*)info {
   if (![info isKindOfClass:[NSArray class]]) {
     // communication error
     // TODO(overmind): place question mark for ticker validity
@@ -233,7 +233,7 @@
   [self updatedStockInfo];
 }
 
-- (void)validationFailed: (NSString*) message {
+-(void)validationFailed: (NSString*) message {
   UIAlertView* alert = [[UIAlertView alloc]
                         initWithTitle:@"Your order is invalid"
                         message:message
@@ -244,7 +244,7 @@
   [alert release];
 }
 
-- (BOOL)validate {
+-(BOOL)validate {
   if (stockInfo != nil && ![stockInfo isValid]) {
     [self validationFailed:@"The ticker you have entered does not exist"];
     return NO;
@@ -267,7 +267,7 @@
   return YES;
 }
 
-- (TradeOrder*)newOrderFromUserChoices {
+-(TradeOrder*)newOrderFromUserChoices {
   return [[TradeOrder alloc] initWithTicker:tickerText.text
                                    quantity:[self chosenQuantity]
                                       isBuy:[self chosenIsBuy]
@@ -275,7 +275,7 @@
                                  limitPrice:[self chosenIsLimit]];
 }
 
-- (void)tappedPlace: (id)sender {
+-(void)tappedPlace: (id)sender {
   if (![self validate])
     return;
   

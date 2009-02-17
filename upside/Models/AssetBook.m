@@ -15,17 +15,17 @@
 
 #pragma mark I/O
 
-- (void)load {
+-(void)load {
   // TODO(overmind): implement I/O
 }
 
-- (void)save {
+-(void)save {
   // TODO(overmind): implement I/O
 }
 
 #pragma mark Synchronizing
 
-+ (NSArray*)copyObjects: (NSArray*)array
++(NSArray*)copyObjects: (NSArray*)array
                   where: (SEL)predicate
                      is: (id)predicateValue {
 	NSMutableArray* selectedPositions = [[NSMutableArray alloc] init];
@@ -38,7 +38,7 @@
 	return returnVal;
 }
 
-- (void)loadData: (NSArray*)newPositions {
+-(void)loadData: (NSArray*)newPositions {
   NSArray* portfolios = [AssetBook copyObjects:newPositions
                                          where:@selector(class)
                                             is:[Portfolio class]];
@@ -70,14 +70,14 @@
 
 #pragma mark Lifecycle
 
-- (id)init {
+-(id)init {
 	if ((self = [super init])) {
 		[self load];
 	}
 	return self;
 }
 
-- (void)dealloc {
+-(void)dealloc {
   [portfolio release];
 	[positions release];
 	[longPositions release];
@@ -89,23 +89,23 @@
 
 @synthesize portfolio;
 
-- (double)cash {
+-(double)cash {
   return [portfolio cash];
 }
 
-- (NSUInteger)longPositionCount {
+-(NSUInteger)longPositionCount {
 	return [longPositions count];
 }
 
-- (NSUInteger)shortPositionCount {
+-(NSUInteger)shortPositionCount {
 	return [shortPositions count];
 }
 
-- (Position*)longPositionAtIndex: (NSUInteger)index {
+-(Position*)longPositionAtIndex: (NSUInteger)index {
 	return [longPositions objectAtIndex:index];
 }
 
-- (Position*)shortPositionAtIndex: (NSUInteger)index {
+-(Position*)shortPositionAtIndex: (NSUInteger)index {
 	return [shortPositions objectAtIndex:index];
 }
 

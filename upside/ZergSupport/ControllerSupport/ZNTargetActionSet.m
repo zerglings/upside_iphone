@@ -12,31 +12,31 @@
 
 @implementation ZNTargetActionSet
 
-- (id)init {
+-(id)init {
   if ((self = [super init])) {
     targetActionPairs = [[NSMutableSet alloc] init];
   }
   return self;
 }
-- (void)deinit {
+-(void)deinit {
   [targetActionPairs release];
 }
 
-- (void)addTarget: (id)target action: (SEL)action {
+-(void)addTarget: (id)target action: (SEL)action {
   ZNTargetActionPair* pair =
       [[ZNTargetActionPair alloc] initWithTarget:target action:action];
   [targetActionPairs addObject:pair];
   [pair release];
 }
 
-- (void)removeTarget: (id)target action: (SEL)action {
+-(void)removeTarget: (id)target action: (SEL)action {
   ZNTargetActionPair* pair =
       [[ZNTargetActionPair alloc] initWithTarget:target action:action];
   [targetActionPairs removeObject:pair];
   [pair release];  
 }
 
-- (void)perform {
+-(void)perform {
   for (ZNTargetActionPair* pair in targetActionPairs) {
     NSAssert([pair isKindOfClass:[ZNTargetActionPair class]],
              @"A foreign object managed to sneak in");
@@ -44,7 +44,7 @@
   }
 }
 
-- (void)performWithObject: (id)object {
+-(void)performWithObject: (id)object {
   for (ZNTargetActionPair* pair in targetActionPairs) {
     NSAssert([pair isKindOfClass:[ZNTargetActionPair class]],
              @"A foreign object managed to sneak in");

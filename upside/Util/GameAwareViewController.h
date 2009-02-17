@@ -19,6 +19,6 @@
 
 // Subclasses can override this to react to game data updates. Subclasses should
 // call the superclass implementation.
-- (void)newGameData;
+-(void)newGameData;
 
 @end

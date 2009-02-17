@@ -15,7 +15,7 @@
 @implementation NewsArticleViewController
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         connectionIndicator = NO;
     }
@@ -24,11 +24,11 @@
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
+-(void)loadView {
 }
 */
 
-- (void)viewDidDisappear:(BOOL)animated {
+-(void)viewDidDisappear:(BOOL)animated {
 	[(UIWebView*)self.view stopLoading];
 	if (connectionIndicator) {
 		connectionIndicator = NO;
@@ -39,23 +39,23 @@
 
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
 }
 */
 
 // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
 }
 
 
-- (void)dealloc {
+-(void)dealloc {
 	[newsItem release];
     [super dealloc];
 }
@@ -87,7 +87,7 @@
 	}
 }
 
-- (void)webView: (UIWebView *)webView didFailLoadWithError: (NSError *)error {
+-(void)webView: (UIWebView *)webView didFailLoadWithError: (NSError *)error {
 	if (connectionIndicator) {
 		connectionIndicator = NO;
 		[NetworkProgress connectionDone];		

@@ -84,6 +84,10 @@
 @synthesize orderSubmittingController;
 @synthesize newDataSite;
 
+-(NSDate*)lastSyncTime {
+  return syncController.lastSyncTime;
+}
+
 #pragma mark New Game Data Site
 
 -(void)newGameData {

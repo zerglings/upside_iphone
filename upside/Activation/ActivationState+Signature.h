@@ -11,6 +11,6 @@
 @interface ActivationState (Signature)
 
 // Generates a signature that can be used in Game server requests.
-- (NSDictionary*)requestSignature;
+-(NSDictionary*)requestSignature;
 
 @end

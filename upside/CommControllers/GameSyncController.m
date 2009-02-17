@@ -83,11 +83,11 @@
   return YES;
 }
 
-- (void)loginFailed: (NSError*)error {
+-(void)loginFailed: (NSError*)error {
 	// TODO(overmind): user changed their password, recover from this
 }
 
-- (void)loginSucceeded {
+-(void)loginSucceeded {
 	// This happens if we login after syncing failed.
 	[self resumeSyncing];
 }

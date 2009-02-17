@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @protocol LoginCommDelegate
-- (void)loginFailed: (NSError*)error;
-- (void)loginSucceeded;
+-(void)loginFailed: (NSError*)error;
+-(void)loginSucceeded;
 @end
 
 @class ActivationState;

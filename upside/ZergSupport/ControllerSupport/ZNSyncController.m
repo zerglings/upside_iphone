@@ -20,7 +20,7 @@
 
 @implementation ZNSyncController
 
-@synthesize syncInterval, syncSite;
+@synthesize syncInterval, syncSite, lastSyncTime;
 
 -(id)initWithErrorModelClass: (Class)theErrorModelClass
                   syncInterval: (NSTimeInterval)theSyncInterval {
@@ -81,7 +81,9 @@
     if ([maybeError isKindOfClass:errorModelClass])
       return [self handleServiceError:(ZNModel*)maybeError];
   }
-  if ([self integrateResults:(NSArray*)results]) {    
+  if ([self integrateResults:(NSArray*)results]) {
+    [lastSyncTime release];
+    lastSyncTime = [[NSDate alloc] initWithTimeIntervalSinceNow:0.0];
     [syncSite perform];
     return YES;
   }

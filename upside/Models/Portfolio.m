@@ -12,7 +12,7 @@
 @implementation Portfolio
 @synthesize cash;
 
-- (id)initWithCash: (double)theCash {
+-(id)initWithCash: (double)theCash {
   return [super initWithModel:nil properties:
           [NSDictionary dictionaryWithObject:[NSNumber numberWithDouble:theCash]
                                       forKey:@"cash"]];

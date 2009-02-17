@@ -14,11 +14,15 @@
 #import "GameSyncController.h"
 
 
+@interface OverviewViewController ()
+-(void)updateLastSyncTime;
+@end
+
 @implementation OverviewViewController
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // Custom initialization
     }
@@ -28,12 +32,12 @@
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
+-(void)loadView {
 }
 */
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
+-(void)viewDidLoad {
   [super viewDidLoad];
   [self newGameData];
   
@@ -41,31 +45,49 @@
 	self.view.autoresizesSubviews = YES;
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;  
 }
+
+-(void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [self updateLastSyncTime];
+}
+
+-(void)updateLastSyncTime {
+  NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+  [formatter setDateStyle:NSDateFormatterShortStyle];
+  [formatter setTimeStyle:NSDateFormatterShortStyle];
+  
+  NSDate* lastSyncTime = [game lastSyncTime];
+  if (lastSyncTime)
+    lastSyncLabel.text = [formatter stringFromDate:lastSyncTime];
+  else
+    lastSyncLabel.text = @"never";
+  [formatter release];
+}
   
 -(void)newGameData {
-  Game* game = [Game sharedGame];
   AssetBook* assetBook = [game assetBook];
   StockCache* stockCache = [game stockCache];
   
   cashLabel.text = [[assetBook portfolio] formattedCash];
   stockWorthLabel.text = [assetBook formattedStockWorthWithCache:stockCache];
   netWorthLabel.text = [assetBook formattedNetWorthWithCache:stockCache];
+  [self updateLastSyncTime];
 }
   
 
 // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return YES;
 }
 
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
 }
 
 
-- (void)dealloc {
+-(void)dealloc {
     [super dealloc];
 }
 

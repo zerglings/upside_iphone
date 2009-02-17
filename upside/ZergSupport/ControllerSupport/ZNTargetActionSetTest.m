@@ -22,16 +22,16 @@ static const NSString* kArgumentObject = @"Action argument";
 
 @implementation ZNTargetActionSetTest
 
-- (void)one {
+-(void)one {
   invokedOne = YES;
 }
-- (void)two {
+-(void)two {
   invokedTwo = YES;
 }
-- (void)three {
+-(void)three {
   invokedThree = YES;
 }
-- (void)checkStateOne: (BOOL)expectedOne
+-(void)checkStateOne: (BOOL)expectedOne
                   two: (BOOL)expectedTwo
                 three: (BOOL)expectedThree {
   STAssertEquals(expectedOne, invokedOne,
@@ -42,25 +42,25 @@ static const NSString* kArgumentObject = @"Action argument";
                  @"-three wasn't invoked as expected");
 }
 
-- (void)setUp {
+-(void)setUp {
   cell = [[ZNTargetActionSet alloc] init];
   invokedOne = NO;
   invokedTwo = NO;
   invokedThree = NO;
 }
-- (void)tearDown {
+-(void)tearDown {
   [cell release];
 }
-- (void)dealloc {
+-(void)dealloc {
   [super dealloc];
 }
 
-- (void)testEmptyCell {
+-(void)testEmptyCell {
   [cell perform];
   [self checkStateOne:NO two:NO three:NO];
 }
 
-- (void)testAdds {
+-(void)testAdds {
   [cell perform];
   [cell addTarget:self action:@selector(one)];
   [cell addTarget:self action:@selector(three)];
@@ -68,7 +68,7 @@ static const NSString* kArgumentObject = @"Action argument";
   [self checkStateOne:YES two:NO three:YES];
 }
 
-- (void)testAddsAndRemoves {
+-(void)testAddsAndRemoves {
   [cell perform];
   [cell addTarget:self action:@selector(one)];
   [cell addTarget:self action:@selector(two)];
@@ -78,14 +78,14 @@ static const NSString* kArgumentObject = @"Action argument";
   [self checkStateOne:NO two:YES three:YES];
 }
 
-- (void)testArguments {
+-(void)testArguments {
   [cell perform];
   [cell addTarget:self action:@selector(checkArgument:)];
   [cell performWithObject:kArgumentObject];
   [self checkStateOne:YES two:NO three:NO];
 }
 
-- (void)checkArgument: (NSString*)argument {
+-(void)checkArgument: (NSString*)argument {
   NSLog(@"Argument: %@\n", argument);
   
   STAssertEqualObjects(kArgumentObject, argument, @"Incorrect argument received");

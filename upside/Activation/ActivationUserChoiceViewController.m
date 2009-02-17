@@ -22,7 +22,7 @@
 
 /*
  // The designated initializer. Override to perform setup that is required before the view is loaded.
- - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+ -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
  // Custom initialization
  }
@@ -32,7 +32,7 @@
 
 /*
  // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView {
+ -(void)loadView {
  }
  */
 
@@ -44,18 +44,18 @@
 	}	
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   return YES;
 }
 
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
   // Release anything that's not essential, such as cached data
 }
 
 @synthesize activationState;
 
-- (void)dealloc {
+-(void)dealloc {
 	[activationState release];
   [super dealloc];
 }

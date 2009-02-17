@@ -16,7 +16,7 @@
     return YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+-(void)viewWillAppear:(BOOL)animated {
 	if (![self.wideCellReuseIdentifier
 		  isEqualToString:self.narrowCellReuseIdentifier]) {
 		[(UITableView*)self.view reloadData];
@@ -64,7 +64,7 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
+-(UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString* cellIdentifier;
 	NSString* cellNib;

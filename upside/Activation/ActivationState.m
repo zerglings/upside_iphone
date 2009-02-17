@@ -22,7 +22,7 @@ static NSString* kUser = @"user";
 
 static NSString* kStateFileName = @".ActivationState";
 
-- (NSData*)archiveToData {
+-(NSData*)archiveToData {
 	if (!deviceInfo)
 		return nil;
 	
@@ -41,7 +41,7 @@ static NSString* kStateFileName = @".ActivationState";
 	return stateData;
 }
 
-- (void)unarchiveFromData: (NSData*)data {
+-(void)unarchiveFromData: (NSData*)data {
 	[deviceInfo release];
 	deviceInfo = nil;
 	[user release];
@@ -64,7 +64,7 @@ static NSString* kStateFileName = @".ActivationState";
 	[unarchiver release];
 }
 
-+ (NSString*)filePath {
++(NSString*)filePath {
 	NSArray* docPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
 															NSUserDomainMask,
 															YES);

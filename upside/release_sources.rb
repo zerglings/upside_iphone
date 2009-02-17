@@ -4,8 +4,11 @@ Dir.glob('**/*').each do |file|
   contents = File.read file
   
   # force -(type)method instead of - (type) method
-  contents.gsub! /\-\s+\(([^(]*)\)\s+(\w)/, "-(\\1)\\2"
-  contents.gsub! /\+\s+\(([^(]*)\)\s+(\w)/, "+(\\1)\\2"
+  contents.gsub! /\-\s*\(([^(]*)\)\s*(\w)/, "-(\\1)\\2"
+  contents.gsub! /\+\s*\(([^(]*)\)\s*(\w)/, "+(\\1)\\2"
+  
+  # force methodName:(type)argument instead of methodName: (type)argument
+  contents.gsub! /(\w+)\:[ \t]*\(/, "\\1:("
 
   # trademarks  
   contents.gsub! '__MyCompanyName__', 'Zergling.Net'

@@ -26,7 +26,7 @@
 
 @implementation AssetBookNetWorthTest 
 
-- (void)setUp {
+-(void)setUp {
   stockCache = [[StockCache alloc] init];
   [stockCache integrateResults:[self fixturesFrom:@"AssetBookStocks.xml"]];
 
@@ -37,16 +37,16 @@
   uncachedBook = [[AssetBook alloc] init];
   [uncachedBook loadData:[self fixturesFrom:@"AssetBookPortfolio.xml"]];   
 }
-- (void)tearDown {
+-(void)tearDown {
   [stockCache release];
   [cachedBook release];
   [uncachedBook release];
 }
-- (void)dealloc {
+-(void)dealloc {
   [super dealloc];
 }
 
-- (void)testComputations {  
+-(void)testComputations {  
   double stockWorth = [cachedBook stockWorth:NULL usingStockCache:stockCache];
   // 35 * 93.50 - 21 * 27.25 = 2700.25
   STAssertEqualsWithAccuracy(2700.25, stockWorth, 0.001,
@@ -57,7 +57,7 @@
                              @"Net worth with full information");
 }
 
-- (void)testSuccess {
+-(void)testSuccess {
   BOOL success;
   [cachedBook stockWorth:&success usingStockCache:stockCache];
   STAssertTrue(success, @"Stock worth with full information");

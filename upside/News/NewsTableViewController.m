@@ -18,7 +18,7 @@
 @implementation NewsTableViewController
 
 /*
-- (id)initWithStyle:(UITableViewStyle)style {
+-(id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
     if (self = [super initWithStyle:style]) {
     }
@@ -26,7 +26,7 @@
 }
 */
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
 
 	self.narrowCellReuseIdentifier = @"NewsFeedNarrow";
@@ -40,36 +40,36 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
+-(void)viewWillAppear:(BOOL)animated {
 	[(UITableView*)self.view reloadData];
   [super viewWillAppear:animated];
 }
  
 /*
-- (void)viewDidAppear:(BOOL)animated {
+-(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 */
 /*
-- (void)viewWillDisappear:(BOOL)animated {
+-(void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 }
 */
 /*
-- (void)viewDidDisappear:(BOOL)animated {
+-(void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
 }
 */
 
 /*
 // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
 
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
 }
@@ -84,11 +84,11 @@
 #define kGameSection 2
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
 		case kShortsSection:
 			return @"Short Positions";
@@ -102,7 +102,7 @@
 	return nil;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case kShortsSection:
 			return [[[Game sharedGame] assetBook] shortPositionCount];
@@ -116,7 +116,7 @@
     return -1;
 }
 
-- (NSString*)feedTitleForRowAtIndexPath: (NSIndexPath*)indexPath {
+-(NSString*)feedTitleForRowAtIndexPath: (NSIndexPath*)indexPath {
 	AssetBook* portfolio = [[Game sharedGame] assetBook];
 	Position* position;
 	switch (indexPath.section) {
@@ -135,7 +135,7 @@
 	return [AssetBook rssFeedTitleForTicker:[position ticker]];
 }
 
-- (UITableViewCell *)tableView: (UITableView *)tableView
+-(UITableViewCell *)tableView: (UITableView *)tableView
          cellForRowAtIndexPath: (NSIndexPath *)indexPath {    
   NewsTableViewCell* cell = (NewsTableViewCell*)[super tableView:tableView
                                            cellForRowAtIndexPath:indexPath];  
@@ -143,7 +143,7 @@
   return cell;
 }
 
-- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+-(void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
 	RssFeedTableViewController *feedController =
       [[RssFeedTableViewController alloc]
        initWithNibName:@"RssFeedTableViewController" bundle:nil];
@@ -155,7 +155,7 @@
 
 /*
 // Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
@@ -164,7 +164,7 @@
 
 /*
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
@@ -179,21 +179,21 @@
 
 /*
 // Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 }
 */
 
 
 /*
 // Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
 */
 
 
-- (void)dealloc {
+-(void)dealloc {
     [super dealloc];
 }
 

@@ -13,8 +13,8 @@
 @interface Portfolio (Formatting)
 
 // Format the available cash in the portfolio.
-- (NSString*)formattedCash;
+-(NSString*)formattedCash;
 
 // The color showing the available cash in the portfolio.
-- (UIColor*)colorForCash;
+-(UIColor*)colorForCash;
 @end

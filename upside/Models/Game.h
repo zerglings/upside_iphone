@@ -31,7 +31,7 @@
 }
 
 // The singleton Game instance.
-+ (Game*)sharedGame;
++(Game*)sharedGame;
 
 #pragma mark Accessors
 
@@ -44,5 +44,8 @@
 
 // Called when new game data becomes available. 
 @property (nonatomic, readonly, retain) ZNTargetActionSet* newDataSite;
+
+// The time of the most recent data sync.
+-(NSDate*)lastSyncTime;
 
 @end

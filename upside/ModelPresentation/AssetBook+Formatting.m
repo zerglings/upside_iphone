@@ -25,15 +25,15 @@ static void SetupFormatters() {
 
 @implementation AssetBook (Formatting)
 
-- (NSString*)formattedCash {
+-(NSString*)formattedCash {
   return [portfolio formattedCash];
 }
 
-- (UIColor*)colorForCash;  {
+-(UIColor*)colorForCash;  {
   return [portfolio colorForCash];
 }
 
-- (NSString*)formattedWorth: (double)worth succeeded: (BOOL)succeeded {
+-(NSString*)formattedWorth: (double)worth succeeded: (BOOL)succeeded {
   SetupFormatters();
   if (succeeded)
     return [worthFormatter stringFromNumber:[NSNumber numberWithDouble:worth]];
@@ -41,14 +41,14 @@ static void SetupFormatters() {
     return @"N/A";
 }
 
-- (NSString*)formattedStockWorthWithCache: (StockCache*)stockCache {
+-(NSString*)formattedStockWorthWithCache: (StockCache*)stockCache {
   BOOL worthSucceeded;
   double netWorth = [self stockWorth:&worthSucceeded
                      usingStockCache:stockCache];
   return [self formattedWorth:netWorth succeeded:worthSucceeded];
 }
 
-- (NSString*)formattedNetWorthWithCache: (StockCache*)stockCache {
+-(NSString*)formattedNetWorthWithCache: (StockCache*)stockCache {
   BOOL worthSucceeded;
   double stockWorth = [self netWorth:&worthSucceeded
                      usingStockCache:stockCache];

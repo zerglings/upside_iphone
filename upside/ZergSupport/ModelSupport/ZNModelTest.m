@@ -196,7 +196,7 @@
 				  @"A model instance is not a model class");
 }
 
-- (void)testAllModelClasses {
+-(void)testAllModelClasses {
   NSArray* allModelClasses = [ZNModel allModelClasses];
 	STAssertTrue([allModelClasses containsObject:[ZNTestDate class]],
                @"ZNTestDate is a model class");

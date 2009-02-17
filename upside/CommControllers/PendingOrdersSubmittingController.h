@@ -21,6 +21,6 @@
   LoginCommController* loginCommController;
 }
 
-- (id)initWithTradeBook: (TradeBook*)tradeBook;
+-(id)initWithTradeBook: (TradeBook*)tradeBook;
 
 @end

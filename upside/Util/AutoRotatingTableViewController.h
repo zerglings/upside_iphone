@@ -29,6 +29,6 @@
 @property (nonatomic, retain) Class cellClass;
 
 // Subclasses should override this and call the super version.
-- (UITableViewCell *)tableView:(UITableView *)tableView
+-(UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end

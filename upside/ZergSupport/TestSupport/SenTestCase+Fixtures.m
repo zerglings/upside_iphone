@@ -17,15 +17,15 @@
   ZNModelXmlParser* xmlParser;
 }
 
-- (NSArray*)parseData: (NSData*)data;
+-(NSArray*)parseData: (NSData*)data;
 
-+ (NSDictionary*)parserSchema;
++(NSDictionary*)parserSchema;
 
 @end
 
 
 @implementation ZNFixtureParser
-- (id)init {
+-(id)init {
   if ((self = [super init])) {
     NSDictionary* parserSchema = [ZNFixtureParser parserSchema];
     xmlParser = [[ZNModelXmlParser alloc] initWithSchema:parserSchema 
@@ -34,12 +34,12 @@
   }
   return self;
 }
-- (void)dealloc {
+-(void)dealloc {
   [xmlParser release];
   [super dealloc];
 }
 
-- (NSArray*)parseData: (NSData*)data {
+-(NSArray*)parseData: (NSData*)data {
   NSMutableArray* fixtures = [[NSMutableArray alloc] init];
   xmlParser.context = fixtures;
   BOOL parseSuccess = [xmlParser parseData:data];
@@ -51,7 +51,7 @@
 }
 
 
-+ (NSDictionary*)parserSchema {
++(NSDictionary*)parserSchema {
   NSArray* modelClasses = [ZNModel allModelClasses];
   ZNFormFieldFormatter* snakeFormatter =
       [ZNFormFieldFormatter formatterFromPropertiesTo:kZNFormatterSnakeCase];

@@ -23,9 +23,9 @@
 @property (nonatomic, readonly, assign) SEL action;
 
 // Designated initializer.
-- (id)initWithTarget: (id)target action: (SEL)action;
+-(id)initWithTarget: (id)target action: (SEL)action;
 
 // Creates a new cell that goes to the autorelease pool.
-+ (id)pairWithTarget: (id)target action: (SEL)action;
++(id)pairWithTarget: (id)target action: (SEL)action;
 
 @end

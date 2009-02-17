@@ -21,7 +21,7 @@
 
 @implementation ZNFixtureTestModel1
 @synthesize name, cash;
-- (void)dealloc {
+-(void)dealloc {
   [name release];
   [super dealloc];
 }
@@ -43,7 +43,7 @@
 
 
 @implementation SenTestCaseFixturesTest
-- (void)testLoadFixtures {
+-(void)testLoadFixtures {
   NSArray* loadedFixtures = [self fixturesFrom:@"SenTestCase+FixturesTest.xml"];
   
   STAssertEquals(3U, [loadedFixtures count],

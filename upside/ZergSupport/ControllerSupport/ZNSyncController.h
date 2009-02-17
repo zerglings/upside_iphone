@@ -17,6 +17,7 @@
   Class errorModelClass;
   NSTimeInterval syncInterval;
   id<ZNTargetActionSite> syncSite;
+  NSDate* lastSyncTime;
 
  @private
   BOOL needsSyncScheduling;
@@ -24,7 +25,11 @@
   BOOL stopped;
 }
 
+// The most recent time that a sync succeeded. nil means 'never'.
+@property (nonatomic, readonly, retain) NSDate* lastSyncTime;
+// The interval between synchronization attempts.
 @property (nonatomic) NSTimeInterval syncInterval;
+// Site that gets activated when a sync succeeds.
 @property (nonatomic, retain) id<ZNTargetActionSite> syncSite;
 
 // Designated initializer.

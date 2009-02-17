@@ -16,7 +16,7 @@
 
 @implementation OrderTableViewCell
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+-(id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
         // Initialization code
     }
@@ -24,7 +24,7 @@
 }
 
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+-(void)setSelected:(BOOL)selected animated:(BOOL)animated {
 
     [super setSelected:selected animated:animated];
 
@@ -32,7 +32,7 @@
 }
 
 
-- (void)dealloc {
+-(void)dealloc {
 	[order release];
     [super dealloc];
 }

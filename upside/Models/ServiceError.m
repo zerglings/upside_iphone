@@ -12,19 +12,19 @@
 
 @synthesize message, reason;
 
-- (BOOL)isLoginError {
+-(BOOL)isLoginError {
 	return [reason isEqualToString:@"login"];
 }
 
-- (BOOL)isAuthError {
+-(BOOL)isAuthError {
 	return [reason isEqualToString:@"auth"];
 }
 
-- (BOOL)isValidationError {
+-(BOOL)isValidationError {
 	return [reason isEqualToString:@"validation"];
 }
 
-- (id)initWithReason: (NSString*)theReason message: (NSString*)theMessage {
+-(id)initWithReason: (NSString*)theReason message: (NSString*)theMessage {
 	NSDictionary* properties = [[NSDictionary alloc] initWithObjectsAndKeys:
 						   theMessage, @"message", theReason, @"reason", nil];
 	self = [self initWithModel:nil properties:properties];
@@ -32,7 +32,7 @@
 	return self;
 }
 
-- (void)dealloc {
+-(void)dealloc {
   [message release];
   [reason release];
   [super dealloc];

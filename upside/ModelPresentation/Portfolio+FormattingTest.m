@@ -22,25 +22,25 @@
 
 @implementation PortfolioFormattingTest
 
-- (void)setUp {
+-(void)setUp {
   tinyPortfolio = [[Portfolio alloc] initWithCash:0.20];
   smallPortfolio = [[Portfolio alloc] initWithCash:35.98];
   largePortfolio = [[Portfolio alloc] initWithCash:12000.00];
   negativePortfolio = [[Portfolio alloc] initWithCash:-533.90];
 }
 
-- (void)tearDown {
+-(void)tearDown {
   [tinyPortfolio release];
   [smallPortfolio release];
   [largePortfolio release];
   [negativePortfolio release];
 }
 
-- (void)dealloc {
+-(void)dealloc {
   [super dealloc];
 }
 
-- (void)testCashFormatting {
+-(void)testCashFormatting {
   STAssertEqualStrings(@"$35.98", [smallPortfolio formattedCash],
                        @"Easy cash amount");
   STAssertEqualStrings(@"$12,000.00", [largePortfolio formattedCash],
@@ -51,7 +51,7 @@
                        @"Negative cash amount");
 }
 
-- (void)testCashColor {
+-(void)testCashColor {
   UIColor* greenColor = [UIColor colorWithRed:0.0f green:0.5f blue:0.0f
                                         alpha:1.0f];
   UIColor* redColor = [UIColor colorWithRed:0.5f green:0.0f blue:0.0f

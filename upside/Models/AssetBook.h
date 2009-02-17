@@ -26,19 +26,19 @@
 @property (nonatomic, readonly, retain) Portfolio* portfolio;
 
 // How much cash in this portfolio.
-- (double)cash;
+-(double)cash;
 
 // How many long positions does the player have.
-- (NSUInteger)longPositionCount;
+-(NSUInteger)longPositionCount;
 
 // How many short positions does the player have.
-- (NSUInteger)shortPositionCount;
+-(NSUInteger)shortPositionCount;
 
 // The long position at the given index.
-- (Position*)longPositionAtIndex: (NSUInteger)index;
+-(Position*)longPositionAtIndex: (NSUInteger)index;
 
 // The short position at the given index.
-- (Position*)shortPositionAtIndex: (NSUInteger)index;
+-(Position*)shortPositionAtIndex: (NSUInteger)index;
 
 // Reloads the asset book with the given data.
 //

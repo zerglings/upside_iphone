@@ -54,10 +54,10 @@
 
 // Test implementation of CacheController
 @protocol ZNSyncControllerTestDelegate
-- (void)checkSync;
-- (void)checkIntegrate: (NSArray*)results;
-- (void)checkServiceError: (ZNSyncControllerTestError*)error;
-- (void)checkSystemError: (NSError*)error;
+-(void)checkSync;
+-(void)checkIntegrate: (NSArray*)results;
+-(void)checkServiceError: (ZNSyncControllerTestError*)error;
+-(void)checkSystemError: (NSError*)error;
 @end
 
 
@@ -70,13 +70,13 @@
 @property (nonatomic, readonly, retain) NSArray* scenario;
 @property (nonatomic, readonly) NSInteger currentStep;
 @property (nonatomic, readonly) BOOL pendingResponse;
-- (id)initWithScenario: (NSArray*)scenario
+-(id)initWithScenario: (NSArray*)scenario
               delegate: (id<ZNSyncControllerTestDelegate>)delegate;
 @end
 
 @implementation ZNSyncControllerTestBox
 @synthesize scenario, currentStep, pendingResponse;
-- (id)initWithScenario: (NSArray*)theScenario
+-(id)initWithScenario: (NSArray*)theScenario
               delegate: (id<ZNSyncControllerTestDelegate>)theDelegate {
   if ((self = [super initWithErrorModelClass:[ZNSyncControllerTestError class]
                                 syncInterval:0.1])) {
@@ -88,7 +88,7 @@
   return self;
 }
   
-- (void)sync {
+-(void)sync {
   [delegate checkSync];
   
   NSObject* scenarioStep = [scenario objectAtIndex:currentStep];
@@ -106,7 +106,7 @@
   }
 }
 
-- (BOOL)integrateResults: (NSArray*)results {
+-(BOOL)integrateResults: (NSArray*)results {
   [delegate checkIntegrate:results];
   pendingResponse = NO;
   currentStep++;
@@ -114,7 +114,7 @@
   return (currentStep < [scenario count]);
 }
 
-- (BOOL)handleServiceError: (ZNSyncControllerTestError*)error {
+-(BOOL)handleServiceError: (ZNSyncControllerTestError*)error {
   [delegate checkServiceError:error];
   pendingResponse = NO;
   currentStep++;
@@ -129,7 +129,7 @@
     return (currentStep < [scenario count]);
 }
 
-- (void)handleSystemError: (NSError*)error {
+-(void)handleSystemError: (NSError*)error {
   [delegate checkSystemError:error];
   pendingResponse = NO;
   currentStep++;
@@ -148,11 +148,11 @@
 
 #pragma mark Delegate
 
-- (void)checkSync {
+-(void)checkSync {
   STAssertFalse([testBox pendingResponse],
                 @"Spurious -sync call at step %s", [testBox currentStep]);
 }
-- (void)checkIntegrate: (NSArray*)results {
+-(void)checkIntegrate: (NSArray*)results {
   STAssertTrue([testBox pendingResponse],
                @"Spurious -integrate: call at step %s", [testBox currentStep]);
   STAssertEquals(1U, [results count],
@@ -161,7 +161,7 @@
                  [results objectAtIndex:0],
                  @"Wrong result given to -integrate:");
 }
-- (void)checkServiceError: (ZNSyncControllerTestError*)error {
+-(void)checkServiceError: (ZNSyncControllerTestError*)error {
   STAssertTrue([testBox pendingResponse],
                @"Spurious -handleServiceError: call at step %s",
                [testBox currentStep]);
@@ -170,7 +170,7 @@
                  @"Wrong error given to -handleServiceError:");
   
 }
-- (void)checkSystemError: (NSError*)error {
+-(void)checkSystemError: (NSError*)error {
   STAssertTrue([testBox pendingResponse],
                @"Spurious -handleSystemError: call at step %s",
                [testBox currentStep]);
@@ -179,7 +179,7 @@
                  @"Wrong error given to -handleServiceError:");
 }
 
-- (void)advanceSyncedStep {
+-(void)advanceSyncedStep {
   STAssertTrue(syncedStep < (NSInteger)[testBox.scenario count],
                @"Sync site called too many times");
   while (true) {
@@ -193,16 +193,19 @@
   }
 }
 
-- (void)checkSiteCall {
+-(void)checkSiteCall {
   STAssertLessThan([testBox currentStep] - 1,
                    (NSInteger)[testBox.scenario count] - 1,
                    @"Last object in scenario never succeeds syncing");
   [self advanceSyncedStep];
   STAssertEquals([testBox currentStep] - 1, syncedStep,
                  @"Sync controller didn't call the sync site in sequence");
+  NSTimeInterval lastSyncDelta = -[testBox.lastSyncTime timeIntervalSinceNow];
+  STAssertGreaterThan(0.01, lastSyncDelta,
+                      @"Sync controller didn't update lastSyncTime");
 }
 
-- (void)checkCompletedSteps: (NSInteger)steps {
+-(void)checkCompletedSteps: (NSInteger)steps {
   STAssertEquals(steps, [testBox currentStep],
                  @"Test scenario did not complete");
   [self advanceSyncedStep];
@@ -219,18 +222,18 @@
 
 #pragma mark Tests
 
-- (void)setUp {
+-(void)setUp {
   syncSite = [[ZNTargetActionPair alloc]
               initWithTarget:self action:@selector(checkSiteCall)];
   syncedStep = -1;
   testBox = nil;
 }
-- (void)tearDown {
+-(void)tearDown {
   [syncSite release];
   [testBox release];
 }
 
-- (void)testResponsePausing {
+-(void)testResponsePausing {
   testBox = [[ZNSyncControllerTestBox alloc] initWithScenario:
              [NSArray arrayWithObject:
               [[[ZNSyncControllerTestModel alloc] initWithResponseDelay:0.1]
@@ -242,7 +245,7 @@
                                             dateWithTimeIntervalSinceNow:0.7]];
   [self checkCompletedSteps:1];
 }
-- (void)testErrorPausing {
+-(void)testErrorPausing {
   testBox = [[ZNSyncControllerTestBox alloc] initWithScenario:
              [NSArray arrayWithObjects:
               [[[ZNSyncControllerTestModel alloc] initWithResponseDelay:0.1]
@@ -258,7 +261,7 @@
                                             dateWithTimeIntervalSinceNow:1.0]];
   [self checkCompletedSteps:2];
 }
-- (void)testAllResponses {
+-(void)testAllResponses {
   testBox = [[ZNSyncControllerTestBox alloc] initWithScenario:
              [NSArray arrayWithObjects:
               [[[ZNSyncControllerTestModel alloc] initWithResponseDelay:0.1]
@@ -277,7 +280,7 @@
                                             dateWithTimeIntervalSinceNow:1.4]];
   [self checkCompletedSteps:4];  
 }
-- (void)testErrorResuming {
+-(void)testErrorResuming {
   testBox = [[ZNSyncControllerTestBox alloc] initWithScenario:
              [NSArray arrayWithObjects:
               [[[ZNSyncControllerTestError alloc] initWithResponseDelay:0.1
@@ -293,6 +296,21 @@
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate
                                             dateWithTimeIntervalSinceNow:1.0]];
   [self checkCompletedSteps:2];
+}
+
+-(void)testNilLastSyncTime {
+  testBox = [[ZNSyncControllerTestBox alloc] initWithScenario:
+             [NSArray arrayWithObjects:
+              [NSError errorWithDomain:@"testing" code:0 userInfo:nil],
+              [[[ZNSyncControllerTestError alloc] initWithResponseDelay:0.1]
+               autorelease],
+              nil]
+                                                     delegate:self];
+  STAssertNil(testBox.lastSyncTime, @"lastSyncTime should be nil at startup");
+  [[NSRunLoop currentRunLoop] runUntilDate:[NSDate
+                                            dateWithTimeIntervalSinceNow:0.5]];
+  STAssertNil(testBox.lastSyncTime, @"lastSyncTime should be nil after errors");
+  
 }
 
 @end

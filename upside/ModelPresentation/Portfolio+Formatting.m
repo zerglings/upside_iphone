@@ -23,12 +23,12 @@ static void SetupFormatters() {
 
 @implementation Portfolio (Formatting)
 
-- (NSString*)formattedCash {
+-(NSString*)formattedCash {
   SetupFormatters();
   return [cashFormatter stringFromNumber:[NSNumber numberWithDouble:cash]];
 }
 
-- (UIColor*)colorForCash {
+-(UIColor*)colorForCash {
   if (cash > 0)
 		return [UIColor colorWithRed:0.0f green:0.5f blue:0.0f alpha:1.0f];
 	else

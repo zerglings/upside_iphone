@@ -20,7 +20,7 @@
 @synthesize window;
 
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
+-(void)applicationDidFinishLaunching:(UIApplication *)application {
 	if (![[ActivationState sharedState] isRegistered]) {		
 		self.viewController = [[[RegistrationViewController alloc]
 								initWithNibName:@"RegistrationViewController"
@@ -51,7 +51,7 @@
     [window addSubview:viewController.view];
 }
 
-- (void)dealloc {
+-(void)dealloc {
 	[viewController release];
     [window release];
     [super dealloc];

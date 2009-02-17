@@ -20,11 +20,11 @@ static const NSString* kArgumentObject = @"Argument for TargetAction pair";
 
 @implementation ZNTargetActionPairTest
 
-- (void)setUp {
+-(void)setUp {
   invoked = NO;
 }
 
-- (void)testPlainInvoke {
+-(void)testPlainInvoke {
   ZNTargetActionPair* pair = [[ZNTargetActionPair alloc]
                               initWithTarget:self
                               action:@selector(blankAction)];
@@ -37,11 +37,11 @@ static const NSString* kArgumentObject = @"Argument for TargetAction pair";
   [pair release];
 }
 
-- (void)blankAction {
+-(void)blankAction {
   invoked = YES;
 }
 
-- (void)testArgumentInvoke {
+-(void)testArgumentInvoke {
   ZNTargetActionPair* pair = [ZNTargetActionPair 
                               pairWithTarget:self
                               action:@selector(checkArgument:)];
@@ -53,7 +53,7 @@ static const NSString* kArgumentObject = @"Argument for TargetAction pair";
   STAssertTrue(invoked, @"Pair did not invoke action");  
 }
 
-- (void)checkArgument: (NSString*)argument {
+-(void)checkArgument: (NSString*)argument {
   STAssertEqualObjects(kArgumentObject, argument, @"Incorrect argument received");
   invoked = YES;
 }

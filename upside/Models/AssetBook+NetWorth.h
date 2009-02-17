@@ -14,8 +14,8 @@
 
 @interface AssetBook (NetWorth)
 
-- (double)stockWorth: (BOOL*)succeeded usingStockCache:(StockCache*)stockCache;
+-(double)stockWorth: (BOOL*)succeeded usingStockCache:(StockCache*)stockCache;
 
-- (double)netWorth: (BOOL*)succeeded usingStockCache:(StockCache*)stockCache;
+-(double)netWorth: (BOOL*)succeeded usingStockCache:(StockCache*)stockCache;
 
 @end

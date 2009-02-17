@@ -22,7 +22,7 @@
 
 /*
  // The designated initializer. Override to perform setup that is required before the view is loaded.
- - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+ -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
  // Custom initialization
  }
@@ -32,11 +32,11 @@
 
 /*
  // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView {
+ -(void)loadView {
  }
  */
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
   [super viewDidLoad];
 	[self flipControls];
 	
@@ -52,23 +52,23 @@
 	}
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   return YES;
 }
 
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
   // Release anything that's not essential, such as cached data
 }
 
 @synthesize activationState;
 
-- (void)dealloc {
+-(void)dealloc {
 	[activationState release];
   [super dealloc];
 }
 
-- (void)flipControls {
+-(void)flipControls {
 	BOOL canLogin = [activationState canLogin];
 	
 	[userNameLabel setHidden:canLogin];
@@ -86,7 +86,7 @@
 		[activityIndicator stopAnimating];
 }
 
-- (IBAction)loginTapped: (id)sender {
+-(IBAction)loginTapped: (id)sender {
 	User* newUser = [[User alloc] initWithName:userNameText.text
                                     password:passwordText.text];
 	activationState.user = newUser;
@@ -95,7 +95,7 @@
 	[self flipControls];
 }
 
-- (BOOL)textFieldShouldReturn: (UITextField *)textField {
+-(BOOL)textFieldShouldReturn: (UITextField *)textField {
 	[textField resignFirstResponder];
 	if (textField == userNameText) {
 		[passwordText becomeFirstResponder];
@@ -103,7 +103,7 @@
 	return YES;
 }
 
-- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
+-(void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
   for (UIView* view in self.view.subviews) {
     if ([view isKindOfClass:[UITextField class]])
       [view resignFirstResponder];
@@ -112,13 +112,13 @@
 
 #pragma mark LoginCommController Delegate
 
-- (void)loginSucceeded {
+-(void)loginSucceeded {
 	[self.view removeFromSuperview];
 	[[UpsideAppDelegate sharedDelegate]
 	 applicationDidFinishLaunching:[UIApplication sharedApplication]];
 }
 
-- (void)loginFailed: (NSError*)error {
+-(void)loginFailed: (NSError*)error {
 	NSString* title = [error localizedDescription];
 	NSString* message = [error localizedFailureReason];
 	if (!message) {
@@ -144,7 +144,7 @@
 	[alertView release];
 }
 
-- (void)alertView: (UIAlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex {
+-(void)alertView: (UIAlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex {
 	switch (buttonIndex) {
 		case 0: {
 			User* rollbackUser = [[User alloc] initWithUser:activationState.user

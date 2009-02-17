@@ -20,7 +20,7 @@
 
 @implementation PendingOrdersSubmittingController
 
-- (id)initWithTradeBook: (TradeBook*)theTradeBook {
+-(id)initWithTradeBook: (TradeBook*)theTradeBook {
   if ((self = [super initWithErrorModelClass:[ServiceError class]
                                 syncInterval:60.0])) {
     tradeBook = theTradeBook;
@@ -35,7 +35,7 @@
   return self;
 }
 
-- (void)dealloc {
+-(void)dealloc {
   [commController release];
   [loginCommController release];
   [super dealloc];
@@ -90,11 +90,11 @@
 }
 
 
-- (void)loginFailed: (NSError*)error {
+-(void)loginFailed: (NSError*)error {
 	// TODO(overmind): user changed their password, recover from this
 }
 
-- (void)loginSucceeded {
+-(void)loginSucceeded {
 	// This happens if we login after syncing failed.
 	[self resumeSyncing];
 }

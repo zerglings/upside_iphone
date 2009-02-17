@@ -14,7 +14,7 @@
 
 @implementation StockInfoCommController
 
-- (id)initWithTarget: (id)theTarget action: (SEL)theAction {
+-(id)initWithTarget: (id)theTarget action: (SEL)theAction {
 	if ((self = [super init])) {
 		target = theTarget;
 		action = theAction;
@@ -35,7 +35,7 @@
 	[super dealloc];
 }
 
-- (void)fetchInfoForTickers: (NSArray*)tickers {
+-(void)fetchInfoForTickers: (NSArray*)tickers {
 	if ([tickers count] == 0) {
 		// short-circuit
 		[target performSelector:action withObject:tickers];
@@ -56,7 +56,7 @@
   [requestData release];
 }
 
-- (void)processResponse: (NSObject*)response {
+-(void)processResponse: (NSObject*)response {
   [NetworkProgress connectionDone];
   [target performSelector:action withObject:response];  
 }

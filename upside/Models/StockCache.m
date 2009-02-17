@@ -25,7 +25,7 @@
 
 #pragma mark Lifecycle
 
-- (id)init {
+-(id)init {
 	if ((self = [self initWithErrorModelClass:nil syncInterval:60.0])) {
 		stocks = [[NSMutableDictionary alloc] init];
 		commController = [[StockInfoCommController alloc]
@@ -35,7 +35,7 @@
 	return self;
 }
 
-- (void)dealloc {
+-(void)dealloc {
 	[stocks release];
 	[super dealloc];
 }
@@ -56,7 +56,7 @@
 
 #pragma mark Cache Access
 
-- (Stock*)stockForTicker:(NSString*)stockTicker {
+-(Stock*)stockForTicker:(NSString*)stockTicker {
 	Stock* stockInfo = [stocks objectForKey:stockTicker];
 	if (stockInfo) {
 		if ([stockInfo isKindOfClass:[NSNull class]])
