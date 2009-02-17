@@ -80,9 +80,12 @@
 #define kShortsSection 0
 // The section number for long positions.
 #define kLongsSection 1
+// The section number for game news.
+#define kGameSection 2
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -91,6 +94,8 @@
 			return @"Short Positions";
 		case kLongsSection:
 			return @"Long Positions";
+    case kGameSection:
+      return @"Stock Play News";
 		default:
 			break;
 	}
@@ -103,6 +108,8 @@
 			return [[[Game sharedGame] assetBook] shortPositionCount];
 		case kLongsSection:
 			return [[[Game sharedGame] assetBook] longPositionCount];
+    case kGameSection:
+      return 2;
 		default:
 			break;
 	}
@@ -119,6 +126,8 @@
 		case kLongsSection:
 			position = [portfolio longPositionAtIndex:indexPath.row];
 			break;
+    case kGameSection:
+      return indexPath.row == 0 ? @"New Features" : @"Software Updates";
 		default:
 			position = nil;
 			break;
@@ -129,9 +138,8 @@
 - (UITableViewCell *)tableView: (UITableView *)tableView
          cellForRowAtIndexPath: (NSIndexPath *)indexPath {    
   NewsTableViewCell* cell = (NewsTableViewCell*)[super tableView:tableView
-                                           cellForRowAtIndexPath:indexPath];
-  
-	[cell setFeedTitle:[self feedTitleForRowAtIndexPath:indexPath]];
+                                           cellForRowAtIndexPath:indexPath];  
+  [cell setFeedTitle:[self feedTitleForRowAtIndexPath:indexPath]];
   return cell;
 }
 

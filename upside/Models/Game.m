@@ -61,6 +61,14 @@
 # pragma mark Setup
 
 -(void)setup {
+  // TODO(overmind): push this down in a more specific file
+  [newsCenter addTitle:@"Software Updates"
+               withUrl:@"http://blog.istockplay.com/feeds/posts/default/-/updates?alt=rss"
+            andRefresh:600.0];
+  [newsCenter addTitle:@"New Features"
+               withUrl:@"http://blog.istockplay.com/feeds/posts/default/-/features?alt=rss"
+            andRefresh:600.0];
+  
 	[assetBook loadRssFeedsIntoCenter:newsCenter];
 	
 	[assetBook loadTickersIntoStockCache:stockCache];
