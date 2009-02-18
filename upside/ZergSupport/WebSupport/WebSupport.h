@@ -8,6 +8,9 @@
 
 // Main header file for the Zergling.Net Web Support. 
 
-#import "ZNCsvHttpRequest.h"
+// Start by reading the documentation for ZNHttpRequest, then progress to the
+// class that meets your needs.
+
 #import "ZNHttpRequest.h"
+#import "ZNCsvHttpRequest.h"
 #import "ZNXmlHttpRequest.h"

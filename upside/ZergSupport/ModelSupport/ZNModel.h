@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-// Base class for the models using ModelSupport.
+// Base class for the models using Model Support.
 //
 // Classes representing models are created by inheriting from this class. Models
 // have accessible attributes, which are defined by Objective C properties, and
