@@ -89,4 +89,20 @@
                  @"Third short position");
 }
 
+-(void)testPositionForTicker {
+  STAssertEquals(googLong, [assetBook longPositionWithTicker:@"GOOG"],
+                 @"Searched for long GOOG");
+  STAssertNil([assetBook longPositionWithTicker:@"MSFT"],
+              @"Searched for long MSFT, but we're shorting it");
+  STAssertNil([assetBook longPositionWithTicker:@"YYYY"],
+              @"Searched for long position for invalid ticker");  
+
+  STAssertEquals(cShort, [assetBook shortPositionWithTicker:@"C"],
+                 @"Searched for short C");
+  STAssertNil([assetBook shortPositionWithTicker:@"GOOG"],
+              @"Searched for short GOOG, but we have a long there");
+  STAssertNil([assetBook shortPositionWithTicker:@"YYYY"],
+              @"Searched for short position for invalid ticker");  
+}
+
 @end

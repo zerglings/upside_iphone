@@ -50,7 +50,7 @@
       [[UIBarButtonItem alloc] initWithTitle:@"Place"
                                        style:UIBarButtonItemStyleDone
                                       target:self
-                                      action:@selector(tappedPlace:)];  
+                                      action:@selector(placeTapped:)];  
   [self reloadData];
 }
 
@@ -113,7 +113,7 @@
 }
 
 -(IBAction)orderTypeChanged:(id)sender {
-  if ([self chosenIsBuy]) {
+  if ([self chosenIsBuy] == [self chosenIsLong]) {
     limitDescriptionLabel.text = @"Bid";
     [quantityAllButton setHidden:YES];
   }
@@ -275,7 +275,35 @@
                                  limitPrice:[self chosenIsLimit]];
 }
 
--(void)tappedPlace:(id)sender {
+-(IBAction)searchTapped:(id)sender {
+  UIAlertView* alert =
+  [[UIAlertView alloc]
+   initWithTitle:@"Search is not ready"
+   message:@"We know you want to search for tickers. We will bring that you asap."
+   delegate:nil
+   cancelButtonTitle:@"Fine :("
+   otherButtonTitles:nil];
+  [alert show];
+  [alert release];
+}
+
+-(IBAction)allTapped:(id)sender {
+  Position * position;
+  if ([self chosenIsLong]) {
+    position = [[[Game sharedGame] assetBook]
+                longPositionWithTicker:tickerText.text];
+  }
+  else {
+    position = [[[Game sharedGame] assetBook]
+                shortPositionWithTicker:tickerText.text];
+    
+  }
+  // A nil position should return 0.
+  quantityText.text = [NSString stringWithFormat:@"%u", [position quantity]];
+  [self updateEstimatedPrice];
+}
+
+-(void)placeTapped:(id)sender {
   if (![self validate])
     return;
   

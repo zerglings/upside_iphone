@@ -38,5 +38,7 @@
 
 -(IBAction)orderTypeChanged:(id)sender;
 -(IBAction)limitTypeChanged:(id)sender;
+-(IBAction)searchTapped:(id)sender;
+-(IBAction)allTapped:(id)sender;
 
 @end

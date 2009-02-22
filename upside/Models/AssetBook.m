@@ -109,4 +109,22 @@
 	return [shortPositions objectAtIndex:index];
 }
 
++(Position*)positionWithTicker:(NSString*)ticker in:(NSArray*)positions {
+  for (Position* position in positions) {
+    if ([position.ticker isEqualToString:ticker])
+      return position;
+  }
+  return nil;
+}
+
+-(Position*)longPositionWithTicker:(NSString*)ticker {
+  return [AssetBook positionWithTicker:ticker in:longPositions];
+}
+
+// The short position with the given ticker.
+-(Position*)shortPositionWithTicker:(NSString*)ticker {
+  return [AssetBook positionWithTicker:ticker in:shortPositions];  
+}
+
+
 @end

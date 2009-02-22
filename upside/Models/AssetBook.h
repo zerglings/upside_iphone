@@ -40,6 +40,12 @@
 // The short position at the given index.
 -(Position*)shortPositionAtIndex:(NSUInteger)index;
 
+// The long position with the given ticker.
+-(Position*)longPositionWithTicker:(NSString*)ticker;
+
+// The short position with the given ticker.
+-(Position*)shortPositionWithTicker:(NSString*)ticker;
+
 // Reloads the asset book with the given data.
 //
 // The data should consist of Positions and a Portfolio.
