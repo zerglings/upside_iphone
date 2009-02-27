@@ -16,8 +16,8 @@
 #pragma mark Lifecycle
 
 -(id)initWithURLRequest:(NSURLRequest*)theRequest
-                   target:(id)theTarget
-                   action:(SEL)theAction {
+                 target:(id)theTarget
+                 action:(SEL)theAction {
 	if ((self = [super init])) {
 		responseData = [[NSMutableData alloc] init];
 		urlRequest = [theRequest retain];
@@ -39,9 +39,9 @@
 #pragma mark HTTP Request Creation
 
 +(NSURLRequest*)newURLRequestToService:(NSString*)service
-                                  method:(NSString*)method
-                                    data:(NSDictionary*)data
-                             fieldCasing:(ZNFormatterCasing)fieldCasing {
+                                method:(NSString*)method
+                                  data:(NSDictionary*)data
+                           fieldCasing:(ZNFormatterCasing)fieldCasing {
 	NSURL* url = [[NSURL alloc] initWithString:service];	
 	NSMutableURLRequest* request = [[NSMutableURLRequest alloc]
                                   initWithURL:url];
@@ -49,7 +49,7 @@
 	
 	[request setHTTPMethod:method];
   ZNFormFieldFormatter* fieldFormatter =
-      [ZNFormFieldFormatter formatterFromPropertiesTo:fieldCasing];
+  [ZNFormFieldFormatter formatterFromPropertiesTo:fieldCasing];
 	NSData* encodedBody = [ZNFormURLEncoder copyEncodingFor:data
                                       usingFieldFormatter:fieldFormatter];
   
@@ -90,18 +90,18 @@
 #pragma mark NSURLConnection Delegate
 
 -(NSURLRequest*)connection:(NSURLConnection*)connection
-             willSendRequest:(NSURLRequest*)request
-            redirectResponse:(NSURLResponse*)redirectResponse {
+           willSendRequest:(NSURLRequest*)request
+          redirectResponse:(NSURLResponse*)redirectResponse {
 	return request;
 }
 
 -(void)connection:(NSURLConnection*)connection
- didReceiveResponse:(NSURLResponse*)response {
+didReceiveResponse:(NSURLResponse*)response {
 	[responseData setLength:0];
 }
 
 -(void)connection:(NSURLConnection*)connection
-     didReceiveData:(NSData*)data {
+   didReceiveData:(NSData*)data {
 	[responseData appendData:data];
 }
 
@@ -111,13 +111,13 @@
 }
 
 -(void)connection:(NSURLConnection*)connection
-   didFailWithError:(NSError*)error {
+ didFailWithError:(NSError*)error {
 	[target performSelector:action withObject:error];
 	[self release];
 }
 
 -(NSCachedURLResponse*)connection:(NSURLConnection*)connection
-                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
+                willCacheResponse:(NSCachedURLResponse*)cachedResponse {
 	// It's usually a bad idea to cache queries to Web services.
 	return nil;
 }
@@ -173,7 +173,7 @@
 	}
 	else {
 		NSURLConnection* connection =
-    [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+        [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
 		[connection release];
 	}
   [self retain];
@@ -181,24 +181,23 @@
 }
 
 +(void)callService:(NSString*)service
-              method:(NSString*)method
-                data:(NSDictionary*)data
-         fieldCasing:(ZNFormatterCasing)fieldCasing
-              target:(NSObject*)target
-              action:(SEL)action {
+            method:(NSString*)method
+              data:(NSDictionary*)data
+       fieldCasing:(ZNFormatterCasing)fieldCasing
+            target:(NSObject*)target
+            action:(SEL)action {
 	NSURLRequest* urlRequest = [self newURLRequestToService:service
                                                    method:method
                                                      data:data
                                               fieldCasing:fieldCasing];
 	ZNHttpRequest* request =
-	[[ZNHttpRequest alloc] initWithURLRequest:urlRequest
-                                     target:target
-                                     action:action];
+    	[[ZNHttpRequest alloc] initWithURLRequest:urlRequest
+                                         target:target
+                                         action:action];
 	[request start];
 	[urlRequest release];
 	[request release];
 }
-
 
 @end
 
