@@ -179,6 +179,13 @@
 				@"Nil strings should be string-unboxed to nil strings");
 	[dict release];
 	[thawedNulls release];
+
+	dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNull null], @"stringVal",
+          nil];
+	thawedNulls = [[ZNTestNumbers alloc] initWithProperties:dict];
+	STAssertNil(thawedNulls.stringVal,
+              @"NSNull instances should be string-unboxed to nil strings");
+	[thawedNulls release];
 }
 
 -(void)testIsModelClass {

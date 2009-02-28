@@ -292,7 +292,7 @@ bmcgbm93LCB3b3JyeSBhYm91dCB5b3VyIHVzZXIgbmFtZSBsYXRlci4</string>
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>ActivationUserChoiceViewController</string>
 					<string>UIResponder</string>
-					<string>{{452, 373}, {320, 480}}</string>
+					<string>{{498, 287}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -364,7 +364,7 @@ bmcgbm93LCB3b3JyeSBhYm91dCB5b3VyIHVzZXIgbmFtZSBsYXRlci4</string>
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UnitTesting/GTMCALayer+UnitTesting.h</string>
+						<string key="minorKey">ZergSupport/TestSupport/GTM/GTMCALayer+UnitTesting.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -375,14 +375,14 @@ bmcgbm93LCB3b3JyeSBhYm91dCB5b3VyIHVzZXIgbmFtZSBsYXRlci4</string>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UnitTesting/GTMNSObject+UnitTesting.h</string>
+						<string key="minorKey">ZergSupport/TestSupport/GTM/GTMNSObject+UnitTesting.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">UIView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UnitTesting/GTMUIKit+UnitTesting.h</string>
+						<string key="minorKey">ZergSupport/TestSupport/GTM/GTMUIKit+UnitTesting.h</string>
 					</object>
 				</object>
 			</object>
