@@ -28,6 +28,9 @@
 	if ([boxedObject isKindOfClass:[NSString class]]) {
 		string = (NSString*)boxedObject;
 	}
+  else if ([boxedObject isKindOfClass:[NSNull class]]) {
+    string = nil;
+  }
 	else {
 		string = [boxedObject description];
 	}

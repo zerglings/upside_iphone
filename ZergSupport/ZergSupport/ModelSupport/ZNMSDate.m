@@ -55,6 +55,9 @@
 	else if ([boxedObject isKindOfClass:[NSDate class]]) {		
 		date = (NSDate*)boxedObject;
 	}
+  else if ([boxedObject isKindOfClass:[NSNull class]]) {
+    date = nil;
+  }  
 	else
 		date = nil;
 	
