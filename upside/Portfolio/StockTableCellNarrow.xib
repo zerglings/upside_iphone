@@ -141,7 +141,7 @@
 								<reference key="IBUINormalTitleColor" ref="990607409"/>
 							</object>
 						</object>
-						<string key="NSFrameSize">{297, 48}</string>
+						<string key="NSFrameSize">{320, 48}</string>
 						<reference key="NSSuperview" ref="221175965"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -161,7 +161,6 @@
 				</object>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-				<int key="IBUIAccessoryType">1</int>
 				<reference key="IBUIContentView" ref="816631051"/>
 				<string key="IBUIReuseIdentifier">StockNarrow</string>
 			</object>
@@ -308,7 +307,7 @@
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>StockTableViewCell</string>
-					<string>{{355, 751}, {320, 48}}</string>
+					<string>{{530, 457}, {320, 48}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -351,10 +350,30 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">Game</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Models/Game.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GameAwareTableViewController</string>
+					<string key="superclassName">AutoRotatingTableViewController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">game</string>
+						<string key="NS.object.0">Game</string>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Util/GameAwareTableViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">ZerglingNet/TestSupport/GTMCALayer+UnitTesting.h</string>
+						<string key="minorKey">ZergSupport/TestSupport/GTM/GTMCALayer+UnitTesting.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -365,12 +384,12 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">ZerglingNet/TestSupport/GTMNSObject+UnitTesting.h</string>
+						<string key="minorKey">ZergSupport/TestSupport/GTM/GTMNSObject+UnitTesting.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">PortfolioTableViewController</string>
-					<string key="superclassName">AutoRotatingTableViewController</string>
+					<string key="superclassName">GameAwareTableViewController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">changeButtonWasTapped</string>
 						<string key="NS.object.0">id</string>
@@ -427,7 +446,7 @@
 					<string key="className">UIView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">ZerglingNet/TestSupport/GTMUIKit+UnitTesting.h</string>
+						<string key="minorKey">ZergSupport/TestSupport/GTM/GTMUIKit+UnitTesting.h</string>
 					</object>
 				</object>
 			</object>
