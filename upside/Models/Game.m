@@ -94,6 +94,10 @@
   [newDataSite perform];
 }
 
+-(void)syncData {
+  [syncController syncOnce];
+}
+
 #pragma mark Singleton
 
 static Game* sharedGame = nil;

@@ -54,6 +54,11 @@
       [[UIBarButtonItem alloc]
        initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
        target:self action:@selector(tappedAddTradeButton:)];
+  
+  self.navigationItem.rightBarButtonItem =
+  [[UIBarButtonItem alloc]
+   initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+   target:[Game sharedGame] action:@selector(syncData)];  
 }
 
 - (void)refreshEmptyView {

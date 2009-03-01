@@ -45,6 +45,9 @@
 // Called when new game data becomes available. 
 @property (nonatomic, readonly, retain) ZNTargetActionSet* newDataSite;
 
+// Called to force a one-time data synchronization now.
+-(void)syncData;
+
 // The time of the most recent data sync.
 -(NSDate*)lastSyncTime;
 

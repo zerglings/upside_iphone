@@ -42,6 +42,11 @@
   // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
   
+  self.navigationItem.rightBarButtonItem =
+      [[UIBarButtonItem alloc]
+       initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+       target:[Game sharedGame] action:@selector(syncData)];
+  
   // The empty view will always be a subview, but it will usually be hidden.  
   [self.view addSubview:emptyView];
   CGRect frame = self.view.frame;  
