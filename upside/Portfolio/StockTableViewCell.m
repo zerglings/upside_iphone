@@ -56,17 +56,25 @@
 	tickerLabel.text = [position ticker];
 	nameLabel.text = [stockInfo name];
 	
-	[askChangeButton setTitle:[stockInfo formattedNetAskChange]
+  NSString* formattedAskChange =
+      [NSString stringWithFormat:@"%@ ", [stockInfo formattedNetAskChange]];
+	[askChangeButton setTitle:formattedAskChange
 					 forState:UIControlStateNormal];
-	[askChangeButton setTitle:[stockInfo formattedNetAskChange]
+	[askChangeButton setTitle:formattedAskChange
 					 forState:UIControlStateHighlighted];
-	[bidChangeButton setTitle:[stockInfo formattedNetBidChange]
+  
+  NSString* formattedBidChange =
+      [NSString stringWithFormat:@"%@ ", [stockInfo formattedNetBidChange]];
+	[bidChangeButton setTitle:formattedBidChange
 					 forState:UIControlStateNormal];
-	[bidChangeButton setTitle:[stockInfo formattedNetBidChange]
+	[bidChangeButton setTitle:formattedBidChange
 					 forState:UIControlStateHighlighted];
-	[tradeChangeButton setTitle:[stockInfo formattedNetTradeChange]
+  
+  NSString* formattedTradeChange = 
+      [NSString stringWithFormat:@"%@ ", [stockInfo formattedNetTradeChange]];
+	[tradeChangeButton setTitle:formattedTradeChange
 					 forState:UIControlStateNormal];
-	[tradeChangeButton setTitle:[stockInfo formattedNetTradeChange]
+	[tradeChangeButton setTitle:formattedTradeChange
 					 forState:UIControlStateHighlighted];
 	
 	[askChangeButton setTitleColor:[stockInfo colorForAskChange]

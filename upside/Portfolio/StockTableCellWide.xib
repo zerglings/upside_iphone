@@ -44,12 +44,12 @@
 							<object class="IBUILabel" id="457670964">
 								<reference key="NSNextResponder" ref="122120342"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{11, 0}, {240, 21}}</string>
+								<string key="NSFrame">{{11, 0}, {181, 21}}</string>
 								<reference key="NSSuperview" ref="122120342"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="IBUIText">Really Long Corporation Name</string>
+								<string key="IBUIText">Corporation Name</string>
 								<object class="NSColor" key="IBUITextColor" id="805817850">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
@@ -192,6 +192,24 @@
 								<float key="IBUIMinimumFontSize">1.000000e+01</float>
 								<int key="IBUITextAlignment">2</int>
 							</object>
+							<object class="IBUILabel" id="361683096">
+								<reference key="NSNextResponder" ref="122120342"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{200, 0}, {105, 21}}</string>
+								<reference key="NSSuperview" ref="122120342"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="IBUIText">1,511.32mm</string>
+								<object class="NSColor" key="IBUITextColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwLjI1MDk4MDQxIDAuNTAxOTYwODEAA</bytes>
+								</object>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">1.000000e+01</float>
+								<int key="IBUITextAlignment">2</int>
+							</object>
 						</object>
 						<string key="NSFrameSize">{480, 48}</string>
 						<reference key="NSSuperview" ref="673582788"/>
@@ -276,6 +294,14 @@
 					</object>
 					<int key="connectionID">20</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">stockCountLabel</string>
+						<reference key="source" ref="673582788"/>
+						<reference key="destination" ref="361683096"/>
+					</object>
+					<int key="connectionID">23</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -313,6 +339,7 @@
 							<reference ref="249909013"/>
 							<reference ref="940572837"/>
 							<reference ref="302407189"/>
+							<reference ref="361683096"/>
 						</object>
 						<reference key="parent" ref="957960031"/>
 					</object>
@@ -361,6 +388,11 @@
 						<reference key="object" ref="302407189"/>
 						<reference key="parent" ref="673582788"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="361683096"/>
+						<reference key="parent" ref="673582788"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -375,6 +407,7 @@
 					<string>2.CustomClassName</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
+					<string>22.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
@@ -391,6 +424,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>StockTableViewCell</string>
 					<string>{{355, 708}, {480, 48}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -420,7 +454,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">20</int>
+			<int key="maxID">23</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -475,8 +509,21 @@
 					<string key="className">PortfolioTableViewController</string>
 					<string key="superclassName">GameAwareTableViewController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">changeButtonWasTapped</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>changeButtonWasTapped:</string>
+							<string>placeOrderTapped:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">emptyView</string>
+						<string key="NS.object.0">UIView</string>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
