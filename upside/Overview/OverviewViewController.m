@@ -41,9 +41,10 @@
   [super viewDidLoad];
   [self newGameData];
   
-  // TODO(overmind): do we need these?
-	self.view.autoresizesSubviews = YES;
-	self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;  
+  self.navigationItem.rightBarButtonItem =
+  [[UIBarButtonItem alloc]
+   initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+   target:[Game sharedGame] action:@selector(syncData)];    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
