@@ -13,7 +13,7 @@
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Will rotate any way the user wants us to.
-    return YES;
+  return YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated {

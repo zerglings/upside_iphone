@@ -11,6 +11,10 @@
 #import "GameAwareTableViewController.h"
 
 @interface OrdersTableViewController : GameAwareTableViewController {
+  // Shown when the table is empty.
+  IBOutlet UIView* emptyView;
 }
+
+-(IBAction)placeOrderTapped:(id)sender;
 
 @end

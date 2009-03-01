@@ -295,7 +295,7 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="IBUIText">($350,000,000.00)</string>
+						<string key="IBUIText">$-350,000,000.00</string>
 						<reference key="IBUIFont" ref="624166817"/>
 						<reference key="IBUITextColor" ref="362809490"/>
 						<nil key="IBUIHighlightedColor"/>

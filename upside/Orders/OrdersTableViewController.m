@@ -16,6 +16,11 @@
 #import "TradeBook.h"
 #import "TradeOrder.h"
 
+@interface OrdersTableViewController ()
+-(void)refreshEmptyView;
+@end
+
+
 @implementation OrdersTableViewController
 
 /*
@@ -29,19 +34,33 @@
 
 -(void)viewDidLoad {
   [super viewDidLoad];
-	
+
 	self.narrowCellNib = @"OrderTableCellNarrow";
 	self.wideCellNib = @"OrderTableCellWide";
 	self.narrowCellReuseIdentifier = @"OrderNarrow";
 	self.wideCellReuseIdentifier = @"OrderWide";
 	self.cellClass = [OrderTableViewCell class];
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  
+  // The empty view will always be a subview, but it will usually be hidden.
+  [self.view addSubview:emptyView];
+  [self refreshEmptyView];
+  
   self.navigationItem.leftBarButtonItem =
       [[UIBarButtonItem alloc]
        initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
        target:self action:@selector(tappedAddTradeButton:)];
+}
+
+- (void)refreshEmptyView {
+  TradeBook* tradeBook = [[Game sharedGame] tradeBook];
+  BOOL hidden = ([tradeBook pendingCount] + [tradeBook submittedCount] +
+                 [tradeBook filledCount]) != 0;
+  [emptyView setHidden:hidden];
+}
+
+- (void)newGameData {
+  [super newGameData];
+  [self refreshEmptyView];
 }
 
 /*
@@ -64,8 +83,9 @@
 */
 
 -(void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
+  // Releases the view if it doesn't have a superview
+  [super didReceiveMemoryWarning];
+  // Release anything that's not essential, such as cached data
 }
 
 #pragma mark Table view methods
@@ -75,7 +95,7 @@
 #define kFilledSection 2
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+  return 3;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -179,20 +199,22 @@
 }
 */
 
-
 -(void)dealloc {
     [super dealloc];
 }
 
 -(void)tappedAddTradeButton:(id)sender {
   NewOrderViewController* newOrderViewController =
-      [[NewOrderViewController alloc] initWithNibName:@"NewOrderViewController"
-                                               bundle:nil];
+  [[NewOrderViewController alloc] initWithNibName:@"NewOrderViewController"
+                                           bundle:nil];
   [self.navigationController pushViewController:newOrderViewController
                                        animated:YES];
   // TODO(overmind): setup controller
-  [newOrderViewController release];
+  [newOrderViewController release];  
 }
 
+-(IBAction)placeOrderTapped:(id)sender {
+  [self tappedAddTradeButton:sender];
+}
 @end
 

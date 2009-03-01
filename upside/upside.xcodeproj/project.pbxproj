@@ -19,9 +19,7 @@
 		570C70B30F11217E00DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
 		570C70B40F1121B100DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
 		570D82DD0F1196F800D54544 /* TradeOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82DC0F1196F800D54544 /* TradeOrder.m */; };
-		570D82DF0F119D7C00D54544 /* OrdersTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D82DE0F119D7C00D54544 /* OrdersTableViewController.xib */; };
 		570D82E20F11A45A00D54544 /* OrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82E10F11A45A00D54544 /* OrdersTableViewController.m */; };
-		570D82EF0F11A5F000D54544 /* AutoRotatingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */; };
 		570D83300F11B0DD00D54544 /* OrderTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D832F0F11B0DD00D54544 /* OrderTableCellNarrow.xib */; };
 		570D83320F11B0E700D54544 /* OrderTableCellWide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570D83310F11B0E700D54544 /* OrderTableCellWide.xib */; };
 		570D83350F11B10A00D54544 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D83340F11B10A00D54544 /* OrderTableViewCell.m */; };
@@ -244,6 +242,10 @@
 		57A1F1540F257B2700B8179A /* ActivationLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A1F0BB0F25642300B8179A /* ActivationLoginViewController.xib */; };
 		57A1F18A0F2599B000B8179A /* LoginCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1F1890F2599B000B8179A /* LoginCommController.m */; };
 		57A1F18B0F2599B000B8179A /* LoginCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1F1890F2599B000B8179A /* LoginCommController.m */; };
+		57AF12710F5A486F00975407 /* OrdersTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57AF12700F5A486F00975407 /* OrdersTableViewController.xib */; };
+		57C395E00F5A11D0001F153D /* DollarSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C395DF0F5A11D0001F153D /* DollarSign.png */; };
+		57C3961D0F5A240E001F153D /* AutoRotatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C3961C0F5A240E001F153D /* AutoRotatingViewController.m */; };
+		57C396200F5A245A001F153D /* AutoRotatingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C3961F0F5A245A001F153D /* AutoRotatingTableViewController.m */; };
 		57CB188E0F0F01C600E95AE1 /* ActivationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB188D0F0F01C600E95AE1 /* ActivationState.m */; };
 		57CB1A0A0F0F1AF700E95AE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		57CB1A0B0F0F1AF700E95AE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -323,11 +325,8 @@
 		570C70B20F11217E00DC666C /* Stock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock.m; sourceTree = "<group>"; };
 		570D82DB0F1196F800D54544 /* TradeOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeOrder.h; sourceTree = "<group>"; };
 		570D82DC0F1196F800D54544 /* TradeOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeOrder.m; sourceTree = "<group>"; };
-		570D82DE0F119D7C00D54544 /* OrdersTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersTableViewController.xib; sourceTree = "<group>"; };
 		570D82E00F11A45A00D54544 /* OrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersTableViewController.h; sourceTree = "<group>"; };
 		570D82E10F11A45A00D54544 /* OrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersTableViewController.m; sourceTree = "<group>"; };
-		570D82ED0F11A5F000D54544 /* AutoRotatingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRotatingTableViewController.h; sourceTree = "<group>"; };
-		570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRotatingTableViewController.m; sourceTree = "<group>"; };
 		570D832F0F11B0DD00D54544 /* OrderTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableCellNarrow.xib; sourceTree = "<group>"; };
 		570D83310F11B0E700D54544 /* OrderTableCellWide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableCellWide.xib; sourceTree = "<group>"; };
 		570D83330F11B10A00D54544 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
@@ -547,6 +546,12 @@
 		57A1F0BB0F25642300B8179A /* ActivationLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivationLoginViewController.xib; sourceTree = "<group>"; };
 		57A1F1880F2599B000B8179A /* LoginCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCommController.h; sourceTree = "<group>"; };
 		57A1F1890F2599B000B8179A /* LoginCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCommController.m; sourceTree = "<group>"; };
+		57AF12700F5A486F00975407 /* OrdersTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersTableViewController.xib; sourceTree = "<group>"; };
+		57C395DF0F5A11D0001F153D /* DollarSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DollarSign.png; sourceTree = "<group>"; };
+		57C3961B0F5A240E001F153D /* AutoRotatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRotatingViewController.h; sourceTree = "<group>"; };
+		57C3961C0F5A240E001F153D /* AutoRotatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRotatingViewController.m; sourceTree = "<group>"; };
+		57C3961E0F5A245A001F153D /* AutoRotatingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRotatingTableViewController.h; sourceTree = "<group>"; };
+		57C3961F0F5A245A001F153D /* AutoRotatingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRotatingTableViewController.m; sourceTree = "<group>"; };
 		57CB188C0F0F01C600E95AE1 /* ActivationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationState.h; sourceTree = "<group>"; };
 		57CB188D0F0F01C600E95AE1 /* ActivationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationState.m; sourceTree = "<group>"; };
 		57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationStateTest.m; sourceTree = "<group>"; };
@@ -729,12 +734,14 @@
 		570D82EC0F11A5BB00D54544 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				57C3961E0F5A245A001F153D /* AutoRotatingTableViewController.h */,
+				57C3961F0F5A245A001F153D /* AutoRotatingTableViewController.m */,
+				57C3961B0F5A240E001F153D /* AutoRotatingViewController.h */,
+				57C3961C0F5A240E001F153D /* AutoRotatingViewController.m */,
 				57E4530D0F4AC1CF00DA71BC /* GameAwareViewController.h */,
 				57E4530E0F4AC1CF00DA71BC /* GameAwareViewController.m */,
 				57E452FC0F4ABC8B00DA71BC /* GameAwareTableViewController.h */,
 				57E452FD0F4ABC8B00DA71BC /* GameAwareTableViewController.m */,
-				570D82ED0F11A5F000D54544 /* AutoRotatingTableViewController.h */,
-				570D82EE0F11A5F000D54544 /* AutoRotatingTableViewController.m */,
 				571A27070F1ABA5000A996A2 /* NetworkProgress.h */,
 				571A27080F1ABA5000A996A2 /* NetworkProgress.m */,
 			);
@@ -807,7 +814,7 @@
 		5732104C0F117B9E003D97D8 /* Orders */ = {
 			isa = PBXGroup;
 			children = (
-				570D82DE0F119D7C00D54544 /* OrdersTableViewController.xib */,
+				57AF12700F5A486F00975407 /* OrdersTableViewController.xib */,
 				570D82E00F11A45A00D54544 /* OrdersTableViewController.h */,
 				570D82E10F11A45A00D54544 /* OrdersTableViewController.m */,
 				570D832F0F11B0DD00D54544 /* OrderTableCellNarrow.xib */,
@@ -1066,6 +1073,7 @@
 		57CDB16D0F0F4769002C60C5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				57C395DF0F5A11D0001F153D /* DollarSign.png */,
 				570D84F40F133E9C00D54544 /* Default.png */,
 				578268360F2D949F00B53703 /* GreenTick.png */,
 				575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */,
@@ -1305,7 +1313,6 @@
 				571A26900F19871C00A996A2 /* NewsArticleViewController.xib in Resources */,
 				571193850F1BEE2C00FD89EA /* NewsTableCellNarrow.xib in Resources */,
 				570D88C90F16C8E800D54544 /* NewsTableViewController.xib in Resources */,
-				570D82DF0F119D7C00D54544 /* OrdersTableViewController.xib in Resources */,
 				570D83300F11B0DD00D54544 /* OrderTableCellNarrow.xib in Resources */,
 				570D83320F11B0E700D54544 /* OrderTableCellWide.xib in Resources */,
 				57CDB2210F0F7DEB002C60C5 /* OverviewViewController.xib in Resources */,
@@ -1318,6 +1325,8 @@
 				578266F00F2C95B000B53703 /* NewOrderViewController.xib in Resources */,
 				578268380F2D949F00B53703 /* GreenTick.png in Resources */,
 				578268390F2D949F00B53703 /* RedX.png in Resources */,
+				57C395E00F5A11D0001F153D /* DollarSign.png in Resources */,
+				57AF12710F5A486F00975407 /* OrdersTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1371,7 +1380,6 @@
 				577093620F1084D400069411 /* Stock+Formatting.m in Sources */,
 				570D82DD0F1196F800D54544 /* TradeOrder.m in Sources */,
 				570D82E20F11A45A00D54544 /* OrdersTableViewController.m in Sources */,
-				570D82EF0F11A5F000D54544 /* AutoRotatingTableViewController.m in Sources */,
 				570D83350F11B10A00D54544 /* OrderTableViewCell.m in Sources */,
 				570D84300F130FA300D54544 /* TradeOrder+Formatting.m in Sources */,
 				570D84EA0F1338EA00D54544 /* TradeBook.m in Sources */,
@@ -1414,6 +1422,8 @@
 				57E4530F0F4AC1CF00DA71BC /* GameAwareViewController.m in Sources */,
 				57E453CC0F4ACFBC00DA71BC /* TradeBook+Worth.m in Sources */,
 				57E4542A0F4AD83000DA71BC /* TradeBook+Formatting.m in Sources */,
+				57C3961D0F5A240E001F153D /* AutoRotatingViewController.m in Sources */,
+				57C396200F5A245A001F153D /* AutoRotatingTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

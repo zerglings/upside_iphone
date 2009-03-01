@@ -8,10 +8,16 @@
 
 #import "PortfolioTableViewController.h"
 
-#import "Game.h"
 #import "AssetBook.h"
+#import "Game.h"
+#import "NewOrderViewController.h"
 #import "StockCache.h"
 #import "StockTableViewCell.h"
+
+@interface PortfolioTableViewController ()
+-(void)refreshEmptyView;
+@end
+
 
 @implementation PortfolioTableViewController
 
@@ -32,10 +38,27 @@
 	self.narrowCellReuseIdentifier = @"StockNarrow";
 	self.wideCellReuseIdentifier = @"StockWide";
 	self.cellClass = [StockTableViewCell class];
-	
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  
+  // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+  // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  
+  // The empty view will always be a subview, but it will usually be hidden.
+  [self.view addSubview:emptyView];
+  [self refreshEmptyView];
 }
+
+- (void)refreshEmptyView {
+  AssetBook* assetBook = [[Game sharedGame] assetBook];
+  BOOL hidden = ([assetBook shortPositionCount] + [assetBook longPositionCount])
+                != 0; 
+  [emptyView setHidden:hidden];
+}
+
+- (void)newGameData {
+  [super newGameData];
+  [self refreshEmptyView];
+}
+
 
 /*
 -(void)viewWillAppear:(BOOL)animated {
@@ -174,7 +197,26 @@
     [super dealloc];
 }
 
--(IBAction)changeButtonWasTapped {
+
+-(IBAction)placeOrderTapped:(id)sender {
+  UINavigationController* ordersNavigationController =
+      [self.tabBarController.viewControllers objectAtIndex:2];
+  [self.tabBarController setSelectedViewController:ordersNavigationController];
+  
+  if ([[ordersNavigationController.viewControllers lastObject]
+       isKindOfClass:[NewOrderViewController class]])
+    return;
+  
+  NewOrderViewController* newOrderViewController =
+  [[NewOrderViewController alloc] initWithNibName:@"NewOrderViewController"
+                                           bundle:nil];
+  [ordersNavigationController pushViewController:newOrderViewController
+                                        animated:YES];
+  // TODO(overmind): setup controller
+  [newOrderViewController release];  
+}
+
+-(IBAction)changeButtonWasTapped:(id)sender; {
 }
 
 @end

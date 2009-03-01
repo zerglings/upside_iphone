@@ -12,9 +12,12 @@
 
 
 @interface PortfolioTableViewController : GameAwareTableViewController {
-
+  // Shown when the table is empty.
+  IBOutlet UIView* emptyView;
 }
 
--(IBAction)changeButtonWasTapped;
+-(IBAction)placeOrderTapped:(id)sender;
+
+-(IBAction)changeButtonWasTapped:(id)sender;
 
 @end

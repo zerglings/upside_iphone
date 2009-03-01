@@ -6,11 +6,11 @@
 //  Copyright Zergling.Net. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "AutoRotatingViewController.h"
 
 @class Game;
 
-@interface GameAwareViewController : UIViewController {
+@interface GameAwareViewController : AutoRotatingViewController {
   IBOutlet Game* game;
 }
 
