@@ -227,7 +227,7 @@
 						<float key="IBUIMinimumFontSize">1.700000e+01</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIAutocorrectionType">1</int>
-							<int key="IBUIKeyboardType">4</int>
+							<int key="IBUIKeyboardType">2</int>
 							<int key="IBUIReturnKeyType">9</int>
 							<bool key="IBUIEnablesReturnKeyAutomatically">YES</bool>
 						</object>
