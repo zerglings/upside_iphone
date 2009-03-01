@@ -42,8 +42,13 @@
   // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
   
-  // The empty view will always be a subview, but it will usually be hidden.
+  // The empty view will always be a subview, but it will usually be hidden.  
   [self.view addSubview:emptyView];
+  CGRect frame = self.view.frame;  
+  emptyView.frame = CGRectMake(0.0f, 0.0f,
+                               CGRectGetWidth(frame), CGRectGetHeight(frame));
+  emptyView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+      UIViewAutoresizingFlexibleWidth;
   [self refreshEmptyView];
 }
 
