@@ -20,7 +20,9 @@
   IBOutlet UIButton* quantityAllButton;
   IBOutlet UISegmentedControl* limitTypeSegmentedControl;
   IBOutlet UILabel* limitDescriptionLabel;
-  IBOutlet UITextField* limitText;
+  IBOutlet UITextField* limitDollarsText;
+  IBOutlet UITextField* limitCentsText;
+  IBOutlet UILabel* limitCentSeparatorLabel;
   
   IBOutlet UILabel* askPriceLabel;
   IBOutlet UILabel* bidPriceLabel;

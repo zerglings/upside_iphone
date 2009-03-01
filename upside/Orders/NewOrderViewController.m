@@ -94,20 +94,28 @@
           unsignedIntegerValue];
 }
 
--(NSUInteger)chosenLimitPrice {
+-(double)chosenLimitPrice {
   if (![self chosenIsLimit])
     return kTradeOrderInvalidLimit;
-  return [[inputFormatter numberFromString:limitText.text] doubleValue];  
+  
+  NSString* limitString = [NSString stringWithFormat:@"%@.%02@",
+                           limitDollarsText.text, limitCentsText.text];
+  return [[inputFormatter numberFromString:limitString] doubleValue];
 }
 
 -(IBAction)limitTypeChanged:(id)sender {
   if ([self chosenIsLimit]) {
-    [limitText setEnabled:YES];
-    limitText.text = @"";
+    [limitDollarsText setEnabled:YES];
+    limitDollarsText.text = @"";
+    [limitCentsText setHidden:NO];
+    limitCentsText.text = @"";
+    [limitCentSeparatorLabel setHidden:NO];
   }
   else {
-    [limitText setEnabled:NO];
-    limitText.text = @"market price";
+    [limitDollarsText setEnabled:NO];
+    limitDollarsText.text = @"market price";
+    [limitCentsText setHidden:YES];
+    [limitCentSeparatorLabel setHidden:YES];
   }
   [self updateEstimatedPrice];  
 }
@@ -192,10 +200,23 @@
   else if (textField == quantityText) {
     [self updateEstimatedPrice];
   }
-  else if (textField == limitText) {
+  else if (textField == limitDollarsText) {
+    [self updateEstimatedPrice];
+  }
+  else if (textField == limitCentsText) {
     [self updateEstimatedPrice];
   }
   return YES;  
+}
+
+-(BOOL)textField:(UITextField*)textField
+    shouldChangeCharactersInRange:(NSRange)range
+    replacementString:(NSString*)string {
+  if (textField != limitCentsText)
+    return YES;
+  
+  // Disallow changes that make the length > 2 characters.
+  return ([textField.text length] - range.length + [string length]) <= 2;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField*)textField {
@@ -206,7 +227,8 @@
 -(void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
   [tickerText resignFirstResponder];
   [quantityText resignFirstResponder];
-  [limitText resignFirstResponder];
+  [limitDollarsText resignFirstResponder];
+  [limitCentsText resignFirstResponder];
 }
 
 -(void)receivedStockInfo:(NSArray*)info {
@@ -258,7 +280,8 @@
      @"You have to specify how many shares you want to trade"];
     return NO;
   }
-  if ([self chosenIsLimit] && [limitText.text length] == 0) {
+  if ([self chosenIsLimit] && [limitDollarsText.text length] == 0
+          && [limitCentsText.text length] == 0) {
     [self validationFailed:
      @"You have not entered a limit price. You can either enter a limit "
      @"price, or place a market order."];
@@ -272,7 +295,7 @@
                                    quantity:[self chosenQuantity]
                                       isBuy:[self chosenIsBuy]
                                      isLong:[self chosenIsLong]
-                                 limitPrice:[self chosenIsLimit]];
+                                 limitPrice:[self chosenLimitPrice]];
 }
 
 -(IBAction)searchTapped:(id)sender {
