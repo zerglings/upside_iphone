@@ -109,6 +109,9 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+  if ([self tableView:tableView numberOfRowsInSection:section] == 0)
+    return nil;
+  
 	switch(section) {
 		case kNotSubmittedSection:
 			return @"Not submitted to server";
