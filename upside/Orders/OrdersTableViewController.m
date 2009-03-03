@@ -139,10 +139,10 @@
 }
 
 // Customize the appearance of table view cells.
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    OrderTableViewCell* cell = (OrderTableViewCell*)[super tableView:tableView
-											   cellForRowAtIndexPath:indexPath];
-		
+-(UITableViewCell *)tableView:(UITableView *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  OrderTableViewCell* cell = (OrderTableViewCell*)[super tableView:tableView
+                                             cellForRowAtIndexPath:indexPath];
 	TradeBook* tradeBook = [[Game sharedGame] tradeBook];
 	TradeOrder* order;
 	switch(indexPath.section) {

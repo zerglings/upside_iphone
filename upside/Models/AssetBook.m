@@ -114,7 +114,7 @@
     if ([position.ticker isEqualToString:ticker])
       return position;
   }
-  return nil;
+  return nil;  
 }
 
 -(Position*)longPositionWithTicker:(NSString*)ticker {

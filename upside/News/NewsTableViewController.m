@@ -33,10 +33,7 @@
 	self.wideCellReuseIdentifier = @"NewsFeedNarrow";
 	self.narrowCellNib = @"NewsTableCellNarrow";
 	self.wideCellNib = @"NewsTableCellNarrow";
-	self.cellClass = [NewsTableViewCell class];
-	
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	self.cellClass = [NewsTableViewCell class];  
 }
 
 

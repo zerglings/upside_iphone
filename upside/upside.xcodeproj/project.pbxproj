@@ -79,6 +79,10 @@
 		57402E610F28A17300B64A7C /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402E5F0F28A17300B64A7C /* Position.m */; };
 		57402F9E0F29956E00B64A7C /* PortfolioCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402F9D0F29956E00B64A7C /* PortfolioCommController.m */; };
 		57402F9F0F29956E00B64A7C /* PortfolioCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57402F9D0F29956E00B64A7C /* PortfolioCommController.m */; };
+		5746BEC20F5D12CD0007C57C /* OverviewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5746BEC10F5D12CD0007C57C /* OverviewTableCell.m */; };
+		5746BEC40F5D12F00007C57C /* OverviewTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5746BEC30F5D12F00007C57C /* OverviewTableCellNarrow.xib */; };
+		5746BECA0F5D132E0007C57C /* OverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5746BEC90F5D132E0007C57C /* OverviewTableViewController.m */; };
+		5746BECC0F5D133E0007C57C /* OverviewTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5746BECB0F5D133E0007C57C /* OverviewTableViewController.xib */; };
 		57551D5A0F4DE1CA0046B0EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		57551D5B0F4DE1CA0046B0EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		57551D5C0F4DE1CA0046B0EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -259,8 +263,6 @@
 		57CDB1B10F0F68D9002C60C5 /* NewsTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1B00F0F68D9002C60C5 /* NewsTabIcon.png */; };
 		57CDB1B70F0F7608002C60C5 /* PortfolioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB1A10F0F5A1D002C60C5 /* PortfolioTableViewController.m */; };
 		57CDB1B90F0F7608002C60C5 /* AssetBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB1AA0F0F5ECE002C60C5 /* AssetBook.m */; };
-		57CDB21D0F0F7DD2002C60C5 /* OverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB21C0F0F7DD2002C60C5 /* OverviewViewController.m */; };
-		57CDB2210F0F7DEB002C60C5 /* OverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2200F0F7DEB002C60C5 /* OverviewViewController.xib */; };
 		57CDB2860F0F8554002C60C5 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB2850F0F8554002C60C5 /* TabBarController.m */; };
 		57CDB2D60F0F8CA4002C60C5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2D40F0F8CA4002C60C5 /* Icon.png */; };
 		57E4516E0F498A8900DA71BC /* AssetBookStocks.xml in Resources */ = {isa = PBXBuildFile; fileRef = 57E4516D0F498A8900DA71BC /* AssetBookStocks.xml */; };
@@ -391,6 +393,12 @@
 		57402E5F0F28A17300B64A7C /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
 		57402F9C0F29956E00B64A7C /* PortfolioCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortfolioCommController.h; sourceTree = "<group>"; };
 		57402F9D0F29956E00B64A7C /* PortfolioCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortfolioCommController.m; sourceTree = "<group>"; };
+		5746BEC00F5D12CD0007C57C /* OverviewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewTableCell.h; sourceTree = "<group>"; };
+		5746BEC10F5D12CD0007C57C /* OverviewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewTableCell.m; sourceTree = "<group>"; };
+		5746BEC30F5D12F00007C57C /* OverviewTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewTableCellNarrow.xib; sourceTree = "<group>"; };
+		5746BEC80F5D132E0007C57C /* OverviewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewTableViewController.h; sourceTree = "<group>"; };
+		5746BEC90F5D132E0007C57C /* OverviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewTableViewController.m; sourceTree = "<group>"; };
+		5746BECB0F5D133E0007C57C /* OverviewTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewTableViewController.xib; sourceTree = "<group>"; };
 		57551E3C0F4E0AE60046B0EE /* ZergSupportTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZergSupportTests-Info.plist"; sourceTree = "<group>"; };
 		57551E790F4E0D4D0046B0EE /* ControllerSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerSupport.h; sourceTree = "<group>"; };
 		57551E7A0F4E0D4D0046B0EE /* ZNSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNSyncController.h; sourceTree = "<group>"; };
@@ -569,9 +577,6 @@
 		57CDB1AA0F0F5ECE002C60C5 /* AssetBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetBook.m; sourceTree = "<group>"; };
 		57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DashboardTabIcon.png; sourceTree = "<group>"; };
 		57CDB1B00F0F68D9002C60C5 /* NewsTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsTabIcon.png; sourceTree = "<group>"; };
-		57CDB21B0F0F7DD2002C60C5 /* OverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewViewController.h; sourceTree = "<group>"; };
-		57CDB21C0F0F7DD2002C60C5 /* OverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewViewController.m; sourceTree = "<group>"; };
-		57CDB2200F0F7DEB002C60C5 /* OverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewViewController.xib; sourceTree = "<group>"; };
 		57CDB2840F0F8554002C60C5 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		57CDB2850F0F8554002C60C5 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		57CDB2D40F0F8CA4002C60C5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -1111,11 +1116,14 @@
 			isa = PBXGroup;
 			children = (
 				57CDB1680F0F4543002C60C5 /* TabBar.xib */,
-				57CDB21B0F0F7DD2002C60C5 /* OverviewViewController.h */,
-				57CDB21C0F0F7DD2002C60C5 /* OverviewViewController.m */,
-				57CDB2200F0F7DEB002C60C5 /* OverviewViewController.xib */,
+				5746BEC80F5D132E0007C57C /* OverviewTableViewController.h */,
+				5746BEC90F5D132E0007C57C /* OverviewTableViewController.m */,
+				5746BECB0F5D133E0007C57C /* OverviewTableViewController.xib */,
 				57CDB2840F0F8554002C60C5 /* TabBarController.h */,
 				57CDB2850F0F8554002C60C5 /* TabBarController.m */,
+				5746BEC00F5D12CD0007C57C /* OverviewTableCell.h */,
+				5746BEC10F5D12CD0007C57C /* OverviewTableCell.m */,
+				5746BEC30F5D12F00007C57C /* OverviewTableCellNarrow.xib */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -1315,7 +1323,6 @@
 				570D88C90F16C8E800D54544 /* NewsTableViewController.xib in Resources */,
 				570D83300F11B0DD00D54544 /* OrderTableCellNarrow.xib in Resources */,
 				570D83320F11B0E700D54544 /* OrderTableCellWide.xib in Resources */,
-				57CDB2210F0F7DEB002C60C5 /* OverviewViewController.xib in Resources */,
 				575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */,
 				571A25CE0F19798000A996A2 /* RssFeedTableViewController.xib in Resources */,
 				571A25F40F197C2E00A996A2 /* RssFeedTableCellNarrow.xib in Resources */,
@@ -1327,6 +1334,8 @@
 				578268390F2D949F00B53703 /* RedX.png in Resources */,
 				57C395E00F5A11D0001F153D /* DollarSign.png in Resources */,
 				57AF12710F5A486F00975407 /* OrdersTableViewController.xib in Resources */,
+				5746BEC40F5D12F00007C57C /* OverviewTableCellNarrow.xib in Resources */,
+				5746BECC0F5D133E0007C57C /* OverviewTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1373,7 +1382,6 @@
 				1D3623260D0F684500981E51 /* UpsideAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* RegistrationViewController.m in Sources */,
 				57CB188E0F0F01C600E95AE1 /* ActivationState.m in Sources */,
-				57CDB21D0F0F7DD2002C60C5 /* OverviewViewController.m in Sources */,
 				57CDB2860F0F8554002C60C5 /* TabBarController.m in Sources */,
 				570C70B30F11217E00DC666C /* Stock.m in Sources */,
 				577091AE0F0FA8B000069411 /* StockTableViewCell.m in Sources */,
@@ -1424,6 +1432,8 @@
 				57E4542A0F4AD83000DA71BC /* TradeBook+Formatting.m in Sources */,
 				57C3961D0F5A240E001F153D /* AutoRotatingViewController.m in Sources */,
 				57C396200F5A245A001F153D /* AutoRotatingTableViewController.m in Sources */,
+				5746BEC20F5D12CD0007C57C /* OverviewTableCell.m in Sources */,
+				5746BECA0F5D132E0007C57C /* OverviewTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
