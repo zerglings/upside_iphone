@@ -137,7 +137,7 @@ bmcgbm93LCB3b3JyeSBhYm91dCB5b3VyIHVzZXIgbmFtZSBsYXRlci4</string>
 					<object class="IBUILabel" id="39457406">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">293</int>
-						<string key="NSFrame">{{122, 20}, {76, 21}}</string>
+						<string key="NSFrame">{{99, 20}, {121, 27}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -156,6 +156,7 @@ bmcgbm93LCB3b3JyeSBhYm91dCB5b3VyIHVzZXIgbmFtZSBsYXRlci4</string>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">1.000000e+01</float>
+						<int key="IBUITextAlignment">1</int>
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 480}</string>
@@ -228,11 +229,11 @@ bmcgbm93LCB3b3JyeSBhYm91dCB5b3VyIHVzZXIgbmFtZSBsYXRlci4</string>
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="39457406"/>
 							<reference ref="885282841"/>
 							<reference ref="239649142"/>
 							<reference ref="848888747"/>
 							<reference ref="668502430"/>
+							<reference ref="39457406"/>
 						</object>
 						<reference key="parent" ref="360949347"/>
 					</object>

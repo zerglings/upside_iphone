@@ -206,7 +206,7 @@
          atIndexPath:(NSIndexPath*)indexPath {
   switch (indexPath.row) {
     case 0:
-      cell.descriptionLabel.text = @"Networth";
+      cell.descriptionLabel.text = @"Net Worth";
       cell.quantityLabel.text =
           [[[Game sharedGame] assetBook] formattedNetWorthWithCache:
            [[Game sharedGame] stockCache]];
