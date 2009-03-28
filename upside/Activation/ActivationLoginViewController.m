@@ -134,32 +134,41 @@
 	if (!title) {
 		title = @"Login error";
 	}
-	UIAlertView* alertView =
-	[[UIAlertView alloc] initWithTitle:title
-                             message:message
-                            delegate:self
-                   cancelButtonTitle:@"Re-enter info"
-                   otherButtonTitles:@"Retry request", nil];
+  
+  UIAlertView* alertView;
+  if ([[error domain] isEqualToString:@"StockPlay"]) {
+    alertView =
+        [[UIAlertView alloc] initWithTitle:title
+                                   message:message
+                                  delegate:self
+                         cancelButtonTitle:@"Re-enter password"
+                         otherButtonTitles:@"Retry", nil];
+  }
+  else {
+    alertView =
+    [[UIAlertView alloc] initWithTitle:title
+                               message:message
+                              delegate:self
+                     cancelButtonTitle:@"Retry"
+                     otherButtonTitles:nil];
+  }
+  
 	[alertView show];
 	[alertView release];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	switch (buttonIndex) {
-		case 0: {
-			User* rollbackUser = [[User alloc] initWithUser:activationState.user
+  if ([[alertView buttonTitleAtIndex:buttonIndex]
+       isEqualToString:@"Retry"]) {
+    [commController loginUsing:activationState];
+    return;
+  }
+  
+	User* rollbackUser = [[User alloc] initWithUser:activationState.user
                                              password:nil];
-			activationState.user = rollbackUser;
-			[rollbackUser release];
-			[self flipControls];
-			break;
-		}
-		case 1:
-			[commController loginUsing:activationState];
-			break;
-		default:
-			break;
-	}
+	activationState.user = rollbackUser;
+	[rollbackUser release];
+	[self flipControls];
 }
 
 @end

@@ -143,7 +143,7 @@ didStartElement:(NSString *)elementName
       NSString* propertyValue = [[NSString alloc] initWithString:currentValue];
 			[currentItem setObject:[NSString stringWithString:propertyValue]
                       forKey:propertyKey];
-      if (propertyKey != currentProperty)
+      if (currentKeyFormatter)
         [propertyKey release];
       [propertyValue release];
 			

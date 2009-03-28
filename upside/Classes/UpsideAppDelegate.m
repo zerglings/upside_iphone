@@ -19,6 +19,8 @@
 
 @synthesize window;
 
+// TODO(overmind): remove this when we have offline storage
+static BOOL hasLoggedIn = NO;
 
 -(void)applicationDidFinishLaunching:(UIApplication *)application {
 	if (![[ActivationState sharedState] isRegistered]) {		
@@ -39,8 +41,18 @@
 		}
 	}
 	else {
-		self.viewController = [TabBarController loadFromNib:@"TabBar"
-													  owner:self];		
+    // TODO(overmind): remove if when we have storage
+    if (hasLoggedIn) {
+      self.viewController = [TabBarController loadFromNib:@"TabBar"
+                                                    owner:self];      
+    }
+    else {
+      // TODO(overmind): remove this entire branch when we have storage
+      hasLoggedIn = YES;
+			self.viewController = [[[ActivationLoginViewController alloc]
+                              initWithNibName:@"ActivationLoginViewController"
+                              bundle:nil] autorelease];
+    }
 	}
 	
 	SEL selector = @selector(setActivationState:);

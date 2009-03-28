@@ -22,7 +22,7 @@
 	IBOutlet UIActivityIndicatorView* activityIndicator;
 	
 	IBOutlet LoginCommController* commController;
-	ActivationState* activationState;
+	ActivationState* activationState;  
 }
 
 @property (nonatomic, retain) ActivationState* activationState;
