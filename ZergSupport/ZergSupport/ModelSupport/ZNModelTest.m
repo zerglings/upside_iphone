@@ -213,4 +213,21 @@
                 @"NSObject is not a model class");
 }
 
+-(void)testExtendedAttributes {
+  ZNModel* testModel = [[ZNTestNumbers alloc] initWithProperties:
+                        [NSDictionary dictionaryWithObjectsAndKeys:
+                         testString, @"undefined property", nil]];
+  NSDictionary* dict = [testModel copyToDictionaryForcingStrings:NO];
+  STAssertEqualStrings(testString, [dict objectForKey:@"undefined property"],
+                       @"Extended property in serialized model");
+  [dict release];
+  
+  dict = [testModel copyToDictionaryForcingStrings:YES];
+  STAssertEqualStrings(testString, [dict objectForKey:@"undefined property"],
+                       @"Extended property in string-serialized model");
+  [dict release];
+  
+  [testModel release];
+}
+
 @end
