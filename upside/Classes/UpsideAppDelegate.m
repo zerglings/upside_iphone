@@ -28,32 +28,35 @@ static BOOL hasLoggedIn = NO;
 								initWithNibName:@"RegistrationViewController"
 								bundle:nil] autorelease];		
 	}
-	else if (![[ActivationState sharedState] isActivated]) {
-		if ([[[ActivationState sharedState] user] isPseudoUser]) {
-			self.viewController = [[[ActivationUserChoiceViewController alloc]
-									initWithNibName:@"ActivationUserChoiceViewController"
-									bundle:nil] autorelease];
-		}
-		else {
-			self.viewController = [[[ActivationLoginViewController alloc]
-									initWithNibName:@"ActivationLoginViewController"
-									bundle:nil] autorelease];
-		}
-	}
 	else {
-    // TODO(overmind): remove if when we have storage
-    if (hasLoggedIn) {
-      self.viewController = [TabBarController loadFromNib:@"TabBar"
-                                                    owner:self];      
+    [[ActivationState sharedState] updateDeviceInfo];
+    if (![[ActivationState sharedState] isActivated]) {
+      if ([[[ActivationState sharedState] user] isPseudoUser]) {
+        self.viewController = [[[ActivationUserChoiceViewController alloc]
+                                initWithNibName:@"ActivationUserChoiceViewController"
+                                bundle:nil] autorelease];
+      }
+      else {
+        self.viewController = [[[ActivationLoginViewController alloc]
+                                initWithNibName:@"ActivationLoginViewController"
+                                bundle:nil] autorelease];
+      }
     }
     else {
-      // TODO(overmind): remove this entire branch when we have storage
-      hasLoggedIn = YES;
-			self.viewController = [[[ActivationLoginViewController alloc]
-                              initWithNibName:@"ActivationLoginViewController"
-                              bundle:nil] autorelease];
-    }
-	}
+      // TODO(overmind): remove if when we have storage
+      if (hasLoggedIn) {
+        self.viewController = [TabBarController loadFromNib:@"TabBar"
+                                                      owner:self];      
+      }
+      else {
+        // TODO(overmind): remove this entire branch when we have storage
+        hasLoggedIn = YES;
+        self.viewController = [[[ActivationLoginViewController alloc]
+                                initWithNibName:@"ActivationLoginViewController"
+                                bundle:nil] autorelease];
+      }
+    }    
+  }
 	
 	SEL selector = @selector(setActivationState:);
 	if ([self.viewController respondsToSelector:selector]) {

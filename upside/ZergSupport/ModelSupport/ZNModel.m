@@ -62,7 +62,7 @@
 	ZNModelDefinition* definition = [[ZNMSRegistry sharedRegistry]
 									 definitionForModelClass:[self class]];
 	NSDictionary* defAttributes = [definition attributes];
-	for(NSString* attributeName in defAttributes) {
+	for(NSString* attributeName in dictionary) {
 		NSObject* boxedObject = [dictionary objectForKey:attributeName];
 		ZNModelDefinitionAttribute* attribute = [defAttributes
 												 objectForKey:attributeName];

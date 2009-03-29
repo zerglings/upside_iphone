@@ -42,7 +42,7 @@
 	NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
                            activationState.user.name, @"name",
                            activationState.user.password, @"password",
-                           activationState.deviceInfo.uniqueId, @"device_id",
+                           activationState.deviceInfo, @"device",
                            nil];
   [NetworkProgress connectionStarted];
 	[ZNXmlHttpRequest callService:[ServerPaths loginUrl]

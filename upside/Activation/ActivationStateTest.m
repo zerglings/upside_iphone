@@ -28,12 +28,13 @@
 	activationState = [[ActivationState alloc] init];
 	
 	testDevice = [[Device alloc] initWithProperties:
-				  [NSDictionary dictionaryWithObjectsAndKeys:
-				   [Device currentDeviceId], @"uniqueId", nil]];
+                [NSDictionary dictionaryWithObjectsAndKeys:
+                 [Device currentDeviceId], @"uniqueId", nil]];
 	testUser = [[User alloc] initPseudoUser:testDevice];
 }
 
 -(void)tearDown {
+	[ActivationState removeSavedState];
 	[activationState release];
 	[testDevice release];
 	[testUser release];
@@ -45,8 +46,8 @@
 
 -(void)testSingleton {
 	STAssertEqualObjects([ActivationState sharedState],
-						 [ActivationState sharedState],
-						 @"+sharedState vends different objects");
+                       [ActivationState sharedState],
+                       @"+sharedState vends different objects");
 }
 
 -(void)testEncoding {
@@ -57,21 +58,21 @@
 	ActivationState* newActivationState = [[ActivationState alloc] init];
 	[newActivationState unarchiveFromData:encoded];	
 	STAssertTrue([newActivationState isRegistered],
-				 @"-decodeFromData did not restore activation state");
+               @"-decodeFromData did not restore activation state");
 	
 	STAssertEqualStrings(testDevice.uniqueId,
-						 newActivationState.deviceInfo.uniqueId,
-						 @"Device's unique ID restored incorrectly");
+                       newActivationState.deviceInfo.uniqueId,
+                       @"Device's unique ID restored incorrectly");
 	STAssertEqualStrings(testUser.name,
-						 newActivationState.user.name,
-						 @"User's name restored incorrectly");
+                       newActivationState.user.name,
+                       @"User's name restored incorrectly");
 	[newActivationState release];
 }
 
 -(void)testDecodingNil {	
 	[activationState unarchiveFromData:nil];
 	STAssertFalse([activationState isRegistered],
-				  @"-decodeFromData with nil did not set de-activation state");
+                @"-decodeFromData with nil did not set de-activation state");
 }
 
 -(void)testLoadInitialization {
@@ -79,7 +80,7 @@
 	[activationState load];
 	
 	STAssertEquals(NO, [activationState isRegistered],
-				   @"dry -load does not set activated to NO");
+                 @"dry -load does not set activated to NO");
 }
 
 -(void)testSaving {
@@ -89,8 +90,16 @@
 	ActivationState* newActivationState = [[ActivationState alloc] init];
 	[newActivationState load];
 	STAssertTrue([newActivationState isRegistered],
-				 @"-load does not restore activated state");
+               @"-load does not restore activated state");
 	[newActivationState release];
+}
+
+-(void)testUpdateDevice {
+	activationState.deviceInfo = testDevice;
+	activationState.user = testUser;
+  [activationState updateDeviceInfo];
+  STAssertTrue([[activationState deviceInfo] isEqualToCurrentDevice],
+               @"updateDeviceInfo did not yield a current device");
 }
 
 @end

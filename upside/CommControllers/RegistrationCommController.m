@@ -29,19 +29,21 @@
 }
 
 -(void)dealloc {
+  [activationState release];
 	[resposeModels release];
 	[super dealloc];
 }
 
 
 -(void)registerDeviceUsing:(ActivationState*)theActivationState {
+  [theActivationState retain];
+  [activationState release];
 	activationState = theActivationState;
-	NSString* deviceID = [Device currentDeviceId];
 	
 	NSMutableDictionary* request =
       [[NSMutableDictionary alloc] initWithDictionary:[theActivationState
                                                        requestSignature]];
-  [request setObject:deviceID forKey:@"unique_id"];
+  [request setObject:[Device copyCurrentDevice] forKey:@"device"];
   [NetworkProgress connectionStarted];
 	[ZNXmlHttpRequest callService:[ServerPaths registrationUrl]
                          method:[ServerPaths registrationMethod]

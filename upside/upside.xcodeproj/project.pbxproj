@@ -83,6 +83,7 @@
 		5746BEC40F5D12F00007C57C /* OverviewTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5746BEC30F5D12F00007C57C /* OverviewTableCellNarrow.xib */; };
 		5746BECA0F5D132E0007C57C /* OverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5746BEC90F5D132E0007C57C /* OverviewTableViewController.m */; };
 		5746BECC0F5D133E0007C57C /* OverviewTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5746BECB0F5D133E0007C57C /* OverviewTableViewController.xib */; };
+		5750E78D0F7EE18100B40C35 /* DeviceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5750E78C0F7EE18100B40C35 /* DeviceTest.m */; };
 		57551D5A0F4DE1CA0046B0EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		57551D5B0F4DE1CA0046B0EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		57551D5C0F4DE1CA0046B0EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -194,7 +195,6 @@
 		575520AB0F4E17E30046B0EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		575520AC0F4E17E30046B0EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		575520AD0F4E17E30046B0EE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
-		57599FD90F7742B600FF7FCD /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2D50F0F8CA4002C60C5 /* iTunesArtwork */; };
 		575E391A0F0F998C00DEB8E3 /* PortfolioTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1A30F0F5A52002C60C5 /* PortfolioTableViewController.xib */; };
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
@@ -400,6 +400,7 @@
 		5746BEC80F5D132E0007C57C /* OverviewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewTableViewController.h; sourceTree = "<group>"; };
 		5746BEC90F5D132E0007C57C /* OverviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewTableViewController.m; sourceTree = "<group>"; };
 		5746BECB0F5D133E0007C57C /* OverviewTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewTableViewController.xib; sourceTree = "<group>"; };
+		5750E78C0F7EE18100B40C35 /* DeviceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceTest.m; sourceTree = "<group>"; };
 		57551E3C0F4E0AE60046B0EE /* ZergSupportTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZergSupportTests-Info.plist"; sourceTree = "<group>"; };
 		57551E790F4E0D4D0046B0EE /* ControllerSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerSupport.h; sourceTree = "<group>"; };
 		57551E7A0F4E0D4D0046B0EE /* ZNSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNSyncController.h; sourceTree = "<group>"; };
@@ -762,6 +763,7 @@
 				570D87980F14B99500D54544 /* AssetBookTest.m */,
 				57A1E70A0F21656800B8179A /* Device.h */,
 				57A1E70B0F21656800B8179A /* Device.m */,
+				5750E78C0F7EE18100B40C35 /* DeviceTest.m */,
 				570D84EE0F133A7800D54544 /* Game.h */,
 				570D84EF0F133A7800D54544 /* Game.m */,
 				570D88F40F16EA6400D54544 /* NewsItem.h */,
@@ -1337,7 +1339,6 @@
 				57AF12710F5A486F00975407 /* OrdersTableViewController.xib in Resources */,
 				5746BEC40F5D12F00007C57C /* OverviewTableCellNarrow.xib in Resources */,
 				5746BECC0F5D133E0007C57C /* OverviewTableViewController.xib in Resources */,
-				57599FD90F7742B600FF7FCD /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1564,6 +1565,7 @@
 				57E454370F4AD9FD00DA71BC /* TradeBook.m in Sources */,
 				57E4543A0F4ADA1700DA71BC /* TradeBook+FormattingTest.m in Sources */,
 				57E4543B0F4ADA6000DA71BC /* TradeBook+WorthTest.m in Sources */,
+				5750E78D0F7EE18100B40C35 /* DeviceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

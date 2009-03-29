@@ -130,14 +130,24 @@ static NSString* kStateFileName = @".ActivationState";
 }
 
 
--(void)setDeviceInfo:(Device*) theDeviceInfo {
-	NSAssert(deviceInfo == nil,
-			 @"Trying to activate twice");
-	NSAssert(theDeviceInfo != nil,
-			 @"Trying to activate with nil device");
+-(void)setDeviceInfo:(Device*)theDeviceInfo {
+	NSAssert(deviceInfo == nil, @"Trying to register twice");
+	NSAssert(theDeviceInfo != nil, @"Trying to register with nil device");
+  
 	[theDeviceInfo retain];
 	[deviceInfo release];
 	deviceInfo = theDeviceInfo;
+}
+
+-(void)updateDeviceInfo {
+  NSAssert(deviceInfo != nil, @"Not registered yet");  
+  if ([deviceInfo isEqualToCurrentDevice])
+    return;
+  
+  Device* newDeviceInfo = [deviceInfo copyAndUpdate];
+  [deviceInfo release];
+  deviceInfo = newDeviceInfo;
+  [self save];
 }
 
 #pragma mark Singleton

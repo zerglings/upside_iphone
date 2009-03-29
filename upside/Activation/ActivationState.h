@@ -30,6 +30,9 @@
 // YES if the application is activated and can be used.
 -(BOOL)isActivated;
 
+// Updates the device information to represent the device we're running on.
+-(void)updateDeviceInfo;
+
 # pragma mark Singleton
 
 // The singleton ActivationState instance.
