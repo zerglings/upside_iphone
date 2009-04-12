@@ -148,6 +148,7 @@
 		572E0BBC0F56569600E3FEF7 /* libZergSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZergSupport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		572E0BBE0F56569600E3FEF7 /* libZergTestSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZergTestSupport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		572E0BBF0F56569600E3FEF7 /* ZergSupportTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZergSupportTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		574236CA0F91975A00DA8374 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		57551D5D0F4DE21E0046B0EE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		57551E3C0F4E0AE60046B0EE /* ZergSupportTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZergSupportTests-Info.plist"; sourceTree = "<group>"; };
 		57551E790F4E0D4D0046B0EE /* ControllerSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerSupport.h; sourceTree = "<group>"; };
@@ -339,6 +340,7 @@
 				57551EA10F4E0D4D0046B0EE /* MIT-LICENSE */,
 				57551E3C0F4E0AE60046B0EE /* ZergSupportTests-Info.plist */,
 				32CA4F630368D1EE00C91783 /* ZergSupport_Prefix.pch */,
+				574236CA0F91975A00DA8374 /* README */,
 			);
 			path = ZergSupport;
 			sourceTree = "<group>";

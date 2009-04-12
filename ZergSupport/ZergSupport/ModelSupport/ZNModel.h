@@ -27,8 +27,8 @@
 //
 // The easiest way to define accessible attributes is to declare corresponding
 // properties in the model class. ModelSupport will honor the property
-// specification (nonatomic, readonly, readwrite, assign, copy, retain) and the
-// following types:
+// specification keywords (nonatomic, readonly, readwrite, assign, copy, retain)
+// and the following types:
 //   double, BOOL, NSInteger, NSUInteger, NSString, NSDate
 //
 // If you want to define properties that are not model attributes in the model
