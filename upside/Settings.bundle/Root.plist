@@ -23,8 +23,7 @@
 			<string>version</string>
 			<key>DefaultValue</key>
 			<string>0.1</string>
-		</dict>		
-    
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -40,14 +39,12 @@
 			<string>reset_activation</string>
 			<key>DefaultValue</key>
 			<false/>
-		</dict>		
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
 			<string>Game Server</string>
-			<key>Type</key>
-			<string>PSMultiValueSpecifier</string>
 			<key>Key</key>
 			<string>server_url</string>
 			<key>DefaultValue</key>
@@ -55,13 +52,13 @@
 			<key>Titles</key>
 			<array>
 				<string>Official</string>
-				<string>Moonstone</string>
+				<string>Pwnage</string>
 				<string>Twinkle</string>
 			</array>
 			<key>Values</key>
 			<array>
 				<string>http://istockplay.com</string>
-				<string>http://moonstone.local:3000</string>
+				<string>http://pwnage.local:3000</string>
 				<string>http://twinkle.local:3000</string>
 			</array>
 		</dict>

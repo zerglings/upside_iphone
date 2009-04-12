@@ -48,8 +48,8 @@ enum ZNFormatterCasing;
 //                kZNFormatterSnakeCase when talking to Rails servers, so models
 //                can use the appropriate convention on both the iPhone and the
 //                Rails server
-//   target: (Target-Action) indicates the receiver for the parsed HTTP response
-//   action: (Target-Action) indicates the receiver for the parsed HTTP response 
+//   target:(Target-Action) indicates the receiver for the parsed HTTP response
+//   action:(Target-Action) indicates the receiver for the parsed HTTP response 
 //
 // returns:
 //   nothing, the parsed HTTP response is returned via Target-Action invocation;
