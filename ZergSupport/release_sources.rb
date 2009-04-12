@@ -1,12 +1,12 @@
 #
-#  ZNSyncControllerTest.m
+#  release_sources.m
 #  ZergSupport
 #
 #  Created by Victor Costan on 1/28/09.
 #  Copyright Zergling.Net. Licensed under the MIT license.
 #
 
-# Enforces some simple source code formatting rules.
+# Enforces some source code formatting rules for ZergSupport.
 
 Dir.glob('**/*').each do |file|
   next unless /\.m$/ =~ file or /\.h$/ =~ file
