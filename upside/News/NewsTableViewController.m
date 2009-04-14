@@ -14,6 +14,9 @@
 #import "NewsTableViewCell.h"
 #import "RssFeedTableViewController.h"
 
+static NSString* kGameNewsTitles[] = { @"New Features", @"Software Updates",
+                                       @"Zergling Twitter" };
+
 
 @implementation NewsTableViewController
 
@@ -109,7 +112,7 @@
 		case kLongsSection:
 			return [[[Game sharedGame] assetBook] longPositionCount];
     case kGameSection:
-      return 2;
+      return sizeof(kGameNewsTitles) / sizeof(*kGameNewsTitles);
 		default:
 			break;
 	}
@@ -127,7 +130,7 @@
 			position = [portfolio longPositionAtIndex:indexPath.row];
 			break;
     case kGameSection:
-      return indexPath.row == 0 ? @"New Features" : @"Software Updates";
+      return kGameNewsTitles[indexPath.row];
 		default:
 			position = nil;
 			break;
