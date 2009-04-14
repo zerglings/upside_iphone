@@ -12,9 +12,12 @@
 
 @class Position;
 @class Portfolio;
+@class PortfolioStat;
 
 // Collection of the user's assets (positions).
 @interface AssetBook : NSObject {
+  PortfolioStat* dailyStat;
+  PortfolioStat* hourlyStat;
   Portfolio* portfolio;
 	NSArray* positions;
 	
@@ -24,6 +27,12 @@
 
 // General information about a player's portfolio.
 @property (nonatomic, readonly, retain) Portfolio* portfolio;
+
+// Portfolio stats (net worth, rank) computed at the beginning of the day.
+@property (nonatomic, readonly, retain) PortfolioStat* dailyStat;
+
+// Portfolio stats (net worth, rank) computed at the beginning of the hour.
+@property (nonatomic, readonly, retain) PortfolioStat* hourlyStat;
 
 // How much cash in this portfolio.
 -(double)cash;
@@ -48,7 +57,7 @@
 
 // Reloads the asset book with the given data.
 //
-// The data should consist of Positions and a Portfolio.
--(void)loadData:(NSArray*)newPositions;
+// The data should consist of Positions, a Portfolio, and PortfolioStats.
+-(void)loadData:(NSArray*)newData;
 
 @end

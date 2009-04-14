@@ -15,6 +15,7 @@
 #import "Game.h"
 #import "LoginCommController.h"
 #import "Portfolio.h"
+#import "PortfolioStat.h"
 #import "PortfolioCommController.h"
 #import "Position.h"
 #import "ServiceError.h"
@@ -54,7 +55,8 @@
 	NSMutableArray* trades = [[NSMutableArray alloc] init];
 	for (ZNModel* model in results) {
 		if ([model isKindOfClass:[Position class]] ||
-        [model isKindOfClass:[Portfolio class]]) {
+        [model isKindOfClass:[Portfolio class]] ||
+        [model isKindOfClass:[PortfolioStat class]]) {
 			[assets addObject:model];
     }
     else if ([model isKindOfClass:[TradeOrder class]]) {

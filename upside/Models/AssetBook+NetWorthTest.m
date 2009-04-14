@@ -29,9 +29,9 @@
   cachedBook = [[AssetBook alloc] init];
   [cachedBook loadData:
    [[self fixturesFrom:@"AssetBookPortfolio.xml"]
-    objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 3)]]];
+    objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 5)]]];
   uncachedBook = [[AssetBook alloc] init];
-  [uncachedBook loadData:[self fixturesFrom:@"AssetBookPortfolio.xml"]];   
+  [uncachedBook loadData:[self fixturesFrom:@"AssetBookPortfolio.xml"]];  
 }
 -(void)tearDown {
   [stockCache release];

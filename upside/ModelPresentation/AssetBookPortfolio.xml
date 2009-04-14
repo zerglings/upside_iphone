@@ -19,4 +19,12 @@
   <Portfolio>
     <cash>730.51</cash>
   </Portfolio>
+  <PortfolioStat>
+    <frequency>daily</frequency>
+    <networth>3430.75</networth>
+  </PortfolioStat>
+  <PortfolioStat>
+    <frequency>hourly</frequency>
+    <networth>3430.77</networth>
+  </PortfolioStat>
 </fixture>

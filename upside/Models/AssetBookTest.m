@@ -27,36 +27,11 @@
 @implementation AsserBookTest
 
 -(void)setUp {
-  portfolio = [[Portfolio alloc] initWithCash:31415.92];
-
-	aaplLong = [[Position alloc] initWithTicker:@"AAPL"
-                                     quantity:10000
-                                       isLong:YES];
-	cShort = [[Position alloc] initWithTicker:@"C"
-                                   quantity:2009
-                                     isLong:NO];
-	eneShort = [[Position alloc] initWithTicker:@"ENE"
-                                     quantity:141
-                                       isLong:NO];
-	googLong = [[Position alloc] initWithTicker:@"GOOG"
-                                     quantity:31415
-                                       isLong:YES];
-	msftShort = [[Position alloc] initWithTicker:@"MSFT"
-                                      quantity:666
-                                        isLong:NO];
-	
 	assetBook = [[AssetBook alloc] init];
-	[assetBook loadData:[NSArray arrayWithObjects: portfolio,
-                       eneShort, googLong, msftShort, cShort, aaplLong, nil]];
+	[assetBook loadData:[self fixturesFrom:@"AssetBookTest.xml"]];
 }
 
 -(void)tearDown {
-  
-  [aaplLong release];
-  [cShort release];
-  [eneShort release];
-  [googLong release];
-  [msftShort release];
   [assetBook release];
 }
 
@@ -77,28 +52,42 @@
 }
 
 -(void)testTickersAreSortedAndFiltered {
-  STAssertEquals(aaplLong, [assetBook longPositionAtIndex:0],
-                 @"First long position");
-  STAssertEquals(googLong, [assetBook longPositionAtIndex:1],
-                 @"Second long position");
-  STAssertEquals(cShort, [assetBook shortPositionAtIndex:0],
-                 @"First short position");
-  STAssertEquals(eneShort, [assetBook shortPositionAtIndex:1],
-                 @"Second short position");
-  STAssertEquals(msftShort, [assetBook shortPositionAtIndex:2],
-                 @"Third short position");
+  for (NSUInteger i = 0; i < [assetBook longPositionCount]; i++) {
+    Position* position = [assetBook longPositionAtIndex:i];
+    STAssertTrue([position isLong],
+                 @"Long position %@ at %u isn't actually long",
+                 [position ticker], i);
+    if (i > 0) {
+      Position* prevPosition = [assetBook longPositionAtIndex:(i - 1)];
+      STAssertTrue([[position ticker] compare:[prevPosition ticker]] > 0,
+                   @"Long positions %u and %u aren't sorted", i - 1, i);
+      
+    }
+  }
+  for (NSUInteger i = 0; i < [assetBook shortPositionCount]; i++) {
+    Position* position = [assetBook shortPositionAtIndex:i];
+    STAssertTrue(![position isLong],
+                 @"Short position %@ at %u isn't actually short",
+                 [position ticker], i);
+    if (i > 0) {
+      Position* prevPosition = [assetBook shortPositionAtIndex:(i - 1)];
+      STAssertTrue([[position ticker] compare:[prevPosition ticker]] > 0,
+                   @"Short positions %u and %u aren't sorted", i - 1, i);      
+    }
+  }
 }
 
 -(void)testPositionForTicker {
-  STAssertEquals(googLong, [assetBook longPositionWithTicker:@"GOOG"],
-                 @"Searched for long GOOG");
+  STAssertEqualStrings(@"GOOG",
+                       [[assetBook longPositionWithTicker:@"GOOG"] ticker],
+                       @"Searched for long GOOG");
   STAssertNil([assetBook longPositionWithTicker:@"MSFT"],
               @"Searched for long MSFT, but we're shorting it");
   STAssertNil([assetBook longPositionWithTicker:@"YYYY"],
               @"Searched for long position for invalid ticker");  
 
-  STAssertEquals(cShort, [assetBook shortPositionWithTicker:@"C"],
-                 @"Searched for short C");
+  STAssertEqualStrings(@"C", [[assetBook shortPositionWithTicker:@"C"] ticker],
+                       @"Searched for short C");
   STAssertNil([assetBook shortPositionWithTicker:@"GOOG"],
               @"Searched for short GOOG, but we have a long there");
   STAssertNil([assetBook shortPositionWithTicker:@"YYYY"],

@@ -15,6 +15,8 @@
   AssetBook* cachedBook;
   AssetBook* uncachedBook;
   StockCache* stockCache;
+  PortfolioStat* dailyStat;
+  PortfolioStat* hourlyStat;
 }
 @end
 
@@ -28,9 +30,12 @@
   cachedBook = [[AssetBook alloc] init];
   [cachedBook loadData:
    [[self fixturesFrom:@"AssetBookPortfolio.xml"]
-    objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 3)]]];
+    objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 5)]]];
   uncachedBook = [[AssetBook alloc] init];
-  [uncachedBook loadData:[self fixturesFrom:@"AssetBookPortfolio.xml"]];   
+  [uncachedBook loadData:[self fixturesFrom:@"AssetBookPortfolio.xml"]];  
+  
+  dailyStat = [cachedBook dailyStat];
+  hourlyStat = [cachedBook hourlyStat];  
 }
 -(void)tearDown {
   [stockCache release];
@@ -59,5 +64,19 @@
                        [uncachedBook formattedNetWorthWithCache:stockCache],
                        @"Unknown net worth");  
 } 
+
+-(void)testNetworthChangeImages {
+  UIImage* downArrow = [UIImage imageNamed:@"RedDownArrow.png"];
+  UIImage* upArrow = [UIImage imageNamed:@"GreenUpArrow.png"];
+  STAssertEquals(upArrow, [cachedBook imageForNetWorthChangeFrom:dailyStat
+                                                      stockCache:stockCache],
+                 @"Net worth rise should be depicted with an up arrow");
+  STAssertEquals(downArrow, [cachedBook imageForNetWorthChangeFrom:hourlyStat
+                                                        stockCache:stockCache],
+                 @"Net worth drop should be depicted with a down arrow");
+  STAssertNil([uncachedBook imageForNetWorthChangeFrom:hourlyStat
+                                            stockCache:stockCache],
+              @"Net worth change with incomplete information");
+}
 
 @end

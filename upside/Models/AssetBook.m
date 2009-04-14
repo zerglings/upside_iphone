@@ -9,6 +9,7 @@
 #import "AssetBook.h"
 
 #import "Portfolio.h"
+#import "PortfolioStat.h"
 #import "Position.h"
 
 @implementation AssetBook
@@ -38,19 +39,36 @@
 	return returnVal;
 }
 
--(void)loadData:(NSArray*)newPositions {
-  NSArray* portfolios = [AssetBook copyObjects:newPositions
+-(void)loadData:(NSArray*)newData {
+  NSArray* portfolios = [AssetBook copyObjects:newData
                                          where:@selector(class)
                                             is:[Portfolio class]];
   [portfolio release];
   if ([portfolios count] > 0) {
     portfolio = [[portfolios objectAtIndex:0] retain];
-    [portfolios release];    
   }
   else
     portfolio = nil;
+  [portfolios release];
+  
+  NSArray* stats = [AssetBook copyObjects:newData
+                                    where:@selector(class)
+                                       is:[PortfolioStat class]];
+  for (PortfolioStat* stat in stats) {
+    if ([stat isDaily]) {
+      [stat retain];
+      [dailyStat release];
+      dailyStat = stat;
+    }
+    else if ([stat isHourly]) {
+      [stat retain];
+      [hourlyStat release];
+      hourlyStat = stat;
+    }
+  }
+  [stats release];
 	
-  NSArray* rawPositions = [AssetBook copyObjects:newPositions
+  NSArray* rawPositions = [AssetBook copyObjects:newData
                                            where:@selector(class)
                                               is:[Position class]];
   [positions release];
@@ -87,7 +105,7 @@
 
 #pragma mark Accessors
 
-@synthesize portfolio;
+@synthesize portfolio, dailyStat, hourlyStat;
 
 -(double)cash {
   return [portfolio cash];

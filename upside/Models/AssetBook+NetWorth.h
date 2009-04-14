@@ -10,12 +10,15 @@
 
 #import "AssetBook.h"
 
+@class PortfolioStat;
 @class StockCache;
 
 @interface AssetBook (NetWorth)
 
+// The net worth of all the player's stocks.
 -(double)stockWorth:(BOOL*)succeeded usingStockCache:(StockCache*)stockCache;
 
+// The net worth of all the player's assets.
 -(double)netWorth:(BOOL*)succeeded usingStockCache:(StockCache*)stockCache;
 
 @end

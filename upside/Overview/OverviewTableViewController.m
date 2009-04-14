@@ -9,8 +9,10 @@
 #import "OverviewTableViewController.h"
 
 #import "AssetBook+Formatting.h"
+#import "AssetBook+NetWorth.h"
 #import "Game.h"
 #import "OverviewTableCell.h"
+#import "PortfolioStat.h"
 #import "TradeBook+Formatting.h"
 
 @interface OverviewTableViewController ()
@@ -115,7 +117,7 @@
  numberOfRowsInSection:(NSInteger)section {
 	switch(section) {
 		case kResultsSection:
-			return 1;
+			return 2;
 		case kOperationsSection:
 			return 3;
 		case kSyncSection:
@@ -204,13 +206,31 @@
 
 -(void)setResultCell:(OverviewTableCell*)cell
          atIndexPath:(NSIndexPath*)indexPath {
+  AssetBook* assetBook = [[Game sharedGame] assetBook];
   switch (indexPath.row) {
     case 0:
       cell.descriptionLabel.text = @"Net Worth";
-      cell.quantityLabel.text =
-          [[[Game sharedGame] assetBook] formattedNetWorthWithCache:
-           [[Game sharedGame] stockCache]];
+      StockCache* stockCache = [[Game sharedGame] stockCache];
+      cell.quantityLabel.text = [assetBook
+                                 formattedNetWorthWithCache:stockCache];
+      cell.quantityImage.image =
+          [assetBook imageForNetWorthChangeFrom:[assetBook dailyStat]
+                                     stockCache:stockCache];
       break;
+    case 1: {
+      cell.descriptionLabel.text = @"Rank";
+      NSUInteger rank = [[assetBook hourlyStat] rank];
+      if (rank == 0) {
+        cell.quantityLabel.text = @"unranked";
+      }
+      else {
+        NSNumberFormatter* rankFormatter = [[NSNumberFormatter alloc] init];
+        [rankFormatter setFormat:@"#,##0"];
+        cell.quantityLabel.text = [rankFormatter stringFromNumber:
+                                   [NSNumber numberWithUnsignedInteger:rank]];
+        [rankFormatter release];
+      }      
+    }         
     default:
       break;
   }

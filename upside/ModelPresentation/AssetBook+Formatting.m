@@ -10,6 +10,7 @@
 
 #import "AssetBook+NetWorth.h"
 #import "Portfolio+Formatting.h"
+#import "PortfolioStat.h"
 
 static NSNumberFormatter* worthFormatter = nil;
 
@@ -53,6 +54,23 @@ static void SetupFormatters() {
   double stockWorth = [self netWorth:&worthSucceeded
                      usingStockCache:stockCache];
   return [self formattedWorth:stockWorth succeeded:worthSucceeded];  
+}
+
+-(UIImage*)imageForNetWorthChangeFrom:(PortfolioStat*)stat
+                           stockCache:(StockCache*)stockCache {
+  BOOL succeeded;
+  double netWorth = [self netWorth:&succeeded usingStockCache:stockCache];
+  if (!succeeded || !stat) {
+    return nil;
+  }
+  double oldNetWorth = [stat networth];
+  if (oldNetWorth < netWorth) {
+    return [UIImage imageNamed:@"GreenUpArrow.png"];
+  }
+  else if (oldNetWorth > netWorth) {
+    return [UIImage imageNamed:@"RedDownArrow.png"];
+  }
+  return nil;
 }
 
 @end

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fixture>
+  <Position>
+    <ticker>GOOG</ticker>
+    <quantity>31415</quantity>
+    <isLong>YES</isLong>
+  </Position>
+  <Position>
+    <ticker>MSFT</ticker>
+    <quantity>666</quantity>
+    <isLong>NO</isLong>
+  </Position>
+  <Position>
+    <ticker>AAPL</ticker>
+    <quantity>10000</quantity>
+    <isLong>YES</isLong>
+  </Position>
+  <Position>
+    <ticker>ENE</ticker>
+    <quantity>141</quantity>
+    <isLong>NO</isLong>
+  </Position>
+  <Position>
+    <ticker>C</ticker>
+    <quantity>2009</quantity>
+    <isLong>NO</isLong>
+  </Position>
+  <Portfolio>
+    <cash>31415.92</cash>
+  </Portfolio>
+  <PortfolioStat>
+    <frequency>daily</frequency>
+    <rank>5</rank>
+    <networth>61592.3</networth>
+  </PortfolioStat>
+  <PortfolioStat>
+    <frequency>hourly</frequency>
+    <rank>4</rank>
+    <networth>61800.7</networth>
+  </PortfolioStat>
+</fixture>

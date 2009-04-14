@@ -27,4 +27,8 @@
 // Format the net worth.
 -(NSString*)formattedNetWorthWithCache:(StockCache*)stockCache;
 
+// Image depicting the change in networth from the baseline in a PortfolioStat.
+-(UIImage*)imageForNetWorthChangeFrom:(PortfolioStat*)stat
+                           stockCache:(StockCache*)stockCache;
+
 @end

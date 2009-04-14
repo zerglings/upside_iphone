@@ -112,16 +112,18 @@
 }
 
 -(void)testChangeImages {
-	STAssertEqualObjects([UIImage imageNamed:@"RedDownArrow.png"],
+  UIImage* downArrow = [UIImage imageNamed:@"RedDownArrow.png"];
+  UIImage* upArrow = [UIImage imageNamed:@"GreenUpArrow.png"];
+	STAssertEqualObjects(downArrow,
                        [fallingStock imageForBidChange],
                        @"Falling stocks should have a red down arrow");
-	STAssertEqualObjects([UIImage imageNamed:@"RedDownArrow.png"],
+	STAssertEqualObjects(downArrow,
                        [fallingStock imageForAskChange],
                        @"Falling stocks should have a red down arrow");
-	STAssertEqualObjects([UIImage imageNamed:@"GreenUpArrow.png"],
+	STAssertEqualObjects(upArrow,
                        [risingStock imageForBidChange],
                        @"Rising stocks should have a green up arrow");
-	STAssertEqualObjects([UIImage imageNamed:@"GreenUpArrow.png"],
+	STAssertEqualObjects(upArrow,
                        [risingStock imageForAskChange],
                        @"Rising stocks should have a green up arrow");
 }

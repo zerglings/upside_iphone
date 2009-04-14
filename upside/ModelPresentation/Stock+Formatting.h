@@ -42,17 +42,17 @@
 // Format the net change in the stock's trade price.
 -(NSString*)formattedPointTradeChange;
 
-// The color showing the change in the stock's ask price. 
+// The color showing the change in the stock's ask price.
 -(UIColor*)colorForAskChange;
-// The color showing the change in the stock's bid price. 
+// The color showing the change in the stock's bid price.
 -(UIColor*)colorForBidChange;
-// The color showing the change in the stock's bid price. 
+// The color showing the change in the stock's bid price.
 -(UIColor*)colorForTradeChange;
-// The image showing the change in the stock's ask price. 
+// The image showing the change in the stock's ask price.
 -(UIImage*)imageForAskChange;
-// The image showing the change in the stock's bid price. 
+// The image showing the change in the stock's bid price.
 -(UIImage*)imageForBidChange;
-// The color showing the change in the stock's bid price. 
+// The color showing the change in the stock's bid price.
 -(UIImage*)imageForTradeChange;
 
 // The image showing the stock's validity.
