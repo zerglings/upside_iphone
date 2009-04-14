@@ -63,7 +63,7 @@ static void SetupFormatters() {
   if (!succeeded || !stat) {
     return nil;
   }
-  double oldNetWorth = [stat networth];
+  double oldNetWorth = [stat netWorth];
   if (oldNetWorth < netWorth) {
     return [UIImage imageNamed:@"GreenUpArrow.png"];
   }

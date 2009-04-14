@@ -15,7 +15,7 @@
 #import "RssFeedTableViewController.h"
 
 static NSString* kGameNewsTitles[] = { @"New Features", @"Software Updates",
-                                       @"Zergling Twitter" };
+                                       @"Zergling.Net Twitter" };
 
 
 @implementation NewsTableViewController

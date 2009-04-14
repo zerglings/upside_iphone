@@ -16,7 +16,7 @@ NSString* kPortfolioStatsFrequencyHourly = @"hourly";
 
 @implementation PortfolioStat
 
-@synthesize networth, rank, frequency;
+@synthesize netWorth, rank, frequency;
 
 -(BOOL)isDaily {
   return [frequency isEqualToString:kPortfolioStatsFrequencyDaily];

@@ -69,7 +69,7 @@
   [newsCenter addTitle:@"New Features"
                withUrl:@"http://blog.istockplay.com/feeds/posts/default/-/features?alt=rss"
             andRefresh:600.0];
-  [newsCenter addTitle:@"Zergling Twitter"
+  [newsCenter addTitle:@"Zergling.Net Twitter"
                withUrl:@"http://twitter.com/statuses/user_timeline/20736529.rss"
             andRefresh:600.0];
   

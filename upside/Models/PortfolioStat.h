@@ -12,12 +12,12 @@
 // Mirrors server-side PortfolioStat model.
 @interface PortfolioStat : ZNModel {
   NSString* frequency;  
-  double networth;
+  double netWorth;
   NSUInteger rank;
 }
 
 // The portfolio's net worth, computed based on all assets in the portfolio.
-@property (nonatomic, readonly) double networth;
+@property (nonatomic, readonly) double netWorth;
 
 // The portfolio's rank among all portfolios in the game, based on networth.
 @property (nonatomic, readonly) NSUInteger rank;
