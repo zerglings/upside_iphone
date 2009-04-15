@@ -147,13 +147,13 @@
 	TradeOrder* order;
 	switch(indexPath.section) {
 		case kNotSubmittedSection:
-			order = [tradeBook pendingAtIndex:indexPath.row];
+			order = [tradeBook pendingAtIndex:([tradeBook pendingCount] - indexPath.row - 1)];
       break;
 		case kSubmittedSection:
-			order = [tradeBook submittedAtIndex:indexPath.row];
+			order = [tradeBook submittedAtIndex:([tradeBook submittedCount] - indexPath.row - 1)];
       break;
 		case kFilledSection:
-			order = [tradeBook filledAtIndex:indexPath.row];
+			order = [tradeBook filledAtIndex:([tradeBook filledCount] - indexPath.row - 1)];
       break;
 		default:
 			order = nil;

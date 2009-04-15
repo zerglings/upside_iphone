@@ -225,7 +225,7 @@
       }
       else {
         NSNumberFormatter* rankFormatter = [[NSNumberFormatter alloc] init];
-        [rankFormatter setFormat:@"#,##0"];
+        [rankFormatter setPositiveFormat:@"#,##0"];
         cell.quantityLabel.text = [rankFormatter stringFromNumber:
                                    [NSNumber numberWithUnsignedInteger:rank]];
         [rankFormatter release];
