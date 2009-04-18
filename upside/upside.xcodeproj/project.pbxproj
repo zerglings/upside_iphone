@@ -55,6 +55,7 @@
 		571A27090F1ABA5000A996A2 /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
 		57203C060F4942EF00B3A00C /* AssetBook+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */; };
 		57203C070F4942EF00B3A00C /* AssetBook+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */; };
+		573493230F9656410090FEE2 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2D50F0F8CA4002C60C5 /* iTunesArtwork */; };
 		573E67080F30FAA00041F4DC /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1EF290F24948F00B8179A /* UserTest.m */; };
 		573E67090F30FAA00041F4DC /* NewsItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23DB0F18D9F400A996A2 /* NewsItemTest.m */; };
 		573E670A0F30FAA00041F4DC /* AssetBookTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87980F14B99500D54544 /* AssetBookTest.m */; };
@@ -1350,6 +1351,7 @@
 				57AF12710F5A486F00975407 /* OrdersTableViewController.xib in Resources */,
 				5746BEC40F5D12F00007C57C /* OverviewTableCellNarrow.xib in Resources */,
 				5746BECC0F5D133E0007C57C /* OverviewTableViewController.xib in Resources */,
+				573493230F9656410090FEE2 /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

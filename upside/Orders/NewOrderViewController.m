@@ -128,6 +128,12 @@
   else {
     limitDescriptionLabel.text = @"Ask";
     [quantityAllButton setHidden:NO];
+    if ([quantityText.text length] == 0 ||
+        [quantityText.text isEqualToString:@"0"]) {
+      // If the user wants to sell or cover, and they haven't filled out the
+      //  quantity, pre-fill it with how many stocks they have.
+      [self allTapped:nil];
+    }
   }
   [self updateEstimatedPrice];
 }
