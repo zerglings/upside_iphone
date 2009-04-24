@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		572DCDF40FA1718800CA3975 /* ZNSha2Digest.h in Headers */ = {isa = PBXBuildFile; fileRef = 572DCDF20FA1718800CA3975 /* ZNSha2Digest.h */; };
+		572DCDF50FA1718800CA3975 /* ZNSha2Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCDF30FA1718800CA3975 /* ZNSha2Digest.m */; };
+		572DCDFF0FA1735C00CA3975 /* ZNSha2DigestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCDFE0FA1735C00CA3975 /* ZNSha2DigestTest.m */; };
+		572DCE050FA1743C00CA3975 /* ZNMd5Digest.h in Headers */ = {isa = PBXBuildFile; fileRef = 572DCE030FA1743C00CA3975 /* ZNMd5Digest.h */; };
+		572DCE060FA1743C00CA3975 /* ZNMd5Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCE040FA1743C00CA3975 /* ZNMd5Digest.m */; };
+		572DCE0A0FA1745400CA3975 /* ZNMd5DigestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCE070FA1744D00CA3975 /* ZNMd5DigestTest.m */; };
 		57551D5A0F4DE1CA0046B0EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		57551D5B0F4DE1CA0046B0EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		57551D5C0F4DE1CA0046B0EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -121,6 +127,12 @@
 		576759620F57C500003E1E41 /* SenTestCase+FixturesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551ED60F4E0D4D0046B0EE /* SenTestCase+FixturesTest.m */; };
 		5767B1110F5658EA002F11FE /* libZergTestSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 572E0BBE0F56569600E3FEF7 /* libZergTestSupport.a */; };
 		5767B1130F565903002F11FE /* libZergSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 572E0BBC0F56569600E3FEF7 /* libZergSupport.a */; };
+		57AF08690FA13C0E006305D3 /* CryptoSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 57AF08680FA13C0E006305D3 /* CryptoSupport.h */; };
+		57AF086C0FA13C25006305D3 /* ZNCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 57AF086A0FA13C25006305D3 /* ZNCrypto.h */; };
+		57AF086D0FA13C25006305D3 /* ZNCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF086B0FA13C25006305D3 /* ZNCrypto.m */; };
+		57AF08720FA13DDF006305D3 /* ZNAesCipher.h in Headers */ = {isa = PBXBuildFile; fileRef = 57AF08700FA13DDF006305D3 /* ZNAesCipher.h */; };
+		57AF08730FA13DDF006305D3 /* ZNAesCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF08710FA13DDF006305D3 /* ZNAesCipher.m */; };
+		57AF08980FA1505B006305D3 /* ZNAesCipherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +157,12 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* ZergSupport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZergSupport_Prefix.pch; sourceTree = "<group>"; };
+		572DCDF20FA1718800CA3975 /* ZNSha2Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNSha2Digest.h; sourceTree = "<group>"; };
+		572DCDF30FA1718800CA3975 /* ZNSha2Digest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNSha2Digest.m; sourceTree = "<group>"; };
+		572DCDFE0FA1735C00CA3975 /* ZNSha2DigestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNSha2DigestTest.m; sourceTree = "<group>"; };
+		572DCE030FA1743C00CA3975 /* ZNMd5Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMd5Digest.h; sourceTree = "<group>"; };
+		572DCE040FA1743C00CA3975 /* ZNMd5Digest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMd5Digest.m; sourceTree = "<group>"; };
+		572DCE070FA1744D00CA3975 /* ZNMd5DigestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMd5DigestTest.m; sourceTree = "<group>"; };
 		572E0BBC0F56569600E3FEF7 /* libZergSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZergSupport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		572E0BBE0F56569600E3FEF7 /* libZergTestSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZergTestSupport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		572E0BBF0F56569600E3FEF7 /* ZergSupportTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZergSupportTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +274,12 @@
 		57551EE50F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.body */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNXmlHttpRequestTest.body; sourceTree = "<group>"; };
 		57551EE60F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNXmlHttpRequestTest.m; sourceTree = "<group>"; };
 		57551EE70F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZNXmlHttpRequestTest.xml; sourceTree = "<group>"; };
+		57AF08680FA13C0E006305D3 /* CryptoSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoSupport.h; sourceTree = "<group>"; };
+		57AF086A0FA13C25006305D3 /* ZNCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNCrypto.h; sourceTree = "<group>"; };
+		57AF086B0FA13C25006305D3 /* ZNCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNCrypto.m; sourceTree = "<group>"; };
+		57AF08700FA13DDF006305D3 /* ZNAesCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNAesCipher.h; sourceTree = "<group>"; };
+		57AF08710FA13DDF006305D3 /* ZNAesCipher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAesCipher.m; sourceTree = "<group>"; };
+		57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAesCipherTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				57551E780F4E0D4D0046B0EE /* ControllerSupport */,
+				57AF08670FA13BD7006305D3 /* CryptoSupport */,
 				57551E840F4E0D4D0046B0EE /* FormatSupport */,
 				57551EA20F4E0D4D0046B0EE /* ModelSupport */,
 				57551EC00F4E0D4D0046B0EE /* TestSupport */,
@@ -491,6 +516,25 @@
 			path = WebSupport;
 			sourceTree = "<group>";
 		};
+		57AF08670FA13BD7006305D3 /* CryptoSupport */ = {
+			isa = PBXGroup;
+			children = (
+				57AF08680FA13C0E006305D3 /* CryptoSupport.h */,
+				57AF086A0FA13C25006305D3 /* ZNCrypto.h */,
+				57AF086B0FA13C25006305D3 /* ZNCrypto.m */,
+				57AF08700FA13DDF006305D3 /* ZNAesCipher.h */,
+				57AF08710FA13DDF006305D3 /* ZNAesCipher.m */,
+				57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */,
+				572DCE030FA1743C00CA3975 /* ZNMd5Digest.h */,
+				572DCE040FA1743C00CA3975 /* ZNMd5Digest.m */,
+				572DCE070FA1744D00CA3975 /* ZNMd5DigestTest.m */,
+				572DCDF20FA1718800CA3975 /* ZNSha2Digest.h */,
+				572DCDF30FA1718800CA3975 /* ZNSha2Digest.m */,
+				572DCDFE0FA1735C00CA3975 /* ZNSha2DigestTest.m */,
+			);
+			path = CryptoSupport;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -528,6 +572,11 @@
 				57551F3C0F4E0D4D0046B0EE /* ZNCsvHttpRequest.h in Headers */,
 				57551F3F0F4E0D4D0046B0EE /* ZNHttpRequest.h in Headers */,
 				57551F420F4E0D4D0046B0EE /* ZNXmlHttpRequest.h in Headers */,
+				57AF08690FA13C0E006305D3 /* CryptoSupport.h in Headers */,
+				57AF086C0FA13C25006305D3 /* ZNCrypto.h in Headers */,
+				57AF08720FA13DDF006305D3 /* ZNAesCipher.h in Headers */,
+				572DCDF40FA1718800CA3975 /* ZNSha2Digest.h in Headers */,
+				572DCE050FA1743C00CA3975 /* ZNMd5Digest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,6 +721,10 @@
 				57551F3D0F4E0D4D0046B0EE /* ZNCsvHttpRequest.m in Sources */,
 				57551F400F4E0D4D0046B0EE /* ZNHttpRequest.m in Sources */,
 				57551F430F4E0D4D0046B0EE /* ZNXmlHttpRequest.m in Sources */,
+				57AF086D0FA13C25006305D3 /* ZNCrypto.m in Sources */,
+				57AF08730FA13DDF006305D3 /* ZNAesCipher.m in Sources */,
+				572DCDF50FA1718800CA3975 /* ZNSha2Digest.m in Sources */,
+				572DCE060FA1743C00CA3975 /* ZNMd5Digest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +751,9 @@
 				575520150F4E11630046B0EE /* ZNXmlHttpRequestTest.m in Sources */,
 				5755201A0F4E11BE0046B0EE /* ZNTestModels.m in Sources */,
 				576759620F57C500003E1E41 /* SenTestCase+FixturesTest.m in Sources */,
+				57AF08980FA1505B006305D3 /* ZNAesCipherTest.m in Sources */,
+				572DCDFF0FA1735C00CA3975 /* ZNSha2DigestTest.m in Sources */,
+				572DCE0A0FA1745400CA3975 /* ZNMd5DigestTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
