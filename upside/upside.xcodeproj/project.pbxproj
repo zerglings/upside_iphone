@@ -55,7 +55,12 @@
 		571A27090F1ABA5000A996A2 /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
 		57203C060F4942EF00B3A00C /* AssetBook+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */; };
 		57203C070F4942EF00B3A00C /* AssetBook+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */; };
-		573493230F9656410090FEE2 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2D50F0F8CA4002C60C5 /* iTunesArtwork */; };
+		572DCDF40FA1718800CA3975 /* ZNSha2Digest.h in Headers */ = {isa = PBXBuildFile; fileRef = 572DCDF20FA1718800CA3975 /* ZNSha2Digest.h */; };
+		572DCDF50FA1718800CA3975 /* ZNSha2Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCDF30FA1718800CA3975 /* ZNSha2Digest.m */; };
+		572DCDFF0FA1735C00CA3975 /* ZNSha2DigestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCDFE0FA1735C00CA3975 /* ZNSha2DigestTest.m */; };
+		572DCE050FA1743C00CA3975 /* ZNMd5Digest.h in Headers */ = {isa = PBXBuildFile; fileRef = 572DCE030FA1743C00CA3975 /* ZNMd5Digest.h */; };
+		572DCE060FA1743C00CA3975 /* ZNMd5Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCE040FA1743C00CA3975 /* ZNMd5Digest.m */; };
+		572DCE0A0FA1745400CA3975 /* ZNMd5DigestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCE070FA1744D00CA3975 /* ZNMd5DigestTest.m */; };
 		573E67080F30FAA00041F4DC /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1EF290F24948F00B8179A /* UserTest.m */; };
 		573E67090F30FAA00041F4DC /* NewsItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23DB0F18D9F400A996A2 /* NewsItemTest.m */; };
 		573E670A0F30FAA00041F4DC /* AssetBookTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D87980F14B99500D54544 /* AssetBookTest.m */; };
@@ -248,6 +253,12 @@
 		57A1F1540F257B2700B8179A /* ActivationLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A1F0BB0F25642300B8179A /* ActivationLoginViewController.xib */; };
 		57A1F18A0F2599B000B8179A /* LoginCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1F1890F2599B000B8179A /* LoginCommController.m */; };
 		57A1F18B0F2599B000B8179A /* LoginCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1F1890F2599B000B8179A /* LoginCommController.m */; };
+		57AF08690FA13C0E006305D3 /* CryptoSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 57AF08680FA13C0E006305D3 /* CryptoSupport.h */; };
+		57AF086C0FA13C25006305D3 /* ZNCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 57AF086A0FA13C25006305D3 /* ZNCrypto.h */; };
+		57AF086D0FA13C25006305D3 /* ZNCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF086B0FA13C25006305D3 /* ZNCrypto.m */; };
+		57AF08720FA13DDF006305D3 /* ZNAesCipher.h in Headers */ = {isa = PBXBuildFile; fileRef = 57AF08700FA13DDF006305D3 /* ZNAesCipher.h */; };
+		57AF08730FA13DDF006305D3 /* ZNAesCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF08710FA13DDF006305D3 /* ZNAesCipher.m */; };
+		57AF08980FA1505B006305D3 /* ZNAesCipherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */; };
 		57AF12710F5A486F00975407 /* OrdersTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57AF12700F5A486F00975407 /* OrdersTableViewController.xib */; };
 		57C395E00F5A11D0001F153D /* DollarSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C395DF0F5A11D0001F153D /* DollarSign.png */; };
 		57C3961D0F5A240E001F153D /* AutoRotatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C3961C0F5A240E001F153D /* AutoRotatingViewController.m */; };
@@ -381,6 +392,12 @@
 		571A27080F1ABA5000A996A2 /* NetworkProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkProgress.m; sourceTree = "<group>"; };
 		57203C040F4942EF00B3A00C /* AssetBook+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AssetBook+Formatting.h"; sourceTree = "<group>"; };
 		57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetBook+Formatting.m"; sourceTree = "<group>"; };
+		572DCDF20FA1718800CA3975 /* ZNSha2Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNSha2Digest.h; sourceTree = "<group>"; };
+		572DCDF30FA1718800CA3975 /* ZNSha2Digest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNSha2Digest.m; sourceTree = "<group>"; };
+		572DCDFE0FA1735C00CA3975 /* ZNSha2DigestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNSha2DigestTest.m; sourceTree = "<group>"; };
+		572DCE030FA1743C00CA3975 /* ZNMd5Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMd5Digest.h; sourceTree = "<group>"; };
+		572DCE040FA1743C00CA3975 /* ZNMd5Digest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMd5Digest.m; sourceTree = "<group>"; };
+		572DCE070FA1744D00CA3975 /* ZNMd5DigestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMd5DigestTest.m; sourceTree = "<group>"; };
 		572E0BBC0F56569600E3FEF7 /* libZergSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZergSupport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		572E0BBE0F56569600E3FEF7 /* libZergTestSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZergTestSupport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		572E0BBF0F56569600E3FEF7 /* ZergSupportTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZergSupportTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -561,6 +578,12 @@
 		57A1F0BB0F25642300B8179A /* ActivationLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivationLoginViewController.xib; sourceTree = "<group>"; };
 		57A1F1880F2599B000B8179A /* LoginCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCommController.h; sourceTree = "<group>"; };
 		57A1F1890F2599B000B8179A /* LoginCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCommController.m; sourceTree = "<group>"; };
+		57AF08680FA13C0E006305D3 /* CryptoSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoSupport.h; sourceTree = "<group>"; };
+		57AF086A0FA13C25006305D3 /* ZNCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNCrypto.h; sourceTree = "<group>"; };
+		57AF086B0FA13C25006305D3 /* ZNCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNCrypto.m; sourceTree = "<group>"; };
+		57AF08700FA13DDF006305D3 /* ZNAesCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNAesCipher.h; sourceTree = "<group>"; };
+		57AF08710FA13DDF006305D3 /* ZNAesCipher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAesCipher.m; sourceTree = "<group>"; };
+		57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAesCipherTest.m; sourceTree = "<group>"; };
 		57AF12700F5A486F00975407 /* OrdersTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersTableViewController.xib; sourceTree = "<group>"; };
 		57C395DF0F5A11D0001F153D /* DollarSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DollarSign.png; sourceTree = "<group>"; };
 		57C3961B0F5A240E001F153D /* AutoRotatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRotatingViewController.h; sourceTree = "<group>"; };
@@ -875,6 +898,7 @@
 			isa = PBXGroup;
 			children = (
 				57551E780F4E0D4D0046B0EE /* ControllerSupport */,
+				57AF08670FA13BD7006305D3 /* CryptoSupport */,
 				57551E840F4E0D4D0046B0EE /* FormatSupport */,
 				57551EA20F4E0D4D0046B0EE /* ModelSupport */,
 				57551EC00F4E0D4D0046B0EE /* TestSupport */,
@@ -1068,6 +1092,25 @@
 			path = ModelPresentation;
 			sourceTree = "<group>";
 		};
+		57AF08670FA13BD7006305D3 /* CryptoSupport */ = {
+			isa = PBXGroup;
+			children = (
+				57AF08680FA13C0E006305D3 /* CryptoSupport.h */,
+				57AF086A0FA13C25006305D3 /* ZNCrypto.h */,
+				57AF086B0FA13C25006305D3 /* ZNCrypto.m */,
+				57AF08700FA13DDF006305D3 /* ZNAesCipher.h */,
+				57AF08710FA13DDF006305D3 /* ZNAesCipher.m */,
+				57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */,
+				572DCE030FA1743C00CA3975 /* ZNMd5Digest.h */,
+				572DCE040FA1743C00CA3975 /* ZNMd5Digest.m */,
+				572DCE070FA1744D00CA3975 /* ZNMd5DigestTest.m */,
+				572DCDF20FA1718800CA3975 /* ZNSha2Digest.h */,
+				572DCDF30FA1718800CA3975 /* ZNSha2Digest.m */,
+				572DCDFE0FA1735C00CA3975 /* ZNSha2DigestTest.m */,
+			);
+			path = CryptoSupport;
+			sourceTree = "<group>";
+		};
 		57CB188B0F0F016C00E95AE1 /* Activation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,6 +1223,11 @@
 				57551F3C0F4E0D4D0046B0EE /* ZNCsvHttpRequest.h in Headers */,
 				57551F3F0F4E0D4D0046B0EE /* ZNHttpRequest.h in Headers */,
 				57551F420F4E0D4D0046B0EE /* ZNXmlHttpRequest.h in Headers */,
+				57AF08690FA13C0E006305D3 /* CryptoSupport.h in Headers */,
+				57AF086C0FA13C25006305D3 /* ZNCrypto.h in Headers */,
+				57AF08720FA13DDF006305D3 /* ZNAesCipher.h in Headers */,
+				572DCDF40FA1718800CA3975 /* ZNSha2Digest.h in Headers */,
+				572DCE050FA1743C00CA3975 /* ZNMd5Digest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1351,7 +1399,6 @@
 				57AF12710F5A486F00975407 /* OrdersTableViewController.xib in Resources */,
 				5746BEC40F5D12F00007C57C /* OverviewTableCellNarrow.xib in Resources */,
 				5746BECC0F5D133E0007C57C /* OverviewTableViewController.xib in Resources */,
-				573493230F9656410090FEE2 /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,6 +1530,10 @@
 				57551F3D0F4E0D4D0046B0EE /* ZNCsvHttpRequest.m in Sources */,
 				57551F400F4E0D4D0046B0EE /* ZNHttpRequest.m in Sources */,
 				57551F430F4E0D4D0046B0EE /* ZNXmlHttpRequest.m in Sources */,
+				57AF086D0FA13C25006305D3 /* ZNCrypto.m in Sources */,
+				57AF08730FA13DDF006305D3 /* ZNAesCipher.m in Sources */,
+				572DCDF50FA1718800CA3975 /* ZNSha2Digest.m in Sources */,
+				572DCE060FA1743C00CA3975 /* ZNMd5Digest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1509,6 +1560,9 @@
 				575520150F4E11630046B0EE /* ZNXmlHttpRequestTest.m in Sources */,
 				5755201A0F4E11BE0046B0EE /* ZNTestModels.m in Sources */,
 				576759620F57C500003E1E41 /* SenTestCase+FixturesTest.m in Sources */,
+				57AF08980FA1505B006305D3 /* ZNAesCipherTest.m in Sources */,
+				572DCDFF0FA1735C00CA3975 /* ZNSha2DigestTest.m in Sources */,
+				572DCE0A0FA1745400CA3975 /* ZNMd5DigestTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1918,7 +1972,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator2.2.1;
+				SDKROOT = iphoneos2.2.1;
 			};
 			name = Debug;
 		};
@@ -1931,7 +1985,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator2.2.1;
+				SDKROOT = iphoneos2.2.1;
 			};
 			name = Release;
 		};

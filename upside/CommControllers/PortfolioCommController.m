@@ -21,10 +21,10 @@
 
 -(id)initWithTarget:(id)theTarget action:(SEL)theAction {
 	if ((self = [super init])) {
-		target = theTarget;
-		action = theAction;
+    target = theTarget;
+    action = theAction;
 		
-		responseModels = [[NSDictionary alloc] initWithObjectsAndKeys:
+    responseModels = [[NSDictionary alloc] initWithObjectsAndKeys:
                       [Position class], @"position",
                       [Portfolio class], @"portfolio",
                       [PortfolioStat class], @"portfolio_stat",
@@ -42,7 +42,7 @@
 
 -(void)sync {
   [NetworkProgress connectionStarted];
-	[ZNXmlHttpRequest callService:[ServerPaths portfolioSyncUrl]
+  [ZNXmlHttpRequest callService:[ServerPaths portfolioSyncUrl]
                          method:[ServerPaths portfolioSyncMethod]
                            data:nil
                  responseModels:responseModels

@@ -31,11 +31,11 @@
   <PortfolioStat>
     <frequency>daily</frequency>
     <rank>5</rank>
-    <networth>61592.3</networth>
+    <netWorth>61592.3</netWorth>
   </PortfolioStat>
   <PortfolioStat>
     <frequency>hourly</frequency>
     <rank>4</rank>
-    <networth>61800.7</networth>
+    <netWorth>61800.7</netWorth>
   </PortfolioStat>
 </fixture>

@@ -39,7 +39,7 @@
 -(void)loginUsing:(ActivationState*)theActivationState {
 	activationState = theActivationState;
 	
-	NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
+  NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
                            activationState.user.name, @"name",
                            activationState.user.password, @"password",
                            activationState.deviceInfo, @"device",
