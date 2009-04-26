@@ -9,6 +9,7 @@
 #import "TestSupport.h"
 
 #import "ActivationState.h"
+#import "CryptoSupport.h"
 #import "Device.h"
 #import "User.h"
 
@@ -29,7 +30,8 @@
 	
 	testDevice = [[Device alloc] initWithProperties:
                 [NSDictionary dictionaryWithObjectsAndKeys:
-                 [Device currentDeviceId], @"uniqueId", nil]];
+                 [[ZNDeviceFprint deviceAttributes] objectForKey:@"uniqueId"],
+                 @"uniqueId", nil]];
 	testUser = [[User alloc] initPseudoUser:testDevice];
 }
 

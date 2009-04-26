@@ -37,19 +37,6 @@
 // The application version (e.g. 1.0).
 @property (nonatomic, readonly, retain) NSString* appVersion;
 
-
-// Wraps UIDevice, adjusting simulator IDs to be 40-characters. 
-+(NSString*)currentDeviceId;
-
-// Gets the hardware model using syscall voodoo.
-+(NSString*)currentHardwareModel;
-// Wraps -systemName in UIDevice.
-+(NSString*)currentOsName;
-// Wraps -systemVersion in UIDevice.
-+(NSString*)currentOsVersion;
-// Returns the CFBundleVersion of the application's bundle.
-+(NSString*)currentAppVersion;
-
 // Creates a Device holding information about the current device.
 +(Device*)copyCurrentDevice;
 

@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 4/24/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNSha2Digest.h"
@@ -36,4 +36,7 @@
   return returnValue;
 }
 
++(id<ZNDigester>)digester {
+  return (id<ZNDigester>)[ZNSha2Digest class];
+}
 @end

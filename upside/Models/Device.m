@@ -6,10 +6,10 @@
 //  Copyright Zergling.Net. All rights reserved.
 //
 
-#include <sys/types.h>
-#include <sys/sysctl.h>
-
 #import "Device.h"
+
+#import "CryptoSupport.h"
+
 
 @implementation Device
 
@@ -21,53 +21,18 @@
 	[super dealloc];
 }
 
-
-
-+(NSString*)currentDeviceId {
-	NSString* udid = [[UIDevice currentDevice] uniqueIdentifier];
-	if ([udid length] == 40)
-		return udid;
-	return [NSString stringWithFormat:@"sim:%@", udid];
-}
-
-+(NSString*)currentHardwareModel {
-  size_t keySize;
-  sysctlbyname("hw.machine", NULL, &keySize, NULL, 0);
-  char *key = malloc(keySize);
-  sysctlbyname("hw.machine", key, &keySize, NULL, 0);
-  NSString *hardwareModel = [NSString stringWithCString:key
-                                               encoding:NSUTF8StringEncoding];
-  free(key);
-  return hardwareModel;
-}
-+(NSString*)currentOsName {
-  return [[UIDevice currentDevice] systemName];
-}
-+(NSString*)currentOsVersion {
-  return [[UIDevice currentDevice] systemVersion];
-}
-+(NSString*)currentAppVersion {
-  return [[NSBundle mainBundle]
-          objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
-}
-
 +(Device*)copyCurrentDevice {
-  return [[Device alloc] initWithProperties:
-          [NSDictionary dictionaryWithObjectsAndKeys:
-           [Device currentDeviceId], @"uniqueId",
-           [Device currentHardwareModel], @"hardwareModel",
-           [Device currentOsName], @"osName",
-           [Device currentOsVersion], @"osVersion",
-           [Device currentAppVersion], @"appVersion",
-           nil]];
+  return [[Device alloc] initWithProperties:[ZNDeviceFprint deviceAttributes]];
 }
 
 -(BOOL)isEqualToCurrentDevice {
-  return [uniqueId isEqualToString:[Device currentDeviceId]] &&
-      [hardwareModel isEqualToString:[Device currentHardwareModel]] &&
-      [osName isEqualToString:[Device currentOsName]] &&
-      [osVersion isEqualToString:[Device currentOsVersion]] &&
-      [appVersion isEqualToString:[Device currentAppVersion]];
+  NSDictionary* attributes = [ZNDeviceFprint deviceAttributes];  
+  return [uniqueId isEqualToString:[attributes objectForKey:@"uniqueId"]] &&
+      [hardwareModel isEqualToString:[attributes
+                                      objectForKey:@"hardwareModel"]] &&
+      [osName isEqualToString:[attributes objectForKey:@"osName"]] &&
+      [osVersion isEqualToString:[attributes objectForKey:@"osVersion"]] &&
+      [appVersion isEqualToString:[attributes objectForKey:@"appVersion"]];
 }
 
 -(Device*)copyAndUpdate {

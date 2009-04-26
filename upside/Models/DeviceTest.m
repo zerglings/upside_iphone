@@ -50,15 +50,10 @@
 
 -(void)testCurrentDevice {
   STAssertEquals(40U, [[current uniqueId] length], @"Device ID length");
-  STAssertEqualStrings([Device currentHardwareModel],
-                       [current hardwareModel], @"Device model");
-  STAssertEqualStrings([[UIDevice currentDevice] systemName],
-                       [current osName], @"Device model");
-  STAssertEqualStrings([[UIDevice currentDevice] systemVersion],
-                       [current osVersion], @"Device model");
-  STAssertEqualStrings([[NSBundle mainBundle] objectForInfoDictionaryKey:
-                        (NSString*)kCFBundleVersionKey],
-                       [current appVersion], @"App version");
+  STAssertNotNil([current hardwareModel], @"Device has hardwareModel");
+  STAssertNotNil([current osName], @"Device has osName");
+  STAssertNotNil([current osVersion], @"Device has osVersion");
+  STAssertNotNil([current appVersion], @"Device has appVersion");
 }
 -(void)testIsEqualToCurrentDevice {
   STAssertTrue([current isEqualToCurrentDevice],

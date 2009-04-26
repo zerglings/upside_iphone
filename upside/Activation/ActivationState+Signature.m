@@ -22,8 +22,15 @@ static const int8_t kDeviceSecret[] =
 static const NSString* kDeviceSignatureVersion = @"1";
 
 -(NSDictionary*)requestSignature {
-  NSString* udid = deviceInfo ? [deviceInfo uniqueId] :
-      [Device currentDeviceId];
+  NSString* udid;
+  if (deviceInfo) {
+    udid = [deviceInfo uniqueId];
+  }
+  else {
+    Device* currentDevice = [Device copyCurrentDevice];
+    udid = [currentDevice uniqueId];
+    [currentDevice release];
+  }
   
   // Compute the signature
   NSMutableData* signBytes = [[NSMutableData alloc] init];

@@ -229,6 +229,10 @@
 		578269490F2E070800B53703 /* TradeOrderCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578269470F2E070800B53703 /* TradeOrderCommController.m */; };
 		578269690F2E2BE300B53703 /* PendingOrdersSubmittingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578269680F2E2BE300B53703 /* PendingOrdersSubmittingController.m */; };
 		5782696A0F2E2BE300B53703 /* PendingOrdersSubmittingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578269680F2E2BE300B53703 /* PendingOrdersSubmittingController.m */; };
+		57826D340FA3F48A006896D7 /* ZNDeviceFprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 57826D320FA3F48A006896D7 /* ZNDeviceFprint.h */; };
+		57826D350FA3F48A006896D7 /* ZNDeviceFprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */; };
+		57826D650FA40533006896D7 /* ZNDeviceFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */; };
+		57826E7B0FA436BA006896D7 /* ZNDigester.h in Headers */ = {isa = PBXBuildFile; fileRef = 57826E790FA436BA006896D7 /* ZNDigester.h */; };
 		578ECFA80F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		578ECFA90F2AF93B0064E0F8 /* GameSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */; };
 		5791AD260F285B3C0036AB57 /* StockInfoCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD250F285B3C0036AB57 /* StockInfoCommController.m */; };
@@ -552,6 +556,10 @@
 		578269470F2E070800B53703 /* TradeOrderCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeOrderCommController.m; sourceTree = "<group>"; };
 		578269670F2E2BE300B53703 /* PendingOrdersSubmittingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingOrdersSubmittingController.h; sourceTree = "<group>"; };
 		578269680F2E2BE300B53703 /* PendingOrdersSubmittingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingOrdersSubmittingController.m; sourceTree = "<group>"; };
+		57826D320FA3F48A006896D7 /* ZNDeviceFprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNDeviceFprint.h; sourceTree = "<group>"; };
+		57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDeviceFprint.m; sourceTree = "<group>"; };
+		57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDeviceFprintTest.m; sourceTree = "<group>"; };
+		57826E790FA436BA006896D7 /* ZNDigester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNDigester.h; sourceTree = "<group>"; };
 		578ECFA60F2AF93B0064E0F8 /* GameSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSyncController.h; sourceTree = "<group>"; };
 		578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSyncController.m; sourceTree = "<group>"; };
 		5791AD240F285B3C0036AB57 /* StockInfoCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInfoCommController.h; sourceTree = "<group>"; };
@@ -1101,6 +1109,10 @@
 				57AF08700FA13DDF006305D3 /* ZNAesCipher.h */,
 				57AF08710FA13DDF006305D3 /* ZNAesCipher.m */,
 				57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */,
+				57826D320FA3F48A006896D7 /* ZNDeviceFprint.h */,
+				57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */,
+				57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */,
+				57826E790FA436BA006896D7 /* ZNDigester.h */,
 				572DCE030FA1743C00CA3975 /* ZNMd5Digest.h */,
 				572DCE040FA1743C00CA3975 /* ZNMd5Digest.m */,
 				572DCE070FA1744D00CA3975 /* ZNMd5DigestTest.m */,
@@ -1228,6 +1240,8 @@
 				57AF08720FA13DDF006305D3 /* ZNAesCipher.h in Headers */,
 				572DCDF40FA1718800CA3975 /* ZNSha2Digest.h in Headers */,
 				572DCE050FA1743C00CA3975 /* ZNMd5Digest.h in Headers */,
+				57826D340FA3F48A006896D7 /* ZNDeviceFprint.h in Headers */,
+				57826E7B0FA436BA006896D7 /* ZNDigester.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1534,6 +1548,7 @@
 				57AF08730FA13DDF006305D3 /* ZNAesCipher.m in Sources */,
 				572DCDF50FA1718800CA3975 /* ZNSha2Digest.m in Sources */,
 				572DCE060FA1743C00CA3975 /* ZNMd5Digest.m in Sources */,
+				57826D350FA3F48A006896D7 /* ZNDeviceFprint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1563,6 +1578,7 @@
 				57AF08980FA1505B006305D3 /* ZNAesCipherTest.m in Sources */,
 				572DCDFF0FA1735C00CA3975 /* ZNSha2DigestTest.m in Sources */,
 				572DCE0A0FA1745400CA3975 /* ZNMd5DigestTest.m in Sources */,
+				57826D650FA40533006896D7 /* ZNDeviceFprintTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
