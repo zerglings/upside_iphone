@@ -52,7 +52,7 @@
 }
 
 -(void)setUp {
-	service = @"http://zn-testbed.herokugarden.com/web_support/csv.csv";
+	service = @"http://zn-testbed.heroku.com/web_support/csv.csv";
 	receivedResponse = NO;
   [self warmUpHerokuService:service];
 	[ZNCsvHttpRequest deleteCookiesForService:service];

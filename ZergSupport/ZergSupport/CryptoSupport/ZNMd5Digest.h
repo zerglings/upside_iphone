@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ZNDigester.h"
+
+
 // MD5 has known weaknesses and is not recommended for use in signatures.
 //
 // However, it's convenient to have around to generate keys and IVs for AES-128.
@@ -21,4 +24,6 @@
 // Hexadecimal form (popular on the Web) of a MD5 digest of the given data. 
 +(NSString*)copyHexDigest:(NSData*)data;
 
+// An object conforming to the ZNDigester protocol.
++(id<ZNDigester>)digester;
 @end

@@ -52,7 +52,7 @@
 }
 
 -(void)setUp {
-	service = @"http://zn-testbed.herokugarden.com/web_support/echo.xml";
+	service = @"http://zn-testbed.heroku.com/web_support/echo.xml";
 	receivedResponse = NO;
   [self warmUpHerokuService:service];
 	[ZNXmlHttpRequest deleteCookiesForService:service];

@@ -36,4 +36,7 @@
   return returnValue;
 }
 
++(id<ZNDigester>)digester {
+  return (id<ZNDigester>)[ZNSha2Digest class];
+}
 @end
