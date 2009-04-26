@@ -12,7 +12,8 @@
 
 // Produces a fingerprint representing the current device.
 //
-// The fingerprint is a dictionary including 
+// The fingerprint is a message digest over a dictionary containing the device's
+// characteristics. The dictionary can be obtained from +deviceAttributes.
 @interface ZNDeviceFprint : NSObject {
 }
 
@@ -27,9 +28,22 @@
 +(NSDictionary*)deviceAttributes;
 
 // The device fingerprint.
+//
+// The fingerprint is the message digest over the device's attributes. The
+// digest is computed by sorting the attribute dictionary according to the keys,
+// then joining the values by |, and prefixing D| to the result. For example,
+// the dictionary above would be fingerprinted as the digest of:
+//   D|1.0|iPhone1,1|iPhone OS|2.0|sim:EEAE137F-205A-587E-8F62-C6855680879E
+//
+// The unit tests verify this computation against the code at:
+// http://github.com/costan/zn_testbed/blob/master/app/controllers/crypto_support_controller.rb
 +(NSData*)copyFprintUsingDigest:(id<ZNDigester>)digestClass;
 
 // The hexadecimal string for the device fingerprint.
+//
+// This uses the same algorithm as -copyFprintUsingDigest, but produces a digest
+// formatted as a string of hexadecimal digits, for ease of use with Web
+// services. 
 +(NSString*)copyHexFprintUsingDigest:(id<ZNDigester>)digestClass;
 
 @end
