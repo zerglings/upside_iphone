@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 4/23/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>
@@ -17,7 +17,7 @@
 //
 // If doEncrypt is YES, -crypt will encrypt the data that is given to it,
 // otherwise it will decrypt the data.
-- (id)initWithKey:(NSData*)theKey encrypt:(BOOL)doEncrypt;
+-(id)initWithKey:(NSData*)theKey encrypt:(BOOL)doEncrypt;
 
 // Designated AES crypter / decrypter initializer.
 //
@@ -25,7 +25,7 @@
 // otherwise it will decrypt the data. If useCbc is YES, the
 // encryption/decryption will be done using CBC mode, otherwise it will be done
 // using ECB mode.
-- (id)initWithKey:(NSData*)theKey encrypt:(BOOL)doEncrypt useCbc:(BOOL)useCbc;
+-(id)initWithKey:(NSData*)theKey encrypt:(BOOL)doEncrypt useCbc:(BOOL)useCbc;
 
 // Encrypts/decrypts the given data.
 -(NSData*)crypt:(NSData*)data;

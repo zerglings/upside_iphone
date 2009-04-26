@@ -21,6 +21,7 @@ Dir.glob('**/*').each do |file|
   contents.gsub! /(\w+)\:[ \t]*\(/, "\\1:("
 
   # license
+  contents.gsub! '__MyCompanyName__', 'Zergling.Net'
   contents.gsub! /^\/\/  Copyright.*Zergling\.Net\. .*.$/,
                  "//  Copyright Zergling.Net. Licensed under the MIT license."
   

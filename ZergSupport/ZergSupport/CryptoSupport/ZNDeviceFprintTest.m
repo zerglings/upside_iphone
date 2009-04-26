@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 4/25/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -116,7 +116,7 @@
 	
 	STAssertEquals(YES, receivedResponse, @"Verification service didn't respond");
 }
--(void)checkDigests: (NSArray*)response {
+-(void)checkDigests:(NSArray*)response {
   NSDictionary* goldenDigests = [response objectAtIndex:0];
   receivedResponse = YES;
   
