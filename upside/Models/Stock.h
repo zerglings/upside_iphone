@@ -12,13 +12,13 @@
 
 // Data about a single stock.
 @interface Stock : ZNModel {
-	NSString* ticker;
-	NSString* name;
+  NSString* ticker;
+  NSString* name;
   NSString* market;
-	double askPrice;
-	double bidPrice;
-	double lastTradePrice;
-	double previousClosePrice;
+  double askPrice;
+  double bidPrice;
+  double lastTradePrice;
+  double previousClosePrice;
 }
 
 // The stock's ticker, e.g. @"AAPL" for Apple.

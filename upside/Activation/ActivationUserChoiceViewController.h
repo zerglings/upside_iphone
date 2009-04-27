@@ -11,10 +11,10 @@
 @class ActivationState;
 
 @interface ActivationUserChoiceViewController : UIViewController {
-	IBOutlet UIButton* loginButton;
-	IBOutlet UIButton* newAccountButton;
-	
-	ActivationState* activationState;
+  IBOutlet UIButton* loginButton;
+  IBOutlet UIButton* newAccountButton;
+
+  ActivationState* activationState;
 }
 
 @property (nonatomic, retain) ActivationState* activationState;

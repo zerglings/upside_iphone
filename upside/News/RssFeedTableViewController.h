@@ -11,7 +11,7 @@
 #import "AutoRotatingTableViewController.h"
 
 @interface RssFeedTableViewController : AutoRotatingTableViewController {
-	NSString* feedTitle;
+  NSString* feedTitle;
 }
 
 @property (nonatomic, retain) NSString* feedTitle;

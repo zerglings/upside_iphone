@@ -13,23 +13,23 @@
 @synthesize message, reason;
 
 -(BOOL)isLoginError {
-	return [reason isEqualToString:@"login"];
+  return [reason isEqualToString:@"login"];
 }
 
 -(BOOL)isAuthError {
-	return [reason isEqualToString:@"auth"];
+  return [reason isEqualToString:@"auth"];
 }
 
 -(BOOL)isValidationError {
-	return [reason isEqualToString:@"validation"];
+  return [reason isEqualToString:@"validation"];
 }
 
 -(id)initWithReason:(NSString*)theReason message:(NSString*)theMessage {
-	NSDictionary* properties = [[NSDictionary alloc] initWithObjectsAndKeys:
-						   theMessage, @"message", theReason, @"reason", nil];
-	self = [self initWithModel:nil properties:properties];
-	[properties release];
-	return self;
+  NSDictionary* properties = [[NSDictionary alloc] initWithObjectsAndKeys:
+               theMessage, @"message", theReason, @"reason", nil];
+  self = [self initWithModel:nil properties:properties];
+  [properties release];
+  return self;
 }
 
 -(void)dealloc {

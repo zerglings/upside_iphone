@@ -24,7 +24,7 @@
 -(void)setUp {
   stockCache = [[StockCache alloc] init];
   [stockCache integrateResults:[self fixturesFrom:@"AssetBookStocks.xml"]];
-  
+
   uncachedBook = [[TradeBook alloc] init];
   [uncachedBook loadData:[self fixturesFrom:@"TradeBookOrders.xml"]];
   cachedBook = [[TradeBook alloc] init];
@@ -42,7 +42,7 @@
   [super dealloc];
 }
 
--(void)testComputations {  
+-(void)testComputations {
   double proceeds = [cachedBook orderProceeds:NULL usingStockCache:stockCache];
   // - 9000 * 93.50 + 35 * 27.25 = -840546.25
   STAssertEqualsWithAccuracy(-840546.25, proceeds, 0.001,

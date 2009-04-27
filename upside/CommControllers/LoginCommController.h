@@ -18,10 +18,10 @@
 
 // Communication controller that performs user logins on the game server.
 @interface LoginCommController : NSObject {
-	IBOutlet id<LoginCommDelegate> delegate;
-	
-	NSDictionary* resposeModels;
-	ActivationState* activationState;
+  IBOutlet id<LoginCommDelegate> delegate;
+
+  NSDictionary* resposeModels;
+  ActivationState* activationState;
 }
 
 // Try to login. Sends outcome via a message to the delegate.

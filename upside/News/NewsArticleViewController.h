@@ -11,11 +11,11 @@
 @class NewsItem;
 
 @interface NewsArticleViewController : UIViewController {
-	//IBOutlet UIWebView* articleView;
+  //IBOutlet UIWebView* articleView;
 
-	BOOL connectionIndicator;	
-	
-	NewsItem* newsItem;
+  BOOL connectionIndicator;
+
+  NewsItem* newsItem;
 }
 
 @property (nonatomic, retain) NewsItem* newsItem;

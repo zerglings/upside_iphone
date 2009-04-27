@@ -31,9 +31,9 @@
         proceeds -= contribution;
       else
         proceeds += contribution;
-    }    
+    }
   }
-  return proceeds;  
+  return proceeds;
 }
 
 @end

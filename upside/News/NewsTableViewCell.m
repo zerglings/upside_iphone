@@ -31,26 +31,26 @@
 
 
 -(void)dealloc {
-	[feedTitle release];
+  [feedTitle release];
     [super dealloc];
 }
 
 -(void)setFeedTitle:(NSString*)title {
-	[title retain];
-	[feedTitle release];
-	feedTitle = title;
-	
-	titleLabel.text = feedTitle;
-	NSUInteger unreadItems = [[[Game sharedGame] newsCenter]
-							  unreadNewsForTitle:feedTitle];
-	[unreadCountButton setTitle:[NSString stringWithFormat:@"%u", unreadItems]
-					   forState:UIControlStateNormal];
-	[unreadCountButton setTitle:[NSString stringWithFormat:@"%u", unreadItems]
-					   forState:UIControlStateHighlighted];
-	
-	if (unreadItems == 0) {
-		[unreadCountButton setHidden:YES];
-	}
+  [title retain];
+  [feedTitle release];
+  feedTitle = title;
+
+  titleLabel.text = feedTitle;
+  NSUInteger unreadItems = [[[Game sharedGame] newsCenter]
+                unreadNewsForTitle:feedTitle];
+  [unreadCountButton setTitle:[NSString stringWithFormat:@"%u", unreadItems]
+             forState:UIControlStateNormal];
+  [unreadCountButton setTitle:[NSString stringWithFormat:@"%u", unreadItems]
+             forState:UIControlStateHighlighted];
+
+  if (unreadItems == 0) {
+    [unreadCountButton setHidden:YES];
+  }
 }
 
 @end

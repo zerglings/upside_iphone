@@ -12,28 +12,28 @@
 @implementation Position
 
 -(id)initWithTicker:(NSString*)theTicker
-			 quantity:(NSUInteger)theQuantity
-			   isLong:(BOOL)theIsLong {
-	return [self initWithModel:nil properties:
-			[NSDictionary dictionaryWithObjectsAndKeys:
-			 theTicker, @"ticker",
-			 [NSNumber numberWithUnsignedInteger:theQuantity], @"quantity",
-			 [NSNumber numberWithBool:theIsLong], @"isLong", nil]];
+       quantity:(NSUInteger)theQuantity
+         isLong:(BOOL)theIsLong {
+  return [self initWithModel:nil properties:
+      [NSDictionary dictionaryWithObjectsAndKeys:
+       theTicker, @"ticker",
+       [NSNumber numberWithUnsignedInteger:theQuantity], @"quantity",
+       [NSNumber numberWithBool:theIsLong], @"isLong", nil]];
 }
 
 @synthesize ticker, quantity, isLong;
 
 -(void)dealloc {
-	[ticker release];
-	[super dealloc];
+  [ticker release];
+  [super dealloc];
 }
 
 -(NSComparisonResult)compare:(Position*)other {
-	NSComparisonResult tickerCompare = [ticker localizedCompare:[other ticker]];
-	if (tickerCompare != NSOrderedSame)
-		return tickerCompare;
-	
-	return ([other isLong] - isLong);
+  NSComparisonResult tickerCompare = [ticker localizedCompare:[other ticker]];
+  if (tickerCompare != NSOrderedSame)
+    return tickerCompare;
+
+  return ([other isLong] - isLong);
 }
 
 @end

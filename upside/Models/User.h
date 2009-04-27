@@ -13,10 +13,10 @@
 @class Device;
 
 @interface User : ZNModel {
-	NSString* name;
-	NSString* password;
-	NSUInteger modelId;
-	BOOL isPseudoUser;
+  NSString* name;
+  NSString* password;
+  NSUInteger modelId;
+  BOOL isPseudoUser;
 }
 
 // The user's name, used to login.

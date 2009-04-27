@@ -13,7 +13,7 @@
 @interface TradeBook : NSObject {
   NSArray* serverOrders;
   NSArray* filledOrders;
-	NSArray* submittedOrders;
+  NSArray* submittedOrders;
   NSMutableArray* pendingOrders;
 }
 

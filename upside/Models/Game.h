@@ -19,13 +19,13 @@
 
 // Data making up a player's perspective of the game.
 @interface Game : NSObject {
-	AssetBook* assetBook;
-	TradeBook* tradeBook;
-  
-	NewsCenter* newsCenter;
-	StockCache* stockCache;
-  
-	GameSyncController* syncController;
+  AssetBook* assetBook;
+  TradeBook* tradeBook;
+
+  NewsCenter* newsCenter;
+  StockCache* stockCache;
+
+  GameSyncController* syncController;
   PendingOrdersSubmittingController* orderSubmittingController;
   ZNTargetActionSet* newDataSite;
 }
@@ -42,7 +42,7 @@
 @property (nonatomic, readonly, retain)
     PendingOrdersSubmittingController* orderSubmittingController;
 
-// Called when new game data becomes available. 
+// Called when new game data becomes available.
 @property (nonatomic, readonly, retain) ZNTargetActionSet* newDataSite;
 
 // Called to force a one-time data synchronization now.

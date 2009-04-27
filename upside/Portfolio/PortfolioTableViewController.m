@@ -33,23 +33,23 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
 
-	self.narrowCellNib = @"StockTableCellNarrow";
-	self.wideCellNib = @"StockTableCellWide";
-	self.narrowCellReuseIdentifier = @"StockNarrow";
-	self.wideCellReuseIdentifier = @"StockWide";
-	self.cellClass = [StockTableViewCell class];
-  
+  self.narrowCellNib = @"StockTableCellNarrow";
+  self.wideCellNib = @"StockTableCellWide";
+  self.narrowCellReuseIdentifier = @"StockNarrow";
+  self.wideCellReuseIdentifier = @"StockWide";
+  self.cellClass = [StockTableViewCell class];
+
   // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-  
+
   self.navigationItem.rightBarButtonItem =
       [[UIBarButtonItem alloc]
        initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
        target:[Game sharedGame] action:@selector(syncData)];
-  
-  // The empty view will always be a subview, but it will usually be hidden.  
+
+  // The empty view will always be a subview, but it will usually be hidden.
   [self.view addSubview:emptyView];
-  CGRect frame = self.view.frame;  
+  CGRect frame = self.view.frame;
   emptyView.frame = CGRectMake(0.0f, 0.0f,
                                CGRectGetWidth(frame), CGRectGetHeight(frame));
   emptyView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
@@ -57,14 +57,14 @@
   [self refreshEmptyView];
 }
 
-- (void)refreshEmptyView {
+-(void)refreshEmptyView {
   AssetBook* assetBook = [[Game sharedGame] assetBook];
   BOOL hidden = ([assetBook shortPositionCount] + [assetBook longPositionCount])
-                != 0; 
+                != 0;
   [emptyView setHidden:hidden];
 }
 
-- (void)newGameData {
+-(void)newGameData {
   [super newGameData];
   [self refreshEmptyView];
 }
@@ -82,12 +82,12 @@
 */
 /*
 -(void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
+  [super viewWillDisappear:animated];
 }
 */
 /*
 -(void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
+  [super viewDidDisappear:animated];
 }
 */
 
@@ -111,58 +111,58 @@
   if ([self tableView:tableView numberOfRowsInSection:section] == 0)
     return nil;
 
-	switch (section) {
-		case kShortsSection:
-			return @"Shorts";
-		case kLongsSection:
-			return @"Longs";
-		default:
-			break;
-	}
-	return nil;
+  switch (section) {
+    case kShortsSection:
+      return @"Shorts";
+    case kLongsSection:
+      return @"Longs";
+    default:
+      break;
+  }
+  return nil;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	switch (section) {
-		case kShortsSection:
-			return [[[Game sharedGame] assetBook] shortPositionCount];
-		case kLongsSection:
-			return [[[Game sharedGame] assetBook] longPositionCount];
-		default:
-			break;
-	}
+  switch (section) {
+    case kShortsSection:
+      return [[[Game sharedGame] assetBook] shortPositionCount];
+    case kLongsSection:
+      return [[[Game sharedGame] assetBook] longPositionCount];
+    default:
+      break;
+  }
     return -1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	StockTableViewCell *cell = (StockTableViewCell*)[super tableView:tableView
-											   cellForRowAtIndexPath:indexPath];
-    
-	AssetBook* portfolio = [[Game sharedGame] assetBook];
-	StockCache* stockCache = [[Game sharedGame] stockCache];
-	Position* position;
-	switch (indexPath.section) {
-		case kShortsSection:
-			position = [portfolio shortPositionAtIndex:indexPath.row];
-			break;
-		case kLongsSection:
-			position = [portfolio longPositionAtIndex:indexPath.row];
-			break;
-		default:
-			position = nil;
-			break;
-	}
-	
-	[cell setPosition:position
-			stockInfo:[stockCache stockForTicker:[position ticker]]];
+  StockTableViewCell *cell = (StockTableViewCell*)[super tableView:tableView
+                         cellForRowAtIndexPath:indexPath];
+
+  AssetBook* portfolio = [[Game sharedGame] assetBook];
+  StockCache* stockCache = [[Game sharedGame] stockCache];
+  Position* position;
+  switch (indexPath.section) {
+    case kShortsSection:
+      position = [portfolio shortPositionAtIndex:indexPath.row];
+      break;
+    case kLongsSection:
+      position = [portfolio longPositionAtIndex:indexPath.row];
+      break;
+    default:
+      position = nil;
+      break;
+  }
+
+  [cell setPosition:position
+      stockInfo:[stockCache stockForTicker:[position ticker]]];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+  // AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
+  // [self.navigationController pushViewController:anotherViewController];
+  // [anotherViewController release];
 }
 
 
@@ -178,14 +178,14 @@
 /*
 // Override to support editing the table view.
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 */
 
@@ -215,18 +215,18 @@
   UINavigationController* ordersNavigationController =
       [self.tabBarController.viewControllers objectAtIndex:2];
   [self.tabBarController setSelectedViewController:ordersNavigationController];
-  
+
   if ([[ordersNavigationController.viewControllers lastObject]
        isKindOfClass:[NewOrderViewController class]])
     return;
-  
+
   NewOrderViewController* newOrderViewController =
   [[NewOrderViewController alloc] initWithNibName:@"NewOrderViewController"
                                            bundle:nil];
   [ordersNavigationController pushViewController:newOrderViewController
                                         animated:YES];
   // TODO(overmind): setup controller
-  [newOrderViewController release];  
+  [newOrderViewController release];
 }
 
 -(IBAction)changeButtonWasTapped:(id)sender; {

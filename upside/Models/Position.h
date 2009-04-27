@@ -11,15 +11,15 @@
 #import "ModelSupport.h"
 
 @interface Position : ZNModel {
-	NSString* ticker;
-	NSUInteger quantity;
-	BOOL isLong;
+  NSString* ticker;
+  NSUInteger quantity;
+  BOOL isLong;
 }
 
 // The ticker of the stock held in this position.
 @property (nonatomic, readonly, retain) NSString* ticker;
 
-// The number of stocks in this position. 
+// The number of stocks in this position.
 @property (nonatomic, readonly) NSUInteger quantity;
 
 // YES for long positions, NO for shorts.
@@ -27,8 +27,8 @@
 
 // Convenience initializer for testing.
 -(id)initWithTicker:(NSString*)ticker
-			 quantity:(NSUInteger)quantity
-			   isLong:(BOOL)isLong;
+       quantity:(NSUInteger)quantity
+         isLong:(BOOL)isLong;
 
 // Comparator for sorting positions.
 -(NSComparisonResult)compare:(Position*)other;

@@ -19,7 +19,7 @@
 -(NSString*)formattedCash;
 
 // The color showing the available cash.
--(UIColor*)colorForCash;  
+-(UIColor*)colorForCash;
 
 // Format the stock worth.
 -(NSString*)formattedStockWorthWithCache:(StockCache*)stockCache;

@@ -29,19 +29,19 @@
 
 
 -(void)dealloc {
-	[newsItem release];
+  [newsItem release];
     [super dealloc];
 }
 
 -(void)setNewsItem:(NewsItem*)theNewsItem {
-	[theNewsItem retain];
-	[newsItem release];
-	newsItem = theNewsItem;
+  [theNewsItem retain];
+  [newsItem release];
+  newsItem = theNewsItem;
 
-	titleLabel.font = [newsItem isRead] ? [UIFont systemFontOfSize:16] :
-	[UIFont boldSystemFontOfSize:16];
-	titleLabel.text = [newsItem title];
-	summaryLabel.text = [newsItem summary];	
+  titleLabel.font = [newsItem isRead] ? [UIFont systemFontOfSize:16] :
+  [UIFont boldSystemFontOfSize:16];
+  titleLabel.text = [newsItem title];
+  summaryLabel.text = [newsItem summary];
 }
 
 @end

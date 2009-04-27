@@ -13,15 +13,15 @@
 
 // A single piece of news.
 @interface NewsItem : ZNModel {
-	NSString* title;
-	NSDate* pubDate;
-	NSString* guid;
-	NSString* description;
+  NSString* title;
+  NSDate* pubDate;
+  NSString* guid;
+  NSString* description;
 
-	// TODO(overmind): allow this to be a NSURL
-	NSString* link;	
-	
-	BOOL isRead;
+  // TODO(overmind): allow this to be a NSURL
+  NSString* link;
+
+  BOOL isRead;
 }
 
 // The news' title.

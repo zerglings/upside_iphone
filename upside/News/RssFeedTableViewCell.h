@@ -11,10 +11,10 @@
 @class NewsItem;
 
 @interface RssFeedTableViewCell : UITableViewCell {
-	IBOutlet UILabel* titleLabel;
-	IBOutlet UILabel* summaryLabel;
-	
-	NewsItem* newsItem;
+  IBOutlet UILabel* titleLabel;
+  IBOutlet UILabel* summaryLabel;
+
+  NewsItem* newsItem;
 }
 
 -(void)setNewsItem:(NewsItem*)newsItem;

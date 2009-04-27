@@ -12,9 +12,9 @@
 @class StockInfoCommController;
 
 @interface StockCache : ZNSyncController {
-	NSMutableDictionary* stocks;
-	StockInfoCommController* commController;
-	NSTimeInterval refreshPeriod;
+  NSMutableDictionary* stocks;
+  StockInfoCommController* commController;
+  NSTimeInterval refreshPeriod;
 }
 
 // Information for the stock with the given ticker.

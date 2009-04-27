@@ -26,16 +26,16 @@
 -(void)setUp {
   stockCache = [[StockCache alloc] init];
   [stockCache integrateResults:[self fixturesFrom:@"AssetBookStocks.xml"]];
-  
+
   cachedBook = [[AssetBook alloc] init];
   [cachedBook loadData:
    [[self fixturesFrom:@"AssetBookPortfolio.xml"]
     objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 5)]]];
   uncachedBook = [[AssetBook alloc] init];
-  [uncachedBook loadData:[self fixturesFrom:@"AssetBookPortfolio.xml"]];  
-  
+  [uncachedBook loadData:[self fixturesFrom:@"AssetBookPortfolio.xml"]];
+
   dailyStat = [cachedBook dailyStat];
-  hourlyStat = [cachedBook hourlyStat];  
+  hourlyStat = [cachedBook hourlyStat];
 }
 -(void)tearDown {
   [stockCache release];
@@ -62,8 +62,8 @@
                        @"Unknown stock worth");
   STAssertEqualStrings(@"N/A",
                        [uncachedBook formattedNetWorthWithCache:stockCache],
-                       @"Unknown net worth");  
-} 
+                       @"Unknown net worth");
+}
 
 -(void)testNetworthChangeImages {
   UIImage* downArrow = [UIImage imageNamed:@"RedDownArrow.png"];

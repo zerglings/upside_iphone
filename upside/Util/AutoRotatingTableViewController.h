@@ -10,11 +10,11 @@
 
 
 @interface AutoRotatingTableViewController : UITableViewController {
-	NSString* wideCellReuseIdentifier;
-	NSString* wideCellNib;
-	NSString* narrowCellReuseIdentifier;
-	NSString* narrowCellNib;
-	Class cellClass;
+  NSString* wideCellReuseIdentifier;
+  NSString* wideCellNib;
+  NSString* narrowCellReuseIdentifier;
+  NSString* narrowCellNib;
+  Class cellClass;
 }
 
 // Subclasses should set this to the reuse identifier for landscape mode cells.
@@ -30,5 +30,5 @@
 
 // Subclasses should override this and call the super version.
 -(UITableViewCell *)tableView:(UITableView *)tableView
-		 cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+     cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end

@@ -14,46 +14,46 @@
 
 
 @interface AssetBookRSSTest : SenTestCase {
-	AssetBook* assetBook;
-	NewsCenter* newsCenter;
+  AssetBook* assetBook;
+  NewsCenter* newsCenter;
 }
 @end
 
 @implementation AssetBookRSSTest
 
 -(void)setUp {
-	assetBook = [[AssetBook alloc] init];
-	[assetBook loadData:[NSArray arrayWithObjects:
-						 [[[Position alloc] initWithTicker:@"MSFT"
-												  quantity:666
-													isLong:YES] autorelease],
-						 nil]];
-	newsCenter = [[NewsCenter alloc] init];
+  assetBook = [[AssetBook alloc] init];
+  [assetBook loadData:[NSArray arrayWithObjects:
+             [[[Position alloc] initWithTicker:@"MSFT"
+                          quantity:666
+                          isLong:YES] autorelease],
+             nil]];
+  newsCenter = [[NewsCenter alloc] init];
 }
 
 -(void)tearDown {
-	[assetBook release];
-	[newsCenter release];
+  [assetBook release];
+  [newsCenter release];
 }
 
 -(void)dealloc {
-	[super dealloc];
+  [super dealloc];
 }
 
 -(void)testSetup {
-	[assetBook loadRssFeedsIntoCenter:newsCenter];
-	NSString* title = [AssetBook rssFeedTitleForTicker:@"MSFT"];
-	
-	while(true) {
-		[[NSRunLoop currentRunLoop]
-		 runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-		
-		if ([newsCenter unreadNewsForTitle:title] != 0)
-			break;
-	}
-	
-	STAssertEquals(20U, [newsCenter unreadNewsForTitle:title],
-				   @"RSS setup fetches the expected number of articles");
+  [assetBook loadRssFeedsIntoCenter:newsCenter];
+  NSString* title = [AssetBook rssFeedTitleForTicker:@"MSFT"];
+
+  while(true) {
+    [[NSRunLoop currentRunLoop]
+     runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+
+    if ([newsCenter unreadNewsForTitle:title] != 0)
+      break;
+  }
+
+  STAssertEquals(20U, [newsCenter unreadNewsForTitle:title],
+           @"RSS setup fetches the expected number of articles");
 }
 
 @end

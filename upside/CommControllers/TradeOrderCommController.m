@@ -17,28 +17,28 @@
 @implementation TradeOrderCommController
 
 -(id)initWithTarget:(id)theTarget action:(SEL)theAction {
-	if ((self = [super init])) {
-		target = theTarget;
-		action = theAction;
-		
-		responseModels = [[NSDictionary alloc] initWithObjectsAndKeys:
+  if ((self = [super init])) {
+    target = theTarget;
+    action = theAction;
+
+    responseModels = [[NSDictionary alloc] initWithObjectsAndKeys:
                       [TradeOrder class], @"trade_order",
                       [ServiceError class], @"error",
                       nil];
-	}
-	return self;
+  }
+  return self;
 }
 
 -(void)dealloc {
-	[responseModels release];
-	[super dealloc];
+  [responseModels release];
+  [super dealloc];
 }
 
 -(void)submitOrder:(TradeOrder*)order {
   NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
                            order, @"trade_order", nil];
   [NetworkProgress connectionStarted];
-	[ZNXmlHttpRequest callService:[ServerPaths orderSubmissionUrl]
+  [ZNXmlHttpRequest callService:[ServerPaths orderSubmissionUrl]
                          method:[ServerPaths orderSubmissionMethod]
                            data:request
                  responseModels:responseModels

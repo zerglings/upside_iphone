@@ -10,10 +10,10 @@
 
 
 @interface NewsTableViewCell : UITableViewCell {
-	IBOutlet UILabel* titleLabel;
-	IBOutlet UIButton* unreadCountButton;
-	
-	NSString* feedTitle;
+  IBOutlet UILabel* titleLabel;
+  IBOutlet UIButton* unreadCountButton;
+
+  NSString* feedTitle;
 }
 
 -(void)setFeedTitle:(NSString*)title;

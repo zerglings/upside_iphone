@@ -19,10 +19,10 @@
   PortfolioStat* dailyStat;
   PortfolioStat* hourlyStat;
   Portfolio* portfolio;
-	NSArray* positions;
-	
-	NSArray* longPositions;
-	NSArray* shortPositions;
+  NSArray* positions;
+
+  NSArray* longPositions;
+  NSArray* shortPositions;
 }
 
 // General information about a player's portfolio.

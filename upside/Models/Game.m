@@ -24,27 +24,27 @@
 #pragma mark Lifecycle
 
 -(id)init {
-	if ((self = [super init])) {
-		assetBook = [[AssetBook alloc] init];
-		tradeBook = [[TradeBook alloc] init];
-    
-		newsCenter = [[NewsCenter alloc] init];
-    
+  if ((self = [super init])) {
+    assetBook = [[AssetBook alloc] init];
+    tradeBook = [[TradeBook alloc] init];
+
+    newsCenter = [[NewsCenter alloc] init];
+
     ZNTargetActionPair* syncSite =
         [[ZNTargetActionPair alloc] initWithTarget:self
                                             action:@selector(newGameData)];
-		syncController = [[GameSyncController alloc] initWithGame:self];
+    syncController = [[GameSyncController alloc] initWithGame:self];
     syncController.syncSite = syncSite;
     orderSubmittingController = [[PendingOrdersSubmittingController alloc]
                                  initWithTradeBook:tradeBook];
     orderSubmittingController.syncSite = syncSite;
-		stockCache = [[StockCache alloc] init];
+    stockCache = [[StockCache alloc] init];
     stockCache.syncSite = syncSite;
     [syncSite release];
-    
+
     newDataSite = [[ZNTargetActionSet alloc] init];
-	}
-	return self;
+  }
+  return self;
 }
 
 -(void)dealloc {
@@ -52,11 +52,11 @@
   [orderSubmittingController release];
   [syncController stopSyncing];
   [syncController release];
-	[newsCenter release];
-	[stockCache release];
-	[assetBook release];
-	[tradeBook release];
-	[super dealloc];
+  [newsCenter release];
+  [stockCache release];
+  [assetBook release];
+  [tradeBook release];
+  [super dealloc];
 }
 
 # pragma mark Setup
@@ -72,12 +72,12 @@
   [newsCenter addTitle:@"Zergling.Net Twitter"
                withUrl:@"http://twitter.com/statuses/user_timeline/20736529.rss"
             andRefresh:600.0];
-  
-	[assetBook loadRssFeedsIntoCenter:newsCenter];
-	
-	[assetBook loadTickersIntoStockCache:stockCache];
-	[stockCache startSyncing];
-	[syncController startSyncing];
+
+  [assetBook loadRssFeedsIntoCenter:newsCenter];
+
+  [assetBook loadTickersIntoStockCache:stockCache];
+  [stockCache startSyncing];
+  [syncController startSyncing];
   [orderSubmittingController startSyncing];
 }
 
@@ -106,13 +106,13 @@
 static Game* sharedGame = nil;
 
 +(Game*)sharedGame {
-	@synchronized(self) {
-		if (sharedGame == nil) {
-			sharedGame = [[Game alloc] init];
-			[sharedGame setup];
-		}
-	}
-	return sharedGame;
+  @synchronized(self) {
+    if (sharedGame == nil) {
+      sharedGame = [[Game alloc] init];
+      [sharedGame setup];
+    }
+  }
+  return sharedGame;
 }
 
 @end

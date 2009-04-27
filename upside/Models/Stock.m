@@ -15,10 +15,10 @@
 
 
 -(void)dealloc {
-	[ticker release];
-	[name release];
+  [ticker release];
+  [name release];
 
-	[super dealloc];
+  [super dealloc];
 }
 
 #pragma mark Convenience Initializers
@@ -30,7 +30,7 @@
              bidPrice:(double)theBidPrice
        lastTradePrice:(double)theLastTradePrice
    previousClosePrice:(double)thePreviousClosePrice {
-	return [self initWithModel:nil properties:
+  return [self initWithModel:nil properties:
           [NSDictionary dictionaryWithObjectsAndKeys:
            theTicker, @"ticker",
            theName, @"name",

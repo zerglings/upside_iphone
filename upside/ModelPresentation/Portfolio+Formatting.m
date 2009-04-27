@@ -12,11 +12,11 @@
 static NSNumberFormatter* cashFormatter = nil;
 
 static void SetupFormatters() {
-	@synchronized([Portfolio class]) {
-		if (cashFormatter == nil) {
-			cashFormatter = [[NSNumberFormatter alloc] init];
-			[cashFormatter setPositiveFormat:@"$#,##0.00"];
-			[cashFormatter setNegativeFormat:@"$-#,##0.00"];
+  @synchronized([Portfolio class]) {
+    if (cashFormatter == nil) {
+      cashFormatter = [[NSNumberFormatter alloc] init];
+      [cashFormatter setPositiveFormat:@"$#,##0.00"];
+      [cashFormatter setNegativeFormat:@"$-#,##0.00"];
     }
   }
 }
@@ -30,9 +30,9 @@ static void SetupFormatters() {
 
 -(UIColor*)colorForCash {
   if (cash > 0)
-		return [UIColor colorWithRed:0.0f green:0.5f blue:0.0f alpha:1.0f];
-	else
-		return [UIColor colorWithRed:0.5f green:0.0f blue:0.0f alpha:1.0f];
+    return [UIColor colorWithRed:0.0f green:0.5f blue:0.0f alpha:1.0f];
+  else
+    return [UIColor colorWithRed:0.5f green:0.0f blue:0.0f alpha:1.0f];
 }
 
 @end

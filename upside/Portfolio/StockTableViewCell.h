@@ -12,22 +12,22 @@
 @class Stock;
 
 @interface StockTableViewCell : UITableViewCell {
-	IBOutlet UILabel* tickerLabel;
-	IBOutlet UILabel* nameLabel;
-	IBOutlet UILabel* askPriceLabel;
-	IBOutlet UILabel* bidPriceLabel;
-	IBOutlet UILabel* tradePriceLabel;
-	IBOutlet UIButton* askChangeButton;
-	IBOutlet UIButton* bidChangeButton;
-	IBOutlet UIButton* tradeChangeButton;
-	IBOutlet UILabel* stockCountLabel;
-	IBOutlet UILabel* stockValueLabel;
-	IBOutlet UIImageView* askPriceProgressIcon;
-	IBOutlet UIImageView* bidPriceProgressIcon;
-	IBOutlet UIImageView* tradePriceProgressIcon;
-	
-	Position* position;
-	Stock *stockInfo;
+  IBOutlet UILabel* tickerLabel;
+  IBOutlet UILabel* nameLabel;
+  IBOutlet UILabel* askPriceLabel;
+  IBOutlet UILabel* bidPriceLabel;
+  IBOutlet UILabel* tradePriceLabel;
+  IBOutlet UIButton* askChangeButton;
+  IBOutlet UIButton* bidChangeButton;
+  IBOutlet UIButton* tradeChangeButton;
+  IBOutlet UILabel* stockCountLabel;
+  IBOutlet UILabel* stockValueLabel;
+  IBOutlet UIImageView* askPriceProgressIcon;
+  IBOutlet UIImageView* bidPriceProgressIcon;
+  IBOutlet UIImageView* tradePriceProgressIcon;
+
+  Position* position;
+  Stock *stockInfo;
 }
 
 -(Stock*)stockInfo;

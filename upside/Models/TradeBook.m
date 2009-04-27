@@ -15,11 +15,11 @@
 #pragma mark I/O
 
 -(void)load {
-	// TODO(overmind): real I/O
+  // TODO(overmind): real I/O
 }
 
 -(void)save {
-	// TODO(overmind): real I/O
+  // TODO(overmind): real I/O
 }
 
 #pragma mark Synchronizing
@@ -27,7 +27,7 @@
 -(void)loadData:(NSArray*)newTradeOrders {
   NSMutableArray* theFilledOrders = [[NSMutableArray alloc] init];
   NSMutableArray* theSubmittedOrders = [[NSMutableArray alloc] init];
-  
+
   [serverOrders release];
   serverOrders = [newTradeOrders retain];
   for (TradeOrder* order in serverOrders) {
@@ -38,7 +38,7 @@
     else
       [theSubmittedOrders addObject:order];
   }
-  
+
   [filledOrders release];
   filledOrders = [[NSArray alloc] initWithArray:theFilledOrders];
   [theFilledOrders release];
@@ -50,19 +50,19 @@
 #pragma mark Lifecycle
 
 -(id)init {
-	if ((self = [super init])) {
-		[self load];
+  if ((self = [super init])) {
+    [self load];
     pendingOrders = [[NSMutableArray alloc] init];
-	}
-	return self;
+  }
+  return self;
 }
 
 -(void)dealloc {
   [serverOrders release];
-	[filledOrders release];
+  [filledOrders release];
   [submittedOrders release];
   [pendingOrders release];
-	[super dealloc];
+  [super dealloc];
 }
 
 #pragma mark Properties
@@ -107,7 +107,7 @@
   if (orderIndex == NSNotFound)
     return NO;
   [pendingOrders removeObjectAtIndex:orderIndex];
-  
+
   NSArray* newServerOrders = [serverOrders arrayByAddingObject:submittedOrder];
   [self loadData:newServerOrders];
   return YES;

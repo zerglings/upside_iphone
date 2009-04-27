@@ -31,14 +31,14 @@ static const NSString* kDeviceSignatureVersion = @"1";
     udid = [currentDevice uniqueId];
     [currentDevice release];
   }
-  
+
   // Compute the signature
   NSMutableData* signBytes = [[NSMutableData alloc] init];
   [signBytes appendData:[udid dataUsingEncoding:NSUTF8StringEncoding]];
   [signBytes appendBytes:kDeviceSecret length:(sizeof(kDeviceSecret) - 1)];
-	NSString* hexDigest = [ZNSha2Digest copyHexDigest:signBytes];
+  NSString* hexDigest = [ZNSha2Digest copyHexDigest:signBytes];
   [signBytes release];
-    
+
   // Web-ready signature data.
   NSDictionary* signature = [NSDictionary dictionaryWithObjectsAndKeys:
                              udid, @"uniqueID",

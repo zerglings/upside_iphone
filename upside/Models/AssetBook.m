@@ -29,14 +29,14 @@
 +(NSArray*)copyObjects:(NSArray*)array
                   where:(SEL)predicate
                      is:(id)predicateValue {
-	NSMutableArray* selectedPositions = [[NSMutableArray alloc] init];
+  NSMutableArray* selectedPositions = [[NSMutableArray alloc] init];
   for (NSObject* object in array) {
     if ([object performSelector:predicate] == predicateValue)
-			[selectedPositions addObject:object];
+      [selectedPositions addObject:object];
   }
-	NSArray* returnVal = [[NSArray alloc] initWithArray:selectedPositions];
-	[selectedPositions release];
-	return returnVal;
+  NSArray* returnVal = [[NSArray alloc] initWithArray:selectedPositions];
+  [selectedPositions release];
+  return returnVal;
 }
 
 -(void)loadData:(NSArray*)newData {
@@ -50,7 +50,7 @@
   else
     portfolio = nil;
   [portfolios release];
-  
+
   NSArray* stats = [AssetBook copyObjects:newData
                                     where:@selector(class)
                                        is:[PortfolioStat class]];
@@ -67,7 +67,7 @@
     }
   }
   [stats release];
-	
+
   NSArray* rawPositions = [AssetBook copyObjects:newData
                                            where:@selector(class)
                                               is:[Position class]];
@@ -75,13 +75,13 @@
   positions = [[rawPositions sortedArrayUsingSelector:@selector(compare:)]
                retain];
   [rawPositions release];
-  
+
   [longPositions release];
-	longPositions = [AssetBook copyObjects:positions
+  longPositions = [AssetBook copyObjects:positions
                                    where:@selector(isLong)
                                       is:(id)YES];
   [shortPositions release];
-	shortPositions = [AssetBook copyObjects:positions
+  shortPositions = [AssetBook copyObjects:positions
                                     where:@selector(isLong)
                                        is:(id)NO];
 }
@@ -89,18 +89,18 @@
 #pragma mark Lifecycle
 
 -(id)init {
-	if ((self = [super init])) {
-		[self load];
-	}
-	return self;
+  if ((self = [super init])) {
+    [self load];
+  }
+  return self;
 }
 
 -(void)dealloc {
   [portfolio release];
-	[positions release];
-	[longPositions release];
-	[shortPositions release];
-	[super dealloc];
+  [positions release];
+  [longPositions release];
+  [shortPositions release];
+  [super dealloc];
 }
 
 #pragma mark Accessors
@@ -112,19 +112,19 @@
 }
 
 -(NSUInteger)longPositionCount {
-	return [longPositions count];
+  return [longPositions count];
 }
 
 -(NSUInteger)shortPositionCount {
-	return [shortPositions count];
+  return [shortPositions count];
 }
 
 -(Position*)longPositionAtIndex:(NSUInteger)index {
-	return [longPositions objectAtIndex:index];
+  return [longPositions objectAtIndex:index];
 }
 
 -(Position*)shortPositionAtIndex:(NSUInteger)index {
-	return [shortPositions objectAtIndex:index];
+  return [shortPositions objectAtIndex:index];
 }
 
 +(Position*)positionWithTicker:(NSString*)ticker in:(NSArray*)positions {
@@ -132,7 +132,7 @@
     if ([position.ticker isEqualToString:ticker])
       return position;
   }
-  return nil;  
+  return nil;
 }
 
 -(Position*)longPositionWithTicker:(NSString*)ticker {
@@ -141,7 +141,7 @@
 
 // The short position with the given ticker.
 -(Position*)shortPositionWithTicker:(NSString*)ticker {
-  return [AssetBook positionWithTicker:ticker in:shortPositions];  
+  return [AssetBook positionWithTicker:ticker in:shortPositions];
 }
 
 

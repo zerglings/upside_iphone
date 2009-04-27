@@ -1,9 +1,9 @@
 //
 //  DeviceTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 3/28/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TestSupport.h"
@@ -34,7 +34,7 @@
   outdated = [[Device alloc] initWithModel:current properties:
               [NSDictionary dictionaryWithObjectsAndKeys:
                @"1.1.4", @"osVersion", nil]];
-              
+
 }
 
 -(void)tearDown {

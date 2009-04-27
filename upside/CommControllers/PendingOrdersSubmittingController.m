@@ -25,12 +25,12 @@
                                 syncInterval:60.0])) {
     tradeBook = theTradeBook;
     lastSubmittedOrder = nil;
-    
+
     commController = [[TradeOrderCommController alloc]
                       initWithTarget:self
                       action:@selector(receivedResults:)];
-		loginCommController = [[LoginCommController alloc] init];
-		loginCommController.delegate = self;
+    loginCommController = [[LoginCommController alloc] init];
+    loginCommController.delegate = self;
   }
   return self;
 }
@@ -48,55 +48,55 @@
     return;  // pending order not submitted yet
   }
   lastSubmittedOrder = nextOrder;
-	[commController submitOrder:nextOrder];
+  [commController submitOrder:nextOrder];
 }
 
 
 -(BOOL)integrateResults:(NSArray*)results {
   if ([results count] != 1)
     return YES; // communication error in disguise
-  
+
   TradeOrder* submittedOrder = [results objectAtIndex:0];
-	[tradeBook dequeuePendingOrder:lastSubmittedOrder submitted:submittedOrder];
+  [tradeBook dequeuePendingOrder:lastSubmittedOrder submitted:submittedOrder];
   lastSubmittedOrder = nil;
-  
+
   if (![tradeBook firstPendingOrder])
     return YES; // submitted all orders, go to sleep until needed
-  
+
   [self sync];
   return NO;
 }
 
 -(BOOL)handleServiceError:(ServiceError*)error {
-	if ([error isLoginError]) {
+  if ([error isLoginError]) {
     lastSubmittedOrder = nil;
-		[loginCommController loginUsing:[ActivationState sharedState]];
+    [loginCommController loginUsing:[ActivationState sharedState]];
     return NO;
-	}
-  
+  }
+
   if ([error isValidationError]) {
     // TODO(overmind): should take this order out of the queue, and put it in
     //                 a list where the user could see it; then proceed to the
     //                 next order to be submitted
     ;
   }
-  
+
   lastSubmittedOrder = nil;
   return YES;
 }
-    
+
 -(void)handleSystemError:(NSError*)error {
     lastSubmittedOrder = nil;
 }
 
 
 -(void)loginFailed:(NSError*)error {
-	// TODO(overmind): user changed their password, recover from this
+  // TODO(overmind): user changed their password, recover from this
 }
 
 -(void)loginSucceeded {
-	// This happens if we login after syncing failed.
-	[self resumeSyncing];
+  // This happens if we login after syncing failed.
+  [self resumeSyncing];
 }
 
 

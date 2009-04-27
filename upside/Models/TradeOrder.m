@@ -12,8 +12,8 @@
 @implementation TradeOrder
 
 -(void)dealloc {
-	[ticker release];	
-	[super dealloc];
+  [ticker release];
+  [super dealloc];
 }
 
 @synthesize ticker, quantity, unfilledQuantity, isBuy, isLong, limitPrice;
@@ -24,15 +24,15 @@
 }
 
 -(double)fillRatio {
-	return (double)[self filledQuantity] / quantity;
+  return (double)[self filledQuantity] / quantity;
 }
 
 -(BOOL)isLimitOrder {
-	return (limitPrice != kTradeOrderInvalidLimit);
+  return (limitPrice != kTradeOrderInvalidLimit);
 }
 
 -(BOOL)isSubmitted {
-	return (modelId != kTradeOrderInvalidModelId);
+  return (modelId != kTradeOrderInvalidModelId);
 }
 
 -(BOOL)isFilled {
@@ -71,8 +71,8 @@
   [isLongNum release];
   [limitPriceNum release];
   [modelIdNum release];
-  
-	self = [self initWithModel:nil properties:properties];
+
+  self = [self initWithModel:nil properties:properties];
   [properties release];
   return self;
 }

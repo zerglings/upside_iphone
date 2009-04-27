@@ -11,13 +11,13 @@
 @class NewsItem;
 
 @interface NewsCenter : NSObject {
-	NSMutableDictionary* dataByTitle;
-	NSMutableDictionary* newsByUid;
+  NSMutableDictionary* dataByTitle;
+  NSMutableDictionary* newsByUid;
 }
 
 -(void)addTitle:(NSString*)title
-		  withUrl:(NSString*)urlString
-	   andRefresh:(NSTimeInterval)refreshInterval;
+      withUrl:(NSString*)urlString
+     andRefresh:(NSTimeInterval)refreshInterval;
 
 -(void)removeTitle:(NSString*) title;
 

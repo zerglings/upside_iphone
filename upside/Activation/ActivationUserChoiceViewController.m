@@ -39,9 +39,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 -(void)viewDidLoad {
   [super viewDidLoad];
-	if (![activationState.user isPseudoUser]) {
-		[self switchToLoginView];
-	}	
+  if (![activationState.user isPseudoUser]) {
+    [self switchToLoginView];
+  }
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -56,32 +56,32 @@
 @synthesize activationState;
 
 -(void)dealloc {
-	[activationState release];
+  [activationState release];
   [super dealloc];
 }
 
 
 -(IBAction)newAccountTapped:(id)sender {
   User* newUser = [[User alloc] initPseudoUser:activationState.deviceInfo];
-	[activationState setUser:newUser];
-  [newUser release];  
-	[self switchToLoginView];
+  [activationState setUser:newUser];
+  [newUser release];
+  [self switchToLoginView];
 }
 
 -(IBAction)loginTapped:(id)sender {
-	[self switchToLoginView];
+  [self switchToLoginView];
 }
 
 -(void)switchToLoginView {
-	ActivationLoginViewController* loginViewController =
+  ActivationLoginViewController* loginViewController =
       [[ActivationLoginViewController alloc]
        initWithNibName:@"ActivationLoginViewController" bundle:nil];
   [[self retain] autorelease];
   [UpsideAppDelegate sharedDelegate].viewController = loginViewController;
-	[loginViewController setActivationState:activationState];
-	[self.view.superview addSubview:loginViewController.view];
+  [loginViewController setActivationState:activationState];
+  [self.view.superview addSubview:loginViewController.view];
   [loginViewController release];
-	[self.view removeFromSuperview];
+  [self.view removeFromSuperview];
 }
 
 @end

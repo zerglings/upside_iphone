@@ -16,11 +16,11 @@
 
 @class ActivationState;
 
-@interface RegistrationCommController : NSObject {	
-	IBOutlet id<RegistrationCommDelegate> delegate;
-	
-	NSDictionary* resposeModels;
-	ActivationState* activationState;
+@interface RegistrationCommController : NSObject {
+  IBOutlet id<RegistrationCommDelegate> delegate;
+
+  NSDictionary* resposeModels;
+  ActivationState* activationState;
 }
 
 // Try to register. Sends outcome via a message to the delegate.

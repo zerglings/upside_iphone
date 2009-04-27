@@ -29,8 +29,8 @@
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-    inputFormatter = [[NSNumberFormatter alloc] init];      
-    stockInfoCommController = [[StockInfoCommController alloc] 
+    inputFormatter = [[NSNumberFormatter alloc] init];
+    stockInfoCommController = [[StockInfoCommController alloc]
                                initWithTarget:self
                                action:@selector(receivedStockInfo:)];
   }
@@ -50,7 +50,7 @@
       [[UIBarButtonItem alloc] initWithTitle:@"Place"
                                        style:UIBarButtonItemStyleDone
                                       target:self
-                                      action:@selector(placeTapped:)];  
+                                      action:@selector(placeTapped:)];
   [self reloadData];
 }
 
@@ -97,7 +97,7 @@
 -(double)chosenLimitPrice {
   if (![self chosenIsLimit])
     return kTradeOrderInvalidLimit;
-  
+
   NSString* limitString = [NSString stringWithFormat:@"%@.%02@",
                            limitDollarsText.text, limitCentsText.text];
   return [[inputFormatter numberFromString:limitString] doubleValue];
@@ -117,7 +117,7 @@
     [limitCentsText setHidden:YES];
     [limitCentSeparatorLabel setHidden:YES];
   }
-  [self updateEstimatedPrice];  
+  [self updateEstimatedPrice];
 }
 
 -(IBAction)orderTypeChanged:(id)sender {
@@ -142,13 +142,13 @@
   Portfolio* portfolio = [[[Game sharedGame] assetBook] portfolio];
   if (portfolio) {
     availableCashLabel.text = [portfolio formattedCash];
-    availableCashLabel.textColor = [portfolio colorForCash];    
+    availableCashLabel.textColor = [portfolio colorForCash];
   }
   else {
     availableCashLabel.text = @"N/A";
     availableCashLabel.textColor = [UIColor darkGrayColor];
   }
-  
+
   NSString* quantityString = quantityText.text;
   if ([quantityString length] == 0) {
     estimatedCostLabel.text = @"";
@@ -162,7 +162,7 @@
     }
     else {
       estimatedCostLabel.text = [stockInfo formattedValueUsingBidPriceFor:
-                                 quantity];            
+                                 quantity];
     }
   }
   else {
@@ -212,7 +212,7 @@
   else if (textField == limitCentsText) {
     [self updateEstimatedPrice];
   }
-  return YES;  
+  return YES;
 }
 
 -(BOOL)textField:(UITextField*)textField
@@ -220,7 +220,7 @@
     replacementString:(NSString*)string {
   if (textField != limitCentsText)
     return YES;
-  
+
   // Disallow changes that make the length > 2 characters.
   return ([textField.text length] - range.length + [string length]) <= 2;
 }
@@ -243,19 +243,19 @@
     // TODO(overmind): place question mark for ticker validity
     return;
   }
-  
+
   if ([info count] < 1) {
     // Yahoo is being rude to us
     // TODO(overmind): place question mark for ticker validity
     return;
   }
-  
+
   Stock* receivedInfo = [info objectAtIndex:0];
   if (![[receivedInfo ticker] isEqualToString:tickerText.text]) {
-    // Delayed info -- the user already typed something else 
+    // Delayed info -- the user already typed something else
     return;
   }
-  
+
   [stockInfo release];
   stockInfo = [receivedInfo retain];
   [self updatedStockInfo];
@@ -325,7 +325,7 @@
   else {
     position = [[[Game sharedGame] assetBook]
                 shortPositionWithTicker:tickerText.text];
-    
+
   }
   // A nil position should return 0.
   quantityText.text = [NSString stringWithFormat:@"%u", [position quantity]];
@@ -335,12 +335,12 @@
 -(void)placeTapped:(id)sender {
   if (![self validate])
     return;
-  
+
   TradeOrder* order = [self newOrderFromUserChoices];
   [[[Game sharedGame] tradeBook] queuePendingOrder:order];
   [order release];
   [[[Game sharedGame] orderSubmittingController] syncOnce];
-  
+
   [self.navigationController popViewControllerAnimated:YES];
 }
 @end

@@ -23,12 +23,12 @@
 static BOOL hasLoggedIn = NO;
 
 -(void)applicationDidFinishLaunching:(UIApplication *)application {
-	if (![[ActivationState sharedState] isRegistered]) {		
-		self.viewController = [[[RegistrationViewController alloc]
-								initWithNibName:@"RegistrationViewController"
-								bundle:nil] autorelease];		
-	}
-	else {
+  if (![[ActivationState sharedState] isRegistered]) {
+    self.viewController = [[[RegistrationViewController alloc]
+                initWithNibName:@"RegistrationViewController"
+                bundle:nil] autorelease];
+  }
+  else {
     [[ActivationState sharedState] updateDeviceInfo];
     if (![[ActivationState sharedState] isActivated]) {
       if ([[[ActivationState sharedState] user] isPseudoUser]) {
@@ -46,7 +46,7 @@ static BOOL hasLoggedIn = NO;
       // TODO(overmind): remove if when we have storage
       if (hasLoggedIn) {
         self.viewController = [TabBarController loadFromNib:@"TabBar"
-                                                      owner:self];      
+                                                      owner:self];
       }
       else {
         // TODO(overmind): remove this entire branch when we have storage
@@ -55,25 +55,25 @@ static BOOL hasLoggedIn = NO;
                                 initWithNibName:@"ActivationLoginViewController"
                                 bundle:nil] autorelease];
       }
-    }    
+    }
   }
-	
-	SEL selector = @selector(setActivationState:);
-	if ([self.viewController respondsToSelector:selector]) {
-		[self.viewController performSelector:selector
-		                          withObject:[ActivationState sharedState]];
-	}
+
+  SEL selector = @selector(setActivationState:);
+  if ([self.viewController respondsToSelector:selector]) {
+    [self.viewController performSelector:selector
+                              withObject:[ActivationState sharedState]];
+  }
     [window addSubview:viewController.view];
 }
 
 -(void)dealloc {
-	[viewController release];
+  [viewController release];
     [window release];
     [super dealloc];
 }
 
 +(UpsideAppDelegate*)sharedDelegate {
-	return (UpsideAppDelegate*)[[UIApplication sharedApplication] delegate];	
+  return (UpsideAppDelegate*)[[UIApplication sharedApplication] delegate];
 }
 
 @synthesize viewController;

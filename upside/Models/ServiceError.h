@@ -11,8 +11,8 @@
 
 // This is a model for <error> responses from the server.
 @interface ServiceError : ZNModel {
-	NSString* message;
-	NSString* reason;
+  NSString* message;
+  NSString* reason;
 }
 
 @property (nonatomic, readonly, retain) NSString* message;

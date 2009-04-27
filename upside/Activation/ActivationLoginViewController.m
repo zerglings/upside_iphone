@@ -38,18 +38,18 @@
 
 -(void)viewDidLoad {
   [super viewDidLoad];
-	[self flipControls];
-	
-	if (![activationState canLogin]) {
-		User* user = activationState.user;
-		if ([user isPseudoUser]) {
-			[userNameText becomeFirstResponder];
-		}
-		else {
-			userNameText.text = user.name;
-			[passwordText becomeFirstResponder];
-		}
-	}
+  [self flipControls];
+
+  if (![activationState canLogin]) {
+    User* user = activationState.user;
+    if ([user isPseudoUser]) {
+      [userNameText becomeFirstResponder];
+    }
+    else {
+      userNameText.text = user.name;
+      [passwordText becomeFirstResponder];
+    }
+  }
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -64,43 +64,43 @@
 @synthesize activationState;
 
 -(void)dealloc {
-	[activationState release];
+  [activationState release];
   [super dealloc];
 }
 
 -(void)flipControls {
-	BOOL canLogin = [activationState canLogin];
-	
-	[userNameLabel setHidden:canLogin];
-	[passwordLabel setHidden:canLogin];
-	[userNameText setHidden:canLogin];
-	[passwordText setHidden:canLogin];
-	[loginButton setHidden:canLogin];
-	
-	[activityLabel setHidden:!canLogin];
-	if (canLogin) {
-		[activityIndicator startAnimating];
-		[commController loginUsing:activationState];
-	}
-	else
-		[activityIndicator stopAnimating];
+  BOOL canLogin = [activationState canLogin];
+
+  [userNameLabel setHidden:canLogin];
+  [passwordLabel setHidden:canLogin];
+  [userNameText setHidden:canLogin];
+  [passwordText setHidden:canLogin];
+  [loginButton setHidden:canLogin];
+
+  [activityLabel setHidden:!canLogin];
+  if (canLogin) {
+    [activityIndicator startAnimating];
+    [commController loginUsing:activationState];
+  }
+  else
+    [activityIndicator stopAnimating];
 }
 
 -(IBAction)loginTapped:(id)sender {
-	User* newUser = [[User alloc] initWithName:userNameText.text
+  User* newUser = [[User alloc] initWithName:userNameText.text
                                     password:passwordText.text];
-	activationState.user = newUser;
-	[newUser release];
-	
-	[self flipControls];
+  activationState.user = newUser;
+  [newUser release];
+
+  [self flipControls];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-	[textField resignFirstResponder];
-	if (textField == userNameText) {
-		[passwordText becomeFirstResponder];
-	}
-	return YES;
+  [textField resignFirstResponder];
+  if (textField == userNameText) {
+    [passwordText becomeFirstResponder];
+  }
+  return YES;
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -113,28 +113,28 @@
 #pragma mark LoginCommController Delegate
 
 -(void)loginSucceeded {
-	[self.view removeFromSuperview];
-	[[UpsideAppDelegate sharedDelegate]
-	 applicationDidFinishLaunching:[UIApplication sharedApplication]];
+  [self.view removeFromSuperview];
+  [[UpsideAppDelegate sharedDelegate]
+   applicationDidFinishLaunching:[UIApplication sharedApplication]];
 }
 
 -(void)loginFailed:(NSError*)error {
-	NSString* title = [error localizedDescription];
-	NSString* message = [error localizedFailureReason];
-	if (!message) {
-		if (title) {
-			message = title;
-			title = @"Login error";
-		}
-		else {
-			message = @"Something went horribly wrong.";
-			title = @"Login error";
-		}
-	}
-	if (!title) {
-		title = @"Login error";
-	}
-  
+  NSString* title = [error localizedDescription];
+  NSString* message = [error localizedFailureReason];
+  if (!message) {
+    if (title) {
+      message = title;
+      title = @"Login error";
+    }
+    else {
+      message = @"Something went horribly wrong.";
+      title = @"Login error";
+    }
+  }
+  if (!title) {
+    title = @"Login error";
+  }
+
   UIAlertView* alertView;
   if ([[error domain] isEqualToString:@"StockPlay"]) {
     alertView =
@@ -152,9 +152,9 @@
                      cancelButtonTitle:@"Retry"
                      otherButtonTitles:nil];
   }
-  
-	[alertView show];
-	[alertView release];
+
+  [alertView show];
+  [alertView release];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -163,12 +163,12 @@
     [commController loginUsing:activationState];
     return;
   }
-  
-	User* rollbackUser = [[User alloc] initWithUser:activationState.user
+
+  User* rollbackUser = [[User alloc] initWithUser:activationState.user
                                              password:nil];
-	activationState.user = rollbackUser;
-	[rollbackUser release];
-	[self flipControls];
+  activationState.user = rollbackUser;
+  [rollbackUser release];
+  [self flipControls];
 }
 
 @end

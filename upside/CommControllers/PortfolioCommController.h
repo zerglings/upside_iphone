@@ -10,9 +10,9 @@
 
 // Retrieves portfolio sync data.
 @interface PortfolioCommController : NSObject {
-	NSDictionary* responseModels;
-	SEL action;
-	id target;
+  NSDictionary* responseModels;
+  SEL action;
+  id target;
 }
 
 -(id)initWithTarget:(id)target action:(SEL)action;

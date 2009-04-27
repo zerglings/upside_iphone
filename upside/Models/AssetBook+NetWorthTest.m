@@ -20,7 +20,7 @@
 
 @end
 
-@implementation AssetBookNetWorthTest 
+@implementation AssetBookNetWorthTest
 
 -(void)setUp {
   stockCache = [[StockCache alloc] init];
@@ -31,7 +31,7 @@
    [[self fixturesFrom:@"AssetBookPortfolio.xml"]
     objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 5)]]];
   uncachedBook = [[AssetBook alloc] init];
-  [uncachedBook loadData:[self fixturesFrom:@"AssetBookPortfolio.xml"]];  
+  [uncachedBook loadData:[self fixturesFrom:@"AssetBookPortfolio.xml"]];
 }
 -(void)tearDown {
   [stockCache release];
@@ -42,7 +42,7 @@
   [super dealloc];
 }
 
--(void)testComputations {  
+-(void)testComputations {
   double stockWorth = [cachedBook stockWorth:NULL usingStockCache:stockCache];
   // 35 * 93.50 - 21 * 27.25 = 2700.25
   STAssertEqualsWithAccuracy(2700.25, stockWorth, 0.001,

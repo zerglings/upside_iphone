@@ -20,10 +20,10 @@
 @implementation PortfolioCommController
 
 -(id)initWithTarget:(id)theTarget action:(SEL)theAction {
-	if ((self = [super init])) {
+  if ((self = [super init])) {
     target = theTarget;
     action = theAction;
-		
+
     responseModels = [[NSDictionary alloc] initWithObjectsAndKeys:
                       [Position class], @"position",
                       [Portfolio class], @"portfolio",
@@ -31,13 +31,13 @@
                       [TradeOrder class], @"trade_order",
                       [ServiceError class], @"error",
                       nil];
-	}
-	return self;
+  }
+  return self;
 }
 
 -(void)dealloc {
-	[responseModels release];
-	[super dealloc];
+  [responseModels release];
+  [super dealloc];
 }
 
 -(void)sync {

@@ -12,17 +12,17 @@
 @class Stock;
 
 @interface OrderTableViewCell : UITableViewCell {
-	IBOutlet UILabel* tickerLabel;
-	IBOutlet UILabel* buyOrSellLabel;
-	IBOutlet UILabel* limitPriceLabel;
-	IBOutlet UILabel* quantityLabel;
-	IBOutlet UILabel* quantityFilledLabel;
-	IBOutlet UILabel* percentFilledLabel;
-	IBOutlet UILabel* marketAskOrSellLabel;
-	IBOutlet UIProgressView* fillProgressView;
-	
-	TradeOrder* order;
-	Stock* stock;
+  IBOutlet UILabel* tickerLabel;
+  IBOutlet UILabel* buyOrSellLabel;
+  IBOutlet UILabel* limitPriceLabel;
+  IBOutlet UILabel* quantityLabel;
+  IBOutlet UILabel* quantityFilledLabel;
+  IBOutlet UILabel* percentFilledLabel;
+  IBOutlet UILabel* marketAskOrSellLabel;
+  IBOutlet UIProgressView* fillProgressView;
+
+  TradeOrder* order;
+  Stock* stock;
 }
 
 -(TradeOrder*)order;

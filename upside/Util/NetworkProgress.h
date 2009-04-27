@@ -10,8 +10,8 @@
 
 
 @interface NetworkProgress : NSObject {
-	UIApplication* app;
-	NSUInteger workingConnections;
+  UIApplication* app;
+  NSUInteger workingConnections;
 }
 
 // Called when a new network connection starts.

@@ -33,35 +33,35 @@
 
 
 -(void)dealloc {
-	[order release];
+  [order release];
     [super dealloc];
 }
 
 -(TradeOrder*)order {
-	return order;
+  return order;
 }
 -(Stock*)stock {
-	return stock;
+  return stock;
 }
 
 -(void)setOrder:(TradeOrder*)newOrder forStock:(Stock*)newStock {
-	[newOrder retain];
-	[order release];
-	order = newOrder;
-	
-	[newStock retain];
-	[stock release];
-	stock = newStock;
-	
-	tickerLabel.text = [order ticker];
-	buyOrSellLabel.text = [order isBuy] ? @"buy" : @"sell";
-	limitPriceLabel.text = [order formattedLimitPrice];
-	quantityLabel.text = [order formattedQuantity];
-	quantityFilledLabel.text = [order formattedQuantityFilled];
-	percentFilledLabel.text = [order formattedPercentFilled];
-	marketAskOrSellLabel.text = [order isBuy] ?
-	    [stock formattedAskPrice] : [stock formattedBidPrice];
-	[fillProgressView setProgress:[order fillRatio]];
+  [newOrder retain];
+  [order release];
+  order = newOrder;
+
+  [newStock retain];
+  [stock release];
+  stock = newStock;
+
+  tickerLabel.text = [order ticker];
+  buyOrSellLabel.text = [order isBuy] ? @"buy" : @"sell";
+  limitPriceLabel.text = [order formattedLimitPrice];
+  quantityLabel.text = [order formattedQuantity];
+  quantityFilledLabel.text = [order formattedQuantityFilled];
+  percentFilledLabel.text = [order formattedPercentFilled];
+  marketAskOrSellLabel.text = [order isBuy] ?
+      [stock formattedAskPrice] : [stock formattedBidPrice];
+  [fillProgressView setProgress:[order fillRatio]];
 }
 
 @end

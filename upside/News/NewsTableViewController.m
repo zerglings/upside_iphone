@@ -32,19 +32,19 @@ static NSString* kGameNewsTitles[] = { @"New Features", @"Software Updates",
 -(void)viewDidLoad {
     [super viewDidLoad];
 
-	self.narrowCellReuseIdentifier = @"NewsFeedNarrow";
-	self.wideCellReuseIdentifier = @"NewsFeedNarrow";
-	self.narrowCellNib = @"NewsTableCellNarrow";
-	self.wideCellNib = @"NewsTableCellNarrow";
-	self.cellClass = [NewsTableViewCell class];  
+  self.narrowCellReuseIdentifier = @"NewsFeedNarrow";
+  self.wideCellReuseIdentifier = @"NewsFeedNarrow";
+  self.narrowCellNib = @"NewsTableCellNarrow";
+  self.wideCellNib = @"NewsTableCellNarrow";
+  self.cellClass = [NewsTableViewCell class];
 }
 
 
 -(void)viewWillAppear:(BOOL)animated {
-	[(UITableView*)self.view reloadData];
+  [(UITableView*)self.view reloadData];
   [super viewWillAppear:animated];
 }
- 
+
 /*
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -52,12 +52,12 @@ static NSString* kGameNewsTitles[] = { @"New Features", @"Software Updates",
 */
 /*
 -(void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
+  [super viewWillDisappear:animated];
 }
 */
 /*
 -(void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
+  [super viewDidDisappear:animated];
 }
 */
 
@@ -91,68 +91,68 @@ static NSString* kGameNewsTitles[] = { @"New Features", @"Software Updates",
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
   if ([self tableView:tableView numberOfRowsInSection:section] == 0)
     return nil;
-  
-	switch (section) {
-		case kShortsSection:
-			return @"Short Positions";
-		case kLongsSection:
-			return @"Long Positions";
+
+  switch (section) {
+    case kShortsSection:
+      return @"Short Positions";
+    case kLongsSection:
+      return @"Long Positions";
     case kGameSection:
       return @"Stock Play News";
-		default:
-			break;
-	}
-	return nil;
+    default:
+      break;
+  }
+  return nil;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	switch (section) {
-		case kShortsSection:
-			return [[[Game sharedGame] assetBook] shortPositionCount];
-		case kLongsSection:
-			return [[[Game sharedGame] assetBook] longPositionCount];
+  switch (section) {
+    case kShortsSection:
+      return [[[Game sharedGame] assetBook] shortPositionCount];
+    case kLongsSection:
+      return [[[Game sharedGame] assetBook] longPositionCount];
     case kGameSection:
       return sizeof(kGameNewsTitles) / sizeof(*kGameNewsTitles);
-		default:
-			break;
-	}
+    default:
+      break;
+  }
     return -1;
 }
 
 -(NSString*)feedTitleForRowAtIndexPath:(NSIndexPath*)indexPath {
-	AssetBook* portfolio = [[Game sharedGame] assetBook];
-	Position* position;
-	switch (indexPath.section) {
-		case kShortsSection:
-			position = [portfolio shortPositionAtIndex:indexPath.row];
-			break;
-		case kLongsSection:
-			position = [portfolio longPositionAtIndex:indexPath.row];
-			break;
+  AssetBook* portfolio = [[Game sharedGame] assetBook];
+  Position* position;
+  switch (indexPath.section) {
+    case kShortsSection:
+      position = [portfolio shortPositionAtIndex:indexPath.row];
+      break;
+    case kLongsSection:
+      position = [portfolio longPositionAtIndex:indexPath.row];
+      break;
     case kGameSection:
       return kGameNewsTitles[indexPath.row];
-		default:
-			position = nil;
-			break;
-	}
-	return [AssetBook rssFeedTitleForTicker:[position ticker]];
+    default:
+      position = nil;
+      break;
+  }
+  return [AssetBook rssFeedTitleForTicker:[position ticker]];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {    
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   NewsTableViewCell* cell = (NewsTableViewCell*)[super tableView:tableView
-                                           cellForRowAtIndexPath:indexPath];  
+                                           cellForRowAtIndexPath:indexPath];
   [cell setFeedTitle:[self feedTitleForRowAtIndexPath:indexPath]];
   return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	RssFeedTableViewController *feedController =
+  RssFeedTableViewController *feedController =
       [[RssFeedTableViewController alloc]
        initWithNibName:@"RssFeedTableViewController" bundle:nil];
-	[self.navigationController pushViewController:feedController animated:YES];
-	[feedController setFeedTitle:[self feedTitleForRowAtIndexPath:indexPath]];
-	[feedController release];
+  [self.navigationController pushViewController:feedController animated:YES];
+  [feedController setFeedTitle:[self feedTitleForRowAtIndexPath:indexPath]];
+  [feedController release];
 }
 
 
@@ -168,14 +168,14 @@ static NSString* kGameNewsTitles[] = { @"New Features", @"Software Updates",
 /*
 // Override to support editing the table view.
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 */
 

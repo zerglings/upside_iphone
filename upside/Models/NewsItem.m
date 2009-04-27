@@ -19,19 +19,19 @@
 @synthesize isRead;
 
 -(void)dealloc {
-	[title release];
-	[pubDate release];
-	[guid release];
-	[description release];
-	[link release];
-	[super dealloc];
+  [title release];
+  [pubDate release];
+  [guid release];
+  [description release];
+  [link release];
+  [super dealloc];
 }
 
 -(id)initWithItem:(NewsItem*)item markAsRead:(BOOL)isReadValue {
-	return [self initWithModel:item properties:
-			[NSDictionary dictionaryWithObject:[NSNumber
-												numberWithBool:isReadValue]
-										forKey:@"isRead"]];
+  return [self initWithModel:item properties:
+      [NSDictionary dictionaryWithObject:[NSNumber
+                        numberWithBool:isReadValue]
+                    forKey:@"isRead"]];
 }
 
 @end

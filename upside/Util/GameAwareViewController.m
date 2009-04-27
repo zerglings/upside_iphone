@@ -24,7 +24,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
+  [super viewWillDisappear:animated];
   [game.newDataSite removeTarget:self action:@selector(newGameData)];
 }
 

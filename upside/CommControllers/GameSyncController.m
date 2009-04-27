@@ -27,71 +27,71 @@
 @implementation GameSyncController
 
 -(id)initWithGame:(Game*)theGame {
-	if ((self = [super initWithErrorModelClass:[ServiceError class]
+  if ((self = [super initWithErrorModelClass:[ServiceError class]
                                 syncInterval:60.0])) {
-		game = theGame;
-		commController = [[PortfolioCommController alloc]
+    game = theGame;
+    commController = [[PortfolioCommController alloc]
                       initWithTarget:self
                       action:@selector(receivedResults:)];
-		loginCommController = [[LoginCommController alloc] init];
-		loginCommController.delegate = self;
-	}
-	return self;
+    loginCommController = [[LoginCommController alloc] init];
+    loginCommController.delegate = self;
+  }
+  return self;
 }
 
 -(void)dealloc {
-	[commController release];
+  [commController release];
   [loginCommController release];
-	[super dealloc];
+  [super dealloc];
 }
 
 -(void)sync {
-	[commController sync];
+  [commController sync];
 }
 
 -(BOOL)integrateResults:(NSArray*)results {
-	NSMutableArray* assets = [[NSMutableArray alloc] init];
-	NSMutableArray* tradeOrders = [[NSMutableArray alloc] init];
-	NSMutableArray* trades = [[NSMutableArray alloc] init];
-	for (ZNModel* model in results) {
-		if ([model isKindOfClass:[Position class]] ||
+  NSMutableArray* assets = [[NSMutableArray alloc] init];
+  NSMutableArray* tradeOrders = [[NSMutableArray alloc] init];
+  NSMutableArray* trades = [[NSMutableArray alloc] init];
+  for (ZNModel* model in results) {
+    if ([model isKindOfClass:[Position class]] ||
         [model isKindOfClass:[Portfolio class]] ||
         [model isKindOfClass:[PortfolioStat class]]) {
-			[assets addObject:model];
+      [assets addObject:model];
     }
     else if ([model isKindOfClass:[TradeOrder class]]) {
-			[tradeOrders addObject:model];      
+      [tradeOrders addObject:model];
     }
-		// TODO(overmind): handle trades here
-	}
-	
-	[[game assetBook] loadData:assets];
-	[[game tradeBook] loadData:tradeOrders];
-	[assets release];
-	[tradeOrders release];
-	[trades release];
-  
+    // TODO(overmind): handle trades here
+  }
+
+  [[game assetBook] loadData:assets];
+  [[game tradeBook] loadData:tradeOrders];
+  [assets release];
+  [tradeOrders release];
+  [trades release];
+
   [[game assetBook] loadTickersIntoStockCache:[game stockCache]];
   [[game assetBook] loadRssFeedsIntoCenter:[game newsCenter]];
-	return YES;
+  return YES;
 }
 
 -(BOOL)handleServiceError:(ServiceError*)error {
-	if ([error isLoginError]) {
-		[loginCommController loginUsing:[ActivationState sharedState]];
+  if ([error isLoginError]) {
+    [loginCommController loginUsing:[ActivationState sharedState]];
     return NO;
-	}
-  
+  }
+
   return YES;
 }
 
 -(void)loginFailed:(NSError*)error {
-	// TODO(overmind): user changed their password, recover from this
+  // TODO(overmind): user changed their password, recover from this
 }
 
 -(void)loginSucceeded {
-	// This happens if we login after syncing failed.
-	[self resumeSyncing];
+  // This happens if we login after syncing failed.
+  [self resumeSyncing];
 }
 
 @end

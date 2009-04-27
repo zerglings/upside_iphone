@@ -10,7 +10,7 @@
 
 @interface UpsideAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-	UIViewController* viewController;
+  UIViewController* viewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow* window;

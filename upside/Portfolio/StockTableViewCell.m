@@ -34,72 +34,72 @@
 
 
 -(void)dealloc {
-	[position release];
-	[stockInfo release];
+  [position release];
+  [stockInfo release];
     [super dealloc];
 }
 
 -(Position*)position {
-	return position;
+  return position;
 }
 
 -(Stock*)stockInfo {
-	return stockInfo;
+  return stockInfo;
 }
 
 -(void)setPosition:(Position*)newPosition stockInfo:(Stock*)newStockInfo {
-	[position release];
-	[stockInfo release];
-	position = [newPosition retain];
-	stockInfo = [newStockInfo retain];
-	
-	tickerLabel.text = [position ticker];
-	nameLabel.text = [stockInfo name];
-	
+  [position release];
+  [stockInfo release];
+  position = [newPosition retain];
+  stockInfo = [newStockInfo retain];
+
+  tickerLabel.text = [position ticker];
+  nameLabel.text = [stockInfo name];
+
   NSString* formattedAskChange =
       [NSString stringWithFormat:@"%@ ", [stockInfo formattedNetAskChange]];
-	[askChangeButton setTitle:formattedAskChange
-					 forState:UIControlStateNormal];
-	[askChangeButton setTitle:formattedAskChange
-					 forState:UIControlStateHighlighted];
-  
+  [askChangeButton setTitle:formattedAskChange
+           forState:UIControlStateNormal];
+  [askChangeButton setTitle:formattedAskChange
+           forState:UIControlStateHighlighted];
+
   NSString* formattedBidChange =
       [NSString stringWithFormat:@"%@ ", [stockInfo formattedNetBidChange]];
-	[bidChangeButton setTitle:formattedBidChange
-					 forState:UIControlStateNormal];
-	[bidChangeButton setTitle:formattedBidChange
-					 forState:UIControlStateHighlighted];
-  
-  NSString* formattedTradeChange = 
+  [bidChangeButton setTitle:formattedBidChange
+           forState:UIControlStateNormal];
+  [bidChangeButton setTitle:formattedBidChange
+           forState:UIControlStateHighlighted];
+
+  NSString* formattedTradeChange =
       [NSString stringWithFormat:@"%@ ", [stockInfo formattedNetTradeChange]];
-	[tradeChangeButton setTitle:formattedTradeChange
-					 forState:UIControlStateNormal];
-	[tradeChangeButton setTitle:formattedTradeChange
-					 forState:UIControlStateHighlighted];
-	
-	[askChangeButton setTitleColor:[stockInfo colorForAskChange]
-					      forState:UIControlStateNormal];
-	[askChangeButton setTitleColor:[stockInfo colorForAskChange]
-					      forState:UIControlStateHighlighted];
-	[bidChangeButton setTitleColor:[stockInfo colorForBidChange]
-					      forState:UIControlStateNormal];
-	[bidChangeButton setTitleColor:[stockInfo colorForBidChange]
-					      forState:UIControlStateHighlighted];
-	[tradeChangeButton setTitleColor:[stockInfo colorForTradeChange]
-					      forState:UIControlStateNormal];
-	[tradeChangeButton setTitleColor:[stockInfo colorForTradeChange]
-					      forState:UIControlStateHighlighted];
-	
-	askPriceLabel.text = [stockInfo formattedAskPrice];
-	bidPriceLabel.text = [stockInfo formattedBidPrice];
-	tradePriceLabel.text = [stockInfo formattedTradePrice];
-	stockValueLabel.text = [stockInfo formattedValueUsingTradePriceFor:
-							[position quantity]];	
-	stockCountLabel.text = [position formattedQuantity];
-						   
-	askPriceProgressIcon.image = [stockInfo imageForAskChange];
-	bidPriceProgressIcon.image = [stockInfo imageForBidChange];
-	tradePriceProgressIcon.image = [stockInfo imageForTradeChange];
+  [tradeChangeButton setTitle:formattedTradeChange
+           forState:UIControlStateNormal];
+  [tradeChangeButton setTitle:formattedTradeChange
+           forState:UIControlStateHighlighted];
+
+  [askChangeButton setTitleColor:[stockInfo colorForAskChange]
+                forState:UIControlStateNormal];
+  [askChangeButton setTitleColor:[stockInfo colorForAskChange]
+                forState:UIControlStateHighlighted];
+  [bidChangeButton setTitleColor:[stockInfo colorForBidChange]
+                forState:UIControlStateNormal];
+  [bidChangeButton setTitleColor:[stockInfo colorForBidChange]
+                forState:UIControlStateHighlighted];
+  [tradeChangeButton setTitleColor:[stockInfo colorForTradeChange]
+                forState:UIControlStateNormal];
+  [tradeChangeButton setTitleColor:[stockInfo colorForTradeChange]
+                forState:UIControlStateHighlighted];
+
+  askPriceLabel.text = [stockInfo formattedAskPrice];
+  bidPriceLabel.text = [stockInfo formattedBidPrice];
+  tradePriceLabel.text = [stockInfo formattedTradePrice];
+  stockValueLabel.text = [stockInfo formattedValueUsingTradePriceFor:
+              [position quantity]];
+  stockCountLabel.text = [position formattedQuantity];
+
+  askPriceProgressIcon.image = [stockInfo imageForAskChange];
+  bidPriceProgressIcon.image = [stockInfo imageForBidChange];
+  tradePriceProgressIcon.image = [stockInfo imageForTradeChange];
 }
 
 @end

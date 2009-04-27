@@ -11,17 +11,17 @@
 #import "ModelSupport.h"
 
 @interface TradeOrder : ZNModel {
-	NSString* ticker;
-	NSUInteger quantity;
-	BOOL isBuy;
+  NSString* ticker;
+  NSUInteger quantity;
+  BOOL isBuy;
   BOOL isLong;
   BOOL isLimit;
   double limitPrice;
-	NSUInteger modelId;
-	NSUInteger unfilledQuantity;
+  NSUInteger modelId;
+  NSUInteger unfilledQuantity;
 }
 
-// The ticker of the stock. 
+// The ticker of the stock.
 @property (nonatomic, readonly, retain) NSString* ticker;
 
 // The number of stocks in the order.
@@ -79,7 +79,7 @@
 // The limit on the order, in dollars.
 -(double)limitPrice;
 
-// YES for limit orders, NO for market orders. 
+// YES for limit orders, NO for market orders.
 -(BOOL)isLimitOrder;
 
 // YES for submitted orders, NO for orders pending submission.

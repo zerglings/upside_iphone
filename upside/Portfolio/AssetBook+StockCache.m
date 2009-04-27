@@ -15,10 +15,10 @@
 
 -(void)loadTickersIntoStockCache:(StockCache*)stockCache {
   BOOL needsSync = NO;
-	for (Position* position in positions) {
-		if(![stockCache stockForTicker:[position ticker]])
+  for (Position* position in positions) {
+    if(![stockCache stockForTicker:[position ticker]])
       needsSync = YES;
-	}
+  }
   if (needsSync)
     [stockCache syncOnce];
 }

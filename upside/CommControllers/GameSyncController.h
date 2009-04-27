@@ -13,9 +13,9 @@
 @class PortfolioCommController;
 
 @interface GameSyncController : ZNSyncController {
-	Game* game;
-	PortfolioCommController* commController;
-	LoginCommController* loginCommController;
+  Game* game;
+  PortfolioCommController* commController;
+  LoginCommController* loginCommController;
 }
 
 

@@ -17,8 +17,8 @@
 @synthesize uniqueId, hardwareModel, osName, osVersion, appVersion;
 
 -(void)dealloc {
-	[uniqueId release];
-	[super dealloc];
+  [uniqueId release];
+  [super dealloc];
 }
 
 +(Device*)copyCurrentDevice {
@@ -26,7 +26,7 @@
 }
 
 -(BOOL)isEqualToCurrentDevice {
-  NSDictionary* attributes = [ZNDeviceFprint deviceAttributes];  
+  NSDictionary* attributes = [ZNDeviceFprint deviceAttributes];
   return [uniqueId isEqualToString:[attributes objectForKey:@"uniqueId"]] &&
       [hardwareModel isEqualToString:[attributes
                                       objectForKey:@"hardwareModel"]] &&

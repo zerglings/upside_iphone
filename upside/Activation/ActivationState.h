@@ -12,8 +12,8 @@
 @class User;
 
 @interface ActivationState : NSObject {
-	Device* deviceInfo;
-	User* user;
+  Device* deviceInfo;
+  User* user;
 }
 
 // Device data from the server. Nil if the device is not registered.

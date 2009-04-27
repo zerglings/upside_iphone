@@ -13,9 +13,9 @@
 
 // Information about a portable device (iPhone, iPod) running the game.
 @interface Device : ZNModel {
-	NSUInteger modelId;
-	NSUInteger userId;
-	NSString* uniqueId;
+  NSUInteger modelId;
+  NSUInteger userId;
+  NSString* uniqueId;
   NSString* hardwareModel;
   NSString* osName;
   NSString* osVersion;

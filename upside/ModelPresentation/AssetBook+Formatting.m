@@ -15,11 +15,11 @@
 static NSNumberFormatter* worthFormatter = nil;
 
 static void SetupFormatters() {
-	@synchronized([AssetBook class]) {
-		if (worthFormatter == nil) {
-			worthFormatter = [[NSNumberFormatter alloc] init];
-			[worthFormatter setPositiveFormat:@"$#,##0.00"];
-			[worthFormatter setNegativeFormat:@"$-#,##0.00"];
+  @synchronized([AssetBook class]) {
+    if (worthFormatter == nil) {
+      worthFormatter = [[NSNumberFormatter alloc] init];
+      [worthFormatter setPositiveFormat:@"$#,##0.00"];
+      [worthFormatter setNegativeFormat:@"$-#,##0.00"];
     }
   }
 }
@@ -53,7 +53,7 @@ static void SetupFormatters() {
   BOOL worthSucceeded;
   double stockWorth = [self netWorth:&worthSucceeded
                      usingStockCache:stockCache];
-  return [self formattedWorth:stockWorth succeeded:worthSucceeded];  
+  return [self formattedWorth:stockWorth succeeded:worthSucceeded];
 }
 
 -(UIImage*)imageForNetWorthChangeFrom:(PortfolioStat*)stat

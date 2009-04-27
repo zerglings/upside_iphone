@@ -12,8 +12,8 @@
 #import "Stock+Formatting.h"
 
 @interface StockFormattingTest : SenTestCase {
-	Stock* risingStock;
-	Stock* fallingStock;
+  Stock* risingStock;
+  Stock* fallingStock;
   Stock* invalidStock;
 }
 
@@ -22,16 +22,16 @@
 
 @implementation StockFormattingTest
 
--(void)setUp {	
-	risingStock = [[Stock alloc] initWithTicker:@"AAPL"
+-(void)setUp {
+  risingStock = [[Stock alloc] initWithTicker:@"AAPL"
                                          name:@"Apple Inc"
                                        market:@"NasdaqNM"
                                      askPrice:1091.50
                                      bidPrice:90.50
                                lastTradePrice:90.00
                            previousClosePrice:85.00];
-	
-	fallingStock = [[Stock alloc] initWithTicker:@"MSFT"
+
+  fallingStock = [[Stock alloc] initWithTicker:@"MSFT"
                                           name:@"Microsoft Corp"
                                         market:@"NasdaqNM"
                                       askPrice:0.90
@@ -48,93 +48,93 @@
 }
 
 -(void)tearDown {
-	[risingStock release];
-	[fallingStock release];
+  [risingStock release];
+  [fallingStock release];
   [invalidStock release];
 }
 
 -(void)dealloc {
-	[super dealloc];
+  [super dealloc];
 }
 
 -(void)testPrices {
-	STAssertEqualStrings(@"$90.50", [risingStock formattedBidPrice],
+  STAssertEqualStrings(@"$90.50", [risingStock formattedBidPrice],
                        @"Easy price formatting");
-	STAssertEqualStrings(@"$1,091.50", [risingStock formattedAskPrice],
+  STAssertEqualStrings(@"$1,091.50", [risingStock formattedAskPrice],
                        @"Large price formatting");
-	STAssertEqualStrings(@"$90.00", [risingStock formattedTradePrice],
+  STAssertEqualStrings(@"$90.00", [risingStock formattedTradePrice],
                        @"Integer price formatting");
-  
-	STAssertEqualStrings(@"$0.90", [fallingStock formattedAskPrice],
+
+  STAssertEqualStrings(@"$0.90", [fallingStock formattedAskPrice],
                        @"Small price formatting");
-	STAssertEqualStrings(@"$0.09", [fallingStock formattedBidPrice],
-                       @"Tiny price formatting");	
+  STAssertEqualStrings(@"$0.09", [fallingStock formattedBidPrice],
+                       @"Tiny price formatting");
 }
 
 -(void)testNetChanges {
-	STAssertEqualStrings(@"+5.50", [risingStock formattedNetBidChange],
+  STAssertEqualStrings(@"+5.50", [risingStock formattedNetBidChange],
                        @"Easy net change formatting");
-	STAssertEqualStrings(@"+1,006.50", [risingStock formattedNetAskChange],
+  STAssertEqualStrings(@"+1,006.50", [risingStock formattedNetAskChange],
                        @"Large net change formatting");
-	STAssertEqualStrings(@"+5.00", [risingStock formattedNetTradeChange],
+  STAssertEqualStrings(@"+5.00", [risingStock formattedNetTradeChange],
                        @"Integer net change formatting");
-	
-	STAssertEqualStrings(@"-1.91", [fallingStock formattedNetAskChange],
+
+  STAssertEqualStrings(@"-1.91", [fallingStock formattedNetAskChange],
                        @"Negative net change formatting");
-	STAssertEqualStrings(@"-0.02", [fallingStock formattedNetTradeChange],
-                       @"Tiny net change formatting");	
+  STAssertEqualStrings(@"-0.02", [fallingStock formattedNetTradeChange],
+                       @"Tiny net change formatting");
 }
 
 -(void)testPointChanges {
-	STAssertEqualStrings(@"+6.47%", [risingStock formattedPointBidChange],
+  STAssertEqualStrings(@"+6.47%", [risingStock formattedPointBidChange],
                        @"Easy point change formatting");
-	STAssertEqualStrings(@"+1,184.12%",
+  STAssertEqualStrings(@"+1,184.12%",
                        [risingStock formattedPointAskChange],
                        @"Large point change formatting");
-	
-	STAssertEqualStrings(@"-67.97%", [fallingStock formattedPointAskChange],
+
+  STAssertEqualStrings(@"-67.97%", [fallingStock formattedPointAskChange],
                        @"Negative point change formatting");
-	STAssertEqualStrings(@"-96.80%", [fallingStock formattedPointBidChange],
-                       @"Negative point change formatting");	
-	STAssertEqualStrings(@"-0.71%", [fallingStock formattedPointTradeChange],
-                       @"Tiny negative point change formatting");	
+  STAssertEqualStrings(@"-96.80%", [fallingStock formattedPointBidChange],
+                       @"Negative point change formatting");
+  STAssertEqualStrings(@"-0.71%", [fallingStock formattedPointTradeChange],
+                       @"Tiny negative point change formatting");
 }
 
 -(void)testChangeColors {
-	STAssertEqualObjects([UIColor colorWithRed:0.5f green:0.0f
+  STAssertEqualObjects([UIColor colorWithRed:0.5f green:0.0f
                                         blue:0.0f alpha:1.0f],
                        [fallingStock colorForBidChange],
                        @"Falling stocks should be red");
-	STAssertEqualObjects([UIColor colorWithRed:0.0f green:0.5f
+  STAssertEqualObjects([UIColor colorWithRed:0.0f green:0.5f
                                         blue:0.0f alpha:1.0f],
                        [risingStock colorForBidChange],
-                       @"Rising stocks should be green");	
+                       @"Rising stocks should be green");
 }
 
 -(void)testChangeImages {
   UIImage* downArrow = [UIImage imageNamed:@"RedDownArrow.png"];
   UIImage* upArrow = [UIImage imageNamed:@"GreenUpArrow.png"];
-	STAssertEqualObjects(downArrow,
+  STAssertEqualObjects(downArrow,
                        [fallingStock imageForBidChange],
                        @"Falling stocks should have a red down arrow");
-	STAssertEqualObjects(downArrow,
+  STAssertEqualObjects(downArrow,
                        [fallingStock imageForAskChange],
                        @"Falling stocks should have a red down arrow");
-	STAssertEqualObjects(upArrow,
+  STAssertEqualObjects(upArrow,
                        [risingStock imageForBidChange],
                        @"Rising stocks should have a green up arrow");
-	STAssertEqualObjects(upArrow,
+  STAssertEqualObjects(upArrow,
                        [risingStock imageForAskChange],
                        @"Rising stocks should have a green up arrow");
 }
 
 -(void)testValidityImages {
-	STAssertEqualObjects([UIImage imageNamed:@"GreenTick.png"],
+  STAssertEqualObjects([UIImage imageNamed:@"GreenTick.png"],
                        [fallingStock imageForValidity],
                        @"Valid stocks should have a green tick");
-	STAssertEqualObjects([UIImage imageNamed:@"RedX.png"],
+  STAssertEqualObjects([UIImage imageNamed:@"RedX.png"],
                        [invalidStock imageForValidity],
-                       @"Invalid stocks should have a red X");  
+                       @"Invalid stocks should have a red X");
 }
 
 @end

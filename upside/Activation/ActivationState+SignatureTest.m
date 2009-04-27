@@ -40,7 +40,7 @@
        testUdid, @"uniqueID",
        @"c9acca7ec91004c549b09699d9404af28196e5488b94f70c87c44be05a19c694",
        @"deviceSig", @"1", @"deviceSigV", nil];
-  
+
   STAssertEqualObjects(goldenSig, [testState requestSignature],
                        @"Invalid signature for Web requests");
 }

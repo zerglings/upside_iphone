@@ -35,40 +35,40 @@
 -(void)viewDidLoad {
   [super viewDidLoad];
 
-	self.narrowCellNib = @"OrderTableCellNarrow";
-	self.wideCellNib = @"OrderTableCellWide";
-	self.narrowCellReuseIdentifier = @"OrderNarrow";
-	self.wideCellReuseIdentifier = @"OrderWide";
-	self.cellClass = [OrderTableViewCell class];
-  
+  self.narrowCellNib = @"OrderTableCellNarrow";
+  self.wideCellNib = @"OrderTableCellWide";
+  self.narrowCellReuseIdentifier = @"OrderNarrow";
+  self.wideCellReuseIdentifier = @"OrderWide";
+  self.cellClass = [OrderTableViewCell class];
+
   // The empty view will always be a subview, but it will usually be hidden.
   [self.view addSubview:emptyView];
-  CGRect frame = self.view.frame;  
+  CGRect frame = self.view.frame;
   emptyView.frame = CGRectMake(0.0f, 0.0f,
                                CGRectGetWidth(frame), CGRectGetHeight(frame));
   emptyView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
       UIViewAutoresizingFlexibleWidth;
   [self refreshEmptyView];
-  
+
   self.navigationItem.leftBarButtonItem =
       [[UIBarButtonItem alloc]
        initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
        target:self action:@selector(tappedAddTradeButton:)];
-  
+
   self.navigationItem.rightBarButtonItem =
   [[UIBarButtonItem alloc]
    initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-   target:[Game sharedGame] action:@selector(syncData)];  
+   target:[Game sharedGame] action:@selector(syncData)];
 }
 
-- (void)refreshEmptyView {
+-(void)refreshEmptyView {
   TradeBook* tradeBook = [[Game sharedGame] tradeBook];
   BOOL hidden = ([tradeBook pendingCount] + [tradeBook submittedCount] +
                  [tradeBook filledCount]) != 0;
   [emptyView setHidden:hidden];
 }
 
-- (void)newGameData {
+-(void)newGameData {
   [super newGameData];
   [self refreshEmptyView];
 }
@@ -80,7 +80,7 @@
  */
 /*
 -(void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
+  [super viewDidDisappear:animated];
 }
 */
 
@@ -111,31 +111,31 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
   if ([self tableView:tableView numberOfRowsInSection:section] == 0)
     return nil;
-  
-	switch(section) {
-		case kNotSubmittedSection:
-			return @"Not submitted to server";
-		case kSubmittedSection:
-			return @"Waiting to be filled";
-		case kFilledSection:
-			return @"Filled";
-		default:
-			return nil;			
-	}
+
+  switch(section) {
+    case kNotSubmittedSection:
+      return @"Not submitted to server";
+    case kSubmittedSection:
+      return @"Waiting to be filled";
+    case kFilledSection:
+      return @"Filled";
+    default:
+      return nil;
+  }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   TradeBook* tradeBook = [[Game sharedGame] tradeBook];
-	switch(section) {
-		case kNotSubmittedSection:
-			return [tradeBook pendingCount];
-		case kSubmittedSection:
-			return [tradeBook submittedCount];
-		case kFilledSection:
-			return [tradeBook filledCount];
-		default:
-			return -1;
-	}
+  switch(section) {
+    case kNotSubmittedSection:
+      return [tradeBook pendingCount];
+    case kSubmittedSection:
+      return [tradeBook submittedCount];
+    case kFilledSection:
+      return [tradeBook filledCount];
+    default:
+      return -1;
+  }
 }
 
 // Customize the appearance of table view cells.
@@ -143,23 +143,23 @@
         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   OrderTableViewCell* cell = (OrderTableViewCell*)[super tableView:tableView
                                              cellForRowAtIndexPath:indexPath];
-	TradeBook* tradeBook = [[Game sharedGame] tradeBook];
-	TradeOrder* order;
-	switch(indexPath.section) {
-		case kNotSubmittedSection:
-			order = [tradeBook pendingAtIndex:([tradeBook pendingCount] - indexPath.row - 1)];
+  TradeBook* tradeBook = [[Game sharedGame] tradeBook];
+  TradeOrder* order;
+  switch(indexPath.section) {
+    case kNotSubmittedSection:
+      order = [tradeBook pendingAtIndex:([tradeBook pendingCount] - indexPath.row - 1)];
       break;
-		case kSubmittedSection:
-			order = [tradeBook submittedAtIndex:([tradeBook submittedCount] - indexPath.row - 1)];
+    case kSubmittedSection:
+      order = [tradeBook submittedAtIndex:([tradeBook submittedCount] - indexPath.row - 1)];
       break;
-		case kFilledSection:
-			order = [tradeBook filledAtIndex:([tradeBook filledCount] - indexPath.row - 1)];
+    case kFilledSection:
+      order = [tradeBook filledAtIndex:([tradeBook filledCount] - indexPath.row - 1)];
       break;
-		default:
-			order = nil;
-	}
-	Stock* stock = [[[Game sharedGame] stockCache] stockForTicker:order.ticker];
-	[cell setOrder:order forStock:stock];
+    default:
+      order = nil;
+  }
+  Stock* stock = [[[Game sharedGame] stockCache] stockForTicker:order.ticker];
+  [cell setOrder:order forStock:stock];
 
   return cell;
 }
@@ -167,9 +167,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+  // AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
+  // [self.navigationController pushViewController:anotherViewController];
+  // [anotherViewController release];
 }
 
 
@@ -185,14 +185,14 @@
 /*
 // Override to support editing the table view.
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 */
 
@@ -223,7 +223,7 @@
   [self.navigationController pushViewController:newOrderViewController
                                        animated:YES];
   // TODO(overmind): setup controller
-  [newOrderViewController release];  
+  [newOrderViewController release];
 }
 
 -(IBAction)placeOrderTapped:(id)sender {

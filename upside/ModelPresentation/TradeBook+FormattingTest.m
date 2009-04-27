@@ -25,7 +25,7 @@
 -(void)setUp {
   stockCache = [[StockCache alloc] init];
   [stockCache integrateResults:[self fixturesFrom:@"AssetBookStocks.xml"]];
-  
+
   uncachedBook = [[TradeBook alloc] init];
   [uncachedBook loadData:[self fixturesFrom:@"TradeBookOrders.xml"]];
   cachedBook = [[TradeBook alloc] init];
@@ -54,6 +54,6 @@
   STAssertEqualStrings(@"N/A",
                        [uncachedBook formattedOrderProceedsWithCache:stockCache],
                        @"Unknown order proceeds");
-} 
+}
 
 @end

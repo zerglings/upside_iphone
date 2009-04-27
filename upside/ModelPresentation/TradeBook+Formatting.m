@@ -13,20 +13,20 @@
 static NSNumberFormatter* worthFormatter = nil;
 
 static void SetupFormatters() {
-	@synchronized([TradeBook class]) {
-		if (worthFormatter == nil) {
-			worthFormatter = [[NSNumberFormatter alloc] init];
-			[worthFormatter setPositiveFormat:@"$#,##0.00"];
-			[worthFormatter setNegativeFormat:@"$-#,##0.00"];
+  @synchronized([TradeBook class]) {
+    if (worthFormatter == nil) {
+      worthFormatter = [[NSNumberFormatter alloc] init];
+      [worthFormatter setPositiveFormat:@"$#,##0.00"];
+      [worthFormatter setNegativeFormat:@"$-#,##0.00"];
     }
   }
 }
 
 @implementation TradeBook (Formatting)
 
--(NSString*)formattedOrderProceedsWithCache:(StockCache*)stockCache { 
+-(NSString*)formattedOrderProceedsWithCache:(StockCache*)stockCache {
   SetupFormatters();
-  
+
   BOOL proceedsSucceeded;
   double proceeds = [self orderProceeds:&proceedsSucceeded
                         usingStockCache:stockCache];

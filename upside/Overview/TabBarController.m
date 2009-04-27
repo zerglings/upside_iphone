@@ -31,9 +31,9 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 -(void)viewDidLoad {
-	// Ping the game to force all the good background processing to start.
-	[Game sharedGame];
-	
+  // Ping the game to force all the good background processing to start.
+  [Game sharedGame];
+
     [super viewDidLoad];
 }
 
@@ -56,18 +56,18 @@
 }
 
 +(UITabBarController*)loadFromNib:(NSString*)nibName
-	  						  owner:(UpsideAppDelegate*)owner {
-	NSArray* nibContents = [[NSBundle mainBundle] loadNibNamed:nibName
-														 owner:owner
-													   options:nil];
-	NSEnumerator* nibEnumerator = [nibContents objectEnumerator];
-	
-	NSObject* nibItem;
-	while ((nibItem = [nibEnumerator nextObject])) {
-		if ([nibItem isKindOfClass:[UITabBarController class]])
-			return (UITabBarController*)nibItem;
-	}
-	return nil;	
+                  owner:(UpsideAppDelegate*)owner {
+  NSArray* nibContents = [[NSBundle mainBundle] loadNibNamed:nibName
+                             owner:owner
+                             options:nil];
+  NSEnumerator* nibEnumerator = [nibContents objectEnumerator];
+
+  NSObject* nibItem;
+  while ((nibItem = [nibEnumerator nextObject])) {
+    if ([nibItem isKindOfClass:[UITabBarController class]])
+      return (UITabBarController*)nibItem;
+  }
+  return nil;
 }
 
 @end

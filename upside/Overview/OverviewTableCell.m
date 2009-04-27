@@ -1,9 +1,9 @@
 //
 //  OverviewTableCell.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 3/3/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "OverviewTableCell.h"
@@ -11,7 +11,7 @@
 
 @implementation OverviewTableCell
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+-(id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
         // Initialization code
     }
@@ -19,7 +19,7 @@
 }
 
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+-(void)setSelected:(BOOL)selected animated:(BOOL)animated {
 
     [super setSelected:selected animated:animated];
 
@@ -27,7 +27,7 @@
 }
 
 
-- (void)dealloc {
+-(void)dealloc {
     [super dealloc];
 }
 

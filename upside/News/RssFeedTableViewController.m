@@ -28,12 +28,12 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
 
-	self.narrowCellNib = @"RssFeedTableCellNarrow";
-	self.wideCellNib = @"RssFeedTableCellNarrow";
-	self.narrowCellReuseIdentifier = @"RssItemNarrow";
-	self.wideCellReuseIdentifier = @"RssItemNarrow";
-	self.cellClass = [RssFeedTableViewCell class];
-	
+  self.narrowCellNib = @"RssFeedTableCellNarrow";
+  self.wideCellNib = @"RssFeedTableCellNarrow";
+  self.narrowCellReuseIdentifier = @"RssItemNarrow";
+  self.wideCellReuseIdentifier = @"RssItemNarrow";
+  self.cellClass = [RssFeedTableViewCell class];
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -50,12 +50,12 @@
 */
 /*
 -(void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
+  [super viewWillDisappear:animated];
 }
 */
 /*
 -(void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
+  [super viewDidDisappear:animated];
 }
 */
 
@@ -84,40 +84,40 @@
     return [[[Game sharedGame] newsCenter] totalNewsForTitle:feedTitle];
 }
 
--(void)setUpCell:(RssFeedTableViewCell*)cell 
-	  forIndexPath:(NSIndexPath*)indexPath {	
-	NewsItem* newsItem = [[[Game sharedGame] newsCenter]
-						  newsItemForTitle:feedTitle
-						  atIndex:indexPath.row];
-	[cell setNewsItem:newsItem];
+-(void)setUpCell:(RssFeedTableViewCell*)cell
+    forIndexPath:(NSIndexPath*)indexPath {
+  NewsItem* newsItem = [[[Game sharedGame] newsCenter]
+              newsItemForTitle:feedTitle
+              atIndex:indexPath.row];
+  [cell setNewsItem:newsItem];
 }
 
 
 // Customize the appearance of table view cells.
 -(UITableViewCell *)tableView:(UITableView *)tableView
-		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+     cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RssFeedTableViewCell* cell =
-	    (RssFeedTableViewCell*)[super tableView:tableView
-						  cellForRowAtIndexPath:indexPath];
+      (RssFeedTableViewCell*)[super tableView:tableView
+              cellForRowAtIndexPath:indexPath];
     [self setUpCell:cell forIndexPath:indexPath];
     return cell;
 }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NewsItem* newsItem = [[[Game sharedGame] newsCenter]
-						  newsItemForTitle:feedTitle
-						  atIndex:indexPath.row];
-	
-	NewsArticleViewController *articleViewController =
-	    [[NewsArticleViewController alloc]
-		 initWithNibName:@"NewsArticleViewController" bundle:nil];
-	[self.navigationController pushViewController:articleViewController
-	                                     animated:YES];
-	articleViewController.newsItem = newsItem;
-	[articleViewController release];
-	[[[Game sharedGame] newsCenter] markAsReadItemWithId:[newsItem uid]];
-	[(UITableView*)self.view reloadData];
+  NewsItem* newsItem = [[[Game sharedGame] newsCenter]
+              newsItemForTitle:feedTitle
+              atIndex:indexPath.row];
+
+  NewsArticleViewController *articleViewController =
+      [[NewsArticleViewController alloc]
+     initWithNibName:@"NewsArticleViewController" bundle:nil];
+  [self.navigationController pushViewController:articleViewController
+                                       animated:YES];
+  articleViewController.newsItem = newsItem;
+  [articleViewController release];
+  [[[Game sharedGame] newsCenter] markAsReadItemWithId:[newsItem uid]];
+  [(UITableView*)self.view reloadData];
 }
 
 
@@ -133,14 +133,14 @@
 /*
 // Override to support editing the table view.
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 */
 
@@ -162,18 +162,18 @@
 
 
 -(void)dealloc {
-	[feedTitle release];
+  [feedTitle release];
     [super dealloc];
 }
 
 @synthesize feedTitle;
 
 -(void)setFeedTitle:(NSString*) newFeedTitle {
-	[feedTitle release];
-	feedTitle = [newFeedTitle retain];
-	
-	self.navigationItem.title = feedTitle;
-	[(UITableView*)self.view reloadData];
+  [feedTitle release];
+  feedTitle = [newFeedTitle retain];
+
+  self.navigationItem.title = feedTitle;
+  [(UITableView*)self.view reloadData];
 }
 
 @end

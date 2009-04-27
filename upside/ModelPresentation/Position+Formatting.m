@@ -17,19 +17,19 @@ static NSNumberFormatter* countFormatter = nil;
 #pragma mark Formatting
 
 static void SetupFormatters() {
-	@synchronized([Position class]) {
-		if (countFormatter == nil) {
-			countFormatter = [[NSNumberFormatter alloc] init];
-			[countFormatter setPositiveFormat:@"#,##0"];
-			[countFormatter setNegativeFormat:@"-#,##0"];
-		}
-	}
+  @synchronized([Position class]) {
+    if (countFormatter == nil) {
+      countFormatter = [[NSNumberFormatter alloc] init];
+      [countFormatter setPositiveFormat:@"#,##0"];
+      [countFormatter setNegativeFormat:@"-#,##0"];
+    }
+  }
 }
 
 -(NSString*)formattedQuantity {
-	SetupFormatters();
-	return [countFormatter stringFromNumber:[NSNumber
-											 numberWithUnsignedInt:quantity]];
+  SetupFormatters();
+  return [countFormatter stringFromNumber:[NSNumber
+                       numberWithUnsignedInt:quantity]];
 }
 
 @end

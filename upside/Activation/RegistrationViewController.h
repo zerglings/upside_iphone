@@ -12,10 +12,10 @@
 @class ActivationState;
 
 @interface RegistrationViewController : UIViewController {
-	IBOutlet UIButton* abortButton;
-	
-	IBOutlet RegistrationCommController* commController;
-	ActivationState* activationState;
+  IBOutlet UIButton* abortButton;
+
+  IBOutlet RegistrationCommController* commController;
+  ActivationState* activationState;
 }
 
 @property (nonatomic, retain) ActivationState* activationState;

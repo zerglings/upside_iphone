@@ -23,7 +23,7 @@
   IBOutlet UITextField* limitDollarsText;
   IBOutlet UITextField* limitCentsText;
   IBOutlet UILabel* limitCentSeparatorLabel;
-  
+
   IBOutlet UILabel* askPriceLabel;
   IBOutlet UILabel* bidPriceLabel;
   IBOutlet UILabel* askPriceChange;
