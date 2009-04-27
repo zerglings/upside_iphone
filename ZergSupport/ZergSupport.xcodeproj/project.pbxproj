@@ -131,12 +131,18 @@
 		57826D350FA3F48A006896D7 /* ZNDeviceFprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */; };
 		57826D650FA40533006896D7 /* ZNDeviceFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */; };
 		57826E7B0FA436BA006896D7 /* ZNDigester.h in Headers */ = {isa = PBXBuildFile; fileRef = 57826E790FA436BA006896D7 /* ZNDigester.h */; };
+		57826F720FA4C299006896D7 /* ZNFileFprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 57826F700FA4C299006896D7 /* ZNFileFprint.h */; };
+		57826F730FA4C299006896D7 /* ZNFileFprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 57826F710FA4C299006896D7 /* ZNFileFprint.m */; };
 		57AF08690FA13C0E006305D3 /* CryptoSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 57AF08680FA13C0E006305D3 /* CryptoSupport.h */; };
-		57AF086C0FA13C25006305D3 /* ZNCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 57AF086A0FA13C25006305D3 /* ZNCrypto.h */; };
-		57AF086D0FA13C25006305D3 /* ZNCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF086B0FA13C25006305D3 /* ZNCrypto.m */; };
 		57AF08720FA13DDF006305D3 /* ZNAesCipher.h in Headers */ = {isa = PBXBuildFile; fileRef = 57AF08700FA13DDF006305D3 /* ZNAesCipher.h */; };
 		57AF08730FA13DDF006305D3 /* ZNAesCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF08710FA13DDF006305D3 /* ZNAesCipher.m */; };
 		57AF08980FA1505B006305D3 /* ZNAesCipherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */; };
+		57F045F40FA50BEC006436EF /* ZNCipher.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F045F30FA50BEC006436EF /* ZNCipher.h */; };
+		57F045F60FA50C42006436EF /* ZNCipherClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F045F50FA50C42006436EF /* ZNCipherClass.h */; };
+		57F046780FA56913006436EF /* ZNFileFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F046770FA56913006436EF /* ZNFileFprintTest.m */; };
+		57F0467A0FA56965006436EF /* ZNFileFprintTest.data in Resources */ = {isa = PBXBuildFile; fileRef = 57F046790FA56965006436EF /* ZNFileFprintTest.data */; };
+		57F046BF0FA58482006436EF /* ZNFileFprintTest.rb in Resources */ = {isa = PBXBuildFile; fileRef = 57F046BE0FA58482006436EF /* ZNFileFprintTest.rb */; };
+		57F046C10FA584D9006436EF /* ZNAesCipherTest.rb in Resources */ = {isa = PBXBuildFile; fileRef = 57F046C00FA584D9006436EF /* ZNAesCipherTest.rb */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,12 +288,18 @@
 		57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDeviceFprint.m; sourceTree = "<group>"; };
 		57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDeviceFprintTest.m; sourceTree = "<group>"; };
 		57826E790FA436BA006896D7 /* ZNDigester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNDigester.h; sourceTree = "<group>"; };
+		57826F700FA4C299006896D7 /* ZNFileFprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNFileFprint.h; sourceTree = "<group>"; };
+		57826F710FA4C299006896D7 /* ZNFileFprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNFileFprint.m; sourceTree = "<group>"; };
 		57AF08680FA13C0E006305D3 /* CryptoSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoSupport.h; sourceTree = "<group>"; };
-		57AF086A0FA13C25006305D3 /* ZNCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNCrypto.h; sourceTree = "<group>"; };
-		57AF086B0FA13C25006305D3 /* ZNCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNCrypto.m; sourceTree = "<group>"; };
 		57AF08700FA13DDF006305D3 /* ZNAesCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNAesCipher.h; sourceTree = "<group>"; };
 		57AF08710FA13DDF006305D3 /* ZNAesCipher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAesCipher.m; sourceTree = "<group>"; };
 		57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAesCipherTest.m; sourceTree = "<group>"; };
+		57F045F30FA50BEC006436EF /* ZNCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNCipher.h; sourceTree = "<group>"; };
+		57F045F50FA50C42006436EF /* ZNCipherClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNCipherClass.h; sourceTree = "<group>"; };
+		57F046770FA56913006436EF /* ZNFileFprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNFileFprintTest.m; sourceTree = "<group>"; };
+		57F046790FA56965006436EF /* ZNFileFprintTest.data */ = {isa = PBXFileReference; lastKnownFileType = text; path = ZNFileFprintTest.data; sourceTree = "<group>"; };
+		57F046BE0FA58482006436EF /* ZNFileFprintTest.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ZNFileFprintTest.rb; sourceTree = "<group>"; };
+		57F046C00FA584D9006436EF /* ZNAesCipherTest.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ZNAesCipherTest.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,15 +540,21 @@
 			isa = PBXGroup;
 			children = (
 				57AF08680FA13C0E006305D3 /* CryptoSupport.h */,
-				57AF086A0FA13C25006305D3 /* ZNCrypto.h */,
-				57AF086B0FA13C25006305D3 /* ZNCrypto.m */,
 				57AF08700FA13DDF006305D3 /* ZNAesCipher.h */,
 				57AF08710FA13DDF006305D3 /* ZNAesCipher.m */,
 				57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */,
+				57F046C00FA584D9006436EF /* ZNAesCipherTest.rb */,
+				57F045F30FA50BEC006436EF /* ZNCipher.h */,
+				57F045F50FA50C42006436EF /* ZNCipherClass.h */,
 				57826D320FA3F48A006896D7 /* ZNDeviceFprint.h */,
 				57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */,
 				57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */,
 				57826E790FA436BA006896D7 /* ZNDigester.h */,
+				57826F700FA4C299006896D7 /* ZNFileFprint.h */,
+				57826F710FA4C299006896D7 /* ZNFileFprint.m */,
+				57F046770FA56913006436EF /* ZNFileFprintTest.m */,
+				57F046790FA56965006436EF /* ZNFileFprintTest.data */,
+				57F046BE0FA58482006436EF /* ZNFileFprintTest.rb */,
 				572DCE030FA1743C00CA3975 /* ZNMd5Digest.h */,
 				572DCE040FA1743C00CA3975 /* ZNMd5Digest.m */,
 				572DCE070FA1744D00CA3975 /* ZNMd5DigestTest.m */,
@@ -585,12 +603,14 @@
 				57551F3F0F4E0D4D0046B0EE /* ZNHttpRequest.h in Headers */,
 				57551F420F4E0D4D0046B0EE /* ZNXmlHttpRequest.h in Headers */,
 				57AF08690FA13C0E006305D3 /* CryptoSupport.h in Headers */,
-				57AF086C0FA13C25006305D3 /* ZNCrypto.h in Headers */,
 				57AF08720FA13DDF006305D3 /* ZNAesCipher.h in Headers */,
 				572DCDF40FA1718800CA3975 /* ZNSha2Digest.h in Headers */,
 				572DCE050FA1743C00CA3975 /* ZNMd5Digest.h in Headers */,
 				57826D340FA3F48A006896D7 /* ZNDeviceFprint.h in Headers */,
 				57826E7B0FA436BA006896D7 /* ZNDigester.h in Headers */,
+				57826F720FA4C299006896D7 /* ZNFileFprint.h in Headers */,
+				57F045F40FA50BEC006436EF /* ZNCipher.h in Headers */,
+				57F045F60FA50C42006436EF /* ZNCipherClass.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +721,9 @@
 				57551F800F4E0D4D0046B0EE /* ZNHttpRequestTest.put in Resources */,
 				57551F820F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.body in Resources */,
 				57551F840F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.xml in Resources */,
+				57F0467A0FA56965006436EF /* ZNFileFprintTest.data in Resources */,
+				57F046BF0FA58482006436EF /* ZNFileFprintTest.rb in Resources */,
+				57F046C10FA584D9006436EF /* ZNAesCipherTest.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,11 +758,11 @@
 				57551F3D0F4E0D4D0046B0EE /* ZNCsvHttpRequest.m in Sources */,
 				57551F400F4E0D4D0046B0EE /* ZNHttpRequest.m in Sources */,
 				57551F430F4E0D4D0046B0EE /* ZNXmlHttpRequest.m in Sources */,
-				57AF086D0FA13C25006305D3 /* ZNCrypto.m in Sources */,
 				57AF08730FA13DDF006305D3 /* ZNAesCipher.m in Sources */,
 				572DCDF50FA1718800CA3975 /* ZNSha2Digest.m in Sources */,
 				572DCE060FA1743C00CA3975 /* ZNMd5Digest.m in Sources */,
 				57826D350FA3F48A006896D7 /* ZNDeviceFprint.m in Sources */,
+				57826F730FA4C299006896D7 /* ZNFileFprint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +793,7 @@
 				572DCDFF0FA1735C00CA3975 /* ZNSha2DigestTest.m in Sources */,
 				572DCE0A0FA1745400CA3975 /* ZNMd5DigestTest.m in Sources */,
 				57826D650FA40533006896D7 /* ZNDeviceFprintTest.m in Sources */,
+				57F046780FA56913006436EF /* ZNFileFprintTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

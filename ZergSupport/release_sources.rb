@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 #
 #  release_sources.m
 #  ZergSupport
@@ -12,6 +13,11 @@ Dir.glob('**/*').each do |file|
   next unless /\.m$/ =~ file or /\.h$/ =~ file
   
   contents = File.read file
+  
+  # eat whitespace at the end of lines
+  contents.gsub! /\s+$/, ""
+  # tabs are 2 spaces
+  contents.gsub! "\t", "  "
   
   # force -(type)method instead of - (type) method
   contents.gsub! /\-\s*\(([^(]*)\)\s*(\w)/, "-(\\1)\\2"

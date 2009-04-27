@@ -39,7 +39,10 @@
 
 -(NSData*)crypt:(NSData*)data withIv:(NSData*)theInitializationVector {
   NSUInteger inputLength = [data length];
-  size_t outputLength = CCCryptorGetOutputLength(cryptorRef, inputLength, NO);
+  NSUInteger paddingLength = (16 - (inputLength & 0x0f)) & 0x0f;
+  size_t outputLength = CCCryptorGetOutputLength(cryptorRef,
+                                                 inputLength + paddingLength,
+                                                 NO);
   size_t outputWritten, outputWritten2;
   void* outputBytes = CFAllocatorAllocate(kCFAllocatorDefault, outputLength, 0);
   NSAssert(outputBytes,
@@ -48,12 +51,23 @@
   CCCryptorReset(cryptorRef, [theInitializationVector bytes]);
   CCCryptorUpdate(cryptorRef, [data bytes], inputLength, outputBytes,
                   outputLength, &outputWritten);
+  if (paddingLength != 0) {
+    // TODO(overmind): proper padding?
+    CCCryptorUpdate(cryptorRef, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", paddingLength,
+                    outputBytes + outputWritten, outputLength - outputWritten,
+                    &outputWritten2);
+    outputWritten += outputWritten2;
+  }
   CCCryptorFinal(cryptorRef, outputBytes + outputWritten,
                  outputLength - outputWritten, &outputWritten2);
   
   return [[NSData alloc] initWithBytesNoCopy:outputBytes
                                       length:outputWritten + outputWritten2
                                 freeWhenDone:YES];
+}
+
++(id<ZNCipherClass>)cipherClass {
+  return (id<ZNCipherClass>)[ZNAesCipher class];
 }
 
 @end
