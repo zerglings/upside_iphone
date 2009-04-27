@@ -43,15 +43,28 @@
 }
 
 -(void)testHexFprint {
-  NSString* hexFprint = [ZNFileFprint copyHexFileFprint:filePath
-                                                    key:key
-                                                     iv:iv
-                                            cipherClass:[ZNAesCipher
-                                                         cipherClass]
-                                               digester:[ZNMd5Digest digester]];
+  NSString* hexFprint = [ZNFileFprint copyHexFprint:filePath
+                                                key:key
+                                                 iv:iv
+                                        cipherClass:[ZNAesCipher cipherClass]
+                                           digester:[ZNMd5Digest digester]];
   STAssertEqualStrings(@"7e7e60c943d3bc6c011a862aa11dfe5a",
                        hexFprint, @"Hex fprint of data file");
   [hexFprint release];
+}
+
+-(void)testFprint {
+  uint8_t goldenBytes[] = { 0x7e, 0x7e, 0x60, 0xc9, 0x43, 0xd3, 0xbc, 0x6c,
+                            0x01, 0x1a, 0x86, 0x2a, 0xa1, 0x1d, 0xfe, 0x5a };
+  NSData* goldenFprint = [NSData dataWithBytes:goldenBytes
+                                        length:sizeof(goldenBytes)];
+  NSData* fprint = [ZNFileFprint copyFprint:filePath
+                                        key:key
+                                         iv:iv
+                                cipherClass:[ZNAesCipher
+                                             cipherClass]
+                                   digester:[ZNMd5Digest digester]];
+  STAssertEqualObjects(goldenFprint, fprint, @"Fprint of data file");
 }
 
 @end

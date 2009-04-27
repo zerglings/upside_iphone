@@ -15,12 +15,6 @@
 
 @implementation ZNFileFprint
 
-// The path to the application's manifest file (Info.plist).
-+(NSString*)manfestPath {
-  return [[[NSBundle mainBundle] bundlePath]
-          stringByAppendingPathComponent:@"Info.plist"];
-}
-
 // NSData with a file's contents.
 +(NSData*)copyFileData:(NSString*)filePath {
   return [[NSData alloc] initWithContentsOfFile:filePath];
@@ -58,11 +52,11 @@
   return hexFprint;
 }
 
-+(NSData*)copyFileFprint:(NSString*)filePath
-                     key:(NSData*)key
-                      iv:(NSData*)initializationVector
-             cipherClass:(id<ZNCipherClass>)cipherClass
-                digester:(id<ZNDigester>)digester {
++(NSData*)copyFprint:(NSString*)filePath
+                 key:(NSData*)key
+                  iv:(NSData*)initializationVector
+         cipherClass:(id<ZNCipherClass>)cipherClass
+            digester:(id<ZNDigester>)digester {
   NSData* fileData = [ZNFileFprint copyFileData:filePath];
   NSData* fprint = [ZNFileFprint copyDataFprint:fileData
                                             key:key
@@ -73,11 +67,11 @@
   return fprint;
 }
 
-+(NSString*)copyHexFileFprint:(NSString*)filePath
-                          key:(NSData*)key
-                           iv:(NSData*)initializationVector
-                  cipherClass:(id<ZNCipherClass>)cipherClass
-                     digester:(id<ZNDigester>)digester {
++(NSString*)copyHexFprint:(NSString*)filePath
+                      key:(NSData*)key
+                       iv:(NSData*)initializationVector
+              cipherClass:(id<ZNCipherClass>)cipherClass
+                 digester:(id<ZNDigester>)digester {
   NSData* fileData = [ZNFileFprint copyFileData:filePath];
   NSString* hexFprint = [ZNFileFprint copyHexDataFprint:fileData
                                                     key:key

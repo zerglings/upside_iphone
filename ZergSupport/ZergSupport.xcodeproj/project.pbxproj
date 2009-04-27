@@ -141,8 +141,9 @@
 		57F045F60FA50C42006436EF /* ZNCipherClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F045F50FA50C42006436EF /* ZNCipherClass.h */; };
 		57F046780FA56913006436EF /* ZNFileFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F046770FA56913006436EF /* ZNFileFprintTest.m */; };
 		57F0467A0FA56965006436EF /* ZNFileFprintTest.data in Resources */ = {isa = PBXBuildFile; fileRef = 57F046790FA56965006436EF /* ZNFileFprintTest.data */; };
-		57F046BF0FA58482006436EF /* ZNFileFprintTest.rb in Resources */ = {isa = PBXBuildFile; fileRef = 57F046BE0FA58482006436EF /* ZNFileFprintTest.rb */; };
-		57F046C10FA584D9006436EF /* ZNAesCipherTest.rb in Resources */ = {isa = PBXBuildFile; fileRef = 57F046C00FA584D9006436EF /* ZNAesCipherTest.rb */; };
+		57F047AF0FA60E45006436EF /* ZNAppFprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F047AD0FA60E45006436EF /* ZNAppFprint.h */; };
+		57F047B00FA60E45006436EF /* ZNAppFprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F047AE0FA60E45006436EF /* ZNAppFprint.m */; };
+		57F047B40FA60E9F006436EF /* ZNAppFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F047B30FA60E9F006436EF /* ZNAppFprintTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +301,9 @@
 		57F046790FA56965006436EF /* ZNFileFprintTest.data */ = {isa = PBXFileReference; lastKnownFileType = text; path = ZNFileFprintTest.data; sourceTree = "<group>"; };
 		57F046BE0FA58482006436EF /* ZNFileFprintTest.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ZNFileFprintTest.rb; sourceTree = "<group>"; };
 		57F046C00FA584D9006436EF /* ZNAesCipherTest.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ZNAesCipherTest.rb; sourceTree = "<group>"; };
+		57F047AD0FA60E45006436EF /* ZNAppFprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNAppFprint.h; sourceTree = "<group>"; };
+		57F047AE0FA60E45006436EF /* ZNAppFprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAppFprint.m; sourceTree = "<group>"; };
+		57F047B30FA60E9F006436EF /* ZNAppFprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAppFprintTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -540,6 +544,9 @@
 			isa = PBXGroup;
 			children = (
 				57AF08680FA13C0E006305D3 /* CryptoSupport.h */,
+				57F047AD0FA60E45006436EF /* ZNAppFprint.h */,
+				57F047AE0FA60E45006436EF /* ZNAppFprint.m */,
+				57F047B30FA60E9F006436EF /* ZNAppFprintTest.m */,
 				57AF08700FA13DDF006305D3 /* ZNAesCipher.h */,
 				57AF08710FA13DDF006305D3 /* ZNAesCipher.m */,
 				57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */,
@@ -611,6 +618,7 @@
 				57826F720FA4C299006896D7 /* ZNFileFprint.h in Headers */,
 				57F045F40FA50BEC006436EF /* ZNCipher.h in Headers */,
 				57F045F60FA50C42006436EF /* ZNCipherClass.h in Headers */,
+				57F047AF0FA60E45006436EF /* ZNAppFprint.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,8 +730,6 @@
 				57551F820F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.body in Resources */,
 				57551F840F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.xml in Resources */,
 				57F0467A0FA56965006436EF /* ZNFileFprintTest.data in Resources */,
-				57F046BF0FA58482006436EF /* ZNFileFprintTest.rb in Resources */,
-				57F046C10FA584D9006436EF /* ZNAesCipherTest.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,6 +769,7 @@
 				572DCE060FA1743C00CA3975 /* ZNMd5Digest.m in Sources */,
 				57826D350FA3F48A006896D7 /* ZNDeviceFprint.m in Sources */,
 				57826F730FA4C299006896D7 /* ZNFileFprint.m in Sources */,
+				57F047B00FA60E45006436EF /* ZNAppFprint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,6 +801,7 @@
 				572DCE0A0FA1745400CA3975 /* ZNMd5DigestTest.m in Sources */,
 				57826D650FA40533006896D7 /* ZNDeviceFprintTest.m in Sources */,
 				57F046780FA56913006436EF /* ZNFileFprintTest.m in Sources */,
+				57F047B40FA60E9F006436EF /* ZNAppFprintTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,20 +24,20 @@
 // cryptographic hash.
 //
 // The process is hard to hex-patch, so
-+(NSData*)copyFileFprint:(NSString*)filePath
-                     key:(NSData*)key
-                      iv:(NSData*)initializationVector
-             cipherClass:(id<ZNCipherClass>)cipherClass
-                digester:(id<ZNDigester>)digester;
++(NSData*)copyFprint:(NSString*)filePath
+                 key:(NSData*)key
+                  iv:(NSData*)initializationVector
+         cipherClass:(id<ZNCipherClass>)cipherClass
+            digester:(id<ZNDigester>)digester;
 
 // Fingerprints the content of a file using one or two keys.
 //
 // The result is formatted as a hex string, which is easier to use with Web
 // services. The process is identical to
 // +copyFileFprint:key:iv:cipherClass:digester.
-+(NSString*)copyHexFileFprint:(NSString*)filePath
-                          key:(NSData*)key
-                           iv:(NSData*)initializationVector
-                  cipherClass:(id<ZNCipherClass>)cipherClass
-                     digester:(id<ZNDigester>)digester;
++(NSString*)copyHexFprint:(NSString*)filePath
+                      key:(NSData*)key
+                       iv:(NSData*)initializationVector
+              cipherClass:(id<ZNCipherClass>)cipherClass
+                 digester:(id<ZNDigester>)digester;
 @end
