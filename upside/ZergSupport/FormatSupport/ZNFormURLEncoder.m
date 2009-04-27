@@ -13,13 +13,13 @@
 
 @interface ZNFormURLEncoder ()
 -(id)initWithOutput:(NSMutableData*)theOutput
-       fieldFormatter:(ZNFormFieldFormatter*)theFieldFormatter;
+     fieldFormatter:(ZNFormFieldFormatter*)theFieldFormatter;
 
 -(void)encode:(NSObject*)object keyPrefix:(NSString*)keyPrefix;
 
 -(void)encodeKey:(NSString*)key
-             value:(NSObject*)value
-         keyPrefix:(NSString*)keyPrefix;
+           value:(NSObject*)value
+       keyPrefix:(NSString*)keyPrefix;
 @end
 
 
@@ -69,8 +69,8 @@
 }
 
 -(void)encodeKey:(NSString*)key
-             value:(NSObject*)value
-         keyPrefix:(NSString*)keyPrefix {
+           value:(NSObject*)value
+       keyPrefix:(NSString*)keyPrefix {
   NSAssert([key isKindOfClass:[NSString class]],
            @"Attempting to encode non-String key!");
 
@@ -104,11 +104,11 @@
     else
       outputKey = [key retain];
     NSString* encodedKey = (NSString*)
-    CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                            (CFStringRef)outputKey,
-                                            NULL,
-                                            (CFStringRef)@"&=",
-                                            kCFStringEncodingUTF8);
+        CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                (CFStringRef)outputKey,
+                                                NULL,
+                                                (CFStringRef)@"&=",
+                                                kCFStringEncodingUTF8);
     [outputKey release];
     [output appendBytes:[encodedKey cStringUsingEncoding:NSUTF8StringEncoding]
                  length:[encodedKey length]];

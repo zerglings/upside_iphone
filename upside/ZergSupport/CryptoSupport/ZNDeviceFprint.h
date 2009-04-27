@@ -36,7 +36,7 @@
 //   D|1.0|iPhone1,1|iPhone OS|2.0|sim:EEAE137F-205A-587E-8F62-C6855680879E
 //
 // The unit tests verify this computation against the code at:
-// http://github.com/costan/zn_testbed/blob/master/app/controllers/crypto_support_controller.rb
+// http://github.com/costan/zn_testbed/blob/master/lib/crypto_support/device_fprint.rb
 +(NSData*)copyFprintUsingDigest:(id<ZNDigester>)digestClass;
 
 // The hexadecimal string for the device fingerprint.

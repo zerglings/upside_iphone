@@ -55,7 +55,7 @@
 
   [request setHTTPBody:encodedBody];
 
-  [request addValue:@"application/x-www-form-urlencoded"
+  [request addValue:@"application/x-www-form-urlencoded; charset=utf-8"
  forHTTPHeaderField:@"Content-Type"];
   [request addValue:[NSString stringWithFormat:@"%u", [encodedBody length]]
  forHTTPHeaderField:@"Content-Length"];

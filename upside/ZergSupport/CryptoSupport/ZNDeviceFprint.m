@@ -70,7 +70,7 @@
 static NSDictionary* cachedDeviceAttributes;
 
 +(NSDictionary*)deviceAttributes {
-  @synchronized([ZNDeviceFprint class]) {
+  @synchronized ([ZNDeviceFprint class]) {
     if (!cachedDeviceAttributes) {
       cachedDeviceAttributes = [ZNDeviceFprint copyDeviceAttributes];
     }
@@ -83,7 +83,7 @@ static NSData* cachedFprintData;
 
 // The data used for fingerprinting the device.
 +(NSData*)fprintData {
-  @synchronized([ZNDeviceFprint class]) {
+  @synchronized ([ZNDeviceFprint class]) {
     if (!cachedFprintData) {
       NSMutableData* data = [[NSMutableData alloc] initWithBytes:"D" length:1];
       NSDictionary* deviceAttrs = [self deviceAttributes];
