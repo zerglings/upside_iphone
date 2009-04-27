@@ -28,7 +28,7 @@
 -(id)init {
   if ((self = [super init])) {
     NSDictionary* parserSchema = [ZNFixtureParser parserSchema];
-    xmlParser = [[ZNModelXmlParser alloc] initWithSchema:parserSchema 
+    xmlParser = [[ZNModelXmlParser alloc] initWithSchema:parserSchema
                                           documentCasing:kZNFormatterSnakeCase];
     xmlParser.delegate = self;
   }
@@ -44,7 +44,7 @@
   xmlParser.context = fixtures;
   BOOL parseSuccess = [xmlParser parseData:data];
   NSAssert(parseSuccess, @"Failed to parse fixture");
-  
+
   NSArray* returnValue = [NSArray arrayWithArray:fixtures];
   [fixtures release];
   return returnValue;
@@ -55,7 +55,7 @@
   NSArray* modelClasses = [ZNModel allModelClasses];
   ZNFormFieldFormatter* snakeFormatter =
       [ZNFormFieldFormatter formatterFromPropertiesTo:kZNFormatterSnakeCase];
-  
+
   NSMutableDictionary* schema = [[NSMutableDictionary alloc] init];
   for (Class klass in modelClasses) {
     NSString* className = [NSString stringWithCString:class_getName(klass)];
@@ -82,9 +82,9 @@
 
 @implementation SenTestCase (Fixtures)
 
-// Loads fixtures (models) from the given file.  
+// Loads fixtures (models) from the given file.
 -(NSArray*)fixturesFrom:(NSString*)fileName {
-	NSString* fixturePath = [[[NSBundle mainBundle] resourcePath]
+  NSString* fixturePath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:fileName];
   NSData* fixtureData = [NSData dataWithContentsOfFile:fixturePath];
   ZNFixtureParser* parser = [[ZNFixtureParser alloc] init];

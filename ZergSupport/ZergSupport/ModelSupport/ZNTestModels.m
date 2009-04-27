@@ -27,8 +27,8 @@
 @synthesize pubDate;
 
 -(void)dealloc {
-	[pubDate release];
-	[super dealloc];
+  [pubDate release];
+  [super dealloc];
 }
 
 @end
@@ -38,7 +38,7 @@
 @synthesize doubleVal, integerVal, uintegerVal, stringVal;
 
 -(void)dealloc {
-	[stringVal release];
-	[super dealloc];
+  [stringVal release];
+  [super dealloc];
 }
 @end

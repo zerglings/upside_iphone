@@ -11,8 +11,8 @@
 #import "ZNMSAttributeType.h"
 
 @interface ZNMSDate : ZNMSAttributeType {
-	NSDateFormatter* osxFormatter;
-	NSDateFormatter* rssFormatter;
+  NSDateFormatter* osxFormatter;
+  NSDateFormatter* rssFormatter;
 }
 
 @end

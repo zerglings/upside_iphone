@@ -17,15 +17,15 @@ enum ZNFormatterCasing;
 // responses into Model Support models or NSDictionaries.
 //
 // The intended way of making HTTP calls is using class methods whose names
-// starts with callService. The method parameters vary between subclasses, 
+// starts with callService. The method parameters vary between subclasses,
 // due to the difference in supported response formats. However, the arguments
 // in the +callService method of ZNHttpRequest should be common to all
 // implementations.
 @interface ZNHttpRequest : NSObject {
-	NSMutableData* responseData;
-	NSURLRequest* urlRequest;
-	NSObject* target;
-	SEL action;	
+  NSMutableData* responseData;
+  NSURLRequest* urlRequest;
+  NSObject* target;
+  SEL action;
 }
 
 #pragma mark Public Interface
@@ -49,7 +49,7 @@ enum ZNFormatterCasing;
 //                can use the appropriate convention on both the iPhone and the
 //                Rails server
 //   target:(Target-Action) indicates the receiver for the parsed HTTP response
-//   action:(Target-Action) indicates the receiver for the parsed HTTP response 
+//   action:(Target-Action) indicates the receiver for the parsed HTTP response
 //
 // returns:
 //   nothing, the parsed HTTP response is returned via Target-Action invocation;

@@ -11,22 +11,22 @@
 #import <objc/runtime.h>
 
 enum ZNPropertySetterStrategy {
-	kZNPropertyWantsAssign = 0,
-	kZNPropertyWantsCopy = 1,
-	kZNPropertyWantsRetain = 2,
+  kZNPropertyWantsAssign = 0,
+  kZNPropertyWantsCopy = 1,
+  kZNPropertyWantsRetain = 2,
 };
 
 @class ZNMSAttributeType;
 
 @interface ZNModelDefinitionAttribute : NSObject {
-	NSString* name;
-	NSString* getterName;
-	NSString* setterName;
-	ZNMSAttributeType* type;
-	Ivar runtimeIvar;
-	BOOL isAtomic;
-	BOOL isReadOnly;
-	enum ZNPropertySetterStrategy setterStrategy;
+  NSString* name;
+  NSString* getterName;
+  NSString* setterName;
+  ZNMSAttributeType* type;
+  Ivar runtimeIvar;
+  BOOL isAtomic;
+  BOOL isReadOnly;
+  enum ZNPropertySetterStrategy setterStrategy;
 }
 
 @property (nonatomic, readonly) NSString* name;
@@ -39,5 +39,5 @@ enum ZNPropertySetterStrategy {
 @property (nonatomic, readonly) enum ZNPropertySetterStrategy setterStrategy;
 
 +(ZNModelDefinitionAttribute*)newAttributeFromProperty:(objc_property_t)property
-												 ofClass:(Class)klass;
+                         ofClass:(Class)klass;
 @end

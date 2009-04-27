@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 4/26/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNFileFprint.h"
@@ -34,9 +34,9 @@
                 digester:(id<ZNDigester>)digester {
   NSObject<ZNCipher> *cipher = [[cipherClass alloc] initWithKey:key
                                                         encrypt:YES];
-  NSData* cryptedData = [cipher crypt:data withIv:initializationVector];  
+  NSData* cryptedData = [cipher crypt:data withIv:initializationVector];
   [cipher release];
-  
+
   NSData* fprint = [digester copyDigest:cryptedData];
   [cryptedData release];
   return fprint;
@@ -52,7 +52,7 @@
                                                         encrypt:YES];
   NSData* cryptedData = [cipher crypt:data withIv:initializationVector];
   [cipher release];
-  
+
   NSString* hexFprint = [digester copyHexDigest:cryptedData];
   [cryptedData release];
   return hexFprint;

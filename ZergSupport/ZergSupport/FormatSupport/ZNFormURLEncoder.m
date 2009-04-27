@@ -30,9 +30,9 @@
   NSMutableData* output = [[NSMutableData alloc] init];
   ZNFormURLEncoder* encoder =
       [[ZNFormURLEncoder alloc] initWithOutput:output fieldFormatter:formatter];
-	[encoder encode:dictionary keyPrefix:@""];
+  [encoder encode:dictionary keyPrefix:@""];
   [encoder release];
-	return output;
+  return output;
 }
 
 -(id)initWithOutput:(NSMutableData*)theOutput
@@ -48,83 +48,83 @@
   [super dealloc];
 }
 
--(void)encode:(NSObject*)object keyPrefix:(NSString*)keyPrefix {	
-	if ([object isKindOfClass:[NSArray class]]) {
-		NSUInteger count = [(NSArray*)object count];
-		for (NSUInteger i = 0; i < count; i++) {
-			[self encodeKey:@""
+-(void)encode:(NSObject*)object keyPrefix:(NSString*)keyPrefix {
+  if ([object isKindOfClass:[NSArray class]]) {
+    NSUInteger count = [(NSArray*)object count];
+    for (NSUInteger i = 0; i < count; i++) {
+      [self encodeKey:@""
                 value:[(NSArray*)object objectAtIndex:i]
             keyPrefix:keyPrefix];
-		}
-	}
-	else {
-		for (NSString* key in (NSDictionary*)object) {
+    }
+  }
+  else {
+    for (NSString* key in (NSDictionary*)object) {
       NSString* formattedKey = [fieldFormatter copyFormattedName:key];
-			[self encodeKey:formattedKey
+      [self encodeKey:formattedKey
                 value:[(NSDictionary*)object objectForKey:key]
             keyPrefix:keyPrefix];
       [formattedKey release];
-		}
-	}
+    }
+  }
 }
 
 -(void)encodeKey:(NSString*)key
              value:(NSObject*)value
          keyPrefix:(NSString*)keyPrefix {
-	NSAssert([key isKindOfClass:[NSString class]],
+  NSAssert([key isKindOfClass:[NSString class]],
            @"Attempting to encode non-String key!");
-	
-	if ([value isKindOfClass:[NSDictionary class]] ||
+
+  if ([value isKindOfClass:[NSDictionary class]] ||
       [value isKindOfClass:[NSArray class]] ||
       [value isKindOfClass:[ZNModel class]]) {
-		NSObject* realValue = [value isKindOfClass:[ZNModel class]] ?
+    NSObject* realValue = [value isKindOfClass:[ZNModel class]] ?
         [(ZNModel*)value copyToDictionaryForcingStrings:YES] : value;
-		
-		NSString* newPrefix;
-		if ([keyPrefix length] != 0)
-			newPrefix = [[NSString alloc] initWithFormat:@"%@[%@]", keyPrefix, key];
-		else
-			newPrefix = [key retain];
-		[self encode:realValue keyPrefix:newPrefix];
-		[newPrefix release];
-    
-		if (realValue != value)
-			[realValue release];
-	}
-	else {
-		NSAssert([value isKindOfClass:[NSString class]],
+
+    NSString* newPrefix;
+    if ([keyPrefix length] != 0)
+      newPrefix = [[NSString alloc] initWithFormat:@"%@[%@]", keyPrefix, key];
+    else
+      newPrefix = [key retain];
+    [self encode:realValue keyPrefix:newPrefix];
+    [newPrefix release];
+
+    if (realValue != value)
+      [realValue release];
+  }
+  else {
+    NSAssert([value isKindOfClass:[NSString class]],
              @"Attempting to encode non-String value!");
-		
+
     if ([output length] != 0)
       [output appendBytes:"&" length:1];
-		
-		NSString* outputKey;
-		if ([keyPrefix length] != 0)
-			outputKey = [[NSString alloc] initWithFormat:@"%@[%@]", keyPrefix, key];
-		else
-			outputKey = [key retain];
-		NSString* encodedKey = (NSString*)
-		CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+
+    NSString* outputKey;
+    if ([keyPrefix length] != 0)
+      outputKey = [[NSString alloc] initWithFormat:@"%@[%@]", keyPrefix, key];
+    else
+      outputKey = [key retain];
+    NSString* encodedKey = (NSString*)
+    CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                             (CFStringRef)outputKey,
                                             NULL,
                                             (CFStringRef)@"&=",
                                             kCFStringEncodingUTF8);
-		[outputKey release];
-		[output appendBytes:[encodedKey cStringUsingEncoding:NSUTF8StringEncoding]
+    [outputKey release];
+    [output appendBytes:[encodedKey cStringUsingEncoding:NSUTF8StringEncoding]
                  length:[encodedKey length]];
-		[encodedKey release];
-		[output appendBytes:"=" length:1];
-		
-		NSString* encodedValue = (NSString*)
-		    CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+    [encodedKey release];
+    [output appendBytes:"=" length:1];
+
+    NSString* encodedValue = (NSString*)
+        CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                                 (CFStringRef)value,
                                                 NULL,
                                                 (CFStringRef)@"&=",
                                                 kCFStringEncodingUTF8);
-		[output appendBytes:[encodedValue cStringUsingEncoding:NSUTF8StringEncoding]
+    [output appendBytes:[encodedValue cStringUsingEncoding:NSUTF8StringEncoding]
                  length:[encodedValue length]];
-		[encodedValue release];
-	}	
+    [encodedValue release];
+  }
 }
 
 @end

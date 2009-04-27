@@ -20,9 +20,9 @@
 // produced by DictionaryXmlParser.
 // TODO(overmind): document schema
 @interface ZNModelXmlParser : NSObject {
-	ZNDictionaryXmlParser* parser;
-	NSDictionary* schema;
-	id<ZNModelXmlParserDelegate> delegate;
+  ZNDictionaryXmlParser* parser;
+  NSDictionary* schema;
+  id<ZNModelXmlParserDelegate> delegate;
 }
 
 @property (nonatomic, assign) id context;

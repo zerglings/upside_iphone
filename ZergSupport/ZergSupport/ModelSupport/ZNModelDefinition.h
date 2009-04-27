@@ -11,8 +11,8 @@
 @class ZNModelDefinitionAttribute;
 
 @interface ZNModelDefinition : NSObject {
-	NSString* name;
-	NSDictionary* attributes;
+  NSString* name;
+  NSDictionary* attributes;
 }
 
 @property (nonatomic, readonly, retain) NSString* name;

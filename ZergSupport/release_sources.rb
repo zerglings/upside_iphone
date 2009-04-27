@@ -10,12 +10,13 @@
 # Enforces some source code formatting rules for ZergSupport.
 
 Dir.glob('**/*').each do |file|
-  next unless /\.m$/ =~ file or /\.h$/ =~ file
+  next unless /\.m$/ =~ file or /\.h$/ =~ file  # Only Objective C code.
+  next if /^ZergSupport\/TestSupport\/GTM\// =~ file  # Skip GTM code.
   
   contents = File.read file
   
   # eat whitespace at the end of lines
-  contents.gsub! /\s+$/, ""
+  contents.gsub! /[ \t]+$/, ""
   # tabs are 2 spaces
   contents.gsub! "\t", "  "
   

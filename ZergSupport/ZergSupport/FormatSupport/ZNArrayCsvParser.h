@@ -16,13 +16,13 @@
 @end
 
 @interface ZNArrayCsvParser : NSObject {
-	// Accumulates the bytes inside a CSV cell.
-	NSMutableData* currentCell;
-	// Accumulates strings on a CSV line.
-	NSMutableArray* currentLine;
-	
-	id<ZNArrayCsvParserDelegate> delegate;
-	id context;
+  // Accumulates the bytes inside a CSV cell.
+  NSMutableData* currentCell;
+  // Accumulates strings on a CSV line.
+  NSMutableArray* currentLine;
+
+  id<ZNArrayCsvParserDelegate> delegate;
+  id context;
 }
 
 @property (nonatomic, assign) id context;

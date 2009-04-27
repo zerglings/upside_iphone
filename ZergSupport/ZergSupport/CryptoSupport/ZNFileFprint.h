@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 4/26/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>
@@ -20,10 +20,10 @@
 //
 // The fingerprinting process encrypts the file with the first key, and
 // optionally uses the second key as an initialization vector in the encryption.
-// The encryption is done in CBC mode, and its result is digested using a 
+// The encryption is done in CBC mode, and its result is digested using a
 // cryptographic hash.
 //
-// The process is hard to hex-patch, so 
+// The process is hard to hex-patch, so
 +(NSData*)copyFileFprint:(NSString*)filePath
                      key:(NSData*)key
                       iv:(NSData*)initializationVector

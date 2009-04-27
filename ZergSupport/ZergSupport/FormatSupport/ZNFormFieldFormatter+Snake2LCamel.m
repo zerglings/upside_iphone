@@ -61,7 +61,7 @@
       if ([upcaseLetters characterIsMember:nameChars[i]]) {
         if (i + 1 < nameLength &&
             ![upcaseLetters characterIsMember:nameChars[i + 1]] &&
-            i != segmentStart) {          
+            i != segmentStart) {
           break;
         }
         else
@@ -100,7 +100,7 @@ static ZNFormFieldFormatter* lCamelToSnakeFormatterSingleton;
   @synchronized ([ZNFormFieldFormatterSnake2LCamel class]) {
     if (snakeToLCamelFormatterSingleton == nil) {
       snakeToLCamelFormatterSingleton =
-          [[ZNFormFieldFormatterSnake2LCamel alloc] init]; 
+          [[ZNFormFieldFormatterSnake2LCamel alloc] init];
     }
   }
   return snakeToLCamelFormatterSingleton;
@@ -110,10 +110,10 @@ static ZNFormFieldFormatter* lCamelToSnakeFormatterSingleton;
   @synchronized ([ZNFormFieldFormatterLCamel2Snake class]) {
     if (lCamelToSnakeFormatterSingleton == nil) {
       lCamelToSnakeFormatterSingleton =
-          [[ZNFormFieldFormatterLCamel2Snake alloc] init]; 
+          [[ZNFormFieldFormatterLCamel2Snake alloc] init];
     }
   }
-  return lCamelToSnakeFormatterSingleton;  
+  return lCamelToSnakeFormatterSingleton;
 }
 
 @end

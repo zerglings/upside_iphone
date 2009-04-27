@@ -14,9 +14,9 @@
 @class ZNModelCsvParser;
 
 @interface ZNCsvHttpRequest : ZNHttpRequest {
-	NSMutableArray* response;
-	ZNArrayCsvParser* arrayParser;
-	ZNModelCsvParser* modelParser;
+  NSMutableArray* response;
+  ZNArrayCsvParser* arrayParser;
+  ZNModelCsvParser* modelParser;
 }
 
 // Convenience method for issuing a request.

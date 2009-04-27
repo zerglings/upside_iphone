@@ -13,8 +13,8 @@
 @class ZNModelXmlParser;
 
 @interface ZNXmlHttpRequest : ZNHttpRequest {
-	NSMutableArray* response;
-	ZNModelXmlParser* responseParser;
+  NSMutableArray* response;
+  ZNModelXmlParser* responseParser;
 }
 
 // Convenience method for issuing a request.

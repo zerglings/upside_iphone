@@ -29,7 +29,7 @@
 
 -(void)dealloc {
   CCCryptorRelease(cryptorRef);
-  
+
   [super dealloc];
 }
 
@@ -47,7 +47,7 @@
   void* outputBytes = CFAllocatorAllocate(kCFAllocatorDefault, outputLength, 0);
   NSAssert(outputBytes,
            @"Failed to allocate memory for encryption operation output");
-  
+
   CCCryptorReset(cryptorRef, [theInitializationVector bytes]);
   CCCryptorUpdate(cryptorRef, [data bytes], inputLength, outputBytes,
                   outputLength, &outputWritten);
@@ -60,7 +60,7 @@
   }
   CCCryptorFinal(cryptorRef, outputBytes + outputWritten,
                  outputLength - outputWritten, &outputWritten2);
-  
+
   return [[NSData alloc] initWithBytesNoCopy:outputBytes
                                       length:outputWritten + outputWritten2
                                 freeWhenDone:YES];

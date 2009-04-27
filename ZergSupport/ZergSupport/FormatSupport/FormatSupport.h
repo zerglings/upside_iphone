@@ -7,7 +7,7 @@
  *
  */
 
-// Main header file for the Zergling.Net Format Support. 
+// Main header file for the Zergling.Net Format Support.
 
 #import "ZNArrayCsvParser.h"
 #import "ZNDictionaryXmlParser.h"

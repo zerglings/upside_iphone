@@ -43,7 +43,7 @@
 //
 // This uses the same algorithm as -copyFprintUsingDigest, but produces a digest
 // formatted as a string of hexadecimal digits, for ease of use with Web
-// services. 
+// services.
 +(NSString*)copyHexFprintUsingDigest:(id<ZNDigester>)digestClass;
 
 @end

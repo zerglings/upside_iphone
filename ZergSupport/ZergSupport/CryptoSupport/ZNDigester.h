@@ -14,7 +14,7 @@
 // Produce a digest of the given data.
 -(NSData*)copyDigest:(NSData*)data;
 
-// Produce a digest of the given data, in hexadecimal form (popular on the Web). 
+// Produce a digest of the given data, in hexadecimal form (popular on the Web).
 -(NSString*)copyHexDigest:(NSData*)data;
 
 @end
