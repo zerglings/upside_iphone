@@ -39,17 +39,17 @@
 
 -(void)setUp {
   deviceAttributes = [[ZNDeviceFprint deviceAttributes] retain];
-  
-	testService =
+
+  testService =
       @"http://zn-testbed.heroku.com/crypto_support/device_fprint.xml";
-	receivedResponse = NO;
+  receivedResponse = NO;
   [self warmUpHerokuService:testService];
 }
 
 -(void)tearDown {
   [deviceAttributes release];
-  
-	[testService release];
+
+  [testService release];
   testService = nil;
 }
 
@@ -63,11 +63,11 @@
   //       another suite.
   STAssertEqualStrings(@"1.9.8.3", [attributes objectForKey:@"appVersion"],
                        @"appVersion");
-  
+
   // NOTE: The checks below make assumptions on Apple's future moves. They
   //       will break if the assumptions are wrong. The main point of the tests
   //       is to make sure that the value in each key looks right.
-  
+
   // hardwareModel should be i386 or somethingX,Y where X and Y are digits.
   NSString* model = [attributes objectForKey:@"hardwareModel"];
   NSRange comma = [model rangeOfString:@","];
@@ -86,7 +86,7 @@
 
   STAssertEqualObjects(@"iPhone OS", [attributes objectForKey:@"osName"],
                        @"osName");
-  
+
   NSString* osVersion = [attributes objectForKey:@"osVersion"];
   STAssertTrue([digits characterIsMember:[osVersion characterAtIndex:0]],
                @"osVersion should start with a digit");
@@ -94,7 +94,7 @@
                  @"osVersion should have a . after the first digit");
   STAssertTrue([digits characterIsMember:[osVersion characterAtIndex:2]],
                @"osVersion should have a digit after the first .");
-  
+
   STAssertEquals(40U, [[attributes objectForKey:@"uniqueId"] length],
                  @"UDID length");
 }
@@ -103,23 +103,23 @@
   NSDictionary* request = [NSDictionary dictionaryWithObject:deviceAttributes
                                                       forKey:@"attributes"];
 
-	[ZNXmlHttpRequest callService:testService
+  [ZNXmlHttpRequest callService:testService
                          method:kZNHttpMethodPost
                            data:request
                  responseModels:[NSDictionary dictionaryWithObject:[NSNull null]
                                                             forKey:@"fprint"]
                          target:self
                          action:@selector(checkDigests:)];
-		
-	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+
+  [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
-	
-	STAssertEquals(YES, receivedResponse, @"Verification service didn't respond");
+
+  STAssertEquals(YES, receivedResponse, @"Verification service didn't respond");
 }
 -(void)checkDigests:(NSArray*)response {
   NSDictionary* goldenDigests = [response objectAtIndex:0];
   receivedResponse = YES;
-  
+
   // This method isn't part of the public API. It's tested for debugging
   // convenience, because its failure log can helps debug most of the logic.
   NSString* goldenDataString = [goldenDigests objectForKey:@"data"];
@@ -135,12 +135,12 @@
   STAssertEqualStrings(goldenHexDigest, hexDigest,
                        @"Fingerprint MD5 hexdigest");
   [hexDigest release];
-  
+
   NSData* goldenDigest = [ZNMd5Digest copyDigest:[ZNDeviceFprint fprintData]];
   NSData* digest = [ZNDeviceFprint copyFprintUsingDigest:[ZNMd5Digest
                                                           digester]];
   STAssertEqualObjects(goldenDigest, digest, @"Fingerprint MD5 digest");
-  [digest release];  
+  [digest release];
 }
 
 @end

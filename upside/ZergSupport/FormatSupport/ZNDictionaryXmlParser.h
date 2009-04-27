@@ -36,25 +36,25 @@
 // resulting dictionary is sent to the parser's delegate via the
 // -parsedItem:name:context message.
 @interface ZNDictionaryXmlParser : NSObject {
-	id<ZNDictionaryXmlParserDelegate> delegate;
-	id context;
-	NSDictionary* schema;
-	
-	// underlying XML parser
-	NSXMLParser* parser;
-	// accumulates the properties of the currently parsed item 
-	NSMutableDictionary* currentItem;
-	// the current item's name
-	NSString* currentItemName;
-	// the currently parsed property of the currently parsed item
-	NSString* currentProperty;
-	// the value for the currently parsed property
-	NSMutableString* currentValue;
-	// the schema for the currently parsed item
-	NSSet* currentItemSchema;
-	// if YES, the current item accepts all sub-elements given to it
-	BOOL currentItemHasOpenSchema;
-  // if not nil, formats the keys that 
+  id<ZNDictionaryXmlParserDelegate> delegate;
+  id context;
+  NSDictionary* schema;
+
+  // underlying XML parser
+  NSXMLParser* parser;
+  // accumulates the properties of the currently parsed item
+  NSMutableDictionary* currentItem;
+  // the current item's name
+  NSString* currentItemName;
+  // the currently parsed property of the currently parsed item
+  NSString* currentProperty;
+  // the value for the currently parsed property
+  NSMutableString* currentValue;
+  // the schema for the currently parsed item
+  NSSet* currentItemSchema;
+  // if YES, the current item accepts all sub-elements given to it
+  BOOL currentItemHasOpenSchema;
+  // if not nil, formats the keys that
   ZNFormFieldFormatter* currentKeyFormatter;
 }
 

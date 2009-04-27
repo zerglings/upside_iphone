@@ -34,7 +34,7 @@
   NSString* testBattery[][2] = {
     {@"", @""}, {@"simple", @"simple"}, {@"twoWords", @"two_words"},
     {@"randomUAndV", @"random_u_and_v"}};
-  
+
   for (NSUInteger i = 0; i < sizeof(testBattery) / sizeof(NSString*[2]); i++) {
     NSString* snaked = [lCamel2snake copyFormattedName:testBattery[i][0]];
     STAssertEqualStrings(testBattery[i][1], snaked, @"Camels to snakes");
@@ -65,12 +65,12 @@
     {@"word", @"word__"},
     {@"threeGoodWordsXY", @"_three___good_words_x_y__"}
   };
-  
+
   for (NSUInteger i = 0; i < sizeof(testBattery) / sizeof(NSString*[2]); i++) {
     NSString* cameled = [snake2lCamel copyFormattedName:testBattery[i][1]];
     STAssertEqualStrings(testBattery[i][0], cameled, @"snakes to Camels");
     [cameled release];
-  }  
+  }
 }
 
 @end

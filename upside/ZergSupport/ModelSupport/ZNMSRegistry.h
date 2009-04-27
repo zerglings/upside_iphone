@@ -12,14 +12,14 @@
 @class ZNMSAttributeType;
 
 @interface ZNMSRegistry : NSObject {
-	ZNMSAttributeType* booleanType;
-	ZNMSAttributeType* dateType;
-	ZNMSAttributeType* doubleType;
-	ZNMSAttributeType* integerType;
-	ZNMSAttributeType* stringType;
-	ZNMSAttributeType* uintegerType;
-	
-	NSMutableDictionary* modelDefinitions;
+  ZNMSAttributeType* booleanType;
+  ZNMSAttributeType* dateType;
+  ZNMSAttributeType* doubleType;
+  ZNMSAttributeType* integerType;
+  ZNMSAttributeType* stringType;
+  ZNMSAttributeType* uintegerType;
+
+  NSMutableDictionary* modelDefinitions;
 }
 
 @property (nonatomic, readonly) ZNMSAttributeType* booleanType;

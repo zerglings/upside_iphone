@@ -6,7 +6,7 @@
 //  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
-// Main header file for the Zergling.Net Web Support. 
+// Main header file for the Zergling.Net Web Support.
 
 // Start by reading the documentation for ZNHttpRequest, then progress to the
 // class that meets your needs.

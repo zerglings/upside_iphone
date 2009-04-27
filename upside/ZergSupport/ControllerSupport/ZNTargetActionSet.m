@@ -33,7 +33,7 @@
   ZNTargetActionPair* pair =
       [[ZNTargetActionPair alloc] initWithTarget:target action:action];
   [targetActionPairs removeObject:pair];
-  [pair release];  
+  [pair release];
 }
 
 -(void)perform {
@@ -49,7 +49,7 @@
     NSAssert([pair isKindOfClass:[ZNTargetActionPair class]],
              @"A foreign object managed to sneak in");
     [pair.target performSelector:pair.action withObject:object];
-  }  
+  }
 }
 
 @end

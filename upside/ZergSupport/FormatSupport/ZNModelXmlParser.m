@@ -46,17 +46,17 @@
 @synthesize delegate;
 
 -(void)setContext:(id)context {
-  parser.context = context; 
+  parser.context = context;
 }
 -(id)context {
   return parser.context;
 }
 
 -(BOOL)parseData:(NSData*)data {
-	return [parser parseData:data];
+  return [parser parseData:data];
 }
 -(BOOL)parseURL:(NSURL*)url {
-	return [parser parseURL:url];
+  return [parser parseURL:url];
 }
 
 
@@ -65,16 +65,16 @@
 -(void)parsedItem:(NSDictionary*)itemData
              name:(NSString*)itemName
           context:(id)context {
-	id modelClass = [schema objectForKey:itemName];
-	if ([ZNModel isModelClass:modelClass]) {
-		ZNModel* model = [[modelClass alloc]
+  id modelClass = [schema objectForKey:itemName];
+  if ([ZNModel isModelClass:modelClass]) {
+    ZNModel* model = [[modelClass alloc]
                                initWithModel:nil properties:itemData];
-		[delegate parsedModel:model context:context];
-		[model release];
-	}
-	else {
-		[delegate parsedItem:itemData name:itemName context:context];
-	}
+    [delegate parsedModel:model context:context];
+    [model release];
+  }
+  else {
+    [delegate parsedItem:itemData name:itemName context:context];
+  }
 }
 
 +(NSDictionary*)copyParserSchemaFor:(NSDictionary*)models

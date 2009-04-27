@@ -34,7 +34,7 @@
 // with other languages.
 @interface SenTestCase (Fixtures)
 
-// Loads fixtures (models) from the given file.  
+// Loads fixtures (models) from the given file.
 -(NSArray*)fixturesFrom:(NSString*)fileName;
 
 @end

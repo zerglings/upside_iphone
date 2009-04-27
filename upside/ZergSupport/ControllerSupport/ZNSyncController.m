@@ -56,7 +56,7 @@
 -(void)doScheduledSync {
   if (paused || stopped)
     return;
-  
+
   needsSyncScheduling = YES;
   [self sync];
 }
@@ -109,12 +109,12 @@
 
 -(void)sync {
   NSAssert1(NO, @"CacheController %s did not implement -integrateResults:",
-            class_getName([self class]));  
+            class_getName([self class]));
 }
 
 -(BOOL)integrateResults:(NSArray*)results {
   NSAssert1(NO, @"CacheController %s did not implement -integrateResults:",
-            class_getName([self class]));  
+            class_getName([self class]));
   return YES;
 }
 -(BOOL)handleServiceError:(ZNModel*)error {

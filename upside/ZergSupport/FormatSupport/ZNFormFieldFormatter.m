@@ -73,7 +73,7 @@ static ZNFormFieldFormatter* identityFormatterSingleton;
           [[ZNFormFieldFormatterIdentity alloc] init];
     }
   }
-  return identityFormatterSingleton;  
+  return identityFormatterSingleton;
 }
 
 @end

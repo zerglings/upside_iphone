@@ -44,9 +44,9 @@
 
 @protocol ZNTestProtocolDef_ZNMS
 
-@property (nonatomic) NSUInteger win1; 
-@property (nonatomic) NSUInteger win2; 
-@property (nonatomic) NSUInteger win3; 
+@property (nonatomic) NSUInteger win1;
+@property (nonatomic) NSUInteger win2;
+@property (nonatomic) NSUInteger win3;
 
 @end
 
@@ -59,7 +59,7 @@
 
 
 @interface ZNTestDate : ZNModel {
-	NSDate* pubDate;
+  NSDate* pubDate;
 }
 
 @property (nonatomic, retain) NSDate* pubDate;
@@ -67,11 +67,11 @@
 @end
 
 @interface ZNTestNumbers : ZNModel {
-	BOOL trueVal, falseVal;
-	double doubleVal;
-	NSInteger integerVal;
-	NSUInteger uintegerVal;
-	NSString* stringVal;
+  BOOL trueVal, falseVal;
+  double doubleVal;
+  NSInteger integerVal;
+  NSUInteger uintegerVal;
+  NSString* stringVal;
 }
 
 @property (nonatomic) BOOL trueVal, falseVal;

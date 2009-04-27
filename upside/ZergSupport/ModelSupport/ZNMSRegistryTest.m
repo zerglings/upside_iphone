@@ -13,48 +13,48 @@
 #import "ZNMSRegistry.h"
 
 @interface ZNMSRegistryTest: SenTestCase {
-	ZNMSRegistry* registry;
+  ZNMSRegistry* registry;
 }
 @end
 
 @implementation ZNMSRegistryTest
 
 -(void)setUp {
-	registry = [[ZNMSRegistry alloc] init];
+  registry = [[ZNMSRegistry alloc] init];
 }
 
 -(void)tearDown {
-	[registry release];
+  [registry release];
 }
 
 -(void)dealloc {
-	[super dealloc];
+  [super dealloc];
 }
 
 -(void)testNamedClassRegistration {
-	ZNModelDefinition *defn =
-	   [registry definitionForModelClassNamed:@"ZNTestParsing"];
-	
-	STAssertEqualStrings(@"ZNTestParsing", [defn name],
-	                     @"Registering named model located wrong class");						 
-	STAssertEquals(15U, [defn.attributes count],
-				   @"Registering named model definition located wrong class");	
+  ZNModelDefinition *defn =
+     [registry definitionForModelClassNamed:@"ZNTestParsing"];
+
+  STAssertEqualStrings(@"ZNTestParsing", [defn name],
+                       @"Registering named model located wrong class");
+  STAssertEquals(15U, [defn.attributes count],
+           @"Registering named model definition located wrong class");
 }
 
 -(void)testObjectClassRegistration {
-	ZNModelDefinition *defn =
-	    [registry definitionForModelClass:[ZNTestParsing class]];
-	
-	STAssertEqualStrings(@"ZNTestParsing", [defn name],
-	                     @"Registering named model located wrong class");						 
-	STAssertEquals(15U, [defn.attributes count],
-				   @"Registering named model definition located wrong class");	
+  ZNModelDefinition *defn =
+      [registry definitionForModelClass:[ZNTestParsing class]];
+
+  STAssertEqualStrings(@"ZNTestParsing", [defn name],
+                       @"Registering named model located wrong class");
+  STAssertEquals(15U, [defn.attributes count],
+           @"Registering named model definition located wrong class");
 }
 
 -(void)testRegistrationCachesDefinitions {
-	STAssertEquals([registry definitionForModelClassNamed:@"ZNTestParsing"],
-				   [registry definitionForModelClass:[ZNTestParsing class]],
-				   @"Looking up same class twice gave different definitions");
+  STAssertEquals([registry definitionForModelClassNamed:@"ZNTestParsing"],
+           [registry definitionForModelClass:[ZNTestParsing class]],
+           @"Looking up same class twice gave different definitions");
 }
 
 @end

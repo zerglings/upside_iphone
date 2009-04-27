@@ -37,11 +37,11 @@
 // in your model class. For example:
 //    @class SomeModel : ZNModel <SomeModel_ZNModel>
 // If such a protocol exists, only its properties are used to define accessible
-// attributes. 
+// attributes.
 //
 // Models are designed to be immutable, to avoid synchronization issues.
 @interface ZNModel : NSObject {
-	NSDictionary* props;
+  NSDictionary* props;
 }
 
 @property (nonatomic, readonly) NSDictionary* supplementalProperties;
@@ -52,7 +52,7 @@
 //
 // args:
 //   model: the model to copy attributes from (can be nil)
-//   properties: overrides attributes in the source model (can be nil) 
+//   properties: overrides attributes in the source model (can be nil)
 -(id)initWithModel:(ZNModel*)model properties:(NSDictionary*)dictionary;
 
 // Initializes with the properties in the given dictionary.

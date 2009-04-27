@@ -18,12 +18,12 @@
 }
 
 -(NSObject*)boxAttribute:(ZNModelDefinitionAttribute*)attribute
-				inInstance:(ZNModel*)instance
-			   forceString:(BOOL)forceString;
+        inInstance:(ZNModel*)instance
+         forceString:(BOOL)forceString;
 
 -(void)unboxAttribute:(ZNModelDefinitionAttribute*)attribute
-			 inInstance:(ZNModel*)instance
-				   from:(NSObject*)boxedObject;
+       inInstance:(ZNModel*)instance
+           from:(NSObject*)boxedObject;
 
 +(ZNMSAttributeType*)newTypeFromString:(const char*)encodedType;
 

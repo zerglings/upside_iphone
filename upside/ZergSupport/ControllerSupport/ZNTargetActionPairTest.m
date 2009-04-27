@@ -31,7 +31,7 @@ static const NSString* kArgumentObject = @"Argument for TargetAction pair";
   STAssertEquals(self, pair.target, @"Pair does not contain correct target");
   STAssertEquals(@selector(blankAction), pair.action,
                  @"Pair does not contain correct action");
-  
+
   [pair perform];
   STAssertTrue(invoked, @"Pair did not invoke action");
   [pair release];
@@ -42,15 +42,15 @@ static const NSString* kArgumentObject = @"Argument for TargetAction pair";
 }
 
 -(void)testArgumentInvoke {
-  ZNTargetActionPair* pair = [ZNTargetActionPair 
+  ZNTargetActionPair* pair = [ZNTargetActionPair
                               pairWithTarget:self
                               action:@selector(checkArgument:)];
   STAssertEquals(self, pair.target, @"Pair does not contain correct target");
   STAssertEquals(@selector(checkArgument:), pair.action,
                  @"Pair does not contain correct action");
-  
+
   [pair performWithObject:kArgumentObject];
-  STAssertTrue(invoked, @"Pair did not invoke action");  
+  STAssertTrue(invoked, @"Pair did not invoke action");
 }
 
 -(void)checkArgument:(NSString*)argument {

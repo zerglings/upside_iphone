@@ -1,7 +1,24 @@
+#!/usr/bin/env ruby
+#
+#  release_sources.m
+#  upside
+#
+#  Created by Victor Costan on 1/28/09.
+#  Copyright Zergling.Net. All rights reserved.
+#
+
+# Enforces some source code formatting rules for upside.
+
 Dir.glob('**/*').each do |file|
-  next unless /\.m$/ =~ file or /\.h$/ =~ file
+  next unless /\.m$/ =~ file or /\.h$/ =~ file  # Only Objective C code.
+  next if /^ZergSupport\/TestSupport\/GTM\// =~ file  # Skip GTM code.
   
   contents = File.read file
+  
+  # eat whitespace at the end of lines
+  contents.gsub! /[ \t]+$/, ""
+  # tabs are 2 spaces
+  contents.gsub! "\t", "  "
   
   # force -(type)method instead of - (type) method
   contents.gsub! /\-\s*\(([^(]*)\)\s*(\w)/, "-(\\1)\\2"

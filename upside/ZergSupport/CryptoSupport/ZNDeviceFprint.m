@@ -21,10 +21,10 @@
 // The UDID has 40 characters a real iPhone / iPod, but only 36 characters on
 // the simulator. To make up for that, simulator UDIDs are padded by "sim:".
 +(NSString*)uniqueDeviceId {
-	NSString* udid = [[UIDevice currentDevice] uniqueIdentifier];
-	if ([udid length] == 40)
-		return udid;
-	return [NSString stringWithFormat:@"sim:%@", udid];
+  NSString* udid = [[UIDevice currentDevice] uniqueIdentifier];
+  if ([udid length] == 40)
+    return udid;
+  return [NSString stringWithFormat:@"sim:%@", udid];
 }
 
 // Retrieves the device's hardware model from the kernel.
@@ -34,7 +34,7 @@
   //       to "i386" (what the simulator returns) but that would cause tests to
   //       fail on a device. On the bright side, the method is unlikely to
   //       change, because it relies on OSX kernel functionality.
-  
+
   size_t keySize;
   sysctlbyname("hw.machine", NULL, &keySize, NULL, 0);
   char *key = malloc(keySize);
@@ -103,7 +103,7 @@ static NSData* cachedFprintData;
 }
 
 // The device fingerprint.
-+(NSData*)copyFprintUsingDigest:(id<ZNDigester>)digester {  
++(NSData*)copyFprintUsingDigest:(id<ZNDigester>)digester {
   return [digester copyDigest:[ZNDeviceFprint fprintData]];
 }
 
