@@ -10,6 +10,8 @@
 
 #import "ZNDictionaryJsonParser.h"
 
+#import "ZNFormFieldFormatter+Snake2LCamel.h"
+
 static NSString* kContextObject = @"This is the context";
 
 @interface ZNDictionaryJsonParserTest : 
@@ -115,6 +117,8 @@ static NSString* kContextObject = @"This is the context";
                        @"simple FAIL");
   STAssertEqualStrings(@"boom \"headshot\"!\ndone",
                        [strings objectForKey:@"escaped"], @"escaped FAIL");
+  STAssertEqualStrings(@"\u1234\u5678\u9abc\u0def",
+                       [strings objectForKey:@"unicoded"], @"unicoded FAIL");
   STAssertEqualStrings(@"'double' quotes",
                        [strings objectForKey:@"dquotes"],
                        @"double quotes FAIL");

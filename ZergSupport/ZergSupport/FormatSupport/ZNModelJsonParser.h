@@ -28,7 +28,7 @@
 // Cocoa objects will be returned to the delegate.
 @interface ZNModelJsonParser : NSObject {
   ZNDictionaryJsonParser* parser;
-  NSMutableArray* compiledSchema;
+  NSMutableArray* compiledQueries;
   id<ZNModelJsonParserDelegate> delegate;
   Class null;
 }
@@ -36,9 +36,9 @@
 @property (nonatomic, assign) id context;
 @property (nonatomic, assign) id<ZNModelJsonParserDelegate> delegate;
 
-// Initializes a parser with a schema, which can be used multiple times.
--(id)initWithSchema:(NSArray*)schema
-     documentCasing:(ZNFormatterCasing)documentCasing;
+// Initializes a parser with a set of queries, which can be used multiple times.
+-(id)initWithQueries:(NSArray*)queries
+      documentCasing:(ZNFormatterCasing)documentCasing;
 
 // Parses a JSON document inside an NSData instance.
 -(BOOL)parseData:(NSData*)data;

@@ -47,12 +47,12 @@ static NSString* kContextObject = @"This is the context";
 @implementation ZNModelJsonParserTest
 
 -(void)setUp {
-  NSArray* schema = [NSArray arrayWithObjects:
-                     [ZNJsonParserTestModel class], @"/models/?",
-                     [NSNull class], @"/raw", nil];
+  NSArray* queries = [NSArray arrayWithObjects:
+                      [ZNJsonParserTestModel class], @"/models/?",
+                      [NSNull class], @"/raw", nil];
   
-  parser = [[ZNModelJsonParser alloc] initWithSchema:schema
-                                      documentCasing:kZNFormatterSnakeCase];
+  parser = [[ZNModelJsonParser alloc] initWithQueries:queries
+                                       documentCasing:kZNFormatterSnakeCase];
   parser.context = kContextObject;
   parser.delegate = self;
   

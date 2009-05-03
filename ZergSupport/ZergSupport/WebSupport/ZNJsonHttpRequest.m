@@ -1,25 +1,26 @@
 //
-//  ZNXmlHttpRequest.m
+//  ZNJsonHttpRequest.m
 //  ZergSupport
 //
-//  Created by Victor Costan on 1/16/09.
-//  Copyright Zergling.Net. Licensed under the MIT license.
+//  Created by Victor Costan on 5/3/09.
+//  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "ZNXmlHttpRequest.h"
+#import "ZNJsonHttpRequest.h"
 
 #import "FormatSupport.h"
 #import "ModelSupport.h"
 
-@interface ZNXmlHttpRequest () <ZNModelXmlParserDelegate>
+
+@interface ZNJsonHttpRequest () <ZNModelJsonParserDelegate>
 @end
 
-@implementation ZNXmlHttpRequest
+@implementation ZNJsonHttpRequest
 
 #pragma mark Lifecycle
 
 -(id)initWithURLRequest:(NSURLRequest*)theRequest
-         responseModels:(NSDictionary*)theResponseModels
+        responseQueries:(NSArray*)theResponseQueries
          responseCasing:(enum ZNFormatterCasing)responseCasing
                  target:(NSObject*)theTarget
                  action:(SEL)theAction {
@@ -27,8 +28,8 @@
                                  target:theTarget
                                  action:theAction])) {
     response = [[NSMutableArray alloc] init];
-    responseParser = [[ZNModelXmlParser alloc]
-                      initWithSchema:theResponseModels
+    responseParser = [[ZNModelJsonParser alloc]
+                      initWithQueries:theResponseQueries
                       documentCasing:responseCasing];
     responseParser.delegate = self;
   }
@@ -45,7 +46,7 @@
             method:(NSString*)method
               data:(NSDictionary*)data
        fieldCasing:(enum ZNFormatterCasing)fieldCasing
-    responseModels:(NSDictionary*)responseModels
+   responseQueries:(NSArray*)responseQueries
     responseCasing:(enum ZNFormatterCasing)responseCasing
             target:(NSObject*)target
             action:(SEL)action {
@@ -53,12 +54,12 @@
                                                    method:method
                                                      data:data
                                               fieldCasing:fieldCasing];
-  ZNXmlHttpRequest* request =
-      [[ZNXmlHttpRequest alloc] initWithURLRequest:urlRequest
-                                    responseModels:responseModels
-                                    responseCasing:responseCasing
-                                            target:target
-                                            action:action];
+  ZNJsonHttpRequest* request =
+      [[ZNJsonHttpRequest alloc] initWithURLRequest:urlRequest
+                                    responseQueries:responseQueries
+                                     responseCasing:responseCasing
+                                             target:target
+                                             action:action];
   [request start];
   [urlRequest release];
   [request release];
@@ -67,25 +68,24 @@
 +(void)callService:(NSString*)service
             method:(NSString*)method
               data:(NSDictionary*)data
-    responseModels:(NSDictionary*)responseModels
+   responseQueries:(NSArray*)responseQueries
             target:(NSObject*)target
             action:(SEL)action {
   return [self callService:service
                     method:method
                       data:data
                fieldCasing:kZNFormatterSnakeCase
-            responseModels:responseModels
+           responseQueries:responseQueries
             responseCasing:kZNFormatterSnakeCase
                     target:target
                     action:action];
 }
 
-#pragma mark ZNModelXmlParser Delegate
+#pragma mark ZNModelJsonParser Delegate
 
--(void)parsedItem:(NSDictionary*)itemData
-             name:(NSString*)itemName
+-(void)parsedObject:(NSObject*)object
           context:(id)context {
-  [response addObject:itemData];
+  [response addObject:object];
 }
 -(void)parsedModel:(ZNModel*)model
            context:(id)context {

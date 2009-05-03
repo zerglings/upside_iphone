@@ -25,10 +25,10 @@
 
 @synthesize context, delegate;
 
--(id)initWithSchema:(NSArray*)schema
-     documentCasing:(ZNFormatterCasing)documentCasing {
-  NSAssert([schema count] % 2 == 0,
-           @"Schema queries and models are not paired up");
+-(id)initWithQueries:(NSArray*)queries
+      documentCasing:(ZNFormatterCasing)documentCasing {
+  NSAssert([queries count] % 2 == 0,
+           @"Query set has a dangling model (without a query)");
   
   if ((self = [super init])) {
     null = [NSNull class];
@@ -40,17 +40,17 @@
     parser.delegate = self;
     
     // Compile schema.
-    compiledSchema = [[NSMutableArray alloc] initWithCapacity:[schema count]];
-    for (NSUInteger i = 0; i < [schema count]; i += 2) {
-      Class modelClass = [schema objectAtIndex:i];      
+    compiledQueries = [[NSMutableArray alloc] initWithCapacity:[queries count]];
+    for (NSUInteger i = 0; i < [queries count]; i += 2) {
+      Class modelClass = [queries objectAtIndex:i];      
       if ([ZNModel isModelClass:modelClass]) {
-        [compiledSchema addObject:modelClass];
+        [compiledQueries addObject:modelClass];
       }
       else {
-        [compiledSchema addObject:null];
+        [compiledQueries addObject:null];
       }
-      NSString* queryString = [schema objectAtIndex:(i + 1)];
-      [compiledSchema addObject:[ZNObjectQuery compile:queryString]];
+      NSString* queryString = [queries objectAtIndex:(i + 1)];
+      [compiledQueries addObject:[ZNObjectQuery compile:queryString]];
     }
   }
   return self;
@@ -58,7 +58,7 @@
 
 -(void)dealloc {
   [parser release];
-  [compiledSchema release];
+  [compiledQueries release];
   [super dealloc];
 }
 
@@ -76,9 +76,9 @@
 #pragma mark ZNDictionaryJsonParser delegate
 
 -(void)parsedJson:(NSDictionary*)jsonData context:(id)context {
-  for (NSUInteger i = 0; i < [compiledSchema count]; i += 2) {
-    Class modelClass = [compiledSchema objectAtIndex:i];
-    ZNObjectQuery* query = [compiledSchema objectAtIndex:(i + 1)];
+  for (NSUInteger i = 0; i < [compiledQueries count]; i += 2) {
+    Class modelClass = [compiledQueries objectAtIndex:i];
+    ZNObjectQuery* query = [compiledQueries objectAtIndex:(i + 1)];
     
     NSArray* results = [query run:jsonData];
     for (NSObject* result in results) {

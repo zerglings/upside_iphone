@@ -106,8 +106,21 @@ static NSString* ZNJSONParseString(ZNJsonParseContext* context,
             stringStart++;
             break;
           case 'u': {  // Unicode character
-            // TODO(overmind): implement this when we care about it
-            stringStart += 4;
+            unichar character = 0;
+            for (int i = 0; i < 4; i++) {
+              stringStart++;
+              if (stringStart >= context->bytes)
+                break;
+              character <<= 4;
+              character |= (*stringStart <= '9') ? (*stringStart - '0') :
+                  ((*stringStart <= 'Z') ? (*stringStart - 'A' + 10) :
+                   (*stringStart - 'a' + 10));
+            }
+            NSString* stringPiece = [[NSString alloc]
+                                     initWithCharacters:&character length:1];
+            [string appendString:stringPiece];
+            [stringPiece release];
+            stringStart++;
             break;
           }  
           default: {  // ', ", \ or /
