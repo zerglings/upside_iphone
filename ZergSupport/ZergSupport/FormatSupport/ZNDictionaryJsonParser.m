@@ -41,11 +41,15 @@ static void ZNJSONSkipComma(ZNJsonParseContext* context) {
   }  
 }
 
-// Parses an JSON string. The cursor is right after the opening ".
-static NSString* ZNJSONParseString(ZNJsonParseContext* context) {
+// Parses an JSON string. The cursor is right after the opening " or '.
+//
+// The terminator argument indicates whether the string ends with ' or ".
+static NSString* ZNJSONParseString(ZNJsonParseContext* context,
+                                   uint8_t terminator) {
   const uint8_t* stringStart = context->bytes;
   BOOL escapes = NO;  // Set to YES when escape sequences are detected.
-  while (context->bytes < context->endOfBytes && *context->bytes != '"') {
+  while (context->bytes < context->endOfBytes &&
+         *context->bytes != terminator) {
     if (*context->bytes == '\\') {
       escapes = YES;
       context->bytes++;  // skip over whatever the next character is
@@ -103,7 +107,7 @@ static NSString* ZNJSONParseString(ZNJsonParseContext* context) {
             stringStart += 4;
             break;
           }  
-          default: {  // ", \ or /
+          default: {  // ', ", \ or /
             NSString* stringPiece =
                 [[NSString alloc] initWithBytes:stringStart
                                          length:1
@@ -166,25 +170,27 @@ static NSNumber* ZNJSONParseNumber(ZNJsonParseContext* context) {
       case '8':
       case '9':        
         break;
-      default: {        
-        // number ends here
-        NSUInteger numberLength = context->bytes - numberStart;
-        if (numberLength == 0) {
-          return nil;
-        }
-        NSString* numberString = 
-            [[NSString alloc] initWithBytes:numberStart
-                                     length:numberLength
-                                   encoding:NSUTF8StringEncoding];
-        NSNumber* number = [jsonNumberParser numberFromString:numberString];
-        [numberString release];
-        [number retain];
-        return number;
-      }
+      default:
+        goto breakOutOfWhile;  // Breaks out of the enclosing while.
     }
     context->bytes++;
+  }  
+breakOutOfWhile:
+  
+  {
+    NSUInteger numberLength = context->bytes - numberStart;
+    if (numberLength == 0) {
+      return nil;
+    }
+    NSString* numberString = 
+      [[NSString alloc] initWithBytes:numberStart
+                               length:numberLength
+                             encoding:NSUTF8StringEncoding];
+    NSNumber* number = [jsonNumberParser numberFromString:numberString];
+    [numberString release];
+    [number retain];
+    return number;  
   }
-  return nil;
 }
 
 // Parses an JSON array. The cursor is right after the opening [.
@@ -228,8 +234,7 @@ static NSDictionary* ZNJSONParseObject(ZNJsonParseContext* context) {
   while (true) {
     // Whitespace
     ZNJSONSkipWhiteSpace(context);
-    if (context->bytes >= context->endOfBytes || (*context->bytes != '"' &&
-        *context->bytes != '}')) {
+    if (context->bytes >= context->endOfBytes) {
       [object release];
       return nil;
     }
@@ -239,9 +244,13 @@ static NSDictionary* ZNJSONParseObject(ZNJsonParseContext* context) {
       break;
     }
     
+    if (*context->bytes != '"' && *context->bytes != '\'') {
+      [object release];
+      return nil;
+    }
+    
     // Property name.
-    context->bytes++;  // Cursor is currently at ", checked in code block above.
-    NSString* name = ZNJSONParseString(context);
+    NSString* name = ZNJSONParseString(context, *context->bytes++);
     if (!name) {
       [object release];
       return nil;
@@ -283,8 +292,8 @@ static NSObject* ZNJSONParseValue(ZNJsonParseContext* context) {
   
   switch (*context->bytes) {
     case '"':  // String.
-      context->bytes++;
-      return ZNJSONParseString(context);
+    case '\'':
+      return ZNJSONParseString(context, *(context->bytes++));
       
     case '[':  // Array.
       context->bytes++;
@@ -351,7 +360,6 @@ static NSDictionary *ZNJSONParseData(ZNJsonParseContext* context) {
   [super dealloc];
 }
 
-// Parses a JSON object inside an NSData instance.
 -(BOOL)parseData:(NSData*)data {
   ZNJsonParseContext parseContext;
   parseContext.bytes = [data bytes];
@@ -363,6 +371,18 @@ static NSDictionary *ZNJSONParseData(ZNJsonParseContext* context) {
   }
   [delegate parsedJson:jsonData context:context];
   return YES;
+}
+
+
++(NSObject*)parseValue:(NSString*)jsonValue {
+  [ZNDictionaryJsonParser setupParsers];
+  
+  NSData* data = [jsonValue dataUsingEncoding:NSUTF8StringEncoding];  
+  ZNJsonParseContext parseContext;
+  parseContext.bytes = [data bytes];
+  parseContext.endOfBytes = parseContext.bytes + [data length];
+  
+  return ZNJSONParseValue(&parseContext);
 }
 
 @end

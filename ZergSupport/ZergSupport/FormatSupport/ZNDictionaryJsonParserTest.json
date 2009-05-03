@@ -2,7 +2,9 @@
 callbackFn({
   "strings" : {
     "simple": "awkward but not odd",
-    "escaped": "boom \"headshot\"!\ndone",    
+    "escaped": "boom \"headshot\"!\ndone",
+    "dquotes": "'double' quotes",
+    'squotes': '"single" quotes',
     "empty": ""
   },
   "primitives": {

@@ -114,7 +114,42 @@ static NSString* kContextObject = @"This is the context";
                        @"simple FAIL");
   STAssertEqualStrings(@"boom \"headshot\"!\ndone",
                        [strings objectForKey:@"escaped"], @"escaped FAIL");
+  STAssertEqualStrings(@"'double' quotes",
+                       [strings objectForKey:@"dquotes"],
+                       @"double quotes FAIL");
+  STAssertEqualStrings(@"\"single\" quotes",
+                       [strings objectForKey:@"squotes"],
+                       @"single quotes FAIL");  
+}
+
+-(void)testParseValue {
+  NSDictionary* goldDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  [NSNumber numberWithInt:1], @"a",
+                                  [NSNumber numberWithBool:NO], @"b", nil];
+  STAssertEqualObjects(goldDictionary,
+                       [ZNDictionaryJsonParser
+                        parseValue:@"{'a': 1, 'b': false}"],
+                       @"Dictionary value parsing");
   
+  NSArray* goldArray = [NSArray arrayWithObjects:
+                        @"a", [NSNumber numberWithInt:1], @"b", [NSNull null],
+                        nil];
+  STAssertEqualObjects(goldArray,
+                       [ZNDictionaryJsonParser
+                        parseValue:@"['a', 1, 'b', null]"],
+                       @"Array value parsing");
+
+  STAssertEqualStrings(@"vodka",
+                       [ZNDictionaryJsonParser parseValue:@"'vodka'"],
+                       @"String value parsing");
+
+  STAssertEqualObjects([NSNumber numberWithDouble:3.141592],
+                       [ZNDictionaryJsonParser parseValue:@"3.141592"],
+                       @"Number value parsing");
+
+  STAssertEqualObjects([NSNull null],
+                       [ZNDictionaryJsonParser parseValue:@"null"],
+                       @"Primitive parsing");
 }
 
 @end
