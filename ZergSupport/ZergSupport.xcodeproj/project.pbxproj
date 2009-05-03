@@ -119,6 +119,9 @@
 		57EF37620FAB9C82004A1808 /* ZNDictionaryJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF37600FAB9C82004A1808 /* ZNDictionaryJsonParser.m */; };
 		57EF37A80FAC0490004A1808 /* ZNDictionaryJsonParserTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 57EF37A10FABFF4B004A1808 /* ZNDictionaryJsonParserTest.json */; };
 		57EF382D0FACA854004A1808 /* ZNDictionaryJsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF37A20FABFF4B004A1808 /* ZNDictionaryJsonParserTest.m */; };
+		57EF39380FACDA86004A1808 /* ZNObjectQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 57EF39360FACDA86004A1808 /* ZNObjectQuery.h */; };
+		57EF39390FACDA86004A1808 /* ZNObjectQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF39370FACDA86004A1808 /* ZNObjectQuery.m */; };
+		57EF394A0FACF324004A1808 /* ZNObjectQueryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF39490FACF324004A1808 /* ZNObjectQueryTest.m */; };
 		57F045F40FA50BEC006436EF /* ZNCipher.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F045F30FA50BEC006436EF /* ZNCipher.h */; };
 		57F045F60FA50C42006436EF /* ZNCipherClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F045F50FA50C42006436EF /* ZNCipherClass.h */; };
 		57F0467A0FA56965006436EF /* ZNFileFprintTest.data in Resources */ = {isa = PBXBuildFile; fileRef = 57F046790FA56965006436EF /* ZNFileFprintTest.data */; };
@@ -279,6 +282,9 @@
 		57EF37600FAB9C82004A1808 /* ZNDictionaryJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDictionaryJsonParser.m; sourceTree = "<group>"; };
 		57EF37A10FABFF4B004A1808 /* ZNDictionaryJsonParserTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNDictionaryJsonParserTest.json; sourceTree = "<group>"; };
 		57EF37A20FABFF4B004A1808 /* ZNDictionaryJsonParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDictionaryJsonParserTest.m; sourceTree = "<group>"; };
+		57EF39360FACDA86004A1808 /* ZNObjectQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNObjectQuery.h; sourceTree = "<group>"; };
+		57EF39370FACDA86004A1808 /* ZNObjectQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNObjectQuery.m; sourceTree = "<group>"; };
+		57EF39490FACF324004A1808 /* ZNObjectQueryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNObjectQueryTest.m; sourceTree = "<group>"; };
 		57F045F30FA50BEC006436EF /* ZNCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNCipher.h; sourceTree = "<group>"; };
 		57F045F50FA50C42006436EF /* ZNCipherClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNCipherClass.h; sourceTree = "<group>"; };
 		57F046770FA56913006436EF /* ZNFileFprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNFileFprintTest.m; sourceTree = "<group>"; };
@@ -430,6 +436,9 @@
 				57551E9D0F4E0D4D0046B0EE /* ZNModelXmlParser.m */,
 				57551E9E0F4E0D4D0046B0EE /* ZNModelXmlParserTest.m */,
 				57551E9F0F4E0D4D0046B0EE /* ZNModelXmlParserTest.xml */,
+				57EF39360FACDA86004A1808 /* ZNObjectQuery.h */,
+				57EF39370FACDA86004A1808 /* ZNObjectQuery.m */,
+				57EF39490FACF324004A1808 /* ZNObjectQueryTest.m */,
 			);
 			path = FormatSupport;
 			sourceTree = "<group>";
@@ -608,6 +617,7 @@
 				57F045F60FA50C42006436EF /* ZNCipherClass.h in Headers */,
 				57F047AF0FA60E45006436EF /* ZNAppFprint.h in Headers */,
 				57EF37610FAB9C82004A1808 /* ZNDictionaryJsonParser.h in Headers */,
+				57EF39380FACDA86004A1808 /* ZNObjectQuery.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +771,7 @@
 				57826F730FA4C299006896D7 /* ZNFileFprint.m in Sources */,
 				57F047B00FA60E45006436EF /* ZNAppFprint.m in Sources */,
 				57EF37620FAB9C82004A1808 /* ZNDictionaryJsonParser.m in Sources */,
+				57EF39390FACDA86004A1808 /* ZNObjectQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +781,7 @@
 			files = (
 				5755201A0F4E11BE0046B0EE /* ZNTestModels.m in Sources */,
 				57EF382D0FACA854004A1808 /* ZNDictionaryJsonParserTest.m in Sources */,
+				57EF394A0FACF324004A1808 /* ZNObjectQueryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
