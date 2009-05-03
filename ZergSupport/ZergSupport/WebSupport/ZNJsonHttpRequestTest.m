@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/3/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -78,7 +78,7 @@
                          action:@selector(checkOnlineGetResponse:)];
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
-  
+
   STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
@@ -86,11 +86,11 @@
   receivedResponse = YES;
   STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
-  
+
   ZNJsonHttpRequestTestModel* response = [responseArray objectAtIndex:0];
   STAssertTrue([response isKindOfClass:[ZNJsonHttpRequestTestModel class]],
                @"Response not deserialized using proper model");
-  
+
   STAssertEqualStrings(@"get", response.method,
                        @"Request not issued using GET");
 }
@@ -101,7 +101,7 @@
   requestModel.method = @"Awesome method";
   requestModel.headers = @"Awesome headers";
   requestModel.body = @"Awesome body";
-  
+
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
                         requestModel, @"model",
                         @"someString", @"stringKey", nil];
@@ -113,7 +113,7 @@
                                   nil]
                           target:self
                           action:@selector(checkOnlineResponse:)];
-  
+
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
   STAssertEquals(YES, receivedResponse, @"Response never received");
@@ -123,14 +123,14 @@
   receivedResponse = YES;
   STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
-  
+
   ZNJsonHttpRequestTestModel* response = [responseArray objectAtIndex:0];
   STAssertTrue([response isKindOfClass:[ZNJsonHttpRequestTestModel class]],
                @"Response not deserialized using proper model");
-  
+
   STAssertEqualStrings(@"put", response.method,
                        @"Request not issued using PUT");
-  
+
   NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNJsonHttpRequestTest.body"];
@@ -143,7 +143,7 @@
                         stringByAppendingPathComponent:
                         @"ZNJsonHttpRequestTest.json"];
   NSString* fileUrl = [[NSURL fileURLWithPath:filePath] absoluteString];
-  
+
   [ZNJsonHttpRequest callService:fileUrl
                           method:kZNHttpMethodGet
                             data:nil
@@ -152,7 +152,7 @@
                                   [NSNull class], @"/nonmodel", nil]
                           target:self
                           action:@selector(checkFileResponse:)];
-  
+
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
   STAssertEquals(YES, receivedResponse, @"Response never received");
@@ -162,7 +162,7 @@
   receivedResponse = YES;
   STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
-  
+
   ZNJsonHttpRequestTestModel* model = [responseArray objectAtIndex:0];
   STAssertTrue([model isKindOfClass:[ZNJsonHttpRequestTestModel class]],
                @"Model in response not deserialized properly");
@@ -172,11 +172,11 @@
                        @"Model's headers not deserialized properly");
   STAssertEqualStrings(@"Method", model.method,
                        @"Model's method not deserialized properly");
-  
+
   NSDictionary* nonmodel = [responseArray objectAtIndex:1];
   STAssertTrue([nonmodel isKindOfClass:[NSDictionary class]],
                @"Non-model in response not deserialized with NSDictionary");
-  
+
   NSDictionary* golden_nonmodel = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [NSNumber numberWithInt:1], @"key1",
                                    @"val2", @"key2", @"val3", @"keyThree", nil];

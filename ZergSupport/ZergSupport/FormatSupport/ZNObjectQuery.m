@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/2/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNObjectQuery.h"
@@ -30,7 +30,7 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
     [results addObject:root];
     return;
   }
-  
+
   // Analyze query element.
   NSObject* element = [query objectAtIndex:offset];
   if ([root isKindOfClass:[NSDictionary class]]) {  // Querying a hash.
@@ -44,11 +44,11 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
       BOOL multiExpand = [(NSNumber*)element boolValue];
       // NOTE: the compiler should ensure that the next element after a wild
       //       card is concrete (and therefore a String)
-      if (offset + 1 < [query count]) {      
+      if (offset + 1 < [query count]) {
         element = [query objectAtIndex:(offset + 1)];
       }
       else {
-        element = nil;        
+        element = nil;
       }
       for (NSObject* key in (NSDictionary*)root) {
         NSObject* newRoot = [(NSDictionary*)root objectForKey:key];
@@ -77,7 +77,7 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
       NSInteger index;
       if (offset + 1 < [query count]) {
         element = [query objectAtIndex:(offset + 1)];
-        index = ZNQueryIndexFromElement((NSString*)element);        
+        index = ZNQueryIndexFromElement((NSString*)element);
       }
       else {
         element = nil;
@@ -95,7 +95,7 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
       }
     }
   }
-  
+
   // Primitive, back out.
   return;
 }
@@ -107,7 +107,7 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
 -(NSArray*)run:(NSObject*)object {
   NSMutableArray* results = [[NSMutableArray alloc] init];
   ZNQueryRun(object, components, 0, results);
-  
+
   NSArray* returnValue = [[NSArray alloc] initWithArray:results];
   [results release];
   return returnValue;
@@ -124,12 +124,12 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
   // NOTE: we're adding the separator at the query's end as a sentinel, to avoid
   //       a special case for the last component in the query
   NSUInteger queryLength = [queryString length];
-  unichar* buffer = (unichar*)calloc(queryLength + 1, sizeof(unichar));  
-  [queryString getCharacters:buffer];  
+  unichar* buffer = (unichar*)calloc(queryLength + 1, sizeof(unichar));
+  [queryString getCharacters:buffer];
   unichar separator = buffer[0];
   unichar* bufferEnd = buffer + queryLength;
   *bufferEnd = separator;
-  
+
   unichar* componentStart = buffer + 1;
   for (buffer++; buffer <= bufferEnd; buffer++) {
     if (*buffer == separator) {
@@ -158,7 +158,7 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
       componentStart = buffer + 1;
     }
   }
-  
+
   return array;
 }
 
