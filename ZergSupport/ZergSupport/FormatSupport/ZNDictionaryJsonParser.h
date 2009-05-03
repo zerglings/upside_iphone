@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol ZNDictionaryJsonParserDelegate;
+@class ZNFormFieldFormatter;
 
 
 // Parses objects in JSON notation.
@@ -27,12 +28,19 @@
 @interface ZNDictionaryJsonParser : NSObject {
   id<ZNDictionaryJsonParserDelegate> delegate;
   id context;
+  ZNFormFieldFormatter* keyFormatter;
 }
 @property (nonatomic, assign) id context;
 @property (nonatomic, assign) id<ZNDictionaryJsonParserDelegate> delegate;
 
 // Initializes a parser, which can be used multiple times.
 -(id)init;
+
+// Designated initializer. Initializes a parser with the given formatter
+// for hash (NSDictionary) keys.
+//
+// A parser can be used multiple times, once initialized.
+-(id)initWithKeyFormatter:(ZNFormFieldFormatter*)keyFormatter;
 
 // Parses a JSON object inside an NSData instance.
 -(BOOL)parseData:(NSData*)data;

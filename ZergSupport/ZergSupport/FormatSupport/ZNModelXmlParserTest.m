@@ -11,7 +11,7 @@
 #import "ModelSupport.h"
 #import "ZNModelXmlParser.h"
 
-// Model for the response returned by the testbed.
+// Model for the XML test file.
 @interface ZNXmlParserTestModel : ZNModel {
   NSString* theName;
   double number;

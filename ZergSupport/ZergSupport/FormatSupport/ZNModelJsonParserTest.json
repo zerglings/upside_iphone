@@ -1,0 +1,20 @@
+// Simulating a JSONP call, to make sure the JSON parser is wired correctly
+// to ignore it.
+callbackFn({
+  "raw": {
+    "one": 1,
+    "name": "My Name"
+  },
+  "models": [
+    {
+      "the_name": "First name",
+      "number": 3.141592,
+      "boolean": true
+    },
+    {
+      "theName": "Second name",
+      "number": 64,
+      "boolean": false
+    }
+  ]
+});

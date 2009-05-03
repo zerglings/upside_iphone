@@ -26,7 +26,8 @@ static NSString* kContextObject = @"This is the context";
 @implementation ZNDictionaryJsonParserTest
 
 -(void)setUp {
-  parser = [[ZNDictionaryJsonParser alloc] init];
+  parser = [[ZNDictionaryJsonParser alloc]
+            initWithKeyFormatter:[ZNFormFieldFormatter snakeToLCamelFormatter]];
   parser.context = kContextObject;
   parser.delegate = self;
   
@@ -120,6 +121,17 @@ static NSString* kContextObject = @"This is the context";
   STAssertEqualStrings(@"\"single\" quotes",
                        [strings objectForKey:@"squotes"],
                        @"single quotes FAIL");  
+}
+
+-(void)testKeyFormatting {
+  NSDictionary* formatting = [json objectForKey:@"caseFormatting"];
+  STAssertNotNil(formatting, @"caseFormatting object not parsed");
+  
+  STAssertEqualStrings(@"more_snakes", [formatting objectForKey:@"snakeCase"],
+                       @"snake to camel key conversion failed");
+  STAssertEqualStrings(@"moreCamels",
+                       [formatting objectForKey:@"camelCase"],
+                       @"camel to camel key conversion failed");
 }
 
 -(void)testParseValue {

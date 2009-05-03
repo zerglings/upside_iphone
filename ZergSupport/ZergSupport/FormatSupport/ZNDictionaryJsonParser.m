@@ -8,6 +8,8 @@
 
 #import "ZNDictionaryJsonParser.h"
 
+#import "ZNFormFieldFormatter.h"
+
 #pragma mark JSON Parsing Core
 
 // Singleton instance of the NSNumberFormatter used to parse JSON numbers.
@@ -15,6 +17,7 @@ static NSNumberFormatter* jsonNumberParser = nil;
 
 // Holds the context required for JSON parsing.
 typedef struct ZNJsonParseContext {
+  ZNFormFieldFormatter* keyFormatter;
   const uint8_t* bytes;
   const uint8_t* endOfBytes;
 } ZNJsonParseContext;
@@ -250,11 +253,13 @@ static NSDictionary* ZNJSONParseObject(ZNJsonParseContext* context) {
     }
     
     // Property name.
-    NSString* name = ZNJSONParseString(context, *context->bytes++);
-    if (!name) {
+    NSString* rawName = ZNJSONParseString(context, *context->bytes++);
+    if (!rawName) {
       [object release];
       return nil;
     }
+    NSString* name = [context->keyFormatter copyFormattedName:rawName];
+    [rawName release];
     
     // : separator
     ZNJSONSkipWhiteSpace(context);
@@ -350,18 +355,25 @@ static NSDictionary *ZNJSONParseData(ZNJsonParseContext* context) {
 }
 
 -(id)init {
+  return [self initWithKeyFormatter:[ZNFormFieldFormatter identityFormatter]];
+}
+
+-(id)initWithKeyFormatter:(ZNFormFieldFormatter*)theKeyFormatter {
   if ((self = [super init])) {
     [ZNDictionaryJsonParser setupParsers];
+    keyFormatter = [theKeyFormatter retain];
   }
-  return self;
+  return self;  
 }
 
 -(void)dealloc {
+  [keyFormatter release];
   [super dealloc];
 }
 
 -(BOOL)parseData:(NSData*)data {
   ZNJsonParseContext parseContext;
+  parseContext.keyFormatter = keyFormatter;
   parseContext.bytes = [data bytes];
   parseContext.endOfBytes = parseContext.bytes + [data length];
   
@@ -379,6 +391,7 @@ static NSDictionary *ZNJSONParseData(ZNJsonParseContext* context) {
   
   NSData* data = [jsonValue dataUsingEncoding:NSUTF8StringEncoding];  
   ZNJsonParseContext parseContext;
+  parseContext.keyFormatter = [ZNFormFieldFormatter identityFormatter];
   parseContext.bytes = [data bytes];
   parseContext.endOfBytes = parseContext.bytes + [data length];
   
