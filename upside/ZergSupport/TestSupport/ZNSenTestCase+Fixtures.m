@@ -6,7 +6,7 @@
 //  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
-#import "SenTestCase+Fixtures.h"
+#import "ZNSenTestCase+Fixtures.h"
 
 #import <objc/runtime.h>
 

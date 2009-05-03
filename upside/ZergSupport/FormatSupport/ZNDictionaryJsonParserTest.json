@@ -1,0 +1,29 @@
+// Emulate a JSONP response.
+callbackFn({
+  "strings" : {
+    "simple": "awkward but not odd",
+    "escaped": "boom \"headshot\"!\ndone",
+    "unicoded": "\u1234\u5678\u9Abc\u0DeF",
+    "dquotes": "'double' quotes",
+    'squotes': '"single" quotes',    
+    "empty": ""
+  },
+  "primitives": {
+    "true": true,
+    "false": false,
+    "null": null
+  },
+  "numbers" :{
+    "zero": 0,
+    "pi": 0.3141592e1,
+    "cash": -1000
+  },
+  "arrays": {
+    "simple": [1, "a", true,],
+    "nested": [1, [2, 3], {"a": 2, "b": [3]}]
+  },
+  "caseFormatting": {
+    "snake_case": "more_snakes",
+    "camelCase": "moreCamels",
+  }
+});

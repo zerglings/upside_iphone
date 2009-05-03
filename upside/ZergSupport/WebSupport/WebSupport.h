@@ -13,4 +13,5 @@
 
 #import "ZNHttpRequest.h"
 #import "ZNCsvHttpRequest.h"
+#import "ZNJsonHttpRequest.h"
 #import "ZNXmlHttpRequest.h"

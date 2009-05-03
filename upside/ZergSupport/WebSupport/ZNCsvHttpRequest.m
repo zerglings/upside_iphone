@@ -20,10 +20,10 @@
 #pragma mark Lifecycle
 
 -(id)initWithURLRequest:(NSURLRequest*)theRequest
-            responseClass:(Class)modelClass
-       responseProperties:(NSArray*)modelPropertyNames
-                   target:(NSObject*)theTarget
-                   action:(SEL)theAction {
+          responseClass:(Class)modelClass
+     responseProperties:(NSArray*)modelPropertyNames
+                 target:(NSObject*)theTarget
+                 action:(SEL)theAction {
   if ((self = [super initWithURLRequest:theRequest
                                  target:theTarget
                                  action:theAction])) {
@@ -50,13 +50,13 @@
 }
 
 +(void)callService:(NSString*)service
-              method:(NSString*)method
-                data:(NSDictionary*)data
-         fieldCasing:(ZNFormatterCasing)fieldCasing
-       responseClass:(Class)modelClass
-  responseProperties:(NSArray*)modelPropertyNames
-              target:(NSObject*)target
-              action:(SEL)action {
+            method:(NSString*)method
+              data:(NSDictionary*)data
+       fieldCasing:(ZNFormatterCasing)fieldCasing
+     responseClass:(Class)modelClass
+responseProperties:(NSArray*)modelPropertyNames
+            target:(NSObject*)target
+            action:(SEL)action {
   NSURLRequest* urlRequest = [self newURLRequestToService:service
                                                    method:method
                                                      data:data
@@ -73,12 +73,12 @@
 }
 
 +(void)callService:(NSString*)service
-              method:(NSString*)method
-                data:(NSDictionary*)data
-       responseClass:(Class)modelClass
-  responseProperties:(NSArray*)modelPropertyNames
-              target:(NSObject*)target
-              action:(SEL)action {
+            method:(NSString*)method
+              data:(NSDictionary*)data
+     responseClass:(Class)modelClass
+responseProperties:(NSArray*)modelPropertyNames
+            target:(NSObject*)target
+            action:(SEL)action {
   return [self callService:service
                     method:method
                       data:data

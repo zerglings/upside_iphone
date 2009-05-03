@@ -18,7 +18,7 @@
 //
 // The wrapper instantiates ModelSupport models out of some of the items
 // produced by DictionaryXmlParser.
-// TODO(overmind): document schema
+// TODO(overmind): describe the schema
 @interface ZNModelXmlParser : NSObject {
   ZNDictionaryXmlParser* parser;
   NSDictionary* schema;
@@ -40,7 +40,7 @@
 
 @end
 
-// The interface between ZNDictionaryXMLParser and its delegate.
+// The interface between ZNModelXMLParser and its delegate.
 @protocol ZNModelXmlParserDelegate
 
 // Called after parsing a model out of an XML tag.

@@ -38,13 +38,14 @@
 @end
 
 
-@interface SenTestCaseFixturesTest : SenTestCase
+@interface ZNSenTestCaseFixturesTest : SenTestCase
 @end
 
 
-@implementation SenTestCaseFixturesTest
+@implementation ZNSenTestCaseFixturesTest
 -(void)testLoadFixtures {
-  NSArray* loadedFixtures = [self fixturesFrom:@"SenTestCase+FixturesTest.xml"];
+  NSArray* loadedFixtures = [self
+                             fixturesFrom:@"ZNSenTestCase+FixturesTest.xml"];
 
   STAssertEquals(3U, [loadedFixtures count],
                  @"Incorrect number of fixtures loaded");

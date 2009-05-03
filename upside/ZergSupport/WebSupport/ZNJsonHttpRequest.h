@@ -1,21 +1,21 @@
 //
-//  ZNXmlHttpRequest.h
+//  ZNJsonHttpRequest.h
 //  ZergSupport
 //
-//  Created by Victor Costan on 1/16/09.
-//  Copyright Zergling.Net. Licensed under the MIT license.
+//  Created by Victor Costan on 5/3/09.
+//  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 #import "ZNHttpRequest.h"
 
-@class ZNModelXmlParser;
+@class ZNModelJsonParser;
 
 
-@interface ZNXmlHttpRequest : ZNHttpRequest {
+@interface ZNJsonHttpRequest : ZNHttpRequest {
   NSMutableArray* response;
-  ZNModelXmlParser* responseParser;
+  ZNModelJsonParser* responseParser;
 }
 
 // Convenience method for issuing a request.
@@ -23,7 +23,7 @@
             method:(NSString*)method
               data:(NSDictionary*)data
        fieldCasing:(enum ZNFormatterCasing)fieldCasing
-    responseModels:(NSDictionary*)responseModels
+   responseQueries:(NSArray*)responseQueries
     responseCasing:(enum ZNFormatterCasing)responseCasing
             target:(NSObject*)target
             action:(SEL)action;
@@ -32,15 +32,14 @@
 +(void)callService:(NSString*)service
             method:(NSString*)method
               data:(NSDictionary*)data
-    responseModels:(NSDictionary*)responseModels
+   responseQueries:(NSArray*)responseQueries
             target:(NSObject*)target
             action:(SEL)action;
 
 // Designated initializer.
 -(id)initWithURLRequest:(NSURLRequest*)request
-         responseModels:(NSDictionary*)responseModels
+        responseQueries:(NSArray*)responseQueries
          responseCasing:(enum ZNFormatterCasing)responseCasing
                  target:(NSObject*)target
                  action:(SEL)action;
-
 @end

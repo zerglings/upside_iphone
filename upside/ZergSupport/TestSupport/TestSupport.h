@@ -20,4 +20,4 @@
 
 // The Test Support features are documented in their respective headers.
 
-#import "SenTestCase+Fixtures.h"
+#import "ZNSenTestCase+Fixtures.h"
