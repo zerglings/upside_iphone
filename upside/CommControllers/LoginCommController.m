@@ -9,6 +9,7 @@
 #import "LoginCommController.h"
 
 #import "ActivationState.h"
+#import "CryptoSupport.h"
 #import "Device.h"
 #import "LoginCommController.h"
 #import "NetworkProgress.h"
@@ -43,6 +44,7 @@
                            activationState.user.name, @"name",
                            activationState.user.password, @"password",
                            activationState.deviceInfo, @"device",
+                           [ZNAppFprint hexAppFprint], @"appSig",
                            nil];
   [NetworkProgress connectionStarted];
   [ZNXmlHttpRequest callService:[ServerPaths loginUrl]
