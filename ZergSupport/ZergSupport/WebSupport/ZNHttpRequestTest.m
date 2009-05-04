@@ -42,6 +42,7 @@
 
 
 @interface ZNHttpRequestTest : SenTestCase {
+  ZNHttpRequestTestModel* requestModel;
   NSString* service;
   BOOL receivedResponse;
 }
@@ -60,6 +61,12 @@
   receivedResponse = NO;
   [self warmUpHerokuService:service];
   [ZNHttpRequest deleteCookiesForService:service];
+  
+  requestModel = [[[ZNHttpRequestTestModel alloc] init] autorelease];
+  requestModel.textVal = @"Something\0special";
+  requestModel.uintVal = 3141592;
+  requestModel.trueVal = YES;
+  requestModel.nilVal = nil;
 }
 
 -(void)tearDown {
@@ -71,14 +78,7 @@
   [super dealloc];
 }
 
--(void)testOnlineRequest {
-  ZNHttpRequestTestModel* requestModel = [[[ZNHttpRequestTestModel alloc] init]
-                                          autorelease];
-  requestModel.textVal = @"Something\0special";
-  requestModel.uintVal = 3141592;
-  requestModel.trueVal = YES;
-  requestModel.nilVal = nil;
-
+-(void)testOnlinePut {
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
                         requestModel, @"model",
                         @"someString", @"stringKey", nil];
@@ -126,6 +126,66 @@
                                             1.0]];
 
   STAssertEquals(YES, receivedResponse, @"Response never received");
+}
+
+-(void)testOnlineGetWithoutQuery {
+  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                        requestModel, @"model",
+                        @"someString", @"stringKey", nil];
+  [ZNHttpRequest callService:service
+                      method:kZNHttpMethodGet
+                        data:dict
+                 fieldCasing:kZNFormatterSnakeCase
+                      target:self
+                      action:@selector(checkOnlineGetWithoutQuery:)];
+  
+  [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                            1.0]];
+  
+  STAssertEquals(YES, receivedResponse, @"Response never received");  
+}
+-(void)checkOnlineGetWithoutQuery:(NSData*)response {
+  receivedResponse = YES;
+  STAssertFalse([response isKindOfClass:[NSError class]],
+                @"Error occured %@", response);
+  
+  NSString* responseString =
+      [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+  NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
+                        stringByAppendingPathComponent:
+                        @"ZNHttpRequestTest.get1"];
+  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
+                       responseString, @"Wrong request");
+}
+
+-(void)testOnlineGetWithQuery {
+  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                        requestModel, @"model",
+                        @"someString", @"stringKey", nil];
+  [ZNHttpRequest callService:[NSString stringWithFormat:@"%@?xarg=yes", service]
+                      method:kZNHttpMethodGet
+                        data:dict
+                 fieldCasing:kZNFormatterSnakeCase
+                      target:self
+                      action:@selector(checkOnlineGetWithQuery:)];
+  
+  [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                           1.0]];
+  
+  STAssertEquals(YES, receivedResponse, @"Response never received");  
+}
+-(void)checkOnlineGetWithQuery:(NSData*)response {
+  receivedResponse = YES;
+  STAssertFalse([response isKindOfClass:[NSError class]],
+                @"Error occured %@", response);
+  
+  NSString* responseString =
+  [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+  NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
+                        stringByAppendingPathComponent:
+                        @"ZNHttpRequestTest.get2"];
+  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
+                       responseString, @"Wrong request");
 }
 
 @end

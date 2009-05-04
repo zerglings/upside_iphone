@@ -16,10 +16,12 @@
 // Model for the response returned by the testbed.
 @interface ZNJsonHttpRequestTestModel : ZNModel {
   NSString* method;
+  NSString* uri;
   NSString* headers;
   NSString* body;
 }
 @property (nonatomic, retain) NSString* method;
+@property (nonatomic, retain) NSString* uri;
 @property (nonatomic, retain) NSString* headers;
 @property (nonatomic, retain) NSString* body;
 @end
@@ -27,9 +29,10 @@
 
 @implementation ZNJsonHttpRequestTestModel
 
-@synthesize method, headers, body;
+@synthesize method, uri, headers, body;
 -(void)dealloc {
   [method release];
+  [uri release];
   [headers release];
   [body release];
   [super dealloc];
@@ -93,12 +96,15 @@
 
   STAssertEqualStrings(@"get", response.method,
                        @"Request not issued using GET");
+  STAssertEqualStrings(@"/web_support/echo.json", response.uri,
+                       @"Incorrect request URI was used");
 }
 
 -(void)testOnlineRequest {
   ZNJsonHttpRequestTestModel* requestModel = [[[ZNJsonHttpRequestTestModel
                                                 alloc] init] autorelease];
   requestModel.method = @"Awesome method";
+  requestModel.uri = @"Awesome uri";
   requestModel.headers = @"Awesome headers";
   requestModel.body = @"Awesome body";
 
@@ -130,6 +136,8 @@
 
   STAssertEqualStrings(@"put", response.method,
                        @"Request not issued using PUT");
+  STAssertEqualStrings(@"/web_support/echo.json", response.uri,
+                       @"Incorrect request URI was used");
 
   NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
@@ -172,6 +180,8 @@
                        @"Model's headers not deserialized properly");
   STAssertEqualStrings(@"Method", model.method,
                        @"Model's method not deserialized properly");
+  STAssertEqualStrings(@"Uri", model.uri,
+                       @"Model's uri not deserialized properly");
 
   NSDictionary* nonmodel = [responseArray objectAtIndex:1];
   STAssertTrue([nonmodel isKindOfClass:[NSDictionary class]],

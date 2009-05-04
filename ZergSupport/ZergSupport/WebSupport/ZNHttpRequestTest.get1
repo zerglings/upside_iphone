@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <echo>
-  <method>put</method>
-  <uri>/web_support/echo.xml</uri>
+  <method>get</method>
+  <uri>/web_support/echo.xml?string_key=someString&amp;model%5Btrue_val%5D=true&amp;model%5Buint_val%5D=3141592&amp;model%5Btext_val%5D=Something%00special</uri>
   <headers>ACCEPT: */*
 ACCEPT_ENCODING: gzip, deflate
 ACCEPT_LANGUAGE: en-us
@@ -10,5 +10,5 @@ HOST: zn-testbed.heroku.com
 USER_AGENT: Zergling.Net Web Support/1.0
 VERSION: HTTP/1.0
 </headers>
-  <body>string_key=someString&amp;model%5Btrue_val%5D=true&amp;model%5Buint_val%5D=3141592&amp;model%5Btext_val%5D=Something%00special</body>
+  <body></body>
 </echo>
