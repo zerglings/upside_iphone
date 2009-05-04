@@ -61,6 +61,11 @@
 // Initializes with the properties of the given model.
 -(id)initWithModel:(ZNModel*)model;
 
+// Initializes with a JSON model.
+//
+// Slow because of JSON parsing. Intended for tests.
+-(id)initWithJson:(NSString*)jsonString;
+
 #pragma mark Saving Attributes
 
 // Serializes the model's attributes.

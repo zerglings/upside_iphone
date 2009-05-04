@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/3/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -16,10 +16,12 @@
 // Model for the response returned by the testbed.
 @interface ZNJsonHttpRequestTestModel : ZNModel {
   NSString* method;
+  NSString* uri;
   NSString* headers;
   NSString* body;
 }
 @property (nonatomic, retain) NSString* method;
+@property (nonatomic, retain) NSString* uri;
 @property (nonatomic, retain) NSString* headers;
 @property (nonatomic, retain) NSString* body;
 @end
@@ -27,9 +29,10 @@
 
 @implementation ZNJsonHttpRequestTestModel
 
-@synthesize method, headers, body;
+@synthesize method, uri, headers, body;
 -(void)dealloc {
   [method release];
+  [uri release];
   [headers release];
   [body release];
   [super dealloc];
@@ -78,7 +81,7 @@
                          action:@selector(checkOnlineGetResponse:)];
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
-  
+
   STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
@@ -86,22 +89,25 @@
   receivedResponse = YES;
   STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
-  
+
   ZNJsonHttpRequestTestModel* response = [responseArray objectAtIndex:0];
   STAssertTrue([response isKindOfClass:[ZNJsonHttpRequestTestModel class]],
                @"Response not deserialized using proper model");
-  
+
   STAssertEqualStrings(@"get", response.method,
                        @"Request not issued using GET");
+  STAssertEqualStrings(@"/web_support/echo.json", response.uri,
+                       @"Incorrect request URI was used");
 }
 
 -(void)testOnlineRequest {
   ZNJsonHttpRequestTestModel* requestModel = [[[ZNJsonHttpRequestTestModel
                                                 alloc] init] autorelease];
   requestModel.method = @"Awesome method";
+  requestModel.uri = @"Awesome uri";
   requestModel.headers = @"Awesome headers";
   requestModel.body = @"Awesome body";
-  
+
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
                         requestModel, @"model",
                         @"someString", @"stringKey", nil];
@@ -113,7 +119,7 @@
                                   nil]
                           target:self
                           action:@selector(checkOnlineResponse:)];
-  
+
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
   STAssertEquals(YES, receivedResponse, @"Response never received");
@@ -123,14 +129,16 @@
   receivedResponse = YES;
   STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
-  
+
   ZNJsonHttpRequestTestModel* response = [responseArray objectAtIndex:0];
   STAssertTrue([response isKindOfClass:[ZNJsonHttpRequestTestModel class]],
                @"Response not deserialized using proper model");
-  
+
   STAssertEqualStrings(@"put", response.method,
                        @"Request not issued using PUT");
-  
+  STAssertEqualStrings(@"/web_support/echo.json", response.uri,
+                       @"Incorrect request URI was used");
+
   NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNJsonHttpRequestTest.body"];
@@ -143,7 +151,7 @@
                         stringByAppendingPathComponent:
                         @"ZNJsonHttpRequestTest.json"];
   NSString* fileUrl = [[NSURL fileURLWithPath:filePath] absoluteString];
-  
+
   [ZNJsonHttpRequest callService:fileUrl
                           method:kZNHttpMethodGet
                             data:nil
@@ -152,7 +160,7 @@
                                   [NSNull class], @"/nonmodel", nil]
                           target:self
                           action:@selector(checkFileResponse:)];
-  
+
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
   STAssertEquals(YES, receivedResponse, @"Response never received");
@@ -162,7 +170,7 @@
   receivedResponse = YES;
   STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
-  
+
   ZNJsonHttpRequestTestModel* model = [responseArray objectAtIndex:0];
   STAssertTrue([model isKindOfClass:[ZNJsonHttpRequestTestModel class]],
                @"Model in response not deserialized properly");
@@ -172,11 +180,13 @@
                        @"Model's headers not deserialized properly");
   STAssertEqualStrings(@"Method", model.method,
                        @"Model's method not deserialized properly");
-  
+  STAssertEqualStrings(@"Uri", model.uri,
+                       @"Model's uri not deserialized properly");
+
   NSDictionary* nonmodel = [responseArray objectAtIndex:1];
   STAssertTrue([nonmodel isKindOfClass:[NSDictionary class]],
                @"Non-model in response not deserialized with NSDictionary");
-  
+
   NSDictionary* golden_nonmodel = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [NSNumber numberWithInt:1], @"key1",
                                    @"val2", @"key2", @"val3", @"keyThree", nil];

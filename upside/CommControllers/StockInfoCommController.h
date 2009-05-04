@@ -10,7 +10,7 @@
 
 // Communication controller for fetching stock data.
 //
-// Currently uses Yahoo finance.
+// Currently uses an undocumented Yahoo Finance CSV interface.
 @interface StockInfoCommController : NSObject {
   NSString* service;
   NSArray* responseProperties;

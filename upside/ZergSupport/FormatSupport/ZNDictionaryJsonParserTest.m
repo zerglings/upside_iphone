@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/2/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -14,7 +14,7 @@
 
 static NSString* kContextObject = @"This is the context";
 
-@interface ZNDictionaryJsonParserTest : 
+@interface ZNDictionaryJsonParserTest :
     SenTestCase <ZNDictionaryJsonParserDelegate> {
   ZNDictionaryJsonParser* parser;
   NSDictionary* json;
@@ -32,11 +32,11 @@ static NSString* kContextObject = @"This is the context";
             initWithKeyFormatter:[ZNFormFieldFormatter snakeToLCamelFormatter]];
   parser.context = kContextObject;
   parser.delegate = self;
-  
+
   NSString *filePath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNDictionaryJsonParserTest.json"];
-  
+
   NSData* data = [NSData dataWithContentsOfFile:filePath];
   json = nil;
   parseSuccess = [parser parseData:data];
@@ -58,7 +58,7 @@ static NSString* kContextObject = @"This is the context";
 -(void)testPrimitives {
   NSDictionary* primitives = [json objectForKey:@"primitives"];
   STAssertNotNil(primitives, @"primitives object not parsed");
-  
+
   STAssertEqualObjects([NSNumber numberWithBool:YES],
                        [primitives objectForKey:@"true"], @"true FAIL");
   STAssertEqualObjects([NSNumber numberWithBool:NO],
@@ -70,7 +70,7 @@ static NSString* kContextObject = @"This is the context";
 -(void)testNumbers {
   NSDictionary* numbers = [json objectForKey:@"numbers"];
   STAssertNotNil(numbers, @"numbers object not parsed");
-  
+
   STAssertEqualObjects([NSNumber numberWithInteger:0],
                        [numbers objectForKey:@"zero"], @"zero FAIL");
   STAssertEqualObjects([NSNumber numberWithInteger:-1000],
@@ -84,7 +84,7 @@ static NSString* kContextObject = @"This is the context";
 -(void)testArrays {
   NSDictionary* arrays = [json objectForKey:@"arrays"];
   STAssertNotNil(arrays, @"arrays object not parsed");
-  
+
   NSArray* goldSimple =
       [NSArray arrayWithObjects:
        [NSNumber numberWithInteger:1], @"a", [NSNumber numberWithBool:YES],
@@ -110,7 +110,7 @@ static NSString* kContextObject = @"This is the context";
 -(void)testStrings {
   NSDictionary* strings = [json objectForKey:@"strings"];
   STAssertNotNil(strings, @"strings object not parsed");
-  
+
   STAssertEqualStrings(@"", [strings objectForKey:@"empty"],
                        @"empty FAIL");
   STAssertEqualStrings(@"awkward but not odd", [strings objectForKey:@"simple"],
@@ -124,13 +124,13 @@ static NSString* kContextObject = @"This is the context";
                        @"double quotes FAIL");
   STAssertEqualStrings(@"\"single\" quotes",
                        [strings objectForKey:@"squotes"],
-                       @"single quotes FAIL");  
+                       @"single quotes FAIL");
 }
 
 -(void)testKeyFormatting {
   NSDictionary* formatting = [json objectForKey:@"caseFormatting"];
   STAssertNotNil(formatting, @"caseFormatting object not parsed");
-  
+
   STAssertEqualStrings(@"more_snakes", [formatting objectForKey:@"snakeCase"],
                        @"snake to camel key conversion failed");
   STAssertEqualStrings(@"moreCamels",
@@ -146,7 +146,7 @@ static NSString* kContextObject = @"This is the context";
                        [ZNDictionaryJsonParser
                         parseValue:@"{'a': 1, 'b': false}"],
                        @"Dictionary value parsing");
-  
+
   NSArray* goldArray = [NSArray arrayWithObjects:
                         @"a", [NSNumber numberWithInt:1], @"b", [NSNull null],
                         nil];

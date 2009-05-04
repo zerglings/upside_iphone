@@ -46,7 +46,7 @@
 #pragma mark ObjC Metadata Parsing
 
 +(objc_property_t*)copyModelPropertiesForClass:(Class)klass
-                    outCount:(unsigned int*)outCount {
+                                      outCount:(unsigned int*)outCount {
   // Iterate through implemented protocols, see if one of them is named
   // ClassName_ZNMS.
   const char* className = class_getName(klass);

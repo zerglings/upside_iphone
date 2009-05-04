@@ -54,7 +54,7 @@
   NSDictionary* properties = (NSDictionary*)[ZNDictionaryJsonParser
                                              parseValue:jsonString];
   NSAssert([properties isKindOfClass:[NSDictionary class]],
-           @"Models can only be initialized with hash JSONs");           
+           @"Models can only be initialized with hash JSONs");
   id returnValue = [self initWithModel:nil properties:properties];
   [properties release];
   return returnValue;
@@ -148,13 +148,13 @@
 +(BOOL)isModelClass:(id)maybeModelClass {
   // Plain objects.
   if (![maybeModelClass respondsToSelector:@selector(alloc)]) {
-    return NO;    
+    return NO;
   }
 
   // Walk up the chain and find ZNModel
   while (maybeModelClass && maybeModelClass != [NSObject class]) {
     if (maybeModelClass == [ZNModel class]) {
-      return YES;      
+      return YES;
     }
     maybeModelClass = [maybeModelClass superclass];
   }
@@ -173,7 +173,7 @@
   for (int i = 0; i < numClasses; i++) {
     Class klass = classes[i];
     if (class_respondsToSelector(klass, mss) && [ZNModel isModelClass:klass]) {
-      classes[modelClasses++] = klass;      
+      classes[modelClasses++] = klass;
     }
   }
 

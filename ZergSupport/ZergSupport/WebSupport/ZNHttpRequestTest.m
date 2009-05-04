@@ -61,7 +61,7 @@
   receivedResponse = NO;
   [self warmUpHerokuService:service];
   [ZNHttpRequest deleteCookiesForService:service];
-  
+
   requestModel = [[[ZNHttpRequestTestModel alloc] init] autorelease];
   requestModel.textVal = @"Something\0special";
   requestModel.uintVal = 3141592;
@@ -138,17 +138,17 @@
                  fieldCasing:kZNFormatterSnakeCase
                       target:self
                       action:@selector(checkOnlineGetWithoutQuery:)];
-  
+
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
-  
-  STAssertEquals(YES, receivedResponse, @"Response never received");  
+
+  STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 -(void)checkOnlineGetWithoutQuery:(NSData*)response {
   receivedResponse = YES;
   STAssertFalse([response isKindOfClass:[NSError class]],
                 @"Error occured %@", response);
-  
+
   NSString* responseString =
       [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
   NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
@@ -168,17 +168,17 @@
                  fieldCasing:kZNFormatterSnakeCase
                       target:self
                       action:@selector(checkOnlineGetWithQuery:)];
-  
+
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                            1.0]];
-  
-  STAssertEquals(YES, receivedResponse, @"Response never received");  
+
+  STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 -(void)checkOnlineGetWithQuery:(NSData*)response {
   receivedResponse = YES;
   STAssertFalse([response isKindOfClass:[NSError class]],
                 @"Error occured %@", response);
-  
+
   NSString* responseString =
   [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
   NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]

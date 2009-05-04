@@ -234,7 +234,7 @@
   NSString* jsonString =
       @"{'trueVal': true, 'falseVal': false, 'doubleVal': 3.141592, 'integerVal': -3141592, 'uintegerVal': 2271560481, 'stringVal': 'Awesome \\u0000 test String'}";
   ZNModel* testModel = [[ZNTestNumbers alloc] initWithJson:jsonString];
-  
+
   STAssertEqualStrings([numbersModel description], [testModel description],
                        @"JSON initialization failed");
   [testModel release];

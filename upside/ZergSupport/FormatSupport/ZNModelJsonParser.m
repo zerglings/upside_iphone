@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/3/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNModelJsonParser.h"
@@ -29,20 +29,20 @@
       documentCasing:(ZNFormatterCasing)documentCasing {
   NSAssert([queries count] % 2 == 0,
            @"Query set has a dangling model (without a query)");
-  
+
   if ((self = [super init])) {
     null = [NSNull class];
-    
+
     // Set up parser.
     parser = [[ZNDictionaryJsonParser alloc]
               initWithKeyFormatter:[ZNFormFieldFormatter
                                     formatterToPropertiesFrom:documentCasing]];
     parser.delegate = self;
-    
+
     // Compile schema.
     compiledQueries = [[NSMutableArray alloc] initWithCapacity:[queries count]];
     for (NSUInteger i = 0; i < [queries count]; i += 2) {
-      Class modelClass = [queries objectAtIndex:i];      
+      Class modelClass = [queries objectAtIndex:i];
       if ([ZNModel isModelClass:modelClass]) {
         [compiledQueries addObject:modelClass];
       }
@@ -79,7 +79,7 @@
   for (NSUInteger i = 0; i < [compiledQueries count]; i += 2) {
     Class modelClass = [compiledQueries objectAtIndex:i];
     ZNObjectQuery* query = [compiledQueries objectAtIndex:(i + 1)];
-    
+
     NSArray* results = [query run:jsonData];
     for (NSObject* result in results) {
       if (modelClass == null) {
@@ -88,7 +88,7 @@
       else {
         NSAssert([result isKindOfClass:[NSDictionary class]],
                  @"Non-hash JSON object used to initialize model");
-        
+
         if ([result isKindOfClass:[NSDictionary class]]) {
           ZNModel* model =
               [[modelClass alloc] initWithModel:nil

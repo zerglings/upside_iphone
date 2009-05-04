@@ -1,6 +1,7 @@
 {
   "model": {
     "method": "Method",
+    "uri": "Uri",
     "body": "Body",
     "headers": "Headers"
   },

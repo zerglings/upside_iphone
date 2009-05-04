@@ -42,22 +42,42 @@
                                 method:(NSString*)method
                                   data:(NSDictionary*)data
                            fieldCasing:(ZNFormatterCasing)fieldCasing {
-  NSURL* url = [[NSURL alloc] initWithString:service];
-  NSMutableURLRequest* request = [[NSMutableURLRequest alloc]
-                                  initWithURL:url];
-  [url release];
+  NSMutableURLRequest* request = [[NSMutableURLRequest alloc] init];
 
   [request setHTTPMethod:method];
   ZNFormFieldFormatter* fieldFormatter =
-  [ZNFormFieldFormatter formatterFromPropertiesTo:fieldCasing];
+      [ZNFormFieldFormatter formatterFromPropertiesTo:fieldCasing];
   NSData* encodedBody = [ZNFormURLEncoder copyEncodingFor:data
                                       usingFieldFormatter:fieldFormatter];
 
-  [request setHTTPBody:encodedBody];
+  if ([encodedBody length] != 0 && [method isEqualToString:kZNHttpMethodGet] ||
+      [method isEqualToString:kZNHttpMethodDelete]) {
+    // GET and DELETE don't have a body, parameters must be encoded in the URL.
+    NSString* urlTail = [[NSString alloc] initWithData:encodedBody
+                                              encoding:NSUTF8StringEncoding];
+    NSString* urlFormat = ([service rangeOfString:@"?"].length > 0) ? @"%@&%@" :
+        @"%@?%@";
+    NSString* urlString = [[NSString alloc] initWithFormat:urlFormat,
+                           service, urlTail];
+    NSURL* url = [[NSURL alloc] initWithString:urlString];
+    [request setURL:url];
+    [url release];
+    [urlString release];
+    [urlTail release];
+    [request setHTTPBody:nil];
+  }
+  else {
+    // POST and PUT are allowed to have a body.
+    NSURL* url = [[NSURL alloc] initWithString:service];
+    [request setURL:url];
+    [url release];
+    [request setHTTPBody:encodedBody];
+  }
 
   [request addValue:@"application/x-www-form-urlencoded; charset=utf-8"
  forHTTPHeaderField:@"Content-Type"];
-  [request addValue:[NSString stringWithFormat:@"%u", [encodedBody length]]
+  [request addValue:[NSString stringWithFormat:@"%u",
+                     [[request HTTPBody] length]]
  forHTTPHeaderField:@"Content-Length"];
   [request addValue:@"Zergling.Net Web Support/1.0"
  forHTTPHeaderField:@"User-Agent"];

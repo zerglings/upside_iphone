@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/1/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNDictionaryJsonParser.h"
@@ -41,7 +41,7 @@ static void ZNJSONSkipComma(ZNJsonParseContext* context) {
   ZNJSONSkipWhiteSpace(context);
   if (context->bytes < context->endOfBytes && *context->bytes == ',') {
     context->bytes++;
-  }  
+  }
 }
 
 // Parses an JSON string. The cursor is right after the opening " or '.
@@ -80,7 +80,7 @@ static NSString* ZNJSONParseString(ZNJsonParseContext* context,
         [string appendString:stringPiece];
         [stringPiece release];
       }
-      
+
       // Parse escape sequence.
       stringStart++;
       if (stringStart < context->bytes) {
@@ -122,7 +122,7 @@ static NSString* ZNJSONParseString(ZNJsonParseContext* context,
             [stringPiece release];
             stringStart++;
             break;
-          }  
+          }
           default: {  // ', ", \ or /
             NSString* stringPiece =
                 [[NSString alloc] initWithBytes:stringStart
@@ -145,7 +145,7 @@ static NSString* ZNJSONParseString(ZNJsonParseContext* context,
     context->bytes++;
     return [[NSString alloc] initWithBytes:stringStart
                                     length:stringLength
-                                  encoding:NSUTF8StringEncoding];    
+                                  encoding:NSUTF8StringEncoding];
   }
 }
 
@@ -159,12 +159,12 @@ static NSObject* ZNJSONParsePrimitive(ZNJsonParseContext* context,
     return nil;
   }
   context->bytes += expectedLength;
-  
+
   return primitive;
 }
 
 // Parses a JSON number. The cursor is at the first character.
-static NSNumber* ZNJSONParseNumber(ZNJsonParseContext* context) {  
+static NSNumber* ZNJSONParseNumber(ZNJsonParseContext* context) {
   const uint8_t* numberStart = context->bytes;
   while (context->bytes < context->endOfBytes) {
     switch(*context->bytes) {
@@ -173,7 +173,7 @@ static NSNumber* ZNJSONParseNumber(ZNJsonParseContext* context) {
       case '.':
         // If we ever need a float flag, flip here and break.
       case '-':
-        // If we ever need a sign flag, flip here and break.        
+        // If we ever need a sign flag, flip here and break.
       case '+':
       case '0':
       case '1':
@@ -184,37 +184,37 @@ static NSNumber* ZNJSONParseNumber(ZNJsonParseContext* context) {
       case '6':
       case '7':
       case '8':
-      case '9':        
+      case '9':
         break;
       default:
         goto breakOutOfWhile;  // Breaks out of the enclosing while.
     }
     context->bytes++;
-  }  
+  }
 breakOutOfWhile:
-  
+
   {
     NSUInteger numberLength = context->bytes - numberStart;
     if (numberLength == 0) {
       return nil;
     }
-    NSString* numberString = 
+    NSString* numberString =
       [[NSString alloc] initWithBytes:numberStart
                                length:numberLength
                              encoding:NSUTF8StringEncoding];
     NSNumber* number = [jsonNumberParser numberFromString:numberString];
     [numberString release];
     [number retain];
-    return number;  
+    return number;
   }
 }
 
 // Parses an JSON array. The cursor is right after the opening [.
 //
 // Returns a NSArray representing the array, owned by the caller.
-static NSArray* ZNJSONParseArray(ZNJsonParseContext* context) {  
+static NSArray* ZNJSONParseArray(ZNJsonParseContext* context) {
   NSMutableArray* array = [[NSMutableArray alloc] init];
-  
+
   while (true) {
     ZNJSONSkipWhiteSpace(context);
     if (context->bytes >= context->endOfBytes) {
@@ -225,28 +225,28 @@ static NSArray* ZNJSONParseArray(ZNJsonParseContext* context) {
       context->bytes++;
       break;
     }
-    
+
     NSObject* object = ZNJSONParseValue(context);
     if (!object) {
       [array release];
       return nil;
     }
     [array addObject:object];
-    
+
     ZNJSONSkipComma(context);
   }
-  
+
   NSArray* returnValue = [[NSArray alloc] initWithArray:array];
   [array release];
-  return returnValue;  
+  return returnValue;
 }
 
 // Parses an JSON object. The cursor is right after the opening {.
 //
 // Returns a NSDictionary representing the object, owned by the caller.
-static NSDictionary* ZNJSONParseObject(ZNJsonParseContext* context) {  
+static NSDictionary* ZNJSONParseObject(ZNJsonParseContext* context) {
   NSMutableDictionary* object = [[NSMutableDictionary alloc] init];
-  
+
   while (true) {
     // Whitespace
     ZNJSONSkipWhiteSpace(context);
@@ -259,12 +259,12 @@ static NSDictionary* ZNJSONParseObject(ZNJsonParseContext* context) {
       context->bytes++;
       break;
     }
-    
+
     if (*context->bytes != '"' && *context->bytes != '\'') {
       [object release];
       return nil;
     }
-    
+
     // Property name.
     NSString* rawName = ZNJSONParseString(context, *context->bytes++);
     if (!rawName) {
@@ -273,7 +273,7 @@ static NSDictionary* ZNJSONParseObject(ZNJsonParseContext* context) {
     }
     NSString* name = [context->keyFormatter copyFormattedName:rawName];
     [rawName release];
-    
+
     // : separator
     ZNJSONSkipWhiteSpace(context);
     if (context->bytes >= context->endOfBytes || *context->bytes != ':') {
@@ -282,7 +282,7 @@ static NSDictionary* ZNJSONParseObject(ZNJsonParseContext* context) {
       return nil;
     }
     context->bytes++;
-    
+
     // Value
     NSObject* value = ZNJSONParseValue(context);
     if (!value) {
@@ -292,7 +292,7 @@ static NSDictionary* ZNJSONParseObject(ZNJsonParseContext* context) {
     }
     [object setValue:value forKey:name];
     [value release];
-    
+
     // Potential , separator
     ZNJSONSkipComma(context);
   }
@@ -307,31 +307,31 @@ static NSObject* ZNJSONParseValue(ZNJsonParseContext* context) {
   if (context->bytes >= context->endOfBytes) {
     return nil;
   }
-  
+
   switch (*context->bytes) {
     case '"':  // String.
     case '\'':
       return ZNJSONParseString(context, *(context->bytes++));
-      
+
     case '[':  // Array.
       context->bytes++;
       return ZNJSONParseArray(context);
-      
+
     case '{':  // Object
       context->bytes++;
       return ZNJSONParseObject(context);
-      
+
     case 't':  // true
       return ZNJSONParsePrimitive(context, "true", 4,
                                   [[NSNumber alloc] initWithBool:YES]);
-      
+
     case 'f':  // false
       return ZNJSONParsePrimitive(context, "false", 5,
                                   [[NSNumber alloc] initWithBool:NO]);
-      
+
     case 'n':  // null
       return ZNJSONParsePrimitive(context, "null", 4, [[NSNull alloc] init]);
-      
+
     default:  // number
       return ZNJSONParseNumber(context);
   }
@@ -342,7 +342,7 @@ static NSDictionary *ZNJSONParseData(ZNJsonParseContext* context) {
   while (context->bytes < context->endOfBytes && *context->bytes != '{') {
     context->bytes++;
   }
-  
+
   // No JSON.
   if (context->bytes == context->endOfBytes)
     return NO;
@@ -376,7 +376,7 @@ static NSDictionary *ZNJSONParseData(ZNJsonParseContext* context) {
     [ZNDictionaryJsonParser setupParsers];
     keyFormatter = [theKeyFormatter retain];
   }
-  return self;  
+  return self;
 }
 
 -(void)dealloc {
@@ -389,7 +389,7 @@ static NSDictionary *ZNJSONParseData(ZNJsonParseContext* context) {
   parseContext.keyFormatter = keyFormatter;
   parseContext.bytes = [data bytes];
   parseContext.endOfBytes = parseContext.bytes + [data length];
-  
+
   NSDictionary* jsonData = ZNJSONParseData(&parseContext);
   if (!jsonData) {
     return NO;
@@ -401,13 +401,13 @@ static NSDictionary *ZNJSONParseData(ZNJsonParseContext* context) {
 
 +(NSObject*)parseValue:(NSString*)jsonValue {
   [ZNDictionaryJsonParser setupParsers];
-  
-  NSData* data = [jsonValue dataUsingEncoding:NSUTF8StringEncoding];  
+
+  NSData* data = [jsonValue dataUsingEncoding:NSUTF8StringEncoding];
   ZNJsonParseContext parseContext;
   parseContext.keyFormatter = [ZNFormFieldFormatter identityFormatter];
   parseContext.bytes = [data bytes];
   parseContext.endOfBytes = parseContext.bytes + [data length];
-  
+
   return ZNJSONParseValue(&parseContext);
 }
 

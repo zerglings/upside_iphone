@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/3/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -36,9 +36,9 @@
 
 @interface ZNModelJsonParserTest : SenTestCase <ZNModelJsonParserDelegate> {
   ZNModelJsonParser* parser;
-  
+
   NSMutableArray* items;
-  NSMutableArray* dupItems;  
+  NSMutableArray* dupItems;
 }
 @end
 
@@ -50,14 +50,14 @@ static NSString* kContextObject = @"This is the context";
   NSArray* queries = [NSArray arrayWithObjects:
                       [ZNJsonParserTestModel class], @"/models/?",
                       [NSNull class], @"/raw", nil];
-  
+
   parser = [[ZNModelJsonParser alloc] initWithQueries:queries
                                        documentCasing:kZNFormatterSnakeCase];
   parser.context = kContextObject;
   parser.delegate = self;
-  
+
   items = [[NSMutableArray alloc] init];
-  dupItems = [[NSMutableArray alloc] init];  
+  dupItems = [[NSMutableArray alloc] init];
 }
 
 -(void)tearDown {
@@ -72,7 +72,7 @@ static NSString* kContextObject = @"This is the context";
 
 -(void)checkParseResults {
   STAssertEqualObjects(items, dupItems, @"Object data changed during parsing");
-    
+
   ZNJsonParserTestModel* firstModel = [items objectAtIndex:0];
   STAssertTrue([firstModel isKindOfClass:[ZNJsonParserTestModel class]],
                @"Wrong model class instantiated for first model");
@@ -82,7 +82,7 @@ static NSString* kContextObject = @"This is the context";
                              @"Wrong value for first model's float property");
   STAssertEquals(YES, firstModel.boolean,
                  @"Wrong value for first model's boolean property");
-  
+
   ZNJsonParserTestModel* secondModel = [items objectAtIndex:1];
   STAssertTrue([secondModel isKindOfClass:[ZNJsonParserTestModel class]],
                @"Wrong model class instantiated for second model");
@@ -92,12 +92,12 @@ static NSString* kContextObject = @"This is the context";
                              @"Wrong value for second model's float property");
   STAssertEquals(NO, secondModel.boolean,
                  @"Wrong value for second model's boolean property");
-  
+
   NSDictionary* goldenRaw = [NSDictionary dictionaryWithObjectsAndKeys:
                              [NSNumber numberWithInt:1], @"one",
                              @"My Name", @"name", nil];
   STAssertEqualObjects(goldenRaw, [items objectAtIndex:2],
-                       @"Failed to parse object with no model");  
+                       @"Failed to parse object with no model");
 }
 
 
@@ -107,7 +107,7 @@ static NSString* kContextObject = @"This is the context";
                         @"ZNModelJsonParserTest.json"];
   BOOL success = [parser parseData:[NSData dataWithContentsOfFile:filePath]];
   STAssertTrue(success, @"Parsing failed on ZNModelJsonParserTest.json");
-  
+
   [self checkParseResults];
 }
 
@@ -115,7 +115,7 @@ static NSString* kContextObject = @"This is the context";
             context:(id)context {
   STAssertEquals(kContextObject, context,
                  @"Wrong context passed to -parsedObject");
-  
+
   [items addObject:object];
   [dupItems addObject:[NSDictionary
                        dictionaryWithDictionary:(NSDictionary*)object]];
@@ -125,7 +125,7 @@ static NSString* kContextObject = @"This is the context";
            context:(id)context {
   STAssertEquals(kContextObject, context,
                  @"Wrong context passed to -parsedModel");
-  
+
   [items addObject:model];
   [dupItems addObject:model];
 }

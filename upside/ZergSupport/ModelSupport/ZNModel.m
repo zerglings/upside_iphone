@@ -8,6 +8,7 @@
 
 #import "ZNModel.h"
 
+#import "FormatSupport.h"
 #import "ZNModelDefinition.h"
 #import "ZNModelDefinitionAttribute.h"
 #import "ZNMSAttributeType.h"
@@ -49,6 +50,16 @@
   return [self initWithModel:model properties:nil];
 }
 
+-(id)initWithJson:(NSString*)jsonString {
+  NSDictionary* properties = (NSDictionary*)[ZNDictionaryJsonParser
+                                             parseValue:jsonString];
+  NSAssert([properties isKindOfClass:[NSDictionary class]],
+           @"Models can only be initialized with hash JSONs");
+  id returnValue = [self initWithModel:nil properties:properties];
+  [properties release];
+  return returnValue;
+}
+
 -(void)dealloc {
   [props release];
   [super dealloc];
@@ -60,17 +71,17 @@
   NSMutableDictionary* supplementalProps = [[NSMutableDictionary alloc] init];
 
   ZNModelDefinition* definition = [[ZNMSRegistry sharedRegistry]
-                   definitionForModelClass:[self class]];
+                                   definitionForModelClass:[self class]];
   NSDictionary* defAttributes = [definition attributes];
   for(NSString* attributeName in dictionary) {
     NSObject* boxedObject = [dictionary objectForKey:attributeName];
     ZNModelDefinitionAttribute* attribute = [defAttributes
-                         objectForKey:attributeName];
+                                             objectForKey:attributeName];
     if (attribute) {
       ZNMSAttributeType* attributeType = [attribute type];
       [attributeType unboxAttribute:attribute
-                 inInstance:self
-                   from:boxedObject];
+                         inInstance:self
+                               from:boxedObject];
     }
     else {
       [supplementalProps setObject:boxedObject forKey:attributeName];
@@ -86,18 +97,18 @@
 
 -(NSMutableDictionary*)copyToMutableDictionaryForcingStrings:(BOOL)forceStrings {
   NSMutableDictionary* attributes = [[NSMutableDictionary alloc]
-                      initWithDictionary:props];
+                                     initWithDictionary:props];
   ZNModelDefinition* definition = [[ZNMSRegistry sharedRegistry]
-                   definitionForModelClass:[self class]];
+                                   definitionForModelClass:[self class]];
 
   NSDictionary* defAttributes = [definition attributes];
   for (NSString* attributeName in defAttributes) {
     ZNModelDefinitionAttribute* attribute = [defAttributes
-                         objectForKey:attributeName];
+                                             objectForKey:attributeName];
     ZNMSAttributeType* attributeType = [attribute type];
     NSObject* boxedValue = [attributeType boxAttribute:attribute
-                        inInstance:self
-                         forceString:forceStrings];
+                                            inInstance:self
+                                           forceString:forceStrings];
     if (boxedValue != nil)
       [attributes setObject:boxedValue forKey:attributeName];
   }
@@ -109,7 +120,7 @@
       [self copyToMutableDictionaryForcingStrings:forceStrings];
 
   NSDictionary* dictionary = [[NSDictionary alloc]
-                initWithDictionary:attributes];
+                              initWithDictionary:attributes];
   [attributes release];
   return dictionary;
 }
@@ -120,15 +131,15 @@
 
 -(NSMutableDictionary*)attributeMutableDictionaryForcingStrings:(BOOL)forceStrings {
   return [[self copyToMutableDictionaryForcingStrings:forceStrings]
-      autorelease];
+          autorelease];
 }
 
 #pragma mark Debugging
 
 -(NSString*)description {
   return [NSString stringWithFormat:@"<ZNModel name=%s attributes=%@>",
-      class_getName([self class]),
-      [[self attributeDictionaryForcingStrings:YES] description]];
+          class_getName([self class]),
+          [[self attributeDictionaryForcingStrings:YES] description]];
 }
 
 
@@ -136,13 +147,15 @@
 
 +(BOOL)isModelClass:(id)maybeModelClass {
   // Plain objects.
-  if (![maybeModelClass respondsToSelector:@selector(alloc)])
+  if (![maybeModelClass respondsToSelector:@selector(alloc)]) {
     return NO;
+  }
 
   // Walk up the chain and find ZNModel
   while (maybeModelClass && maybeModelClass != [NSObject class]) {
-    if (maybeModelClass == [ZNModel class])
+    if (maybeModelClass == [ZNModel class]) {
       return YES;
+    }
     maybeModelClass = [maybeModelClass superclass];
   }
   return NO;
@@ -159,8 +172,9 @@
   SEL mss = @selector(methodSignatureForSelector:);
   for (int i = 0; i < numClasses; i++) {
     Class klass = classes[i];
-    if (class_respondsToSelector(klass, mss) && [ZNModel isModelClass:klass])
+    if (class_respondsToSelector(klass, mss) && [ZNModel isModelClass:klass]) {
       classes[modelClasses++] = klass;
+    }
   }
 
   // Wrap the result in an NSArray.

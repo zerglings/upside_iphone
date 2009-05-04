@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/2/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -52,7 +52,7 @@
 
   NSString* wildcards = @"|*|two|?|3";
   NSArray* goldenWildcards = [NSArray arrayWithObjects:
-                              [NSNumber numberWithBool:YES], @"two", 
+                              [NSNumber numberWithBool:YES], @"two",
                               [NSNumber numberWithBool:NO], @"3", nil];
   STAssertEqualObjects(goldenWildcards,
                        [ZNObjectQuery splitQueryString:wildcards],
@@ -67,7 +67,7 @@
   [result release];
   [query release];
 }
- 
+
 -(void)testArrayIndexing {
   ZNObjectQuery* query = [ZNObjectQuery compile:@"/2/1/0"];
   NSArray* result = [query run:simpleArray];
@@ -100,7 +100,7 @@
                       @"[['a', 'b', 'c'], ['d', 'e', 'f']]"];
   ZNObjectQuery* query = [ZNObjectQuery compile:@"/?/2"];
   NSArray* result = [query run:object];
-  NSArray* goldenResult = [NSArray arrayWithObjects:@"c", @"f", nil]; 
+  NSArray* goldenResult = [NSArray arrayWithObjects:@"c", @"f", nil];
   STAssertEqualObjects(goldenResult,
                        result, @"Single-level wild card in arrays");
   [result release];
@@ -121,11 +121,11 @@
   ZNObjectQuery* query = [ZNObjectQuery compile:@"/2/?"];
   NSArray* result = [query run:simpleArray];
   STAssertEqualObjects([ZNDictionaryJsonParser parseValue:
-                        @"[['e', 'f'], ['g', 'h', 'i', 'j']]"],                       
+                        @"[['e', 'f'], ['g', 'h', 'i', 'j']]"],
                        result, @"Single-level wild card in arrays");
   [result release];
   [query release];
-  
+
 }
 
 -(void)testSingleLevelInHashesImmediate {
