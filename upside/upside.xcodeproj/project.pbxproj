@@ -41,6 +41,8 @@
 		5711926B0F1BA38400FD89EA /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
 		571193850F1BEE2C00FD89EA /* NewsTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571193840F1BEE2C00FD89EA /* NewsTableCellNarrow.xib */; };
 		571193880F1BEE7900FD89EA /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 571193870F1BEE7900FD89EA /* NewsTableViewCell.m */; };
+		571877840FB20402003E03D5 /* TickerSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 571877830FB20402003E03D5 /* TickerSearchTableViewCell.m */; };
+		571877860FB20437003E03D5 /* TickerSearchTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571877850FB20437003E03D5 /* TickerSearchTableCellNarrow.xib */; };
 		571A234C0F189EB700A996A2 /* NewsCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A234B0F189EB700A996A2 /* NewsCenter.m */; };
 		571A23B70F18BA4B00A996A2 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D88F50F16EA6400D54544 /* NewsItem.m */; };
 		571A258F0F19729D00A996A2 /* AssetBook+RSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A258E0F19729D00A996A2 /* AssetBook+RSS.m */; };
@@ -407,6 +409,9 @@
 		571193840F1BEE2C00FD89EA /* NewsTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableCellNarrow.xib; sourceTree = "<group>"; };
 		571193860F1BEE7900FD89EA /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
 		571193870F1BEE7900FD89EA /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
+		571877820FB20402003E03D5 /* TickerSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TickerSearchTableViewCell.h; sourceTree = "<group>"; };
+		571877830FB20402003E03D5 /* TickerSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TickerSearchTableViewCell.m; sourceTree = "<group>"; };
+		571877850FB20437003E03D5 /* TickerSearchTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TickerSearchTableCellNarrow.xib; sourceTree = "<group>"; };
 		571A234A0F189EB700A996A2 /* NewsCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCenter.h; sourceTree = "<group>"; };
 		571A234B0F189EB700A996A2 /* NewsCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenter.m; sourceTree = "<group>"; };
 		571A23D60F18D5B400A996A2 /* NewsCenterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCenterTest.m; sourceTree = "<group>"; };
@@ -945,6 +950,9 @@
 				572049680FB100BD00E08962 /* TickerSearchViewController.m */,
 				572049ED0FB10FB600E08962 /* TickerSearchTableViewController.h */,
 				572049EE0FB10FB600E08962 /* TickerSearchTableViewController.m */,
+				571877820FB20402003E03D5 /* TickerSearchTableViewCell.h */,
+				571877830FB20402003E03D5 /* TickerSearchTableViewCell.m */,
+				571877850FB20437003E03D5 /* TickerSearchTableCellNarrow.xib */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
@@ -1522,6 +1530,7 @@
 				5746BEC40F5D12F00007C57C /* OverviewTableCellNarrow.xib in Resources */,
 				5746BECC0F5D133E0007C57C /* OverviewTableViewController.xib in Resources */,
 				57CB47830FB0F3FE00F40CBA /* TickerSearchViewController.xib in Resources */,
+				571877860FB20437003E03D5 /* TickerSearchTableCellNarrow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1632,6 +1641,7 @@
 				57AC66590FAE4F3E00512D70 /* StockSearchCommController.m in Sources */,
 				572049690FB100BD00E08962 /* TickerSearchViewController.m in Sources */,
 				572049EF0FB10FB600E08962 /* TickerSearchTableViewController.m in Sources */,
+				571877840FB20402003E03D5 /* TickerSearchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

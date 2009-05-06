@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "GameAwareTableViewController.h"
 
-@interface TickerSearchTableViewController : UITableViewController {
+
+@interface TickerSearchTableViewController : GameAwareTableViewController {
   NSArray* searchResults;
   id target;
   SEL action;

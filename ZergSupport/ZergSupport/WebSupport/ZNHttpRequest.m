@@ -45,6 +45,9 @@
   NSMutableURLRequest* request = [[NSMutableURLRequest alloc] init];
 
   [request setHTTPMethod:method];
+  [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
+  [request setHTTPShouldHandleCookies:YES];
+  
   ZNFormFieldFormatter* fieldFormatter =
       [ZNFormFieldFormatter formatterFromPropertiesTo:fieldCasing];
   NSData* encodedBody = [ZNFormURLEncoder copyEncodingFor:data
@@ -192,7 +195,7 @@ didReceiveResponse:(NSURLResponse*)response {
   }
   else {
     [[NSHTTPCookieStorage sharedHTTPCookieStorage]
-     setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain];
+     setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
     NSURLConnection* connection =
         [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
     [connection release];

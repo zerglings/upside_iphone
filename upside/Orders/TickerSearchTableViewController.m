@@ -9,6 +9,7 @@
 #import "TickerSearchTableViewController.h"
 
 #import "StockSearchCommController.h"
+#import "TickerSearchTableViewCell.h"
 
 
 @implementation TickerSearchTableViewController
@@ -22,14 +23,18 @@
 }
 */
 
-/*
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  self.narrowCellNib = @"TickerSearchTableCellNarrow";
+  self.wideCellNib = @"TickerSearchTableCellNarrow";
+  self.narrowCellReuseIdentifier = @"TickerSearchNarrow";
+  self.wideCellReuseIdentifier = @"TickerSearchNarrow";
+  self.cellClass = [TickerSearchTableViewCell class];
+  
+  // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+  // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,17 +83,12 @@
 }
 
 
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {    
-  static NSString *CellIdentifier = @"Cell";
-    
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-  }
-    
-  // Set up the cell...
-  cell.text = [(StockSearchData*)[searchResults objectAtIndex:indexPath.row] name];
+-(UITableViewCell *)tableView:(UITableView *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  TickerSearchTableViewCell* cell =
+      (TickerSearchTableViewCell*)[super tableView:tableView
+                             cellForRowAtIndexPath:indexPath];
+  cell.stockData = [searchResults objectAtIndex:indexPath.row];
 
   return cell;
 }

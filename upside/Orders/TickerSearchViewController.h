@@ -13,7 +13,7 @@
 
 
 @interface TickerSearchViewController : UIViewController <UISearchBarDelegate> {
-  IBOutlet UISearchBar* searchBar;
+  IBOutlet UISearchBar* tickerSearchBar;
   IBOutlet TickerSearchTableViewController* resultsTableViewController;
   
   StockSearchCommController* commController;

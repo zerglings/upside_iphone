@@ -11,6 +11,7 @@
 @class TradeOrder;
 @class Stock;
 
+
 @interface OrderTableViewCell : UITableViewCell {
   IBOutlet UILabel* tickerLabel;
   IBOutlet UILabel* buyOrSellLabel;

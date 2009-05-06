@@ -42,11 +42,11 @@
   [super viewDidLoad];
   self.title = @"Stock Symbol Search";
   if (defaultSearchText) {
-    searchBar.text = defaultSearchText;
+    tickerSearchBar.text = defaultSearchText;
     [self searchNeeded];
   }
-  searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-  searchBar.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+  tickerSearchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+  tickerSearchBar.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
   [resultsTableViewController setTarget:self action:@selector(selectedStock:)];
 }
 
@@ -73,11 +73,18 @@
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
   [self performSelector:@selector(searchNeeded) withObject:nil afterDelay:0.2];
 }
+-(BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+  return YES;
+}
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+  [searchBar resignFirstResponder];
+}
+
 
 // Called when the search bar text is changed, and a new stock search is
 // necessary to update the table results.
 -(void)searchNeeded {
-  if ([lastSearchText isEqualToString:searchBar.text]) {
+  if ([lastSearchText isEqualToString:tickerSearchBar.text]) {
     return;
   }
   NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
@@ -88,7 +95,7 @@
     return;
   }
   
-  self.lastSearchText = searchBar.text;
+  self.lastSearchText = tickerSearchBar.text;
   lastSearchTime = now;
   [commController startTickerSearch:lastSearchText];
 }
@@ -116,8 +123,8 @@
   [defaultSearchText release];
   defaultSearchText = [theDefaultSearchText retain];
 
-  if (searchBar) {
-    searchBar.text = defaultSearchText;
+  if (tickerSearchBar) {
+    tickerSearchBar.text = defaultSearchText;
   }
 }
 
@@ -133,6 +140,15 @@
     // TODO(overmind): handle error
     return;
   }
-  resultsTableViewController.searchResults = searchResults;
+ 
+  NSMutableArray* filteredResults = [[NSMutableArray alloc]
+                                     initWithCapacity:[searchResults count]];
+  for (StockSearchData* result in searchResults) {
+    if ([@"S" isEqualToString:result.type]) {
+      [filteredResults addObject:result];
+    }
+  }
+  resultsTableViewController.searchResults = filteredResults;
+  [filteredResults release];
 }
 @end
