@@ -144,8 +144,10 @@
   [thawedModel release];
 
   dateDict = [dateModel copyToDictionaryForcingStrings:YES];
-  NSDate* date2 = [NSDate dateWithString:
-           [dateDict objectForKey:@"pubDate"]];
+  NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+  [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];  
+  NSDate* date2 = [formatter dateFromString:[dateDict objectForKey:@"pubDate"]];
+  [formatter release];
   STAssertEqualsWithAccuracy(0.0, [date2 timeIntervalSinceDate:date], 1.0,
                  @"String-boxed date should equal original date");
   thawedModel = [[ZNTestDate alloc] initWithProperties:dateDict];
