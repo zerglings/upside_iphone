@@ -50,9 +50,9 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
       else {
         element = nil;
       }
-      for (NSObject* key in (NSDictionary*)root) {
+      for (NSString* key in (NSDictionary*)root) {
         NSObject* newRoot = [(NSDictionary*)root objectForKey:key];
-        if ([element isEqualTo:key]) {
+        if ([(NSString*)element isEqualToString:key]) {
           ZNQueryRun(newRoot, query, offset + 2, results);
         }
         else {

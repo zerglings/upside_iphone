@@ -15,6 +15,7 @@
 #import "Stock.h"
 #import "Stock+Formatting.h"
 #import "StockInfoCommController.h"
+#import "TickerSearchViewController.h"
 #import "TradeBook.h"
 #import "TradeOrder.h"
 
@@ -305,15 +306,26 @@
 }
 
 -(IBAction)searchTapped:(id)sender {
-  UIAlertView* alert =
-  [[UIAlertView alloc]
-   initWithTitle:@"Search is not ready"
-   message:@"We know you want to search for tickers. We will bring that you asap."
-   delegate:nil
-   cancelButtonTitle:@"Fine :("
-   otherButtonTitles:nil];
-  [alert show];
-  [alert release];
+  // Remove the cursor from the text fields.
+  [self touchesEnded:nil withEvent:nil];
+  
+  TickerSearchViewController* tickerSearchViewController =
+  [[TickerSearchViewController alloc] initWithNibName:@"TickerSearchViewController"
+                                               bundle:nil];
+  [tickerSearchViewController setDefaultSearchText:tickerText.text];
+  [tickerSearchViewController setTarget:self
+                                 action:@selector(tickerSearchResultSelected:)];
+  [self.navigationController pushViewController:tickerSearchViewController
+   animated:YES];
+}
+
+-(void)tickerSearchResultSelected:(NSString*)tickerSymbol {
+  tickerText.text = tickerSymbol;
+  stockInfo = nil;
+  [self updatedStockInfo];
+  
+  [stockInfoCommController fetchInfoForTickers:
+   [NSArray arrayWithObject:tickerText.text]];
 }
 
 -(IBAction)allTapped:(id)sender {

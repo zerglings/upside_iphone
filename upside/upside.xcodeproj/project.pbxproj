@@ -55,6 +55,8 @@
 		571A27090F1ABA5000A996A2 /* NetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A27080F1ABA5000A996A2 /* NetworkProgress.m */; };
 		57203C060F4942EF00B3A00C /* AssetBook+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */; };
 		57203C070F4942EF00B3A00C /* AssetBook+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */; };
+		572049690FB100BD00E08962 /* TickerSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572049680FB100BD00E08962 /* TickerSearchViewController.m */; };
+		572049EF0FB10FB600E08962 /* TickerSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572049EE0FB10FB600E08962 /* TickerSearchTableViewController.m */; };
 		572DCDF40FA1718800CA3975 /* ZNSha2Digest.h in Headers */ = {isa = PBXBuildFile; fileRef = 572DCDF20FA1718800CA3975 /* ZNSha2Digest.h */; };
 		572DCDF50FA1718800CA3975 /* ZNSha2Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCDF30FA1718800CA3975 /* ZNSha2Digest.m */; };
 		572DCDFF0FA1735C00CA3975 /* ZNSha2DigestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCDFE0FA1735C00CA3975 /* ZNSha2DigestTest.m */; };
@@ -288,6 +290,7 @@
 		57CB1A0B0F0F1AF700E95AE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		57CB1A0C0F0F1AF700E95AE1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		57CB1A5F0F0F270E00E95AE1 /* ActivationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB188D0F0F01C600E95AE1 /* ActivationState.m */; };
+		57CB47830FB0F3FE00F40CBA /* TickerSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CB47820FB0F3FE00F40CBA /* TickerSearchViewController.xib */; };
 		57CDB1790F0F4939002C60C5 /* PortfolioTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1770F0F491A002C60C5 /* PortfolioTabIcon.png */; };
 		57CDB17A0F0F4941002C60C5 /* TabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1680F0F4543002C60C5 /* TabBar.xib */; };
 		57CDB1840F0F4BE7002C60C5 /* TransactionsTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1810F0F4BD2002C60C5 /* TransactionsTabIcon.png */; };
@@ -424,6 +427,10 @@
 		571A27080F1ABA5000A996A2 /* NetworkProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkProgress.m; sourceTree = "<group>"; };
 		57203C040F4942EF00B3A00C /* AssetBook+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AssetBook+Formatting.h"; sourceTree = "<group>"; };
 		57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetBook+Formatting.m"; sourceTree = "<group>"; };
+		572049670FB100BD00E08962 /* TickerSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TickerSearchViewController.h; sourceTree = "<group>"; };
+		572049680FB100BD00E08962 /* TickerSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TickerSearchViewController.m; sourceTree = "<group>"; };
+		572049ED0FB10FB600E08962 /* TickerSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TickerSearchTableViewController.h; sourceTree = "<group>"; };
+		572049EE0FB10FB600E08962 /* TickerSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TickerSearchTableViewController.m; sourceTree = "<group>"; };
 		572DCDF20FA1718800CA3975 /* ZNSha2Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNSha2Digest.h; sourceTree = "<group>"; };
 		572DCDF30FA1718800CA3975 /* ZNSha2Digest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNSha2Digest.m; sourceTree = "<group>"; };
 		572DCDFE0FA1735C00CA3975 /* ZNSha2DigestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNSha2DigestTest.m; sourceTree = "<group>"; };
@@ -645,6 +652,7 @@
 		57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationStateTest.m; sourceTree = "<group>"; };
 		57CB1A040F0F1ADE00E95AE1 /* UpsideTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UpsideTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CB1A060F0F1ADE00E95AE1 /* UpsideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UpsideTests-Info.plist"; sourceTree = "<group>"; };
+		57CB47820FB0F3FE00F40CBA /* TickerSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TickerSearchViewController.xib; sourceTree = "<group>"; };
 		57CDB1680F0F4543002C60C5 /* TabBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBar.xib; sourceTree = "<group>"; };
 		57CDB1770F0F491A002C60C5 /* PortfolioTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PortfolioTabIcon.png; sourceTree = "<group>"; };
 		57CDB1810F0F4BD2002C60C5 /* TransactionsTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransactionsTabIcon.png; sourceTree = "<group>"; };
@@ -932,6 +940,11 @@
 				578266EC0F2C95A200B53703 /* NewOrderViewController.h */,
 				578266ED0F2C95A200B53703 /* NewOrderViewController.m */,
 				578266EF0F2C95B000B53703 /* NewOrderViewController.xib */,
+				57CB47820FB0F3FE00F40CBA /* TickerSearchViewController.xib */,
+				572049670FB100BD00E08962 /* TickerSearchViewController.h */,
+				572049680FB100BD00E08962 /* TickerSearchViewController.m */,
+				572049ED0FB10FB600E08962 /* TickerSearchTableViewController.h */,
+				572049EE0FB10FB600E08962 /* TickerSearchTableViewController.m */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
@@ -1508,6 +1521,7 @@
 				57AF12710F5A486F00975407 /* OrdersTableViewController.xib in Resources */,
 				5746BEC40F5D12F00007C57C /* OverviewTableCellNarrow.xib in Resources */,
 				5746BECC0F5D133E0007C57C /* OverviewTableViewController.xib in Resources */,
+				57CB47830FB0F3FE00F40CBA /* TickerSearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1616,6 +1630,8 @@
 				5746BECA0F5D132E0007C57C /* OverviewTableViewController.m in Sources */,
 				57E250380F93C0FA00262989 /* PortfolioStat.m in Sources */,
 				57AC66590FAE4F3E00512D70 /* StockSearchCommController.m in Sources */,
+				572049690FB100BD00E08962 /* TickerSearchViewController.m in Sources */,
+				572049EF0FB10FB600E08962 /* TickerSearchTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

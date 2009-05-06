@@ -64,7 +64,6 @@
     [url release];
     [urlString release];
     [urlTail release];
-    [request setHTTPBody:nil];
   }
   else {
     // POST and PUT are allowed to have a body.
@@ -192,6 +191,8 @@ didReceiveResponse:(NSURLResponse*)response {
     [stream release];
   }
   else {
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage]
+     setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain];
     NSURLConnection* connection =
         [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
     [connection release];

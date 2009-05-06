@@ -218,8 +218,8 @@
 
 -(void)tappedAddTradeButton:(id)sender {
   NewOrderViewController* newOrderViewController =
-  [[NewOrderViewController alloc] initWithNibName:@"NewOrderViewController"
-                                           bundle:nil];
+      [[NewOrderViewController alloc] initWithNibName:@"NewOrderViewController"
+                                               bundle:nil];
   [self.navigationController pushViewController:newOrderViewController
                                        animated:YES];
   // TODO(overmind): setup controller
