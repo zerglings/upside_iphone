@@ -95,7 +95,7 @@
     return;
   }
   
-  self.lastSearchText = tickerSearchBar.text;
+  self.lastSearchText = [NSString stringWithString:tickerSearchBar.text];
   lastSearchTime = now;
   [commController startTickerSearch:lastSearchText];
 }
