@@ -11,11 +11,13 @@
 #import "AssetBook+Formatting.h"
 #import "AssetBook+NetWorth.h"
 #import "Game.h"
+#import "NamedAccountViewController.h"
 #import "OverviewTableCell.h"
 #import "PortfolioStat.h"
 #import "TradeBook+Formatting.h"
 
-@interface OverviewTableViewController ()
+
+@interface OverviewTableViewController () <UIActionSheetDelegate>
 -(void)setResultCell:(OverviewTableCell*)cell
          atIndexPath:(NSIndexPath*)indexPath;
 -(void)setOperationsCell:(OverviewTableCell*)cell
@@ -44,11 +46,15 @@
   self.narrowCellReuseIdentifier = @"OverviewNarrow";
   self.wideCellReuseIdentifier = @"OverviewNarrow";
   self.cellClass = [OverviewTableCell class];
-
+  
   self.navigationItem.rightBarButtonItem =
       [[UIBarButtonItem alloc]
        initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
        target:[Game sharedGame] action:@selector(syncData)];
+  self.navigationItem.leftBarButtonItem =
+      [[UIBarButtonItem alloc]
+       initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+       target:self action:@selector(actionButtonTapped)];
 }
 
 /*
@@ -285,6 +291,33 @@
   }
 }
 
+-(void)actionButtonTapped {
+  UIActionSheet* actionSheet =
+      [[UIActionSheet alloc] initWithTitle:@""
+                                  delegate:self
+                         cancelButtonTitle:@"Cancel"
+                    destructiveButtonTitle:nil
+                         otherButtonTitles:@"Claim Your User Name", nil];
+  [actionSheet showInView:self.view];
+  [actionSheet release];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet
+clickedButtonAtIndex:(NSInteger)buttonIndex {
+  switch (buttonIndex) {
+    case 0: {
+      NamedAccountViewController* namedAccountViewController = 
+          [[NamedAccountViewController alloc]
+           initWithNibName:@"NamedAccountViewController" bundle:nil];
+      [self.navigationController pushViewController:namedAccountViewController
+                                           animated:YES];
+      [namedAccountViewController release];
+      break;
+    }      
+    default:
+      break;
+  };
+}
 
 @end
 

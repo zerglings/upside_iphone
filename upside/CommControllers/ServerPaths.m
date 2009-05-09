@@ -48,9 +48,16 @@
   return [NSString stringWithFormat:@"%@/trade_orders.xml",
           [self serverUrl]];
 }
-// Method to use for submitting trade orders.
 +(NSString*)orderSubmissionMethod {
   return kZNHttpMethodPost;
 }
++(NSString*)userQueryService {
+  return [NSString stringWithFormat:@"%@/users/is_user_taken.json",
+          [self serverUrl]];
+}
++(NSString*)userQueryMethod {
+  return kZNHttpMethodGet;
+}
+
 
 @end

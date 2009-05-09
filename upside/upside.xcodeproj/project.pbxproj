@@ -15,6 +15,9 @@
 		2899E5220DE3E06400AC0155 /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* RegistrationViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* RegistrationViewController.m */; };
+		5702481A0FB5F9160004DEEC /* NamedAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 570248190FB5F9160004DEEC /* NamedAccountViewController.xib */; };
+		5702481D0FB5F9480004DEEC /* NamedAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5702481C0FB5F9480004DEEC /* NamedAccountViewController.m */; };
+		5702482C0FB607600004DEEC /* UserQueryCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5702482B0FB607600004DEEC /* UserQueryCommController.m */; };
 		570C70870F11203300DC666C /* Stock+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* Stock+Formatting.m */; };
 		570C70B30F11217E00DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
 		570C70B40F1121B100DC666C /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 570C70B20F11217E00DC666C /* Stock.m */; };
@@ -377,6 +380,11 @@
 		28D7ACF70DDB3853001CB0EB /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* upside_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = upside_Prefix.pch; sourceTree = "<group>"; };
+		570248190FB5F9160004DEEC /* NamedAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NamedAccountViewController.xib; sourceTree = "<group>"; };
+		5702481B0FB5F9480004DEEC /* NamedAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NamedAccountViewController.h; sourceTree = "<group>"; };
+		5702481C0FB5F9480004DEEC /* NamedAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NamedAccountViewController.m; sourceTree = "<group>"; };
+		5702482A0FB607600004DEEC /* UserQueryCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserQueryCommController.h; sourceTree = "<group>"; };
+		5702482B0FB607600004DEEC /* UserQueryCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserQueryCommController.m; sourceTree = "<group>"; };
 		570C70B20F11217E00DC666C /* Stock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock.m; sourceTree = "<group>"; };
 		570D82DB0F1196F800D54544 /* TradeOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeOrder.h; sourceTree = "<group>"; };
 		570D82DC0F1196F800D54544 /* TradeOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeOrder.m; sourceTree = "<group>"; };
@@ -980,6 +988,8 @@
 				578ECFA70F2AF93B0064E0F8 /* GameSyncController.m */,
 				578269670F2E2BE300B53703 /* PendingOrdersSubmittingController.h */,
 				578269680F2E2BE300B53703 /* PendingOrdersSubmittingController.m */,
+				5702482A0FB607600004DEEC /* UserQueryCommController.h */,
+				5702482B0FB607600004DEEC /* UserQueryCommController.m */,
 			);
 			path = CommControllers;
 			sourceTree = "<group>";
@@ -1250,6 +1260,9 @@
 				57A1F0B70F25640A00B8179A /* ActivationLoginViewController.h */,
 				57A1F0B80F25640A00B8179A /* ActivationLoginViewController.m */,
 				57A1F0BB0F25642300B8179A /* ActivationLoginViewController.xib */,
+				5702481B0FB5F9480004DEEC /* NamedAccountViewController.h */,
+				5702481C0FB5F9480004DEEC /* NamedAccountViewController.m */,
+				570248190FB5F9160004DEEC /* NamedAccountViewController.xib */,
 			);
 			path = Activation;
 			sourceTree = "<group>";
@@ -1531,6 +1544,7 @@
 				5746BECC0F5D133E0007C57C /* OverviewTableViewController.xib in Resources */,
 				57CB47830FB0F3FE00F40CBA /* TickerSearchViewController.xib in Resources */,
 				571877860FB20437003E03D5 /* TickerSearchTableCellNarrow.xib in Resources */,
+				5702481A0FB5F9160004DEEC /* NamedAccountViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1642,6 +1656,8 @@
 				572049690FB100BD00E08962 /* TickerSearchViewController.m in Sources */,
 				572049EF0FB10FB600E08962 /* TickerSearchTableViewController.m in Sources */,
 				571877840FB20402003E03D5 /* TickerSearchTableViewCell.m in Sources */,
+				5702481D0FB5F9480004DEEC /* NamedAccountViewController.m in Sources */,
+				5702482C0FB607600004DEEC /* UserQueryCommController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

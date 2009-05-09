@@ -35,4 +35,9 @@
 // Method to use for submitting trade orders.
 +(NSString*)orderSubmissionMethod;
 
+// Points to the user querying service.
++(NSString*)userQueryService;
+// Method to use with the user querying service.
++(NSString*)userQueryMethod;
+
 @end
