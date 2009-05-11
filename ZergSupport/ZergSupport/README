@@ -45,21 +45,31 @@ properties. ModelSupport models are designed with Web interaction in mind, and
 therefore can handle attributes that are not specified are development time.
 These attributes are preserved during serialization and deserialization, so
 they can be used in future versions of the application, and when exchanging
-models with Web services or other applications.
+models with Web services or other applications. For testing purposes, models can
+be initialized from JSON literals, yielding more compact (but slower) source
+code.
 
 WebSupport is a one-method API for asynchronous data exchange with Web services.
 It can encode parameters into the format that makes HTTP servers happy, and
-it decodes responses in multiple formats (currently XML, CSV, and raw data). The
-API seamlessly encodes and decodes ModelSupport models, and transparently
-supports local: URLs, which wouldn't work with NSURLConnection.
+it decodes responses in multiple formats (currently JSON, XML, CSV, and raw
+data). The API seamlessly encodes and decodes ModelSupport models, and
+transparently supports local: URLs, which wouldn't work with NSURLConnection.
 
 ControllerSupport has reusable logic for controllers communicating with Web
 servers. Currently, it provides reusable data synchronization logic, and a
 NSView-independent implementation of the Target-Action model.
 
 FormatSupport is the string crunching backend of WebSupport. It's responsible
-for encoding to x-www-url-encoded, decoding from XML and CSV, and converting
-between different casing conventions.
+for encoding to x-www-url-encoded, decoding from JSON, XML and CSV, and
+converting between different casing conventions. FormatSupport also implements
+ObjectQuery, which can be used to pull objects from deeply nested Cocoa
+collections, such as the results of JSON deserialization.
+
+CryptoSupport bundles code that is likely necessary for iPhone application
+security, such as cryptographic primitives (encryption and signatures), and
+collecting device metrics like the device model, unique number, and OS version.
+At this point, the code in CryptoSupport is not well integrated with the rest of
+the toolkit.
 
 TestSupport offers a healthy foundation for testing, by packing the necessary
 subset of the Google Toolbox for Mac. On top of that, it supports Rails-like
