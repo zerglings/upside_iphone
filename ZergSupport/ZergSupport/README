@@ -29,7 +29,7 @@ one application containing that code is approved for submission to the Apple
 Store. The philosophy behind this decision is that ZergSupport is intended to
 remove development headaches, not contribute to them.
 
-ZergSupport is currently compatible with iPhone SDK 2.0. 
+ZergSupport is currently compatible with iPhone SDK 2.0 and above. 
 
 
 TARGETS
@@ -85,11 +85,6 @@ subset of the Google Toolbox for Mac. On top of that, it supports Rails-like
 fixtures for ModelSupport models. TestSupport is only included in the testing
 targets, so you don't have to worry about the APL license that comes with
 Google's code.
-
-
-BRANCHES
-
-The 
 
 
 CONTRIBUTING
