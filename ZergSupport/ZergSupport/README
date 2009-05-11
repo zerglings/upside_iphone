@@ -22,6 +22,15 @@ library code using zerg_xcode is described in detail at:
 
 http://blog.costan.us/2009/02/iphone-development-and-code-sharing.html
 
+The master branch will always have code that is guaranteed to pass Apple's
+approval process. Code that can cause concerns (e.g. security mechanisms or code
+containing low-level system calls) will be placed in experimental branches until
+one application containing that code is approved for submission to the Apple
+Store. The philosophy behind this decision is that ZergSupport is intended to
+remove development headaches, not contribute to them.
+
+ZergSupport is currently compatible with iPhone SDK 2.0. 
+
 
 TARGETS
 
@@ -76,6 +85,11 @@ subset of the Google Toolbox for Mac. On top of that, it supports Rails-like
 fixtures for ModelSupport models. TestSupport is only included in the testing
 targets, so you don't have to worry about the APL license that comes with
 Google's code.
+
+
+BRANCHES
+
+The 
 
 
 CONTRIBUTING
