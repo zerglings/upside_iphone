@@ -87,6 +87,22 @@ targets, so you don't have to worry about the APL license that comes with
 Google's code.
 
 
+DOCUMENTATION
+
+The best documentation for the code are the test cases. The top-level header
+files (*Support.h) have overviews for the parts of the toolkit that they cover.
+Specifications are more spotty among internal classes, and classes whose
+interfaces don't feel ready.
+
+The following blog posts highlight the most convincing features, and provide
+code samples.
+
+The main use case for the toolkit, with code samples:
+http://blog.costan.us/2009/04/toolkit-for-iphone-web-service.html
+
+Using JSON for a better life:
+<<>>
+
 CONTRIBUTING
 
 If you find ZergSupport useful, and want to give back, the easiest way is to

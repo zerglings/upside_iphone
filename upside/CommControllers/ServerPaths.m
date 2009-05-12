@@ -38,7 +38,7 @@
   return kZNHttpMethodPost;
 }
 +(NSString*)portfolioSyncUrl {
-  return [NSString stringWithFormat:@"%@/portfolios/sync/0.xml",
+  return [NSString stringWithFormat:@"%@/portfolios/sync/0.json",
       [self serverUrl]];
 }
 +(NSString*)portfolioSyncMethod {
