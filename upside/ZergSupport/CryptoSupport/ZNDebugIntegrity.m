@@ -23,7 +23,7 @@ typedef int (*ptrace_ptr_t)(int _request, pid_t _pid, caddr_t _addr, int _data);
 
 void ZNDebugIntegrity() {
   // If all assertions are enabled, we're in a legitimate debug build.  
-#if defined(DEBUG) || (!defined(NS_BLOCK_ASSERTIONS) && !defined(NDEBUG))
+#if TARGET_IPHONE_SIMULATOR || defined(DEBUG) || (!defined(NS_BLOCK_ASSERTIONS) && !defined(NDEBUG))
   return;
 #endif
     

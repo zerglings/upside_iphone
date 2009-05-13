@@ -22,6 +22,11 @@ callbackFn({
     "simple": [1, "a", true,],
     "nested": [1, [2, 3], {"a": 2, "b": [3]}]
   },
+  "sets": {
+    "simple": <1, "a", true,>,
+    "nested": <1, <2, 3>, {"a": 2, "b": [3]}>
+    "repeated": <"a", "d", "a">
+  },
   "caseFormatting": {
     "snake_case": "more_snakes",
     "camelCase": "moreCamels",

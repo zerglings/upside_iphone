@@ -19,12 +19,16 @@
 // by NSStrings, numbers and booleans become NSNumbers, and nulls are translated
 // to NSNull instances.
 //
-// This JSON parser understands the JSON standard, plus strings deliminted by
-// ' (the standard only recognizes " as a string delimiter). This is done to
-// facilitate convenient representation of JSON objects inside Objective C
-// strings. The feature is expected to be used in tests, together with
-// -parseValue, to make up for Objective C's lack of array and dictionary
-// literals.
+// This JSON parser understands the JSON standard, and the following extensions:
+//   * Strings can be deliminted by ', whereas the standard only allows ".
+//     The string end character (' or ") must match the start character (' or ")
+//     as the parser will consider the opposite character (" or ') to be a part
+//     of the string.
+//   * Sets can be specified using a notation similar to arrays, replacing [ ]
+//     by < >. These are deserialized into NSSets.
+// The extensions are expected to be used in JSON literals embedded in Objective
+// C strings, in combination with -parseValue, to make up for Objective C's lack
+// of collection literals. This should come in handy especially for tests.
 @interface ZNDictionaryJsonParser : NSObject {
   id<ZNDictionaryJsonParserDelegate> delegate;
   id context;
