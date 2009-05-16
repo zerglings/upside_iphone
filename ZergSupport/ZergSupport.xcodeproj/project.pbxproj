@@ -152,6 +152,8 @@
 		57B5DFD30FAE265E002CE751 /* ZNModelJsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B5DE430FADBF2B002CE751 /* ZNModelJsonParserTest.m */; };
 		57B5DFE60FAE26DD002CE751 /* ZNJsonHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B5DFE40FAE26DD002CE751 /* ZNJsonHttpRequest.h */; };
 		57B5DFE70FAE26DD002CE751 /* ZNJsonHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B5DFE50FAE26DD002CE751 /* ZNJsonHttpRequest.m */; };
+		57C204A90FBA6920007BC010 /* ZNDebugIntegrity.h in Headers */ = {isa = PBXBuildFile; fileRef = 57C204A70FBA6920007BC010 /* ZNDebugIntegrity.h */; };
+		57C204AA0FBA6920007BC010 /* ZNDebugIntegrity.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C204A80FBA6920007BC010 /* ZNDebugIntegrity.m */; };
 		57EF37610FAB9C82004A1808 /* ZNDictionaryJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 57EF375F0FAB9C82004A1808 /* ZNDictionaryJsonParser.h */; };
 		57EF37620FAB9C82004A1808 /* ZNDictionaryJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF37600FAB9C82004A1808 /* ZNDictionaryJsonParser.m */; };
 		57EF37A80FAC0490004A1808 /* ZNDictionaryJsonParserTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 57EF37A10FABFF4B004A1808 /* ZNDictionaryJsonParserTest.json */; };
@@ -324,6 +326,8 @@
 		57B5DE430FADBF2B002CE751 /* ZNModelJsonParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNModelJsonParserTest.m; sourceTree = "<group>"; };
 		57B5DFE40FAE26DD002CE751 /* ZNJsonHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNJsonHttpRequest.h; sourceTree = "<group>"; };
 		57B5DFE50FAE26DD002CE751 /* ZNJsonHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNJsonHttpRequest.m; sourceTree = "<group>"; };
+		57C204A70FBA6920007BC010 /* ZNDebugIntegrity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNDebugIntegrity.h; sourceTree = "<group>"; };
+		57C204A80FBA6920007BC010 /* ZNDebugIntegrity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDebugIntegrity.m; sourceTree = "<group>"; };
 		57EF375F0FAB9C82004A1808 /* ZNDictionaryJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNDictionaryJsonParser.h; sourceTree = "<group>"; };
 		57EF37600FAB9C82004A1808 /* ZNDictionaryJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDictionaryJsonParser.m; sourceTree = "<group>"; };
 		57EF37A10FABFF4B004A1808 /* ZNDictionaryJsonParserTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNDictionaryJsonParserTest.json; sourceTree = "<group>"; };
@@ -607,6 +611,8 @@
 				57F046C00FA584D9006436EF /* ZNAesCipherTest.rb */,
 				57F045F30FA50BEC006436EF /* ZNCipher.h */,
 				57F045F50FA50C42006436EF /* ZNCipherClass.h */,
+				57C204A70FBA6920007BC010 /* ZNDebugIntegrity.h */,
+				57C204A80FBA6920007BC010 /* ZNDebugIntegrity.m */,
 				57826D320FA3F48A006896D7 /* ZNDeviceFprint.h */,
 				57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */,
 				57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */,
@@ -677,6 +683,7 @@
 				57EF39380FACDA86004A1808 /* ZNObjectQuery.h in Headers */,
 				57B5DE400FADBF02002CE751 /* ZNModelJsonParser.h in Headers */,
 				57B5DFE60FAE26DD002CE751 /* ZNJsonHttpRequest.h in Headers */,
+				57C204A90FBA6920007BC010 /* ZNDebugIntegrity.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,6 +845,7 @@
 				57EF39390FACDA86004A1808 /* ZNObjectQuery.m in Sources */,
 				57B5DE410FADBF02002CE751 /* ZNModelJsonParser.m in Sources */,
 				57B5DFE70FAE26DD002CE751 /* ZNJsonHttpRequest.m in Sources */,
+				57C204AA0FBA6920007BC010 /* ZNDebugIntegrity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1026,8 +1034,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-DDEBUG=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphoneos2.0;
 			};
 			name = Debug;
 		};
@@ -1039,8 +1048,12 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = (
+					"-DNDEBUG=1",
+					"-DNS_BLOCK_ASSERTIONS=1",
+				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphoneos2.0;
 			};
 			name = Release;
 		};

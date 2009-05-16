@@ -209,36 +209,35 @@ breakOutOfWhile:
   }
 }
 
-// Parses an JSON array. The cursor is right after the opening [.
+// Parses an JSON sequence (array). The cursor is right after the opening char.
 //
 // Returns a NSArray representing the array, owned by the caller.
-static NSArray* ZNJSONParseArray(ZNJsonParseContext* context) {
-  NSMutableArray* array = [[NSMutableArray alloc] init];
+static NSObject* ZNJSONParseSequence(ZNJsonParseContext* context,
+                                     Class klass, uint8_t terminator) {
+  NSMutableSet* sequence = [[klass alloc] init];
 
   while (true) {
     ZNJSONSkipWhiteSpace(context);
     if (context->bytes >= context->endOfBytes) {
-      [array release];
+      [sequence release];
       return nil;
     }
-    if (*context->bytes == ']') {
+    if (*context->bytes == terminator) {
       context->bytes++;
       break;
     }
 
     NSObject* object = ZNJSONParseValue(context);
     if (!object) {
-      [array release];
+      [sequence release];
       return nil;
     }
-    [array addObject:object];
+    [sequence addObject:object];
 
     ZNJSONSkipComma(context);
   }
 
-  NSArray* returnValue = [[NSArray alloc] initWithArray:array];
-  [array release];
-  return returnValue;
+  return sequence;
 }
 
 // Parses an JSON object. The cursor is right after the opening {.
@@ -313,10 +312,24 @@ static NSObject* ZNJSONParseValue(ZNJsonParseContext* context) {
     case '\'':
       return ZNJSONParseString(context, *(context->bytes++));
 
-    case '[':  // Array.
+    case '[':  {  // Array.
       context->bytes++;
-      return ZNJSONParseArray(context);
-
+      NSMutableArray* array =
+          (NSMutableArray*)ZNJSONParseSequence(context,
+                                               [NSMutableArray class], ']');
+      NSArray* returnValue = [[NSArray alloc] initWithArray:array];
+      [array release];
+      return returnValue;
+    }
+    case '<':  {  // Set.
+      context->bytes++;
+      NSMutableSet* set =
+          (NSMutableSet*)ZNJSONParseSequence(context,
+                                             [NSMutableArray class], '>');
+      NSSet* returnValue = [[NSSet alloc] initWithSet:set];
+      [set release];
+      return returnValue;
+    }
     case '{':  // Object
       context->bytes++;
       return ZNJSONParseObject(context);

@@ -22,6 +22,7 @@
                         kCCAlgorithmAES128, useCbc ? 0 : kCCOptionECBMode,
                         [theKey bytes], [theKey length],
                         NULL, &cryptorRef);
+    status;  // This avoids a warning when assertions are disabled.
     NSAssert(status == kCCSuccess, @"CCCryptorCreate failed");
   }
   return self;

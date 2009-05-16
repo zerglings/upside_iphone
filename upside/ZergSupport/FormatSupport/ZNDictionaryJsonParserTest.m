@@ -107,6 +107,36 @@ static NSString* kContextObject = @"This is the context";
                        @"nested array FAIL");
 }
 
+-(void)testSets {
+  NSDictionary* sets = [json objectForKey:@"sets"];
+  STAssertNotNil(sets, @"sets object not parsed");
+  
+  NSSet* goldSimple =
+      [NSSet setWithObjects:
+       [NSNumber numberWithInteger:1], @"a", [NSNumber numberWithBool:YES],
+       nil];
+  STAssertEqualObjects(goldSimple, [sets objectForKey:@"simple"],
+                       @"simple set FAIL");
+  
+  NSSet* goldNested =
+      [NSSet setWithObjects:
+       [NSNumber numberWithInteger:1],
+       [NSSet setWithObjects:
+        [NSNumber numberWithInteger:2],
+        [NSNumber numberWithInteger:3],
+        nil],
+       [NSDictionary dictionaryWithObjectsAndKeys:
+        [NSNumber numberWithInteger:2], @"a",
+        [NSArray arrayWithObject:[NSNumber numberWithInteger:3]], @"b",
+        nil], nil];
+  STAssertEqualObjects(goldNested, [sets objectForKey:@"nested"],
+                       @"nested set FAIL");
+
+  NSSet* goldRepeated = [NSSet setWithObjects: @"a", @"d", nil];
+  STAssertEqualObjects(goldRepeated, [sets objectForKey:@"repeated"],
+                       @"set with repeated values FAIL");
+}
+
 -(void)testStrings {
   NSDictionary* strings = [json objectForKey:@"strings"];
   STAssertNotNil(strings, @"strings object not parsed");

@@ -24,33 +24,33 @@
     target = theTarget;
     action = theAction;
 
-    responseModels = [[NSDictionary alloc] initWithObjectsAndKeys:
-                      [Position class], @"position",
-                      [Portfolio class], @"portfolio",
-                      [PortfolioStat class], @"portfolio_stat",
-                      [TradeOrder class], @"trade_order",
-                      [ServiceError class], @"error",
-                      nil];
+    responseQueries = [[NSArray alloc] initWithObjects:
+                       [Position class], @"/positions/?",
+                       [Portfolio class], @"/portfolio",
+                       [PortfolioStat class], @"/stats/?",
+                       [TradeOrder class], @"/tradeOrders/?",
+                       [ServiceError class], @"/error",
+                       nil];
   }
   return self;
 }
 
 -(void)dealloc {
-  [responseModels release];
+  [responseQueries release];
   [super dealloc];
 }
 
 -(void)sync {
   [NetworkProgress connectionStarted];
-  [ZNXmlHttpRequest callService:[ServerPaths portfolioSyncUrl]
-                         method:[ServerPaths portfolioSyncMethod]
-                           data:nil
-                 responseModels:responseModels
-                         target:self
-                         action:@selector(processResponse:)];
+  [ZNJsonHttpRequest callService:[ServerPaths portfolioSyncUrl]
+                          method:[ServerPaths portfolioSyncMethod]
+                            data:nil
+                 responseQueries:responseQueries
+                          target:self
+                          action:@selector(processResponse:)];
 }
 
--(void)processResponse:(NSObject*)response {
+-(void)processResponse:(NSArray*)response {
   [NetworkProgress connectionDone];
   [target performSelector:action withObject:response];
 }
