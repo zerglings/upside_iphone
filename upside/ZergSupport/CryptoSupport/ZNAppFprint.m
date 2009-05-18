@@ -23,6 +23,11 @@
           stringByAppendingPathComponent:@"Info.plist"];
 }
 
+// The path to the application's executable file.
++(NSString*)executablePath {
+  return [[NSBundle mainBundle] executablePath];
+}
+
 // Computes the hex-formatted application fingerprint.
 //
 // Since this fingerprint will not change while the application is running,
