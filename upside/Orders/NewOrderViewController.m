@@ -308,7 +308,7 @@
 -(IBAction)searchTapped:(id)sender {
   // Remove the cursor from the text fields.
   [self touchesEnded:nil withEvent:nil];
-  
+
   TickerSearchViewController* tickerSearchViewController =
   [[TickerSearchViewController alloc] initWithNibName:@"TickerSearchViewController"
                                                bundle:nil];
@@ -323,7 +323,7 @@
   tickerText.text = tickerSymbol;
   stockInfo = nil;
   [self updatedStockInfo];
-  
+
   [stockInfoCommController fetchInfoForTickers:
    [NSArray arrayWithObject:tickerText.text]];
 }

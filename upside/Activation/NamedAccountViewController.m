@@ -1,9 +1,9 @@
 //
 //  NamedAccountViewController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 5/9/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "NamedAccountViewController.h"
@@ -22,7 +22,7 @@
 @implementation NamedAccountViewController
 @synthesize lastQueryResponse, lastQueryName;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
     queryCommController = [[UserQueryCommController alloc]
                            initWithTarget:self
@@ -34,14 +34,14 @@
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
+-(void)loadView {
 }
 */
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
+-(void)viewDidLoad {
   [super viewDidLoad];
-  
+
   self.title = @"Claim User Name";
   [self setNameAvailabilityUnknown];
   [userNameText becomeFirstResponder];
@@ -49,7 +49,7 @@
 
 /*
 // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
@@ -110,7 +110,7 @@ replacementString:(NSString *)string {
 }
 
 -(IBAction)claimNameTapped {
-  
+
 }
 
 -(void)availabilitySearchNeeded {
@@ -138,7 +138,7 @@ replacementString:(NSString *)string {
   if ([response isKindOfClass:[ServiceError class]]) {
     // TODO(overmind): handle service error
   }
-  
+
   if ([response.name isEqualToString:lastQueryName]) {
     self.lastQueryResponse = response;
     if ([response.name isEqualToString:userNameText.text]) {

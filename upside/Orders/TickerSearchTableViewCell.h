@@ -1,9 +1,9 @@
 //
 //  TickerSearchTableViewCell.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 5/6/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -15,7 +15,7 @@
   IBOutlet UILabel* tickerLabel;
   IBOutlet UILabel* companyNameLabel;
   IBOutlet UILabel* marketLabel;
-  
+
   StockSearchData* stockData;
 }
 @property (nonatomic, readwrite, retain) StockSearchData* stockData;

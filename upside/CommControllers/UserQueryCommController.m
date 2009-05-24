@@ -1,9 +1,9 @@
 //
 //  UserQueryCommController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 5/9/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "UserQueryCommController.h"
@@ -18,11 +18,11 @@
 
 @implementation UserQueryCommController
 
--(id) initWithTarget:(id)theTarget action:(SEL)theAction {
+-(id)initWithTarget:(id)theTarget action:(SEL)theAction {
   if ((self = [super init])) {
     target = theTarget;
     action = theAction;
-    
+
     responseQueries =
     [[NSArray alloc] initWithObjects:
      [UserQueryResponse class], @"/result",
@@ -37,10 +37,10 @@
 
 -(void)startQueryForName:(NSString*)userName {
   User* queryUser = [[User alloc] initWithName:userName password:nil];
-  
+
   NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
                            queryUser, @"user", nil];
-  
+
   [NetworkProgress connectionStarted];
   [ZNJsonHttpRequest callService:[ServerPaths userQueryService]
                           method:[ServerPaths userQueryMethod]

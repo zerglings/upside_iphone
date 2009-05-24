@@ -1,9 +1,9 @@
 //
 //  TickerSearchTableViewController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 5/5/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TickerSearchTableViewController.h"
@@ -15,7 +15,7 @@
 @implementation TickerSearchTableViewController
 
 /*
-- (id)initWithStyle:(UITableViewStyle)style {
+-(id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
     if (self = [super initWithStyle:style]) {
     }
@@ -23,7 +23,7 @@
 }
 */
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
   [super viewDidLoad];
 
   self.narrowCellNib = @"TickerSearchTableCellNarrow";
@@ -31,54 +31,54 @@
   self.narrowCellReuseIdentifier = @"TickerSearchNarrow";
   self.wideCellReuseIdentifier = @"TickerSearchNarrow";
   self.cellClass = [TickerSearchTableViewCell class];
-  
+
   // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 /*
-- (void)viewWillAppear:(BOOL)animated {
+-(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 */
 /*
-- (void)viewDidAppear:(BOOL)animated {
+-(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 */
 /*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
+-(void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
 }
 */
 /*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
+-(void)viewDidDisappear:(BOOL)animated {
+  [super viewDidDisappear:animated];
 }
 */
 
 /*
 // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
 
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
 }
 
 #pragma mark Table view methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 
 // Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [searchResults count];
 }
 
@@ -94,7 +94,7 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   StockSearchData* selectedStock = [searchResults objectAtIndex:indexPath.row];
   [[selectedStock retain] autorelease];
   [target performSelector:action withObject:selectedStock];
@@ -103,7 +103,7 @@
 
 /*
 // Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
@@ -112,37 +112,37 @@
 
 /*
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 */
 
 
 /*
 // Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 }
 */
 
 
 /*
 // Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
 */
 
 
-- (void)dealloc {
-  [searchResults dealloc];  
+-(void)dealloc {
+  [searchResults dealloc];
   [super dealloc];
 }
 

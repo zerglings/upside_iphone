@@ -110,14 +110,14 @@ static NSString* kContextObject = @"This is the context";
 -(void)testSets {
   NSDictionary* sets = [json objectForKey:@"sets"];
   STAssertNotNil(sets, @"sets object not parsed");
-  
+
   NSSet* goldSimple =
       [NSSet setWithObjects:
        [NSNumber numberWithInteger:1], @"a", [NSNumber numberWithBool:YES],
        nil];
   STAssertEqualObjects(goldSimple, [sets objectForKey:@"simple"],
                        @"simple set FAIL");
-  
+
   NSSet* goldNested =
       [NSSet setWithObjects:
        [NSNumber numberWithInteger:1],

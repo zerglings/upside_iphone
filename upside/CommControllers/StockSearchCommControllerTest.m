@@ -1,9 +1,9 @@
 //
 //  StockSearchCommControllerTest.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 5/3/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TestSupport.h"
@@ -64,12 +64,12 @@
   receivedResponse = YES;
   STAssertFalse([response isKindOfClass:[NSError class]],
                 @"Fetching stocks failed: %@", [response description]);
-  
+
   BOOL foundStock = NO;
   for (NSUInteger i = 0; i < [response count]; i++) {
     StockSearchData* stockData = [response objectAtIndex:i];
     STAssertTrue([stockData isKindOfClass:[StockSearchData class]],
-                 @"StockSearchData model not instantiated for result %d", i); 
+                 @"StockSearchData model not instantiated for result %d", i);
 
     if ([expectedData.symbol isEqualToString:stockData.symbol]) {
       STAssertEqualStrings(expectedData.name, stockData.name, @"name");

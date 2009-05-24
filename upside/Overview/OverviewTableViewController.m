@@ -46,7 +46,7 @@
   self.narrowCellReuseIdentifier = @"OverviewNarrow";
   self.wideCellReuseIdentifier = @"OverviewNarrow";
   self.cellClass = [OverviewTableCell class];
-  
+
   self.navigationItem.rightBarButtonItem =
       [[UIBarButtonItem alloc]
        initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
@@ -306,14 +306,14 @@
 clickedButtonAtIndex:(NSInteger)buttonIndex {
   switch (buttonIndex) {
     case 0: {
-      NamedAccountViewController* namedAccountViewController = 
+      NamedAccountViewController* namedAccountViewController =
           [[NamedAccountViewController alloc]
            initWithNibName:@"NamedAccountViewController" bundle:nil];
       [self.navigationController pushViewController:namedAccountViewController
                                            animated:YES];
       [namedAccountViewController release];
       break;
-    }      
+    }
     default:
       break;
   };

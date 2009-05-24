@@ -1,9 +1,9 @@
 //
 //  TickerSearchTableViewCell.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 5/6/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TickerSearchTableViewCell.h"
@@ -25,7 +25,7 @@
   // Configure the view for the selected state
 }
 
-- (void)dealloc {
+-(void)dealloc {
   [stockData release];
   [super dealloc];
 }
@@ -33,10 +33,10 @@
 -(void)setStockData:(StockSearchData*)theStockData {
   [stockData release];
   stockData = [theStockData retain];
-  
+
   tickerLabel.text = stockData.symbol;
   marketLabel.text = stockData.exchDisp;
-  companyNameLabel.text = stockData.name;  
+  companyNameLabel.text = stockData.name;
 }
 -(StockSearchData*)stockData {
   return stockData;

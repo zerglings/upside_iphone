@@ -62,7 +62,7 @@ WebSupport is a one-method API for asynchronous data exchange with Web services.
 It can encode parameters into the format that makes HTTP servers happy, and
 it decodes responses in multiple formats (currently JSON, XML, CSV, and raw
 data). The API seamlessly encodes and decodes ModelSupport models, and
-transparently supports local: URLs, which wouldn't work with NSURLConnection.
+transparently supports local:// URLs, which wouldn't work with NSURLConnection.
 
 ControllerSupport has reusable logic for controllers communicating with Web
 servers. Currently, it provides reusable data synchronization logic, and a

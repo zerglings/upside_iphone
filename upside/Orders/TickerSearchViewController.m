@@ -1,9 +1,9 @@
 //
 //  TickerSearchViewController.m
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 5/5/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import "TickerSearchViewController.h"
@@ -21,7 +21,7 @@
 
 @synthesize lastSearchText;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
     // Custom initialization
     commController = [[StockSearchCommController alloc]
@@ -34,11 +34,11 @@
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
+-(void)loadView {
 }
 */
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
   [super viewDidLoad];
   self.title = @"Stock Symbol Search";
   if (defaultSearchText) {
@@ -52,7 +52,7 @@
 
 /*
 // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
@@ -94,7 +94,7 @@
                afterDelay:0.2];
     return;
   }
-  
+
   self.lastSearchText = [NSString stringWithString:tickerSearchBar.text];
   lastSearchTime = now;
   [commController startTickerSearch:lastSearchText];
@@ -104,11 +104,11 @@
   // Ensure that no search happens after this point.
   lastSearchTime = [NSDate timeIntervalSinceReferenceDate] + 100;
   resultsTableViewController = nil;
-  
+
   NSString* tickerSymbol = selectedStock.symbol;
   [[tickerSymbol retain] autorelease];
   [target performSelector:action withObject:tickerSymbol];
-  
+
   [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -119,7 +119,7 @@
   if (!theDefaultSearchText || [theDefaultSearchText length] == 0) {
     return;
   }
-  
+
   [defaultSearchText release];
   defaultSearchText = [theDefaultSearchText retain];
 
@@ -140,7 +140,7 @@
     // TODO(overmind): handle error
     return;
   }
- 
+
   NSMutableArray* filteredResults = [[NSMutableArray alloc]
                                      initWithCapacity:[searchResults count]];
   for (StockSearchData* result in searchResults) {

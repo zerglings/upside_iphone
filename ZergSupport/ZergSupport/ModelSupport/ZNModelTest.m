@@ -145,7 +145,7 @@
 
   dateDict = [dateModel copyToDictionaryForcingStrings:YES];
   NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-  [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];  
+  [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
   NSDate* date2 = [formatter dateFromString:[dateDict objectForKey:@"pubDate"]];
   [formatter release];
   STAssertEqualsWithAccuracy(0.0, [date2 timeIntervalSinceDate:date], 1.0,

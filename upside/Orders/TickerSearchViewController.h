@@ -1,9 +1,9 @@
 //
 //  TickerSearchViewController.h
-//  upside
+//  StockPlay
 //
 //  Created by Victor Costan on 5/5/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -15,12 +15,12 @@
 @interface TickerSearchViewController : UIViewController <UISearchBarDelegate> {
   IBOutlet UISearchBar* tickerSearchBar;
   IBOutlet TickerSearchTableViewController* resultsTableViewController;
-  
+
   StockSearchCommController* commController;
   NSString* defaultSearchText;
   NSString* lastSearchText;
   NSTimeInterval lastSearchTime;
-  
+
   id target;
   SEL action;
 }
