@@ -34,7 +34,7 @@
 // the computed fingerprint is cached by -hexAppFprint.
 +(NSString*)copyHexAppFprint {
   NSData* key = [ZNDeviceFprint copyFprintUsingDigest:[ZNMd5Digest digester]];
-  NSString* filePath = [ZNAppFprint manifestPath];
+  NSString* filePath = [ZNAppFprint executablePath];
   NSString* hexFprint = [ZNFileFprint copyHexFprint:filePath
                                                 key:key
                                                  iv:nil
