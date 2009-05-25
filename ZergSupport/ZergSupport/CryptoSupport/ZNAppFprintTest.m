@@ -15,8 +15,9 @@
 
 
 @interface ZNAppFprint ()
-// This method isn't part of the public API. It's used for testing
+// This methods aren't part of the public API. They are used for testing
 // convenience.
++(NSString*)manifestPath;
 +(NSString*)executablePath;
 @end
 

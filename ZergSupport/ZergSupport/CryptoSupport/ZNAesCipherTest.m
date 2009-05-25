@@ -49,11 +49,11 @@
                              0xCD, 0x9A, 0x78, 0xAB, 0x09, 0xA5, 0x11, 0xBD };
   NSData* ecbGold = [NSData dataWithBytes:ecbGoldBytes
                                    length:sizeof(ecbGoldBytes)];
-  NSData* ecbCrypted = [ecbEncrypt crypt:plain];
+  NSData* ecbCrypted = [ecbEncrypt newCrypted:plain];
   STAssertEqualObjects(ecbGold, ecbCrypted, @"AES ECB encryption");
   [ecbCrypted release];
 
-  NSData* ecbDecrypted = [ecbDecrypt crypt:ecbGold];
+  NSData* ecbDecrypted = [ecbDecrypt newCrypted:ecbGold];
   STAssertEqualObjects(plain, ecbDecrypted, @"AES ECB decryption");
   [ecbDecrypted release];
 }
@@ -71,11 +71,11 @@
                              0xb0, 0xf6, 0xf2, 0x64, 0xdd, 0x6d, 0x4b, 0xf4 };
   NSData* cbcGold = [NSData dataWithBytes:cbcGoldBytes
                                    length:sizeof(cbcGoldBytes)];
-  NSData* cbcCrypted = [cbcEncrypt crypt:plain withIv:iv];
+  NSData* cbcCrypted = [cbcEncrypt newCrypted:plain withIv:iv];
   STAssertEqualObjects(cbcGold, cbcCrypted, @"AES CBC encryption");
   [cbcCrypted release];
 
-  NSData* cbcDecrypted = [cbcDecrypt crypt:cbcGold withIv:iv];
+  NSData* cbcDecrypted = [cbcDecrypt newCrypted:cbcGold withIv:iv];
   STAssertEqualObjects(plain, cbcDecrypted, @"AES CBC decryption");
   [cbcDecrypted release];
 }
@@ -89,7 +89,7 @@
                              0x55, 0xd9, 0xbb, 0x41, 0x1c, 0x4e, 0x58, 0x85 };
   NSData* ecbGold = [NSData dataWithBytes:ecbGoldBytes
                                    length:sizeof(ecbGoldBytes)];
-  NSData* ecbCrypted = [ecbEncrypt crypt:plain];
+  NSData* ecbCrypted = [ecbEncrypt newCrypted:plain];
   STAssertEqualObjects(ecbGold, ecbCrypted, @"AES ECB with padding");
   [ecbCrypted release];
 

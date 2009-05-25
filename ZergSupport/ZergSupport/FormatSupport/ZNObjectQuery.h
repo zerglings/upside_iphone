@@ -29,13 +29,13 @@
 }
 
 // Turn the given string into a query.
-+(ZNObjectQuery*)compile:(NSString*)queryString;
++(ZNObjectQuery*)newCompile:(NSString*)queryString;
 
 // Run the query on the given object.
 //
 // The object should be a NSDictionary or NSArray. The query will return no
 // results otherwise.
--(NSArray*)run:(NSObject*)object;
+-(NSArray*)newRun:(NSObject*)object;
 
 // Designated initializer.
 -(id)initWithQueryString:(NSString*)queryString;

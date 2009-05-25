@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/24/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,6 +12,8 @@
 
 @interface ZNFormMultipartEncoder : ZNFormEncoder {
   NSData* boundary;
+  const uint8_t* boundaryBytes;
+  NSUInteger boundaryLength;
 }
 
 // Encodes the given dictionary or ModelSupport model.

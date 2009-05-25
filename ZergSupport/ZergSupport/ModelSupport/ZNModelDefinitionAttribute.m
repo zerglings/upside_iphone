@@ -45,7 +45,7 @@
 }
 
 +(ZNModelDefinitionAttribute*)newAttributeFromProperty:(objc_property_t)property
-                         ofClass:(Class)klass {
+                                               ofClass:(Class)klass {
   const char* propertyName = property_getName(property);
   const char* propertyAttributes = property_getAttributes(property);
 
@@ -57,7 +57,7 @@
   // Property type
 
   ZNMSAttributeType* attributeType = [ZNMSAttributeType
-                    newTypeFromString:propertyAttributes];
+                                      typeFromString:propertyAttributes];
 
   const char* typeComma = strchr(propertyAttributes, ',');
   if (typeComma)

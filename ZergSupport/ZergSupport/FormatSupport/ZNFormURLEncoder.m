@@ -15,7 +15,7 @@
   // & separates the key=value pairs.
   if ([output length] != 0)
     [output appendBytes:"&" length:1];
-  
+
   NSString* encodedKey = (NSString*)
       CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                               (CFStringRef)key, NULL,
@@ -35,7 +35,7 @@
                                               kCFStringEncodingUTF8);
   [output appendBytes:[encodedValue cStringUsingEncoding:NSUTF8StringEncoding]
                length:[encodedValue length]];
-  [encodedValue release];  
+  [encodedValue release];
 }
 
 +(NSData*)copyEncodingFor:(NSDictionary*)dictionary

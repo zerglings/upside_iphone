@@ -64,6 +64,7 @@
     if (!definition) {
       definition = [ZNModelDefinition newDefinitionForClass:klass];
       [modelDefinitions setObject:definition forKey:className];
+      [definition release];
     }
   }
   return definition;
@@ -77,6 +78,7 @@
       Class klass = objc_getClass([className UTF8String]);
       definition = [ZNModelDefinition newDefinitionForClass:klass];
       [modelDefinitions setObject:definition forKey:className];
+      [definition release];
     }
   }
   return definition;

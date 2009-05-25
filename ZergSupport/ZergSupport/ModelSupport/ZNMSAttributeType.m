@@ -14,7 +14,7 @@
 
 @implementation ZNMSAttributeType
 
-+(ZNMSAttributeType*)newTypeFromString:(const char*)encodedType {
++(ZNMSAttributeType*)typeFromString:(const char*)encodedType {
   switch (*encodedType) {
     case '@':
       encodedType++;

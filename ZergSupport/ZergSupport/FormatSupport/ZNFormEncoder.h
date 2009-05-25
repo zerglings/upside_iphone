@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/24/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import <Foundation/Foundation.h>
@@ -35,12 +35,26 @@
 #pragma mark Subclass API
 
 // The output buffer for the encoded data.
+//
+// Subclasses can access the buffer through this property, or directly through
+// the output field.
 @property (nonatomic, readonly, retain) NSMutableData* output;
 
 // Designated initializer.
+//
+// Subclasses should override this method if custom encoder lifecycle management
+// is desired.
 -(id)initWithFieldFormatter:(ZNFormFieldFormatter*)theFieldFormatter;
 
+// Kicks off the encoding process.
+//
+// Subclasses should only call this method in an overriding implementation of
+// +copyEncodingFor:usingFormatter:
+-(void)encode:(NSObject*)object;
+
 // Appends the key,value pair to the output buffer.
+//
+// Subclasses must override this method.
 -(void)outputValue:(NSString*)value forKey:(NSString*)key;
 
 @end

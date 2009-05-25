@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/24/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -58,10 +58,10 @@
   testModel = [[ZNFormEncoderTestModel alloc] initWithProperties:nil];
   testModel.key11 = @"val11";
   testModel.key12 = 31415;
-  
+
   identityFormatter = [ZNFormFieldFormatter identityFormatter];
   snakeFormatter = [ZNFormFieldFormatter formatterFromPropertiesTo:
-                    kZNFormatterSnakeCase];  
+                    kZNFormatterSnakeCase];
 }
 -(void)tearDown {
   [testModel release];

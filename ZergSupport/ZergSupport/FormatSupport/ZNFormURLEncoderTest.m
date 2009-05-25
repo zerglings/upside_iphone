@@ -8,7 +8,6 @@
 
 #import "TestSupport.h"
 
-#import "ModelSupport.h"
 #import "ZNFormFieldFormatter.h"
 #import "ZNFormURLEncoder.h"
 
@@ -17,7 +16,6 @@
   ZNFormFieldFormatter* identityFormatter;
   ZNFormFieldFormatter* snakeFormatter;
 }
-
 @end
 
 
