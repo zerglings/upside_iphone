@@ -149,18 +149,16 @@ static NSString* ZNJSONParseString(ZNJsonParseContext* context,
   }
 }
 
-// Parses an expected JSON primitive. Cursor is at the primitive's beginning.
-static NSObject* ZNJSONParsePrimitive(ZNJsonParseContext* context,
-                                      char* expectedText,
-                                      NSUInteger expectedLength,
-                                      NSObject* primitive) {
+// Parses a known JSON token. Cursor is at the token's beginning.
+static BOOL ZNJSONParseKnownToken(ZNJsonParseContext* context,
+                                  char* expectedText,
+                                  NSUInteger expectedLength) {
   if (context->bytes + expectedLength > context->endOfBytes ||
       memcmp(context->bytes, expectedText, expectedLength)) {
-    return nil;
+    return NO;
   }
   context->bytes += expectedLength;
-
-  return primitive;
+  return YES;
 }
 
 // Parses a JSON number. The cursor is at the first character.
@@ -291,6 +289,7 @@ static NSDictionary* ZNJSONParseObject(ZNJsonParseContext* context) {
     }
     [object setValue:value forKey:name];
     [value release];
+    [name release];
 
     // Potential , separator
     ZNJSONSkipComma(context);
@@ -335,15 +334,16 @@ static NSObject* ZNJSONParseValue(ZNJsonParseContext* context) {
       return ZNJSONParseObject(context);
 
     case 't':  // true
-      return ZNJSONParsePrimitive(context, "true", 4,
-                                  [[NSNumber alloc] initWithBool:YES]);
+      return ZNJSONParseKnownToken(context, "true", 4) ?
+          [[NSNumber alloc] initWithBool:YES] : nil;
 
     case 'f':  // false
-      return ZNJSONParsePrimitive(context, "false", 5,
-                                  [[NSNumber alloc] initWithBool:NO]);
+      return ZNJSONParseKnownToken(context, "false", 5) ?
+          [[NSNumber alloc] initWithBool:NO] : nil;
 
     case 'n':  // null
-      return ZNJSONParsePrimitive(context, "null", 4, [[NSNull alloc] init]);
+      return ZNJSONParseKnownToken(context, "null", 4) ?
+          [[NSNull alloc] init] : nil;
 
     default:  // number
       return ZNJSONParseNumber(context);

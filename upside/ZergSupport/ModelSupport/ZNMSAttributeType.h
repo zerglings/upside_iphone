@@ -25,6 +25,6 @@
        inInstance:(ZNModel*)instance
            from:(NSObject*)boxedObject;
 
-+(ZNMSAttributeType*)newTypeFromString:(const char*)encodedType;
++(ZNMSAttributeType*)typeFromString:(const char*)encodedType;
 
 @end

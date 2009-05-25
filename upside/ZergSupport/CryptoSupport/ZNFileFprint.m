@@ -28,7 +28,7 @@
                 digester:(id<ZNDigester>)digester {
   NSObject<ZNCipher> *cipher = [[cipherClass alloc] initWithKey:key
                                                         encrypt:YES];
-  NSData* cryptedData = [cipher crypt:data withIv:initializationVector];
+  NSData* cryptedData = [cipher newCrypted:data withIv:initializationVector];
   [cipher release];
 
   NSData* fprint = [digester copyDigest:cryptedData];
@@ -44,7 +44,7 @@
                      digester:(id<ZNDigester>)digester {
   NSObject<ZNCipher> *cipher = [[cipherClass alloc] initWithKey:key
                                                         encrypt:YES];
-  NSData* cryptedData = [cipher crypt:data withIv:initializationVector];
+  NSData* cryptedData = [cipher newCrypted:data withIv:initializationVector];
   [cipher release];
 
   NSString* hexFprint = [digester copyHexDigest:cryptedData];

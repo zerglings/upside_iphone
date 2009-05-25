@@ -19,7 +19,7 @@
 
 -(NSArray*)parseData:(NSData*)data;
 
-+(NSDictionary*)parserSchema;
++(NSDictionary*)copyParserSchema;
 
 @end
 
@@ -27,10 +27,11 @@
 @implementation ZNFixtureParser
 -(id)init {
   if ((self = [super init])) {
-    NSDictionary* parserSchema = [ZNFixtureParser parserSchema];
+    NSDictionary* parserSchema = [ZNFixtureParser copyParserSchema];
     xmlParser = [[ZNModelXmlParser alloc] initWithSchema:parserSchema
                                           documentCasing:kZNFormatterSnakeCase];
     xmlParser.delegate = self;
+    [parserSchema release];
   }
   return self;
 }
@@ -51,7 +52,7 @@
 }
 
 
-+(NSDictionary*)parserSchema {
++(NSDictionary*)copyParserSchema {
   NSArray* modelClasses = [ZNModel allModelClasses];
   ZNFormFieldFormatter* snakeFormatter =
       [ZNFormFieldFormatter formatterFromPropertiesTo:kZNFormatterSnakeCase];

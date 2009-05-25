@@ -24,6 +24,7 @@
             method:(NSString*)method
               data:(NSDictionary*)data
        fieldCasing:(enum ZNFormatterCasing)fieldCasing
+      encoderClass:(Class)dataEncodingClass
      responseClass:(Class)modelClass
 responseProperties:(NSArray*)modelPropertyNames
             target:(NSObject*)target

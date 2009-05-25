@@ -41,7 +41,8 @@
 +(NSURLRequest*)newURLRequestToService:(NSString*)service
                                 method:(NSString*)method
                                   data:(NSDictionary*)data
-                           fieldCasing:(ZNFormatterCasing)fieldCasing {
+                           fieldCasing:(ZNFormatterCasing)fieldCasing
+                          encoderClass:(Class)dataEncodingClass {
   NSMutableURLRequest* request = [[NSMutableURLRequest alloc] init];
 
   [request setHTTPMethod:method];
@@ -50,8 +51,9 @@
 
   ZNFormFieldFormatter* fieldFormatter =
       [ZNFormFieldFormatter formatterFromPropertiesTo:fieldCasing];
-  NSData* encodedBody = [ZNFormURLEncoder copyEncodingFor:data
-                                      usingFieldFormatter:fieldFormatter];
+  NSData* encodedBody = [dataEncodingClass copyEncodingFor:data
+                                       usingFieldFormatter:fieldFormatter];
+  NSString* contentType = [dataEncodingClass copyContentTypeFor:encodedBody];
 
   if ([encodedBody length] != 0 && [method isEqualToString:kZNHttpMethodGet] ||
       [method isEqualToString:kZNHttpMethodDelete]) {
@@ -76,7 +78,7 @@
     [request setHTTPBody:encodedBody];
   }
 
-  [request addValue:@"application/x-www-form-urlencoded; charset=utf-8"
+  [request addValue:contentType
  forHTTPHeaderField:@"Content-Type"];
   [request addValue:[NSString stringWithFormat:@"%u",
                      [[request HTTPBody] length]]
@@ -84,6 +86,7 @@
   [request addValue:@"Zergling.Net Web Support/1.0"
  forHTTPHeaderField:@"User-Agent"];
 
+  [contentType release];
   [encodedBody release];
   return request;
 }
@@ -208,12 +211,14 @@ didReceiveResponse:(NSURLResponse*)response {
             method:(NSString*)method
               data:(NSDictionary*)data
        fieldCasing:(ZNFormatterCasing)fieldCasing
+      encoderClass:(Class)dataEncodingClass
             target:(NSObject*)target
             action:(SEL)action {
   NSURLRequest* urlRequest = [self newURLRequestToService:service
                                                    method:method
                                                      data:data
-                                              fieldCasing:fieldCasing];
+                                              fieldCasing:fieldCasing
+                                             encoderClass:dataEncodingClass];
   ZNHttpRequest* request =
       [[ZNHttpRequest alloc] initWithURLRequest:urlRequest
                                          target:target

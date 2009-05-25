@@ -104,7 +104,7 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
 
 @implementation ZNObjectQuery
 
--(NSArray*)run:(NSObject*)object {
+-(NSArray*)newRun:(NSObject*)object {
   NSMutableArray* results = [[NSMutableArray alloc] init];
   ZNQueryRun(object, components, 0, results);
 
@@ -118,7 +118,7 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
 // This deviates from the convention of returning immutable objects because the
 // return value is a private object to ZNDictionaryQuery, so it cannot be
 // modified by accident.
-+(NSMutableArray*)splitQueryString:(NSString*)queryString {
++(NSMutableArray*)copyQueryStringSplit:(NSString*)queryString {
   NSMutableArray* array = [[NSMutableArray alloc] init];
 
   // NOTE: we're adding the separator at the query's end as a sentinel, to avoid
@@ -164,7 +164,7 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
 
 -(id)initWithQueryString:(NSString*)queryString {
   if ((self = [super init])) {
-    components = [ZNObjectQuery splitQueryString:queryString];
+    components = [ZNObjectQuery copyQueryStringSplit:queryString];
   }
   return self;
 }
@@ -175,7 +175,7 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
 }
 
 
-+(ZNObjectQuery*)compile:(NSString*)queryString {
++(ZNObjectQuery*)newCompile:(NSString*)queryString {
   return [[ZNObjectQuery alloc] initWithQueryString:queryString];
 }
 

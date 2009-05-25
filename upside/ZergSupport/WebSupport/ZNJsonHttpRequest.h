@@ -23,6 +23,7 @@
             method:(NSString*)method
               data:(NSDictionary*)data
        fieldCasing:(enum ZNFormatterCasing)fieldCasing
+      encoderClass:(Class)dataEncodingClass
    responseQueries:(NSArray*)responseQueries
     responseCasing:(enum ZNFormatterCasing)responseCasing
             target:(NSObject*)target

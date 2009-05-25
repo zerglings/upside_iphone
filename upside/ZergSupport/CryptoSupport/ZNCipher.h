@@ -29,12 +29,12 @@
                            useCbc:(BOOL)useCbc;
 
 // Encrypts/decrypts the given data.
--(NSData*)crypt:(NSData*)data;
+-(NSData*)newCrypted:(NSData*)data;
 
 // Encrypts/decrypts the given data.
 //
 // If the given IV is nil, a default IV consisting of 0s will be used.
 // The IV is ignored in ECB mode.
--(NSData*)crypt:(NSData*)data withIv:(NSData*)theInitializationVector;
+-(NSData*)newCrypted:(NSData*)data withIv:(NSData*)theInitializationVector;
 
 @end

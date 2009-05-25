@@ -10,13 +10,15 @@
 
 #import "ZNAppFprint.h"
 
+#import "FormatSupport.h"
 #import "WebSupport.h"
 #import "ZNDeviceFprint.h"
 
 
 @interface ZNAppFprint ()
-// This method isn't part of the public API. It's used for testing
+// This methods aren't part of the public API. They are used for testing
 // convenience.
++(NSString*)manifestPath;
 +(NSString*)executablePath;
 @end
 
@@ -41,7 +43,7 @@
 -(void)setUp {
   deviceAttributes = [[ZNDeviceFprint deviceAttributes] retain];
   NSData* manifestData = [NSData
-                          dataWithContentsOfFile:[ZNAppFprint manifestPath]];
+                          dataWithContentsOfFile:[ZNAppFprint executablePath]];
   manifest = [[NSString alloc] initWithData:manifestData
                                    encoding:NSASCIIStringEncoding];
 
@@ -68,13 +70,21 @@
   [ZNXmlHttpRequest callService:testService
                          method:kZNHttpMethodPost
                            data:request
+                    fieldCasing:kZNFormatterSnakeCase
+                   encoderClass:[ZNFormMultipartEncoder class]
                  responseModels:[NSDictionary dictionaryWithObject:[NSNull null]
                                                             forKey:@"fprint"]
+                 responseCasing:kZNFormatterSnakeCase
                          target:self
                          action:@selector(checkFprints:)];
 
-  [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
-                                            1.0]];
+  // Heroku can take a looong time to compute the fingerprint.
+  for (NSUInteger i = 0; i < 60; i++) {
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                              1.0]];
+    if (receivedResponse == YES)
+      break;
+  }
 
   STAssertEquals(YES, receivedResponse, @"Verification service didn't respond");
 }

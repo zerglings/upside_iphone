@@ -86,6 +86,7 @@
                       method:kZNHttpMethodPut
                         data:dict
                  fieldCasing:kZNFormatterSnakeCase
+                encoderClass:[ZNFormURLEncoder class]
                       target:self
                       action:@selector(checkOnlineAndFileResponse:)];
 
@@ -109,6 +110,44 @@
                        responseString, @"Wrong request");
 }
 
+-(void)testOnlineMultipartPut {
+  srand(2912);  // Makes the random MIME boundary deterministic.
+
+  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                        requestModel, @"model",
+                        @"someString", @"stringKey", nil];
+  [ZNHttpRequest callService:service
+                      method:kZNHttpMethodPut
+                        data:dict
+                 fieldCasing:kZNFormatterSnakeCase
+                encoderClass:[ZNFormMultipartEncoder class]
+                      target:self
+                      action:@selector(checkOnlineMultipartResponse:)];
+
+  [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                            1.0]];
+
+  STAssertEquals(YES, receivedResponse, @"Response never received");
+}
+
+-(void)checkOnlineMultipartResponse:(NSData*)response {
+  receivedResponse = YES;
+  STAssertFalse([response isKindOfClass:[NSError class]],
+                @"Error occured %@", response);
+
+  NSString* responseString =
+      [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]
+       autorelease];
+  responseString = [responseString stringByReplacingOccurrencesOfString:@"\r\n"
+                                                             withString:@"\n"];
+
+  NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
+                        stringByAppendingPathComponent:
+                        @"ZNHttpRequestTest.put.multipart"];
+  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
+                       responseString, @"Wrong request");
+}
+
 -(void)testFileRequest {
   NSString* filePath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
@@ -119,6 +158,7 @@
                       method:kZNHttpMethodGet
                         data:nil
                  fieldCasing:kZNFormatterSnakeCase
+                encoderClass:[ZNFormURLEncoder class]
                       target:self
                       action:@selector(checkOnlineAndFileResponse:)];
 
@@ -136,6 +176,7 @@
                       method:kZNHttpMethodGet
                         data:dict
                  fieldCasing:kZNFormatterSnakeCase
+                encoderClass:[ZNFormURLEncoder class]
                       target:self
                       action:@selector(checkOnlineGetWithoutQuery:)];
 
@@ -166,6 +207,7 @@
                       method:kZNHttpMethodGet
                         data:dict
                  fieldCasing:kZNFormatterSnakeCase
+                encoderClass:[ZNFormURLEncoder class]
                       target:self
                       action:@selector(checkOnlineGetWithQuery:)];
 

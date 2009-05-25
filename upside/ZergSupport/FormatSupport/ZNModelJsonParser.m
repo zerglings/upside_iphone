@@ -50,7 +50,7 @@
         [compiledQueries addObject:null];
       }
       NSString* queryString = [queries objectAtIndex:(i + 1)];
-      [compiledQueries addObject:[ZNObjectQuery compile:queryString]];
+      [compiledQueries addObject:[ZNObjectQuery newCompile:queryString]];
     }
   }
   return self;
@@ -80,7 +80,7 @@
     Class modelClass = [compiledQueries objectAtIndex:i];
     ZNObjectQuery* query = [compiledQueries objectAtIndex:(i + 1)];
 
-    NSArray* results = [query run:jsonData];
+    NSArray* results = [query newRun:jsonData];
     for (NSObject* result in results) {
       if (modelClass == null) {
         [delegate parsedObject:result context:context];

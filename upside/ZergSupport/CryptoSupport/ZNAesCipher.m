@@ -34,11 +34,11 @@
   [super dealloc];
 }
 
--(NSData*)crypt:(NSData*)data {
-  return [self crypt:data withIv:nil];
+-(NSData*)newCrypted:(NSData*)data {
+  return [self newCrypted:data withIv:nil];
 }
 
--(NSData*)crypt:(NSData*)data withIv:(NSData*)theInitializationVector {
+-(NSData*)newCrypted:(NSData*)data withIv:(NSData*)theInitializationVector {
   NSUInteger inputLength = [data length];
   NSUInteger paddingLength = (16 - (inputLength & 0x0f)) & 0x0f;
   size_t outputLength = CCCryptorGetOutputLength(cryptorRef,
