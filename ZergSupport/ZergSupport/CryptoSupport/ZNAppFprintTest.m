@@ -71,7 +71,7 @@
                          method:kZNHttpMethodPost
                            data:request
                     fieldCasing:kZNFormatterSnakeCase
-                   encoderClass:[ZNFormMultipartEncoder class]   
+                   encoderClass:[ZNFormMultipartEncoder class]
                  responseModels:[NSDictionary dictionaryWithObject:[NSNull null]
                                                             forKey:@"fprint"]
                  responseCasing:kZNFormatterSnakeCase

@@ -111,8 +111,8 @@
 }
 
 -(void)testOnlineMultipartPut {
-  srand(2912);  // Makes the random MIME boundary deterministic. 
-  
+  srand(2912);  // Makes the random MIME boundary deterministic.
+
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
                         requestModel, @"model",
                         @"someString", @"stringKey", nil];
@@ -123,10 +123,10 @@
                 encoderClass:[ZNFormMultipartEncoder class]
                       target:self
                       action:@selector(checkOnlineMultipartResponse:)];
-  
+
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
-  
+
   STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 
@@ -134,13 +134,13 @@
   receivedResponse = YES;
   STAssertFalse([response isKindOfClass:[NSError class]],
                 @"Error occured %@", response);
-  
+
   NSString* responseString =
       [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]
        autorelease];
   responseString = [responseString stringByReplacingOccurrencesOfString:@"\r\n"
                                                              withString:@"\n"];
-  
+
   NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNHttpRequestTest.put.multipart"];

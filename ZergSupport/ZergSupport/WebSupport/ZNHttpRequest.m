@@ -53,6 +53,7 @@
       [ZNFormFieldFormatter formatterFromPropertiesTo:fieldCasing];
   NSData* encodedBody = [dataEncodingClass copyEncodingFor:data
                                        usingFieldFormatter:fieldFormatter];
+  NSString* contentType = [dataEncodingClass copyContentTypeFor:encodedBody];
 
   if ([encodedBody length] != 0 && [method isEqualToString:kZNHttpMethodGet] ||
       [method isEqualToString:kZNHttpMethodDelete]) {
@@ -77,7 +78,7 @@
     [request setHTTPBody:encodedBody];
   }
 
-  [request addValue:[dataEncodingClass copyContentTypeFor:encodedBody]
+  [request addValue:contentType
  forHTTPHeaderField:@"Content-Type"];
   [request addValue:[NSString stringWithFormat:@"%u",
                      [[request HTTPBody] length]]
@@ -85,6 +86,7 @@
   [request addValue:@"Zergling.Net Web Support/1.0"
  forHTTPHeaderField:@"User-Agent"];
 
+  [contentType release];
   [encodedBody release];
   return request;
 }

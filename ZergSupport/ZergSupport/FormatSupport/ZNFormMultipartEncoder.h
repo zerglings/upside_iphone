@@ -10,7 +10,7 @@
 #import "ZNFormEncoder.h"
 
 
-// Convert form data into the multipart/form-data MIME encoding. 
+// Convert form data into the multipart/form-data MIME encoding.
 @interface ZNFormMultipartEncoder : ZNFormEncoder {
   NSData* boundary;
   const uint8_t* boundaryBytes;
