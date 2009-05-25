@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<echo>
+  <method>put</method>
+  <uri>/web_support/echo.xml</uri>
+  <headers>ACCEPT: */*
+ACCEPT_ENCODING: gzip, deflate
+ACCEPT_LANGUAGE: en-us
+CONNECTION: close
+HOST: zn-testbed.heroku.com
+USER_AGENT: Zergling.Net Web Support/1.0
+VERSION: HTTP/1.0
+</headers>
+  <body>--dvz1c0VdjpXpGEnb
+Content-Disposition: form-data; name=&quot;string_key&quot;
+Content-Type: text-plain; charset=utf8;
+
+someString
+--dvz1c0VdjpXpGEnb
+Content-Disposition: form-data; name=&quot;model[true_val]&quot;
+Content-Type: text-plain; charset=utf8;
+
+true
+--dvz1c0VdjpXpGEnb
+Content-Disposition: form-data; name=&quot;model[uint_val]&quot;
+Content-Type: text-plain; charset=utf8;
+
+3141592
+--dvz1c0VdjpXpGEnb
+Content-Disposition: form-data; name=&quot;model[text_val]&quot;
+Content-Type: text-plain; charset=utf8;
+
+Something*special
+--dvz1c0VdjpXpGEnb--
+</body>
+</echo>

@@ -59,6 +59,7 @@ enum ZNFormatterCasing;
             method:(NSString*)method
               data:(NSDictionary*)data
        fieldCasing:(enum ZNFormatterCasing)fieldCasing
+      encoderClass:(Class)dataEncodingClass
             target:(NSObject*)target
             action:(SEL)action;
 
@@ -76,7 +77,8 @@ enum ZNFormatterCasing;
 +(NSURLRequest*)newURLRequestToService:(NSString*)service
                                 method:(NSString*)method
                                   data:(NSDictionary*)data
-                           fieldCasing:(enum ZNFormatterCasing)fieldCasing;
+                           fieldCasing:(enum ZNFormatterCasing)fieldCasing
+                          encoderClass:(Class)dataEncodingClass;
 
 // Subclasses should call this on the assembled request.
 -(void)start;

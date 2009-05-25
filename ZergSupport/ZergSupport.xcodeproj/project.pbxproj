@@ -167,6 +167,7 @@
 		57806FFC0FCA751E006C07BD /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EE10F4E0D4D0046B0EE /* ZNHttpRequestTest.m */; };
 		57806FFD0FCA751E006C07BD /* ZNJsonHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AC65850FAE392200512D70 /* ZNJsonHttpRequestTest.m */; };
 		57806FFE0FCA751E006C07BD /* ZNXmlHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EE60F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.m */; };
+		578070420FCA7ABF006C07BD /* ZNHttpRequestTest.put.multipart in Resources */ = {isa = PBXBuildFile; fileRef = 578070410FCA7AAE006C07BD /* ZNHttpRequestTest.put.multipart */; };
 		57826D340FA3F48A006896D7 /* ZNDeviceFprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 57826D320FA3F48A006896D7 /* ZNDeviceFprint.h */; };
 		57826D350FA3F48A006896D7 /* ZNDeviceFprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */; };
 		57826E7B0FA436BA006896D7 /* ZNDigester.h in Headers */ = {isa = PBXBuildFile; fileRef = 57826E790FA436BA006896D7 /* ZNDigester.h */; };
@@ -369,6 +370,7 @@
 		57551EE50F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.body */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNXmlHttpRequestTest.body; sourceTree = "<group>"; };
 		57551EE60F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNXmlHttpRequestTest.m; sourceTree = "<group>"; };
 		57551EE70F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZNXmlHttpRequestTest.xml; sourceTree = "<group>"; };
+		578070410FCA7AAE006C07BD /* ZNHttpRequestTest.put.multipart */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZNHttpRequestTest.put.multipart; sourceTree = "<group>"; };
 		57826D320FA3F48A006896D7 /* ZNDeviceFprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNDeviceFprint.h; sourceTree = "<group>"; };
 		57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDeviceFprint.m; sourceTree = "<group>"; };
 		57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDeviceFprintTest.m; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 				5741EF2F0FAE857500484927 /* ZNHttpRequestTest.get1 */,
 				5741EF300FAE859C00484927 /* ZNHttpRequestTest.get2 */,
 				57551EE20F4E0D4D0046B0EE /* ZNHttpRequestTest.put */,
+				578070410FCA7AAE006C07BD /* ZNHttpRequestTest.put.multipart */,
 				57B5DFE40FAE26DD002CE751 /* ZNJsonHttpRequest.h */,
 				57B5DFE50FAE26DD002CE751 /* ZNJsonHttpRequest.m */,
 				57AC65880FAE3A0100512D70 /* ZNJsonHttpRequestTest.body */,
@@ -918,6 +921,7 @@
 				57AC66140FAE4B0300512D70 /* ZNJsonHttpRequestTest.body in Resources */,
 				5741EF960FAE8CD000484927 /* ZNHttpRequestTest.get1 in Resources */,
 				5741EF970FAE8CD500484927 /* ZNHttpRequestTest.get2 in Resources */,
+				578070420FCA7ABF006C07BD /* ZNHttpRequestTest.put.multipart in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
