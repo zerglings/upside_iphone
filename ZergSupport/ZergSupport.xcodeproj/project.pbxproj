@@ -11,6 +11,30 @@
 		572DCDF50FA1718800CA3975 /* ZNSha2Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCDF30FA1718800CA3975 /* ZNSha2Digest.m */; };
 		572DCE050FA1743C00CA3975 /* ZNMd5Digest.h in Headers */ = {isa = PBXBuildFile; fileRef = 572DCE030FA1743C00CA3975 /* ZNMd5Digest.h */; };
 		572DCE060FA1743C00CA3975 /* ZNMd5Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCE040FA1743C00CA3975 /* ZNMd5Digest.m */; };
+		573034D30FCA19EC001F9B38 /* NSInvocation+OCMAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034AD0FCA19EC001F9B38 /* NSInvocation+OCMAdditions.h */; };
+		573034D40FCA19EC001F9B38 /* NSInvocation+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034AE0FCA19EC001F9B38 /* NSInvocation+OCMAdditions.m */; };
+		573034D70FCA19EC001F9B38 /* NSMethodSignature+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034B20FCA19EC001F9B38 /* NSMethodSignature+Private.h */; };
+		573034D80FCA19EC001F9B38 /* NSNotificationCenter+OCMAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034B30FCA19EC001F9B38 /* NSNotificationCenter+OCMAdditions.h */; };
+		573034D90FCA19EC001F9B38 /* NSNotificationCenter+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034B40FCA19EC001F9B38 /* NSNotificationCenter+OCMAdditions.m */; };
+		573034DA0FCA19EC001F9B38 /* OCClassMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034B50FCA19EC001F9B38 /* OCClassMockObject.h */; };
+		573034DB0FCA19EC001F9B38 /* OCClassMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034B60FCA19EC001F9B38 /* OCClassMockObject.m */; };
+		573034DC0FCA19EC001F9B38 /* OCMArg.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034B70FCA19EC001F9B38 /* OCMArg.h */; };
+		573034DD0FCA19EC001F9B38 /* OCMArg.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034B80FCA19EC001F9B38 /* OCMArg.m */; };
+		573034DE0FCA19EC001F9B38 /* OCMConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034B90FCA19EC001F9B38 /* OCMConstraint.h */; };
+		573034DF0FCA19EC001F9B38 /* OCMConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034BA0FCA19EC001F9B38 /* OCMConstraint.m */; };
+		573034E20FCA19EC001F9B38 /* OCMObserverRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034BD0FCA19EC001F9B38 /* OCMObserverRecorder.h */; };
+		573034E30FCA19EC001F9B38 /* OCMObserverRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034BE0FCA19EC001F9B38 /* OCMObserverRecorder.m */; };
+		573034E40FCA19EC001F9B38 /* OCMock.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034BF0FCA19EC001F9B38 /* OCMock.h */; };
+		573034E60FCA19EC001F9B38 /* OCMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034C10FCA19EC001F9B38 /* OCMockObject.h */; };
+		573034E70FCA19EC001F9B38 /* OCMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034C20FCA19EC001F9B38 /* OCMockObject.m */; };
+		573034EC0FCA19EC001F9B38 /* OCMockRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034C70FCA19EC001F9B38 /* OCMockRecorder.h */; };
+		573034ED0FCA19EC001F9B38 /* OCMockRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034C80FCA19EC001F9B38 /* OCMockRecorder.m */; };
+		573034F00FCA19EC001F9B38 /* OCMPassByRefSetter.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034CB0FCA19EC001F9B38 /* OCMPassByRefSetter.h */; };
+		573034F10FCA19EC001F9B38 /* OCMPassByRefSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034CC0FCA19EC001F9B38 /* OCMPassByRefSetter.m */; };
+		573034F20FCA19EC001F9B38 /* OCObserverMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034CD0FCA19EC001F9B38 /* OCObserverMockObject.h */; };
+		573034F30FCA19EC001F9B38 /* OCObserverMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034CE0FCA19EC001F9B38 /* OCObserverMockObject.m */; };
+		573034F60FCA19EC001F9B38 /* OCProtocolMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034D10FCA19EC001F9B38 /* OCProtocolMockObject.h */; };
+		573034F70FCA19EC001F9B38 /* OCProtocolMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034D20FCA19EC001F9B38 /* OCProtocolMockObject.m */; };
 		5741EF960FAE8CD000484927 /* ZNHttpRequestTest.get1 in Resources */ = {isa = PBXBuildFile; fileRef = 5741EF2F0FAE857500484927 /* ZNHttpRequestTest.get1 */; };
 		5741EF970FAE8CD500484927 /* ZNHttpRequestTest.get2 in Resources */ = {isa = PBXBuildFile; fileRef = 5741EF300FAE859C00484927 /* ZNHttpRequestTest.get2 */; };
 		5748FD710FC9AD660072D8A2 /* ZNFormMultipartEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5748FD6F0FC9AD660072D8A2 /* ZNFormMultipartEncoder.h */; };
@@ -203,6 +227,32 @@
 		572E0BBC0F56569600E3FEF7 /* libZergSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZergSupport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		572E0BBE0F56569600E3FEF7 /* libZergTestSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZergTestSupport.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		572E0BBF0F56569600E3FEF7 /* ZergSupportTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZergSupportTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		573034AC0FCA19EC001F9B38 /* Changes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changes.txt; sourceTree = "<group>"; };
+		573034AD0FCA19EC001F9B38 /* NSInvocation+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+OCMAdditions.h"; sourceTree = "<group>"; };
+		573034AE0FCA19EC001F9B38 /* NSInvocation+OCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+OCMAdditions.m"; sourceTree = "<group>"; };
+		573034B00FCA19EC001F9B38 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		573034B20FCA19EC001F9B38 /* NSMethodSignature+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMethodSignature+Private.h"; sourceTree = "<group>"; };
+		573034B30FCA19EC001F9B38 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		573034B40FCA19EC001F9B38 /* NSNotificationCenter+OCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+OCMAdditions.m"; sourceTree = "<group>"; };
+		573034B50FCA19EC001F9B38 /* OCClassMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCClassMockObject.h; sourceTree = "<group>"; };
+		573034B60FCA19EC001F9B38 /* OCClassMockObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCClassMockObject.m; sourceTree = "<group>"; };
+		573034B70FCA19EC001F9B38 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		573034B80FCA19EC001F9B38 /* OCMArg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMArg.m; sourceTree = "<group>"; };
+		573034B90FCA19EC001F9B38 /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		573034BA0FCA19EC001F9B38 /* OCMConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMConstraint.m; sourceTree = "<group>"; };
+		573034BD0FCA19EC001F9B38 /* OCMObserverRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMObserverRecorder.h; sourceTree = "<group>"; };
+		573034BE0FCA19EC001F9B38 /* OCMObserverRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMObserverRecorder.m; sourceTree = "<group>"; };
+		573034BF0FCA19EC001F9B38 /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		573034C10FCA19EC001F9B38 /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		573034C20FCA19EC001F9B38 /* OCMockObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMockObject.m; sourceTree = "<group>"; };
+		573034C70FCA19EC001F9B38 /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
+		573034C80FCA19EC001F9B38 /* OCMockRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMockRecorder.m; sourceTree = "<group>"; };
+		573034CB0FCA19EC001F9B38 /* OCMPassByRefSetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMPassByRefSetter.h; sourceTree = "<group>"; };
+		573034CC0FCA19EC001F9B38 /* OCMPassByRefSetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMPassByRefSetter.m; sourceTree = "<group>"; };
+		573034CD0FCA19EC001F9B38 /* OCObserverMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCObserverMockObject.h; sourceTree = "<group>"; };
+		573034CE0FCA19EC001F9B38 /* OCObserverMockObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCObserverMockObject.m; sourceTree = "<group>"; };
+		573034D10FCA19EC001F9B38 /* OCProtocolMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCProtocolMockObject.h; sourceTree = "<group>"; };
+		573034D20FCA19EC001F9B38 /* OCProtocolMockObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCProtocolMockObject.m; sourceTree = "<group>"; };
 		5741EF2F0FAE857500484927 /* ZNHttpRequestTest.get1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNHttpRequestTest.get1; sourceTree = "<group>"; };
 		5741EF300FAE859C00484927 /* ZNHttpRequestTest.get2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNHttpRequestTest.get2; sourceTree = "<group>"; };
 		574236CA0F91975A00DA8374 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
@@ -428,6 +478,39 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		573034A80FCA196D001F9B38 /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				573034AC0FCA19EC001F9B38 /* Changes.txt */,
+				573034AD0FCA19EC001F9B38 /* NSInvocation+OCMAdditions.h */,
+				573034AE0FCA19EC001F9B38 /* NSInvocation+OCMAdditions.m */,
+				573034B00FCA19EC001F9B38 /* License.txt */,
+				573034B20FCA19EC001F9B38 /* NSMethodSignature+Private.h */,
+				573034B30FCA19EC001F9B38 /* NSNotificationCenter+OCMAdditions.h */,
+				573034B40FCA19EC001F9B38 /* NSNotificationCenter+OCMAdditions.m */,
+				573034B50FCA19EC001F9B38 /* OCClassMockObject.h */,
+				573034B60FCA19EC001F9B38 /* OCClassMockObject.m */,
+				573034B70FCA19EC001F9B38 /* OCMArg.h */,
+				573034B80FCA19EC001F9B38 /* OCMArg.m */,
+				573034B90FCA19EC001F9B38 /* OCMConstraint.h */,
+				573034BA0FCA19EC001F9B38 /* OCMConstraint.m */,
+				573034BD0FCA19EC001F9B38 /* OCMObserverRecorder.h */,
+				573034BE0FCA19EC001F9B38 /* OCMObserverRecorder.m */,
+				573034BF0FCA19EC001F9B38 /* OCMock.h */,
+				573034C10FCA19EC001F9B38 /* OCMockObject.h */,
+				573034C20FCA19EC001F9B38 /* OCMockObject.m */,
+				573034C70FCA19EC001F9B38 /* OCMockRecorder.h */,
+				573034C80FCA19EC001F9B38 /* OCMockRecorder.m */,
+				573034CB0FCA19EC001F9B38 /* OCMPassByRefSetter.h */,
+				573034CC0FCA19EC001F9B38 /* OCMPassByRefSetter.m */,
+				573034CD0FCA19EC001F9B38 /* OCObserverMockObject.h */,
+				573034CE0FCA19EC001F9B38 /* OCObserverMockObject.m */,
+				573034D10FCA19EC001F9B38 /* OCProtocolMockObject.h */,
+				573034D20FCA19EC001F9B38 /* OCProtocolMockObject.m */,
+			);
+			path = OCMock;
+			sourceTree = "<group>";
+		};
 		57551E770F4E0D4D0046B0EE /* ZergSupport */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +637,7 @@
 		57551EC00F4E0D4D0046B0EE /* TestSupport */ = {
 			isa = PBXGroup;
 			children = (
+				573034A80FCA196D001F9B38 /* OCMock */,
 				57551EC10F4E0D4D0046B0EE /* GTM */,
 				57551ED40F4E0D4D0046B0EE /* ZNSenTestCase+Fixtures.h */,
 				57551ED50F4E0D4D0046B0EE /* ZNSenTestCase+Fixtures.m */,
@@ -721,6 +805,19 @@
 				57551FCF0F4E102F0046B0EE /* GTMUIKit+UnitTesting.h in Headers */,
 				57551FF40F4E10E90046B0EE /* ZNSenTestCase+Fixtures.h in Headers */,
 				57551FF70F4E10ED0046B0EE /* TestSupport.h in Headers */,
+				573034D30FCA19EC001F9B38 /* NSInvocation+OCMAdditions.h in Headers */,
+				573034D70FCA19EC001F9B38 /* NSMethodSignature+Private.h in Headers */,
+				573034D80FCA19EC001F9B38 /* NSNotificationCenter+OCMAdditions.h in Headers */,
+				573034DA0FCA19EC001F9B38 /* OCClassMockObject.h in Headers */,
+				573034DC0FCA19EC001F9B38 /* OCMArg.h in Headers */,
+				573034DE0FCA19EC001F9B38 /* OCMConstraint.h in Headers */,
+				573034E20FCA19EC001F9B38 /* OCMObserverRecorder.h in Headers */,
+				573034E40FCA19EC001F9B38 /* OCMock.h in Headers */,
+				573034E60FCA19EC001F9B38 /* OCMockObject.h in Headers */,
+				573034EC0FCA19EC001F9B38 /* OCMockRecorder.h in Headers */,
+				573034F00FCA19EC001F9B38 /* OCMPassByRefSetter.h in Headers */,
+				573034F20FCA19EC001F9B38 /* OCObserverMockObject.h in Headers */,
+				573034F60FCA19EC001F9B38 /* OCProtocolMockObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,6 +1018,17 @@
 				57551FCE0F4E102F0046B0EE /* GTMSystemVersion.m in Sources */,
 				57551FD10F4E10340046B0EE /* GTMUIKit+UnitTesting.m in Sources */,
 				57551FF50F4E10EA0046B0EE /* ZNSenTestCase+Fixtures.m in Sources */,
+				573034D40FCA19EC001F9B38 /* NSInvocation+OCMAdditions.m in Sources */,
+				573034D90FCA19EC001F9B38 /* NSNotificationCenter+OCMAdditions.m in Sources */,
+				573034DB0FCA19EC001F9B38 /* OCClassMockObject.m in Sources */,
+				573034DD0FCA19EC001F9B38 /* OCMArg.m in Sources */,
+				573034DF0FCA19EC001F9B38 /* OCMConstraint.m in Sources */,
+				573034E30FCA19EC001F9B38 /* OCMObserverRecorder.m in Sources */,
+				573034E70FCA19EC001F9B38 /* OCMockObject.m in Sources */,
+				573034ED0FCA19EC001F9B38 /* OCMockRecorder.m in Sources */,
+				573034F10FCA19EC001F9B38 /* OCMPassByRefSetter.m in Sources */,
+				573034F30FCA19EC001F9B38 /* OCObserverMockObject.m in Sources */,
+				573034F70FCA19EC001F9B38 /* OCProtocolMockObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

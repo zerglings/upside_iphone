@@ -81,10 +81,10 @@ At this point, the code in CryptoSupport is not well integrated with the rest of
 the toolkit.
 
 TestSupport offers a healthy foundation for testing, by packing the necessary
-subset of the Google Toolbox for Mac. On top of that, it supports Rails-like
-fixtures for ModelSupport models. TestSupport is only included in the testing
-targets, so you don't have to worry about the APL license that comes with
-Google's code.
+subset of the Google Toolbox for Mac, as well as OCMock. On top of that, it
+supports Rails-like fixtures for ModelSupport models. TestSupport is only
+included in the testing targets, so you don't have to worry about the APL
+license that comes with Google's code.
 
 
 DOCUMENTATION

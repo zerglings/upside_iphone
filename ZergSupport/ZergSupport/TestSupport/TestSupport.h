@@ -18,6 +18,15 @@
 // Zergling.Net, and licensed under the MIT license.
 
 
+// TestSupport repackages the files needed to run OCMock tests on the iPhone,
+// from the original OCMock source. Importing TestSupport.h gives access to
+// OCMock for free.
+#import "OCMock.h"
+// LEGAL: These files are released by Mulle Kybernetik under the MIT license,
+// reproduced in TestSupport/OCMock/License.txt. The rest of TestSupport is
+// copyright Zergling.Net, and licensed under the MIT license.
+
+
 // The Test Support features are documented in their respective headers.
 
 #import "ZNSenTestCase+Fixtures.h"

@@ -12,6 +12,7 @@
 Dir.glob('**/*').each do |file|
   next unless /\.m$/ =~ file or /\.h$/ =~ file  # Only Objective C code.
   next if /^ZergSupport\/TestSupport\/GTM\// =~ file  # Skip GTM code.
+  next if /^ZergSupport\/TestSupport\/OCMock\// =~ file  # Skip OCMock code.
   
   contents = File.read file
   
