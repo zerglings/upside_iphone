@@ -32,6 +32,14 @@
 +(NSData*)copyEncodingFor:(NSDictionary*)dictionary
       usingFieldFormatter:(ZNFormFieldFormatter*)formatter;
 
+// Computes the correct Content-Type: directed value for some encoded content.
+//
+// Assumes the encoding was created by calling
+// +copyEncodingFor:usingFieldFormatter: on the same class.
+//
+// Subclasses must override this method.
++(NSString*)copyContentTypeFor:(NSData*)encodedData;
+
 #pragma mark Subclass API
 
 // The output buffer for the encoded data.

@@ -22,16 +22,16 @@
 
 static char kBoundaryCharacters[] =
     "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_!@";
+static const NSUInteger kBoundaryLength = 16;
 
 // Randomly-generated boundary string.
 +(NSData*)newRandomBoundary {
   const size_t kBoundaryCharCount = sizeof(kBoundaryCharacters) - 1;
-  const size_t kBoundarySize = 16;
-  char boundary[kBoundarySize];
-  for(size_t i = 0; i < kBoundarySize; i++) {
+  char boundary[kBoundaryLength];
+  for(size_t i = 0; i < kBoundaryLength; i++) {
     boundary[i] = kBoundaryCharacters[rand() % kBoundaryCharCount];
   }
-  return [[NSData alloc] initWithBytes:boundary length:kBoundarySize];
+  return [[NSData alloc] initWithBytes:boundary length:kBoundaryLength];
 }
 
 #pragma mark Lifecycle
@@ -41,6 +41,7 @@ static char kBoundaryCharacters[] =
     boundary = [[self class] newRandomBoundary];
     boundaryBytes = [boundary bytes];
     boundaryLength = [boundary length];
+    NSAssert(boundaryLength == kBoundaryLength, @"Wrong boundary length");
   }
   return self;
 }
@@ -111,6 +112,23 @@ static char kBoundaryCharacters[] =
                length:46];
   [output appendData:encodedValue];
   [output appendBytes:"\r\n" length:2];
+}
+
++(NSString*)copyContentTypeFor:(NSData*)encodedData {
+  const NSUInteger prefixLength = 30;
+  char contentTypeBuffer[prefixLength + kBoundaryLength];
+
+  const uint8_t* dataBytes = [encodedData bytes];
+  NSUInteger i = 2;
+  while (dataBytes[i] != '\r' && dataBytes[i] != '-') {
+    i++;
+  }
+  memcpy(contentTypeBuffer, "multipart/form-data; boundary=", prefixLength);
+  memcpy(contentTypeBuffer + prefixLength, dataBytes + 2, i - 2);
+  
+  return [[NSString alloc] initWithBytes:contentTypeBuffer
+                                  length:(prefixLength + i - 2)
+                                encoding:NSUTF8StringEncoding];
 }
 
 @end

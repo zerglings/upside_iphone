@@ -41,8 +41,12 @@
   NSString* string = [[NSString alloc] initWithData:data
                        encoding:NSUTF8StringEncoding];
   STAssertEqualStrings(@"", string, @"Empty dictionary");
-  [data release];
+  NSString* contentType = [ZNFormURLEncoder copyContentTypeFor:data];
+  STAssertEqualStrings(@"application/x-www-form-urlencoded",
+                       contentType, @"Content-Type: directive value");
+  [contentType release];
   [string release];
+  [data release];
 }
 
 -(void)testEasyKeyValues {
@@ -54,8 +58,12 @@
                        encoding:NSUTF8StringEncoding];
   STAssertEqualStrings(@"key1=val1&key2=val2",
                        string, @"Straightforward one-level dictionary");
-  [data release];
+  NSString* contentType = [ZNFormURLEncoder copyContentTypeFor:data];
+  STAssertEqualStrings(@"application/x-www-form-urlencoded",
+                       contentType, @"Content-Type: directive value");
+  [contentType release];
   [string release];
+  [data release];
 }
 
 -(void)testEncoding {
@@ -67,8 +75,12 @@
                        encoding:NSUTF8StringEncoding];
   STAssertEqualStrings(@"key%0A1=val%001&key%262=val%20%3D%202",
                        string, @"Escapes in keys and values");
-  [data release];
+  NSString* contentType = [ZNFormURLEncoder copyContentTypeFor:data];
+  STAssertEqualStrings(@"application/x-www-form-urlencoded",
+                       contentType, @"Content-Type: directive value");
+  [contentType release];
   [string release];
+  [data release];
 }
 
 -(void)testKeyFormatting {
@@ -87,8 +99,12 @@
                        @"%5Bkey_two_one_one%5D=val211",
                        string,
                        @"2 levels of nested dictionaries with key formatting");
-  [data release];
+  NSString* contentType = [ZNFormURLEncoder copyContentTypeFor:data];
+  STAssertEqualStrings(@"application/x-www-form-urlencoded",
+                       contentType, @"Content-Type: directive value");
+  [contentType release];
   [string release];
+  [data release];
 }
 
 @end

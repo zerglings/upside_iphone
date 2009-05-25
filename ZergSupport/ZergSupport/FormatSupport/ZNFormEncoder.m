@@ -118,4 +118,11 @@
             [self className]);
 }
 
++(NSString*)copyContentTypeFor:(NSData*)encodedData {
+  NSAssert1(NO,
+            @"ZNFormEncoder subclass %@ did not override +copyContentTypeFor:",
+            [self className]);
+  return nil;
+}
+
 @end

@@ -20,4 +20,10 @@
 +(NSData*)copyEncodingFor:(NSDictionary*)dictionary
         usingFieldFormatter:(ZNFormFieldFormatter*)formatter;
 
+// Computes the correct Content-Type: directed value for some encoded content.
+//
+// Assumes the encoding was created by calling
+// +copyEncodingFor:usingFieldFormatter: on the same class.
++(NSString*)copyContentTypeFor:(NSData*)encodedData;
+
 @end

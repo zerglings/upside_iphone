@@ -23,7 +23,9 @@
 @interface ZNFormMultipartEncoderStub : ZNFormMultipartEncoder
 @end
 @implementation ZNFormMultipartEncoderStub
-static NSString* kBoundaries[] = { @"ABoundary", @"BBoundary", @"CBoundary" };
+// Boundaries must be 16-characters long, just like in the encoder.
+static NSString* kBoundaries[] = { @"ABoundary1235467",
+                                   @"BBoundary1235467", @"CBoundary1235467" };
 static NSUInteger boundaryOffset = 0;
 +(NSData*)newRandomBoundary {
   return [[kBoundaries[boundaryOffset++] dataUsingEncoding:NSUTF8StringEncoding]
@@ -86,9 +88,14 @@ static NSUInteger boundaryOffset = 0;
                                          usingFieldFormatter:identityFormatter];
   NSString* string = [[NSString alloc] initWithData:data
                                            encoding:NSUTF8StringEncoding];
-  STAssertEqualStrings(@"--ABoundary--\r\n", string, @"Empty dictionary");
-  [data release];
+  STAssertEqualStrings(@"--ABoundary1235467--\r\n", string,
+                       @"Empty dictionary");
+  NSString* contentType = [ZNFormMultipartEncoder copyContentTypeFor:data];
+  STAssertEqualStrings(@"multipart/form-data; boundary=ABoundary1235467",
+                       contentType, @"Content-Type: directive value");
+  [contentType release];
   [string release];
+  [data release];
 }
 
 -(void)testEasyKeyValues {
@@ -98,34 +105,42 @@ static NSUInteger boundaryOffset = 0;
                                          usingFieldFormatter:identityFormatter];
   NSString* string = [[NSString alloc] initWithData:data
                                            encoding:NSUTF8StringEncoding];
-  STAssertEqualStrings(@"--ABoundary\r\nContent-Disposition: form-data; "
+  STAssertEqualStrings(@"--ABoundary1235467\r\nContent-Disposition: form-data; "
                        @"name=\"key1\"\r\n"
                        @"Content-Type: text-plain; charset=utf8;\r\n\r\n"
                        @"val1\r\n"
-                       @"--ABoundary\r\nContent-Disposition: form-data; "
+                       @"--ABoundary1235467\r\nContent-Disposition: form-data; "
                        @"name=\"key2\"\r\n"
                        @"Content-Type: text-plain; charset=utf8;\r\n\r\n"
-                       @"val2\r\n--ABoundary--\r\n",
+                       @"val2\r\n--ABoundary1235467--\r\n",
                        string, @"Straightforward one-level dictionary");
-  [data release];
+  NSString* contentType = [ZNFormMultipartEncoder copyContentTypeFor:data];
+  STAssertEqualStrings(@"multipart/form-data; boundary=ABoundary1235467",
+                       contentType, @"Content-Type: directive value");
+  [contentType release];
   [string release];
+  [data release];
 }
 
 -(void)testBoundaryDetection {
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"keyABoundary", @"valueBBoundary", nil];
+                        @"keyABoundary1235467", @"valueBBoundary1235467", nil];
   NSData* data = [ZNFormMultipartEncoderStub copyEncodingFor:dict
                                          usingFieldFormatter:identityFormatter];
   NSString* string = [[NSString alloc] initWithData:data
                                            encoding:NSUTF8StringEncoding];
-  STAssertEqualStrings(@"--CBoundary\r\nContent-Disposition: form-data; "
-                       @"name=\"valueBBoundary\"\r\n"
+  STAssertEqualStrings(@"--CBoundary1235467\r\nContent-Disposition: form-data; "
+                       @"name=\"valueBBoundary1235467\"\r\n"
                        @"Content-Type: text-plain; charset=utf8;\r\n\r\n"
-                       @"keyABoundary\r\n"
-                       @"--CBoundary--\r\n",
+                       @"keyABoundary1235467\r\n"
+                       @"--CBoundary1235467--\r\n",
                        string, @"Key and value containing boundaries");
-  [data release];
+  NSString* contentType = [ZNFormMultipartEncoder copyContentTypeFor:data];
+  STAssertEqualStrings(@"multipart/form-data; boundary=CBoundary1235467",
+                       contentType, @"Content-Type: directive value");
+  [contentType release];
   [string release];
+  [data release];
 }
 
 @end

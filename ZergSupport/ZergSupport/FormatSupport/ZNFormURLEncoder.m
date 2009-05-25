@@ -43,4 +43,8 @@
   return [super copyEncodingFor:dictionary usingFieldFormatter:formatter];
 }
 
++(NSString*)copyContentTypeFor:(NSData*)encodedData {
+  return [@"application/x-www-form-urlencoded" retain];
+}
+
 @end
