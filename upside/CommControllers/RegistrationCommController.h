@@ -19,7 +19,7 @@
 @interface RegistrationCommController : NSObject {
   IBOutlet id<RegistrationCommDelegate> delegate;
 
-  NSDictionary* resposeModels;
+  NSArray* responseQueries;
   ActivationState* activationState;
 }
 

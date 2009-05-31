@@ -24,14 +24,14 @@
 }
 
 +(NSString*)registrationUrl {
-  return [NSString stringWithFormat:@"%@/devices/register.xml",
+  return [NSString stringWithFormat:@"%@/devices/register.json",
       [self serverUrl]];
 }
 +(NSString*)registrationMethod {
   return kZNHttpMethodPut;
 }
 +(NSString*)loginUrl {
-  return [NSString stringWithFormat:@"%@/sessions.xml",
+  return [NSString stringWithFormat:@"%@/sessions.json",
       [self serverUrl]];
 }
 +(NSString*)loginMethod {

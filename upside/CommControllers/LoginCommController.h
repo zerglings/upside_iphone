@@ -20,7 +20,7 @@
 @interface LoginCommController : NSObject {
   IBOutlet id<LoginCommDelegate> delegate;
 
-  NSDictionary* resposeModels;
+  NSArray* resposeQueries;
   ActivationState* activationState;
 }
 

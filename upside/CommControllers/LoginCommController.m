@@ -24,15 +24,15 @@
 
 -(id)init {
   if ((self = [super init])) {
-    resposeModels = [[NSDictionary alloc] initWithObjectsAndKeys:
-                     [User class], @"user",
-                     [ServiceError class], @"error", nil];
+    resposeQueries = [[NSArray alloc] initWithObjects:
+                      [User class], @"/user",
+                      [ServiceError class], @"/error", nil];
   }
   return self;
 }
 
 -(void)dealloc {
-  [resposeModels release];
+  [resposeQueries release];
   [super dealloc];
 }
 
@@ -47,12 +47,12 @@
                            [ZNAppFprint hexAppFprint], @"appSig",
                            nil];
   [NetworkProgress connectionStarted];
-  [ZNXmlHttpRequest callService:[ServerPaths loginUrl]
-                         method:[ServerPaths loginMethod]
-                           data:request
-                 responseModels:resposeModels
-                         target:self
-                         action:@selector(serverResponded:)];
+  [ZNJsonHttpRequest callService:[ServerPaths loginUrl]
+                          method:[ServerPaths loginMethod]
+                            data:request
+                 responseQueries:resposeQueries
+                          target:self
+                          action:@selector(serverResponded:)];
   [request release];
 }
 

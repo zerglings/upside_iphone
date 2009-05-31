@@ -13,6 +13,7 @@
 #import "Device.h"
 #import "NetworkProgress.h"
 #import "ServerPaths.h"
+#import "ServiceError.h"
 #import "User.h"
 #import "WebSupport.h"
 
@@ -21,16 +22,17 @@
 
 -(id)init {
   if ((self = [super init])) {
-    resposeModels = [[NSDictionary alloc] initWithObjectsAndKeys:
-                     [Device class], @"device",
-                     [User class], @"user", nil];
+    responseQueries = [[NSArray alloc] initWithObjects:
+                       [Device class], @"/device",
+                       [User class], @"/user",
+                       [ServiceError class], @"/error", nil];
   }
   return self;
 }
 
 -(void)dealloc {
   [activationState release];
-  [resposeModels release];
+  [responseQueries release];
   [super dealloc];
 }
 
@@ -45,12 +47,12 @@
                                                        requestSignature]];
   [request setObject:[Device copyCurrentDevice] forKey:@"device"];
   [NetworkProgress connectionStarted];
-  [ZNXmlHttpRequest callService:[ServerPaths registrationUrl]
-                         method:[ServerPaths registrationMethod]
-                           data:request
-                 responseModels:resposeModels
-                         target:self
-                         action:@selector(serverResponded:)];
+  [ZNJsonHttpRequest callService:[ServerPaths registrationUrl]
+                          method:[ServerPaths registrationMethod]
+                            data:request
+                 responseQueries:responseQueries
+                          target:self
+                          action:@selector(serverResponded:)];
   [request release];
 }
 
