@@ -25,9 +25,9 @@
       if (*encodedType == '"') {
         // Class name following the type. Check for special cases first.
         if (!strncmp(encodedType, "\"NSString\"", 10))
-          return [[ZNMSRegistry sharedRegistry] stringType];
+          return [[[ZNMSRegistry sharedRegistry] stringType] retain];
         else if (!strncmp(encodedType, "\"NSDate\"", 8))
-          return [[ZNMSRegistry sharedRegistry] dateType];
+          return [[[ZNMSRegistry sharedRegistry] dateType] retain];
         else {
           // Should be a nested model.
 
@@ -66,7 +66,7 @@
                    forceString:(BOOL)forceString {
   NSAssert1(FALSE, @"Attribute type %s did not implement -boxInstanceVar",
             class_getName([self class]));
-  return [NSNull null];
+  return [[NSNull alloc] init];
 }
 
 -(void)unboxAttribute:(ZNModelDefinitionAttribute*)attribute
