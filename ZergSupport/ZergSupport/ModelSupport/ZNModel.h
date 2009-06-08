@@ -94,12 +94,11 @@
 
 -(NSMutableDictionary*)copyToMutableDictionaryForcingStrings:(BOOL)forceStrings;
 
-
-#pragma mark Dynamic Instantiation
-
 // Checks if an Objective C object is a ModelSupport model, or a class for a
 // ModelSupport model.
 +(BOOL)isModelClass:(id)maybeModelClass;
+
+#pragma mark Dynamic Instantiation
 
 // All the classes for ModelSupport models.
 +(NSArray*)allModelClasses;

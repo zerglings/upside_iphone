@@ -16,12 +16,12 @@
 @synthesize isAtomic, isReadOnly, setterStrategy;
 
 -(id)initWithName:(NSString*)theName
-         type:(ZNMSAttributeType*)theType
-    runtimeIvar:(Ivar)theIvar
-       isAtomic:(BOOL)theIsAtomic
-     isReadOnly:(BOOL)theIsReadOnly
-     getterName:(NSString*)theGetter
-     setterName:(NSString*)theSetter
+             type:(ZNMSAttributeType*)theType
+      runtimeIvar:(Ivar)theIvar
+         isAtomic:(BOOL)theIsAtomic
+       isReadOnly:(BOOL)theIsReadOnly
+       getterName:(NSString*)theGetter
+       setterName:(NSString*)theSetter
    setterStrategy:(enum ZNPropertySetterStrategy)theStrategy {
   if ((self = [super init])) {
     name = [theName retain];
@@ -46,6 +46,8 @@
 
 +(ZNModelDefinitionAttribute*)newAttributeFromProperty:(objc_property_t)property
                                                ofClass:(Class)klass {
+  ZNModelDefinitionAttribute* attribute; // Initialized at the done: label.
+
   const char* propertyName = property_getName(property);
   const char* propertyAttributes = property_getAttributes(property);
 
@@ -57,7 +59,7 @@
   // Property type
 
   ZNMSAttributeType* attributeType = [ZNMSAttributeType
-                                      typeFromString:propertyAttributes];
+                                      copyTypeFromString:propertyAttributes];
 
   const char* typeComma = strchr(propertyAttributes, ',');
   if (typeComma)
@@ -91,8 +93,7 @@
       case 'G':
       case 'S': {
         const char* xetterComma = strchr(propertyAttributes + 1, ',');
-        size_t xetterLength = (xetterComma ?
-            xetterComma - propertyAttributes :
+        size_t xetterLength = (xetterComma ? xetterComma - propertyAttributes :
             strlen(propertyAttributes)) - 1;
         NSString* xetter = [NSString
                   stringWithCString:(propertyAttributes + 1)
@@ -116,15 +117,18 @@
   }
 
 done:
-  return [[ZNModelDefinitionAttribute alloc]
-      initWithName:[NSString stringWithCString:propertyName]
-          type:attributeType
+  attribute =
+      [[ZNModelDefinitionAttribute alloc]
+       initWithName:[NSString stringWithCString:propertyName]
+       type:attributeType
        runtimeIvar:runtimeIvar
-          isAtomic:isAtomic
-        isReadOnly:isReadOnly
-        getterName:getterName
-        setterName:setterName
-      setterStrategy:setterStrategy];
+       isAtomic:isAtomic
+       isReadOnly:isReadOnly
+       getterName:getterName
+       setterName:setterName
+       setterStrategy:setterStrategy];
+  [attributeType release];
+  return attribute;
 }
 
 @end

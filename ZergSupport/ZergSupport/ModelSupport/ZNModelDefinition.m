@@ -12,6 +12,7 @@
 
 #import "ZNModelDefinitionAttribute.h"
 
+
 @implementation ZNModelDefinition
 
 @synthesize name, attributes;

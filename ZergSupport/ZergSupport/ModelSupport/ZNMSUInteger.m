@@ -14,34 +14,35 @@
 
 #pragma mark Boxing
 
--(NSObject*)boxAttribute:(ZNModelDefinitionAttribute*)attribute
-        inInstance:(ZNModel*)instance
-         forceString:(BOOL)forceString {
+-(NSObject*)copyBoxedAttribute:(ZNModelDefinitionAttribute*)attribute
+                    inInstance:(ZNModel*)instance
+                   forceString:(BOOL)forceString {
   NSUInteger value = *((NSInteger*)((uint8_t*)instance +
-                    ivar_getOffset([attribute runtimeIvar])));
+                                    ivar_getOffset([attribute runtimeIvar])));
   if (forceString)
-    return [NSString stringWithFormat:@"%u", value];
+    return [[NSString alloc] initWithFormat:@"%u", value];
   else
-    return [NSNumber numberWithUnsignedInteger:value];
+    return [[NSNumber alloc] initWithUnsignedInteger:value];
 }
 
 -(void)unboxAttribute:(ZNModelDefinitionAttribute*)attribute
-        inInstance:(ZNModel*)instance
-             from:(NSObject*)boxedObject {
+           inInstance:(ZNModel*)instance
+                 from:(NSObject*)boxedObject {
   NSUInteger value;
   if ([boxedObject isKindOfClass:[NSString class]]) {
     NSDecimalNumber* decimal = [[NSDecimalNumber alloc]
-                  initWithString:(NSString*)boxedObject];
+                                initWithString:(NSString*)boxedObject];
     value = [decimal unsignedIntegerValue];
     [decimal release];
   }
   else if ([boxedObject isKindOfClass:[NSNumber class]]) {
     value = [(NSNumber*)boxedObject unsignedIntegerValue];
   }
-  else
+  else {
     value = 0;
+  }
   *((NSUInteger*)((uint8_t*)instance +
-             ivar_getOffset([attribute runtimeIvar]))) = value;
+                  ivar_getOffset([attribute runtimeIvar]))) = value;
 }
 
 @end

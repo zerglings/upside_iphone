@@ -14,6 +14,7 @@
 
 @interface ZNModelTest : SenTestCase {
   ZNTestDate* dateModel;
+  ZNTestSubmodel* subModel;
   NSDate* date;
   ZNTestNumbers* numbersModel;
   NSNumber* trueObject;
@@ -34,6 +35,9 @@
   date = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
   dateModel = [[ZNTestDate alloc] initWithProperties: nil];
   dateModel.pubDate = date;
+
+  subModel = [[ZNTestSubmodel alloc] initWithProperties:nil];
+  subModel.dateModel = dateModel;
 
   testDouble = 3.141592;
   testInteger = -3141592;
@@ -70,65 +74,65 @@
 
 -(void)testPrimitiveBoxing {
   NSDictionary* numbersDict = [numbersModel
-                 copyToDictionaryForcingStrings:NO];
+                               copyToDictionaryForcingStrings:NO];
   STAssertEqualObjects(trueObject, [numbersDict objectForKey:@"trueVal"],
-             @"Boxed YES should reflect the original value");
+                       @"Boxed YES should reflect the original value");
   STAssertEqualObjects(falseObject, [numbersDict objectForKey:@"falseVal"],
-             @"Boxed NO should reflect the original value");
+                       @"Boxed NO should reflect the original value");
   STAssertEqualObjects(doubleObject, [numbersDict objectForKey:@"doubleVal"],
-             @"Boxed double should reflect the original value");
+                       @"Boxed double should reflect the original value");
   STAssertEqualObjects(integerObject, [numbersDict
-                     objectForKey:@"integerVal"],
-             @"Boxed integer should reflect the original value");
+                                       objectForKey:@"integerVal"],
+                       @"Boxed integer should reflect the original value");
   STAssertEqualObjects(uintegerObject, [numbersDict
-                      objectForKey:@"uintegerVal"],
-             @"Boxed uinteger should reflect the original value");
+                                        objectForKey:@"uintegerVal"],
+                       @"Boxed uinteger should reflect the original value");
   STAssertEqualStrings(testString, [numbersDict objectForKey:@"stringVal"],
-             @"Boxed string should equal the original value");
+                       @"Boxed string should equal the original value");
   ZNTestNumbers* thawedModel = [[ZNTestNumbers alloc]
-                  initWithProperties:numbersDict];
+                                initWithProperties:numbersDict];
   STAssertEquals(YES, thawedModel.trueVal,
-           @"Unboxed YES should equal original");
+                 @"Unboxed YES should equal original");
   STAssertEquals(NO, thawedModel.falseVal,
-           @"Unboxed NO should equal original");
+                 @"Unboxed NO should equal original");
   STAssertEquals(testDouble, thawedModel.doubleVal,
-           @"Unboxed double should equal original");
+                 @"Unboxed double should equal original");
   STAssertEquals(testInteger, thawedModel.integerVal,
-           @"Unboxed integer should equal original");
+                 @"Unboxed integer should equal original");
   STAssertEquals(testUInteger, thawedModel.uintegerVal,
-           @"Unboxed uinteger should equal original");
+                 @"Unboxed uinteger should equal original");
   STAssertEqualStrings(testString, thawedModel.stringVal,
-             @"Unboxed string should equal original");
+                       @"Unboxed string should equal original");
   [numbersDict release];
   [thawedModel release];
 
   numbersDict = [numbersModel copyToDictionaryForcingStrings:YES];
   STAssertEqualStrings(@"true", [numbersDict objectForKey:@"trueVal"],
-             @"String-boxed YES should reflect original");
+                       @"String-boxed YES should reflect original");
   STAssertEqualStrings(@"false", [numbersDict objectForKey:@"falseVal"],
-             @"String-boxed NO should reflect original");
+                       @"String-boxed NO should reflect original");
   STAssertEqualStrings(@"3.141592", [numbersDict objectForKey:@"doubleVal"],
-             @"String-boxed double should reflect original");
+                       @"String-boxed double should reflect original");
   STAssertEqualStrings(@"-3141592", [numbersDict objectForKey:@"integerVal"],
-             @"String-boxed integer should reflect original");
+                       @"String-boxed integer should reflect original");
   STAssertEqualStrings(@"2271560481", [numbersDict
-                     objectForKey:@"uintegerVal"],
-             @"String-boxed uinteger should reflect original");
+                                       objectForKey:@"uintegerVal"],
+                       @"String-boxed uinteger should reflect original");
   STAssertEqualStrings(testString, [numbersDict objectForKey:@"stringVal"],
-             @"String-boxed string should equal original");
+                       @"String-boxed string should equal original");
   thawedModel = [[ZNTestNumbers alloc] initWithProperties:numbersDict];
   STAssertEquals(YES, thawedModel.trueVal,
-           @"String-unboxed YES should equal original");
+                 @"String-unboxed YES should equal original");
   STAssertEquals(NO, thawedModel.falseVal,
-           @"String-unboxed NO should equal original");
+                 @"String-unboxed NO should equal original");
   STAssertEquals(testDouble, thawedModel.doubleVal,
-           @"String-unboxed double should equal original");
+                 @"String-unboxed double should equal original");
   STAssertEquals(testInteger, thawedModel.integerVal,
-           @"String-unboxed integer should equal original");
+                 @"String-unboxed integer should equal original");
   STAssertEquals(testUInteger, thawedModel.uintegerVal,
-           @"String-unboxed uinteger should equal original");
+                 @"String-unboxed uinteger should equal original");
   STAssertEqualStrings(testString, thawedModel.stringVal,
-             @"String-unboxed string should equal original");
+                       @"String-unboxed string should equal original");
   [numbersDict release];
   [thawedModel release];
 }
@@ -136,10 +140,10 @@
 -(void)testDateBoxing {
   NSDictionary* dateDict = [dateModel copyToDictionaryForcingStrings:NO];
   STAssertEqualObjects(date, [dateDict objectForKey:@"pubDate"],
-             @"Boxed date should equal original date");
+                       @"Boxed date should equal original date");
   ZNTestDate* thawedModel = [[ZNTestDate alloc] initWithProperties:dateDict];
   STAssertEqualObjects(date, thawedModel.pubDate,
-             @"Unboxed date should equal original date");
+                       @"Unboxed date should equal original date");
   [dateDict release];
   [thawedModel release];
 
@@ -149,36 +153,70 @@
   NSDate* date2 = [formatter dateFromString:[dateDict objectForKey:@"pubDate"]];
   [formatter release];
   STAssertEqualsWithAccuracy(0.0, [date2 timeIntervalSinceDate:date], 1.0,
-                 @"String-boxed date should equal original date");
+                             @"String-boxed date should equal original date");
   thawedModel = [[ZNTestDate alloc] initWithProperties:dateDict];
   STAssertEqualsWithAccuracy(0.0, [thawedModel.pubDate
-                   timeIntervalSinceDate:date],
-                 1.0,
-                 @"String-unboxed date should equal original");
+                                   timeIntervalSinceDate:date],
+                             1.0,
+                             @"String-unboxed date should equal original");
   [dateDict release];
   [thawedModel release];
 }
 
--(void)testNullBoxing {
+-(void)testModelBoxing {
+  NSDictionary* nestedDict = [subModel copyToDictionaryForcingStrings:NO];
+  STAssertEqualObjects(date, [[nestedDict objectForKey:@"dateModel"]
+                              objectForKey:@"pubDate"],
+                       @"Boxed date should equal original date");
+  ZNTestSubmodel* thawedModel = [[ZNTestSubmodel alloc]
+                                 initWithProperties:nestedDict];
+  STAssertTrue([thawedModel.dateModel isKindOfClass:[ZNTestDate class]],
+               @"Unboxed model has the wrong class");
+  STAssertEqualObjects(date, thawedModel.dateModel.pubDate,
+                       @"Unboxed date should equal original date");
+  [nestedDict release];
+  [thawedModel release];
+
+  nestedDict = [subModel copyToDictionaryForcingStrings:YES];
+  NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+  [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
+  NSDate* date2 = [formatter dateFromString:[[nestedDict
+                                              objectForKey:@"dateModel"]
+                                             objectForKey:@"pubDate"]];
+  [formatter release];
+  STAssertEqualsWithAccuracy(0.0, [date2 timeIntervalSinceDate:date], 1.0,
+                             @"String-boxed date should equal original date");
+  thawedModel = [[ZNTestSubmodel alloc] initWithProperties:nestedDict];
+  STAssertTrue([thawedModel.dateModel isKindOfClass:[ZNTestDate class]],
+               @"String-unboxed model has the wrong class");
+  STAssertEqualsWithAccuracy(0.0, [thawedModel.dateModel.pubDate
+                                   timeIntervalSinceDate:date],
+                             1.0,
+                             @"String-unboxed date should equal original");
+  [nestedDict release];
+  [thawedModel release];
+
+}
+
+-(void)testNullStringBoxing {
   ZNTestNumbers* nullCarrier = [[[ZNTestNumbers alloc] init] autorelease];
   nullCarrier.stringVal = nil;
 
   NSDictionary* dict = [nullCarrier copyToDictionaryForcingStrings:NO];
   STAssertNil([dict objectForKey:@"stringVal"],
-        @"Nil strings should be ignored while boxing");
-  ZNTestNumbers* thawedNulls = [[ZNTestNumbers alloc]
-                  initWithProperties:dict];
+              @"Nil strings should be ignored while boxing");
+  ZNTestNumbers* thawedNulls = [[ZNTestNumbers alloc] initWithProperties:dict];
   STAssertNil(thawedNulls.stringVal,
-        @"Nil strings should be unboxed to nil strings");
+              @"Nil strings should be unboxed to nil strings");
   [dict release];
   [thawedNulls release];
 
   dict = [nullCarrier copyToDictionaryForcingStrings:YES];
   STAssertNil([dict objectForKey:@"stringVal"],
-        @"Nil strings should be ignored while string-boxing");
+              @"Nil strings should be ignored while string-boxing");
   thawedNulls = [[ZNTestNumbers alloc] initWithProperties:dict];
   STAssertNil(thawedNulls.stringVal,
-        @"Nil strings should be string-unboxed to nil strings");
+              @"Nil strings should be string-unboxed to nil strings");
   [dict release];
   [thawedNulls release];
 
@@ -190,19 +228,49 @@
   [thawedNulls release];
 }
 
+-(void)testNullModelBoxing {
+  ZNTestSubmodel* nullCarrier = [[[ZNTestSubmodel alloc] init] autorelease];
+  nullCarrier.dateModel = nil;
+
+  NSDictionary* dict = [nullCarrier copyToDictionaryForcingStrings:NO];
+  STAssertNil([dict objectForKey:@"dateModel"],
+              @"Nil models should be ignored while boxing");
+  ZNTestSubmodel* thawedNulls = [[ZNTestSubmodel alloc] initWithProperties:dict];
+  STAssertNil(thawedNulls.dateModel,
+              @"Nil models should be unboxed to nil models");
+  [dict release];
+  [thawedNulls release];
+
+  dict = [nullCarrier copyToDictionaryForcingStrings:YES];
+  STAssertNil([dict objectForKey:@"dateModel"],
+              @"Nil models should be ignored while string-boxing");
+  thawedNulls = [[ZNTestSubmodel alloc] initWithProperties:dict];
+  STAssertNil(thawedNulls.dateModel,
+              @"Nil models should be string-unboxed to nil models");
+  [dict release];
+  [thawedNulls release];
+
+  dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNull null], @"dateModel",
+          nil];
+  thawedNulls = [[ZNTestSubmodel alloc] initWithProperties:dict];
+  STAssertNil(thawedNulls.dateModel,
+              @"NSNull instances should be string-unboxed to nil models");
+  [thawedNulls release];
+}
+
 -(void)testIsModelClass {
   STAssertTrue([ZNModel isModelClass:[ZNTestDate class]],
-         @"ZNTestDate is a model class");
+               @"ZNTestDate is a model class");
   STAssertTrue([ZNModel isModelClass:[ZNTestNumbers class]],
-         @"ZNTestNumbers is a model class");
+               @"ZNTestNumbers is a model class");
 
   STAssertFalse([ZNModel isModelClass:[NSObject class]],
-          @"NSObject is not a model class");
+                @"NSObject is not a model class");
 
   STAssertFalse([ZNModel isModelClass:date],
-          @"A date is not a model class");
+                @"A date is not a model class");
   STAssertFalse([ZNModel isModelClass:dateModel],
-          @"A model instance is not a model class");
+                @"A model instance is not a model class");
 }
 
 -(void)testAllModelClasses {
@@ -234,7 +302,9 @@
 
 -(void)testJsonInitialization {
   NSString* jsonString =
-      @"{'trueVal': true, 'falseVal': false, 'doubleVal': 3.141592, 'integerVal': -3141592, 'uintegerVal': 2271560481, 'stringVal': 'Awesome \\u0000 test String'}";
+      @"{'trueVal': true, 'falseVal': false, 'doubleVal': 3.141592,"
+      @"'integerVal': -3141592, 'uintegerVal': 2271560481, "
+      @"'stringVal': 'Awesome \\u0000 test String'}";
   ZNModel* testModel = [[ZNTestNumbers alloc] initWithJson:jsonString];
 
   STAssertEqualStrings([numbersModel description], [testModel description],
