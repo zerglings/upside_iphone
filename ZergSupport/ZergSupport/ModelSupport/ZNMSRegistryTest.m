@@ -37,8 +37,8 @@
 
   STAssertEqualStrings(@"ZNTestParsing", [defn name],
                        @"Registering named model located wrong class");
-  STAssertEquals(15U, [defn.attributes count],
-           @"Registering named model definition located wrong class");
+  STAssertEquals(16U, [defn.attributes count],
+                 @"Registering named model definition located wrong class");
 }
 
 -(void)testObjectClassRegistration {
@@ -47,14 +47,14 @@
 
   STAssertEqualStrings(@"ZNTestParsing", [defn name],
                        @"Registering named model located wrong class");
-  STAssertEquals(15U, [defn.attributes count],
-           @"Registering named model definition located wrong class");
+  STAssertEquals(16U, [defn.attributes count],
+                 @"Registering named model definition located wrong class");
 }
 
 -(void)testRegistrationCachesDefinitions {
   STAssertEquals([registry definitionForModelClassNamed:@"ZNTestParsing"],
-           [registry definitionForModelClass:[ZNTestParsing class]],
-           @"Looking up same class twice gave different definitions");
+                 [registry definitionForModelClass:[ZNTestParsing class]],
+                 @"Looking up same class twice gave different definitions");
 }
 
 @end

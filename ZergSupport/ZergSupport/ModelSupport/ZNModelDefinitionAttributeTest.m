@@ -10,6 +10,7 @@
 #import "ZNTestModels.h"
 
 #import "ZNModelDefinitionAttribute.h"
+#import "ZNMSModelAttributeType.h"
 #import "ZNMSRegistry.h"
 
 
@@ -95,6 +96,16 @@
              @"Failed to parse atomicity for %s", properties[i]);
      */
   }
+
+  objc_property_t property = [self propertyNamed:"model_prop"];
+  ZNModelDefinitionAttribute* attr =
+      [ZNModelDefinitionAttribute newAttributeFromProperty:property
+                                                   ofClass:testClass];
+  ZNMSAttributeType* attrType = [attr type];
+  STAssertTrue([attrType isKindOfClass:[ZNMSModelAttributeType class]],
+               @"Failed to parse type for model_prop");
+  STAssertEquals([ZNTestDate class], [attrType modelClass],
+                 @"Failed to parse model class for model_prop");
 }
 
 -(void)testCustomGetterSetter {

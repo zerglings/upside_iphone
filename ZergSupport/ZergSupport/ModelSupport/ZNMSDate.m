@@ -32,19 +32,19 @@
 
 #pragma mark Boxing
 
--(NSObject*)boxAttribute:(ZNModelDefinitionAttribute*)attribute
-        inInstance:(ZNModel*)instance
-         forceString:(BOOL)forceString {
+-(NSObject*)copyBoxedAttribute:(ZNModelDefinitionAttribute*)attribute
+                    inInstance:(ZNModel*)instance
+                   forceString:(BOOL)forceString {
   NSDate* date = object_getIvar(instance, [attribute runtimeIvar]);
   if (forceString)
-    return [osxFormatter stringFromDate:date];
+    return [[osxFormatter stringFromDate:date] retain];
   else
     return date;
 }
 
 -(void)unboxAttribute:(ZNModelDefinitionAttribute*)attribute
-        inInstance:(ZNModel*)instance
-             from:(NSObject*)boxedObject {
+           inInstance:(ZNModel*)instance
+                 from:(NSObject*)boxedObject {
   NSDate* date;
   if ([boxedObject isKindOfClass:[NSString class]]) {
     date = [osxFormatter dateFromString:(NSString*)boxedObject];

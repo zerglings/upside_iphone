@@ -12,7 +12,7 @@
 
 @dynamic assign, copy, retain, ro_assign, ro_copy, ro_retain;
 @dynamic bool_prop, date_prop, double_prop, integer_prop, string_prop;
-@dynamic uinteger_prop;
+@dynamic uinteger_prop, model_prop;
 @dynamic getter, setter, accessor;
 
 @end
@@ -32,6 +32,16 @@
 }
 
 @end
+
+@implementation ZNTestSubmodel
+@synthesize dateModel;
+
+-(void)dealloc {
+  [dateModel release];
+  [super dealloc];
+}
+@end
+
 
 @implementation ZNTestNumbers
 @synthesize trueVal, falseVal;

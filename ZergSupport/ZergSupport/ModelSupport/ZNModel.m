@@ -106,11 +106,13 @@
     ZNModelDefinitionAttribute* attribute = [defAttributes
                                              objectForKey:attributeName];
     ZNMSAttributeType* attributeType = [attribute type];
-    NSObject* boxedValue = [attributeType boxAttribute:attribute
-                                            inInstance:self
-                                           forceString:forceStrings];
-    if (boxedValue != nil)
+    NSObject* boxedValue = [attributeType copyBoxedAttribute:attribute
+                                                  inInstance:self
+                                                 forceString:forceStrings];
+    if (boxedValue != nil) {
       [attributes setObject:boxedValue forKey:attributeName];
+      [boxedValue release];
+    }
   }
   return attributes;
 }

@@ -14,28 +14,32 @@
 
 #pragma mark Boxing
 
--(NSObject*)boxAttribute:(ZNModelDefinitionAttribute*)attribute
-        inInstance:(ZNModel*)instance
-         forceString:(BOOL)forceString {
+-(NSObject*)copyBoxedAttribute:(ZNModelDefinitionAttribute*)attribute
+                    inInstance:(ZNModel*)instance
+                   forceString:(BOOL)forceString {
   double value = *((double*)((uint8_t*)instance +
-                 ivar_getOffset([attribute runtimeIvar])));
-  if (forceString)
-    return [NSString stringWithFormat:@"%f", value];
-  else
-    return [NSNumber numberWithDouble:value];
+                             ivar_getOffset([attribute runtimeIvar])));
+  if (forceString) {
+    return [[NSString alloc] initWithFormat:@"%f", value];
+  }
+  else {
+    return [[NSNumber alloc] initWithDouble:value];
+  }
 }
 
 -(void)unboxAttribute:(ZNModelDefinitionAttribute*)attribute
-        inInstance:(ZNModel*)instance
-             from:(NSObject*)boxedObject {
+           inInstance:(ZNModel*)instance
+                 from:(NSObject*)boxedObject {
   double value;
-  if ([boxedObject isKindOfClass:[NSString class]])
+  if ([boxedObject isKindOfClass:[NSString class]]) {
     value = [(NSString*)boxedObject doubleValue];
+  }
   else if ([boxedObject isKindOfClass:[NSNumber class]]) {
     value = [(NSNumber*)boxedObject doubleValue];
   }
-  else
+  else {
     value = 0.0;
+  }
   *((double*)((uint8_t*)instance + ivar_getOffset([attribute runtimeIvar]))) =
       value;
 }
