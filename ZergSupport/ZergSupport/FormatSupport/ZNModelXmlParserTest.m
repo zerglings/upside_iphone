@@ -115,8 +115,8 @@ static NSString* kContextObject = @"This is the context";
                              @"Wrong value for inner model's float property");
   STAssertEquals(NO, innerModel.boolean,
                  @"Wrong value for the inner model's boolean property");
-  STAssertEquals(nil, innerModel.subModel,
-                 @"Wrong value for the inner model's submodel");
+  STAssertNil(innerModel.subModel,
+              @"Wrong value for the inner model's submodel");
 }
 
 -(void)testParsingURLs {
