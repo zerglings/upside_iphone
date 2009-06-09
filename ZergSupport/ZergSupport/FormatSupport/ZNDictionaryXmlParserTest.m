@@ -8,6 +8,7 @@
 
 #include "TestSupport.h"
 
+#include "ZNDictionaryJsonParser.h"
 #include "ZNDictionaryXmlParser.h"
 #include "ZNFormFieldFormatter.h"
 
@@ -28,17 +29,17 @@ static NSString* kContextObject = @"This is the context";
 @implementation ZNDictionaryXmlParserTest
 
 -(void)setUp {
-  ZNFormFieldFormatter* fromSnake =
+  ZNFormFieldFormatter* toCamel =
       [ZNFormFieldFormatter formatterToPropertiesFrom:kZNFormatterSnakeCase];
   NSDictionary* schema = [NSDictionary dictionaryWithObjectsAndKeys:
                           [NSNull null], @"itemA",
                           [NSSet setWithObjects:@"keyB", @"keyC", nil],
                           @"itemB",
-                          [NSArray arrayWithObjects:
-                           fromSnake, [NSNull null], nil], @"itemD",
+                          [NSNull null], @"itemD",
                           nil];
 
-  parser = [[ZNDictionaryXmlParser alloc] initWithSchema:schema];
+  parser = [[ZNDictionaryXmlParser alloc] initWithSchema:schema
+                                            keyFormatter:toCamel];
   parser.context = kContextObject;
   parser.delegate = self;
 
@@ -86,11 +87,13 @@ static NSString* kContextObject = @"This is the context";
   STAssertEqualObjects(goldenThird, [items objectAtIndex:2],
                        @"Failed to parse XML entities");
 
-  NSDictionary* goldenFourth = [NSDictionary dictionaryWithObjectsAndKeys:
-                                @"value_one", @"keyOne",
-                                @"value_two", @"keyTwo", nil];
+  NSDictionary* goldenFourth = (NSDictionary*)
+      [ZNDictionaryJsonParser parseValue:
+      @"{'keyOne': 'value_one', 'keyTwo': 'value_two', 'keyThree': "
+      @" {'subkeyOne': 'subvalue_one', 'subkeyTwo': "
+      @"  {'subkeyThree': 'subvalue_three'}}}"];
   STAssertEqualObjects(goldenFourth, [items objectAtIndex:3],
-                       @"Failed to format XML elements");
+                       @"Failed to format XML elements and sub-elements");
 }
 
 -(void)testParsingURLs {
