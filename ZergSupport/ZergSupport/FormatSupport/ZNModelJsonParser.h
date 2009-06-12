@@ -10,7 +10,7 @@
 
 #import "ZNFormatterCasing.h"
 
-@class ZNDictionaryJsonParser;
+@class ZNObjectJsonParser;
 @class ZNModel;
 @protocol ZNModelJsonParserDelegate;
 
@@ -27,7 +27,7 @@
 // corresponding models, if model classes are supplied. Otherwise, the barebone
 // Cocoa objects will be returned to the delegate.
 @interface ZNModelJsonParser : NSObject {
-  ZNDictionaryJsonParser* parser;
+  ZNObjectJsonParser* parser;
   NSMutableArray* compiledQueries;
   id<ZNModelJsonParserDelegate> delegate;
   Class null;
