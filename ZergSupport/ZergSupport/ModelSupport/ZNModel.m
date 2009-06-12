@@ -51,7 +51,7 @@
 }
 
 -(id)initWithJson:(NSString*)jsonString {
-  NSDictionary* properties = (NSDictionary*)[ZNDictionaryJsonParser
+  NSDictionary* properties = (NSDictionary*)[ZNObjectJsonParser
                                              parseValue:jsonString];
   NSAssert([properties isKindOfClass:[NSDictionary class]],
            @"Models can only be initialized with hash JSONs");
