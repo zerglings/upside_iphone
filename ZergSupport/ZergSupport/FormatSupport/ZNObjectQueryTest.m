@@ -50,6 +50,12 @@
 }
 
 -(void)testQuerySplitting {
+  NSString* empty = @"/";
+  NSArray* goldenEmpty = [NSArray array];
+  STAssertEqualObjects(goldenEmpty,
+                       [ZNObjectQuery copyQueryStringSplit:empty],
+                       @"Empty query");
+  
   NSString* simple = @"/one/two/3";
   NSArray* goldenSimple = [NSArray arrayWithObjects:@"one", @"two", @"3", nil];
   STAssertEqualObjects(goldenSimple,
@@ -63,6 +69,13 @@
   STAssertEqualObjects(goldenWildcards,
                        [ZNObjectQuery copyQueryStringSplit:wildcards],
                        @"Wildcard query");
+}
+
+-(void)testEmptyQuery {
+  ZNObjectQuery* query = [ZNObjectQuery newCompile:@"/"];
+  NSArray* result = [query newRun:simpleHash];
+  STAssertEqualObjects([NSArray arrayWithObject:simpleHash],
+                       result, @"Empty query should yield original object");
 }
 
 -(void)testHashIndexing {
