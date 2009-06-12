@@ -1,12 +1,12 @@
 //
-//  ZNDictionaryJsonParser.m
+//  ZNObjectJsonParser.m
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/1/09.
 //  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
-#import "ZNDictionaryJsonParser.h"
+#import "ZNObjectJsonParser.h"
 
 #import "ZNFormFieldFormatter.h"
 
@@ -350,28 +350,27 @@ static NSObject* ZNJSONParseValue(ZNJsonParseContext* context) {
   }
 }
 
-static NSDictionary *ZNJSONParseData(ZNJsonParseContext* context) {
+static NSObject* ZNJSONParseData(ZNJsonParseContext* context) {
   // Skip everything up to { to account for JSONP et al.
-  while (context->bytes < context->endOfBytes && *context->bytes != '{') {
+  while (context->bytes < context->endOfBytes && *context->bytes != '{' &&
+         *context->bytes != '[') {
     context->bytes++;
   }
 
   // No JSON.
   if (context->bytes == context->endOfBytes)
     return NO;
-
-  context->bytes++;
-  return ZNJSONParseObject(context);
+  return ZNJSONParseValue(context);
 }
 
 #pragma mark Objective C Interface
 
-@implementation ZNDictionaryJsonParser
+@implementation ZNObjectJsonParser
 
 @synthesize context, delegate;
 
 +(void)setupParsers {
-  @synchronized([ZNDictionaryJsonParser class]) {
+  @synchronized([ZNObjectJsonParser class]) {
     if (jsonNumberParser == nil) {
       jsonNumberParser = [[NSNumberFormatter alloc] init];
       [jsonNumberParser setPositiveFormat:@"###0.##"];
@@ -386,7 +385,7 @@ static NSDictionary *ZNJSONParseData(ZNJsonParseContext* context) {
 
 -(id)initWithKeyFormatter:(ZNFormFieldFormatter*)theKeyFormatter {
   if ((self = [super init])) {
-    [ZNDictionaryJsonParser setupParsers];
+    [ZNObjectJsonParser setupParsers];
     keyFormatter = [theKeyFormatter retain];
   }
   return self;
@@ -403,17 +402,18 @@ static NSDictionary *ZNJSONParseData(ZNJsonParseContext* context) {
   parseContext.bytes = [data bytes];
   parseContext.endOfBytes = parseContext.bytes + [data length];
 
-  NSDictionary* jsonData = ZNJSONParseData(&parseContext);
+  NSObject* jsonData = ZNJSONParseData(&parseContext);
   if (!jsonData) {
     return NO;
   }
   [delegate parsedJson:jsonData context:context];
+  [jsonData release];
   return YES;
 }
 
 
 +(NSObject*)parseValue:(NSString*)jsonValue {
-  [ZNDictionaryJsonParser setupParsers];
+  [ZNObjectJsonParser setupParsers];
 
   NSData* data = [jsonValue dataUsingEncoding:NSUTF8StringEncoding];
   ZNJsonParseContext parseContext;

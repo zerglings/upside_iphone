@@ -1,5 +1,5 @@
 //
-//  ZNDictionaryJsonParser.h
+//  ZNObjectJsonParser.h
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/1/09.

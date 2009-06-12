@@ -121,14 +121,21 @@ static void ZNQueryRun(NSObject* root, NSArray* query, NSUInteger offset,
 +(NSMutableArray*)copyQueryStringSplit:(NSString*)queryString {
   NSMutableArray* array = [[NSMutableArray alloc] init];
 
-  // NOTE: we're adding the separator at the query's end as a sentinel, to avoid
-  //       a special case for the last component in the query
+  // NOTE: Adding the separator at the query's end as a sentinel, to avoid a
+  //       special case for the last component in the query. The separator is
+  //       not added if it already exists, so the query can end in // to target
+  //       an empty key.
   NSUInteger queryLength = [queryString length];
   unichar* buffer = (unichar*)calloc(queryLength + 1, sizeof(unichar));
   [queryString getCharacters:buffer];
   unichar separator = buffer[0];
   unichar* bufferEnd = buffer + queryLength;
-  *bufferEnd = separator;
+  if (buffer[queryLength - 1] == separator) {
+    bufferEnd--;
+  }
+  else {
+    *bufferEnd = separator;
+  }
 
   unichar* componentStart = buffer + 1;
   for (buffer++; buffer <= bufferEnd; buffer++) {

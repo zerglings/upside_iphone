@@ -8,55 +8,72 @@
 
 #import "ZNMSAttributeType.h"
 
+#import <objc/runtime.h>
+
+#import "ZNModel.h"
 #import "ZNModelDefinitionAttribute.h"
+#import "ZNMSModelAttributeType.h"
 #import "ZNMSRegistry.h"
 
 
 @implementation ZNMSAttributeType
 
-+(ZNMSAttributeType*)typeFromString:(const char*)encodedType {
++(ZNMSAttributeType*)copyTypeFromString:(const char*)encodedType {
   switch (*encodedType) {
     case '@':
       encodedType++;
       if (*encodedType == '"') {
-        // class following the type
+        // Class name following the type. Check for special cases first.
         if (!strncmp(encodedType, "\"NSString\"", 10))
-          return [[ZNMSRegistry sharedRegistry] stringType];
+          return [[[ZNMSRegistry sharedRegistry] stringType] retain];
         else if (!strncmp(encodedType, "\"NSDate\"", 8))
-          return [[ZNMSRegistry sharedRegistry] dateType];
-        else
-          return nil;
+          return [[[ZNMSRegistry sharedRegistry] dateType] retain];
+        else {
+          // Should be a nested model.
+
+          // Extract class from type signature.
+          encodedType++;
+          size_t classNameLength = strchr(encodedType, '"') - encodedType;
+          char* className = (char*)calloc(classNameLength + 1, sizeof(char));
+          memcpy(className, encodedType, classNameLength);
+          className[classNameLength] = '\0';
+          id modelClass = objc_getClass(className);
+          free(className);
+
+          if (![ZNModel isModelClass:modelClass])
+            return nil;
+          return [[ZNMSModelAttributeType alloc] initWithModelClass:modelClass];
+        }
       }
-      else
-        return [[ZNMSRegistry sharedRegistry] stringType];
+      else {
+         return [[[ZNMSRegistry sharedRegistry] stringType] retain];
+      }
     case 'c':
-      return [[ZNMSRegistry sharedRegistry] booleanType];
+      return [[[ZNMSRegistry sharedRegistry] booleanType] retain];
     case 'd':
-      return [[ZNMSRegistry sharedRegistry] doubleType];
+      return [[[ZNMSRegistry sharedRegistry] doubleType] retain];
     case 'i':
-      return [[ZNMSRegistry sharedRegistry] integerType];
+      return [[[ZNMSRegistry sharedRegistry] integerType] retain];
     case 'I':
-      return [[ZNMSRegistry sharedRegistry] uintegerType];
+      return [[[ZNMSRegistry sharedRegistry] uintegerType] retain];
     default:
       return nil;
   }
 }
 
--(NSObject*)boxAttribute:(ZNModelDefinitionAttribute*)attribute
-        inInstance:(ZNModel*)instance
-         forceString:(BOOL)forceString {
-  NSAssert1(FALSE,
-        @"Attribute type %s did not implement -boxInstanceVar",
-        class_getName([self class]));
-  return [NSNull null];
+-(NSObject*)copyBoxedAttribute:(ZNModelDefinitionAttribute*)attribute
+                    inInstance:(ZNModel*)instance
+                   forceString:(BOOL)forceString {
+  NSAssert1(FALSE, @"Attribute type %s did not implement -boxInstanceVar",
+            class_getName([self class]));
+  return [[NSNull alloc] init];
 }
 
 -(void)unboxAttribute:(ZNModelDefinitionAttribute*)attribute
-       inInstance:(ZNModel*)instance
-           from:(NSObject*)boxedObject {
-  NSAssert1(FALSE,
-        @"Attribute type %s did not implement -unboxInstanceVar",
-        class_getName([self class]));
+           inInstance:(ZNModel*)instance
+                 from:(NSObject*)boxedObject {
+  NSAssert1(FALSE, @"Attribute type %s did not implement -unboxInstanceVar",
+            class_getName([self class]));
 }
 
 @end

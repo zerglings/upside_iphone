@@ -1,5 +1,5 @@
 //
-//  ZNDictionaryJsonParserTest.m
+//  ZNObjectJsonParserTest.m
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/2/09.

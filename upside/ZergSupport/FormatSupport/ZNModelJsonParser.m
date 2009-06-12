@@ -9,12 +9,12 @@
 #import "ZNModelJsonParser.h"
 
 #import "ModelSupport.h"
-#import "ZNDictionaryJsonParser.h"
+#import "ZNObjectJsonParser.h"
 #import "ZNFormFieldFormatter.h"
 #import "ZNObjectQuery.h"
 
 
-@interface ZNModelJsonParser () <ZNDictionaryJsonParserDelegate>
+@interface ZNModelJsonParser () <ZNObjectJsonParserDelegate>
 -(void)parsedJson:(NSDictionary*)jsonData context:(id)context;
 @end
 
@@ -34,7 +34,7 @@
     null = [NSNull class];
 
     // Set up parser.
-    parser = [[ZNDictionaryJsonParser alloc]
+    parser = [[ZNObjectJsonParser alloc]
               initWithKeyFormatter:[ZNFormFieldFormatter
                                     formatterToPropertiesFrom:documentCasing]];
     parser.delegate = self;

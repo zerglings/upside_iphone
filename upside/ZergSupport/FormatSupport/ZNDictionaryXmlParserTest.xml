@@ -15,6 +15,12 @@
 <itemB>
   <keyA>not in schema</keyA>
   <keyB>B second</keyB>
+  <itemA>
+    <keyB>should be blind to this</keyB>
+    <keyC>
+      <keyD>should still be blind to this</keyD>
+    </keyC>
+  </itemA>
 </itemB>
 <itemA>
   <keyC>Entity fun &#39;&gt;</keyC> 
@@ -23,5 +29,11 @@
 <itemD>
   <key_one>value_one</key_one>
   <key_two>value_two</key_two>
+  <key_three>
+    <subkey_one>subvalue_one</subkey_one>
+    <subkey_two>
+      <subkey_three>subvalue_three</subkey_three>
+    </subkey_two>
+  </key_three>
 </itemD>
 </testdata>

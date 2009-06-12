@@ -1,5 +1,5 @@
 //
-//  ZNDictionaryJsonParserTest.m
+//  ZNObjectJsonParserTest.m
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/2/09.
@@ -8,50 +8,64 @@
 
 #import "TestSupport.h"
 
-#import "ZNDictionaryJsonParser.h"
+#import "ZNObjectJsonParser.h"
 
 #import "ZNFormFieldFormatter+Snake2LCamel.h"
 
 static NSString* kContextObject = @"This is the context";
 
-@interface ZNDictionaryJsonParserTest :
-    SenTestCase <ZNDictionaryJsonParserDelegate> {
-  ZNDictionaryJsonParser* parser;
+@interface ZNObjectJsonParserTest :
+    SenTestCase <ZNObjectJsonParserDelegate> {
+  ZNObjectJsonParser* parser;
   NSDictionary* json;
+  NSArray* jsonArray;
   NSObject* parseContext;
-  BOOL parseSuccess;
+  NSObject** parseTarget;
+  BOOL dictionaryParseSuccess, arrayParseSuccess;
 }
 
 @end
 
 
-@implementation ZNDictionaryJsonParserTest
+@implementation ZNObjectJsonParserTest
 
 -(void)setUp {
-  parser = [[ZNDictionaryJsonParser alloc]
+  parser = [[ZNObjectJsonParser alloc]
             initWithKeyFormatter:[ZNFormFieldFormatter snakeToLCamelFormatter]];
   parser.context = kContextObject;
   parser.delegate = self;
 
-  NSString *filePath = [[[NSBundle mainBundle] resourcePath]
-                        stringByAppendingPathComponent:
-                        @"ZNDictionaryJsonParserTest.json"];
-
-  NSData* data = [NSData dataWithContentsOfFile:filePath];
+  NSString *dictionaryFilePath = [[[NSBundle mainBundle] resourcePath]
+                                  stringByAppendingPathComponent:
+                                  @"ZNObjectJsonParserTestDictionary.json"];
+  NSString *arrayFilePath = [[[NSBundle mainBundle] resourcePath]
+                             stringByAppendingPathComponent:
+                             @"ZNObjectJsonParserTestArray.json"];
+  
+  NSData* dictionaryData = [NSData dataWithContentsOfFile:dictionaryFilePath];
+  NSData* arrayData = [NSData dataWithContentsOfFile:arrayFilePath];
   json = nil;
-  parseSuccess = [parser parseData:data];
+  parseTarget = &json;
+  dictionaryParseSuccess = [parser parseData:dictionaryData];
+  jsonArray = nil;
+  parseTarget = &jsonArray;
+  arrayParseSuccess = [parser parseData:arrayData];
 }
--(void)parsedJson:(NSDictionary*)jsonData context:(id)context {
-  json = jsonData;
+-(void)parsedJson:(NSObject*)jsonData context:(id)context {
+  *parseTarget = [jsonData retain];
   parseContext = context;
 }
 -(void)tearDown {
   [parser release];
   [json release];
+  [jsonArray release];
 }
 
 -(void)testSuccess {
-  STAssertEquals(YES, parseSuccess, @"JSON parsing unsuccessful");
+  STAssertEquals(YES, dictionaryParseSuccess,
+                 @"JSON dictionary parsing unsuccessful");
+  STAssertEquals(YES, arrayParseSuccess,
+                 @"JSON array parsing unsuccessful");
   STAssertEquals(kContextObject, parseContext, @"Wrong parse context");
 }
 
@@ -168,33 +182,46 @@ static NSString* kContextObject = @"This is the context";
                        @"camel to camel key conversion failed");
 }
 
+-(void)testParsedArray {
+  NSArray* goldNested =
+  [NSArray arrayWithObjects:
+   [NSNumber numberWithInteger:1],
+   [NSArray arrayWithObjects:
+    [NSNumber numberWithInteger:2],
+    [NSNumber numberWithInteger:3],
+    nil],
+   [NSDictionary dictionaryWithObjectsAndKeys:
+    [NSNumber numberWithInteger:2], @"a",
+    [NSArray arrayWithObject:[NSNumber numberWithInteger:3]], @"b",
+    nil], nil];
+  STAssertEqualObjects(goldNested, jsonArray, @"Failed to parse JSONP array");  
+}
+
 -(void)testParseValue {
   NSDictionary* goldDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                   [NSNumber numberWithInt:1], @"a",
                                   [NSNumber numberWithBool:NO], @"b", nil];
   STAssertEqualObjects(goldDictionary,
-                       [ZNDictionaryJsonParser
-                        parseValue:@"{'a': 1, 'b': false}"],
+                       [ZNObjectJsonParser parseValue:@"{'a': 1, 'b': false}"],
                        @"Dictionary value parsing");
 
   NSArray* goldArray = [NSArray arrayWithObjects:
                         @"a", [NSNumber numberWithInt:1], @"b", [NSNull null],
                         nil];
   STAssertEqualObjects(goldArray,
-                       [ZNDictionaryJsonParser
-                        parseValue:@"['a', 1, 'b', null]"],
+                       [ZNObjectJsonParser parseValue:@"['a', 1, 'b', null]"],
                        @"Array value parsing");
 
   STAssertEqualStrings(@"vodka",
-                       [ZNDictionaryJsonParser parseValue:@"'vodka'"],
+                       [ZNObjectJsonParser parseValue:@"'vodka'"],
                        @"String value parsing");
 
   STAssertEqualObjects([NSNumber numberWithDouble:3.141592],
-                       [ZNDictionaryJsonParser parseValue:@"3.141592"],
+                       [ZNObjectJsonParser parseValue:@"3.141592"],
                        @"Number value parsing");
 
   STAssertEqualObjects([NSNull null],
-                       [ZNDictionaryJsonParser parseValue:@"null"],
+                       [ZNObjectJsonParser parseValue:@"null"],
                        @"Primitive parsing");
 }
 

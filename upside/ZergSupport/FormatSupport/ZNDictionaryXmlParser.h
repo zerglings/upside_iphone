@@ -38,31 +38,33 @@
 @interface ZNDictionaryXmlParser : NSObject {
   id<ZNDictionaryXmlParserDelegate> delegate;
   id context;
-  NSDictionary* schema;
-
-  // underlying XML parser
+  ZNFormFieldFormatter* keyFormatter;
+  
+  // Underlying XML parser.
   NSXMLParser* parser;
-  // accumulates the properties of the currently parsed item
-  NSMutableDictionary* currentItem;
-  // the current item's name
+  // The parsing stack has dictionaries accumulating properties, and the names
+  // of the properties.
+  NSMutableArray* parseStack;
+  // The schema stack holds the schema for the current element.
+  NSMutableArray* schemaStack;
+  
+  // Element name for the element rooting the currently parsed object.
   NSString* currentItemName;
-  // the currently parsed property of the currently parsed item
-  NSString* currentProperty;
-  // the value for the currently parsed property
+  // Accumulates strings making up the value of the currently parsed property.
   NSMutableString* currentValue;
-  // the schema for the currently parsed item
-  NSSet* currentItemSchema;
-  // if YES, the current item accepts all sub-elements given to it
-  BOOL currentItemHasOpenSchema;
-  // if not nil, formats the keys that
+  // If not nil, formats the property names.
   ZNFormFieldFormatter* currentKeyFormatter;
+  // If ignoring elements (not in schema) inside other elements, indicates
+  // how deep the parser is in the ignore tree.
+  NSUInteger ignoreDepth;
 }
 
 @property (nonatomic, assign) id context;
 @property (nonatomic, assign) id<ZNDictionaryXmlParserDelegate> delegate;
 
 // Initialized a parser for a schema, which can be used multiple times.
--(id)initWithSchema:(NSDictionary*)schema;
+-(id)initWithSchema:(NSDictionary*)schema
+       keyFormatter:(ZNFormFieldFormatter*)keyFormatter;
 
 // Parses an XML document inside an NSData instance.
 -(BOOL)parseData:(NSData*)data;

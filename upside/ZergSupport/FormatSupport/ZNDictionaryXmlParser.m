@@ -15,27 +15,30 @@
 
 #pragma mark Lifecycle
 
--(id)initWithSchema:(NSDictionary*) theSchema {
+-(id)initWithSchema:(NSDictionary*)theSchema
+       keyFormatter:(ZNFormFieldFormatter*)theKeyFormatter {
   if ((self = [super init])) {
-    schema = [theSchema retain];
-
+    keyFormatter = [theKeyFormatter retain];
+    
+    NSMutableDictionary* rootObject = [[NSMutableDictionary alloc] init];
+    parseStack = [[NSMutableArray alloc] initWithObjects:rootObject, nil];
+    [rootObject release];
+    
+    schemaStack = [[NSMutableArray alloc] initWithObjects:theSchema, nil];    
     currentValue = [[NSMutableString alloc] init];
-    currentItem = [[NSMutableDictionary alloc] init];
-
-    currentItemSchema = nil;
+    ignoreDepth = 0;
     currentItemName = nil;
-    currentProperty = nil;
   }
 
   return self;
 }
 
 -(void)dealloc {
-  [schema release];
+  [keyFormatter release];
+  [parseStack release];
+  [schemaStack release];
   [currentValue release];
-  [currentItem release];
   [currentItemName release];
-  [currentProperty release];
   [super dealloc];
 }
 
@@ -45,15 +48,11 @@
 #pragma mark Parsing Lifecycle
 
 -(void)cleanUpAfterParsing {
-  currentItemSchema = nil;
-  [currentItemName release];
-  currentItemName = nil;
-  [currentProperty release];
-  currentProperty = nil;
-
-  [currentItem removeAllObjects];
+  [parseStack removeObjectsInRange:NSMakeRange(1, [parseStack count] - 1)];
+  [schemaStack removeObjectsInRange:NSMakeRange(1, [parseStack count] - 1)];
+  [(NSMutableDictionary*)[parseStack objectAtIndex:0] removeAllObjects];
   [currentValue setString:@""];
-
+  
   [parser release];
   parser = nil;
 }
@@ -76,94 +75,130 @@
 
 #pragma mark Schema management
 
--(void)loadSchemaDirective:(NSObject*)schemaDirective
-                     forName:(NSString*)name {
-  currentItemName = [name retain];
-
-  if ([schemaDirective isKindOfClass:[NSArray class]]) {
-    NSArray* arrayDirective = (NSArray*)schemaDirective;
-    NSAssert([arrayDirective count] >= 2, @"Array schema directive needs to at "
-             @"least contain a key formatter and interpretation information!");
-
-    currentKeyFormatter = [arrayDirective objectAtIndex:0];
-    NSAssert([currentKeyFormatter respondsToSelector:
-             @selector(copyFormattedName:)], @"Formatter object in schema "
-             @" directive does not respond to -copyFormattedName:");
-    schemaDirective = [arrayDirective objectAtIndex:1];
+-(NSObject*)unravelSchema:(NSObject*)schema
+          withElementName:(NSString*)name {
+  if ([schema isKindOfClass:[NSDictionary class]]) {
+    // Sub-schemas.
+    NSObject* subSchema = [(NSDictionary*)schema objectForKey:name];
+    return subSchema;
   }
-  else
-    currentKeyFormatter = nil;
-
-  currentItemHasOpenSchema = ![schemaDirective isKindOfClass:[NSSet class]];
-  if (currentItemHasOpenSchema)
-    currentItemSchema = nil;
-  else
-    currentItemSchema = (NSSet*)schemaDirective;
+  else if ([schema isKindOfClass:[NSSet class]]) {
+    // Closed schema.
+    return [(NSSet*)schema containsObject:name] ? name : nil;
+  }
+  else if ([schema isKindOfClass:[NSString class]]) {
+    // Schema leaf - should not move forward.
+    return nil;
+  }
+  else {
+    // Open schema.
+    return schema;
+  }
 }
 
 #pragma mark NSXMLParser Delegate
 
--(void)parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
-   namespaceURI:(NSString *)namespaceURI
-  qualifiedName:(NSString *)qName
-     attributes:(NSDictionary *)attributeDict {
-  if (currentItemName != nil) {
-    // already parsing an item, see if it's among the keys
-    if (currentItemHasOpenSchema || [currentItemSchema containsObject:
-                                     elementName]) {
-      currentProperty = [elementName retain];
-    }
+-(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
+ namespaceURI:(NSString *)namespaceURI
+qualifiedName:(NSString *)qName
+   attributes:(NSDictionary *)attributeDict {
+  if (ignoreDepth > 0) {
+    ignoreDepth++;
+    return;
   }
-  else if (currentItemSchema = [schema objectForKey:elementName]) {
-    // parsing new item
-    [self loadSchemaDirective:currentItemSchema forName:elementName];
+    
+  NSUInteger schemaStackTop = [schemaStack count] - 1;
+  NSObject* schema = [schemaStack objectAtIndex:schemaStackTop];
+  NSObject* nextSchema = [self unravelSchema:schema
+                             withElementName:elementName];
+  if (!nextSchema) {
+    if (schemaStackTop > 0)
+      ignoreDepth++;
+    return;
+  }
+  
+  [schemaStack addObject:nextSchema];
+    
+  NSUInteger parseStackTop = [parseStack count] - 1;
+  NSObject* stackTop = [parseStack objectAtIndex:parseStackTop];
+  if ([stackTop isKindOfClass:[NSString class]]) {
+    // Create sub-dictionary and assign it to the proper key in the parent
+    // dictionary.
+    NSMutableDictionary* parentDictionary = [parseStack
+                                             objectAtIndex:(parseStackTop - 1)];
+    NSMutableDictionary* childDictionary = [[NSMutableDictionary alloc] init];
+    [parentDictionary setObject:childDictionary forKey:stackTop];
+
+    [parseStack replaceObjectAtIndex:parseStackTop
+                          withObject:childDictionary];    
+    [childDictionary release];
+  }
+
+  if (schemaStackTop > 0) {
+    // Push the formatted element name on the parse stack.
+    NSString* formattedElementName = keyFormatter ?
+    [keyFormatter copyFormattedName:elementName] : elementName;    
+    [parseStack addObject:formattedElementName];
+    if (formattedElementName != elementName) {
+      [formattedElementName release];
+    }
+    
+    [currentValue setString:@""];
+  }
+  else {
+    currentItemName = [elementName retain];
   }
 }
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-  if (currentProperty != nil) {
+  if (ignoreDepth > 0)
+    return;
+  
+  if ([parseStack count] >= 2) {
     [currentValue appendString:string];
   }
 }
 
--(void)parser:(NSXMLParser *)parser
-  didEndElement:(NSString *)elementName
-   namespaceURI:(NSString *)namespaceURI
-  qualifiedName:(NSString *)qName {
-  if (currentProperty != nil) {
-    // parsing a property
-    if ([currentProperty isEqualToString:elementName]) {
-      // done parsing the property
-      NSString* propertyKey;
-      if (currentKeyFormatter)
-        propertyKey = [currentKeyFormatter copyFormattedName:currentProperty];
-      else
-        propertyKey = currentProperty;
-      NSString* propertyValue = [[NSString alloc] initWithString:currentValue];
-      [currentItem setObject:[NSString stringWithString:propertyValue]
-                      forKey:propertyKey];
-      if (currentKeyFormatter)
-        [propertyKey release];
-      [propertyValue release];
-
-      [currentProperty release];
-      currentProperty = nil;
-      [currentValue setString:@""];
-    }
+-(void)parser:(NSXMLParser *)parse didEndElement:(NSString *)elementName
+ namespaceURI:(NSString *)namespaceURI
+qualifiedName:(NSString *)qName {
+  if (ignoreDepth > 0) {
+    ignoreDepth--;
+    return;
   }
-  else if ([currentItemName isEqualToString:elementName]) {
-    // done parsing an entire item
-    [delegate parsedItem:[NSDictionary dictionaryWithDictionary:currentItem]
+ 
+    
+  if ([schemaStack count] == 1) {
+    // Not parsing an element.
+    return;
+  }
+  [schemaStack removeLastObject];
+  
+  
+  NSUInteger parseStackTop = [parseStack count] - 1;
+  NSObject* stackTop = [parseStack objectAtIndex:parseStackTop];
+  if (parseStackTop == 0) {
+    // Done parsing an item.
+    [delegate parsedItem:[NSDictionary
+                          dictionaryWithDictionary:(NSDictionary*)stackTop]
                     name:currentItemName
                  context:context];
-
-    [currentItem removeAllObjects];
-    currentItemSchema = nil;
+    [(NSMutableDictionary*)stackTop removeAllObjects];
     [currentItemName release];
     currentItemName = nil;
-    currentKeyFormatter = nil;
+    return;
   }
+  
+  if ([stackTop isKindOfClass:[NSString class]]) {
+    NSMutableDictionary* parentDictionary = [parseStack
+                                             objectAtIndex:(parseStackTop - 1)];
+    NSString* propertyValue = [[NSString alloc] initWithString:currentValue];
+    [parentDictionary setObject:propertyValue forKey:stackTop];
+    [propertyValue release];
+    
+    [currentValue setString:@""];
+  }
+  [parseStack removeLastObject];
 }
 
 @end

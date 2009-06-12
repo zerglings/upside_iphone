@@ -4,14 +4,14 @@
     <theName>First name</theName>
     <number>3.141592</number>
     <boolean>YES</boolean>
+    <subModel>
+      <the_name>Second name</the_name>
+      <number>64</number>
+      <boolean>NO</boolean>
+    </subModel>
   </ZNXmlParserTestModel>
   <itemA>
     <keyA>A prime</keyA>
     <keyB>B prime</keyB>
   </itemA>
-  <ZNXmlParserTestModel>
-    <the_name>Second name</the_name>
-    <number>64</number>
-    <boolean>NO</boolean>
-  </ZNXmlParserTestModel>  
 </testdata>

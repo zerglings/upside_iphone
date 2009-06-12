@@ -1,5 +1,5 @@
 //
-//  ZNDictionaryJsonParser.h
+//  ZNObjectJsonParser.h
 //  ZergSupport
 //
 //  Created by Victor Costan on 5/1/09.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol ZNDictionaryJsonParserDelegate;
+@protocol ZNObjectJsonParserDelegate;
 @class ZNFormFieldFormatter;
 
 
@@ -29,13 +29,13 @@
 // The extensions are expected to be used in JSON literals embedded in Objective
 // C strings, in combination with -parseValue, to make up for Objective C's lack
 // of collection literals. This should come in handy especially for tests.
-@interface ZNDictionaryJsonParser : NSObject {
-  id<ZNDictionaryJsonParserDelegate> delegate;
+@interface ZNObjectJsonParser : NSObject {
+  id<ZNObjectJsonParserDelegate> delegate;
   id context;
   ZNFormFieldFormatter* keyFormatter;
 }
 @property (nonatomic, assign) id context;
-@property (nonatomic, assign) id<ZNDictionaryJsonParserDelegate> delegate;
+@property (nonatomic, assign) id<ZNObjectJsonParserDelegate> delegate;
 
 // Initializes a parser, which can be used multiple times.
 -(id)init;
@@ -57,11 +57,11 @@
 @end
 
 
-@protocol ZNDictionaryJsonParserDelegate
+@protocol ZNObjectJsonParserDelegate
 
 // Called when the JSON root object is parsed.
 //
 // In the future, might be used for pruning the JSON object being parsed.
--(void)parsedJson:(NSDictionary*)jsonData context:(id)context;
+-(void)parsedJson:(NSObject*)jsonData context:(id)context;
 
 @end

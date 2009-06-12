@@ -14,16 +14,16 @@
 
 #pragma mark Boxing
 
--(NSObject*)boxAttribute:(ZNModelDefinitionAttribute*)attribute
-        inInstance:(ZNModel*)instance
-         forceString:(BOOL)forceString {
+-(NSObject*)copyBoxedAttribute:(ZNModelDefinitionAttribute*)attribute
+                    inInstance:(ZNModel*)instance
+                   forceString:(BOOL)forceString {
   NSString* string = object_getIvar(instance, [attribute runtimeIvar]);
-  return string;
+  return [string retain];
 }
 
 -(void)unboxAttribute:(ZNModelDefinitionAttribute*)attribute
-        inInstance:(ZNModel*)instance
-             from:(NSObject*)boxedObject {
+           inInstance:(ZNModel*)instance
+                 from:(NSObject*)boxedObject {
   NSString* string;
   if ([boxedObject isKindOfClass:[NSString class]]) {
     string = (NSString*)boxedObject;

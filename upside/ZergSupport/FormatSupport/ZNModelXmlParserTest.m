@@ -13,11 +13,12 @@
 
 // Model for the XML test file.
 @interface ZNXmlParserTestModel : ZNModel {
+  ZNXmlParserTestModel* subModel;
   NSString* theName;
   double number;
   BOOL boolean;
 }
-
+@property (nonatomic, retain) ZNXmlParserTestModel* subModel;
 @property (nonatomic, retain) NSString* theName;
 @property (nonatomic) double number;
 @property (nonatomic) BOOL boolean;
@@ -26,8 +27,9 @@
 
 @implementation ZNXmlParserTestModel
 
-@synthesize theName, number, boolean;
+@synthesize theName, number, boolean, subModel;
 -(void)dealloc {
+  [subModel release];
   [theName release];
   [super dealloc];
 }
@@ -89,30 +91,32 @@ static NSString* kContextObject = @"This is the context";
   STAssertEqualObjects(goldenNames, names,
                        @"Failed to parse the right items");
 
-  ZNXmlParserTestModel* firstModel = [items objectAtIndex:0];
-  STAssertTrue([firstModel isKindOfClass:[ZNXmlParserTestModel class]],
-               @"Wrong model class instantiated for first item");
-  STAssertEqualStrings(@"First name", firstModel.theName,
-                       @"Wrong value for first model's string property");
-  STAssertEqualsWithAccuracy(3.141592, firstModel.number, 0.0000001,
-                             @"Wrong value for first model's float property");
-  STAssertEquals(YES, firstModel.boolean,
-                 @"Wrong value for first model's boolean property");
+  ZNXmlParserTestModel* outerModel = [items objectAtIndex:0];
+  STAssertTrue([outerModel isKindOfClass:[ZNXmlParserTestModel class]],
+               @"Wrong model class instantiated for the outer model");
+  STAssertEqualStrings(@"First name", outerModel.theName,
+                       @"Wrong value for the outer model's string property");
+  STAssertEqualsWithAccuracy(3.141592, outerModel.number, 0.0000001,
+                             @"Wrong value for outer model's float property");
+  STAssertEquals(YES, outerModel.boolean,
+                 @"Wrong value for the outer model's boolean property");
 
   NSDictionary* goldenSecond = [NSDictionary dictionaryWithObjectsAndKeys:
                                 @"A prime", @"keyA", @"B prime", @"keyB", nil];
   STAssertEqualObjects(goldenSecond, [items objectAtIndex:1],
                        @"Failed to parse item with no model");
 
-  ZNXmlParserTestModel* secondModel = [items objectAtIndex:2];
-  STAssertTrue([secondModel isKindOfClass:[ZNXmlParserTestModel class]],
-               @"Wrong model class instantiated for third item");
-  STAssertEqualStrings(@"Second name", secondModel.theName,
-                       @"Wrong value for second model's string property");
-  STAssertEqualsWithAccuracy(64.0, secondModel.number, 0.0000001,
-                             @"Wrong value for second model's float property");
-  STAssertEquals(NO, secondModel.boolean,
-                 @"Wrong value for second model's boolean property");
+  ZNXmlParserTestModel* innerModel = outerModel.subModel;
+  STAssertTrue([innerModel isKindOfClass:[ZNXmlParserTestModel class]],
+               @"Wrong model class instantiated for the inner item / model");
+  STAssertEqualStrings(@"Second name", innerModel.theName,
+                       @"Wrong value for the inner model's string property");
+  STAssertEqualsWithAccuracy(64.0, innerModel.number, 0.0000001,
+                             @"Wrong value for inner model's float property");
+  STAssertEquals(NO, innerModel.boolean,
+                 @"Wrong value for the inner model's boolean property");
+  STAssertNil(innerModel.subModel,
+              @"Wrong value for the inner model's submodel");
 }
 
 -(void)testParsingURLs {

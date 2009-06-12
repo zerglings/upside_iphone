@@ -12,6 +12,9 @@
 
 #import "ZNModel.h"
 
+@class ZNTestDate;
+
+
 @interface ZNTestParsing : NSObject {
 }
 
@@ -32,6 +35,7 @@
 @property (nonatomic) NSInteger integer_prop;
 @property (nonatomic) NSUInteger uinteger_prop;
 @property (nonatomic, retain) NSString* string_prop;
+@property (nonatomic, retain) ZNTestDate* model_prop;
 
 // custom getter / setter
 
@@ -52,18 +56,20 @@
 
 
 @interface ZNTestProtocolDef : NSObject <ZNTestProtocolDef_ZNMS>
-
 @property (nonatomic) NSUInteger fail1, fail2;
-
 @end
 
 
 @interface ZNTestDate : ZNModel {
   NSDate* pubDate;
 }
-
 @property (nonatomic, retain) NSDate* pubDate;
+@end
 
+@interface ZNTestSubmodel : ZNModel {
+  ZNTestDate* dateModel;
+}
+@property (nonatomic, retain) ZNTestDate* dateModel;
 @end
 
 @interface ZNTestNumbers : ZNModel {
@@ -73,13 +79,11 @@
   NSUInteger uintegerVal;
   NSString* stringVal;
 }
-
 @property (nonatomic) BOOL trueVal, falseVal;
 @property (nonatomic) double doubleVal;
 @property (nonatomic) NSInteger integerVal;
 @property (nonatomic) NSUInteger uintegerVal;
 @property (nonatomic, retain) NSString* stringVal;
-
 @end
 
 @protocol ZNTestModel_ZNMS

@@ -12,12 +12,9 @@
 #import "ZNDictionaryXmlParser.h"
 #import "ZNFormFieldFormatter.h"
 
+
 @interface ZNModelXmlParser () <ZNDictionaryXmlParserDelegate>
-
-+(NSDictionary*)copyParserSchemaFor:(NSDictionary*)responseModels
-                             casing:(ZNFormatterCasing)responseCasing;
 @end
-
 
 @implementation ZNModelXmlParser
 
@@ -26,12 +23,12 @@
 -(id)initWithSchema:(NSDictionary*)theSchema
      documentCasing:(ZNFormatterCasing)documentCasing {
   if ((self = [super init])) {
-    NSDictionary* parserSchema =
-        [ZNModelXmlParser copyParserSchemaFor:theSchema
-                                       casing:documentCasing];
-    parser = [[ZNDictionaryXmlParser alloc] initWithSchema:parserSchema];
+    ZNFormFieldFormatter* keyFormatter =
+        [ZNFormFieldFormatter formatterToPropertiesFrom:documentCasing];
+
+    parser = [[ZNDictionaryXmlParser alloc] initWithSchema:theSchema
+                                              keyFormatter:keyFormatter];
     parser.delegate = self;
-    [parserSchema release];
 
     schema = [theSchema retain];
   }
@@ -77,26 +74,4 @@
   }
 }
 
-+(NSDictionary*)copyParserSchemaFor:(NSDictionary*)models
-                             casing:(ZNFormatterCasing)documentCasing {
-  ZNFormFieldFormatter* formatter =
-  [ZNFormFieldFormatter formatterToPropertiesFrom:documentCasing];
-  NSMutableArray* keys = [[NSMutableArray alloc]
-                          initWithCapacity:[models count]];
-  NSMutableArray* values = [[NSMutableArray alloc]
-                            initWithCapacity:[models count]];
-  for (NSString* modelName in models) {
-    [keys addObject:modelName];
-    NSArray* directions = [[NSArray alloc] initWithObjects:
-                           formatter, [models objectForKey:modelName],
-                           nil];
-    [values addObject:directions];
-    [directions release];
-  }
-  NSDictionary* schema = [[NSDictionary alloc] initWithObjects:values
-                                                       forKeys:keys];
-  [keys release];
-  [values release];
-  return schema;
-}
 @end

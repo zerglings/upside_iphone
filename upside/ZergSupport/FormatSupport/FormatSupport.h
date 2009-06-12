@@ -10,7 +10,7 @@
 // Main header file for the Zergling.Net Format Support.
 
 #import "ZNArrayCsvParser.h"
-#import "ZNDictionaryJsonParser.h"
+#import "ZNObjectJsonParser.h"
 #import "ZNDictionaryXmlParser.h"
 #import "ZNFormatterCasing.h"
 #import "ZNFormEncoder.h"
