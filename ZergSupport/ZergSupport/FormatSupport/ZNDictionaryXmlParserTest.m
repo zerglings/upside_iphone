@@ -8,7 +8,7 @@
 
 #include "TestSupport.h"
 
-#include "ZNDictionaryJsonParser.h"
+#include "ZNObjectJsonParser.h"
 #include "ZNDictionaryXmlParser.h"
 #include "ZNFormFieldFormatter.h"
 
@@ -88,7 +88,7 @@ static NSString* kContextObject = @"This is the context";
                        @"Failed to parse XML entities");
 
   NSDictionary* goldenFourth = (NSDictionary*)
-      [ZNDictionaryJsonParser parseValue:
+      [ZNObjectJsonParser parseValue:
       @"{'keyOne': 'value_one', 'keyTwo': 'value_two', 'keyThree': "
       @" {'subkeyOne': 'subvalue_one', 'subkeyTwo': "
       @"  {'subkeyThree': 'subvalue_three'}}}"];
