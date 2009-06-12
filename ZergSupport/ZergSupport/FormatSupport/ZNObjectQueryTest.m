@@ -24,6 +24,7 @@
 @interface ZNObjectQueryTest : SenTestCase {
   NSObject* simpleHash;
   NSObject* simpleArray;
+  NSObject* arrayOfHashes;
 }
 
 @end
@@ -37,10 +38,15 @@
   simpleArray =
       [ZNDictionaryJsonParser parseValue:
        @"[['a', 'b'], ['c', 'd'], [['e', 'f'], ['g', 'h', 'i', 'j']]]"];
+  
+  arrayOfHashes =
+      [ZNDictionaryJsonParser parseValue:
+       @"[{'awe': {'one': 'two'}}, {'boo': [4, 5]}, {'awe': 'three'}]"];
 }
 -(void)tearDown {
   [simpleHash release];
   [simpleArray release];
+  [arrayOfHashes release];
 }
 
 -(void)testQuerySplitting {
@@ -170,6 +176,16 @@
   NSArray* result = [query newRun:simpleHash];
   STAssertEqualObjects([NSArray arrayWithObject:@"g"],
                        result, @"Multi-level wild card in hashes");
+  [result release];
+  [query release];
+}
+
+-(void)testSingleLevelInArrayOfHashes {
+  ZNObjectQuery* query = [ZNObjectQuery newCompile:@"/?/awe"];
+  NSArray* result = [query newRun:arrayOfHashes];
+  STAssertEqualObjects([ZNDictionaryJsonParser
+                        parseValue:@"[{'one': 'two'}, 'three']"],
+                       result, @"Single-level wild card in array of hashes");
   [result release];
   [query release];
 }
