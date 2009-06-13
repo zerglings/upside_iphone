@@ -39,7 +39,7 @@
   if (forceString)
     return [[osxFormatter stringFromDate:date] retain];
   else
-    return date;
+    return [date retain];
 }
 
 -(void)unboxAttribute:(ZNModelDefinitionAttribute*)attribute

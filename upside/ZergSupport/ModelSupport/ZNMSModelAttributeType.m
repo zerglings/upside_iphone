@@ -44,6 +44,9 @@
       [oldModel release];
       break;
     }
+    case kZNPropertyWantsAssign:
+      [model autorelease];
+      break;
   }
   object_setIvar(instance, runtimeIvar, model);
 }
