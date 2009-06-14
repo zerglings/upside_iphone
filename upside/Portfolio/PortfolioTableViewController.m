@@ -11,7 +11,7 @@
 #import "AssetBook.h"
 #import "Game.h"
 #import "NewOrderViewController.h"
-#import "OrdersTableViewController.h"
+#import "OrdersViewController.h"
 #import "StockCache.h"
 #import "StockTableViewCell.h"
 
@@ -218,7 +218,7 @@
   [self.tabBarController setSelectedViewController:ordersNavigationController];
 
   if (![[ordersNavigationController.viewControllers lastObject]
-        isKindOfClass:[OrdersTableViewController class]])
+        isKindOfClass:[OrdersViewController class]])
     return;
 
   NewOrderViewController* newOrderViewController =

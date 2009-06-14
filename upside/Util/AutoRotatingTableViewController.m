@@ -28,7 +28,7 @@
 -(void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
                               duration:(NSTimeInterval)duration {
   if (![self.wideCellReuseIdentifier
-      isEqualToString:self.narrowCellReuseIdentifier]) {
+        isEqualToString:self.narrowCellReuseIdentifier]) {
     [(UITableView*)self.view reloadData];
   }
 

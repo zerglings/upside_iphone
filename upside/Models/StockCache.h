@@ -15,6 +15,7 @@
   NSMutableDictionary* stocks;
   StockInfoCommController* commController;
   NSTimeInterval refreshPeriod;
+  NSObject* nilPlaceholder;
 }
 
 // Information for the stock with the given ticker.

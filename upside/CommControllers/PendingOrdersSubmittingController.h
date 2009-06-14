@@ -16,7 +16,6 @@
 // Submits pending orders to the game server.
 @interface PendingOrdersSubmittingController : ZNSyncController {
   TradeBook* tradeBook;
-  TradeOrder* lastSubmittedOrder;
   TradeOrderCommController* commController;
   LoginCommController* loginCommController;
 }

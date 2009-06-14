@@ -31,12 +31,15 @@
     commController = [[StockInfoCommController alloc]
               initWithTarget:self
                   action:@selector(receivedResults:)];
+    nilPlaceholder = [[NSNull alloc] init];
   }
   return self;
 }
 
 -(void)dealloc {
   [stocks release];
+  [commController release];
+  [nilPlaceholder release];
   [super dealloc];
 }
 
@@ -59,14 +62,16 @@
 -(Stock*)stockForTicker:(NSString*)stockTicker {
   Stock* stockInfo = [stocks objectForKey:stockTicker];
   if (stockInfo) {
-    if ([stockInfo isKindOfClass:[NSNull class]])
+    if (stockInfo == nilPlaceholder)
       return nil;
     else
       return stockInfo;
   }
 
   // We don't have stock information, so let's queue it up.
-  [stocks setObject:[NSNull null] forKey:stockTicker];
+  if (stockTicker) {
+    [stocks setObject:nilPlaceholder forKey:stockTicker];
+  }
   return nil;
 }
 

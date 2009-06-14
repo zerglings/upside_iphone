@@ -20,6 +20,7 @@
   [super viewWillAppear:animated];
   if (!game)
     game = [Game sharedGame];
+  [self newGameData];
   [game.newDataSite addTarget:self action:@selector(newGameData)];
 }
 

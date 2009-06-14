@@ -45,7 +45,7 @@
   return kZNHttpMethodPut;
 }
 +(NSString*)orderSubmissionUrl {
-  return [NSString stringWithFormat:@"%@/trade_orders.xml",
+  return [NSString stringWithFormat:@"%@/trade_orders.json",
           [self serverUrl]];
 }
 +(NSString*)orderSubmissionMethod {

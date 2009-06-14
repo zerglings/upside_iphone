@@ -75,7 +75,7 @@
     [self handleSystemError:error];
     return YES;
   }
-  if ([(NSArray*)results count] == 1) {
+  if ([(NSArray*)results count] == 1 && errorModelClass) {
     // check for service error
     ZNModel* maybeError = [(NSArray*)results objectAtIndex:0];
     if ([maybeError isKindOfClass:errorModelClass])

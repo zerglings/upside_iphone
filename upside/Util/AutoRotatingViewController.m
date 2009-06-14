@@ -12,6 +12,8 @@
 @implementation AutoRotatingViewController
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+  [super shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+
    // Will rotate any way the user wants us to.
   return YES;
 }

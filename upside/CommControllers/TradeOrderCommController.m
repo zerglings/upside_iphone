@@ -21,16 +21,16 @@
     target = theTarget;
     action = theAction;
 
-    responseModels = [[NSDictionary alloc] initWithObjectsAndKeys:
-                      [TradeOrder class], @"trade_order",
-                      [ServiceError class], @"error",
-                      nil];
+    responseQueries = [[NSArray alloc] initWithObjects:
+                       [TradeOrder class], @"/tradeOrder",
+                       [ServiceError class], @"/error",
+                       nil];
   }
   return self;
 }
 
 -(void)dealloc {
-  [responseModels release];
+  [responseQueries release];
   [super dealloc];
 }
 
@@ -38,12 +38,12 @@
   NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
                            order, @"trade_order", nil];
   [NetworkProgress connectionStarted];
-  [ZNXmlHttpRequest callService:[ServerPaths orderSubmissionUrl]
-                         method:[ServerPaths orderSubmissionMethod]
-                           data:request
-                 responseModels:responseModels
-                         target:self
-                         action:@selector(processResponse:)];
+  [ZNJsonHttpRequest callService:[ServerPaths orderSubmissionUrl]
+                          method:[ServerPaths orderSubmissionMethod]
+                            data:request
+                 responseQueries:responseQueries
+                          target:self
+                          action:@selector(processResponse:)];
   [request release];
 }
 

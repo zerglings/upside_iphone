@@ -10,7 +10,6 @@
 
 #import "ControllerSupport.h"
 #import "Game.h"
-#import "NewOrderViewController.h"
 #import "OrderTableViewCell.h"
 #import "StockCache.h"
 #import "TradeBook.h"
@@ -35,6 +34,10 @@
 -(void)viewDidLoad {
   [super viewDidLoad];
 
+  pendingOrdersEnabled = YES;
+  submittedOrdersEnabled = YES;
+  completedOrdersEnabled = YES;
+
   self.narrowCellNib = @"OrderTableCellNarrow";
   self.wideCellNib = @"OrderTableCellWide";
   self.narrowCellReuseIdentifier = @"OrderNarrow";
@@ -49,22 +52,14 @@
   emptyView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
       UIViewAutoresizingFlexibleWidth;
   [self refreshEmptyView];
-
-  self.navigationItem.leftBarButtonItem =
-      [[UIBarButtonItem alloc]
-       initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-       target:self action:@selector(tappedAddTradeButton:)];
-
-  self.navigationItem.rightBarButtonItem =
-  [[UIBarButtonItem alloc]
-   initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-   target:[Game sharedGame] action:@selector(syncData)];
 }
 
 -(void)refreshEmptyView {
   TradeBook* tradeBook = [[Game sharedGame] tradeBook];
-  BOOL hidden = ([tradeBook pendingCount] + [tradeBook submittedCount] +
-                 [tradeBook filledCount]) != 0;
+  NSUInteger trades = (pendingOrdersEnabled ? [tradeBook pendingCount] : 0) +
+      (submittedOrdersEnabled ? [tradeBook submittedCount] : 0) +
+      (completedOrdersEnabled ? [tradeBook filledCount] : 0);
+  BOOL hidden = (trades != 0);
   [emptyView setHidden:hidden];
 }
 
@@ -105,13 +100,36 @@
 #define kFilledSection 2
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 3;
+  return (pendingOrdersEnabled ? 1 : 0) + (submittedOrdersEnabled ? 1 : 0) +
+         (completedOrdersEnabled ? 1 : 0);
+}
+
+-(NSInteger)logicalSectionForPhysicalSection:(NSInteger)section {
+  if (pendingOrdersEnabled) {
+    if (section == 0)
+      return kNotSubmittedSection;
+    section--;
+  }
+  if (submittedOrdersEnabled) {
+    if (section == 0)
+      return kSubmittedSection;
+    section--;
+  }
+  if (completedOrdersEnabled) {
+    if (section == 0)
+      return kFilledSection;
+    section--;
+  }
+  NSAssert(NO, @"Unsupported physical section");
+  return -1;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-  if ([self tableView:tableView numberOfRowsInSection:section] == 0)
+  if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
     return nil;
+  }
 
+  section = [self logicalSectionForPhysicalSection:section];
   switch(section) {
     case kNotSubmittedSection:
       return @"Not submitted to server";
@@ -125,9 +143,12 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  section = [self logicalSectionForPhysicalSection:section];
+
   TradeBook* tradeBook = [[Game sharedGame] tradeBook];
   switch(section) {
     case kNotSubmittedSection:
+      NSLog(@"Pending orders: %d", [tradeBook pendingCount]);
       return [tradeBook pendingCount];
     case kSubmittedSection:
       return [tradeBook submittedCount];
@@ -145,9 +166,10 @@
                                              cellForRowAtIndexPath:indexPath];
   TradeBook* tradeBook = [[Game sharedGame] tradeBook];
   TradeOrder* order;
-  switch(indexPath.section) {
+  switch([self logicalSectionForPhysicalSection:indexPath.section]) {
     case kNotSubmittedSection:
       order = [tradeBook pendingAtIndex:([tradeBook pendingCount] - indexPath.row - 1)];
+      NSLog(@"Pending order: %@", [order description]);
       break;
     case kSubmittedSection:
       order = [tradeBook submittedAtIndex:([tradeBook submittedCount] - indexPath.row - 1)];
@@ -216,18 +238,28 @@
     [super dealloc];
 }
 
--(void)tappedAddTradeButton:(id)sender {
-  NewOrderViewController* newOrderViewController =
-      [[NewOrderViewController alloc] initWithNibName:@"NewOrderViewController"
-                                               bundle:nil];
-  [self.navigationController pushViewController:newOrderViewController
-                                       animated:YES];
-  // TODO(overmind): setup controller
-  [newOrderViewController release];
-}
-
--(IBAction)placeOrderTapped:(id)sender {
-  [self tappedAddTradeButton:sender];
+-(void)setOrdersFilter:(NSUInteger)ordersFiler {
+  switch (ordersFiler) {
+    case kOrdersFilterAll:
+      pendingOrdersEnabled = YES;
+      submittedOrdersEnabled = YES;
+      completedOrdersEnabled = YES;
+      break;
+    case kOrdersFilterPending:
+      pendingOrdersEnabled = YES;
+      submittedOrdersEnabled = YES;
+      completedOrdersEnabled = NO;
+      break;
+    case kOrdersFilterCompleted:
+      pendingOrdersEnabled = NO;
+      submittedOrdersEnabled = NO;
+      completedOrdersEnabled = YES;
+      break;
+    default:
+      NSAssert(NO, @"Unknown order filtering mode");
+      break;
+  }
+  [self newGameData];
 }
 @end
 

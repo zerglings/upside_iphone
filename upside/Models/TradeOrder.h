@@ -19,28 +19,24 @@
   double limitPrice;
   NSUInteger modelId;
   NSUInteger unfilledQuantity;
+  NSString* clientNonce;
 }
-
 // The ticker of the stock.
 @property (nonatomic, readonly, retain) NSString* ticker;
-
 // The number of stocks in the order.
 @property (nonatomic, readonly) NSUInteger quantity;
-
 // YES for buy orders, NO for sell orders.
 @property (nonatomic, readonly) BOOL isBuy;
-
 // YES for long (buy, sell) orders, NO for short (or buy to cover) orders.
 @property (nonatomic, readonly) BOOL isLong;
-
 // The limit on the order, in cents.
 @property (nonatomic, readonly) double limitPrice;
-
 // The ID assigned by the server when the order is submitted.
 @property (nonatomic, readonly)  NSUInteger modelId;
-
 // The number of stocks in the order that are not yet filled.
 @property (nonatomic, readonly) NSUInteger unfilledQuantity;
+// A client-generated nonce preventing duplicate order submissions.
+@property (nonatomic, readonly, retain) NSString* clientNonce;
 
 #pragma mark Convenience Initializers
 

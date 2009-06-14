@@ -13,7 +13,7 @@
 
 // Submits trade orders.
 @interface TradeOrderCommController : NSObject {
-  NSDictionary* responseModels;
+  NSArray* responseQueries;
   SEL action;
   id target;
 }

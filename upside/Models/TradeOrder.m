@@ -17,7 +17,7 @@
 }
 
 @synthesize ticker, quantity, unfilledQuantity, isBuy, isLong, limitPrice;
-@synthesize modelId;
+@synthesize modelId, clientNonce;
 
 -(NSUInteger)filledQuantity {
   return quantity - unfilledQuantity;
@@ -42,6 +42,13 @@
 
 #pragma mark Convenience Constructors
 
+// Produces a nonce unique to this client.
++(NSString*)newClientNonce {
+  uint8_t nonceBuffer[sizeof(NSTimeInterval)];
+  *((NSTimeInterval *)nonceBuffer) = [NSDate timeIntervalSinceReferenceDate];
+  return [[NSString alloc] initWithFormat:@"%llx", *((uint64_t*)nonceBuffer)];
+}
+
 -(TradeOrder*)initWithTicker:(NSString*)theTicker
                       quantity:(NSUInteger)theQuantity
               unfilledQuantity:(NSUInteger)theUnfilledQuantity
@@ -57,6 +64,7 @@
   NSNumber* isLongNum = [[NSNumber alloc] initWithBool:theIsLong];
   NSNumber* limitPriceNum = [[NSNumber alloc] initWithDouble:theLimitPrice];
   NSNumber* modelIdNum = [[NSNumber alloc] initWithUnsignedInteger:theModelId];
+  NSString* theClientNonce = [TradeOrder newClientNonce];
   NSDictionary* properties = [[NSDictionary alloc] initWithObjectsAndKeys:
                               theTicker, @"ticker",
                               quantityNum, @"quantity",
@@ -64,13 +72,15 @@
                               isBuyNum, @"isBuy",
                               isLongNum, @"isLong",
                               limitPriceNum, @"limitPrice",
-                              modelIdNum, @"modelId", nil];
+                              modelIdNum, @"modelId",
+                              theClientNonce, @"clientNonce", nil];
   [quantityNum release];
   [unfilledQuantityNum release];
   [isBuyNum release];
   [isLongNum release];
   [limitPriceNum release];
   [modelIdNum release];
+  [clientNonce release];
 
   self = [self initWithModel:nil properties:properties];
   [properties release];

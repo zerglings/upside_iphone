@@ -12,6 +12,7 @@
 #import "Stock.h"
 #import "WebSupport.h"
 
+
 @implementation StockInfoCommController
 
 -(id)initWithTarget:(id)theTarget action:(SEL)theAction {
@@ -42,6 +43,11 @@
     return;
   }
 
+  // This comm. controller is fragile -- the target can get deallocated while it
+  // runs. Protect against that by retaining the target while a request is in
+  // progress.
+  [target retain];
+
   NSString* tickerQuery = [tickers componentsJoinedByString:@"+"];
   NSDictionary* requestData = [[NSDictionary alloc] initWithObjectsAndKeys:
                                tickerQuery, @"s", formatString, @"f", nil];
@@ -59,6 +65,9 @@
 -(void)processResponse:(NSObject*)response {
   [NetworkProgress connectionDone];
   [target performSelector:action withObject:response];
+
+  // Done protecting the fragile comm controller.
+  [target release];
 }
 
 @end

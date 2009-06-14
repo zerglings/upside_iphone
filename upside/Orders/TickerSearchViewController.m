@@ -46,7 +46,8 @@
     [self searchNeeded];
   }
   tickerSearchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-  tickerSearchBar.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+  tickerSearchBar.autocapitalizationType =
+      UITextAutocapitalizationTypeAllCharacters;
   [resultsTableViewController setTarget:self action:@selector(selectedStock:)];
 }
 

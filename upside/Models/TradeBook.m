@@ -101,16 +101,17 @@
   return [pendingOrders count] ? [pendingOrders objectAtIndex:0] : nil;
 }
 
--(BOOL)dequeuePendingOrder:(TradeOrder*)order
-                   submitted:(TradeOrder*)submittedOrder {
-  NSUInteger orderIndex = [pendingOrders indexOfObject:order];
-  if (orderIndex == NSNotFound)
-    return NO;
-  [pendingOrders removeObjectAtIndex:orderIndex];
+-(void)submittedOrder:(TradeOrder*)submittedOrder {
+  NSString* nonce = [submittedOrder clientNonce];
+  for (NSUInteger i = 0; i < [pendingOrders count]; i++) {
+    if ([nonce isEqualToString:[[pendingOrders objectAtIndex:i] clientNonce]]) {
+      [pendingOrders removeObjectAtIndex:i];
+      break;
+    }
+  }
 
   NSArray* newServerOrders = [serverOrders arrayByAddingObject:submittedOrder];
   [self loadData:newServerOrders];
-  return YES;
 }
 
 -(NSArray*)copyPendingOrders {

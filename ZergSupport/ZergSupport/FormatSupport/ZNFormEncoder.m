@@ -8,6 +8,7 @@
 
 #import "ZNFormEncoder.h"
 
+#include <objc/runtime.h>
 #import "ModelSupport.h"
 #import "ZNFormFieldFormatter.h"
 
@@ -113,15 +114,15 @@
 
 -(void)outputValue:(NSString*)value forKey:(NSString*)key {
   NSAssert1(NO,
-            @"ZNFormEncoder subclass %@ did not override "
+            @"ZNFormEncoder subclass %s did not override +outputValue:forKey:"
             @"-outputValue:forString:",
-            [self className]);
+            class_getName([self class]));
 }
 
 +(NSString*)copyContentTypeFor:(NSData*)encodedData {
   NSAssert1(NO,
-            @"ZNFormEncoder subclass %@ did not override +copyContentTypeFor:",
-            [self className]);
+            @"ZNFormEncoder subclass %s did not override +copyContentTypeFor:",
+            class_getName([self class]));
   return nil;
 }
 
