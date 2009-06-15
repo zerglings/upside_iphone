@@ -242,10 +242,10 @@
                 encoderClass:[ZNFormURLEncoder class]
                       target:self
                       action:@selector(checkHttpErrorCode:)];
-  
+
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
-  
+
   STAssertEquals(YES, receivedResponse, @"Response never received");
 }
 -(void)checkHttpErrorCode:(NSError*)response {
