@@ -26,7 +26,7 @@
 }
 
 -(void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-                              duration:(NSTimeInterval)duration {
+                                                      duration:(NSTimeInterval)duration {
   if (![self.wideCellReuseIdentifier
         isEqualToString:self.narrowCellReuseIdentifier]) {
     [(UITableView*)self.view reloadData];
@@ -43,9 +43,9 @@
 @synthesize cellClass;
 
 +(UITableViewCell*)loadCellFromNib:(NSString*)nibName
-                identifier:(NSString*)identifier
-                   class:(Class)cellClass
-                   owner:(id)owner {
+                        identifier:(NSString*)identifier
+                             class:(Class)cellClass
+                             owner:(id)owner {
   NSArray* nibContents = [[NSBundle mainBundle] loadNibNamed:nibName
                              owner:owner
                              options:nil];
@@ -65,7 +65,7 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
-     cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   NSString* cellIdentifier;
   NSString* cellNib;
   if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
@@ -78,12 +78,12 @@
   }
 
     UITableViewCell *cell =  [tableView
-                dequeueReusableCellWithIdentifier:cellIdentifier];
+                              dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [AutoRotatingTableViewController loadCellFromNib:cellNib
-                             identifier:cellIdentifier
-                                class:cellClass
-                                owner:self];
+                                                     identifier:cellIdentifier
+                                                          class:cellClass
+                                                          owner:self];
     }
   return cell;
 }

@@ -12,6 +12,9 @@
 
 @interface GameAwareViewController : AutoRotatingViewController {
   IBOutlet Game* game;
+  BOOL _isVisible;
+  BOOL _observingGameChanges;
+  BOOL _dataNeedsRefresh;
 }
 
 // The game data connected to this table.

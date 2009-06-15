@@ -11,6 +11,7 @@
 #import "ZNFormFieldFormatter.h"
 #import "ZNFormURLEncoder.h"
 
+
 @implementation ZNHttpRequest
 
 #pragma mark Lifecycle
@@ -21,6 +22,7 @@
   if ((self = [super init])) {
     responseData = [[NSMutableData alloc] init];
     urlRequest = [theRequest retain];
+    statusCode = 0;
     // NOTE: it is safe to retain the target, it cannot reference us
     target = [theTarget retain];
     action = theAction;
@@ -35,6 +37,7 @@
   [super dealloc];
 }
 
+NSString* kZNHttpErrorDomain = @"ZNHttpErrorDomain";
 
 #pragma mark HTTP Request Creation
 
@@ -122,6 +125,7 @@
 
 -(void)connection:(NSURLConnection*)connection
 didReceiveResponse:(NSURLResponse*)response {
+  statusCode = [(NSHTTPURLResponse*)response statusCode];
   [responseData setLength:0];
 }
 
@@ -131,7 +135,21 @@ didReceiveResponse:(NSURLResponse*)response {
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection*)connection {
-  [self reportData];
+  if (statusCode >= 200 && statusCode < 300) {
+    [self reportData];
+  }
+  else {
+    NSDictionary* errorDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+        @"Internal HTTP Server Error", NSLocalizedDescriptionKey,
+        @"Internal HTTP Server Error", NSLocalizedFailureReasonErrorKey, nil];
+    NSError* error = [[NSError alloc] initWithDomain:kZNHttpErrorDomain
+                                                code:statusCode
+                                            userInfo:errorDict];
+    [errorDict release];
+    [self reportError:error];
+    [error release];
+  }
+  
   [self release];
 }
 

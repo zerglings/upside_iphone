@@ -44,6 +44,7 @@
 @interface ZNHttpRequestTest : SenTestCase {
   ZNHttpRequestTestModel* requestModel;
   NSString* service;
+  NSString* notFoundService;
   BOOL receivedResponse;
 }
 
@@ -58,6 +59,7 @@
 
 -(void)setUp {
   service = @"http://zn-testbed.heroku.com/web_support/echo.xml";
+  notFoundService = @"http://zn-testbed.heroku.com/web_support/not_found";
   receivedResponse = NO;
   [self warmUpHerokuService:service];
   [ZNHttpRequest deleteCookiesForService:service];
@@ -72,6 +74,8 @@
 -(void)tearDown {
   [service release];
   service = nil;
+  [notFoundService release];
+  notFoundService = nil;
 }
 
 -(void)dealloc {
@@ -228,6 +232,29 @@
                         @"ZNHttpRequestTest.get2"];
   STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
                        responseString, @"Wrong request");
+}
+
+-(void)testHttpErrorCode {
+  [ZNHttpRequest callService:notFoundService
+                      method:kZNHttpMethodGet
+                        data:nil
+                 fieldCasing:kZNFormatterSnakeCase
+                encoderClass:[ZNFormURLEncoder class]
+                      target:self
+                      action:@selector(checkHttpErrorCode:)];
+  
+  [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
+                                            1.0]];
+  
+  STAssertEquals(YES, receivedResponse, @"Response never received");
+}
+-(void)checkHttpErrorCode:(NSError*)response {
+  receivedResponse = YES;
+  STAssertTrue([response isKindOfClass:[NSError class]],
+               @"Error not reported %@", response);
+  STAssertEquals(kZNHttpErrorDomain, [response domain],
+                 @"Incorrect error domain");
+  STAssertEquals(404, [response code], @"Incorrect error code");
 }
 
 @end

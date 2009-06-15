@@ -24,11 +24,14 @@ enum ZNFormatterCasing;
 @interface ZNHttpRequest : NSObject {
   NSMutableData* responseData;
   NSURLRequest* urlRequest;
+  NSInteger statusCode;
   NSObject* target;
   SEL action;
 }
 
 #pragma mark Public Interface
+
+extern NSString* kZNHttpErrorDomain;
 
 +(void)deleteCookiesForService:(NSString*)service;
 
