@@ -137,7 +137,7 @@ qualifiedName:(NSString *)qName
   if (schemaStackTop > 0) {
     // Push the formatted element name on the parse stack.
     NSString* formattedElementName = keyFormatter ?
-    [keyFormatter copyFormattedName:elementName] : elementName;
+        [keyFormatter copyFormattedName:elementName] : elementName;
     [parseStack addObject:formattedElementName];
     if (formattedElementName != elementName) {
       [formattedElementName release];
@@ -147,6 +147,42 @@ qualifiedName:(NSString *)qName
   }
   else {
     currentItemName = [elementName retain];
+  }
+  
+  // Fast code path for attributes.
+  if ([attributeDict count] > 0) {
+    NSUInteger parseStackTop = [parseStack count] - 1;
+    NSObject* stackTop = [parseStack objectAtIndex:parseStackTop];
+    
+    NSMutableDictionary* attributeDictionary;
+    if (schemaStackTop > 0) {
+      NSMutableDictionary* parentDictionary =
+          [parseStack objectAtIndex:(parseStackTop - 1)];
+      attributeDictionary = [[NSMutableDictionary alloc]
+                             initWithCapacity:[attributeDict count]];
+      [parentDictionary setObject:attributeDictionary forKey:stackTop];
+      
+      [parseStack replaceObjectAtIndex:parseStackTop
+                            withObject:attributeDictionary];
+      [attributeDictionary release];
+    }
+    else {
+      attributeDictionary = (NSMutableDictionary*)stackTop;
+    }    
+    for (NSString* attributeName in attributeDict) {
+      NSObject* attributeSchema = [self unravelSchema:nextSchema
+                                      withElementName:attributeName];
+      if (!attributeSchema)
+        continue;
+      
+      NSString* formattedAttributeName = keyFormatter ?
+          [keyFormatter copyFormattedName:attributeName] : attributeName;
+      [attributeDictionary setObject:[attributeDict objectForKey:attributeName]
+                              forKey:formattedAttributeName];
+      if (formattedAttributeName != attributeName) {
+        [formattedAttributeName release];
+      }      
+    }
   }
 }
 

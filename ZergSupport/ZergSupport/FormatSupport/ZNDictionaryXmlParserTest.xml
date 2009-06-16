@@ -15,7 +15,7 @@
 <itemB>
   <keyA>not in schema</keyA>
   <keyB>B second</keyB>
-  <itemA>
+  <itemA keyB="should be blind to attribute">
     <keyB>should be blind to this</keyB>
     <keyC>
       <keyD>should still be blind to this</keyD>
@@ -26,11 +26,9 @@
   <keyC>Entity fun &#39;&gt;</keyC> 
   <keyB>B third</keyB>
 </itemA>
-<itemD>
-  <key_one>value_one</key_one>
+<itemD key_one="value_one">
   <key_two>value_two</key_two>
-  <key_three>
-    <subkey_one>subvalue_one</subkey_one>
+  <key_three subkey_one="subvalue_one">
     <subkey_two>
       <subkey_three>subvalue_three</subkey_three>
     </subkey_two>

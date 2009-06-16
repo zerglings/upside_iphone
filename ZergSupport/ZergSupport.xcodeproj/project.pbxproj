@@ -35,36 +35,6 @@
 		573034F30FCA19EC001F9B38 /* OCObserverMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034CE0FCA19EC001F9B38 /* OCObserverMockObject.m */; };
 		573034F60FCA19EC001F9B38 /* OCProtocolMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034D10FCA19EC001F9B38 /* OCProtocolMockObject.h */; };
 		573034F70FCA19EC001F9B38 /* OCProtocolMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034D20FCA19EC001F9B38 /* OCProtocolMockObject.m */; };
-		5735BA2A0FDE5EB80058BDD0 /* ZNModelXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E9E0F4E0D4D0046B0EE /* ZNModelXmlParserTest.m */; };
-		5735BA2B0FDE5EBE0058BDD0 /* ZNDictionaryXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E8C0F4E0D4D0046B0EE /* ZNDictionaryXmlParserTest.m */; };
-		5735BA410FDE5F180058BDD0 /* ZNSyncControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E7C0F4E0D4D0046B0EE /* ZNSyncControllerTest.m */; };
-		5735BA420FDE5F180058BDD0 /* ZNTargetActionPairTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E7F0F4E0D4D0046B0EE /* ZNTargetActionPairTest.m */; };
-		5735BA430FDE5F180058BDD0 /* ZNTargetActionSetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E820F4E0D4D0046B0EE /* ZNTargetActionSetTest.m */; };
-		5735BA440FDE5F180058BDD0 /* ZNAppFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F047B30FA60E9F006436EF /* ZNAppFprintTest.m */; };
-		5735BA450FDE5F180058BDD0 /* ZNAesCipherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */; };
-		5735BA460FDE5F180058BDD0 /* ZNDeviceFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */; };
-		5735BA470FDE5F180058BDD0 /* ZNFileFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F046770FA56913006436EF /* ZNFileFprintTest.m */; };
-		5735BA480FDE5F180058BDD0 /* ZNMd5DigestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCE070FA1744D00CA3975 /* ZNMd5DigestTest.m */; };
-		5735BA490FDE5F180058BDD0 /* ZNSha2DigestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCDFE0FA1735C00CA3975 /* ZNSha2DigestTest.m */; };
-		5735BA4A0FDE5F180058BDD0 /* ZNArrayCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E890F4E0D4D0046B0EE /* ZNArrayCsvParserTest.m */; };
-		5735BA4B0FDE5F180058BDD0 /* ZNObjectJsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF37A20FABFF4B004A1808 /* ZNObjectJsonParserTest.m */; };
-		5735BA4C0FDE5F180058BDD0 /* ZNFormEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5748FD7B0FC9B6B30072D8A2 /* ZNFormEncoderTest.m */; };
-		5735BA4D0FDE5F180058BDD0 /* ZNFormFieldFormatter+Snake2LCamelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E910F4E0D4D0046B0EE /* ZNFormFieldFormatter+Snake2LCamelTest.m */; };
-		5735BA4E0FDE5F180058BDD0 /* ZNFormFieldFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E940F4E0D4D0046B0EE /* ZNFormFieldFormatterTest.m */; };
-		5735BA4F0FDE5F180058BDD0 /* ZNFormMultipartEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5748FD740FC9AD9C0072D8A2 /* ZNFormMultipartEncoderTest.m */; };
-		5735BA500FDE5F180058BDD0 /* ZNFormURLEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E970F4E0D4D0046B0EE /* ZNFormURLEncoderTest.m */; };
-		5735BA510FDE5F180058BDD0 /* ZNModelCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E9B0F4E0D4D0046B0EE /* ZNModelCsvParserTest.m */; };
-		5735BA520FDE5F180058BDD0 /* ZNModelJsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B5DE430FADBF2B002CE751 /* ZNModelJsonParserTest.m */; };
-		5735BA530FDE5F180058BDD0 /* ZNObjectQueryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF39490FACF324004A1808 /* ZNObjectQueryTest.m */; };
-		5735BA540FDE5F180058BDD0 /* ZNModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EAC0F4E0D4D0046B0EE /* ZNModelTest.m */; };
-		5735BA550FDE5F180058BDD0 /* ZNModelDefinitionAttributeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EAA0F4E0D4D0046B0EE /* ZNModelDefinitionAttributeTest.m */; };
-		5735BA560FDE5F180058BDD0 /* ZNModelDefinitionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EAB0F4E0D4D0046B0EE /* ZNModelDefinitionTest.m */; };
-		5735BA570FDE5F180058BDD0 /* ZNMSRegistryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EB90F4E0D4D0046B0EE /* ZNMSRegistryTest.m */; };
-		5735BA580FDE5F180058BDD0 /* ZNSenTestCase+FixturesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551ED60F4E0D4D0046B0EE /* ZNSenTestCase+FixturesTest.m */; };
-		5735BA590FDE5F180058BDD0 /* ZNCsvHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EDE0F4E0D4D0046B0EE /* ZNCsvHttpRequestTest.m */; };
-		5735BA5A0FDE5F180058BDD0 /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EE10F4E0D4D0046B0EE /* ZNHttpRequestTest.m */; };
-		5735BA5B0FDE5F180058BDD0 /* ZNJsonHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AC65850FAE392200512D70 /* ZNJsonHttpRequestTest.m */; };
-		5735BA5C0FDE5F180058BDD0 /* ZNXmlHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EE60F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.m */; };
 		5741EF960FAE8CD000484927 /* ZNHttpRequestTest.get1 in Resources */ = {isa = PBXBuildFile; fileRef = 5741EF2F0FAE857500484927 /* ZNHttpRequestTest.get1 */; };
 		5741EF970FAE8CD500484927 /* ZNHttpRequestTest.get2 in Resources */ = {isa = PBXBuildFile; fileRef = 5741EF300FAE859C00484927 /* ZNHttpRequestTest.get2 */; };
 		5748FD710FC9AD660072D8A2 /* ZNFormMultipartEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5748FD6F0FC9AD660072D8A2 /* ZNFormMultipartEncoder.h */; };
@@ -184,6 +154,36 @@
 		57B5DEF70FAE2036002CE751 /* ZNModelJsonParserTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 57B5DE420FADBF2B002CE751 /* ZNModelJsonParserTest.json */; };
 		57B5DFE60FAE26DD002CE751 /* ZNJsonHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B5DFE40FAE26DD002CE751 /* ZNJsonHttpRequest.h */; };
 		57B5DFE70FAE26DD002CE751 /* ZNJsonHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B5DFE50FAE26DD002CE751 /* ZNJsonHttpRequest.m */; };
+		57B81CC30FE82D2B00C04BA0 /* ZNDictionaryXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E8C0F4E0D4D0046B0EE /* ZNDictionaryXmlParserTest.m */; };
+		57B81CE40FE82D9A00C04BA0 /* ZNSyncControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E7C0F4E0D4D0046B0EE /* ZNSyncControllerTest.m */; };
+		57B81CE50FE82D9A00C04BA0 /* ZNTargetActionPairTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E7F0F4E0D4D0046B0EE /* ZNTargetActionPairTest.m */; };
+		57B81CE60FE82D9A00C04BA0 /* ZNTargetActionSetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E820F4E0D4D0046B0EE /* ZNTargetActionSetTest.m */; };
+		57B81CE70FE82D9A00C04BA0 /* ZNAppFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F047B30FA60E9F006436EF /* ZNAppFprintTest.m */; };
+		57B81CE80FE82D9A00C04BA0 /* ZNAesCipherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AF087F0FA14642006305D3 /* ZNAesCipherTest.m */; };
+		57B81CE90FE82D9A00C04BA0 /* ZNDeviceFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */; };
+		57B81CEA0FE82D9A00C04BA0 /* ZNFileFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F046770FA56913006436EF /* ZNFileFprintTest.m */; };
+		57B81CEB0FE82D9A00C04BA0 /* ZNMd5DigestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCE070FA1744D00CA3975 /* ZNMd5DigestTest.m */; };
+		57B81CEC0FE82D9A00C04BA0 /* ZNSha2DigestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DCDFE0FA1735C00CA3975 /* ZNSha2DigestTest.m */; };
+		57B81CED0FE82D9A00C04BA0 /* ZNArrayCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E890F4E0D4D0046B0EE /* ZNArrayCsvParserTest.m */; };
+		57B81CEE0FE82D9A00C04BA0 /* ZNFormEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5748FD7B0FC9B6B30072D8A2 /* ZNFormEncoderTest.m */; };
+		57B81CEF0FE82D9A00C04BA0 /* ZNFormFieldFormatter+Snake2LCamelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E910F4E0D4D0046B0EE /* ZNFormFieldFormatter+Snake2LCamelTest.m */; };
+		57B81CF00FE82D9A00C04BA0 /* ZNFormFieldFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E940F4E0D4D0046B0EE /* ZNFormFieldFormatterTest.m */; };
+		57B81CF10FE82D9A00C04BA0 /* ZNFormMultipartEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5748FD740FC9AD9C0072D8A2 /* ZNFormMultipartEncoderTest.m */; };
+		57B81CF20FE82D9A00C04BA0 /* ZNFormURLEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E970F4E0D4D0046B0EE /* ZNFormURLEncoderTest.m */; };
+		57B81CF30FE82D9A00C04BA0 /* ZNModelCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E9B0F4E0D4D0046B0EE /* ZNModelCsvParserTest.m */; };
+		57B81CF40FE82D9A00C04BA0 /* ZNModelJsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B5DE430FADBF2B002CE751 /* ZNModelJsonParserTest.m */; };
+		57B81CF50FE82D9A00C04BA0 /* ZNModelXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551E9E0F4E0D4D0046B0EE /* ZNModelXmlParserTest.m */; };
+		57B81CF60FE82D9A00C04BA0 /* ZNObjectJsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF37A20FABFF4B004A1808 /* ZNObjectJsonParserTest.m */; };
+		57B81CF70FE82D9A00C04BA0 /* ZNObjectQueryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF39490FACF324004A1808 /* ZNObjectQueryTest.m */; };
+		57B81CF80FE82D9A00C04BA0 /* ZNModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EAC0F4E0D4D0046B0EE /* ZNModelTest.m */; };
+		57B81CF90FE82D9A00C04BA0 /* ZNModelDefinitionAttributeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EAA0F4E0D4D0046B0EE /* ZNModelDefinitionAttributeTest.m */; };
+		57B81CFA0FE82D9A00C04BA0 /* ZNModelDefinitionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EAB0F4E0D4D0046B0EE /* ZNModelDefinitionTest.m */; };
+		57B81CFB0FE82D9A00C04BA0 /* ZNMSRegistryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EB90F4E0D4D0046B0EE /* ZNMSRegistryTest.m */; };
+		57B81CFC0FE82D9A00C04BA0 /* ZNSenTestCase+FixturesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551ED60F4E0D4D0046B0EE /* ZNSenTestCase+FixturesTest.m */; };
+		57B81CFD0FE82D9A00C04BA0 /* ZNCsvHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EDE0F4E0D4D0046B0EE /* ZNCsvHttpRequestTest.m */; };
+		57B81CFE0FE82D9A00C04BA0 /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EE10F4E0D4D0046B0EE /* ZNHttpRequestTest.m */; };
+		57B81CFF0FE82D9A00C04BA0 /* ZNJsonHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AC65850FAE392200512D70 /* ZNJsonHttpRequestTest.m */; };
+		57B81D000FE82D9A00C04BA0 /* ZNXmlHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EE60F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.m */; };
 		57C204A90FBA6920007BC010 /* ZNDebugIntegrity.h in Headers */ = {isa = PBXBuildFile; fileRef = 57C204A70FBA6920007BC010 /* ZNDebugIntegrity.h */; };
 		57C204AA0FBA6920007BC010 /* ZNDebugIntegrity.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C204A80FBA6920007BC010 /* ZNDebugIntegrity.m */; };
 		57CC18790FDCBAF900FE6542 /* ZNMSModelAttributeType.h in Headers */ = {isa = PBXBuildFile; fileRef = 57CC18770FDCBAF900FE6542 /* ZNMSModelAttributeType.h */; };
@@ -989,36 +989,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				5755201A0F4E11BE0046B0EE /* ZNTestModels.m in Sources */,
-				5735BA2A0FDE5EB80058BDD0 /* ZNModelXmlParserTest.m in Sources */,
-				5735BA2B0FDE5EBE0058BDD0 /* ZNDictionaryXmlParserTest.m in Sources */,
-				5735BA410FDE5F180058BDD0 /* ZNSyncControllerTest.m in Sources */,
-				5735BA420FDE5F180058BDD0 /* ZNTargetActionPairTest.m in Sources */,
-				5735BA430FDE5F180058BDD0 /* ZNTargetActionSetTest.m in Sources */,
-				5735BA440FDE5F180058BDD0 /* ZNAppFprintTest.m in Sources */,
-				5735BA450FDE5F180058BDD0 /* ZNAesCipherTest.m in Sources */,
-				5735BA460FDE5F180058BDD0 /* ZNDeviceFprintTest.m in Sources */,
-				5735BA470FDE5F180058BDD0 /* ZNFileFprintTest.m in Sources */,
-				5735BA480FDE5F180058BDD0 /* ZNMd5DigestTest.m in Sources */,
-				5735BA490FDE5F180058BDD0 /* ZNSha2DigestTest.m in Sources */,
-				5735BA4A0FDE5F180058BDD0 /* ZNArrayCsvParserTest.m in Sources */,
-				5735BA4B0FDE5F180058BDD0 /* ZNObjectJsonParserTest.m in Sources */,
-				5735BA4C0FDE5F180058BDD0 /* ZNFormEncoderTest.m in Sources */,
-				5735BA4D0FDE5F180058BDD0 /* ZNFormFieldFormatter+Snake2LCamelTest.m in Sources */,
-				5735BA4E0FDE5F180058BDD0 /* ZNFormFieldFormatterTest.m in Sources */,
-				5735BA4F0FDE5F180058BDD0 /* ZNFormMultipartEncoderTest.m in Sources */,
-				5735BA500FDE5F180058BDD0 /* ZNFormURLEncoderTest.m in Sources */,
-				5735BA510FDE5F180058BDD0 /* ZNModelCsvParserTest.m in Sources */,
-				5735BA520FDE5F180058BDD0 /* ZNModelJsonParserTest.m in Sources */,
-				5735BA530FDE5F180058BDD0 /* ZNObjectQueryTest.m in Sources */,
-				5735BA540FDE5F180058BDD0 /* ZNModelTest.m in Sources */,
-				5735BA550FDE5F180058BDD0 /* ZNModelDefinitionAttributeTest.m in Sources */,
-				5735BA560FDE5F180058BDD0 /* ZNModelDefinitionTest.m in Sources */,
-				5735BA570FDE5F180058BDD0 /* ZNMSRegistryTest.m in Sources */,
-				5735BA580FDE5F180058BDD0 /* ZNSenTestCase+FixturesTest.m in Sources */,
-				5735BA590FDE5F180058BDD0 /* ZNCsvHttpRequestTest.m in Sources */,
-				5735BA5A0FDE5F180058BDD0 /* ZNHttpRequestTest.m in Sources */,
-				5735BA5B0FDE5F180058BDD0 /* ZNJsonHttpRequestTest.m in Sources */,
-				5735BA5C0FDE5F180058BDD0 /* ZNXmlHttpRequestTest.m in Sources */,
+				57B81CC30FE82D2B00C04BA0 /* ZNDictionaryXmlParserTest.m in Sources */,
+				57B81CE40FE82D9A00C04BA0 /* ZNSyncControllerTest.m in Sources */,
+				57B81CE50FE82D9A00C04BA0 /* ZNTargetActionPairTest.m in Sources */,
+				57B81CE60FE82D9A00C04BA0 /* ZNTargetActionSetTest.m in Sources */,
+				57B81CE70FE82D9A00C04BA0 /* ZNAppFprintTest.m in Sources */,
+				57B81CE80FE82D9A00C04BA0 /* ZNAesCipherTest.m in Sources */,
+				57B81CE90FE82D9A00C04BA0 /* ZNDeviceFprintTest.m in Sources */,
+				57B81CEA0FE82D9A00C04BA0 /* ZNFileFprintTest.m in Sources */,
+				57B81CEB0FE82D9A00C04BA0 /* ZNMd5DigestTest.m in Sources */,
+				57B81CEC0FE82D9A00C04BA0 /* ZNSha2DigestTest.m in Sources */,
+				57B81CED0FE82D9A00C04BA0 /* ZNArrayCsvParserTest.m in Sources */,
+				57B81CEE0FE82D9A00C04BA0 /* ZNFormEncoderTest.m in Sources */,
+				57B81CEF0FE82D9A00C04BA0 /* ZNFormFieldFormatter+Snake2LCamelTest.m in Sources */,
+				57B81CF00FE82D9A00C04BA0 /* ZNFormFieldFormatterTest.m in Sources */,
+				57B81CF10FE82D9A00C04BA0 /* ZNFormMultipartEncoderTest.m in Sources */,
+				57B81CF20FE82D9A00C04BA0 /* ZNFormURLEncoderTest.m in Sources */,
+				57B81CF30FE82D9A00C04BA0 /* ZNModelCsvParserTest.m in Sources */,
+				57B81CF40FE82D9A00C04BA0 /* ZNModelJsonParserTest.m in Sources */,
+				57B81CF50FE82D9A00C04BA0 /* ZNModelXmlParserTest.m in Sources */,
+				57B81CF60FE82D9A00C04BA0 /* ZNObjectJsonParserTest.m in Sources */,
+				57B81CF70FE82D9A00C04BA0 /* ZNObjectQueryTest.m in Sources */,
+				57B81CF80FE82D9A00C04BA0 /* ZNModelTest.m in Sources */,
+				57B81CF90FE82D9A00C04BA0 /* ZNModelDefinitionAttributeTest.m in Sources */,
+				57B81CFA0FE82D9A00C04BA0 /* ZNModelDefinitionTest.m in Sources */,
+				57B81CFB0FE82D9A00C04BA0 /* ZNMSRegistryTest.m in Sources */,
+				57B81CFC0FE82D9A00C04BA0 /* ZNSenTestCase+FixturesTest.m in Sources */,
+				57B81CFD0FE82D9A00C04BA0 /* ZNCsvHttpRequestTest.m in Sources */,
+				57B81CFE0FE82D9A00C04BA0 /* ZNHttpRequestTest.m in Sources */,
+				57B81CFF0FE82D9A00C04BA0 /* ZNJsonHttpRequestTest.m in Sources */,
+				57B81D000FE82D9A00C04BA0 /* ZNXmlHttpRequestTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
