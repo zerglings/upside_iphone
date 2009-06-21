@@ -9,10 +9,10 @@
 #import "LoginCommController.h"
 
 #import "ActivationState.h"
+#import "ControllerSupport.h"
 #import "CryptoSupport.h"
 #import "Device.h"
 #import "LoginCommController.h"
-#import "NetworkProgress.h"
 #import "ServerPaths.h"
 #import "ServiceError.h"
 #import "User.h"
@@ -46,7 +46,7 @@
                            activationState.deviceInfo, @"device",
                            [ZNAppFprint hexAppFprint], @"appSig",
                            nil];
-  [NetworkProgress connectionStarted];
+  [ZNNetworkProgress connectionStarted];
   [ZNJsonHttpRequest callService:[ServerPaths loginUrl]
                           method:[ServerPaths loginMethod]
                             data:request
@@ -57,7 +57,7 @@
 }
 
 -(void)serverResponded:(NSArray*)response {
-  [NetworkProgress connectionDone];
+  [ZNNetworkProgress connectionDone];
 
   if ([response isKindOfClass:[NSError class]]) {
     [delegate loginFailed:(NSError*)response];

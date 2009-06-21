@@ -8,7 +8,7 @@
 
 #import "PortfolioCommController.h"
 
-#import "NetworkProgress.h"
+#import "ControllerSupport.h"
 #import "Portfolio.h"
 #import "PortfolioStat.h"
 #import "Position.h"
@@ -41,7 +41,7 @@
 }
 
 -(void)sync {
-  [NetworkProgress connectionStarted];
+  [ZNNetworkProgress connectionStarted];
   [ZNJsonHttpRequest callService:[ServerPaths portfolioSyncUrl]
                           method:[ServerPaths portfolioSyncMethod]
                             data:nil
@@ -51,7 +51,7 @@
 }
 
 -(void)processResponse:(NSArray*)response {
-  [NetworkProgress connectionDone];
+  [ZNNetworkProgress connectionDone];
   [target performSelector:action withObject:response];
 }
 

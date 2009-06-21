@@ -11,7 +11,6 @@
 #import "ModelSupport.h"
 #import "WebSupport.h"
 
-#import "NetworkProgress.h"
 #import "NewsItem.h"
 
 @interface NewsCenter ()

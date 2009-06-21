@@ -8,7 +8,7 @@
 
 #import "TradeOrderCommController.h"
 
-#import "NetworkProgress.h"
+#import "ControllerSupport.h"
 #import "ServerPaths.h"
 #import "ServiceError.h"
 #import "TradeOrder.h"
@@ -37,7 +37,7 @@
 -(void)submitOrder:(TradeOrder*)order {
   NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
                            order, @"trade_order", nil];
-  [NetworkProgress connectionStarted];
+  [ZNNetworkProgress connectionStarted];
   [ZNJsonHttpRequest callService:[ServerPaths orderSubmissionUrl]
                           method:[ServerPaths orderSubmissionMethod]
                             data:request
@@ -48,7 +48,7 @@
 }
 
 -(void)processResponse:(NSObject*)response {
-  [NetworkProgress connectionDone];
+  [ZNNetworkProgress connectionDone];
   [target performSelector:action withObject:response];
 }
 

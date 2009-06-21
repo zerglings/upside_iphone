@@ -1,15 +1,22 @@
 //
-//  NetworkProgress.h
-//  StockPlay
+//  ZNNetworkProgress.h
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/11/09.
-//  Copyright Zergling.Net. All rights reserved.
+//  Copyright 2009 Zergling.Net. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
+@class UIApplication;
 
-@interface NetworkProgress : NSObject {
+
+// Manages the network progress indicator (spinning wheel on the status bar).
+//
+// Communication controllers should announce when they start and finish issuing
+// network requests by calling +connectionStarted and +connectionDone. The
+// methods are thread-safe.
+@interface ZNNetworkProgress : NSObject {
   UIApplication* app;
   NSUInteger workingConnections;
 }
@@ -20,11 +27,10 @@
 +(void)connectionDone;
 
 // The singleton NetworkProgress instance.
-+(NetworkProgress*)sharedInstance;
++(ZNNetworkProgress*)sharedInstance;
 
 // Called when a new network connection starts.
 -(void)connectionStarted;
 // Called when a network connection has done its work.
 -(void)connectionDone;
-
 @end

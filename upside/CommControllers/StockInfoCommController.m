@@ -8,7 +8,7 @@
 
 #import "StockInfoCommController.h"
 
-#import "NetworkProgress.h"
+#import "ControllerSupport.h"
 #import "Stock.h"
 #import "WebSupport.h"
 
@@ -51,7 +51,7 @@
   NSString* tickerQuery = [tickers componentsJoinedByString:@"+"];
   NSDictionary* requestData = [[NSDictionary alloc] initWithObjectsAndKeys:
                                tickerQuery, @"s", formatString, @"f", nil];
-  [NetworkProgress connectionStarted];
+  [ZNNetworkProgress connectionStarted];
   [ZNCsvHttpRequest callService:service
                          method:kZNHttpMethodPost
                            data:requestData
@@ -63,7 +63,7 @@
 }
 
 -(void)processResponse:(NSObject*)response {
-  [NetworkProgress connectionDone];
+  [ZNNetworkProgress connectionDone];
   [target performSelector:action withObject:response];
 
   // Done protecting the fragile comm controller.

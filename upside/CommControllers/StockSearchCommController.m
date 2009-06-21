@@ -8,7 +8,7 @@
 
 #import "StockSearchCommController.h"
 
-#import "NetworkProgress.h"
+#import "ControllerSupport.h"
 #import "WebSupport.h"
 
 
@@ -40,7 +40,7 @@
   NSDictionary* requestData = [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"YAHOO.Finance.SymbolSuggest.ssCallback",
                                @"callback", queryString, @"query", nil];
-  [NetworkProgress connectionStarted];
+  [ZNNetworkProgress connectionStarted];
   [ZNJsonHttpRequest callService:service
                           method:kZNHttpMethodPost
                             data:requestData
@@ -51,7 +51,7 @@
 }
 
 -(void)processResponse:(NSObject*)response {
-  [NetworkProgress connectionDone];
+  [ZNNetworkProgress connectionDone];
   [target performSelector:action withObject:response];
 }
 

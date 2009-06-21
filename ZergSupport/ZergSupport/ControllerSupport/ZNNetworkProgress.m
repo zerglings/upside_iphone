@@ -1,15 +1,17 @@
 //
-//  NetworkProgress.m
-//  StockPlay
+//  ZNNetworkProgress.m
+//  ZergSupport
 //
 //  Created by Victor Costan on 1/11/09.
-//  Copyright Zergling.Net. All rights reserved.
+//  Copyright 2009 Zergling.Net. All rights reserved.
 //
 
-#import "NetworkProgress.h"
+#import "ZNNetworkProgress.h"
+
+#import <UIKit/UIKit.h>
 
 
-@implementation NetworkProgress
+@implementation ZNNetworkProgress
 
 #pragma mark Connection Accounting
 
@@ -22,8 +24,8 @@
   }
   else {
     [self performSelectorOnMainThread:@selector(connectionStarted)
-                 withObject:nil
-              waitUntilDone:NO];
+                           withObject:nil
+                        waitUntilDone:NO];
   }
 }
 
@@ -36,8 +38,8 @@
   }
   else {
     [self performSelectorOnMainThread:@selector(connectionDone)
-                 withObject:nil
-              waitUntilDone:NO];
+                           withObject:nil
+                        waitUntilDone:NO];
   }
 }
 
@@ -56,12 +58,12 @@
 }
 
 #pragma mark Singleton
-static NetworkProgress* sharedInstance = nil;
+static ZNNetworkProgress* sharedInstance = nil;
 
-+(NetworkProgress*)sharedInstance {
-  @synchronized ([NetworkProgress class]) {
++(ZNNetworkProgress*)sharedInstance {
+  @synchronized ([ZNNetworkProgress class]) {
     if (sharedInstance == nil)
-      sharedInstance = [[NetworkProgress alloc] init];
+      sharedInstance = [[ZNNetworkProgress alloc] init];
   }
   return sharedInstance;
 }
@@ -72,5 +74,4 @@ static NetworkProgress* sharedInstance = nil;
 +(void)connectionDone {
   return [[self sharedInstance] connectionDone];
 }
-
 @end

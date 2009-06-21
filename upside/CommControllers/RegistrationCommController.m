@@ -10,8 +10,8 @@
 
 #import "ActivationState.h"
 #import "ActivationState+Signature.h"
+#import "ControllerSupport.h"
 #import "Device.h"
-#import "NetworkProgress.h"
 #import "ServerPaths.h"
 #import "ServiceError.h"
 #import "User.h"
@@ -46,7 +46,7 @@
       [[NSMutableDictionary alloc] initWithDictionary:[theActivationState
                                                        requestSignature]];
   [request setObject:[Device copyCurrentDevice] forKey:@"device"];
-  [NetworkProgress connectionStarted];
+  [ZNNetworkProgress connectionStarted];
   [ZNJsonHttpRequest callService:[ServerPaths registrationUrl]
                           method:[ServerPaths registrationMethod]
                             data:request
@@ -57,7 +57,7 @@
 }
 
 -(void)serverResponded:(NSArray*)response {
-  [NetworkProgress connectionDone];
+  [ZNNetworkProgress connectionDone];
 
   if ([response isKindOfClass:[NSError class]]) {
     [delegate activationFailed:(NSError*)response];

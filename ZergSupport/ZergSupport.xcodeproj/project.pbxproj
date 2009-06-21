@@ -168,6 +168,8 @@
 		571B503C0FEE264100A5CC9D /* ZNJsonHttpRequestTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 571B42040FEDC38800A5CC9D /* ZNJsonHttpRequestTest.json */; };
 		571B503D0FEE264100A5CC9D /* ZNXmlHttpRequestTest.body in Resources */ = {isa = PBXBuildFile; fileRef = 571B42080FEDC38800A5CC9D /* ZNXmlHttpRequestTest.body */; };
 		571B503E0FEE264100A5CC9D /* ZNXmlHttpRequestTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 571B420A0FEDC38800A5CC9D /* ZNXmlHttpRequestTest.xml */; };
+		57A5CE5E0FEE463B003FFC39 /* ZNNetworkProgressTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CE5D0FEE463B003FFC39 /* ZNNetworkProgressTest.m */; };
+		57A5CE800FEE481E003FFC39 /* ZNNetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CE520FEE451F003FFC39 /* ZNNetworkProgress.m */; };
 		57BA132A0FEE3E5100E980F0 /* ZNSenTestCase+FixturesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41F20FEDC38800A5CC9D /* ZNSenTestCase+FixturesTest.m */; };
 		57BA13AB0FEE40D300E980F0 /* ZNSyncControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B414F0FEDC38800A5CC9D /* ZNSyncControllerTest.m */; };
 		57BA13AC0FEE40D300E980F0 /* ZNTargetActionPairTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41520FEDC38800A5CC9D /* ZNTargetActionPairTest.m */; };
@@ -409,6 +411,9 @@
 		571B4E5E0FEE247800A5CC9D /* GTMIPhoneUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMIPhoneUnitTestMain.m; sourceTree = "<group>"; };
 		571B4E680FEE24A200A5CC9D /* ZergSupportTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZergSupportTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A5CE2E0FEE419E003FFC39 /* RunIPhoneUnitTest.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunIPhoneUnitTest.sh; sourceTree = "<group>"; };
+		57A5CE510FEE451F003FFC39 /* ZNNetworkProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNNetworkProgress.h; sourceTree = "<group>"; };
+		57A5CE520FEE451F003FFC39 /* ZNNetworkProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNNetworkProgress.m; sourceTree = "<group>"; };
+		57A5CE5D0FEE463B003FFC39 /* ZNNetworkProgressTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNNetworkProgressTest.m; sourceTree = "<group>"; };
 		57BA11820FEE283C00E980F0 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		57BA11830FEE283C00E980F0 /* MIT-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MIT-LICENSE"; sourceTree = "<group>"; };
 		57BA11840FEE283C00E980F0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
@@ -508,6 +513,8 @@
 			isa = PBXGroup;
 			children = (
 				571B414C0FEDC38800A5CC9D /* ControllerSupport.h */,
+				57A5CE520FEE451F003FFC39 /* ZNNetworkProgress.m */,
+				57A5CE5D0FEE463B003FFC39 /* ZNNetworkProgressTest.m */,
 				571B414D0FEDC38800A5CC9D /* ZNSyncController.h */,
 				571B414E0FEDC38800A5CC9D /* ZNSyncController.m */,
 				571B414F0FEDC38800A5CC9D /* ZNSyncControllerTest.m */,
@@ -518,6 +525,7 @@
 				571B41540FEDC38800A5CC9D /* ZNTargetActionSet.m */,
 				571B41550FEDC38800A5CC9D /* ZNTargetActionSetTest.m */,
 				571B41560FEDC38800A5CC9D /* ZNTargetActionSite.h */,
+				57A5CE510FEE451F003FFC39 /* ZNNetworkProgress.h */,
 			);
 			path = ControllerSupport;
 			sourceTree = "<group>";
@@ -1014,6 +1022,7 @@
 				57BA13C50FEE40D300E980F0 /* ZNHttpRequestTest.m in Sources */,
 				57BA13C60FEE40D300E980F0 /* ZNJsonHttpRequestTest.m in Sources */,
 				57BA13C70FEE40D300E980F0 /* ZNXmlHttpRequestTest.m in Sources */,
+				57A5CE5E0FEE463B003FFC39 /* ZNNetworkProgressTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1060,6 +1069,7 @@
 				571B42A60FEDC38800A5CC9D /* ZNJsonHttpRequest.m in Sources */,
 				571B42A90FEDC38800A5CC9D /* ZNXmlHttpRequest.m in Sources */,
 				571B4B520FEDFC2100A5CC9D /* ZNModelCsvParser.m in Sources */,
+				57A5CE800FEE481E003FFC39 /* ZNNetworkProgress.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
