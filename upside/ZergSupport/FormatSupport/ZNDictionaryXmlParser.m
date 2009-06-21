@@ -19,12 +19,12 @@
        keyFormatter:(ZNFormFieldFormatter*)theKeyFormatter {
   if ((self = [super init])) {
     keyFormatter = [theKeyFormatter retain];
-    
+
     NSMutableDictionary* rootObject = [[NSMutableDictionary alloc] init];
     parseStack = [[NSMutableArray alloc] initWithObjects:rootObject, nil];
     [rootObject release];
-    
-    schemaStack = [[NSMutableArray alloc] initWithObjects:theSchema, nil];    
+
+    schemaStack = [[NSMutableArray alloc] initWithObjects:theSchema, nil];
     currentValue = [[NSMutableString alloc] init];
     ignoreDepth = 0;
     currentItemName = nil;
@@ -52,7 +52,7 @@
   [schemaStack removeObjectsInRange:NSMakeRange(1, [parseStack count] - 1)];
   [(NSMutableDictionary*)[parseStack objectAtIndex:0] removeAllObjects];
   [currentValue setString:@""];
-  
+
   [parser release];
   parser = nil;
 }
@@ -106,19 +106,25 @@ qualifiedName:(NSString *)qName
     ignoreDepth++;
     return;
   }
-    
+  
+  NSString* formattedElementName = keyFormatter ?
+      [keyFormatter copyFormattedName:elementName] : elementName;
+
   NSUInteger schemaStackTop = [schemaStack count] - 1;
   NSObject* schema = [schemaStack objectAtIndex:schemaStackTop];
   NSObject* nextSchema = [self unravelSchema:schema
-                             withElementName:elementName];
+                             withElementName:formattedElementName];
   if (!nextSchema) {
     if (schemaStackTop > 0)
       ignoreDepth++;
+    if (formattedElementName != elementName) {
+      [formattedElementName release];
+    }
     return;
   }
-  
+
   [schemaStack addObject:nextSchema];
-    
+
   NSUInteger parseStackTop = [parseStack count] - 1;
   NSObject* stackTop = [parseStack objectAtIndex:parseStackTop];
   if ([stackTop isKindOfClass:[NSString class]]) {
@@ -130,30 +136,70 @@ qualifiedName:(NSString *)qName
     [parentDictionary setObject:childDictionary forKey:stackTop];
 
     [parseStack replaceObjectAtIndex:parseStackTop
-                          withObject:childDictionary];    
+                          withObject:childDictionary];
     [childDictionary release];
   }
 
   if (schemaStackTop > 0) {
     // Push the formatted element name on the parse stack.
-    NSString* formattedElementName = keyFormatter ?
-    [keyFormatter copyFormattedName:elementName] : elementName;    
     [parseStack addObject:formattedElementName];
-    if (formattedElementName != elementName) {
-      [formattedElementName release];
-    }
-    
+
     [currentValue setString:@""];
   }
   else {
-    currentItemName = [elementName retain];
+    currentItemName = [formattedElementName retain];
+  }
+  if (formattedElementName != elementName) {
+    [formattedElementName release];
+  }
+  
+  // Fast code path for attributes.
+  if ([attributeDict count] > 0) {
+    NSUInteger parseStackTop = [parseStack count] - 1;
+    NSObject* stackTop = [parseStack objectAtIndex:parseStackTop];
+
+    NSMutableDictionary* attributeDictionary = nil;
+    for (NSString* attributeName in attributeDict) {
+      NSString* formattedAttributeName = keyFormatter ?
+          [keyFormatter copyFormattedName:attributeName] : attributeName;
+      NSObject* attributeSchema = [self unravelSchema:nextSchema
+                                      withElementName:formattedAttributeName];
+      if (attributeSchema) {
+        // Only allocate attribute dictionary if at least one attribute passes
+        // the schema filter. This is important because once an element has
+        // attributes, it cannot receive inner text.
+        if (!attributeDictionary) {
+          if (schemaStackTop > 0) {
+            NSMutableDictionary* parentDictionary =
+            [parseStack objectAtIndex:(parseStackTop - 1)];
+            attributeDictionary = [[NSMutableDictionary alloc]
+                                   initWithCapacity:[attributeDict count]];
+            [parentDictionary setObject:attributeDictionary forKey:stackTop];
+            
+            [parseStack replaceObjectAtIndex:parseStackTop
+                                  withObject:attributeDictionary];
+            [attributeDictionary release];
+          }
+          else {
+            attributeDictionary = (NSMutableDictionary*)stackTop;
+          }
+        }
+        
+        [attributeDictionary setObject:[attributeDict
+                                        objectForKey:attributeName]
+                                forKey:formattedAttributeName];
+      }
+      if (formattedAttributeName != attributeName) {
+        [formattedAttributeName release];
+      }
+    }
   }
 }
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
   if (ignoreDepth > 0)
     return;
-  
+
   if ([parseStack count] >= 2) {
     [currentValue appendString:string];
   }
@@ -166,15 +212,15 @@ qualifiedName:(NSString *)qName {
     ignoreDepth--;
     return;
   }
- 
-    
+
+
   if ([schemaStack count] == 1) {
     // Not parsing an element.
     return;
   }
   [schemaStack removeLastObject];
-  
-  
+
+
   NSUInteger parseStackTop = [parseStack count] - 1;
   NSObject* stackTop = [parseStack objectAtIndex:parseStackTop];
   if (parseStackTop == 0) {
@@ -188,14 +234,14 @@ qualifiedName:(NSString *)qName {
     currentItemName = nil;
     return;
   }
-  
+
   if ([stackTop isKindOfClass:[NSString class]]) {
     NSMutableDictionary* parentDictionary = [parseStack
                                              objectAtIndex:(parseStackTop - 1)];
     NSString* propertyValue = [[NSString alloc] initWithString:currentValue];
     [parentDictionary setObject:propertyValue forKey:stackTop];
     [propertyValue release];
-    
+
     [currentValue setString:@""];
   }
   [parseStack removeLastObject];

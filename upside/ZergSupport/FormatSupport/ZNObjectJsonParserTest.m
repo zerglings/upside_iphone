@@ -35,13 +35,13 @@ static NSString* kContextObject = @"This is the context";
   parser.context = kContextObject;
   parser.delegate = self;
 
-  NSString *dictionaryFilePath = [[[NSBundle mainBundle] resourcePath]
+  NSString *dictionaryFilePath = [[[self testBundle] resourcePath]
                                   stringByAppendingPathComponent:
                                   @"ZNObjectJsonParserTestDictionary.json"];
-  NSString *arrayFilePath = [[[NSBundle mainBundle] resourcePath]
+  NSString *arrayFilePath = [[[self testBundle] resourcePath]
                              stringByAppendingPathComponent:
                              @"ZNObjectJsonParserTestArray.json"];
-  
+
   NSData* dictionaryData = [NSData dataWithContentsOfFile:dictionaryFilePath];
   NSData* arrayData = [NSData dataWithContentsOfFile:arrayFilePath];
   json = nil;
@@ -194,7 +194,7 @@ static NSString* kContextObject = @"This is the context";
     [NSNumber numberWithInteger:2], @"a",
     [NSArray arrayWithObject:[NSNumber numberWithInteger:3]], @"b",
     nil], nil];
-  STAssertEqualObjects(goldNested, jsonArray, @"Failed to parse JSONP array");  
+  STAssertEqualObjects(goldNested, jsonArray, @"Failed to parse JSONP array");
 }
 
 -(void)testParseValue {

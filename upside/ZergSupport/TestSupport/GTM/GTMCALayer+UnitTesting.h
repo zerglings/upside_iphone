@@ -36,11 +36,11 @@
 //
 //  Returns:
 //    should gtm_unitTestEncodeState pick up sublayer state.
--(BOOL)gtm_shouldEncodeStateForSublayers;
+- (BOOL)gtm_shouldEncodeStateForSublayers;
 @end
 
 @interface NSObject (GTMCALayerUnitTestingDelegateMethods)
 // Delegate method that allows a delegate for a layer to
 // decide whether we should recurse 
--(BOOL)gtm_shouldEncodeStateForSublayersOfLayer:(CALayer*)layer;
+- (BOOL)gtm_shouldEncodeStateForSublayersOfLayer:(CALayer*)layer;
 @end

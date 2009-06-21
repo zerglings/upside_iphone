@@ -29,10 +29,16 @@
 //   </UserModel>
 // </fixtures>
 //
-// Fixtures can instantiate any Model Support model class. Class and attribute
+// Fixtures can instantiate any Model Support model class. Attribute
 // names in fixtures can use snake_case, so fixtures can be conveniently shared
 // with other languages.
 @interface SenTestCase (Fixtures)
+
+// The bundle containing the current test case.
+//
+// For logic tests, [NSBundle mainBundle] returns the test harness application.
+// This method returns the bundle containing the SenTest consistently.
+-(NSBundle*)testBundle;
 
 // Loads fixtures (models) from the given file.
 -(NSArray*)fixturesFrom:(NSString*)fileName;

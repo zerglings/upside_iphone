@@ -21,6 +21,7 @@
 //
 
 #import "GTMCALayer+UnitTesting.h"
+#import "GTMGarbageCollection.h"
 
 @implementation CALayer (GTMUnitTestingAdditions) 
 
@@ -33,11 +34,11 @@
 //
 //  Returns:
 //    an image of the object
--(CGImageRef)gtm_createUnitTestImage {
+- (CGImageRef)gtm_unitTestImage {
   CGRect bounds = [self bounds];
   CGSize size = CGSizeMake(CGRectGetWidth(bounds), CGRectGetHeight(bounds));
-  CGContextRef context = [self gtm_createUnitTestBitmapContextOfSize:size
-                                                                data:NULL];
+  CGContextRef context = GTMCreateUnitTestBitmapContextOfSizeWithData(size,
+                                                                      NULL);
   _GTMDevAssert(context, @"Couldn't create context");
   
   // iPhone renders are flipped
@@ -48,7 +49,7 @@
   [self renderInContext:context];
   CGImageRef image = CGBitmapContextCreateImage(context);
   CFRelease(context);
-  return image;
+  return (CGImageRef)GTMCFAutorelease(image);
 }
 
 //  Encodes the state of an object in a manner suitable for comparing
@@ -57,7 +58,7 @@
 //
 //  Arguments:
 //    inCoder - the coder to encode our state into
--(void)gtm_unitTestEncodeState:(NSCoder*)inCoder {
+- (void)gtm_unitTestEncodeState:(NSCoder*)inCoder {
   [super gtm_unitTestEncodeState:inCoder];
   [inCoder encodeBool:[self isHidden] forKey:@"LayerIsHidden"];
   [inCoder encodeBool:[self isDoubleSided] forKey:@"LayerIsDoublesided"];
@@ -78,7 +79,7 @@
 //
 //  Returns:
 //    should gtm_unitTestEncodeState pick up sublayer state.
--(BOOL)gtm_shouldEncodeStateForSublayers {
+- (BOOL)gtm_shouldEncodeStateForSublayers {
   BOOL value = YES;
   if([self.delegate respondsToSelector:@selector(gtm_shouldEncodeStateForSublayersOfLayer:)]) {
     value = [self.delegate gtm_shouldEncodeStateForSublayersOfLayer:self];

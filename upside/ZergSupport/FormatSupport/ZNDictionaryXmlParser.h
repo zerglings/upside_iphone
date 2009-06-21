@@ -39,7 +39,7 @@
   id<ZNDictionaryXmlParserDelegate> delegate;
   id context;
   ZNFormFieldFormatter* keyFormatter;
-  
+
   // Underlying XML parser.
   NSXMLParser* parser;
   // The parsing stack has dictionaries accumulating properties, and the names
@@ -47,7 +47,7 @@
   NSMutableArray* parseStack;
   // The schema stack holds the schema for the current element.
   NSMutableArray* schemaStack;
-  
+
   // Element name for the element rooting the currently parsed object.
   NSString* currentItemName;
   // Accumulates strings making up the value of the currently parsed property.

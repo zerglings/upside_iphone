@@ -139,7 +139,7 @@
   STAssertEqualStrings(@"/web_support/echo.json", response.uri,
                        @"Incorrect request URI was used");
 
-  NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
+  NSString* bodyPath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNJsonHttpRequestTest.body"];
   STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
@@ -147,7 +147,7 @@
 }
 
 -(void)testFileRequest {
-  NSString* filePath = [[[NSBundle mainBundle] resourcePath]
+  NSString* filePath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNJsonHttpRequestTest.json"];
   NSString* fileUrl = [[NSURL fileURLWithPath:filePath] absoluteString];

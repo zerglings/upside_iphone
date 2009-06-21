@@ -8,10 +8,9 @@
 
 // Main header file for the Zergling.Net Test Support.
 
-// TestSupport repackages the minimum set of files needed to run unit tests on
-// the iPhone, from the Google Toolbox for Mac. To use it, import TestSupport.h
-// in your tests, and follow the instructions below to set up a test build:
-// http://code.google.com/p/google-toolbox-for-mac/wiki/iPhoneUnitTesting
+
+// TestSupport repackages the SenTestCase enhancements the Google Toolbox for
+// Mac. Importing TestSupport.h gives access to the improvements for free.
 #import "GTMSenTestCase.h"
 // LEGAL: These files are released by Google under the Apache License 2.0,
 // reproduced in TestSupport/GTM/COPYING. The rest of TestSupport is copyright
@@ -23,8 +22,7 @@
 // OCMock for free.
 #import "OCMock.h"
 // LEGAL: These files are released by Mulle Kybernetik under the MIT license,
-// reproduced in TestSupport/OCMock/License.txt. The rest of TestSupport is
-// copyright Zergling.Net, and licensed under the MIT license.
+// reproduced in TestSupport/OCMock/License.txt.
 
 
 // The Test Support features are documented in their respective headers.

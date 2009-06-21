@@ -108,7 +108,7 @@
 #pragma mark Subclass Methods.
 
 -(void)sync {
-  NSAssert1(NO, @"CacheController %s did not implement -integrateResults:",
+  NSAssert1(NO, @"CacheController %s did not implement -sync",
             class_getName([self class]));
 }
 

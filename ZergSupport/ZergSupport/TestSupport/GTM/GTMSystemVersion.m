@@ -19,7 +19,7 @@
 #import "GTMSystemVersion.h"
 #import "GTMGarbageCollection.h"
 #if GTM_MACOS_SDK
-#import <Carbon/Carbon.h>
+#import <CoreServices/CoreServices.h>
 #endif
 
 static SInt32 sGTMSystemVersionMajor = 0;
@@ -40,7 +40,7 @@ NSString *const kGTMSystemBuild10_6_0_WWDC = @"10A96";
 NSString *const kGTMSystemBuild10_6_0_10A190 = @"10A190";
 
 @implementation GTMSystemVersion
-+(void)initialize {
++ (void)initialize {
   if (self == [GTMSystemVersion class]) {
     // Gestalt is the recommended way of getting the OS version (despite a
     // comment to the contrary in the 10.4 headers and docs; see
@@ -95,19 +95,19 @@ NSString *const kGTMSystemBuild10_6_0_10A190 = @"10A190";
   }
 }
 
-+(void)getMajor:(SInt32*)major minor:(SInt32*)minor bugFix:(SInt32*)bugFix {
++ (void)getMajor:(SInt32*)major minor:(SInt32*)minor bugFix:(SInt32*)bugFix {
   if (major) {
     *major = sGTMSystemVersionMajor;
   }
   if (minor) {
     *minor = sGTMSystemVersionMinor;
   }
-  if (major) {
+  if (bugFix) {
     *bugFix = sGTMSystemVersionBugFix;
   }
 }
 
-+(NSString*)build {
++ (NSString*)build {
   @synchronized(self) {
     // Not cached at initialization time because we don't expect "real"
     // software to want this, and it costs a bit to get at startup.
@@ -123,35 +123,35 @@ NSString *const kGTMSystemBuild10_6_0_10A190 = @"10A190";
   return sBuild;
 }
 
-+(BOOL)isBuildLessThan:(NSString*)build {
++ (BOOL)isBuildLessThan:(NSString*)build {
   NSComparisonResult result 
     = [[self build] compare:build 
                     options:NSNumericSearch | NSCaseInsensitiveSearch];
   return result == NSOrderedAscending;
 }
   
-+(BOOL)isBuildLessThanOrEqualTo:(NSString*)build {
++ (BOOL)isBuildLessThanOrEqualTo:(NSString*)build {
   NSComparisonResult result 
     = [[self build] compare:build 
                     options:NSNumericSearch | NSCaseInsensitiveSearch];
   return result != NSOrderedDescending;
 }
 
-+(BOOL)isBuildGreaterThan:(NSString*)build {
++ (BOOL)isBuildGreaterThan:(NSString*)build {
   NSComparisonResult result 
     = [[self build] compare:build 
                     options:NSNumericSearch | NSCaseInsensitiveSearch];
   return result == NSOrderedDescending;
 }
 
-+(BOOL)isBuildGreaterThanOrEqualTo:(NSString*)build {
++ (BOOL)isBuildGreaterThanOrEqualTo:(NSString*)build {
   NSComparisonResult result 
     = [[self build] compare:build 
                     options:NSNumericSearch | NSCaseInsensitiveSearch];
   return result != NSOrderedAscending;
 }
 
-+(BOOL)isBuildEqualTo:(NSString *)build {
++ (BOOL)isBuildEqualTo:(NSString *)build {
   NSComparisonResult result 
     = [[self build] compare:build 
                     options:NSNumericSearch | NSCaseInsensitiveSearch];
@@ -159,45 +159,45 @@ NSString *const kGTMSystemBuild10_6_0_10A190 = @"10A190";
 }
 
 #if GTM_MACOS_SDK
-+(BOOL)isPanther {
++ (BOOL)isPanther {
   return sGTMSystemVersionMajor == 10 && sGTMSystemVersionMinor == 3;
 }
 
-+(BOOL)isTiger {
++ (BOOL)isTiger {
   return sGTMSystemVersionMajor == 10 && sGTMSystemVersionMinor == 4;
 }
 
-+(BOOL)isLeopard {
++ (BOOL)isLeopard {
   return sGTMSystemVersionMajor == 10 && sGTMSystemVersionMinor == 5;
 }
 
-+(BOOL)isSnowLeopard {
++ (BOOL)isSnowLeopard {
   return sGTMSystemVersionMajor == 10 && sGTMSystemVersionMinor == 6;
 }
 
-+(BOOL)isPantherOrGreater {
++ (BOOL)isPantherOrGreater {
   return (sGTMSystemVersionMajor > 10) || 
           (sGTMSystemVersionMajor == 10 && sGTMSystemVersionMinor >= 3);
 }
 
-+(BOOL)isTigerOrGreater {
++ (BOOL)isTigerOrGreater {
   return (sGTMSystemVersionMajor > 10) || 
           (sGTMSystemVersionMajor == 10 && sGTMSystemVersionMinor >= 4);
 }
 
-+(BOOL)isLeopardOrGreater {
++ (BOOL)isLeopardOrGreater {
   return (sGTMSystemVersionMajor > 10) || 
           (sGTMSystemVersionMajor == 10 && sGTMSystemVersionMinor >= 5);
 }
 
-+(BOOL)isSnowLeopardOrGreater {
++ (BOOL)isSnowLeopardOrGreater {
   return (sGTMSystemVersionMajor > 10) || 
           (sGTMSystemVersionMajor == 10 && sGTMSystemVersionMinor >= 6);
 }
 
 #endif // GTM_MACOS_SDK
 
-+(NSString *)runtimeArchitecture {
++ (NSString *)runtimeArchitecture {
   NSString *architecture = nil;
 #if GTM_IPHONE_SDK
   architecture = kGTMArch_iPhone;

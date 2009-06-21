@@ -21,7 +21,8 @@
 // TODO(overmind): describe the schema
 @interface ZNModelXmlParser : NSObject {
   ZNDictionaryXmlParser* parser;
-  NSDictionary* schema;
+  NSMutableDictionary* parserSchema;
+  NSMutableDictionary* modelSchema;
   id<ZNModelXmlParserDelegate> delegate;
 }
 

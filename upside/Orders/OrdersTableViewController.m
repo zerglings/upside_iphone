@@ -168,14 +168,16 @@
   TradeOrder* order;
   switch([self logicalSectionForPhysicalSection:indexPath.section]) {
     case kNotSubmittedSection:
-      order = [tradeBook pendingAtIndex:([tradeBook pendingCount] - indexPath.row - 1)];
-      NSLog(@"Pending order: %@", [order description]);
+      order = [tradeBook pendingAtIndex:
+               ([tradeBook pendingCount] - indexPath.row - 1)];
       break;
     case kSubmittedSection:
-      order = [tradeBook submittedAtIndex:([tradeBook submittedCount] - indexPath.row - 1)];
+      order = [tradeBook submittedAtIndex:
+               ([tradeBook submittedCount] - indexPath.row - 1)];
       break;
     case kFilledSection:
-      order = [tradeBook filledAtIndex:([tradeBook filledCount] - indexPath.row - 1)];
+      order = [tradeBook filledAtIndex:
+               ([tradeBook filledCount] - indexPath.row - 1)];
       break;
     default:
       order = nil;

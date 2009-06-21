@@ -33,7 +33,7 @@ static NSString* kContextObject = @"This is the context";
       [ZNFormFieldFormatter formatterToPropertiesFrom:kZNFormatterSnakeCase];
   NSDictionary* schema = [NSDictionary dictionaryWithObjectsAndKeys:
                           [NSNull null], @"itemA",
-                          [NSSet setWithObjects:@"keyB", @"keyC", nil],
+                          [NSSet setWithObjects:@"keyB", @"keyC", @"keyX", nil],
                           @"itemB",
                           [NSNull null], @"itemD",
                           nil];
@@ -77,7 +77,8 @@ static NSString* kContextObject = @"This is the context";
                        @"Failed to parse item with open schema");
 
   NSDictionary* goldenSecond = [NSDictionary dictionaryWithObjectsAndKeys:
-                                @"B second", @"keyB", nil];
+                                @"B second", @"keyB",
+                                @"Xattr first", @"keyX", nil];
   STAssertEqualObjects(goldenSecond, [items objectAtIndex:1],
                        @"Failed to parse item with closed schema");
 
@@ -97,7 +98,7 @@ static NSString* kContextObject = @"This is the context";
 }
 
 -(void)testParsingURLs {
-  NSString *filePath = [[[NSBundle mainBundle] resourcePath]
+  NSString *filePath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNDictionaryXmlParserTest.xml"];
   BOOL success = [parser parseURL:[NSURL fileURLWithPath:filePath]];
@@ -107,7 +108,7 @@ static NSString* kContextObject = @"This is the context";
 }
 
 -(void)testParsingData {
-  NSString *filePath = [[[NSBundle mainBundle] resourcePath]
+  NSString *filePath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNDictionaryXmlParserTest.xml"];
   BOOL success = [parser parseData:[NSData dataWithContentsOfFile:filePath]];
@@ -117,8 +118,8 @@ static NSString* kContextObject = @"This is the context";
 }
 
 -(void)parsedItem:(NSDictionary*)itemData
-               name:(NSString*)itemName
-            context:(id)context {
+             name:(NSString*)itemName
+          context:(id)context {
   STAssertEquals(kContextObject, context,
                  @"Wrong context passed to -parsedItem");
 

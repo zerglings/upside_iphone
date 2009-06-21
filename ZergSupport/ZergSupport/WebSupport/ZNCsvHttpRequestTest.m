@@ -95,7 +95,7 @@
 }
 
 -(void)testFileRequest {
-  NSString* filePath = [[[NSBundle mainBundle] resourcePath]
+  NSString* filePath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNCsvHttpRequestTest.csv"];
   NSString* fileUrl = [[NSURL fileURLWithPath:filePath] absoluteString];

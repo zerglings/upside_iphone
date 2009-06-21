@@ -12,9 +12,9 @@
   <keyA>A prime</keyA>
   <keyB>B prime</keyB>
 </itemA>
-<itemB>
+<itemB key_x="Xattr first">
   <keyA>not in schema</keyA>
-  <keyB>B second</keyB>
+  <key_b keyC="should not open new dictionary">B second</key_b>
   <itemA keyB="should be blind to attribute">
     <keyB>should be blind to this</keyB>
     <keyC>

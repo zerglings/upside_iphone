@@ -221,7 +221,11 @@ static NSDictionary* rssModels = nil;
   @synchronized ([NewsCenter class]) {
     if (rssModels == nil) {
       rssModels = [[NSDictionary alloc] initWithObjectsAndKeys:
-                 [NewsItem class], @"item", nil];
+                   [NSArray arrayWithObjects:[NewsItem class],
+                    [NSSet setWithObjects:@"description", @"guid", @"link",
+                     @"pubDate", @"title", nil],
+                    nil],
+                   @"item", nil];
     }
   }
   return rssModels;

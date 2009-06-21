@@ -57,6 +57,12 @@ static NSString* kContextObject = @"This is the context";
                           [ZNXmlParserTestModel class],
                           @"ZNXmlParserTestModel",
                           [NSNull class], @"itemA",
+                          [NSArray arrayWithObjects:
+                           [ZNXmlParserTestModel class],
+                           [NSSet setWithObjects:@"theName", @"number",
+                            @"boolean", nil],
+                           nil],
+                          @"ZNXmlParserTestModelSchema",
                           nil];
 
   parser = [[ZNModelXmlParser alloc] initWithSchema:schema
@@ -101,11 +107,6 @@ static NSString* kContextObject = @"This is the context";
   STAssertEquals(YES, outerModel.boolean,
                  @"Wrong value for the outer model's boolean property");
 
-  NSDictionary* goldenSecond = [NSDictionary dictionaryWithObjectsAndKeys:
-                                @"A prime", @"keyA", @"B prime", @"keyB", nil];
-  STAssertEqualObjects(goldenSecond, [items objectAtIndex:1],
-                       @"Failed to parse item with no model");
-
   ZNXmlParserTestModel* innerModel = outerModel.subModel;
   STAssertTrue([innerModel isKindOfClass:[ZNXmlParserTestModel class]],
                @"Wrong model class instantiated for the inner item / model");
@@ -117,10 +118,27 @@ static NSString* kContextObject = @"This is the context";
                  @"Wrong value for the inner model's boolean property");
   STAssertNil(innerModel.subModel,
               @"Wrong value for the inner model's submodel");
+  
+  NSDictionary* goldenSecond = [NSDictionary dictionaryWithObjectsAndKeys:
+                                @"A prime", @"keyA", @"B prime", @"keyB", nil];
+  STAssertEqualObjects(goldenSecond, [items objectAtIndex:1],
+                       @"Failed to parse item with no model");
+
+  ZNXmlParserTestModel* schemaModel = [items objectAtIndex:2];
+  STAssertTrue([outerModel isKindOfClass:[ZNXmlParserTestModel class]],
+               @"Wrong model class instantiated for the model with schema");
+  STAssertEqualStrings(@"Third name", schemaModel.theName,
+                       @"Wrong value for the schema model's string property");
+  STAssertEqualsWithAccuracy(42.0, schemaModel.number, 0.0000001,
+                             @"Wrong value for schema model's float property");
+  STAssertEquals(YES, schemaModel.boolean,
+                 @"Wrong value for the schema model's boolean property");
+  STAssertNil(schemaModel.subModel,
+              @"The sub-model of the schema model should be suppressed");
 }
 
 -(void)testParsingURLs {
-  NSString *filePath = [[[NSBundle mainBundle] resourcePath]
+  NSString *filePath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNModelXmlParserTest.xml"];
   BOOL success = [parser parseURL:[NSURL fileURLWithPath:filePath]];
@@ -130,7 +148,7 @@ static NSString* kContextObject = @"This is the context";
 }
 
 -(void)testParsingData {
-  NSString *filePath = [[[NSBundle mainBundle] resourcePath]
+  NSString *filePath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNModelXmlParserTest.xml"];
   BOOL success = [parser parseData:[NSData dataWithContentsOfFile:filePath]];

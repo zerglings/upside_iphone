@@ -106,14 +106,20 @@ qualifiedName:(NSString *)qName
     ignoreDepth++;
     return;
   }
+  
+  NSString* formattedElementName = keyFormatter ?
+      [keyFormatter copyFormattedName:elementName] : elementName;
 
   NSUInteger schemaStackTop = [schemaStack count] - 1;
   NSObject* schema = [schemaStack objectAtIndex:schemaStackTop];
   NSObject* nextSchema = [self unravelSchema:schema
-                             withElementName:elementName];
+                             withElementName:formattedElementName];
   if (!nextSchema) {
     if (schemaStackTop > 0)
       ignoreDepth++;
+    if (formattedElementName != elementName) {
+      [formattedElementName release];
+    }
     return;
   }
 
@@ -136,52 +142,56 @@ qualifiedName:(NSString *)qName
 
   if (schemaStackTop > 0) {
     // Push the formatted element name on the parse stack.
-    NSString* formattedElementName = keyFormatter ?
-        [keyFormatter copyFormattedName:elementName] : elementName;
     [parseStack addObject:formattedElementName];
-    if (formattedElementName != elementName) {
-      [formattedElementName release];
-    }
 
     [currentValue setString:@""];
   }
   else {
-    currentItemName = [elementName retain];
+    currentItemName = [formattedElementName retain];
+  }
+  if (formattedElementName != elementName) {
+    [formattedElementName release];
   }
   
   // Fast code path for attributes.
   if ([attributeDict count] > 0) {
     NSUInteger parseStackTop = [parseStack count] - 1;
     NSObject* stackTop = [parseStack objectAtIndex:parseStackTop];
-    
-    NSMutableDictionary* attributeDictionary;
-    if (schemaStackTop > 0) {
-      NSMutableDictionary* parentDictionary =
-          [parseStack objectAtIndex:(parseStackTop - 1)];
-      attributeDictionary = [[NSMutableDictionary alloc]
-                             initWithCapacity:[attributeDict count]];
-      [parentDictionary setObject:attributeDictionary forKey:stackTop];
-      
-      [parseStack replaceObjectAtIndex:parseStackTop
-                            withObject:attributeDictionary];
-      [attributeDictionary release];
-    }
-    else {
-      attributeDictionary = (NSMutableDictionary*)stackTop;
-    }    
+
+    NSMutableDictionary* attributeDictionary = nil;
     for (NSString* attributeName in attributeDict) {
-      NSObject* attributeSchema = [self unravelSchema:nextSchema
-                                      withElementName:attributeName];
-      if (!attributeSchema)
-        continue;
-      
       NSString* formattedAttributeName = keyFormatter ?
           [keyFormatter copyFormattedName:attributeName] : attributeName;
-      [attributeDictionary setObject:[attributeDict objectForKey:attributeName]
-                              forKey:formattedAttributeName];
+      NSObject* attributeSchema = [self unravelSchema:nextSchema
+                                      withElementName:formattedAttributeName];
+      if (attributeSchema) {
+        // Only allocate attribute dictionary if at least one attribute passes
+        // the schema filter. This is important because once an element has
+        // attributes, it cannot receive inner text.
+        if (!attributeDictionary) {
+          if (schemaStackTop > 0) {
+            NSMutableDictionary* parentDictionary =
+            [parseStack objectAtIndex:(parseStackTop - 1)];
+            attributeDictionary = [[NSMutableDictionary alloc]
+                                   initWithCapacity:[attributeDict count]];
+            [parentDictionary setObject:attributeDictionary forKey:stackTop];
+            
+            [parseStack replaceObjectAtIndex:parseStackTop
+                                  withObject:attributeDictionary];
+            [attributeDictionary release];
+          }
+          else {
+            attributeDictionary = (NSMutableDictionary*)stackTop;
+          }
+        }
+        
+        [attributeDictionary setObject:[attributeDict
+                                        objectForKey:attributeName]
+                                forKey:formattedAttributeName];
+      }
       if (formattedAttributeName != attributeName) {
         [formattedAttributeName release];
-      }      
+      }
     }
   }
 }

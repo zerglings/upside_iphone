@@ -13,21 +13,19 @@
 #import "FormatSupport.h"
 #import "ModelSupport.h"
 
+
 @interface ZNFixtureParser : NSObject <ZNModelXmlParserDelegate> {
   ZNModelXmlParser* xmlParser;
 }
-
 -(NSArray*)parseData:(NSData*)data;
-
-+(NSDictionary*)copyParserSchema;
-
++(NSDictionary*)newParserSchema;
 @end
 
 
 @implementation ZNFixtureParser
 -(id)init {
   if ((self = [super init])) {
-    NSDictionary* parserSchema = [ZNFixtureParser copyParserSchema];
+    NSDictionary* parserSchema = [ZNFixtureParser newParserSchema];
     xmlParser = [[ZNModelXmlParser alloc] initWithSchema:parserSchema
                                           documentCasing:kZNFormatterSnakeCase];
     xmlParser.delegate = self;
@@ -52,18 +50,13 @@
 }
 
 
-+(NSDictionary*)copyParserSchema {
++(NSDictionary*)newParserSchema {
   NSArray* modelClasses = [ZNModel allModelClasses];
-  ZNFormFieldFormatter* snakeFormatter =
-      [ZNFormFieldFormatter formatterFromPropertiesTo:kZNFormatterSnakeCase];
 
   NSMutableDictionary* schema = [[NSMutableDictionary alloc] init];
   for (Class klass in modelClasses) {
     NSString* className = [NSString stringWithCString:class_getName(klass)];
     [schema setObject:klass forKey:className];
-    NSString* snakeClassName = [snakeFormatter copyFormattedName:className];
-    [schema setObject:klass forKey:snakeClassName];
-    [snakeClassName release];
   }
   return schema;
 }
@@ -77,15 +70,17 @@
           context:(id)context {
   NSAssert(NO, @"-parsedItem called while parsing fixtures");
 }
-
 @end
 
 
 @implementation SenTestCase (Fixtures)
 
-// Loads fixtures (models) from the given file.
+-(NSBundle*)testBundle {
+  return [NSBundle bundleForClass:[self class]];
+}
+
 -(NSArray*)fixturesFrom:(NSString*)fileName {
-  NSString* fixturePath = [[[NSBundle mainBundle] resourcePath]
+  NSString* fixturePath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:fileName];
   NSData* fixtureData = [NSData dataWithContentsOfFile:fixturePath];
   ZNFixtureParser* parser = [[ZNFixtureParser alloc] init];
@@ -93,5 +88,4 @@
   [parser release];
   return fixtures;
 }
-
 @end

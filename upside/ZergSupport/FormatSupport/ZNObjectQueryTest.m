@@ -38,7 +38,7 @@
   simpleArray =
       [ZNObjectJsonParser parseValue:
        @"[['a', 'b'], ['c', 'd'], [['e', 'f'], ['g', 'h', 'i', 'j']]]"];
-  
+
   arrayOfHashes =
       [ZNObjectJsonParser parseValue:
        @"[{'awe': {'one': 'two'}}, {'boo': [4, 5]}, {'awe': 'three'}]"];
@@ -55,7 +55,7 @@
   STAssertEqualObjects(goldenEmpty,
                        [ZNObjectQuery copyQueryStringSplit:empty],
                        @"Empty query");
-  
+
   NSString* simple = @"/one/two/3";
   NSArray* goldenSimple = [NSArray arrayWithObjects:@"one", @"two", @"3", nil];
   STAssertEqualObjects(goldenSimple,

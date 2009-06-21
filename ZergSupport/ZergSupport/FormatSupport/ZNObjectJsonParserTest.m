@@ -35,10 +35,10 @@ static NSString* kContextObject = @"This is the context";
   parser.context = kContextObject;
   parser.delegate = self;
 
-  NSString *dictionaryFilePath = [[[NSBundle mainBundle] resourcePath]
+  NSString *dictionaryFilePath = [[[self testBundle] resourcePath]
                                   stringByAppendingPathComponent:
                                   @"ZNObjectJsonParserTestDictionary.json"];
-  NSString *arrayFilePath = [[[NSBundle mainBundle] resourcePath]
+  NSString *arrayFilePath = [[[self testBundle] resourcePath]
                              stringByAppendingPathComponent:
                              @"ZNObjectJsonParserTestArray.json"];
 

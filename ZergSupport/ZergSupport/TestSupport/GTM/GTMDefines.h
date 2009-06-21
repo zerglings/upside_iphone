@@ -19,6 +19,7 @@
 // ============================================================================
 
 #include <AvailabilityMacros.h>
+#include <TargetConditionals.h>
 
 // Not all MAC_OS_X_VERSION_10_X macros defined in past SDKs
 #ifndef MAC_OS_X_VERSION_10_5
@@ -28,22 +29,26 @@
   #define MAC_OS_X_VERSION_10_6 1060
 #endif
 
+// These definitions exist to allow headerdoc to parse this file.
+// Headerdoc 8.6 gives warnings about misuses of MAC_OS_X_VERSION_MIN_REQUIRED
+// and MAC_OS_X_VERSION_MAX_ALLOWED if you use them directly. 
+// By defining GTM versions with slightly different names (MIN vs MINIMUM) 
+// we get around headerdoc's issues. Hopefully we can work around this in the
+// future and get rid of the GTM versions, so please use the default ones
+// wherever you can.
+#ifndef GTM_MAC_OS_X_VERSION_MINIMUM_REQUIRED
+  #define GTM_MAC_OS_X_VERSION_MINIMUM_REQUIRED MAC_OS_X_VERSION_MIN_REQUIRED
+#endif
+
+#ifndef GTM_MAC_OS_X_VERSION_MAXIMUM_ALLOWED
+  #define GTM_MAC_OS_X_VERSION_MAXIMUM_ALLOWED MAC_OS_X_VERSION_MAX_ALLOWED
+#endif
+
 // ----------------------------------------------------------------------------
 // CPP symbols that can be overridden in a prefix to control how the toolbox
 // is compiled.
 // ----------------------------------------------------------------------------
 
-
-// GTMHTTPFetcher will support logging by default but only hook its input
-// stream support for logging when requested.  You can control the inclusion of
-// the code by providing your own definitions for these w/in a prefix header.
-//
-#ifndef GTM_HTTPFETCHER_ENABLE_LOGGING
-  #define GTM_HTTPFETCHER_ENABLE_LOGGING 1
-#endif // GTM_HTTPFETCHER_ENABLE_LOGGING
-#ifndef GTM_HTTPFETCHER_ENABLE_INPUTSTREAM_LOGGING
-  #define GTM_HTTPFETCHER_ENABLE_INPUTSTREAM_LOGGING 0
-#endif // GTM_HTTPFETCHER_ENABLE_INPUTSTREAM_LOGGING
 
 // By setting the GTM_CONTAINERS_VALIDATION_FAILED_LOG and 
 // GTM_CONTAINERS_VALIDATION_FAILED_ASSERT macros you can control what happens
@@ -119,15 +124,15 @@ GTM_EXTERN void _GTMUnitTestDevLog(NSString *format, ...);
 // we directly invoke the NSAssert handler so we can pass on the varargs
 // (NSAssert doesn't have a macro we can use that takes varargs)
 #if !defined(NS_BLOCK_ASSERTIONS)
-  #define _GTMDevAssert(condition, ...)                                    \
-    do {                                                                   \
-      if (!(condition)) {                                                  \
-        [[NSAssertionHandler currentHandler]                               \
-            handleFailureInFunction:[NSString stringWithCString:__PRETTY_FUNCTION__] \
-                               file:[NSString stringWithCString:__FILE__]  \
-                         lineNumber:__LINE__                               \
-                        description:__VA_ARGS__];                          \
-      }                                                                    \
+  #define _GTMDevAssert(condition, ...)                                       \
+    do {                                                                      \
+      if (!(condition)) {                                                     \
+        [[NSAssertionHandler currentHandler]                                  \
+            handleFailureInFunction:[NSString stringWithUTF8String:__PRETTY_FUNCTION__] \
+                               file:[NSString stringWithUTF8String:__FILE__]  \
+                         lineNumber:__LINE__                                  \
+                        description:__VA_ARGS__];                             \
+      }                                                                       \
     } while(0)
 #else // !defined(NS_BLOCK_ASSERTIONS)
   #define _GTMDevAssert(condition, ...) do { } while (0)
@@ -155,6 +160,29 @@ GTM_EXTERN void _GTMUnitTestDevLog(NSString *format, ...);
     typedef char _GTMCompileAssertSymbol(__LINE__, msg) [ ((test) ? 1 : -1) ]
 #endif // _GTMCompileAssert
 
+// Macro to allow fast enumeration when building for 10.5 or later, and
+// reliance on NSEnumerator for 10.4.  Remember, NSDictionary w/ FastEnumeration
+// does keys, so pick the right thing, nothing is done on the FastEnumeration
+// side to be sure you're getting what you wanted.
+#ifndef GTM_FOREACH_OBJECT
+  #if TARGET_OS_IPHONE || (GTM_MAC_OS_X_VERSION_MINIMUM_REQUIRED >= MAC_OS_X_VERSION_10_5)
+    #define GTM_FOREACH_ENUMEREE(element, enumeration) \
+      for (element in enumeration)
+    #define GTM_FOREACH_OBJECT(element, collection) \
+      for (element in collection)
+    #define GTM_FOREACH_KEY(element, collection) \
+      for (element in collection)
+  #else
+    #define GTM_FOREACH_ENUMEREE(element, enumeration) \
+      for (NSEnumerator *_ ## element ## _enum = enumeration; \
+           (element = [_ ## element ## _enum nextObject]) != nil; )
+    #define GTM_FOREACH_OBJECT(element, collection) \
+      GTM_FOREACH_ENUMEREE(element, [collection objectEnumerator])
+    #define GTM_FOREACH_KEY(element, collection) \
+      GTM_FOREACH_ENUMEREE(element, [collection keyEnumerator])
+  #endif
+#endif
+
 // ============================================================================
 
 // ----------------------------------------------------------------------------
@@ -165,7 +193,6 @@ GTM_EXTERN void _GTMUnitTestDevLog(NSString *format, ...);
 
 // Provide a single constant CPP symbol that all of GTM uses for ifdefing
 // iPhone code.
-#include <TargetConditionals.h>
 #if TARGET_OS_IPHONE // iPhone SDK
   // For iPhone specific stuff
   #define GTM_IPHONE_SDK 1
@@ -179,9 +206,35 @@ GTM_EXTERN void _GTMUnitTestDevLog(NSString *format, ...);
   #define GTM_MACOS_SDK 1
 #endif
 
+// Some of our own availability macros
+#if GTM_MACOS_SDK
+#define GTM_AVAILABLE_ONLY_ON_IPHONE UNAVAILABLE_ATTRIBUTE
+#define GTM_AVAILABLE_ONLY_ON_MACOS
+#else 
+#define GTM_AVAILABLE_ONLY_ON_IPHONE
+#define GTM_AVAILABLE_ONLY_ON_MACOS UNAVAILABLE_ATTRIBUTE
+#endif 
+
+// Provide a symbol to include/exclude extra code for GC support.  (This mainly
+// just controls the inclusion of finalize methods).
+#ifndef GTM_SUPPORT_GC
+  #if GTM_IPHONE_SDK
+    // iPhone never needs GC
+    #define GTM_SUPPORT_GC 0
+  #else
+    // We can't find a symbol to tell if GC is supported/required, so best we
+    // do on Mac targets is include it if we're on 10.5 or later.
+    #if GTM_MAC_OS_X_VERSION_MAXIMUM_ALLOWED <= MAC_OS_X_VERSION_10_4
+      #define GTM_SUPPORT_GC 0
+    #else
+      #define GTM_SUPPORT_GC 1
+    #endif
+  #endif
+#endif
+
 // To simplify support for 64bit (and Leopard in general), we provide the type
 // defines for non Leopard SDKs
-#if MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_4
+#if GTM_MAC_OS_X_VERSION_MAXIMUM_ALLOWED <= MAC_OS_X_VERSION_10_4
  // NSInteger/NSUInteger and Max/Mins
   #ifndef NSINTEGER_DEFINED
     #if __LP64__ || NS_BUILD_32_LIKE_64
@@ -212,4 +265,4 @@ GTM_EXTERN void _GTMUnitTestDevLog(NSString *format, ...);
     #endif /* !defined(__LP64__) || !__LP64__ */
     #define CGFLOAT_DEFINED 1
   #endif // CGFLOAT_DEFINED
-#endif  // MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_4
+#endif  // GTM_MAC_OS_X_VERSION_MAXIMUM_ALLOWED <= MAC_OS_X_VERSION_10_4

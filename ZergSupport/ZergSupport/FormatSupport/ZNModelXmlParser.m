@@ -20,23 +20,50 @@
 
 #pragma mark Lifecycle
 
+// Breaks the master schema apart into a model resolution schema and a parser
+// schema.
+-(void)splitMasterSchema:(NSDictionary*)masterSchema {
+  modelSchema = [[NSMutableDictionary alloc]
+                 initWithCapacity:[masterSchema count]];
+  parserSchema = [[NSMutableDictionary alloc]
+                  initWithCapacity:[masterSchema count]];
+  
+  for (NSObject* elementName in masterSchema) {
+    NSObject* directive = [masterSchema objectForKey:elementName];
+    
+    if ([directive isKindOfClass:[NSArray class]]) {
+      [modelSchema setObject:[(NSArray*)directive objectAtIndex:0]
+                      forKey:elementName];
+      [parserSchema setObject:[(NSArray*)directive objectAtIndex:1]
+                       forKey:elementName];
+    }
+    else if([ZNModel isModelClass:directive]) {
+      [modelSchema setObject:directive forKey:elementName];
+      [parserSchema setObject:[NSNull null] forKey:elementName];
+    }
+    else {
+      [parserSchema setObject:directive forKey:elementName];
+    }
+  }
+}
+
 -(id)initWithSchema:(NSDictionary*)theSchema
      documentCasing:(ZNFormatterCasing)documentCasing {
   if ((self = [super init])) {
     ZNFormFieldFormatter* keyFormatter =
         [ZNFormFieldFormatter formatterToPropertiesFrom:documentCasing];
 
-    parser = [[ZNDictionaryXmlParser alloc] initWithSchema:theSchema
+    [self splitMasterSchema:theSchema];
+    parser = [[ZNDictionaryXmlParser alloc] initWithSchema:parserSchema
                                               keyFormatter:keyFormatter];
     parser.delegate = self;
-
-    schema = [theSchema retain];
   }
   return self;
 }
 -(void)dealloc {
+  [modelSchema release];
+  [parserSchema release];
   [parser release];
-  [schema release];
   [super dealloc];
 }
 
@@ -62,10 +89,9 @@
 -(void)parsedItem:(NSDictionary*)itemData
              name:(NSString*)itemName
           context:(id)context {
-  id modelClass = [schema objectForKey:itemName];
-  if ([ZNModel isModelClass:modelClass]) {
-    ZNModel* model = [[modelClass alloc]
-                               initWithModel:nil properties:itemData];
+  id modelClass = [modelSchema objectForKey:itemName];
+  if (modelClass) {
+    ZNModel* model = [[modelClass alloc] initWithModel:nil properties:itemData];
     [delegate parsedModel:model context:context];
     [model release];
   }

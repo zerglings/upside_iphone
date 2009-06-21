@@ -32,7 +32,7 @@
   uint8_t ivBytes[] = { 0xeb, 0x16, 0xba, 0xbb, 0x43, 0x13, 0xa8, 0xd1, 0x60,
                         0x97, 0xc4, 0x70, 0x1c, 0x20, 0xb5, 0x68 };
   iv = [[NSData alloc] initWithBytes:ivBytes length:sizeof(ivBytes)];
-  filePath = [[[[NSBundle mainBundle] resourcePath]
+  filePath = [[[[self testBundle] resourcePath]
                stringByAppendingPathComponent:@"ZNFileFprintTest.data"] retain];
 }
 

@@ -52,13 +52,11 @@
        initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
        target:[Game sharedGame] action:@selector(syncData)];
 
-  /* HACK(overmind): commented out until named accounts work 100%
+  //HACK(overmind): commented out until named accounts work 100%
   self.navigationItem.leftBarButtonItem =
       [[UIBarButtonItem alloc]
        initWithBarButtonSystemItem:UIBarButtonSystemItemAction
        target:self action:@selector(actionButtonTapped)];
-
-   */
 }
 
 /*

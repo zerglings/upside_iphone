@@ -107,7 +107,7 @@
 
   NSString* responseString =
   [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-  NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
+  NSString* bodyPath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNHttpRequestTest.put"];
   STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
@@ -145,7 +145,7 @@
   responseString = [responseString stringByReplacingOccurrencesOfString:@"\r\n"
                                                              withString:@"\n"];
 
-  NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
+  NSString* bodyPath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNHttpRequestTest.put.multipart"];
   STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
@@ -153,7 +153,7 @@
 }
 
 -(void)testFileRequest {
-  NSString* filePath = [[[NSBundle mainBundle] resourcePath]
+  NSString* filePath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNHttpRequestTest.put"];
   NSString* fileUrl = [[NSURL fileURLWithPath:filePath] absoluteString];
@@ -196,7 +196,7 @@
 
   NSString* responseString =
       [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-  NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
+  NSString* bodyPath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNHttpRequestTest.get1"];
   STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
@@ -227,7 +227,7 @@
 
   NSString* responseString =
   [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-  NSString* bodyPath = [[[NSBundle mainBundle] resourcePath]
+  NSString* bodyPath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNHttpRequestTest.get2"];
   STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],

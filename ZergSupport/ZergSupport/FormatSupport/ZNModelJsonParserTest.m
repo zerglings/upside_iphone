@@ -102,7 +102,7 @@ static NSString* kContextObject = @"This is the context";
 
 
 -(void)testParsingData {
-  NSString *filePath = [[[NSBundle mainBundle] resourcePath]
+  NSString *filePath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNModelJsonParserTest.json"];
   BOOL success = [parser parseData:[NSData dataWithContentsOfFile:filePath]];

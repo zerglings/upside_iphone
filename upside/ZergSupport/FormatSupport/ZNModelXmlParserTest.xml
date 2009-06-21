@@ -14,4 +14,14 @@
     <keyA>A prime</keyA>
     <keyB>B prime</keyB>
   </itemA>
+  <ZNXmlParserTestModelSchema>
+    <theName failAttr="attribute should not be in model">Third name</theName>
+    <number>42</number>
+    <boolean>YES</boolean>
+    <subModel>
+      <the_name>Element should not be in model</the_name>
+      <number>-1</number>
+      <boolean>NO</boolean>
+    </subModel>
+  </ZNXmlParserTestModelSchema>
 </testdata>
