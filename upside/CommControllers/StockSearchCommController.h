@@ -8,20 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ControllerSupport.h"
 #import "ModelSupport.h"
 
 
 // Communication controller for performing ticker search.
 //
 // Currently uses the JSONP interface from the Yahoo Finance Website.
-@interface StockSearchCommController : NSObject {
-  NSArray* responseQueries;
-  SEL action;
-  id target;
+@interface StockSearchCommController : ZNHttpJsonCommController {
 }
-
--(id)initWithTarget:(id)target action:(SEL)action;
-
 -(void)startTickerSearch:(NSString*)queryString;
 @end
 

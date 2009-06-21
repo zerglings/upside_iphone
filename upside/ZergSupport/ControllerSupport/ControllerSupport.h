@@ -6,6 +6,7 @@
 //  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
+#import "ZNHttpJsonCommController.h"
 #import "ZNNetworkProgress.h"
 #import "ZNSyncController.h"
 #import "ZNTargetActionPair.h"

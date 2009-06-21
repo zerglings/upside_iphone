@@ -18,41 +18,19 @@
 #import "WebSupport.h"
 
 @implementation PortfolioCommController
-
--(id)initWithTarget:(id)theTarget action:(SEL)theAction {
-  if ((self = [super init])) {
-    target = theTarget;
-    action = theAction;
-
-    responseQueries = [[NSArray alloc] initWithObjects:
-                       [Position class], @"/positions/?",
-                       [Portfolio class], @"/portfolio",
-                       [PortfolioStat class], @"/stats/?",
-                       [TradeOrder class], @"/tradeOrders/?",
-                       [ServiceError class], @"/error",
-                       nil];
-  }
-  return self;
-}
-
--(void)dealloc {
-  [responseQueries release];
-  [super dealloc];
++(NSArray*)copyResponseQueries {
+  return [[NSArray alloc] initWithObjects:
+          [Position class], @"/positions/?",
+          [Portfolio class], @"/portfolio",
+          [PortfolioStat class], @"/stats/?",
+          [TradeOrder class], @"/tradeOrders/?",
+          [ServiceError class], @"/error",
+          nil];
 }
 
 -(void)sync {
-  [ZNNetworkProgress connectionStarted];
-  [ZNJsonHttpRequest callService:[ServerPaths portfolioSyncUrl]
-                          method:[ServerPaths portfolioSyncMethod]
-                            data:nil
-                 responseQueries:responseQueries
-                          target:self
-                          action:@selector(processResponse:)];
+  [self callService:[ServerPaths portfolioSyncUrl]
+             method:[ServerPaths portfolioSyncMethod]
+               data:nil];
 }
-
--(void)processResponse:(NSArray*)response {
-  [ZNNetworkProgress connectionDone];
-  [target performSelector:action withObject:response];
-}
-
 @end

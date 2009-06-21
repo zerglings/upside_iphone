@@ -9,7 +9,6 @@
 #import "UserQueryCommController.h"
 
 #import "ModelSupport.h"
-#import "NetworkProgress.h"
 #import "ServerPaths.h"
 #import "ServiceError.h"
 #import "User.h"
@@ -18,42 +17,23 @@
 
 @implementation UserQueryCommController
 
--(id)initWithTarget:(id)theTarget action:(SEL)theAction {
-  if ((self = [super init])) {
-    target = theTarget;
-    action = theAction;
-
-    responseQueries =
-    [[NSArray alloc] initWithObjects:
-     [UserQueryResponse class], @"/result",
-     [ServiceError class], @"/error", nil];
-  }
-  return self;
-}
--(void)dealoc {
-  [responseQueries release];
-  [super dealloc];
++(NSArray*)copyResponseQueries {
+  return [[NSArray alloc] initWithObjects:
+          [UserQueryResponse class], @"/result",
+          [ServiceError class], @"/error", nil];
 }
 
 -(void)startQueryForName:(NSString*)userName {
   User* queryUser = [[User alloc] initWithName:userName password:nil];
 
   NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
-                           queryUser, @"user", nil];
-
-  [NetworkProgress connectionStarted];
-  [ZNJsonHttpRequest callService:[ServerPaths userQueryService]
-                          method:[ServerPaths userQueryMethod]
-                            data:request
-                 responseQueries:responseQueries
-                          target:self
-                          action:@selector(processResponse:)];
+                           queryUser, @"user", nil];  
+  [self callService:[ServerPaths userQueryService]
+             method:[ServerPaths userQueryMethod]
+               data:request];
+  [queryUser release];
+  [request release];
 }
--(void)processResponse:(NSArray*)response {
-  [NetworkProgress connectionDone];
-  [target performSelector:action withObject:response];
-}
-
 @end
 
 @implementation UserQueryResponse

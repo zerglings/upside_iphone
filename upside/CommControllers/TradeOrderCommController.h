@@ -8,17 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ControllerSupport.h"
+
 
 @class TradeOrder;
 
 // Submits trade orders.
-@interface TradeOrderCommController : NSObject {
-  NSArray* responseQueries;
-  SEL action;
-  id target;
+@interface TradeOrderCommController : ZNHttpJsonCommController {
 }
-
--(id)initWithTarget:(id)target action:(SEL)action;
-
 -(void)submitOrder:(TradeOrder*)order;
 @end

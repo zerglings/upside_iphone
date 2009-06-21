@@ -58,9 +58,6 @@
 		571A26900F19871C00A996A2 /* NewsArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571A268F0F19871C00A996A2 /* NewsArticleViewController.xib */; };
 		571A26930F19874500A996A2 /* NewsArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A26920F19874500A996A2 /* NewsArticleViewController.m */; };
 		571B411D0FEDB58F00A5CC9D /* UserUpdateCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B411C0FEDB58F00A5CC9D /* UserUpdateCommController.m */; };
-		571B41200FEDB5CD00A5CC9D /* ZNHttpJsonCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B411F0FEDB5CD00A5CC9D /* ZNHttpJsonCommController.m */; };
-		571B42710FEDC38800A5CC9D /* ZNTestModels.h in Headers */ = {isa = PBXBuildFile; fileRef = 57551EBE0F4E0D4D0046B0EE /* ZNTestModels.h */; };
-		571B42720FEDC38800A5CC9D /* ZNTestModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EBF0F4E0D4D0046B0EE /* ZNTestModels.m */; };
 		571B454C0FEDD1FE00A5CC9D /* libZergSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 572E0BBC0F56569600E3FEF7 /* libZergSupport.a */; };
 		571B45E30FEDD5B600A5CC9D /* NSInvocation+OCMAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 573034AD0FCA19EC001F9B38 /* NSInvocation+OCMAdditions.h */; };
 		571B45E40FEDD5B600A5CC9D /* NSInvocation+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 573034AE0FCA19EC001F9B38 /* NSInvocation+OCMAdditions.m */; };
@@ -305,6 +302,10 @@
 		57A1F18B0F2599B000B8179A /* LoginCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1F1890F2599B000B8179A /* LoginCommController.m */; };
 		57A5CE5E0FEE463B003FFC39 /* ZNNetworkProgressTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CE5D0FEE463B003FFC39 /* ZNNetworkProgressTest.m */; };
 		57A5CE800FEE481E003FFC39 /* ZNNetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CE520FEE451F003FFC39 /* ZNNetworkProgress.m */; };
+		57A5CF230FEE9FFA003FFC39 /* ZNHttpJsonCommController.h in Headers */ = {isa = PBXBuildFile; fileRef = 57A5CF210FEE9FFA003FFC39 /* ZNHttpJsonCommController.h */; };
+		57A5CF240FEE9FFA003FFC39 /* ZNHttpJsonCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CF220FEE9FFA003FFC39 /* ZNHttpJsonCommController.m */; };
+		57A5CF290FEEA156003FFC39 /* ZNTestModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EBF0F4E0D4D0046B0EE /* ZNTestModels.m */; };
+		57A5CF580FEEA219003FFC39 /* ZNHttpJsonCommControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CF260FEEA0BA003FFC39 /* ZNHttpJsonCommControllerTest.m */; };
 		57AC65860FAE392200512D70 /* ZNJsonHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AC65850FAE392200512D70 /* ZNJsonHttpRequestTest.m */; };
 		57AC66130FAE4AFD00512D70 /* ZNJsonHttpRequestTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 57AC65840FAE392200512D70 /* ZNJsonHttpRequestTest.json */; };
 		57AC66140FAE4B0300512D70 /* ZNJsonHttpRequestTest.body in Resources */ = {isa = PBXBuildFile; fileRef = 57AC65880FAE3A0100512D70 /* ZNJsonHttpRequestTest.body */; };
@@ -481,8 +482,6 @@
 		571A26920F19874500A996A2 /* NewsArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsArticleViewController.m; sourceTree = "<group>"; };
 		571B411B0FEDB58F00A5CC9D /* UserUpdateCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUpdateCommController.h; sourceTree = "<group>"; };
 		571B411C0FEDB58F00A5CC9D /* UserUpdateCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserUpdateCommController.m; sourceTree = "<group>"; };
-		571B411E0FEDB5CD00A5CC9D /* ZNHttpJsonCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNHttpJsonCommController.h; sourceTree = "<group>"; };
-		571B411F0FEDB5CD00A5CC9D /* ZNHttpJsonCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNHttpJsonCommController.m; sourceTree = "<group>"; };
 		571B45470FEDD1F400A5CC9D /* libZergSupport4Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZergSupport4Tests.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		57203C040F4942EF00B3A00C /* AssetBook+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AssetBook+Formatting.h"; sourceTree = "<group>"; };
 		57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetBook+Formatting.m"; sourceTree = "<group>"; };
@@ -718,6 +717,9 @@
 		57A5CE510FEE451F003FFC39 /* ZNNetworkProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNNetworkProgress.h; sourceTree = "<group>"; };
 		57A5CE520FEE451F003FFC39 /* ZNNetworkProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNNetworkProgress.m; sourceTree = "<group>"; };
 		57A5CE5D0FEE463B003FFC39 /* ZNNetworkProgressTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNNetworkProgressTest.m; sourceTree = "<group>"; };
+		57A5CF210FEE9FFA003FFC39 /* ZNHttpJsonCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNHttpJsonCommController.h; sourceTree = "<group>"; };
+		57A5CF220FEE9FFA003FFC39 /* ZNHttpJsonCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNHttpJsonCommController.m; sourceTree = "<group>"; };
+		57A5CF260FEEA0BA003FFC39 /* ZNHttpJsonCommControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNHttpJsonCommControllerTest.m; sourceTree = "<group>"; };
 		57AC65840FAE392200512D70 /* ZNJsonHttpRequestTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNJsonHttpRequestTest.json; sourceTree = "<group>"; };
 		57AC65850FAE392200512D70 /* ZNJsonHttpRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNJsonHttpRequestTest.m; sourceTree = "<group>"; };
 		57AC65880FAE3A0100512D70 /* ZNJsonHttpRequestTest.body */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZNJsonHttpRequestTest.body; sourceTree = "<group>"; };
@@ -1119,8 +1121,6 @@
 				5702482B0FB607600004DEEC /* UserQueryCommController.m */,
 				571B411B0FEDB58F00A5CC9D /* UserUpdateCommController.h */,
 				571B411C0FEDB58F00A5CC9D /* UserUpdateCommController.m */,
-				571B411E0FEDB5CD00A5CC9D /* ZNHttpJsonCommController.h */,
-				571B411F0FEDB5CD00A5CC9D /* ZNHttpJsonCommController.m */,
 			);
 			path = CommControllers;
 			sourceTree = "<group>";
@@ -1147,6 +1147,9 @@
 			isa = PBXGroup;
 			children = (
 				57551E790F4E0D4D0046B0EE /* ControllerSupport.h */,
+				57A5CF210FEE9FFA003FFC39 /* ZNHttpJsonCommController.h */,
+				57A5CF220FEE9FFA003FFC39 /* ZNHttpJsonCommController.m */,
+				57A5CF260FEEA0BA003FFC39 /* ZNHttpJsonCommControllerTest.m */,
 				57A5CE520FEE451F003FFC39 /* ZNNetworkProgress.m */,
 				57A5CE5D0FEE463B003FFC39 /* ZNNetworkProgressTest.m */,
 				57551E7A0F4E0D4D0046B0EE /* ZNSyncController.h */,
@@ -1548,12 +1551,12 @@
 				57551F1E0F4E0D4D0046B0EE /* ZNMSRegistry.h in Headers */,
 				57551F210F4E0D4D0046B0EE /* ZNMSString.h in Headers */,
 				57551F230F4E0D4D0046B0EE /* ZNMSUInteger.h in Headers */,
-				571B42710FEDC38800A5CC9D /* ZNTestModels.h in Headers */,
 				57551F3B0F4E0D4D0046B0EE /* WebSupport.h in Headers */,
 				57551F3C0F4E0D4D0046B0EE /* ZNCsvHttpRequest.h in Headers */,
 				57551F3F0F4E0D4D0046B0EE /* ZNHttpRequest.h in Headers */,
 				57B5DFE60FAE26DD002CE751 /* ZNJsonHttpRequest.h in Headers */,
 				57551F420F4E0D4D0046B0EE /* ZNXmlHttpRequest.h in Headers */,
+				57A5CF230FEE9FFA003FFC39 /* ZNHttpJsonCommController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1827,7 +1830,6 @@
 				5702482C0FB607600004DEEC /* UserQueryCommController.m in Sources */,
 				18411D240FE5775A00EFF249 /* OrdersViewController.m in Sources */,
 				571B411D0FEDB58F00A5CC9D /* UserUpdateCommController.m in Sources */,
-				571B41200FEDB5CD00A5CC9D /* ZNHttpJsonCommController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1894,13 +1896,13 @@
 				57551F1F0F4E0D4D0046B0EE /* ZNMSRegistry.m in Sources */,
 				57551F220F4E0D4D0046B0EE /* ZNMSString.m in Sources */,
 				57551F240F4E0D4D0046B0EE /* ZNMSUInteger.m in Sources */,
-				571B42720FEDC38800A5CC9D /* ZNTestModels.m in Sources */,
 				57551F3D0F4E0D4D0046B0EE /* ZNCsvHttpRequest.m in Sources */,
 				57551F400F4E0D4D0046B0EE /* ZNHttpRequest.m in Sources */,
 				57B5DFE70FAE26DD002CE751 /* ZNJsonHttpRequest.m in Sources */,
 				57551F430F4E0D4D0046B0EE /* ZNXmlHttpRequest.m in Sources */,
 				57551F050F4E0D4D0046B0EE /* ZNModelCsvParser.m in Sources */,
 				57A5CE800FEE481E003FFC39 /* ZNNetworkProgress.m in Sources */,
+				57A5CF240FEE9FFA003FFC39 /* ZNHttpJsonCommController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1939,6 +1941,8 @@
 				57AC65860FAE392200512D70 /* ZNJsonHttpRequestTest.m in Sources */,
 				575520150F4E11630046B0EE /* ZNXmlHttpRequestTest.m in Sources */,
 				57A5CE5E0FEE463B003FFC39 /* ZNNetworkProgressTest.m in Sources */,
+				57A5CF290FEEA156003FFC39 /* ZNTestModels.m in Sources */,
+				57A5CF580FEEA219003FFC39 /* ZNHttpJsonCommControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

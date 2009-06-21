@@ -13,20 +13,10 @@
 
 
 @implementation StockSearchCommController
--(id)initWithTarget:(id)theTarget action:(SEL)theAction {
-  if ((self = [super init])) {
-    target = theTarget;
-    action = theAction;
 
-    responseQueries = [[NSArray alloc] initWithObjects:
-                       [StockSearchData class], @"/*/Result/?", nil];
-  }
-  return self;
-}
-
--(void)dealloc {
-  [responseQueries release];
-  [super dealloc];
++(NSArray*)copyResponseQueries {
+  return [[NSArray alloc] initWithObjects:
+          [StockSearchData class], @"/*/Result/?", nil];
 }
 
 -(void)startTickerSearch:(NSString*)queryString {
@@ -40,21 +30,11 @@
   NSDictionary* requestData = [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"YAHOO.Finance.SymbolSuggest.ssCallback",
                                @"callback", queryString, @"query", nil];
-  [ZNNetworkProgress connectionStarted];
-  [ZNJsonHttpRequest callService:service
-                          method:kZNHttpMethodPost
-                            data:requestData
-                 responseQueries:responseQueries
-                          target:self
-                          action:@selector(processResponse:)];
+  [self callService:service
+             method:kZNHttpMethodPost
+               data:requestData];
   [requestData release];
 }
-
--(void)processResponse:(NSObject*)response {
-  [ZNNetworkProgress connectionDone];
-  [target performSelector:action withObject:response];
-}
-
 @end
 
 

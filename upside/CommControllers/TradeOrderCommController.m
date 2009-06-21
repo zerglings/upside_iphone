@@ -16,40 +16,19 @@
 
 @implementation TradeOrderCommController
 
--(id)initWithTarget:(id)theTarget action:(SEL)theAction {
-  if ((self = [super init])) {
-    target = theTarget;
-    action = theAction;
-
-    responseQueries = [[NSArray alloc] initWithObjects:
-                       [TradeOrder class], @"/tradeOrder",
-                       [ServiceError class], @"/error",
-                       nil];
-  }
-  return self;
++(NSArray*)copyResponseQueries {
+  return [[NSArray alloc] initWithObjects:
+          [TradeOrder class], @"/tradeOrder",
+          [ServiceError class], @"/error",
+          nil];
 }
-
--(void)dealloc {
-  [responseQueries release];
-  [super dealloc];
-}
-
 -(void)submitOrder:(TradeOrder*)order {
   NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
                            order, @"trade_order", nil];
-  [ZNNetworkProgress connectionStarted];
-  [ZNJsonHttpRequest callService:[ServerPaths orderSubmissionUrl]
-                          method:[ServerPaths orderSubmissionMethod]
-                            data:request
-                 responseQueries:responseQueries
-                          target:self
-                          action:@selector(processResponse:)];
+  [self callService:[ServerPaths orderSubmissionUrl]
+             method:[ServerPaths orderSubmissionMethod]
+               data:request];
   [request release];
-}
-
--(void)processResponse:(NSObject*)response {
-  [ZNNetworkProgress connectionDone];
-  [target performSelector:action withObject:response];
 }
 
 @end

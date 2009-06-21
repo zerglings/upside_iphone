@@ -8,15 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ControllerSupport.h"
+
+
 // Retrieves portfolio sync data.
-@interface PortfolioCommController : NSObject {
-  NSArray* responseQueries;
-  SEL action;
-  id target;
+@interface PortfolioCommController : ZNHttpJsonCommController {
 }
-
--(id)initWithTarget:(id)target action:(SEL)action;
-
 -(void)sync;
-
 @end

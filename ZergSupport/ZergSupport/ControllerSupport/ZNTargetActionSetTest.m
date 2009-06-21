@@ -86,8 +86,6 @@ static const NSString* kArgumentObject = @"Action argument";
 }
 
 -(void)checkArgument:(NSString*)argument {
-  NSLog(@"Argument: %@\n", argument);
-
   STAssertEqualObjects(kArgumentObject, argument, @"Incorrect argument received");
   invokedOne = YES;
 }

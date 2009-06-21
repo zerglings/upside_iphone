@@ -8,8 +8,8 @@
 
 #import "NewsArticleViewController.h"
 
+#import "ControllerSupport.h"
 #import "NewsItem.h"
-#import "NetworkProgress.h"
 
 
 @implementation NewsArticleViewController
@@ -32,7 +32,7 @@
   [(UIWebView*)self.view stopLoading];
   if (connectionIndicator) {
     connectionIndicator = NO;
-    [NetworkProgress connectionDone];
+    [ZNNetworkProgress connectionDone];
   }
   [super viewDidDisappear:animated];
 }
@@ -76,21 +76,21 @@
 -(void)webViewDidStartLoad:(UIWebView *)webView {
   if (!connectionIndicator) {
     connectionIndicator = YES;
-    [NetworkProgress connectionStarted];
+    [ZNNetworkProgress connectionStarted];
   }
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
   if (connectionIndicator) {
     connectionIndicator = NO;
-    [NetworkProgress connectionDone];
+    [ZNNetworkProgress connectionDone];
   }
 }
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   if (connectionIndicator) {
     connectionIndicator = NO;
-    [NetworkProgress connectionDone];
+    [ZNNetworkProgress connectionDone];
   }
 }
 

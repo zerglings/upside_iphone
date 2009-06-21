@@ -75,7 +75,7 @@
                           method:kZNHttpMethodGet
                             data:nil
                  responseQueries:[NSArray arrayWithObjects:
-                                 [ZNJsonHttpRequestTestModel class], @"/echo",
+                                  [ZNJsonHttpRequestTestModel class], @"/echo",
                                  nil]
                          target:self
                          action:@selector(checkOnlineGetResponse:)];

@@ -8,19 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ControllerSupport.h"
 #import "ModelSupport.h"
 
 
-@interface UserQueryCommController : NSObject {
-  NSArray* responseQueries;
-  id target;
-  SEL action;
+@interface UserQueryCommController : ZNHttpJsonCommController {
 }
-
-// Designated initializer.
--(id)initWithTarget:(id)target action:(SEL)action;
 -(void)startQueryForName:(NSString*)userName;
 @end
+
 
 // Definition for the response to user queries.
 @interface UserQueryResponse : ZNModel {
