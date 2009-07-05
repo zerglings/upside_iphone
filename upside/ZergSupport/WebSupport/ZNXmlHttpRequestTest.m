@@ -48,7 +48,9 @@
 
 -(void)warmUpHerokuService:(NSString*)herokuService {
   // Issues a request to the testbed, so heroku loads it up on a machine
-  [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]];
+  [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]
+                           encoding:NSUTF8StringEncoding
+                              error:NULL];
 }
 
 -(void)setUp {
@@ -140,7 +142,9 @@
   NSString* bodyPath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNXmlHttpRequestTest.body"];
-  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
+  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath
+                                                 encoding:NSUTF8StringEncoding
+                                                    error:NULL],
                        response.body, @"Wrong body in request");
 }
 
@@ -168,7 +172,7 @@
   receivedResponse = YES;
   STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
-
+  
   ZNXmlHttpRequestTestModel* model = [responseArray objectAtIndex:0];
   STAssertTrue([model isKindOfClass:[ZNXmlHttpRequestTestModel class]],
                @"Model in response not deserialized properly");

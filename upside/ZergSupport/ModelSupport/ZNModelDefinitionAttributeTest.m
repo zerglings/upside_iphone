@@ -121,14 +121,12 @@
     objc_property_t property = [self propertyNamed:properties[i]];
     ZNModelDefinitionAttribute* attr =
         [ZNModelDefinitionAttribute newAttributeFromProperty:property
-                             ofClass:testClass];
+                                                     ofClass:testClass];
 
     STAssertEqualStrings(golden_getters[i], [attr getterName],
-                   @"Failed to parse getter name for %s",
-               properties[i]);
+                         @"Failed to parse getter name for %s", properties[i]);
     STAssertEqualStrings(golden_setters[i], [attr setterName],
-               @"Failed to parse setter name for %s",
-               properties[i]);
+                         @"Failed to parse setter name for %s", properties[i]);
     /*
     STAssertEquals(golden_atomics[i], [attr isAtomic],
              @"Failed to parse atomicity for %s",

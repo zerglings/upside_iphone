@@ -94,10 +94,15 @@
   free(attributesCarray);
   free(attributeNamesCarray);
 
-  NSString* className = [NSString stringWithCString:class_getName(klass)];
-
-  return [[ZNModelDefinition alloc] initWithName:className
-                    attributes:attributes];
+  const char* classNameCString = class_getName(klass);
+  NSString* className = [[NSString alloc] initWithBytes:classNameCString
+                                                 length:strlen(classNameCString)
+                                               encoding:NSASCIIStringEncoding];
+  ZNModelDefinition* definition =
+      [[ZNModelDefinition alloc] initWithName:className
+                                   attributes:attributes];
+  [className release];
+  return definition;
 }
 
 @end

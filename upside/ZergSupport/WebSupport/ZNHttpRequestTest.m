@@ -54,7 +54,9 @@
 
 -(void)warmUpHerokuService:(NSString*)herokuService {
   // Issues a request to the testbed, so heroku loads it up on a machine
-  [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]];
+  [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]
+                           encoding:NSUTF8StringEncoding
+                              error:NULL];
 }
 
 -(void)setUp {
@@ -110,7 +112,9 @@
   NSString* bodyPath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNHttpRequestTest.put"];
-  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
+  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath
+                                                 encoding:NSUTF8StringEncoding
+                                                    error:NULL],
                        responseString, @"Wrong request");
 }
 
@@ -148,7 +152,9 @@
   NSString* bodyPath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNHttpRequestTest.put.multipart"];
-  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
+  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath
+                                                 encoding:NSUTF8StringEncoding
+                                                    error:NULL],
                        responseString, @"Wrong request");
 }
 
@@ -199,7 +205,9 @@
   NSString* bodyPath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNHttpRequestTest.get1"];
-  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
+  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath
+                                                 encoding:NSUTF8StringEncoding
+                                                    error:NULL],
                        responseString, @"Wrong request");
 }
 
@@ -230,7 +238,9 @@
   NSString* bodyPath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNHttpRequestTest.get2"];
-  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
+  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath
+                                                 encoding:NSUTF8StringEncoding
+                                                    error:NULL],
                        responseString, @"Wrong request");
 }
 

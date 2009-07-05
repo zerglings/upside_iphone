@@ -48,13 +48,17 @@
                                                ofClass:(Class)klass {
   ZNModelDefinitionAttribute* attribute; // Initialized at the done: label.
 
-  const char* propertyName = property_getName(property);
+  const char* propertyNameCString = property_getName(property);
+  NSString* propertyName =
+      [[NSString alloc] initWithBytes:propertyNameCString
+                               length:strlen(propertyNameCString)
+                             encoding:NSASCIIStringEncoding];
   const char* propertyAttributes = property_getAttributes(property);
 
   NSAssert(*propertyAttributes == 'T', @"Property attributes format changed");
   propertyAttributes++;
 
-  Ivar runtimeIvar = class_getInstanceVariable(klass, propertyName);
+  Ivar runtimeIvar = class_getInstanceVariable(klass, propertyNameCString);
 
   // Property type
 
@@ -95,14 +99,19 @@
         const char* xetterComma = strchr(propertyAttributes + 1, ',');
         size_t xetterLength = (xetterComma ? xetterComma - propertyAttributes :
             strlen(propertyAttributes)) - 1;
-        NSString* xetter = [NSString
-                  stringWithCString:(propertyAttributes + 1)
-                         length:xetterLength];
-        if (*propertyAttributes == 'G')
+        NSString* xetter = [[NSString alloc]
+                            initWithBytes:(propertyAttributes + 1)
+                            length:xetterLength
+                            encoding:NSASCIIStringEncoding];
+        if (*propertyAttributes == 'G') {
+          NSAssert(!getterName, @"Getter parsed twice in property descriptor");
           getterName = xetter;
-        else
+        }
+        else {
+          NSAssert(!setterName, @"Setter parsed twice in property descriptor");
           setterName = xetter;
-        propertyAttributes += xetterLength + 1;
+        }
+        propertyAttributes += xetterLength;  // incremented by for loop, as well
         break;
       }
       default: {
@@ -119,7 +128,7 @@
 done:
   attribute =
       [[ZNModelDefinitionAttribute alloc]
-       initWithName:[NSString stringWithCString:propertyName]
+       initWithName:propertyName
        type:attributeType
        runtimeIvar:runtimeIvar
        isAtomic:isAtomic
@@ -127,7 +136,10 @@ done:
        getterName:getterName
        setterName:setterName
        setterStrategy:setterStrategy];
+  [propertyName release];
   [attributeType release];
+  [getterName release];
+  [setterName release];
   return attribute;
 }
 

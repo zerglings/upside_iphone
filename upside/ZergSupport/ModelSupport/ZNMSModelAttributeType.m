@@ -47,6 +47,8 @@
     case kZNPropertyWantsAssign:
       [model autorelease];
       break;
+    default:
+      NSAssert(NO, @"Unknown attribute setter strategy");
   }
   object_setIvar(instance, runtimeIvar, model);
 }

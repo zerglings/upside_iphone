@@ -51,7 +51,9 @@
 
 -(void)warmUpHerokuService:(NSString*)herokuService {
   // Issues a request to the testbed, so heroku loads it up on a machine
-  [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]];
+  [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]
+                           encoding:NSUTF8StringEncoding
+                              error:NULL];
 }
 
 -(void)setUp {
@@ -142,7 +144,9 @@
   NSString* bodyPath = [[[self testBundle] resourcePath]
                         stringByAppendingPathComponent:
                         @"ZNJsonHttpRequestTest.body"];
-  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath],
+  STAssertEqualStrings([NSString stringWithContentsOfFile:bodyPath
+                                                 encoding:NSUTF8StringEncoding
+                                                    error:NULL],
                        response.body, @"Wrong body in request");
 }
 

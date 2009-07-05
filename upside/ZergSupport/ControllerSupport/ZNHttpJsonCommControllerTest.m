@@ -68,7 +68,9 @@
 @implementation ZNHttpJsonCommControllerTest
 -(void)warmUpHerokuService:(NSString*)herokuService {
   // Issues a request to the testbed, so heroku loads it up on a machine
-  [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]];
+  [NSString stringWithContentsOfURL:[NSURL URLWithString:herokuService]
+                           encoding:NSUTF8StringEncoding
+                              error:NULL];
 }
 
 -(void)setUp {
