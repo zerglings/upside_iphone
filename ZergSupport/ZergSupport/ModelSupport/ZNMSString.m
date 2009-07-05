@@ -49,6 +49,10 @@
       [oldString release];
       break;
     }
+    case kZNPropertyWantsAssign:
+      break;
+    default:
+      NSAssert(NO, @"Unknown attribute setter strategy");      
   }
   object_setIvar(instance, runtimeIvar, string);
 }

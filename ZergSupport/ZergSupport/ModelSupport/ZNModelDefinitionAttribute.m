@@ -103,10 +103,14 @@
                             initWithBytes:(propertyAttributes + 1)
                             length:xetterLength
                             encoding:NSASCIIStringEncoding];
-        if (*propertyAttributes == 'G')
+        if (*propertyAttributes == 'G') {
+          NSAssert(!getterName, @"Getter parsed twice in property descriptor");
           getterName = xetter;
-        else
+        }
+        else {
+          NSAssert(!setterName, @"Setter parsed twice in property descriptor");
           setterName = xetter;
+        }
         propertyAttributes += xetterLength;  // incremented by for loop, as well
         break;
       }
