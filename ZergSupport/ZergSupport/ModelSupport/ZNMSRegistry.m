@@ -56,7 +56,10 @@
 
 -(ZNModelDefinition*)definitionForModelClass:(Class)klass {
   // TODO(overmind): There has to be a faster way.
-  NSString* className = [NSString stringWithCString:class_getName(klass)];
+  const char* classNameCString = class_getName(klass);
+  NSString* className = [[NSString alloc] initWithBytes:classNameCString
+                                                 length:strlen(classNameCString)
+                                               encoding:NSASCIIStringEncoding];
 
   ZNModelDefinition* definition;
   @synchronized (self) {
@@ -67,6 +70,7 @@
       [definition release];
     }
   }
+  [className release];
   return definition;
 }
 

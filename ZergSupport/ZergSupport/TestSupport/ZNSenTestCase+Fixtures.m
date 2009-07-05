@@ -55,8 +55,13 @@
 
   NSMutableDictionary* schema = [[NSMutableDictionary alloc] init];
   for (Class klass in modelClasses) {
-    NSString* className = [NSString stringWithCString:class_getName(klass)];
+    const char* classNameCString = class_getName(klass);
+    NSString* className =
+        [[NSString alloc] initWithBytes:classNameCString
+                                 length:strlen(classNameCString)
+                               encoding:NSASCIIStringEncoding];
     [schema setObject:klass forKey:className];
+    [className release];
   }
   return schema;
 }

@@ -15,7 +15,6 @@
 
 
 @interface ZNModelJsonParser () <ZNObjectJsonParserDelegate>
--(void)parsedJson:(NSDictionary*)jsonData context:(id)context;
 @end
 
 
@@ -23,7 +22,7 @@
 
 #pragma mark Lifecycle
 
-@synthesize context, delegate;
+@synthesize delegate;
 
 -(id)initWithQueries:(NSArray*)queries
       documentCasing:(ZNFormatterCasing)documentCasing {
