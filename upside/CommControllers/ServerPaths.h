@@ -40,4 +40,9 @@
 // Method to use with the user querying service.
 +(NSString*)userQueryMethod;
 
+// Points to the user data modification service.
++(NSString*)userUpdateService;
+// Method to use with the data modification service.
++(NSString*)userUpdateMethod;
+
 @end

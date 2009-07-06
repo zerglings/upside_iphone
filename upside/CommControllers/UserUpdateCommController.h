@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ControllerSupport.h"
 
-@interface UserUpdateCommController : NSObject {
+@class User;
 
+
+@interface UserUpdateCommController : ZNHttpJsonCommController {
 }
-
+-(void)updateUser:(User*)userName;
 @end

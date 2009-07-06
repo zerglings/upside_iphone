@@ -58,6 +58,12 @@
 +(NSString*)userQueryMethod {
   return kZNHttpMethodGet;
 }
-
++(NSString*)userUpdateService {
+  return [NSString stringWithFormat:@"%@/users/0.json",
+          [self serverUrl]];
+}
++(NSString*)userUpdateMethod {
+  return kZNHttpMethodPut;
+}
 
 @end

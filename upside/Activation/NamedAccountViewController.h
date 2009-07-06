@@ -10,6 +10,7 @@
 
 @class UserQueryCommController;
 @class UserQueryResponse;
+@class UserUpdateCommController;
 
 
 @interface NamedAccountViewController : UIViewController {
@@ -18,9 +19,11 @@
   IBOutlet UISwitch* passwordVisibleSwitch;
   IBOutlet UILabel* nameAvailabilityLabel;
   IBOutlet UIImageView* nameAvailabilityImage;
+  IBOutlet UIView* progressIndicatorView;
 
   UserQueryCommController* queryCommController;
   UserQueryResponse* lastQueryResponse;
+  UserUpdateCommController* updateCommController;
   NSString* lastQueryName;
   NSTimeInterval lastQueryTime;
 }

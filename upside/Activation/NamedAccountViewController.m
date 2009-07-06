@@ -8,8 +8,11 @@
 
 #import "NamedAccountViewController.h"
 
+#import "ActivationState.h"
 #import "ServiceError.h"
+#import "User.h"
 #import "UserQueryCommController.h"
+#import "UserUpdateCommController.h"
 
 
 @interface NamedAccountViewController () <UITextViewDelegate>
@@ -28,6 +31,9 @@
                            initWithTarget:self
                            action:@selector(availabilitySearchResults:)];
     lastQueryTime = 0.0;
+    updateCommController = [[UserUpdateCommController alloc]
+                            initWithTarget:self
+                            action:@selector(userUpdateResult:)];
   }
   return self;
 }
@@ -110,7 +116,67 @@ replacementString:(NSString *)string {
 }
 
 -(IBAction)claimNameTapped {
-
+  User* user = [[User alloc] initWithName:userNameText.text
+                                 password:passwordText.text];
+  [updateCommController updateUser:user];
+  [user release];
+  [progressIndicatorView setHidden:NO];
+}
+-(void)userUpdateResult:(NSArray*)results {
+  [progressIndicatorView setHidden:YES];
+  
+  // HTTP errors.
+  if ([results isKindOfClass:[NSError class]]) {
+    NSString* title = [(NSError*)results localizedDescription];
+    NSString* message = [(NSError*)results localizedFailureReason];
+    if (!message) {
+      if (title) {
+        message = title;
+        title = nil;
+      }
+      else {
+        message = @"Something went horribly wrong.";
+      }
+    }
+    if (!title) {
+      title = @"Account upgrade error";
+    }
+    
+    UIAlertView* alertView =
+        [[UIAlertView alloc] initWithTitle:title
+                                   message:message
+                                  delegate:self
+                         cancelButtonTitle:@"Retry"
+                         otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+    return;
+  }
+  // Service errors.
+  NSObject* result = [results objectAtIndex:0];
+  if ([result isKindOfClass:[ServiceError class]]) {
+    UIAlertView* alertView = 
+        [[UIAlertView alloc] initWithTitle:@"Account upgrade error"
+                                   message:[(ServiceError*)result message]
+                                  delegate:self
+                         cancelButtonTitle:@"Retry"
+                         otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+    return;
+  }
+  
+  // Rename succeeded... replace activation information.
+  NSAssert([result isKindOfClass:[User class]],
+           @"Non-error result should be a User instance");
+  ActivationState* activation = [ActivationState sharedState];
+  User* newUser = [[User alloc] initWithUser:(User*)result
+                                    password:passwordText.text];
+  [activation setUser:newUser];
+  [newUser release];
+  [activation save];
+  
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)availabilitySearchNeeded {
