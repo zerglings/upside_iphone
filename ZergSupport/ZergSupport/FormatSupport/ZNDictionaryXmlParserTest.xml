@@ -30,8 +30,14 @@
   <key_two>value_two</key_two>
   <key_three subkey_one="subvalue_one">
     <subkey_two>
-      <subkey_three>subvalue_three</subkey_three>
+      <subkey_three>subvalue_three_one</subkey_three>
+      <subkey_three>subvalue_three_two</subkey_three>
+      <subkey_three>subvalue_three_three</subkey_three>
     </subkey_two>
+    <subkey_two>
+      <subkey_three>subvalue_three_four</subkey_three>
+      <subkey_three>subvalue_three_five</subkey_three>
+    </subkey_two>    
   </key_three>
 </itemD>
 </testdata>

@@ -49,7 +49,9 @@
         [compiledQueries addObject:null];
       }
       NSString* queryString = [queries objectAtIndex:(i + 1)];
-      [compiledQueries addObject:[ZNObjectQuery newCompile:queryString]];
+      ZNObjectQuery* query = [ZNObjectQuery newCompile:queryString];
+      [compiledQueries addObject:query];
+      [query release];
     }
   }
   return self;
