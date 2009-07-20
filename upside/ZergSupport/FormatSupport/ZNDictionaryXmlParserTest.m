@@ -92,7 +92,9 @@ static NSString* kContextObject = @"This is the context";
       [ZNObjectJsonParser parseValue:
       @"{'keyOne': 'value_one', 'keyTwo': 'value_two', 'keyThree': "
       @" {'subkeyOne': 'subvalue_one', 'subkeyTwo': "
-      @"  {'subkeyThree': 'subvalue_three'}}}"];
+      @"  [{'subkeyThree': ['subvalue_three_one', 'subvalue_three_two'"
+      @"                    'subvalue_three_three'] },"
+      @"   {'subkeyThree': ['subvalue_three_four', 'subvalue_three_five']}]}}"];
   STAssertEqualObjects(goldenFourth, [items objectAtIndex:3],
                        @"Failed to format XML elements and sub-elements");
 }

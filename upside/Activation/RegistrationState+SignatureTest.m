@@ -8,8 +8,9 @@
 
 #import "TestSupport.h"
 
-#import "ActivationState+Signature.h"
 #import "Device.h"
+#import "RegistrationState+Signature.h"
+
 
 @interface RegistrationStateSignatureTest : SenTestCase {
   NSString* testUdid;
@@ -17,6 +18,7 @@
   RegistrationState* testState;
 }
 @end
+
 
 @implementation RegistrationStateSignatureTest
 

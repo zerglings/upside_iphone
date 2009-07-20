@@ -76,7 +76,7 @@
 
 #pragma mark ZNDictionaryJsonParser delegate
 
--(void)parsedJson:(NSDictionary*)jsonData context:(id)context {
+-(void)parsedJson:(NSObject*)jsonData context:(id)context {
   for (NSUInteger i = 0; i < [compiledQueries count]; i += 2) {
     Class modelClass = [compiledQueries objectAtIndex:i];
     ZNObjectQuery* query = [compiledQueries objectAtIndex:(i + 1)];

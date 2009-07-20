@@ -98,10 +98,30 @@
 
 #pragma mark NSXMLParser Delegate
 
--(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName
-   attributes:(NSDictionary *)attributeDict {
+-(void)addValue:(NSObject*)value
+          toKey:(NSString*)key
+       inResult:(NSMutableDictionary*)result {
+  // Stack multiple elements with the same name into an array.
+  NSObject* oldValue = [result objectForKey:key];
+  if (!oldValue) {
+    [result setObject:value forKey:key];
+  }
+  else if ([oldValue isKindOfClass:[NSMutableArray class]]) {
+    [(NSMutableArray*)oldValue addObject:value];
+  }
+  else {
+    NSMutableArray* array = [[NSMutableArray alloc]
+                             initWithObjects:oldValue, value,
+                             nil];
+    [result setObject:array forKey:key];
+    [array release];
+  }  
+}
+
+-(void)parser:(NSXMLParser*)parser didStartElement:(NSString*)elementName
+ namespaceURI:(NSString*)namespaceURI
+qualifiedName:(NSString*)qName
+   attributes:(NSDictionary*)attributeDict {
   if (ignoreDepth > 0) {
     ignoreDepth++;
     return;
@@ -133,7 +153,8 @@ qualifiedName:(NSString *)qName
     NSMutableDictionary* parentDictionary = [parseStack
                                              objectAtIndex:(parseStackTop - 1)];
     NSMutableDictionary* childDictionary = [[NSMutableDictionary alloc] init];
-    [parentDictionary setObject:childDictionary forKey:stackTop];
+    [self addValue:childDictionary toKey:(NSString*)stackTop
+          inResult:parentDictionary];
 
     [parseStack replaceObjectAtIndex:parseStackTop
                           withObject:childDictionary];
@@ -174,7 +195,8 @@ qualifiedName:(NSString *)qName
             [parseStack objectAtIndex:(parseStackTop - 1)];
             attributeDictionary = [[NSMutableDictionary alloc]
                                    initWithCapacity:[attributeDict count]];
-            [parentDictionary setObject:attributeDictionary forKey:stackTop];
+            [self addValue:attributeDictionary toKey:(NSString*)stackTop
+                  inResult:parentDictionary];
             
             [parseStack replaceObjectAtIndex:parseStackTop
                                   withObject:attributeDictionary];
@@ -196,7 +218,7 @@ qualifiedName:(NSString *)qName
   }
 }
 
--(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+-(void)parser:(NSXMLParser*)parser foundCharacters:(NSString*)string {
   if (ignoreDepth > 0)
     return;
 
@@ -205,9 +227,9 @@ qualifiedName:(NSString *)qName
   }
 }
 
--(void)parser:(NSXMLParser *)parse didEndElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName {
+-(void)parser:(NSXMLParser*)parse didEndElement:(NSString*)elementName
+ namespaceURI:(NSString*)namespaceURI
+qualifiedName:(NSString*)qName {
   if (ignoreDepth > 0) {
     ignoreDepth--;
     return;
@@ -239,7 +261,8 @@ qualifiedName:(NSString *)qName {
     NSMutableDictionary* parentDictionary = [parseStack
                                              objectAtIndex:(parseStackTop - 1)];
     NSString* propertyValue = [[NSString alloc] initWithString:currentValue];
-    [parentDictionary setObject:propertyValue forKey:stackTop];
+    [self addValue:propertyValue toKey:(NSString*)stackTop
+          inResult:parentDictionary];
     [propertyValue release];
 
     [currentValue setString:@""];
