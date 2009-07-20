@@ -1,5 +1,5 @@
 //
-//  ActivationState+Signature.m
+//  RegistrationState+Signature.m
 //  StockPlay
 //
 //  Created by Victor Costan on 1/29/09.
@@ -8,11 +8,11 @@
 
 #import "CryptoSupport.h"
 
-#import "ActivationState+Signature.h"
+#import "RegistrationState+Signature.h"
 #import "Device.h"
 
 
-@implementation ActivationState (Signature)
+@implementation RegistrationState (Signature)
 
 // The only bits protecting from widespread piracy of our service.
 // Treat accordingly.

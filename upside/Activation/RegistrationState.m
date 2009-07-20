@@ -1,17 +1,17 @@
 //
-//  ActivationState.m
+//  RegistrationState.m
 //  StockPlay
 //
 //  Created by Victor Costan on 1/2/09.
 //  Copyright Zergling.Net. All rights reserved.
 //
 
-#import "ActivationState.h"
+#import "RegistrationState.h"
 
 #import "Device.h"
 #import "User.h"
 
-@implementation ActivationState
+@implementation RegistrationState
 
 # pragma mark I/O
 
@@ -77,10 +77,10 @@ static NSString* kStateFileName = @".ActivationState";
   if ([defaults boolForKey:@"reset_activation"]) {
     [defaults setBool:NO forKey:@"reset_activation"];
     [defaults synchronize];
-    [ActivationState removeSavedState];
+    [RegistrationState removeSavedState];
   }
 
-  NSData* data = [NSData dataWithContentsOfFile:[ActivationState filePath]];
+  NSData* data = [NSData dataWithContentsOfFile:[RegistrationState filePath]];
   [self unarchiveFromData:data];
 }
 
@@ -88,15 +88,15 @@ static NSString* kStateFileName = @".ActivationState";
   NSData* data = [self archiveToData];
   if (!data) {
     [[NSFileManager defaultManager]
-     removeItemAtPath:[ActivationState filePath] error:nil];
+     removeItemAtPath:[RegistrationState filePath] error:nil];
   }
   else {
-    [data writeToFile:[ActivationState filePath] atomically:YES];
+    [data writeToFile:[RegistrationState filePath] atomically:YES];
   }
 }
 
 +(void)removeSavedState {
-  [[NSFileManager defaultManager] removeItemAtPath:[ActivationState filePath]
+  [[NSFileManager defaultManager] removeItemAtPath:[RegistrationState filePath]
                          error:nil];
 }
 
@@ -152,12 +152,12 @@ static NSString* kStateFileName = @".ActivationState";
 
 #pragma mark Singleton
 
-static ActivationState* sharedState = nil;
+static RegistrationState* sharedState = nil;
 
-+(ActivationState*)sharedState {
++(RegistrationState*)sharedState {
   @synchronized(self) {
     if (sharedState == nil) {
-      sharedState = [[ActivationState alloc] init];
+      sharedState = [[RegistrationState alloc] init];
     }
   }
   return sharedState;

@@ -8,16 +8,14 @@
 
 #import "NamedAccountViewController.h"
 
-#import "ActivationState.h"
+#import "RegistrationState.h"
 #import "ServiceError.h"
 #import "User.h"
-#import "UserQueryCommController.h"
 #import "UserUpdateCommController.h"
+#import "UserQueryCommController.h"
 
 
 @interface NamedAccountViewController () <UITextViewDelegate>
--(void)setNameAvailabilityUnknown;
--(void)setNameAvailability:(BOOL)isNameAvailable;
 -(void)availabilitySearchNeeded;
 -(void)availabilitySearchResults:(NSArray*)results;
 @end
@@ -31,9 +29,6 @@
                            initWithTarget:self
                            action:@selector(availabilitySearchResults:)];
     lastQueryTime = 0.0;
-    updateCommController = [[UserUpdateCommController alloc]
-                            initWithTarget:self
-                            action:@selector(userUpdateResult:)];
   }
   return self;
 }
@@ -49,17 +44,14 @@
   [super viewDidLoad];
 
   self.title = @"Claim User Name";
-  [self setNameAvailabilityUnknown];
   [userNameText becomeFirstResponder];
 }
 
-/*
 // Override to allow orientations other than the default portrait orientation.
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-*/
 
 -(void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -73,10 +65,6 @@
   [super dealloc];
 }
 
--(IBAction)passwordVisibleChanged {
-  [passwordText setSecureTextEntry:(!passwordVisibleSwitch.on)];
-}
-
 -(BOOL)textField:(UITextField *)textField
 shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string {
@@ -88,95 +76,21 @@ replacementString:(NSString *)string {
   }
   return YES;
 }
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [textField resignFirstResponder];
-  if (textField == userNameText) {
-    [passwordText becomeFirstResponder];
+  BOOL returnValue = [super textFieldShouldReturn:textField];
+  if (textField == newPasswordText) {
+    [self claimNameTapped];
   }
-  return YES;
-}
-
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  for (UIView* view in self.view.subviews) {
-    if ([view isKindOfClass:[UITextField class]])
-      [view resignFirstResponder];
-  }
-}
-
--(void)setNameAvailabilityUnknown {
-  nameAvailabilityLabel.text = @"";
-  nameAvailabilityImage.image = nil;
-}
--(void)setNameAvailability:(BOOL)isNameAvailable {
-  nameAvailabilityLabel.text = isNameAvailable ? @"" : @"taken";
-  nameAvailabilityLabel.textColor = isNameAvailable ?
-      [UIColor greenColor] : [UIColor redColor];
-  nameAvailabilityImage.image = isNameAvailable ?
-      [UIImage imageNamed:@"GreenTick.png"] : [UIImage imageNamed:@"RedX.png"];
+  return returnValue;
 }
 
 -(IBAction)claimNameTapped {
   User* user = [[User alloc] initWithName:userNameText.text
-                                 password:passwordText.text];
+                                 password:newPasswordText.text];
   [updateCommController updateUser:user];
   [user release];
   [progressIndicatorView setHidden:NO];
-}
--(void)userUpdateResult:(NSArray*)results {
-  [progressIndicatorView setHidden:YES];
-  
-  // HTTP errors.
-  if ([results isKindOfClass:[NSError class]]) {
-    NSString* title = [(NSError*)results localizedDescription];
-    NSString* message = [(NSError*)results localizedFailureReason];
-    if (!message) {
-      if (title) {
-        message = title;
-        title = nil;
-      }
-      else {
-        message = @"Something went horribly wrong.";
-      }
-    }
-    if (!title) {
-      title = @"Account upgrade error";
-    }
-    
-    UIAlertView* alertView =
-        [[UIAlertView alloc] initWithTitle:title
-                                   message:message
-                                  delegate:self
-                         cancelButtonTitle:@"Retry"
-                         otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
-    return;
-  }
-  // Service errors.
-  NSObject* result = [results objectAtIndex:0];
-  if ([result isKindOfClass:[ServiceError class]]) {
-    UIAlertView* alertView = 
-        [[UIAlertView alloc] initWithTitle:@"Account upgrade error"
-                                   message:[(ServiceError*)result message]
-                                  delegate:self
-                         cancelButtonTitle:@"Retry"
-                         otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
-    return;
-  }
-  
-  // Rename succeeded... replace activation information.
-  NSAssert([result isKindOfClass:[User class]],
-           @"Non-error result should be a User instance");
-  ActivationState* activation = [ActivationState sharedState];
-  User* newUser = [[User alloc] initWithUser:(User*)result
-                                    password:passwordText.text];
-  [activation setUser:newUser];
-  [newUser release];
-  [activation save];
-  
-  [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)availabilitySearchNeeded {

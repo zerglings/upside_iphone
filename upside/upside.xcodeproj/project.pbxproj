@@ -128,10 +128,10 @@
 		573E670E0F30FAA00041F4DC /* StockInfoCommControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */; };
 		573E670F0F30FAA00041F4DC /* AssetBook+RSSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A25960F19759A00A996A2 /* AssetBook+RSSTest.m */; };
 		573E67100F30FAA00041F4DC /* NewsCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571A23D60F18D5B400A996A2 /* NewsCenterTest.m */; };
-		573E67110F30FAA00041F4DC /* ActivationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */; };
-		573E6A000F3217B60041F4DC /* ActivationState+Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E69FF0F3217B60041F4DC /* ActivationState+Signature.m */; };
-		573E6A020F3217B60041F4DC /* ActivationState+Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E69FF0F3217B60041F4DC /* ActivationState+Signature.m */; };
-		573E6AC70F321B380041F4DC /* ActivationState+SignatureTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E6AC60F321B380041F4DC /* ActivationState+SignatureTest.m */; };
+		573E67110F30FAA00041F4DC /* RegistrationStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB19A50F0F14DF00E95AE1 /* RegistrationStateTest.m */; };
+		573E6A000F3217B60041F4DC /* RegistrationState+Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E69FF0F3217B60041F4DC /* RegistrationState+Signature.m */; };
+		573E6A020F3217B60041F4DC /* RegistrationState+Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E69FF0F3217B60041F4DC /* RegistrationState+Signature.m */; };
+		573E6AC70F321B380041F4DC /* RegistrationState+SignatureTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E6AC60F321B380041F4DC /* RegistrationState+SignatureTest.m */; };
 		573E6B900F32A1AE0041F4DC /* Portfolio.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E6B8F0F32A1AE0041F4DC /* Portfolio.m */; };
 		573E6B910F32A1AE0041F4DC /* Portfolio.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E6B8F0F32A1AE0041F4DC /* Portfolio.m */; };
 		573E6C0A0F32C98E0041F4DC /* Portfolio+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 573E6C090F32C98E0041F4DC /* Portfolio+Formatting.m */; };
@@ -147,6 +147,9 @@
 		5741EE890FAE77C100484927 /* StockSearchCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AC66580FAE4F3E00512D70 /* StockSearchCommController.m */; };
 		5741EF960FAE8CD000484927 /* ZNHttpRequestTest.get1 in Resources */ = {isa = PBXBuildFile; fileRef = 5741EF2F0FAE857500484927 /* ZNHttpRequestTest.get1 */; };
 		5741EF970FAE8CD500484927 /* ZNHttpRequestTest.get2 in Resources */ = {isa = PBXBuildFile; fileRef = 5741EF300FAE859C00484927 /* ZNHttpRequestTest.get2 */; };
+		5742CC6A1013DA7C0032762F /* PasswordChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5742CC691013DA7C0032762F /* PasswordChangeViewController.xib */; };
+		5742CC831013FB0D0032762F /* BaseAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5742CC821013FB0D0032762F /* BaseAccountViewController.m */; };
+		5742CCAA10140CE60032762F /* PasswordChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5742CCA910140CE60032762F /* PasswordChangeViewController.m */; };
 		5746BEC20F5D12CD0007C57C /* OverviewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5746BEC10F5D12CD0007C57C /* OverviewTableCell.m */; };
 		5746BEC40F5D12F00007C57C /* OverviewTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5746BEC30F5D12F00007C57C /* OverviewTableCellNarrow.xib */; };
 		5746BECA0F5D132E0007C57C /* OverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5746BEC90F5D132E0007C57C /* OverviewTableViewController.m */; };
@@ -329,11 +332,11 @@
 		57C395E00F5A11D0001F153D /* DollarSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C395DF0F5A11D0001F153D /* DollarSign.png */; };
 		57C3961D0F5A240E001F153D /* AutoRotatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C3961C0F5A240E001F153D /* AutoRotatingViewController.m */; };
 		57C396200F5A245A001F153D /* AutoRotatingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C3961F0F5A245A001F153D /* AutoRotatingTableViewController.m */; };
-		57CB188E0F0F01C600E95AE1 /* ActivationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB188D0F0F01C600E95AE1 /* ActivationState.m */; };
+		57CB188E0F0F01C600E95AE1 /* RegistrationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB188D0F0F01C600E95AE1 /* RegistrationState.m */; };
 		57CB1A0A0F0F1AF700E95AE1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		57CB1A0B0F0F1AF700E95AE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		57CB1A0C0F0F1AF700E95AE1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		57CB1A5F0F0F270E00E95AE1 /* ActivationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB188D0F0F01C600E95AE1 /* ActivationState.m */; };
+		57CB1A5F0F0F270E00E95AE1 /* RegistrationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CB188D0F0F01C600E95AE1 /* RegistrationState.m */; };
 		57CB47830FB0F3FE00F40CBA /* TickerSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CB47820FB0F3FE00F40CBA /* TickerSearchViewController.xib */; };
 		57CC18790FDCBAF900FE6542 /* ZNMSModelAttributeType.h in Headers */ = {isa = PBXBuildFile; fileRef = 57CC18770FDCBAF900FE6542 /* ZNMSModelAttributeType.h */; };
 		57CC187A0FDCBAF900FE6542 /* ZNMSModelAttributeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC18780FDCBAF900FE6542 /* ZNMSModelAttributeType.m */; };
@@ -524,9 +527,9 @@
 		573034D20FCA19EC001F9B38 /* OCProtocolMockObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCProtocolMockObject.m; sourceTree = "<group>"; };
 		573CB88C0FB99A7C00F5E262 /* ZNDebugIntegrity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNDebugIntegrity.h; sourceTree = "<group>"; };
 		573CB88D0FB99A7C00F5E262 /* ZNDebugIntegrity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDebugIntegrity.m; sourceTree = "<group>"; };
-		573E69FE0F3217B60041F4DC /* ActivationState+Signature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ActivationState+Signature.h"; sourceTree = "<group>"; };
-		573E69FF0F3217B60041F4DC /* ActivationState+Signature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ActivationState+Signature.m"; sourceTree = "<group>"; };
-		573E6AC60F321B380041F4DC /* ActivationState+SignatureTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ActivationState+SignatureTest.m"; sourceTree = "<group>"; };
+		573E69FE0F3217B60041F4DC /* RegistrationState+Signature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RegistrationState+Signature.h"; sourceTree = "<group>"; };
+		573E69FF0F3217B60041F4DC /* RegistrationState+Signature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RegistrationState+Signature.m"; sourceTree = "<group>"; };
+		573E6AC60F321B380041F4DC /* RegistrationState+SignatureTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RegistrationState+SignatureTest.m"; sourceTree = "<group>"; };
 		573E6B8E0F32A1AE0041F4DC /* Portfolio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Portfolio.h; sourceTree = "<group>"; };
 		573E6B8F0F32A1AE0041F4DC /* Portfolio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Portfolio.m; sourceTree = "<group>"; };
 		573E6C080F32C98E0041F4DC /* Portfolio+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Portfolio+Formatting.h"; sourceTree = "<group>"; };
@@ -540,6 +543,11 @@
 		57402F9D0F29956E00B64A7C /* PortfolioCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortfolioCommController.m; sourceTree = "<group>"; };
 		5741EF2F0FAE857500484927 /* ZNHttpRequestTest.get1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZNHttpRequestTest.get1; sourceTree = "<group>"; };
 		5741EF300FAE859C00484927 /* ZNHttpRequestTest.get2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZNHttpRequestTest.get2; sourceTree = "<group>"; };
+		5742CC691013DA7C0032762F /* PasswordChangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordChangeViewController.xib; sourceTree = "<group>"; };
+		5742CC811013FB0D0032762F /* BaseAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAccountViewController.h; sourceTree = "<group>"; };
+		5742CC821013FB0D0032762F /* BaseAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAccountViewController.m; sourceTree = "<group>"; };
+		5742CCA810140CE60032762F /* PasswordChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordChangeViewController.h; sourceTree = "<group>"; };
+		5742CCA910140CE60032762F /* PasswordChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordChangeViewController.m; sourceTree = "<group>"; };
 		5746BEC00F5D12CD0007C57C /* OverviewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewTableCell.h; sourceTree = "<group>"; };
 		5746BEC10F5D12CD0007C57C /* OverviewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewTableCell.m; sourceTree = "<group>"; };
 		5746BEC30F5D12F00007C57C /* OverviewTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewTableCellNarrow.xib; sourceTree = "<group>"; };
@@ -746,9 +754,9 @@
 		57C3961C0F5A240E001F153D /* AutoRotatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRotatingViewController.m; sourceTree = "<group>"; };
 		57C3961E0F5A245A001F153D /* AutoRotatingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRotatingTableViewController.h; sourceTree = "<group>"; };
 		57C3961F0F5A245A001F153D /* AutoRotatingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRotatingTableViewController.m; sourceTree = "<group>"; };
-		57CB188C0F0F01C600E95AE1 /* ActivationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationState.h; sourceTree = "<group>"; };
-		57CB188D0F0F01C600E95AE1 /* ActivationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationState.m; sourceTree = "<group>"; };
-		57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationStateTest.m; sourceTree = "<group>"; };
+		57CB188C0F0F01C600E95AE1 /* RegistrationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationState.h; sourceTree = "<group>"; };
+		57CB188D0F0F01C600E95AE1 /* RegistrationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationState.m; sourceTree = "<group>"; };
+		57CB19A50F0F14DF00E95AE1 /* RegistrationStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationStateTest.m; sourceTree = "<group>"; };
 		57CB1A040F0F1ADE00E95AE1 /* UpsideTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UpsideTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CB1A060F0F1ADE00E95AE1 /* UpsideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UpsideTests-Info.plist"; sourceTree = "<group>"; };
 		57CB47820FB0F3FE00F40CBA /* TickerSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TickerSearchViewController.xib; sourceTree = "<group>"; };
@@ -1395,12 +1403,12 @@
 		57CB188B0F0F016C00E95AE1 /* Activation */ = {
 			isa = PBXGroup;
 			children = (
-				57CB188C0F0F01C600E95AE1 /* ActivationState.h */,
-				57CB188D0F0F01C600E95AE1 /* ActivationState.m */,
-				57CB19A50F0F14DF00E95AE1 /* ActivationStateTest.m */,
-				573E69FE0F3217B60041F4DC /* ActivationState+Signature.h */,
-				573E69FF0F3217B60041F4DC /* ActivationState+Signature.m */,
-				573E6AC60F321B380041F4DC /* ActivationState+SignatureTest.m */,
+				57CB188C0F0F01C600E95AE1 /* RegistrationState.h */,
+				57CB188D0F0F01C600E95AE1 /* RegistrationState.m */,
+				57CB19A50F0F14DF00E95AE1 /* RegistrationStateTest.m */,
+				573E69FE0F3217B60041F4DC /* RegistrationState+Signature.h */,
+				573E69FF0F3217B60041F4DC /* RegistrationState+Signature.m */,
+				573E6AC60F321B380041F4DC /* RegistrationState+SignatureTest.m */,
 				28D7ACF60DDB3853001CB0EB /* RegistrationViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* RegistrationViewController.m */,
 				2899E5210DE3E06400AC0155 /* RegistrationViewController.xib */,
@@ -1410,9 +1418,14 @@
 				57A1F0B70F25640A00B8179A /* ActivationLoginViewController.h */,
 				57A1F0B80F25640A00B8179A /* ActivationLoginViewController.m */,
 				57A1F0BB0F25642300B8179A /* ActivationLoginViewController.xib */,
+				5742CC811013FB0D0032762F /* BaseAccountViewController.h */,
+				5742CC821013FB0D0032762F /* BaseAccountViewController.m */,
 				5702481B0FB5F9480004DEEC /* NamedAccountViewController.h */,
 				5702481C0FB5F9480004DEEC /* NamedAccountViewController.m */,
 				570248190FB5F9160004DEEC /* NamedAccountViewController.xib */,
+				5742CCA810140CE60032762F /* PasswordChangeViewController.h */,
+				5742CCA910140CE60032762F /* PasswordChangeViewController.m */,
+				5742CC691013DA7C0032762F /* PasswordChangeViewController.xib */,
 			);
 			path = Activation;
 			sourceTree = "<group>";
@@ -1714,6 +1727,7 @@
 				57CB47830FB0F3FE00F40CBA /* TickerSearchViewController.xib in Resources */,
 				571877860FB20437003E03D5 /* TickerSearchTableCellNarrow.xib in Resources */,
 				5702481A0FB5F9160004DEEC /* NamedAccountViewController.xib in Resources */,
+				5742CC6A1013DA7C0032762F /* PasswordChangeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1769,7 +1783,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* UpsideAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* RegistrationViewController.m in Sources */,
-				57CB188E0F0F01C600E95AE1 /* ActivationState.m in Sources */,
+				57CB188E0F0F01C600E95AE1 /* RegistrationState.m in Sources */,
 				57CDB2860F0F8554002C60C5 /* TabBarController.m in Sources */,
 				570C70B30F11217E00DC666C /* Stock.m in Sources */,
 				577091AE0F0FA8B000069411 /* StockTableViewCell.m in Sources */,
@@ -1808,7 +1822,7 @@
 				578266EE0F2C95A200B53703 /* NewOrderViewController.m in Sources */,
 				578269480F2E070800B53703 /* TradeOrderCommController.m in Sources */,
 				578269690F2E2BE300B53703 /* PendingOrdersSubmittingController.m in Sources */,
-				573E6A000F3217B60041F4DC /* ActivationState+Signature.m in Sources */,
+				573E6A000F3217B60041F4DC /* RegistrationState+Signature.m in Sources */,
 				573E6B910F32A1AE0041F4DC /* Portfolio.m in Sources */,
 				573E6C0A0F32C98E0041F4DC /* Portfolio+Formatting.m in Sources */,
 				578061260F3A805C001BF3AF /* AssetBook+NetWorth.m in Sources */,
@@ -1830,6 +1844,8 @@
 				5702482C0FB607600004DEEC /* UserQueryCommController.m in Sources */,
 				18411D240FE5775A00EFF249 /* OrdersViewController.m in Sources */,
 				571B411D0FEDB58F00A5CC9D /* UserUpdateCommController.m in Sources */,
+				5742CC831013FB0D0032762F /* BaseAccountViewController.m in Sources */,
+				5742CCAA10140CE60032762F /* PasswordChangeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1950,7 +1966,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57CB1A5F0F0F270E00E95AE1 /* ActivationState.m in Sources */,
+				57CB1A5F0F0F270E00E95AE1 /* RegistrationState.m in Sources */,
 				570C70B40F1121B100DC666C /* Stock.m in Sources */,
 				570D86D60F144BD900D54544 /* StockCache.m in Sources */,
 				570C70870F11203300DC666C /* Stock+Formatting.m in Sources */,
@@ -1982,9 +1998,9 @@
 				573E670E0F30FAA00041F4DC /* StockInfoCommControllerTest.m in Sources */,
 				573E670F0F30FAA00041F4DC /* AssetBook+RSSTest.m in Sources */,
 				573E67100F30FAA00041F4DC /* NewsCenterTest.m in Sources */,
-				573E67110F30FAA00041F4DC /* ActivationStateTest.m in Sources */,
-				573E6A020F3217B60041F4DC /* ActivationState+Signature.m in Sources */,
-				573E6AC70F321B380041F4DC /* ActivationState+SignatureTest.m in Sources */,
+				573E67110F30FAA00041F4DC /* RegistrationStateTest.m in Sources */,
+				573E6A020F3217B60041F4DC /* RegistrationState+Signature.m in Sources */,
+				573E6AC70F321B380041F4DC /* RegistrationState+SignatureTest.m in Sources */,
 				573E6B900F32A1AE0041F4DC /* Portfolio.m in Sources */,
 				573E6C0B0F32C98E0041F4DC /* Portfolio+Formatting.m in Sources */,
 				573E6C0D0F32C99F0041F4DC /* Portfolio+FormattingTest.m in Sources */,
@@ -2129,7 +2145,7 @@
 				);
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos2.2.1;
 			};
 			name = Distribution;
 		};
@@ -2359,7 +2375,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos2.2.1;
 			};
 			name = Debug;
 		};
@@ -2372,7 +2388,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos2.2.1;
 			};
 			name = Release;
 		};

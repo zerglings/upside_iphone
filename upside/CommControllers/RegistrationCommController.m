@@ -8,10 +8,10 @@
 
 #import "RegistrationCommController.h"
 
-#import "ActivationState.h"
-#import "ActivationState+Signature.h"
 #import "ControllerSupport.h"
 #import "Device.h"
+#import "RegistrationState.h"
+#import "RegistrationState+Signature.h"
 #import "ServerPaths.h"
 #import "ServiceError.h"
 #import "User.h"
@@ -37,7 +37,7 @@
 }
 
 
--(void)registerDeviceUsing:(ActivationState*)theActivationState {
+-(void)registerDeviceUsing:(RegistrationState*)theActivationState {
   [theActivationState retain];
   [activationState release];
   activationState = theActivationState;

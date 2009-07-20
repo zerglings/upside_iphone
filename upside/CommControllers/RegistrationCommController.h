@@ -14,16 +14,16 @@
 -(void)activationSucceeded;
 @end
 
-@class ActivationState;
+@class RegistrationState;
 
 @interface RegistrationCommController : NSObject {
   IBOutlet id<RegistrationCommDelegate> delegate;
 
   NSArray* responseQueries;
-  ActivationState* activationState;
+  RegistrationState* activationState;
 }
 
 // Try to register. Sends outcome via a message to the delegate.
--(void)registerDeviceUsing:(ActivationState*)activationState;
+-(void)registerDeviceUsing:(RegistrationState*)activationState;
 
 @end

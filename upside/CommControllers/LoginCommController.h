@@ -13,7 +13,7 @@
 -(void)loginSucceeded;
 @end
 
-@class ActivationState;
+@class RegistrationState;
 
 
 // Communication controller that performs user logins on the game server.
@@ -21,11 +21,11 @@
   IBOutlet id<LoginCommDelegate> delegate;
 
   NSArray* resposeQueries;
-  ActivationState* activationState;
+  RegistrationState* activationState;
 }
 
 // Try to login. Sends outcome via a message to the delegate.
--(void)loginUsing:(ActivationState*)activationState;
+-(void)loginUsing:(RegistrationState*)activationState;
 
 @property (nonatomic, assign) id<LoginCommDelegate> delegate;
 

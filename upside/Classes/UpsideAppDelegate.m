@@ -9,7 +9,7 @@
 #import "UpsideAppDelegate.h"
 
 #import "ActivationLoginViewController.h"
-#import "ActivationState.h"
+#import "RegistrationState.h"
 #import "ActivationUserChoiceViewController.h"
 #import "RegistrationViewController.h"
 #import "TabBarController.h"
@@ -23,15 +23,15 @@
 static BOOL hasLoggedIn = NO;
 
 -(void)applicationDidFinishLaunching:(UIApplication *)application {
-  if (![[ActivationState sharedState] isRegistered]) {
+  if (![[RegistrationState sharedState] isRegistered]) {
     self.viewController = [[[RegistrationViewController alloc]
                 initWithNibName:@"RegistrationViewController"
                 bundle:nil] autorelease];
   }
   else {
-    [[ActivationState sharedState] updateDeviceInfo];
-    if (![[ActivationState sharedState] isActivated]) {
-      if ([[[ActivationState sharedState] user] isPseudoUser]) {
+    [[RegistrationState sharedState] updateDeviceInfo];
+    if (![[RegistrationState sharedState] isActivated]) {
+      if ([[[RegistrationState sharedState] user] isPseudoUser]) {
         self.viewController = [[[ActivationUserChoiceViewController alloc]
                                 initWithNibName:@"ActivationUserChoiceViewController"
                                 bundle:nil] autorelease];
@@ -61,7 +61,7 @@ static BOOL hasLoggedIn = NO;
   SEL selector = @selector(setActivationState:);
   if ([self.viewController respondsToSelector:selector]) {
     [self.viewController performSelector:selector
-                              withObject:[ActivationState sharedState]];
+                              withObject:[RegistrationState sharedState]];
   }
     [window addSubview:viewController.view];
 }

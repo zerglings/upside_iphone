@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class ActivationState;
+@class RegistrationState;
 @class LoginCommController;
 
 @interface ActivationLoginViewController : UIViewController {
@@ -22,10 +22,10 @@
   IBOutlet UIActivityIndicatorView* activityIndicator;
 
   IBOutlet LoginCommController* commController;
-  ActivationState* activationState;
+  RegistrationState* activationState;
 }
 
-@property (nonatomic, retain) ActivationState* activationState;
+@property (nonatomic, retain) RegistrationState* activationState;
 
 -(IBAction)loginTapped:(id)sender;
 

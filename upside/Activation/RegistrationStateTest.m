@@ -1,5 +1,5 @@
 //
-//  ActivationStateTest.m
+//  RegistrationStateTest.m
 //  StockPlay
 //
 //  Created by Victor Costan on 1/2/09.
@@ -8,13 +8,13 @@
 
 #import "TestSupport.h"
 
-#import "ActivationState.h"
+#import "RegistrationState.h"
 #import "CryptoSupport.h"
 #import "Device.h"
 #import "User.h"
 
-@interface ActivationStateTest : SenTestCase {
-  ActivationState* activationState;
+@interface RegistrationStateTest : SenTestCase {
+  RegistrationState* activationState;
   Device* testDevice;
   User* testUser;
 }
@@ -22,11 +22,11 @@
 @end
 
 
-@implementation ActivationStateTest
+@implementation RegistrationStateTest
 
 -(void)setUp {
-  [ActivationState removeSavedState];
-  activationState = [[ActivationState alloc] init];
+  [RegistrationState removeSavedState];
+  activationState = [[RegistrationState alloc] init];
 
   testDevice = [[Device alloc] initWithProperties:
                 [NSDictionary dictionaryWithObjectsAndKeys:
@@ -36,7 +36,7 @@
 }
 
 -(void)tearDown {
-  [ActivationState removeSavedState];
+  [RegistrationState removeSavedState];
   [activationState release];
   [testDevice release];
   [testUser release];
@@ -47,8 +47,8 @@
 }
 
 -(void)testSingleton {
-  STAssertEqualObjects([ActivationState sharedState],
-                       [ActivationState sharedState],
+  STAssertEqualObjects([RegistrationState sharedState],
+                       [RegistrationState sharedState],
                        @"+sharedState vends different objects");
 }
 
@@ -57,7 +57,7 @@
   activationState.user = testUser;
   NSData* encoded = [activationState archiveToData];
 
-  ActivationState* newActivationState = [[ActivationState alloc] init];
+  RegistrationState* newActivationState = [[RegistrationState alloc] init];
   [newActivationState unarchiveFromData:encoded];
   STAssertTrue([newActivationState isRegistered],
                @"-decodeFromData did not restore activation state");
@@ -89,7 +89,7 @@
   activationState.deviceInfo = testDevice;
   [activationState save];
 
-  ActivationState* newActivationState = [[ActivationState alloc] init];
+  RegistrationState* newActivationState = [[RegistrationState alloc] init];
   [newActivationState load];
   STAssertTrue([newActivationState isRegistered],
                @"-load does not restore activated state");

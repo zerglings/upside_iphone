@@ -8,7 +8,7 @@
 
 #import "GameSyncController.h"
 
-#import "ActivationState.h"
+#import "RegistrationState.h"
 #import "AssetBook.h"
 #import "AssetBook+RSS.h"
 #import "AssetBook+StockCache.h"
@@ -78,7 +78,7 @@
 
 -(BOOL)handleServiceError:(ServiceError*)error {
   if ([error isLoginError]) {
-    [loginCommController loginUsing:[ActivationState sharedState]];
+    [loginCommController loginUsing:[RegistrationState sharedState]];
     return NO;
   }
 

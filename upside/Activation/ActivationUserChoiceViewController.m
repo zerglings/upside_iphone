@@ -9,7 +9,7 @@
 #import "ActivationUserChoiceViewController.h"
 
 #import "ActivationLoginViewController.h"
-#import "ActivationState.h"
+#import "RegistrationState.h"
 #import "UpsideAppDelegate.h"
 #import "User.h"
 

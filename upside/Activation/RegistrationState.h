@@ -1,5 +1,5 @@
 //
-//  ActivationState.h
+//  RegistrationState.h
 //  StockPlay
 //
 //  Created by Victor Costan on 1/2/09.
@@ -11,7 +11,7 @@
 @class Device;
 @class User;
 
-@interface ActivationState : NSObject {
+@interface RegistrationState : NSObject {
   Device* deviceInfo;
   User* user;
 }
@@ -36,7 +36,7 @@
 # pragma mark Singleton
 
 // The singleton ActivationState instance.
-+(ActivationState*)sharedState;
++(RegistrationState*)sharedState;
 
 #pragma mark I/O
 

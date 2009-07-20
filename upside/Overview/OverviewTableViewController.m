@@ -8,13 +8,16 @@
 
 #import "OverviewTableViewController.h"
 
+#import "RegistrationState.h"
 #import "AssetBook+Formatting.h"
 #import "AssetBook+NetWorth.h"
 #import "Game.h"
 #import "NamedAccountViewController.h"
 #import "OverviewTableCell.h"
+#import "PasswordChangeViewController.h"
 #import "PortfolioStat.h"
 #import "TradeBook+Formatting.h"
+#import "User.h"
 
 
 @interface OverviewTableViewController () <UIActionSheetDelegate>
@@ -22,6 +25,8 @@
          atIndexPath:(NSIndexPath*)indexPath;
 -(void)setOperationsCell:(OverviewTableCell*)cell
          atIndexPath:(NSIndexPath*)indexPath;
+-(void)setAccountCell:(OverviewTableCell*)cell
+       atIndexPath:(NSIndexPath*)indexPath;
 -(void)setSyncCell:(OverviewTableCell*)cell
          atIndexPath:(NSIndexPath*)indexPath;
 @end
@@ -97,10 +102,11 @@
 
 #define kResultsSection 0
 #define kOperationsSection 1
-#define kSyncSection 2
+#define kAccountSection 2
+#define kSyncSection 3
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 
@@ -113,6 +119,8 @@
       return @"Accomplishments";
     case kOperationsSection:
       return @"Assets";
+    case kAccountSection:
+      return @"Account";
     case kSyncSection:
       return @"Data Accuracy";
     default:
@@ -128,6 +136,8 @@
       return 2;
     case kOperationsSection:
       return 3;
+    case kAccountSection:
+      return 1;
     case kSyncSection:
       return 1;
     default:
@@ -148,6 +158,9 @@
       break;
     case kOperationsSection:
       [self setOperationsCell:cell atIndexPath:indexPath];
+      break;
+    case kAccountSection:
+      [self setAccountCell:cell atIndexPath:indexPath];
       break;
     case kSyncSection:
       [self setSyncCell:cell atIndexPath:indexPath];
@@ -270,6 +283,25 @@
   }
 }
 
+-(void)setAccountCell:(OverviewTableCell*)cell
+       atIndexPath:(NSIndexPath*)indexPath {
+  switch (indexPath.row) {
+    case 0: {
+      cell.descriptionLabel.text = @"User Name";
+      User* user = [[RegistrationState sharedState] user];
+      if ([user isPseudoUser]) {
+        cell.quantityLabel.text = @"not claimed";
+      }
+      else {
+        cell.quantityLabel.text = user.name;
+      }
+      break;
+    }
+    default:
+      break;
+  }
+}
+
 -(void)setSyncCell:(OverviewTableCell*)cell
        atIndexPath:(NSIndexPath*)indexPath {
   switch (indexPath.row) {
@@ -294,32 +326,45 @@
 }
 
 -(void)actionButtonTapped {
+  NSString* actionTitle = [[[RegistrationState sharedState] user] isPseudoUser] ?
+      @"Claim Your User Name" : @"Change Password";
+  
   UIActionSheet* actionSheet =
       [[UIActionSheet alloc] initWithTitle:@""
                                   delegate:self
                          cancelButtonTitle:@"Cancel"
                     destructiveButtonTitle:nil
-                         otherButtonTitles:@"Claim Your User Name", nil];
+                         otherButtonTitles:actionTitle, nil];
   [actionSheet showInView:self.view];
   [actionSheet release];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet
 clickedButtonAtIndex:(NSInteger)buttonIndex {
+  UIViewController* newViewController = nil;
+  
   switch (buttonIndex) {
     case 0: {
-      NamedAccountViewController* namedAccountViewController =
-          [[NamedAccountViewController alloc]
-           initWithNibName:@"NamedAccountViewController" bundle:nil];
-      [self.navigationController pushViewController:namedAccountViewController
-                                           animated:YES];
-      [namedAccountViewController release];
+      if ([[[RegistrationState sharedState] user] isPseudoUser]) {
+        newViewController = [[NamedAccountViewController alloc]
+                             initWithNibName:@"NamedAccountViewController"
+                             bundle:nil];
+      }
+      else {
+        newViewController = [[PasswordChangeViewController alloc]
+                             initWithNibName:@"PasswordChangeViewController"
+                             bundle:nil];
+      }
       break;
     }
     default:
       break;
   };
+  if (newViewController) {
+    [self.navigationController pushViewController:newViewController
+                                         animated:YES];
+    [newViewController release];
+  }
 }
 
 @end
-

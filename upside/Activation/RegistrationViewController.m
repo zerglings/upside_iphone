@@ -9,7 +9,7 @@
 #import "RegistrationViewController.h"
 
 #import "RegistrationCommController.h"
-#import "ActivationState.h"
+#import "RegistrationState.h"
 #import "UpsideAppDelegate.h"
 
 @interface RegistrationViewController ()
@@ -45,7 +45,7 @@
 
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 -(void)didReceiveMemoryWarning {

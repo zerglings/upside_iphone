@@ -8,7 +8,7 @@
 
 #import "PendingOrdersSubmittingController.h"
 
-#import "ActivationState.h"
+#import "RegistrationState.h"
 #import "LoginCommController.h"
 #import "ServiceError.h"
 #import "TradeBook.h"
@@ -66,7 +66,7 @@
 
 -(BOOL)handleServiceError:(ServiceError*)error {
   if ([error isLoginError]) {
-    [loginCommController loginUsing:[ActivationState sharedState]];
+    [loginCommController loginUsing:[RegistrationState sharedState]];
     return NO;
   }
 

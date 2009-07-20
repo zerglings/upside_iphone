@@ -8,7 +8,7 @@
 
 #import "LoginCommController.h"
 
-#import "ActivationState.h"
+#import "RegistrationState.h"
 #import "ControllerSupport.h"
 #import "CryptoSupport.h"
 #import "Device.h"
@@ -37,7 +37,7 @@
 }
 
 
--(void)loginUsing:(ActivationState*)theActivationState {
+-(void)loginUsing:(RegistrationState*)theActivationState {
   activationState = theActivationState;
 
   NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:

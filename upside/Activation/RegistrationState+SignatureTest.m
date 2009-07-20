@@ -1,5 +1,5 @@
 //
-//  ActivationState+SignatureTest.m
+//  RegistrationState+SignatureTest.m
 //  StockPlay
 //
 //  Created by Victor Costan on 1/29/09.
@@ -11,21 +11,21 @@
 #import "ActivationState+Signature.h"
 #import "Device.h"
 
-@interface ActivationStateSignatureTest : SenTestCase {
+@interface RegistrationStateSignatureTest : SenTestCase {
   NSString* testUdid;
   Device* testDevice;
-  ActivationState* testState;
+  RegistrationState* testState;
 }
 @end
 
-@implementation ActivationStateSignatureTest
+@implementation RegistrationStateSignatureTest
 
 -(void)setUp {
   testUdid = @"1234512345123451234512345123451234512345";
   testDevice = [[Device alloc] initWithProperties:
                 [NSDictionary dictionaryWithObjectsAndKeys:
                  testUdid, @"uniqueId", nil]];
-  testState = [[ActivationState alloc] init];
+  testState = [[RegistrationState alloc] init];
   [testState setDeviceInfo:testDevice];
 }
 

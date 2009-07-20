@@ -6,30 +6,19 @@
 //  Copyright Zergling.Net. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseAccountViewController.h"
 
 @class UserQueryCommController;
 @class UserQueryResponse;
-@class UserUpdateCommController;
 
-
-@interface NamedAccountViewController : UIViewController {
-  IBOutlet UITextField* userNameText;
-  IBOutlet UITextField* passwordText;
-  IBOutlet UISwitch* passwordVisibleSwitch;
-  IBOutlet UILabel* nameAvailabilityLabel;
-  IBOutlet UIImageView* nameAvailabilityImage;
-  IBOutlet UIView* progressIndicatorView;
-
+@interface NamedAccountViewController : BaseAccountViewController {
   UserQueryCommController* queryCommController;
   UserQueryResponse* lastQueryResponse;
-  UserUpdateCommController* updateCommController;
   NSString* lastQueryName;
   NSTimeInterval lastQueryTime;
 }
 @property (nonatomic, readwrite, retain) UserQueryResponse* lastQueryResponse;
 @property (nonatomic, readwrite, retain) NSString* lastQueryName;
 
--(IBAction)passwordVisibleChanged;
 -(IBAction)claimNameTapped;
 @end

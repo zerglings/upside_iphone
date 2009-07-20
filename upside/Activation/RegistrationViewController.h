@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @class RegistrationCommController;
-@class ActivationState;
+@class RegistrationState;
 
 @interface RegistrationViewController : UIViewController {
   IBOutlet UIButton* abortButton;
 
   IBOutlet RegistrationCommController* commController;
-  ActivationState* activationState;
+  RegistrationState* activationState;
 }
 
-@property (nonatomic, retain) ActivationState* activationState;
+@property (nonatomic, retain) RegistrationState* activationState;
 
 -(IBAction)abortTapped:(id)sender;
 

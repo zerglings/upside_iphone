@@ -8,8 +8,8 @@
 
 #import "ActivationLoginViewController.h"
 
-#import "ActivationState.h"
 #import "LoginCommController.h"
+#import "RegistrationState.h"
 #import "UpsideAppDelegate.h"
 #import "User.h"
 

@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@class ActivationState;
+@class RegistrationState;
 
 @interface ActivationUserChoiceViewController : UIViewController {
   IBOutlet UIButton* loginButton;
   IBOutlet UIButton* newAccountButton;
 
-  ActivationState* activationState;
+  RegistrationState* activationState;
 }
 
-@property (nonatomic, retain) ActivationState* activationState;
+@property (nonatomic, retain) RegistrationState* activationState;
 
 -(IBAction)loginTapped:(id)sender;
 -(IBAction)newAccountTapped:(id)sender;
