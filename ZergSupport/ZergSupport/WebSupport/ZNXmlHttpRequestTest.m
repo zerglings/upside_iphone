@@ -81,7 +81,7 @@
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
 
-  STAssertEquals(YES, receivedResponse, @"Response never received");
+  STAssertEquals(YES, receivedResponse, @"Never received response");
 }
 
 -(void)checkOnlineGetResponse:(NSArray*)responseArray {
@@ -121,7 +121,7 @@
 
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
-  STAssertEquals(YES, receivedResponse, @"Response never received");
+  STAssertEquals(YES, receivedResponse, @"Never received response");
 }
 
 -(void)checkOnlineResponse:(NSArray*)responseArray {
@@ -165,7 +165,7 @@
 
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                              1.0]];
-  STAssertEquals(YES, receivedResponse, @"Response never received");
+  STAssertEquals(YES, receivedResponse, @"Never received response");
 }
 
 -(void)checkFileResponse:(NSArray*)responseArray {

@@ -7,38 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		570282211000274F00198E2D /* ZNXmlHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B42090FEDC38800A5CC9D /* ZNXmlHttpRequestTest.m */; };
-		5702824F1000310D00198E2D /* ZNHttpJsonCommControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CF260FEEA0BA003FFC39 /* ZNHttpJsonCommControllerTest.m */; };
-		570282501000310D00198E2D /* ZNNetworkProgressTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CE5D0FEE463B003FFC39 /* ZNNetworkProgressTest.m */; };
-		570282511000310D00198E2D /* ZNSyncControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B414F0FEDC38800A5CC9D /* ZNSyncControllerTest.m */; };
-		570282521000310D00198E2D /* ZNTargetActionPairTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41520FEDC38800A5CC9D /* ZNTargetActionPairTest.m */; };
-		570282531000310D00198E2D /* ZNTargetActionSetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41550FEDC38800A5CC9D /* ZNTargetActionSetTest.m */; };
-		570282541000310D00198E2D /* ZNAesCipherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B415B0FEDC38800A5CC9D /* ZNAesCipherTest.m */; };
-		570282551000310D00198E2D /* ZNAppFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B415F0FEDC38800A5CC9D /* ZNAppFprintTest.m */; };
-		570282561000310D00198E2D /* ZNDeviceFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41660FEDC38800A5CC9D /* ZNDeviceFprintTest.m */; };
-		570282571000310D00198E2D /* ZNFileFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B416B0FEDC38800A5CC9D /* ZNFileFprintTest.m */; };
-		570282581000310D00198E2D /* ZNMd5DigestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B416F0FEDC38800A5CC9D /* ZNMd5DigestTest.m */; };
-		570282591000310D00198E2D /* ZNSha2DigestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41720FEDC38800A5CC9D /* ZNSha2DigestTest.m */; };
-		5702825A1000310D00198E2D /* ZNArrayCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41780FEDC38800A5CC9D /* ZNArrayCsvParserTest.m */; };
-		5702825B1000310D00198E2D /* ZNDictionaryXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B417B0FEDC38800A5CC9D /* ZNDictionaryXmlParserTest.m */; };
-		5702825C1000310D00198E2D /* ZNFormEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41800FEDC38800A5CC9D /* ZNFormEncoderTest.m */; };
-		5702825D1000310D00198E2D /* ZNFormFieldFormatter+Snake2LCamelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41830FEDC38800A5CC9D /* ZNFormFieldFormatter+Snake2LCamelTest.m */; };
-		5702825E1000310D00198E2D /* ZNFormFieldFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41860FEDC38800A5CC9D /* ZNFormFieldFormatterTest.m */; };
-		5702825F1000310D00198E2D /* ZNFormMultipartEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41890FEDC38800A5CC9D /* ZNFormMultipartEncoderTest.m */; };
-		570282601000310D00198E2D /* ZNFormURLEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B418C0FEDC38800A5CC9D /* ZNFormURLEncoderTest.m */; };
-		570282611000310D00198E2D /* ZNModelCsvParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41900FEDC38800A5CC9D /* ZNModelCsvParserTest.m */; };
-		570282621000310D00198E2D /* ZNModelJsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41940FEDC38800A5CC9D /* ZNModelJsonParserTest.m */; };
-		570282631000310D00198E2D /* ZNModelXmlParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41970FEDC38800A5CC9D /* ZNModelXmlParserTest.m */; };
-		570282641000310D00198E2D /* ZNObjectJsonParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B419B0FEDC38800A5CC9D /* ZNObjectJsonParserTest.m */; };
-		570282651000310D00198E2D /* ZNObjectQueryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41A00FEDC38800A5CC9D /* ZNObjectQueryTest.m */; };
-		570282661000310D00198E2D /* ZNModelDefinitionAttributeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41A90FEDC38800A5CC9D /* ZNModelDefinitionAttributeTest.m */; };
-		570282671000310D00198E2D /* ZNModelDefinitionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41AA0FEDC38800A5CC9D /* ZNModelDefinitionTest.m */; };
-		570282681000310D00198E2D /* ZNModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41AB0FEDC38800A5CC9D /* ZNModelTest.m */; };
-		570282691000310D00198E2D /* ZNMSRegistryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41BA0FEDC38800A5CC9D /* ZNMSRegistryTest.m */; };
-		5702826A1000310D00198E2D /* ZNSenTestCase+FixturesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41F20FEDC38800A5CC9D /* ZNSenTestCase+FixturesTest.m */; };
-		5702826B1000310D00198E2D /* ZNCsvHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41F90FEDC38800A5CC9D /* ZNCsvHttpRequestTest.m */; };
-		5702826C1000310D00198E2D /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41FE0FEDC38800A5CC9D /* ZNHttpRequestTest.m */; };
-		5702826D1000310D00198E2D /* ZNJsonHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B42050FEDC38800A5CC9D /* ZNJsonHttpRequestTest.m */; };
 		571B420B0FEDC38800A5CC9D /* ControllerSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 571B414C0FEDC38800A5CC9D /* ControllerSupport.h */; };
 		571B420C0FEDC38800A5CC9D /* ZNSyncController.h in Headers */ = {isa = PBXBuildFile; fileRef = 571B414D0FEDC38800A5CC9D /* ZNSyncController.h */; };
 		571B420D0FEDC38800A5CC9D /* ZNSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B414E0FEDC38800A5CC9D /* ZNSyncController.m */; };
@@ -198,6 +166,14 @@
 		571B503C0FEE264100A5CC9D /* ZNJsonHttpRequestTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 571B42040FEDC38800A5CC9D /* ZNJsonHttpRequestTest.json */; };
 		571B503D0FEE264100A5CC9D /* ZNXmlHttpRequestTest.body in Resources */ = {isa = PBXBuildFile; fileRef = 571B42080FEDC38800A5CC9D /* ZNXmlHttpRequestTest.body */; };
 		571B503E0FEE264100A5CC9D /* ZNXmlHttpRequestTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 571B420A0FEDC38800A5CC9D /* ZNXmlHttpRequestTest.xml */; };
+		57410A101015AC7500354D1E /* ZNAppStoreRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5781F94A1015823900B387C2 /* ZNAppStoreRequestTest.m */; };
+		5781F942101581E100B387C2 /* ZNAppStoreRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5781F940101581E100B387C2 /* ZNAppStoreRequest.h */; };
+		5781F943101581E100B387C2 /* ZNAppStoreRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5781F941101581E100B387C2 /* ZNAppStoreRequest.m */; };
+		5781F946101581EF00B387C2 /* StoreSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 5781F944101581EF00B387C2 /* StoreSupport.h */; };
+		5781F9E91015945200B387C2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781F9E81015945200B387C2 /* StoreKit.framework */; };
+		5781F9F61015946700B387C2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781F9E81015945200B387C2 /* StoreKit.framework */; };
+		5781FABF1015A59900B387C2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781F9E81015945200B387C2 /* StoreKit.framework */; };
+		5781FAD81015A9AC00B387C2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5781FAD71015A9AC00B387C2 /* Icon.png */; };
 		57A5CE800FEE481E003FFC39 /* ZNNetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CE520FEE451F003FFC39 /* ZNNetworkProgress.m */; };
 		57A5CF230FEE9FFA003FFC39 /* ZNHttpJsonCommController.h in Headers */ = {isa = PBXBuildFile; fileRef = 57A5CF210FEE9FFA003FFC39 /* ZNHttpJsonCommController.h */; };
 		57A5CF240FEE9FFA003FFC39 /* ZNHttpJsonCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CF220FEE9FFA003FFC39 /* ZNHttpJsonCommController.m */; };
@@ -412,6 +388,12 @@
 		571B4E5D0FEE247800A5CC9D /* GTMIPhoneUnitTestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMIPhoneUnitTestDelegate.m; sourceTree = "<group>"; };
 		571B4E5E0FEE247800A5CC9D /* GTMIPhoneUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMIPhoneUnitTestMain.m; sourceTree = "<group>"; };
 		571B4E680FEE24A200A5CC9D /* ZergSupportTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZergSupportTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5781F940101581E100B387C2 /* ZNAppStoreRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNAppStoreRequest.h; sourceTree = "<group>"; };
+		5781F941101581E100B387C2 /* ZNAppStoreRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAppStoreRequest.m; sourceTree = "<group>"; };
+		5781F944101581EF00B387C2 /* StoreSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreSupport.h; sourceTree = "<group>"; };
+		5781F94A1015823900B387C2 /* ZNAppStoreRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAppStoreRequestTest.m; sourceTree = "<group>"; };
+		5781F9E81015945200B387C2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		5781FAD71015A9AC00B387C2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		57A5CE2E0FEE419E003FFC39 /* RunIPhoneUnitTest.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunIPhoneUnitTest.sh; sourceTree = "<group>"; };
 		57A5CE510FEE451F003FFC39 /* ZNNetworkProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNNetworkProgress.h; sourceTree = "<group>"; };
 		57A5CE520FEE451F003FFC39 /* ZNNetworkProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNNetworkProgress.m; sourceTree = "<group>"; };
@@ -433,6 +415,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5781FABF1015A59900B387C2 /* StoreKit.framework in Frameworks */,
 				571B454C0FEDD1FE00A5CC9D /* libZergSupport.a in Frameworks */,
 				571B46190FEDD7CD00A5CC9D /* Foundation.framework in Frameworks */,
 				571B461B0FEDD7CD00A5CC9D /* UIKit.framework in Frameworks */,
@@ -445,6 +428,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5781F9F61015946700B387C2 /* StoreKit.framework in Frameworks */,
 				571B50250FEE25E600A5CC9D /* UIKit.framework in Frameworks */,
 				571B50260FEE25E600A5CC9D /* QuartzCore.framework in Frameworks */,
 				571B50270FEE25E600A5CC9D /* CoreGraphics.framework in Frameworks */,
@@ -461,6 +445,7 @@
 				571B47480FEDE00800A5CC9D /* CoreGraphics.framework in Frameworks */,
 				571B47490FEDE00800A5CC9D /* QuartzCore.framework in Frameworks */,
 				571B474A0FEDE00800A5CC9D /* UIKit.framework in Frameworks */,
+				5781F9E91015945200B387C2 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +466,7 @@
 				571B413D0FEDC22B00A5CC9D /* ZergSupport */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
+				5781F9E81015945200B387C2 /* StoreKit.framework */,
 			);
 			name = ZergSupport;
 			sourceTree = "<group>";
@@ -503,11 +489,13 @@
 				571B41570FEDC38800A5CC9D /* CryptoSupport */,
 				571B41730FEDC38800A5CC9D /* FormatSupport */,
 				571B41A10FEDC38800A5CC9D /* ModelSupport */,
+				5781F93F10157D5900B387C2 /* StoreSupport */,
 				571B41C10FEDC38800A5CC9D /* TestSupport */,
 				571B41F40FEDC38800A5CC9D /* WebSupport */,
 				57BA11820FEE283C00E980F0 /* LICENSE */,
 				57BA11830FEE283C00E980F0 /* MIT-LICENSE */,
 				57BA11840FEE283C00E980F0 /* README */,
+				5781FAD71015A9AC00B387C2 /* Icon.png */,
 				AA747D9E0F9514B9006C5449 /* ZergSupport_Prefix.pch */,
 				57BA11980FEE296C00E980F0 /* ZergSupportTests-Info.plist */,
 			);
@@ -772,6 +760,17 @@
 			name = ZergSupport;
 			sourceTree = "<group>";
 		};
+		5781F93F10157D5900B387C2 /* StoreSupport */ = {
+			isa = PBXGroup;
+			children = (
+				5781F944101581EF00B387C2 /* StoreSupport.h */,
+				5781F940101581E100B387C2 /* ZNAppStoreRequest.h */,
+				5781F941101581E100B387C2 /* ZNAppStoreRequest.m */,
+				5781F94A1015823900B387C2 /* ZNAppStoreRequestTest.m */,
+			);
+			path = StoreSupport;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -859,6 +858,8 @@
 				571B42A50FEDC38800A5CC9D /* ZNJsonHttpRequest.h in Headers */,
 				571B42A80FEDC38800A5CC9D /* ZNXmlHttpRequest.h in Headers */,
 				57A5CF230FEE9FFA003FFC39 /* ZNHttpJsonCommController.h in Headers */,
+				5781F942101581E100B387C2 /* ZNAppStoreRequest.h in Headers */,
+				5781F946101581EF00B387C2 /* StoreSupport.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -964,6 +965,7 @@
 				571B503C0FEE264100A5CC9D /* ZNJsonHttpRequestTest.json in Resources */,
 				571B503D0FEE264100A5CC9D /* ZNXmlHttpRequestTest.body in Resources */,
 				571B503E0FEE264100A5CC9D /* ZNXmlHttpRequestTest.xml in Resources */,
+				5781FAD81015A9AC00B387C2 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,38 +1003,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A5CF290FEEA156003FFC39 /* ZNTestModels.m in Sources */,
-				570282211000274F00198E2D /* ZNXmlHttpRequestTest.m in Sources */,
-				5702824F1000310D00198E2D /* ZNHttpJsonCommControllerTest.m in Sources */,
-				570282501000310D00198E2D /* ZNNetworkProgressTest.m in Sources */,
-				570282511000310D00198E2D /* ZNSyncControllerTest.m in Sources */,
-				570282521000310D00198E2D /* ZNTargetActionPairTest.m in Sources */,
-				570282531000310D00198E2D /* ZNTargetActionSetTest.m in Sources */,
-				570282541000310D00198E2D /* ZNAesCipherTest.m in Sources */,
-				570282551000310D00198E2D /* ZNAppFprintTest.m in Sources */,
-				570282561000310D00198E2D /* ZNDeviceFprintTest.m in Sources */,
-				570282571000310D00198E2D /* ZNFileFprintTest.m in Sources */,
-				570282581000310D00198E2D /* ZNMd5DigestTest.m in Sources */,
-				570282591000310D00198E2D /* ZNSha2DigestTest.m in Sources */,
-				5702825A1000310D00198E2D /* ZNArrayCsvParserTest.m in Sources */,
-				5702825B1000310D00198E2D /* ZNDictionaryXmlParserTest.m in Sources */,
-				5702825C1000310D00198E2D /* ZNFormEncoderTest.m in Sources */,
-				5702825D1000310D00198E2D /* ZNFormFieldFormatter+Snake2LCamelTest.m in Sources */,
-				5702825E1000310D00198E2D /* ZNFormFieldFormatterTest.m in Sources */,
-				5702825F1000310D00198E2D /* ZNFormMultipartEncoderTest.m in Sources */,
-				570282601000310D00198E2D /* ZNFormURLEncoderTest.m in Sources */,
-				570282611000310D00198E2D /* ZNModelCsvParserTest.m in Sources */,
-				570282621000310D00198E2D /* ZNModelJsonParserTest.m in Sources */,
-				570282631000310D00198E2D /* ZNModelXmlParserTest.m in Sources */,
-				570282641000310D00198E2D /* ZNObjectJsonParserTest.m in Sources */,
-				570282651000310D00198E2D /* ZNObjectQueryTest.m in Sources */,
-				570282661000310D00198E2D /* ZNModelDefinitionAttributeTest.m in Sources */,
-				570282671000310D00198E2D /* ZNModelDefinitionTest.m in Sources */,
-				570282681000310D00198E2D /* ZNModelTest.m in Sources */,
-				570282691000310D00198E2D /* ZNMSRegistryTest.m in Sources */,
-				5702826A1000310D00198E2D /* ZNSenTestCase+FixturesTest.m in Sources */,
-				5702826B1000310D00198E2D /* ZNCsvHttpRequestTest.m in Sources */,
-				5702826C1000310D00198E2D /* ZNHttpRequestTest.m in Sources */,
-				5702826D1000310D00198E2D /* ZNJsonHttpRequestTest.m in Sources */,
+				57410A101015AC7500354D1E /* ZNAppStoreRequestTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1080,6 +1051,7 @@
 				571B4B520FEDFC2100A5CC9D /* ZNModelCsvParser.m in Sources */,
 				57A5CE800FEE481E003FFC39 /* ZNNetworkProgress.m in Sources */,
 				57A5CF240FEE9FFA003FFC39 /* ZNHttpJsonCommController.m in Sources */,
+				5781F943101581E100B387C2 /* ZNAppStoreRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1121,7 +1093,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/ZergSupport.dst;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1141,7 +1112,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
 		};
@@ -1154,7 +1125,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
 		};
@@ -1173,11 +1144,6 @@
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin9/4.2.1\"",
 					"\"$(SDKROOT)/usr/lib/gcc/arm-apple-darwin9/4.0.1\"",
-				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					SenTestingKit,
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = ZergSupport4Tests;
@@ -1200,11 +1166,6 @@
 					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin9/4.2.1\"",
 					"\"$(SDKROOT)/usr/lib/gcc/arm-apple-darwin9/4.0.1\"",
 				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					SenTestingKit,
-				);
 				PREBINDING = NO;
 				PRODUCT_NAME = ZergSupport4Tests;
 				ZERO_LINK = NO;
@@ -1223,16 +1184,8 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "ZergSupport/ZergSupportTests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
 				PREBINDING = NO;
 				PRODUCT_NAME = ZergSupportTests;
-				SDKROOT = iphoneos2.1;
 			};
 			name = Debug;
 		};
@@ -1248,19 +1201,80 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "ZergSupport/ZergSupportTests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
 				PREBINDING = NO;
 				PRODUCT_NAME = ZergSupportTests;
-				SDKROOT = iphoneos2.1;
 				ZERO_LINK = NO;
 			};
 			name = Release;
+		};
+		5781FA3510159DCC00B387C2 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos3.0;
+			};
+			name = Distribution;
+		};
+		5781FA3610159DCC00B387C2 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/ZergSupport.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ZergSupport/ZergSupport_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = ZergSupport;
+			};
+			name = Distribution;
+		};
+		5781FA3710159DCC00B387C2 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin9/4.2.1\"",
+					"\"$(SDKROOT)/usr/lib/gcc/arm-apple-darwin9/4.0.1\"",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = ZergSupport4Tests;
+				ZERO_LINK = NO;
+			};
+			name = Distribution;
+		};
+		5781FA3810159DCC00B387C2 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "ZergSupport/ZergSupportTests-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PREBINDING = NO;
+				PRODUCT_NAME = ZergSupportTests;
+				PROVISIONING_PROFILE = "";
+				ZERO_LINK = NO;
+			};
+			name = Distribution;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1270,6 +1284,7 @@
 			buildConfigurations = (
 				1DEB921F08733DC00010E9CD /* Debug */,
 				1DEB922008733DC00010E9CD /* Release */,
+				5781FA3610159DCC00B387C2 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1279,6 +1294,7 @@
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,
 				1DEB922408733DC00010E9CD /* Release */,
+				5781FA3510159DCC00B387C2 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1288,6 +1304,7 @@
 			buildConfigurations = (
 				571B45480FEDD1F500A5CC9D /* Debug */,
 				571B45490FEDD1F500A5CC9D /* Release */,
+				5781FA3710159DCC00B387C2 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1297,6 +1314,7 @@
 			buildConfigurations = (
 				571B4E6B0FEE24A300A5CC9D /* Debug */,
 				571B4E6C0FEE24A300A5CC9D /* Release */,
+				5781FA3810159DCC00B387C2 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

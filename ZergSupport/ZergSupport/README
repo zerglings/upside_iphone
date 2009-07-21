@@ -104,6 +104,54 @@ Using JSON for a better life:
 http://blog.costan.us/2009/05/iphone-web-service-toolkit-upgrade-json.html
 
 
+TESTING
+
+ZergSupport is designed to help communicating with outside services. Its tests
+use mock services. This is the mock setup needed by the tests:
+
+1. A testbed (zn_testbed) service running on Heroku infrastructure. The code is
+at http://github.com/costan/zn_testbed/ and the testbed is hosted at
+http://zn_testbed.heroku.com
+
+2. An App Store application with the ID us.costan.ZergSupport. The application
+must be for pay (for In-App Purchases). Setup guide:
+  * In the iPhone Developer Program Portal, go to App IDs, select New App ID.
+    * (recommended) Use ZergSupport Tests for the description.
+    * (recommended) Select an existing Bundle Seed ID, if one is available.
+      This way, you can use your existing wildcard provisioning certificates to
+      run ZergSupport tests.
+    * Set the Bundle Identifier (App ID Suffix) to us.costan.ZergSupport, or
+      modify the bundle ID on the ZergSupportTests target to match your setting.
+    * Submit the creation form, then click on Configure next to the new App ID.
+    * Check the Enable In App Purchase button.
+  * Sign into iTunes connect.
+    * Create a new application, set the pricing to Tier 1 or above (not Free).
+      Everything else in the application description is not important.
+    * Build the ZergSupport tests in Distribution mode, submit the binary to
+      iTunes Connect. Any binary will work. Without a submitted binary, In-App
+      Purchase tests will fail.
+    * Go to Manage Your In-App Purchases, and setup the purchases described
+      below. The purchases must be under the ZergSupport test application.
+
+3. The following In-App Purchases:
+  * A test subscription:
+    * Reference Name: ZergSupport: Subscription Test
+    * Product ID: net.zergling.ZergSupport.sub
+    * Pricing Tier: 2
+    * Cleared for Sale: Yes
+    * Display Detail: Language - English
+      * Name: 1 Month Subscription
+      * Description: 1 Month Subscription Description 
+  * A test premium feature:
+    * Reference Name: ZergSupport: Feature Test
+    * Product ID: net.zergling.ZergSupport.feature
+    * Pricing Tier: 4
+    * Cleared for Sale: Yes
+    * Display Detail: Language - English
+      * Name: Awesome Feature
+      * Description: Awesome Feature Description
+
+
 CONTRIBUTING
 
 If you find ZergSupport useful, and want to give back, the easiest way is to

@@ -99,7 +99,7 @@
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
 
-  STAssertEquals(YES, receivedResponse, @"Response never received");
+  STAssertEquals(YES, receivedResponse, @"Never received response");
 }
 
 -(void)checkOnlineAndFileResponse:(NSData*)response {
@@ -135,7 +135,7 @@
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
 
-  STAssertEquals(YES, receivedResponse, @"Response never received");
+  STAssertEquals(YES, receivedResponse, @"Never received response");
 }
 
 -(void)checkOnlineMultipartResponse:(NSData*)response {
@@ -175,7 +175,7 @@
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
 
-  STAssertEquals(YES, receivedResponse, @"Response never received");
+  STAssertEquals(YES, receivedResponse, @"Never received response");
 }
 
 -(void)testOnlineGetWithoutQuery {
@@ -193,7 +193,7 @@
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
 
-  STAssertEquals(YES, receivedResponse, @"Response never received");
+  STAssertEquals(YES, receivedResponse, @"Never received response");
 }
 -(void)checkOnlineGetWithoutQuery:(NSData*)response {
   receivedResponse = YES;
@@ -226,7 +226,7 @@
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                            1.0]];
 
-  STAssertEquals(YES, receivedResponse, @"Response never received");
+  STAssertEquals(YES, receivedResponse, @"Never received response");
 }
 -(void)checkOnlineGetWithQuery:(NSData*)response {
   receivedResponse = YES;
@@ -256,7 +256,7 @@
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
 
-  STAssertEquals(YES, receivedResponse, @"Response never received");
+  STAssertEquals(YES, receivedResponse, @"Never received response");
 }
 -(void)checkHttpErrorCode:(NSError*)response {
   receivedResponse = YES;
