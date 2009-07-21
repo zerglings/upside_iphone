@@ -111,7 +111,7 @@ use mock services. This is the mock setup needed by the tests:
 
 1. A testbed (zn_testbed) service running on Heroku infrastructure. The code is
 at http://github.com/costan/zn_testbed/ and the testbed is hosted at
-http://zn_testbed.heroku.com
+http://zn-testbed.heroku.com
 
 2. An App Store application with the ID us.costan.ZergSupport. The application
 must be for pay (for In-App Purchases). Setup guide:

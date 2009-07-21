@@ -11,6 +11,7 @@
 #import "ZNAppStoreRequest.h"
 
 #import <StoreKit/StoreKit.h>
+#import <TargetConditionals.h>
 
 
 @interface ZNAppStoreRequestTest : SenTestCase {
@@ -18,6 +19,7 @@
   NSString* featureId;
   NSArray* productIds;
   BOOL receivedResponse;
+  BOOL inSimulator;
 }
 @end
 
@@ -29,7 +31,11 @@
   featureId = @"net.zergling.ZergSupport.feature";
   productIds = [[NSArray alloc] initWithObjects:subscriptionId, featureId, nil];
   receivedResponse = NO;
-  
+#if TARGET_IPHONE_SIMULATOR
+  inSimulator = YES;
+#else  // TARGET_IPHONE_SIMULATOR
+  inSimulator = NO;
+#endif  // TARGET_IPHONE_SIMULATOR
 }
 -(void)tearDown {
   [productIds release];
@@ -66,6 +72,12 @@
 }
 
 -(void)testSingleProduct {
+  if (inSimulator) {
+    NSLog(@"StoreKit cannot be tested in the Simulator. Please run tests on "
+          @"real hardware if you make changes to ZNAppStoreRequest.");
+    return;
+  }
+  
   [ZNAppStoreRequest getInfoForProductId:subscriptionId
                                   target:self
                                   action:@selector(checkSingleProductInfo:)];
@@ -90,6 +102,12 @@
 }
 
 -(void)testMultipleProducts {
+  if (inSimulator) {
+    NSLog(@"StoreKit cannot be tested in the Simulator. Please run tests on "
+          @"real hardware if you make changes to ZNAppStoreRequest.");
+    return;
+  }
+  
   [ZNAppStoreRequest getInfoForProductIds:[NSArray arrayWithObjects:
                                            subscriptionId, featureId, nil]
                                    target:self
