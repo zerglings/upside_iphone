@@ -21,7 +21,7 @@
 // Convenience method for issuing a request.
 +(void)callService:(NSString*)service
             method:(NSString*)method
-              data:(NSDictionary*)data
+              data:(NSObject*)dictionaryOrModel
        fieldCasing:(enum ZNFormatterCasing)fieldCasing
       encoderClass:(Class)dataEncodingClass
    responseQueries:(NSArray*)responseQueries
@@ -32,7 +32,7 @@
 // Convenience method for issuing a request with a snake-cased server.
 +(void)callService:(NSString*)service
             method:(NSString*)method
-              data:(NSDictionary*)data
+              data:(NSObject*)dictionaryOrModel
    responseQueries:(NSArray*)responseQueries
             target:(NSObject*)target
             action:(SEL)action;

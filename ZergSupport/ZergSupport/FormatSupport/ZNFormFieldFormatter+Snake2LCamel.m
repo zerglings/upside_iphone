@@ -23,7 +23,7 @@
   BOOL upcaseNextChar = NO;
   NSUInteger formattedNameLength = 0;
   for(NSUInteger i = 0; i < nameLength; i++) {
-    if (nameChars[i] == '_') {
+    if (nameChars[i] == '_' || nameChars[i] == '-') {
       upcaseNextChar = (formattedNameLength > 0) ? YES : NO;
       continue;
     }

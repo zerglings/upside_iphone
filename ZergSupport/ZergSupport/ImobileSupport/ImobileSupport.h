@@ -6,6 +6,6 @@
 //  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
-// Main header file for the Zergling.Net Store Support.
+// Main header file for the Zergling.Net iMobile service support.
 
-#import "ZNStoreBlob.h"
+#import "ZNAppStoreRequest.h"

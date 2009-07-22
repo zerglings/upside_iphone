@@ -13,6 +13,7 @@
 
 @interface ZNMSRegistry : NSObject {
   ZNMSAttributeType* booleanType;
+  ZNMSAttributeType* dataType;
   ZNMSAttributeType* dateType;
   ZNMSAttributeType* doubleType;
   ZNMSAttributeType* integerType;
@@ -23,6 +24,7 @@
 }
 
 @property (nonatomic, readonly) ZNMSAttributeType* booleanType;
+@property (nonatomic, readonly) ZNMSAttributeType* dataType;
 @property (nonatomic, readonly) ZNMSAttributeType* dateType;
 @property (nonatomic, readonly) ZNMSAttributeType* doubleType;
 @property (nonatomic, readonly) ZNMSAttributeType* integerType;

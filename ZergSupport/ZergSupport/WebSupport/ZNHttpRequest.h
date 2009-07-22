@@ -42,11 +42,12 @@ extern NSString* kZNHttpErrorDomain;
 // args:
 //   service: a NSString with the URL of the service to be called
 //   method: the HTTP method to use (one of the kZNHttpMethod* constants)
-//   data: the form data to send in the HTTP request, as a NSDictionary where
-//         the keys are field names, and the values can be strings, arrays,
-//         dictionaries, or Model Support models; for non-string values, the
-//         field names will be decorated according to the Rails convention,
-//         as in: arrayItem[], hash[hashKey][subhashKey]
+//   data: the form data to send in the HTTP request, as a NSDictionary or
+//         ModelSupport model,  where the keys / properties are field names, and
+//         the values can be strings, arrays, dictionaries, or Model Support
+//         models; for non-string values, the field names will be decorated
+//         according to the Rails convention, as in: arrayItem[],
+//         hash[hashKey][subhashKey]
 //   fieldCasing: the case convention of the HTTP service; for example, specify
 //                kZNFormatterSnakeCase when talking to Rails servers, so models
 //                can use the appropriate convention on both the iPhone and the
@@ -60,7 +61,7 @@ extern NSString* kZNHttpErrorDomain;
 //   in case of success, or an NSError if something went wrong
 +(void)callService:(NSString*)service
             method:(NSString*)method
-              data:(NSDictionary*)data
+              data:(NSObject*)dictionaryOrModel
        fieldCasing:(enum ZNFormatterCasing)fieldCasing
       encoderClass:(Class)dataEncodingClass
             target:(NSObject*)target
@@ -79,7 +80,7 @@ extern NSString* kZNHttpErrorDomain;
 // and starts it.
 +(NSURLRequest*)newURLRequestToService:(NSString*)service
                                 method:(NSString*)method
-                                  data:(NSDictionary*)data
+                                  data:(NSObject*)dictionaryOrModel
                            fieldCasing:(enum ZNFormatterCasing)fieldCasing
                           encoderClass:(Class)dataEncodingClass;
 

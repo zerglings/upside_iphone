@@ -22,7 +22,7 @@
 // Convenience method for issuing a request.
 +(void)callService:(NSString*)service
             method:(NSString*)method
-              data:(NSDictionary*)data
+              data:(NSObject*)dictionaryOrModel
        fieldCasing:(enum ZNFormatterCasing)fieldCasing
       encoderClass:(Class)dataEncodingClass
      responseClass:(Class)modelClass
@@ -33,7 +33,7 @@ responseProperties:(NSArray*)modelPropertyNames
 // Convenience method for issuing a request with snake-cased form fields.
 +(void)callService:(NSString*)service
             method:(NSString*)method
-              data:(NSDictionary*)data
+              data:(NSObject*)dictionaryOrModel
      responseClass:(Class)modelClass
 responseProperties:(NSArray*)modelPropertyNames
             target:(NSObject*)target

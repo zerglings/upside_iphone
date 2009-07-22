@@ -51,6 +51,12 @@
           objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
 }
 
+// Retrieves the running application's id.
++(NSString*)appId {
+  return [[NSBundle mainBundle]
+          objectForInfoDictionaryKey:(NSString*)kCFBundleIdentifierKey];
+}
+
 // Produces the device attributes returned by -deviceAttributes.
 //
 // The result of this method does not change throughout the duration of program
@@ -58,6 +64,7 @@
 +(NSDictionary*)copyDeviceAttributes {
   UIDevice* device = [UIDevice currentDevice];
   return [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+          [ZNDeviceFprint appId], @"appId",
           [ZNDeviceFprint appVersion], @"appVersion",
           [ZNDeviceFprint hardwareModel], @"hardwareModel",
           [device systemName], @"osName",

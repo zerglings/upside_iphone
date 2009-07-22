@@ -104,6 +104,22 @@ Using JSON for a better life:
 http://blog.costan.us/2009/05/iphone-web-service-toolkit-upgrade-json.html
 
 
+CONTRIBUTING
+
+If you find ZergSupport useful, and want to give back, the easiest way is to
+improve the existing documentation. The next step up is implementing new
+functionality, or fixing bugs. This can be demanding, because I care a lot about
+maintaining full test coverage. To compensate for that, I will be happy to help
+out with directions and ideas, or brainstorm on means of testing new code. You 
+must be prepared to assign the copyright of your contributions to Zergling.Net,
+and have your code released under the MIT license, to keep licensing legals
+simple for ZergSupport's users. 
+
+If your employment conditions or philosophy prevent you from contributing to
+ZergSupport by development, you can buy StockPlay from the App Store, and thus
+contribute indirectly.
+
+
 TESTING
 
 ZergSupport is designed to help communicating with outside services. Its tests
@@ -137,7 +153,8 @@ must be for pay (for In-App Purchases). Setup guide:
   * A test subscription:
     * Reference Name: ZergSupport: Subscription Test
     * Product ID: net.zergling.ZergSupport.sub
-    * Pricing Tier: 2
+    * Type: Subscription
+    * Price Tier: 2
     * Cleared for Sale: Yes
     * Display Detail: Language - English
       * Name: 1 Month Subscription
@@ -145,24 +162,27 @@ must be for pay (for In-App Purchases). Setup guide:
   * A test premium feature:
     * Reference Name: ZergSupport: Feature Test
     * Product ID: net.zergling.ZergSupport.feature
-    * Pricing Tier: 4
+    * Type: Non-Consumable
+    * Price Tier: 4
     * Cleared for Sale: Yes
     * Display Detail: Language - English
       * Name: Awesome Feature
       * Description: Awesome Feature Description
-
-
-CONTRIBUTING
-
-If you find ZergSupport useful, and want to give back, the easiest way is to
-improve the existing documentation. The next step up is implementing new
-functionality, or fixing bugs. This can be demanding, because I care a lot about
-maintaining full test coverage. To compensate for that, I will be happy to help
-out with directions and ideas, or brainstorm on means of testing new code. You 
-must be prepared to assign the copyright of your contributions to Zergling.Net,
-and have your code released under the MIT license, to keep licensing legals
-simple for ZergSupport's users. 
-
-If your employment conditions or philosophy prevent you from contributing to
-ZergSupport by development, you can buy StockPlay from the App Store, and thus
-contribute indirectly.
+  * A test cheap item:
+    * Reference Name: ZergSupport: Cheap Subscription Test
+    * Product ID: net.zergling.ZergSupport.sub_cheap
+    * Type: Subscription
+    * Price Tier: 1
+    * Cleared for Sale: Yes
+    * Display Detail: Language - English
+      * Name: 1 Day Subscription
+      * Description: Lowest possible price
+  * A cancellation test item:
+    * Reference Name: ZergSupport: Cancellation Test
+    * Product ID: net.zergling.ZergSupport.cancel_me
+    * Type: Consumable
+    * Price Tier: 1
+    * Cleared for Sale: Yes
+    * Display Detail: Language - English
+      * Name: Cancel This Purchase
+      * Description: This item tests cancelled purchases. DON'T agree to buy it.

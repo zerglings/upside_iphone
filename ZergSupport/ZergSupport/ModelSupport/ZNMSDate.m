@@ -17,15 +17,25 @@
 -(id)init {
   if ((self = [super init])) {
     osxFormatter = [[NSDateFormatter alloc] init];
-    [osxFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
+    [osxFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    [osxFormatter setLenient:YES];
+    osxFormatter2 = [[NSDateFormatter alloc] init];
+    [osxFormatter2 setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
+    [osxFormatter2 setLenient:YES];    
+    railsFormatter = [[NSDateFormatter alloc] init];
+    [railsFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
+    [railsFormatter setLenient:YES];
     rssFormatter = [[NSDateFormatter alloc] init];
     [rssFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss zzz"];
+    [rssFormatter setLenient:YES];
   }
   return self;
 }
 
 -(void)dealloc {
   [osxFormatter release];
+  [osxFormatter2 release];
+  [railsFormatter release];
   [rssFormatter release];
   [super dealloc];
 }
@@ -49,6 +59,12 @@
   if ([boxedObject isKindOfClass:[NSString class]]) {
     date = [osxFormatter dateFromString:(NSString*)boxedObject];
     if (!date) {
+      date = [osxFormatter2 dateFromString:(NSString*)boxedObject];
+    }
+    if (!date) {
+      date = [railsFormatter dateFromString:(NSString*)boxedObject];
+    }
+    if (!date) {
       date = [rssFormatter dateFromString:(NSString*)boxedObject];
     }
   }
@@ -58,8 +74,9 @@
   else if ([boxedObject isKindOfClass:[NSNull class]]) {
     date = nil;
   }
-  else
+  else {
     date = nil;
+  }
 
   Ivar runtimeIvar = [attribute runtimeIvar];
   switch ([attribute setterStrategy]) {

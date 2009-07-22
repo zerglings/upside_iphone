@@ -50,7 +50,7 @@ static const NSUInteger kBoundaryLength = 16;
   [super dealloc];
 }
 
-+(NSData*)copyEncodingFor:(NSDictionary*)dictionary
++(NSData*)copyEncodingFor:(NSObject*)dictionaryOrModel
       usingFieldFormatter:(ZNFormFieldFormatter*)formatter {
   // The encoder will set its output to nil if the randomly generated boundary
   // is contained inside the encoded data. If that happens, the encoding is
@@ -62,7 +62,7 @@ static const NSUInteger kBoundaryLength = 16;
   while(true) {
     ZNFormMultipartEncoder* encoder =
         [[self alloc] initWithFieldFormatter:formatter];
-    [encoder encode:dictionary];
+    [encoder encode:dictionaryOrModel];
     NSMutableData* output = [[encoder output] retain];
     [output appendBytes:"--" length:2];
     [output appendData:[encoder boundary]];

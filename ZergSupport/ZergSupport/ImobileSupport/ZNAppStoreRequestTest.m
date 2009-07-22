@@ -18,8 +18,9 @@
   NSString* subscriptionId;
   NSString* featureId;
   NSArray* productIds;
-  BOOL receivedResponse;
   BOOL inSimulator;
+  
+  BOOL receivedResponse;
 }
 @end
 
@@ -30,12 +31,14 @@
   subscriptionId = @"net.zergling.ZergSupport.sub";
   featureId = @"net.zergling.ZergSupport.feature";
   productIds = [[NSArray alloc] initWithObjects:subscriptionId, featureId, nil];
-  receivedResponse = NO;
+    
 #if TARGET_IPHONE_SIMULATOR
   inSimulator = YES;
 #else  // TARGET_IPHONE_SIMULATOR
   inSimulator = NO;
 #endif  // TARGET_IPHONE_SIMULATOR
+  
+  receivedResponse = NO;  
 }
 -(void)tearDown {
   [productIds release];
@@ -92,13 +95,41 @@
   STAssertEquals(YES, receivedResponse, @"Never received StoreKit response");
 }
 
--(void)checkSingleProductInfo:(NSArray*)productInfo {
+-(void)checkSingleProductInfo:(SKProduct*)productInfo {
   receivedResponse = YES;
   STAssertFalse([productInfo isKindOfClass:[NSError class]],
                 @"Fetching product info failed: %@", [productInfo description]);  
-  STAssertEquals(1U, [productInfo count], @"Expected info for 1 product");
   
-  [self checkSubscriptionProductInfo:[productInfo objectAtIndex:0]];
+  [self checkSubscriptionProductInfo:productInfo];
+}
+
+-(void)testNonExistentSingleProduct {
+  if (inSimulator) {
+    NSLog(@"StoreKit cannot be tested in the Simulator. Please run tests on "
+          @"real hardware if you make changes to ZNAppStoreRequest.");
+    return;
+  }
+  
+  [ZNAppStoreRequest getInfoForProductId:@"net.zergling.ZergSupport.no_product"
+                                  target:self
+                                  action:
+   @selector(checkNonExistentSingleProductInfo:)];
+  
+  for (NSUInteger i = 0; i < 300; i++) {
+    [[NSRunLoop currentRunLoop] runUntilDate:
+     [NSDate dateWithTimeIntervalSinceNow:0.1]];
+    if (receivedResponse) {
+      break;
+    }
+  }
+  STAssertEquals(YES, receivedResponse, @"Never received StoreKit response");
+}
+
+-(void)checkNonExistentSingleProductInfo:(SKProduct*)productInfo {
+  receivedResponse = YES;
+  STAssertNil(productInfo,
+              @"Fetching non-existent product info yielded %@",
+              [productInfo description]);  
 }
 
 -(void)testMultipleProducts {

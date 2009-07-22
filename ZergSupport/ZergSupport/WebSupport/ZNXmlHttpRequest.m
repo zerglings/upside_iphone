@@ -43,7 +43,7 @@
 
 +(void)callService:(NSString*)service
             method:(NSString*)method
-              data:(NSDictionary*)data
+              data:(NSObject*)dictionaryOrModel
        fieldCasing:(enum ZNFormatterCasing)fieldCasing
       encoderClass:(Class)dataEncodingClass
     responseModels:(NSDictionary*)responseModels
@@ -52,7 +52,7 @@
             action:(SEL)action {
   NSURLRequest* urlRequest = [self newURLRequestToService:service
                                                    method:method
-                                                     data:data
+                                                     data:dictionaryOrModel
                                               fieldCasing:fieldCasing
                                              encoderClass:dataEncodingClass];
   ZNXmlHttpRequest* request =
@@ -68,13 +68,13 @@
 
 +(void)callService:(NSString*)service
             method:(NSString*)method
-              data:(NSDictionary*)data
+              data:(NSObject*)dictionaryOrModel
     responseModels:(NSDictionary*)responseModels
             target:(NSObject*)target
             action:(SEL)action {
   return [self callService:service
                     method:method
-                      data:data
+                      data:dictionaryOrModel
                fieldCasing:kZNFormatterSnakeCase
               encoderClass:[ZNFormURLEncoder class]
             responseModels:responseModels

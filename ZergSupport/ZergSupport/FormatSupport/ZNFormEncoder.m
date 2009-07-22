@@ -39,10 +39,16 @@
   [super dealloc];
 }
 
-+(NSData*)copyEncodingFor:(NSDictionary*)dictionary
++(NSData*)copyEncodingFor:(NSObject*)dictionaryOrModel
       usingFieldFormatter:(ZNFormFieldFormatter*)formatter {
+  NSAssert1([dictionaryOrModel isKindOfClass:[NSDictionary class]] ||
+            [dictionaryOrModel isKindOfClass:[ZNModel class]] ||
+            !dictionaryOrModel,
+            @"Object to be encoded is not a dictionary or a model: %@",
+            [dictionaryOrModel description]);
+  
   ZNFormEncoder* encoder = [[self alloc] initWithFieldFormatter:formatter];
-  [encoder encode:dictionary];
+  [encoder encode:dictionaryOrModel];
   NSMutableData* output = [[encoder output] retain];
   [encoder release];
   return output;
@@ -64,12 +70,20 @@
     }
   }
   else {
-    for (NSString* key in (NSDictionary*)object) {
+    NSDictionary* dictionary = [object isKindOfClass:[ZNModel class]] ?
+        [(ZNModel*)object copyToDictionaryForcingStrings:YES] :
+        (NSDictionary*)object;
+        
+    for (NSString* key in dictionary) {
       NSString* formattedKey = [fieldFormatter copyFormattedName:key];
       [self encodeKey:formattedKey
-                value:[(NSDictionary*)object objectForKey:key]
+                value:[dictionary objectForKey:key]
             keyPrefix:keyPrefix];
       [formattedKey release];
+    }
+    
+    if (dictionary != object) {
+      [dictionary release];
     }
   }
 }
@@ -83,19 +97,13 @@
   if ([value isKindOfClass:[NSDictionary class]] ||
       [value isKindOfClass:[NSArray class]] ||
       [value isKindOfClass:[ZNModel class]]) {
-    NSObject* realValue = [value isKindOfClass:[ZNModel class]] ?
-    [(ZNModel*)value copyToDictionaryForcingStrings:YES] : value;
-
     NSString* newPrefix;
     if ([keyPrefix length] != 0)
       newPrefix = [[NSString alloc] initWithFormat:@"%@[%@]", keyPrefix, key];
     else
       newPrefix = [key retain];
-    [self encode:realValue keyPrefix:newPrefix];
+    [self encode:value keyPrefix:newPrefix];
     [newPrefix release];
-
-    if (realValue != value)
-      [realValue release];
   }
   else {
     NSAssert([value isKindOfClass:[NSString class]],

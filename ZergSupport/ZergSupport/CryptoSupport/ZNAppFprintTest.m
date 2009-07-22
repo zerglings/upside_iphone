@@ -47,7 +47,7 @@
   NSData* manifestData = [NSData
                           dataWithContentsOfFile:[ZNAppFprint executablePath]];
   manifest = [[NSString alloc] initWithData:manifestData
-                                   encoding:NSASCIIStringEncoding];
+                                   encoding:NSISOLatin1StringEncoding];
 
   testService =
       @"http://zn-testbed.heroku.com/crypto_support/app_fprint.xml";

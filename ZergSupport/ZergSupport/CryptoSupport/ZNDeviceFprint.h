@@ -20,6 +20,7 @@
 // The device attributes included in the fingerprinting process.
 //
 // A dictionary with the following keys (with example values):
+//   * appId: @"us.costan.ZergSupportTests" (from Info.plist in the main app)
 //   * appVersion: @"1.0" (taken from Info.plist in the main app)
 //   * hardwareModel: @"iPhone1,1"
 //   * osName: @"iPhone OS"

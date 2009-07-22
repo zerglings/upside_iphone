@@ -60,12 +60,18 @@
   NSCharacterSet* digits = [NSCharacterSet decimalDigitCharacterSet];
   NSDictionary* attributes = deviceAttributes;
 
+  // NOTE: The appId below is hard-coded in the Info.plist for
+  //       ZergSupportTests. The test will probably fail when included in
+  //       another suite.
+  STAssertEqualStrings(@"us.costan.ZergSupportTests",
+                       [attributes objectForKey:@"appId"], @"appId");
+  
   // NOTE: The appVersion below is hard-coded in the Info.plist for
   //       ZergSupportTests. The test will probably fail when included in
   //       another suite.
   STAssertEqualStrings(@"1.9.8.3", [attributes objectForKey:@"appVersion"],
                        @"appVersion");
-
+  
   // NOTE: The checks below make assumptions on Apple's future moves. They
   //       will break if the assumptions are wrong. The main point of the tests
   //       is to make sure that the value in each key looks right.
@@ -125,9 +131,9 @@
   // This method isn't part of the public API. It's tested for debugging
   // convenience, because its failure log can helps debug most of the logic.
   NSString* goldenDataString = [goldenDigests objectForKey:@"data"];
-  NSString* dataString = [[NSString alloc] initWithData:[ZNDeviceFprint
-                                                         fprintData]
-                                               encoding:NSASCIIStringEncoding];
+  NSString* dataString =
+      [[NSString alloc] initWithData:[ZNDeviceFprint fprintData]
+                            encoding:NSISOLatin1StringEncoding];
   STAssertEqualStrings(goldenDataString, dataString, @"Fingerprint data");
   [dataString release];
 

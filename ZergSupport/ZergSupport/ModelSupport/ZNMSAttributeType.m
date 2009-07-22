@@ -26,6 +26,8 @@
         // Class name following the type. Check for special cases first.
         if (!strncmp(encodedType, "\"NSString\"", 10))
           return [[[ZNMSRegistry sharedRegistry] stringType] retain];
+        else if (!strncmp(encodedType, "\"NSData\"", 8))
+          return [[[ZNMSRegistry sharedRegistry] dataType] retain];
         else if (!strncmp(encodedType, "\"NSDate\"", 8))
           return [[[ZNMSRegistry sharedRegistry] dateType] retain];
         else {

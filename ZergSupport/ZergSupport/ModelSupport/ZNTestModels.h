@@ -78,12 +78,14 @@
   NSInteger integerVal;
   NSUInteger uintegerVal;
   NSString* stringVal;
+  NSData* dataVal;
 }
 @property (nonatomic) BOOL trueVal, falseVal;
 @property (nonatomic) double doubleVal;
 @property (nonatomic) NSInteger integerVal;
 @property (nonatomic) NSUInteger uintegerVal;
-@property (nonatomic, retain) NSString* stringVal;
+@property (nonatomic, retain, readwrite) NSString* stringVal;
+@property (nonatomic, retain, readwrite) NSData* dataVal;
 @end
 
 @protocol ZNTestModel_ZNMS

@@ -18,7 +18,7 @@
 }
 
 // Encodes the given dictionary or ModelSupport model.
-+(NSData*)copyEncodingFor:(NSDictionary*)dictionary
++(NSData*)copyEncodingFor:(NSObject*)dictionaryOrModel
       usingFieldFormatter:(ZNFormFieldFormatter*)formatter;
 
 // Computes the correct Content-Type: directed value for some encoded content.

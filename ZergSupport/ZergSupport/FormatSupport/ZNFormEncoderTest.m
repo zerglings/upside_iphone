@@ -156,6 +156,18 @@
   [string release];
 }
 
+-(void)testModelRoot {
+  NSData* data = [ZNFormEncoderTestEncoder copyEncodingFor:testModel
+                                       usingFieldFormatter:identityFormatter];
+  NSString* string = [[NSString alloc] initWithData:data
+                                           encoding:NSUTF8StringEncoding];
+  // This is dependent on how NSStrings hash. Wish it weren't.
+  STAssertEqualStrings(@"key11: val11; key12: 31415; ",
+                       string, @"Model at the root");
+  [data release];
+  [string release];
+}
+
 -(void)testKeyFormatting {
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
                         @"val1", @"keyOne",
