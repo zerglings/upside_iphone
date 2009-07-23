@@ -9,3 +9,4 @@
 // Main header file for the Zergling.Net iMobile service support.
 
 #import "ZNAppStoreRequest.h"
+#import "ZNImobileDevice.h"

@@ -8,68 +8,24 @@
 
 #import "ZNDeviceFprint.h"
 
-#include <sys/types.h>
-#include <sys/sysctl.h>
 
-#import <UIKit/UIKit.h>
+#import "ImobileSupport.h"
 
 
 @implementation ZNDeviceFprint
-
-// A unique device ID (UDID) normalized across phones and simulators.
-//
-// The UDID has 40 characters a real iPhone / iPod, but only 36 characters on
-// the simulator. To make up for that, simulator UDIDs are padded by "sim:".
-+(NSString*)uniqueDeviceId {
-  NSString* udid = [[UIDevice currentDevice] uniqueIdentifier];
-  if ([udid length] == 40)
-    return udid;
-  return [NSString stringWithFormat:@"sim:%@", udid];
-}
-
-// Retrieves the device's hardware model from the kernel.
-+(NSString*)hardwareModel {
-  // NOTE: This method is not well covered by unit tests, because I couldn't
-  //       figure out a good golden value. I could hard-code the golden value
-  //       to "i386" (what the simulator returns) but that would cause tests to
-  //       fail on a device. On the bright side, the method is unlikely to
-  //       change, because it relies on OSX kernel functionality.
-
-  size_t keySize;
-  sysctlbyname("hw.machine", NULL, &keySize, NULL, 0);
-  char *key = malloc(keySize);
-  sysctlbyname("hw.machine", key, &keySize, NULL, 0);
-  NSString *hardwareModel = [NSString stringWithCString:key
-                                               encoding:NSUTF8StringEncoding];
-  free(key);
-  return hardwareModel;
-}
-
-// Retrieves the running application's version.
-+(NSString*)appVersion {
-  return [[NSBundle mainBundle]
-          objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
-}
-
-// Retrieves the running application's id.
-+(NSString*)appId {
-  return [[NSBundle mainBundle]
-          objectForInfoDictionaryKey:(NSString*)kCFBundleIdentifierKey];
-}
 
 // Produces the device attributes returned by -deviceAttributes.
 //
 // The result of this method does not change throughout the duration of program
 // execution, therefore it is cached. Never call this method directly.
 +(NSDictionary*)copyDeviceAttributes {
-  UIDevice* device = [UIDevice currentDevice];
   return [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-          [ZNDeviceFprint appId], @"appId",
-          [ZNDeviceFprint appVersion], @"appVersion",
-          [ZNDeviceFprint hardwareModel], @"hardwareModel",
-          [device systemName], @"osName",
-          [device systemVersion], @"osVersion",
-          [ZNDeviceFprint uniqueDeviceId], @"uniqueId",
+          [ZNImobileDevice appId], @"appId",
+          [ZNImobileDevice appVersion], @"appVersion",
+          [ZNImobileDevice hardwareModel], @"hardwareModel",
+          [ZNImobileDevice osName], @"osName",
+          [ZNImobileDevice osVersion], @"osVersion",
+          [ZNImobileDevice uniqueDeviceId], @"uniqueId",
           nil];
 }
 

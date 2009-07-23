@@ -10,6 +10,7 @@
 
 #import "ZNDeviceFprint.h"
 
+#import "ImobileSupport.h"
 #import "WebSupport.h"
 #import "ZNMd5Digest.h"
 
@@ -57,51 +58,22 @@
 
 
 -(void)testDeviceAttributes {
-  NSCharacterSet* digits = [NSCharacterSet decimalDigitCharacterSet];
   NSDictionary* attributes = deviceAttributes;
 
-  // NOTE: The appId below is hard-coded in the Info.plist for
-  //       ZergSupportTests. The test will probably fail when included in
-  //       another suite.
   STAssertEqualStrings(@"us.costan.ZergSupportTests",
                        [attributes objectForKey:@"appId"], @"appId");
-  
-  // NOTE: The appVersion below is hard-coded in the Info.plist for
-  //       ZergSupportTests. The test will probably fail when included in
-  //       another suite.
   STAssertEqualStrings(@"1.9.8.3", [attributes objectForKey:@"appVersion"],
                        @"appVersion");
   
-  // NOTE: The checks below make assumptions on Apple's future moves. They
-  //       will break if the assumptions are wrong. The main point of the tests
-  //       is to make sure that the value in each key looks right.
-
-  // hardwareModel should be i386 or somethingX,Y where X and Y are digits.
-  NSString* model = [attributes objectForKey:@"hardwareModel"];
-  NSRange comma = [model rangeOfString:@","];
-  if (comma.length == 0) {
-    STAssertEqualStrings(@"i386", model,
-                        @"Simulator hardwareModel should be i386");
-  }
-  else {
-    STAssertTrue([digits characterIsMember:
-                  [model characterAtIndex:(comma.location - 1)]],
-                 @"Device hardwareModel should have a digit before ,");
-    STAssertTrue([digits characterIsMember:
-                  [model characterAtIndex:(comma.location + 1)]],
-                 @"Device hardwareModel should have a digit after ,");
-  }
-
+  STAssertEqualStrings([ZNImobileDevice hardwareModel],
+                       [attributes objectForKey:@"hardwareModel"],
+                       @"hardwareModel");
+  
   STAssertEqualObjects(@"iPhone OS", [attributes objectForKey:@"osName"],
                        @"osName");
-
-  NSString* osVersion = [attributes objectForKey:@"osVersion"];
-  STAssertTrue([digits characterIsMember:[osVersion characterAtIndex:0]],
-               @"osVersion should start with a digit");
-  STAssertEquals((unichar)'.', [osVersion characterAtIndex:1],
-                 @"osVersion should have a . after the first digit");
-  STAssertTrue([digits characterIsMember:[osVersion characterAtIndex:2]],
-               @"osVersion should have a digit after the first .");
+  STAssertEqualStrings([ZNImobileDevice osVersion],
+                       [attributes objectForKey:@"osVersion"],
+                       @"osVersion");
 
   STAssertEquals(40U, [[attributes objectForKey:@"uniqueId"] length],
                  @"UDID length");
