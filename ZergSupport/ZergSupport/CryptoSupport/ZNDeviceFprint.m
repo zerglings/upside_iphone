@@ -12,6 +12,11 @@
 #import "ImobileSupport.h"
 
 
+@interface ZNDeviceFprint ()
++(NSString*)copyProvisioningStringFor:(NSUInteger)provisioning;
+@end
+
+
 @implementation ZNDeviceFprint
 
 // Produces the device attributes returned by -deviceAttributes.
@@ -19,14 +24,29 @@
 // The result of this method does not change throughout the duration of program
 // execution, therefore it is cached. Never call this method directly.
 +(NSDictionary*)copyDeviceAttributes {
-  return [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-          [ZNImobileDevice appId], @"appId",
-          [ZNImobileDevice appVersion], @"appVersion",
-          [ZNImobileDevice hardwareModel], @"hardwareModel",
-          [ZNImobileDevice osName], @"osName",
-          [ZNImobileDevice osVersion], @"osVersion",
-          [ZNImobileDevice uniqueDeviceId], @"uniqueId",
-          nil];
+  NSString* provisioningString = [self copyProvisioningStringFor:
+                                  [ZNImobileDevice appProvisioning]];
+  NSDictionary *attributes =
+      [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+       [ZNImobileDevice appId], @"appId",
+       provisioningString, @"appProvisioning",
+       [ZNImobileDevice appVersion], @"appVersion",
+       [ZNImobileDevice hardwareModel], @"hardwareModel",
+       [ZNImobileDevice osName], @"osName",
+       [ZNImobileDevice osVersion], @"osVersion",
+       [ZNImobileDevice uniqueDeviceId], @"uniqueId",
+       nil];
+  [provisioningString release];
+  return attributes;
+}
+
++(NSString*)copyProvisioningStringFor:(NSUInteger)provisioning {
+  const unichar provisioningChars[] = {0, 's', 'S', 'h', 'H', 'D'};
+  NSAssert1(provisioning < sizeof(provisioningChars) /
+            sizeof(*provisioningChars), @"Unknown appProvisioning %u",
+            provisioning);
+  return [[NSString alloc] initWithCharacters:(provisioningChars + provisioning)
+                                       length:1];
 }
 
 // Holds the cached dictionary of device attributes.

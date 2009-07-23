@@ -16,8 +16,9 @@
 
 
 @interface ZNDeviceFprint ()
-// This method isn't part of the public API. It's tested for debugging
-// convenience, because its failure log can helps debug most of the logic.
+// Thess methods aren't part of the public API. It's tested for debugging
+// convenience, because their failure logs can help debug most of the logic.
++(NSString*)copyProvisioningStringFor:(NSUInteger)provisioning;
 +(NSData*)fprintData;
 @end
 
@@ -56,6 +57,23 @@
   testService = nil;
 }
 
+-(void)testAppProvisioning {
+  NSUInteger provisioning[] = {
+    kZNImobileProvisioningSimulatorDebug,
+    kZNImobileProvisioningSimulatorRelease,
+    kZNImobileProvisioningDeviceDebug,
+    kZNImobileProvisioningDeviceRelease,
+    kZNImobileProvisioningDeviceDistribution,
+  };
+  NSString* golden[] = {@"s", @"S", @"h", @"H", @"D"};
+  
+  for (NSUInteger i = 0; i < sizeof(golden) / sizeof(*golden); i++) {
+    STAssertEqualStrings(golden[i],
+                         [ZNDeviceFprint copyProvisioningStringFor:
+                          provisioning[i]],
+                         @"Provisioning string mapping failed");
+  }
+}
 
 -(void)testDeviceAttributes {
   NSDictionary* attributes = deviceAttributes;
@@ -77,6 +95,9 @@
 
   STAssertEquals(40U, [[attributes objectForKey:@"uniqueId"] length],
                  @"UDID length");
+
+  NSString* appProvisioning = [attributes objectForKey:@"appProvisioning"];
+  STAssertEquals(1U, [appProvisioning length], @"appProvisioning length");
 }
 
 -(void)testDigests {
