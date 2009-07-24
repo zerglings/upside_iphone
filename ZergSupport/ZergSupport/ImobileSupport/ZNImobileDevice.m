@@ -28,7 +28,7 @@
 
 +(NSString*)uniqueDeviceId {
   NSString* udid = [[UIDevice currentDevice] uniqueIdentifier];
-#ifdef TARGET_IPHONE_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR
   return [NSString stringWithFormat:@"sim:%@", udid];
 #else  // TARGET_IPHONE_SIMULATOR
   return udid;
@@ -118,7 +118,7 @@ struct encryption_info_command {
 #endif  // LC_ENCRYPTION_INFO
 
 +(BOOL)isEncryptedBinary:(NSString*)path {
-  BOOL foundEncryptionInfo = NO, foundEncryptedSegment = NO;
+  BOOL foundEncryptionInfo = NO;
   
   NSFileHandle* fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
 
