@@ -57,9 +57,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 @interface ZNExtUIApplicationDelegateTest : SenTestCase {
   ZNExtUIApplicationDelegate* delegate;
+  ZNExtUIApplicationDelegateTestD1* main;
   ZNExtUIApplicationDelegateTestD1* d1;
-  ZNExtUIApplicationDelegateTestD1* d2;
-  ZNExtUIApplicationDelegateTestD2* d3;
+  ZNExtUIApplicationDelegateTestD2* d2;
   SEL commonSel;
   SEL d3Sel;
   SEL nooneSel;
@@ -78,19 +78,19 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
       @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
   nooneSel = @selector(application:handleOpenURL:);
   
-  d1 = [[ZNExtUIApplicationDelegateTestD1 alloc] initWithReturnValue:YES];
-  d2 = [[ZNExtUIApplicationDelegateTestD1 alloc] initWithReturnValue:NO];
-  d3 = [[ZNExtUIApplicationDelegateTestD2 alloc] initWithReturnValue:NO];
+  main = [[ZNExtUIApplicationDelegateTestD1 alloc] initWithReturnValue:YES];
+  d1 = [[ZNExtUIApplicationDelegateTestD1 alloc] initWithReturnValue:NO];
+  d2 = [[ZNExtUIApplicationDelegateTestD2 alloc] initWithReturnValue:NO];
   
   delegate = [[ZNExtUIApplicationDelegate alloc] init];
-  delegate.mainDelegate = d1;
+  delegate.mainDelegate = main;
+  [delegate chainDelegate:d1];
   [delegate chainDelegate:d2];
-  [delegate chainDelegate:d3];
 }
 -(void)tearDown {
+  [main release];
   [d1 release];
   [d2 release];
-  [d3 release];
   [delegate release];
 }
 -(void)dealloc {
@@ -109,19 +109,19 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 -(void)testChainedInvocation {
   [delegate application:nil didFinishLaunchingWithOptions:arg1];
   
-  STAssertEquals(arg1, d1.invoked, @"Main delegate not invoked");
-  STAssertEquals(arg1, d2.invoked, @"Chained delegate 1 not invoked");
-  STAssertEquals(arg1, d3.invoked, @"Chained delegate 2 not invoked");
+  STAssertEquals(arg1, main.invoked, @"Main delegate not invoked");
+  STAssertEquals(arg1, d1.invoked, @"Chained delegate 1 not invoked");
+  STAssertEquals(arg1, d2.invoked, @"Chained delegate 2 not invoked");
 }
 
 -(void)testSelectiveInvocation {
   [delegate application:nil
    didRegisterForRemoteNotificationsWithDeviceToken:arg2];
   
-  STAssertNil(d1.invoked, @"Wrong message invoed on main delegate");
-  STAssertNil(d2.invoked, @"Wrong message invoed on chained delegate 1");
-  STAssertNil(d3.invoked, @"Wrong message invoed on chained delegate 2");
-  STAssertEquals(arg2, d3.invoked2, @"Chained delegate 2 not invoked");
+  STAssertNil(main.invoked, @"Wrong message invoed on main delegate");
+  STAssertNil(d1.invoked, @"Wrong message invoed on chained delegate 1");
+  STAssertNil(d2.invoked, @"Wrong message invoed on chained delegate 2");
+  STAssertEquals(arg2, d2.invoked2, @"Chained delegate 2 not invoked");
 }
 
 -(void)testReturnValue {
