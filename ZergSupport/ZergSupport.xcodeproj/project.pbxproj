@@ -185,9 +185,9 @@
 		57F8E3821019C6C700A22FEF /* ZNExtUIApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E3801019C6C700A22FEF /* ZNExtUIApplication.h */; };
 		57F8E3831019C6C700A22FEF /* ZNExtUIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E3811019C6C700A22FEF /* ZNExtUIApplication.m */; };
 		57F8E3861019C6DE00A22FEF /* _ZNExtUIApplicationMain.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E3841019C6DE00A22FEF /* _ZNExtUIApplicationMain.h */; };
-		57F8E3B21019DC9D00A22FEF /* ZNExtUIApplicationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E3B01019DC9D00A22FEF /* ZNExtUIApplicationDelegate.h */; };
-		57F8E3B31019DC9D00A22FEF /* ZNExtUIApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E3B11019DC9D00A22FEF /* ZNExtUIApplicationDelegate.m */; };
-		57F8E3E51019E64300A22FEF /* ZNExtUIApplicationDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E3B51019DFF900A22FEF /* ZNExtUIApplicationDelegateTest.m */; };
+		57F8E3B21019DC9D00A22FEF /* ZNMulticastDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E3B01019DC9D00A22FEF /* ZNMulticastDelegateProxy.h */; };
+		57F8E3B31019DC9D00A22FEF /* ZNMulticastDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E3B11019DC9D00A22FEF /* ZNMulticastDelegateProxy.m */; };
+		57F8E3E51019E64300A22FEF /* ZNMulticastDelegateProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E3B51019DFF900A22FEF /* ZNMulticastDelegateProxyTest.m */; };
 		57F8E4401019ED1B00A22FEF /* ZNExtUIApplicationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E43F1019ED1B00A22FEF /* ZNExtUIApplicationTest.m */; };
 		57F8E4661019F11600A22FEF /* ZNTestSupportMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E4641019F11600A22FEF /* ZNTestSupportMain.m */; };
 		57F8E47B1019F2B400A22FEF /* ZNHttpJsonCommControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CF260FEEA0BA003FFC39 /* ZNHttpJsonCommControllerTest.m */; };
@@ -226,6 +226,8 @@
 		57F8E49C1019F2B400A22FEF /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41FE0FEDC38800A5CC9D /* ZNHttpRequestTest.m */; };
 		57F8E49D1019F2B400A22FEF /* ZNJsonHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B42050FEDC38800A5CC9D /* ZNJsonHttpRequestTest.m */; };
 		57F8E49E1019F2B400A22FEF /* ZNXmlHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B42090FEDC38800A5CC9D /* ZNXmlHttpRequestTest.m */; };
+		57F8E4B7101A3EE100A22FEF /* ZNPushNotifcationsDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E4B3101A3EBF00A22FEF /* ZNPushNotifcationsDelegate.h */; };
+		57F8E4B8101A3EE100A22FEF /* ZNPushNotifcationsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E4B4101A3EBF00A22FEF /* ZNPushNotifcationsDelegate.m */; };
 		AA747D9F0F9514B9006C5449 /* ZergSupport_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ZergSupport_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -466,11 +468,15 @@
 		57F8E3801019C6C700A22FEF /* ZNExtUIApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNExtUIApplication.h; sourceTree = "<group>"; };
 		57F8E3811019C6C700A22FEF /* ZNExtUIApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNExtUIApplication.m; sourceTree = "<group>"; };
 		57F8E3841019C6DE00A22FEF /* _ZNExtUIApplicationMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ZNExtUIApplicationMain.h; sourceTree = "<group>"; };
-		57F8E3B01019DC9D00A22FEF /* ZNExtUIApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNExtUIApplicationDelegate.h; sourceTree = "<group>"; };
-		57F8E3B11019DC9D00A22FEF /* ZNExtUIApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNExtUIApplicationDelegate.m; sourceTree = "<group>"; };
-		57F8E3B51019DFF900A22FEF /* ZNExtUIApplicationDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNExtUIApplicationDelegateTest.m; sourceTree = "<group>"; };
+		57F8E3B01019DC9D00A22FEF /* ZNMulticastDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMulticastDelegateProxy.h; sourceTree = "<group>"; };
+		57F8E3B11019DC9D00A22FEF /* ZNMulticastDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMulticastDelegateProxy.m; sourceTree = "<group>"; };
+		57F8E3B51019DFF900A22FEF /* ZNMulticastDelegateProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMulticastDelegateProxyTest.m; sourceTree = "<group>"; };
 		57F8E43F1019ED1B00A22FEF /* ZNExtUIApplicationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNExtUIApplicationTest.m; sourceTree = "<group>"; };
 		57F8E4641019F11600A22FEF /* ZNTestSupportMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNTestSupportMain.m; sourceTree = "<group>"; };
+		57F8E4B3101A3EBF00A22FEF /* ZNPushNotifcationsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNPushNotifcationsDelegate.h; sourceTree = "<group>"; };
+		57F8E4B4101A3EBF00A22FEF /* ZNPushNotifcationsDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNPushNotifcationsDelegate.m; sourceTree = "<group>"; };
+		57F8E5B4101A569A00A22FEF /* ZergSupportTests-dev-entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ZergSupportTests-dev-entitlements.plist"; sourceTree = "<group>"; };
+		57F8E5ED101A5CDF00A22FEF /* ZergSupportTests-prod-entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ZergSupportTests-prod-entitlements.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.entitlements"; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* ZergSupport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZergSupport_Prefix.pch; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libZergSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZergSupport.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -564,6 +570,8 @@
 				5781FAD71015A9AC00B387C2 /* Icon.png */,
 				AA747D9E0F9514B9006C5449 /* ZergSupport_Prefix.pch */,
 				57BA11980FEE296C00E980F0 /* ZergSupportTests-Info.plist */,
+				57F8E5B4101A569A00A22FEF /* ZergSupportTests-dev-entitlements.plist */,
+				57F8E5ED101A5CDF00A22FEF /* ZergSupportTests-prod-entitlements.plist */,
 			);
 			path = ZergSupport;
 			sourceTree = "<group>";
@@ -840,17 +848,19 @@
 				57F8E3801019C6C700A22FEF /* ZNExtUIApplication.h */,
 				57F8E3811019C6C700A22FEF /* ZNExtUIApplication.m */,
 				57F8E43F1019ED1B00A22FEF /* ZNExtUIApplicationTest.m */,
-				57F8E3B01019DC9D00A22FEF /* ZNExtUIApplicationDelegate.h */,
-				57F8E3B11019DC9D00A22FEF /* ZNExtUIApplicationDelegate.m */,
-				57F8E3B51019DFF900A22FEF /* ZNExtUIApplicationDelegateTest.m */,
 				57F8E3841019C6DE00A22FEF /* _ZNExtUIApplicationMain.h */,
 				5777223E1017E88B00DD843C /* ZNImobileDevice.h */,
 				5777223F1017E88B00DD843C /* ZNImobileDevice.m */,
 				577722511017F10000DD843C /* ZNImobileDeviceTest.m */,
 				5777232C101805A600DD843C /* ZNImobileDeviceTestEncrypted */,
 				577723221018044800DD843C /* ZNImobileDeviceTestPlain */,
+				57F8E3B01019DC9D00A22FEF /* ZNMulticastDelegateProxy.h */,
+				57F8E3B11019DC9D00A22FEF /* ZNMulticastDelegateProxy.m */,
+				57F8E3B51019DFF900A22FEF /* ZNMulticastDelegateProxyTest.m */,
 				57F8E37B1019C3D000A22FEF /* ZNPushNotifications.h */,
 				57F8E37C1019C3D000A22FEF /* ZNPushNotifications.m */,
+				57F8E4B3101A3EBF00A22FEF /* ZNPushNotifcationsDelegate.h */,
+				57F8E4B4101A3EBF00A22FEF /* ZNPushNotifcationsDelegate.m */,
 			);
 			path = ImobileSupport;
 			sourceTree = "<group>";
@@ -947,7 +957,8 @@
 				577722401017E88B00DD843C /* ZNImobileDevice.h in Headers */,
 				57F8E3821019C6C700A22FEF /* ZNExtUIApplication.h in Headers */,
 				57F8E3861019C6DE00A22FEF /* _ZNExtUIApplicationMain.h in Headers */,
-				57F8E3B21019DC9D00A22FEF /* ZNExtUIApplicationDelegate.h in Headers */,
+				57F8E3B21019DC9D00A22FEF /* ZNMulticastDelegateProxy.h in Headers */,
+				57F8E4B7101A3EE100A22FEF /* ZNPushNotifcationsDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1095,7 +1106,7 @@
 				57A5CF290FEEA156003FFC39 /* ZNTestModels.m in Sources */,
 				5799225F1016BC4D009FF134 /* ZNMSData.m in Sources */,
 				57F8E37D1019C3D000A22FEF /* ZNPushNotifications.m in Sources */,
-				57F8E3E51019E64300A22FEF /* ZNExtUIApplicationDelegateTest.m in Sources */,
+				57F8E3E51019E64300A22FEF /* ZNMulticastDelegateProxyTest.m in Sources */,
 				57F8E4401019ED1B00A22FEF /* ZNExtUIApplicationTest.m in Sources */,
 				57F8E47B1019F2B400A22FEF /* ZNHttpJsonCommControllerTest.m in Sources */,
 				57F8E47C1019F2B400A22FEF /* ZNNetworkProgressTest.m in Sources */,
@@ -1183,7 +1194,8 @@
 				5781F943101581E100B387C2 /* ZNAppStoreRequest.m in Sources */,
 				577722411017E88B00DD843C /* ZNImobileDevice.m in Sources */,
 				57F8E3831019C6C700A22FEF /* ZNExtUIApplication.m in Sources */,
-				57F8E3B31019DC9D00A22FEF /* ZNExtUIApplicationDelegate.m in Sources */,
+				57F8E3B31019DC9D00A22FEF /* ZNMulticastDelegateProxy.m in Sources */,
+				57F8E4B8101A3EE100A22FEF /* ZNPushNotifcationsDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1308,6 +1320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "ZergSupport/ZergSupportTests-dev-entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1325,6 +1338,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "ZergSupport/ZergSupportTests-dev-entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1393,6 +1407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "ZergSupport/ZergSupportTests-prod-entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

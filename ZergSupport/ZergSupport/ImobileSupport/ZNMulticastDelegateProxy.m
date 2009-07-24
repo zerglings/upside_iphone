@@ -1,15 +1,15 @@
 //
-//  ZNExtUIApplicationDelegate.m
+//  ZNMulticastDelegateProxy.m
 //  ZergSupport
 //
 //  Created by Victor Costan on 7/24/09.
 //  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
-#import "ZNExtUIApplicationDelegate.h"
+#import "ZNMulticastDelegateProxy.h"
 
 
-@implementation ZNExtUIApplicationDelegate
+@implementation ZNMulticastDelegateProxy
 
 @synthesize mainDelegate;
 
@@ -24,11 +24,11 @@
   [super dealloc];
 }
 
--(void)chainDelegate:(id<UIApplicationDelegate>)delegate {
+-(void)chainDelegate:(NSObject*)delegate {
   [chainedDelegates addObject:delegate];
 }
 
--(void)unchainDelegate:(id<UIApplicationDelegate>)delegate {
+-(void)unchainDelegate:(NSObject*)delegate {
   [chainedDelegates removeObject:delegate];
 }
 
@@ -37,7 +37,7 @@
   if ([mainDelegate respondsToSelector:aSelector]) {
     return YES;
   }
-  for (id<UIApplicationDelegate> delegate in chainedDelegates) {
+  for (id delegate in chainedDelegates) {
     if ([delegate respondsToSelector:aSelector]) {
       return YES;
     }
@@ -50,7 +50,7 @@
   if ([mainDelegate respondsToSelector:aSelector]) {
     return [mainDelegate methodSignatureForSelector:aSelector];
   }
-  for (NSObject<UIApplicationDelegate>* delegate in chainedDelegates) {
+  for (NSObject* delegate in chainedDelegates) {
     if ([delegate methodSignatureForSelector:aSelector]) {
       return [delegate methodSignatureForSelector:aSelector];
     }
@@ -61,7 +61,7 @@
 // Overrides the default implementation to invoke all delegates.
 -(void)forwardInvocation:(NSInvocation *)invocation {
   SEL aSelector = [invocation selector];  
-  for (id<UIApplicationDelegate> delegate in chainedDelegates) {
+  for (id delegate in chainedDelegates) {
     if ([delegate respondsToSelector:aSelector]) {
       [invocation invokeWithTarget:delegate];
     }

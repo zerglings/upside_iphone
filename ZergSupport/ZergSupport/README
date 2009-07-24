@@ -129,8 +129,7 @@ use mock services. This is the mock setup needed by the tests:
 at http://github.com/costan/zn_testbed/ and the testbed is hosted at
 http://zn-testbed.heroku.com
 
-2. An App Store application with the ID us.costan.ZergSupport. The application
-must be for pay (for In-App Purchases). Setup guide:
+2. Apple Push Notification Service certificates. Setup guide:
   * In the iPhone Developer Program Portal, go to App IDs, select New App ID.
     * (recommended) Use ZergSupport Tests for the description.
     * (recommended) Select an existing Bundle Seed ID, if one is available.
@@ -139,7 +138,17 @@ must be for pay (for In-App Purchases). Setup guide:
     * Set the Bundle Identifier (App ID Suffix) to us.costan.ZergSupport, or
       modify the bundle ID on the ZergSupportTests target to match your setting.
     * Submit the creation form, then click on Configure next to the new App ID.
-    * Check the Enable In App Purchase button.
+    * Check on Enable Push notifications checkbox.
+    * Click on the Configure button next to Development Push SSL Certificate.
+    * Follow the on-screen instructions to get a certificate in your keychain.
+    * TODO(costan): export the key and certificate for the server.
+  
+
+3. An App Store application with the ID us.costan.ZergSupport. The application
+must be for pay (for In-App Purchases). Setup guide:
+  * In the iPhone Developer Program Portal, go to App IDs, click on the
+    Configure button next to the App ID created at for Push Notifications.
+    * Check the Enable In App Purchase checkbox.
   * Sign into iTunes connect.
     * Create a new application, set the pricing to Tier 1 or above (not Free).
       Everything else in the application description is not important.
@@ -149,7 +158,7 @@ must be for pay (for In-App Purchases). Setup guide:
     * Go to Manage Your In-App Purchases, and setup the purchases described
       below. The purchases must be under the ZergSupport test application.
 
-3. The following In-App Purchases:
+4. The following In-App Purchases:
   * A test subscription:
     * Reference Name: ZergSupport: Subscription Test
     * Product ID: net.zergling.ZergSupport.sub

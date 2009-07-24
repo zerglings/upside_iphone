@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class ZNExtUIApplicationDelegate;
+@class ZNMulticastDelegateProxy;
 
 
 // Classes implementing this protocol will be automatically instantiated and
@@ -22,11 +22,11 @@
 // Multiple delegates are useful to have because Apple shove too much stuff into
 // the application delegate, ruining separation of concerns.
 @interface ZNExtUIApplication : UIApplication {
-  ZNExtUIApplicationDelegate* fakeDelegate;
+  ZNMulticastDelegateProxy* delegateProxy;
 }
 
 // Overrides UIApplication's delegate property.
-@property(nonatomic, assign) id<UIApplicationDelegate> delegate;
+@property(nonatomic, assign, readwrite) id<UIApplicationDelegate> delegate;
 
 // Overrides UIApplication's sharedApplication global.
 +(ZNExtUIApplication*)sharedApplication;

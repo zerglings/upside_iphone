@@ -8,15 +8,15 @@
 
 #import "ZNExtUIApplication.h"
 
-#include <objc/objc-runtime.h>
-#import "ZNExtUIApplicationDelegate.h"
+#include <objc/runtime.h>
+#import "ZNMulticastDelegateProxy.h"
 
 
 @implementation ZNExtUIApplication
 
 -(id)init {
   if ((self = [super init])) {
-    fakeDelegate = [[ZNExtUIApplicationDelegate alloc] init];
+    delegateProxy = [[ZNMulticastDelegateProxy alloc] init];
     
     NSArray* chainedClasses = [ZNExtUIApplication copyAllAutoChainedClasses];
     for(Class klass in chainedClasses) {
@@ -29,25 +29,25 @@
   return self;
 }
 -(void)dealloc {
-  [fakeDelegate release];
+  [delegateProxy release];
   
   [super dealloc];
 }
 
 -(id<UIApplicationDelegate>)delegate {
-  return fakeDelegate;
+  return (id<UIApplicationDelegate>)delegateProxy;
 }
 -(void)setDelegate:(id<UIApplicationDelegate>)delegate {
-  fakeDelegate.mainDelegate = delegate;
-  [super setDelegate:fakeDelegate];
+  delegateProxy.mainDelegate = delegate;
+  [super setDelegate:(id<UIApplicationDelegate>)delegateProxy];
 }
 
--(void)chainDelegate:(id<UIApplicationDelegate>)delegate {
-  [fakeDelegate chainDelegate:delegate];
+-(void)chainDelegate:(NSObject<UIApplicationDelegate>*)delegate {
+  [delegateProxy chainDelegate:delegate];
 }
 
--(void)unchainDelegate:(id<UIApplicationDelegate>)delegate {
-  [fakeDelegate unchainDelegate:delegate];
+-(void)unchainDelegate:(NSObject<UIApplicationDelegate>*)delegate {
+  [delegateProxy unchainDelegate:delegate];
 }
 
 +(ZNExtUIApplication*)sharedApplication {

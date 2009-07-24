@@ -1,5 +1,5 @@
 //
-//  ZNExtUIApplicationDelegateTest.m
+//  ZNMulticastDelegateProxyTest.m
 //  ZergSupport
 //
 //  Created by Victor Costan on 7/24/09.
@@ -8,18 +8,18 @@
 
 #import "TestSupport.h"
 
-#import "ZNExtUIApplicationDelegate.h"
+#import "ZNMulticastDelegateProxy.h"
 
 
 // Fixture delegate that keeps track of invocations and returns a customized
 // value from some method.
-@interface ZNExtUIApplicationDelegateTestD1 : NSObject<UIApplicationDelegate> {
+@interface ZNMulticastDelegateProxyTestD1 : NSObject<UIApplicationDelegate> {
   BOOL returnValue;
   NSDictionary* invoked;
 }
 @property (nonatomic,assign,readonly) NSDictionary* invoked;
 @end
-@implementation ZNExtUIApplicationDelegateTestD1
+@implementation ZNMulticastDelegateProxyTestD1
 @synthesize invoked;
 -(id)initWithReturnValue:(BOOL)theReturnValue {
   if ((self = [super init])) {
@@ -40,12 +40,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 // Fixture delegate that implements a method the previous delegate does not
 // implement.
-@interface ZNExtUIApplicationDelegateTestD2 : ZNExtUIApplicationDelegateTestD1 {
+@interface ZNMulticastDelegateProxyTestD2 : ZNMulticastDelegateProxyTestD1 {
   NSData* invoked2;
 }
 @property (nonatomic,readonly) NSData* invoked2;
 @end
-@implementation ZNExtUIApplicationDelegateTestD2
+@implementation ZNMulticastDelegateProxyTestD2
 @synthesize invoked2;
 -(void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -55,11 +55,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 
 
-@interface ZNExtUIApplicationDelegateTest : SenTestCase {
-  ZNExtUIApplicationDelegate* delegate;
-  ZNExtUIApplicationDelegateTestD1* main;
-  ZNExtUIApplicationDelegateTestD1* d1;
-  ZNExtUIApplicationDelegateTestD2* d2;
+@interface ZNMulticastDelegateProxyTest : SenTestCase {
+  ZNMulticastDelegateProxy<UIApplicationDelegate>* delegate;
+  ZNMulticastDelegateProxyTestD1* main;
+  ZNMulticastDelegateProxyTestD1* d1;
+  ZNMulticastDelegateProxyTestD2* d2;
   SEL commonSel;
   SEL d3Sel;
   SEL nooneSel;
@@ -70,7 +70,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 @end
 
 
-@implementation ZNExtUIApplicationDelegateTest
+@implementation ZNMulticastDelegateProxyTest
 
 -(void)setUp {
   commonSel = @selector(application:didFinishLaunchingWithOptions:);
@@ -78,11 +78,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
       @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
   nooneSel = @selector(application:handleOpenURL:);
   
-  main = [[ZNExtUIApplicationDelegateTestD1 alloc] initWithReturnValue:YES];
-  d1 = [[ZNExtUIApplicationDelegateTestD1 alloc] initWithReturnValue:NO];
-  d2 = [[ZNExtUIApplicationDelegateTestD2 alloc] initWithReturnValue:NO];
+  main = [[ZNMulticastDelegateProxyTestD1 alloc] initWithReturnValue:YES];
+  d1 = [[ZNMulticastDelegateProxyTestD1 alloc] initWithReturnValue:NO];
+  d2 = [[ZNMulticastDelegateProxyTestD2 alloc] initWithReturnValue:NO];
   
-  delegate = [[ZNExtUIApplicationDelegate alloc] init];
+  delegate = [[ZNMulticastDelegateProxy alloc] init];
   delegate.mainDelegate = main;
   [delegate chainDelegate:d1];
   [delegate chainDelegate:d2];
