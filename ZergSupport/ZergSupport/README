@@ -141,7 +141,17 @@ http://zn-testbed.heroku.com
     * Check on Enable Push notifications checkbox.
     * Click on the Configure button next to Development Push SSL Certificate.
     * Follow the on-screen instructions to get a certificate in your keychain.
-    * TODO(costan): export the key and certificate for the server.
+      TIP: You can use the same certificate signing request for the developer
+           and for the production certificate.
+  * Open Keychain.
+    * Select the login keychain from the keychains list (top-left).
+    * Select "My Certificates" from the category list (bottom-left).
+    * Select the push certificate (the name will include "Push Services").
+    * From the application menu, select File > Export Items..., and leave the
+      password blank. Save the certificate inside the ZergSupport project, as
+      ZergSupport/ImobileSupport/ZNPushNotificationsTestCertDev.p12
+  * Repeat the steps above for the production certificate, save it as
+    ZergSupport/ImobileSupport/ZNPushNotificationsTestCertProd.p12
   
 
 3. An App Store application with the ID us.costan.ZergSupport. The application

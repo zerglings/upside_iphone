@@ -8,18 +8,18 @@
 
 #import "TestSupport.h"
 
-#import "ZNDeviceFprint.h"
+#import "ZNAppFprint.h"
 
 #import "ImobileSupport.h"
 #import "WebSupport.h"
 #import "ZNMd5Digest.h"
 
 
-@interface ZNDeviceFprint ()
-// Thess methods aren't part of the public API. It's tested for debugging
+@interface ZNAppFprint ()
+// Thess methods aren't part of the public API. They are tested for debugging
 // convenience, because their failure logs can help debug most of the logic.
 +(NSString*)copyProvisioningStringFor:(NSUInteger)provisioning;
-+(NSData*)fprintData;
++(NSData*)copyFprintData;
 @end
 
 
@@ -42,7 +42,7 @@
 }
 
 -(void)setUp {
-  deviceAttributes = [[ZNDeviceFprint deviceAttributes] retain];
+  deviceAttributes = [ZNAppFprint copyDeviceAttributes];
 
   testService =
       @"http://zn-testbed.heroku.com/crypto_support/device_fprint.xml";
@@ -69,7 +69,7 @@
   
   for (NSUInteger i = 0; i < sizeof(golden) / sizeof(*golden); i++) {
     STAssertEqualStrings(golden[i],
-                         [ZNDeviceFprint copyProvisioningStringFor:
+                         [ZNAppFprint copyProvisioningStringFor:
                           provisioning[i]],
                          @"Provisioning string mapping failed");
   }
@@ -77,9 +77,30 @@
 
 -(void)testDeviceAttributes {
   NSDictionary* attributes = deviceAttributes;
-
+  
   STAssertEqualStrings(@"us.costan.ZergSupportTests",
                        [attributes objectForKey:@"appId"], @"appId");
+  
+  if ([ZNImobileDevice inSimulator]) {
+    STAssertEqualStrings(@"", [attributes objectForKey:@"appPushToken"],
+                         @"appPushToken");
+  }
+  else {
+    // Wait to get a push token.
+    for (NSUInteger i = 0; i < 100; i++) {
+      [[NSRunLoop currentRunLoop] runUntilDate:
+       [NSDate dateWithTimeIntervalSinceNow:0.1]];
+      if ([ZNImobileDevice appPushToken]) {
+        break;
+      }
+    }
+    STAssertNotNil([ZNImobileDevice appPushToken],
+                   @"Device didn't receive a token for push notifications");  
+    
+    STAssertEquals(64U, [[attributes objectForKey:@"appPushToken"] length],
+                   @"appPushToken length");
+  }
+  
   STAssertEqualStrings(@"1.9.8.3", [attributes objectForKey:@"appVersion"],
                        @"appVersion");
   
@@ -97,7 +118,7 @@
                  @"UDID length");
 
   NSString* appProvisioning = [attributes objectForKey:@"appProvisioning"];
-  STAssertEquals(1U, [appProvisioning length], @"appProvisioning length");
+  STAssertEquals(1U, [appProvisioning length], @"appProvisioning length");    
 }
 
 -(void)testDigests {
@@ -124,22 +145,23 @@
   // This method isn't part of the public API. It's tested for debugging
   // convenience, because its failure log can helps debug most of the logic.
   NSString* goldenDataString = [goldenDigests objectForKey:@"data"];
+  NSData* fprintData = [ZNAppFprint copyFprintData];
   NSString* dataString =
-      [[NSString alloc] initWithData:[ZNDeviceFprint fprintData]
+      [[NSString alloc] initWithData:fprintData
                             encoding:NSISOLatin1StringEncoding];
+  [fprintData release];
   STAssertEqualStrings(goldenDataString, dataString, @"Fingerprint data");
   [dataString release];
 
   NSString* goldenHexDigest = [goldenDigests objectForKey:@"hexMd5"];
-  NSString* hexDigest = [ZNDeviceFprint
+  NSString* hexDigest = [ZNAppFprint
                          copyHexFprintUsingDigest:[ZNMd5Digest digester]];
   STAssertEqualStrings(goldenHexDigest, hexDigest,
                        @"Fingerprint MD5 hexdigest");
   [hexDigest release];
 
-  NSData* goldenDigest = [ZNMd5Digest copyDigest:[ZNDeviceFprint fprintData]];
-  NSData* digest = [ZNDeviceFprint copyFprintUsingDigest:[ZNMd5Digest
-                                                          digester]];
+  NSData* goldenDigest = [ZNMd5Digest copyDigest:[ZNAppFprint copyFprintData]];
+  NSData* digest = [ZNAppFprint copyFprintUsingDigest:[ZNMd5Digest digester]];
   STAssertEqualObjects(goldenDigest, digest, @"Fingerprint MD5 digest");
   [digest release];
 }

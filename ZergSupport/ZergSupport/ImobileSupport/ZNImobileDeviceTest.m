@@ -10,6 +10,8 @@
 
 #import "ZNImobileDevice.h"
 
+#import "ZNPushNotifications.h"
+
 
 // Reaching into private method for testing convenience.
 @interface ZNImobileDevice ()
@@ -130,6 +132,37 @@
   STAssertTrue(appProvisioning > 0 &&
                appProvisioning <= kZNImobileProvisioningDeviceDistribution,
                @"App provisioning type out of range: %u", appProvisioning);
+}
+
+-(void)testInSimulator {  
+  STAssertEquals([@"i386" isEqualToString:[ZNImobileDevice hardwareModel]],
+                 [ZNImobileDevice inSimulator],
+                 @"In-simulator test with hardware model");
+}
+
+-(void)testAppPushToken {  
+  if ([ZNImobileDevice inSimulator]) {
+    STAssertNil([ZNImobileDevice appPushToken],
+                @"The simulator shouldn't support push notifications");
+    return;
+  }
+  
+  // Wait to get a push token.
+  for (NSUInteger i = 0; i < 100; i++) {
+    [[NSRunLoop currentRunLoop] runUntilDate:
+     [NSDate dateWithTimeIntervalSinceNow:0.1]];
+    if ([ZNImobileDevice appPushToken]) {
+      break;
+    }
+  }
+  STAssertNotNil([ZNImobileDevice appPushToken],
+                 @"Device didn't receive a token for push notifications");  
+  
+  STAssertEquals(32U, [[ZNImobileDevice appPushToken] length],
+                 @"Push token length");
+  STAssertEqualObjects([ZNPushNotifications pushToken],
+                       [ZNImobileDevice appPushToken],
+                       @"Cross-check with the token in ZNPushNotification");
 }
 
 -(void)testIsEncryptedBinaryOnPlain {

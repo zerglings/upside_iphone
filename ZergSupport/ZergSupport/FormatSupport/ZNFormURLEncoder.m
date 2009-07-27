@@ -19,7 +19,7 @@
   NSString* encodedKey = (NSString*)
       CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                               (CFStringRef)key, NULL,
-                                              (CFStringRef)@"&=",
+                                              (CFStringRef)@"&=+/;?:@",
                                               kCFStringEncodingUTF8);
   [output appendBytes:[encodedKey cStringUsingEncoding:NSUTF8StringEncoding]
                length:[encodedKey length]];
@@ -31,7 +31,7 @@
       CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                               (CFStringRef)value,
                                               NULL,
-                                              (CFStringRef)@"&=",
+                                              (CFStringRef)@"&=+/;?:@",
                                               kCFStringEncodingUTF8);
   [output appendBytes:[encodedValue cStringUsingEncoding:NSUTF8StringEncoding]
                length:[encodedValue length]];

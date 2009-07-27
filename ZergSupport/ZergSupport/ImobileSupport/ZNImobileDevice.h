@@ -13,25 +13,6 @@
 @interface ZNImobileDevice : NSObject {
 }
 
-// A unique device ID (UDID) normalized across phones and simulators.
-//
-// The UDID has 40 characters a real iPhone / iPod, but only 36 characters on
-// the simulator. To make up for that, simulator UDIDs are padded by "sim:".
-+(NSString*)uniqueDeviceId;
-
-// The device's hardware model, fetched from the kernel.
-//
-// Hardware model strings look like iPhone1,2 / iPod2,1 and are much more useful
-// than the device name given by UIDevice.
-+(NSString*)hardwareModel;
-
-
-// The running application's version.
-//
-// This is grabbed from the main bundle's Info.plist. It is shown as "Bundle
-// Version" in the App Details screen from iTunes Connect. 
-+(NSString*)appVersion;
-
 // The running application's bundle ID.
 //
 // This is grabbed from the main bundle's Info.plist. It is shown as "Bundle
@@ -48,6 +29,24 @@
 // * kZNImobileProvisioningDeviceDistribution
 +(NSUInteger)appProvisioning;
 
+// The application's token for Push Notifications on this device.
++(NSData*)appPushToken;
+
+// The running application's version.
+//
+// This is grabbed from the main bundle's Info.plist. It is shown as "Bundle
+// Version" in the App Details screen from iTunes Connect. 
++(NSString*)appVersion;
+
+// The device's hardware model, fetched from the kernel.
+//
+// Hardware model strings look like iPhone1,2 / iPod2,1 and are much more useful
+// than the device name given by UIDevice.
++(NSString*)hardwareModel;
+
+// If YES, the application is running in the simulator.
++(BOOL)inSimulator;
+
 // The name of the device's OS.
 //
 // Right now, this will always return "iPhone OS".
@@ -57,6 +56,12 @@
 //
 // Examples: "2.2.1", "3.0".
 +(NSString*)osVersion;
+
+// A unique device ID (UDID) normalized across phones and simulators.
+//
+// The UDID has 40 characters a real iPhone / iPod, but only 36 characters on
+// the simulator. To make up for that, simulator UDIDs are padded by "sim:".
++(NSString*)uniqueDeviceId;
 
 @end
 

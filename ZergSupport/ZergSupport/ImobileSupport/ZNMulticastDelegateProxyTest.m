@@ -47,6 +47,15 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 @end
 @implementation ZNMulticastDelegateProxyTestD2
 @synthesize invoked2;
+-(id)initWithReturnValue:(BOOL)theReturnValue {
+  if ((self = [super initWithReturnValue:theReturnValue])) {
+    invoked2 = nil;
+  }
+  return self;
+}
+-(void)dealloc {
+  [super dealloc];
+}
 -(void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   invoked2 = deviceToken;
@@ -61,7 +70,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   ZNMulticastDelegateProxyTestD1* d1;
   ZNMulticastDelegateProxyTestD2* d2;
   SEL commonSel;
-  SEL d3Sel;
+  SEL d2Sel;
   SEL nooneSel;
   
   NSDictionary* arg1;
@@ -74,7 +83,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 -(void)setUp {
   commonSel = @selector(application:didFinishLaunchingWithOptions:);
-  d3Sel =
+  d2Sel =
       @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
   nooneSel = @selector(application:handleOpenURL:);
   
@@ -86,12 +95,17 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   delegate.mainDelegate = main;
   [delegate chainDelegate:d1];
   [delegate chainDelegate:d2];
+  
+  arg1 = [[NSMutableDictionary alloc] init];
+  arg2 = [[NSMutableData alloc] init];
 }
 -(void)tearDown {
   [main release];
   [d1 release];
   [d2 release];
   [delegate release];
+  [arg1 release];
+  [arg2 release];
 }
 -(void)dealloc {
   [super dealloc];
@@ -100,7 +114,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 -(void)testRespondsTo {
   STAssertTrue([delegate respondsToSelector:commonSel],
                @"Responds to selector implemented by all delegates");
-  STAssertTrue([delegate respondsToSelector:d3Sel],
+  STAssertTrue([delegate respondsToSelector:d2Sel],
                @"Responds to selector implemented by a chained delegate");
   STAssertFalse([delegate respondsToSelector:nooneSel],
                @"Does not respond to selector not implemented by any delegate");
@@ -127,5 +141,17 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 -(void)testReturnValue {
   BOOL value = [delegate application:nil didFinishLaunchingWithOptions:arg1];
   STAssertTrue(value, @"Return value does not reflect main delegate");
+}
+
+-(void)testHiddenDelegates {
+  [delegate unchainDelegate:d2];
+  [delegate chainHiddenDelegate:d2];
+  
+  STAssertFalse([delegate respondsToSelector:d2Sel],
+                @"Hidden delegates should not influence -respondsTo:");
+  
+  [delegate application:nil
+didRegisterForRemoteNotificationsWithDeviceToken:arg2];  
+  STAssertEquals(arg2, d2.invoked2, @"Hidden chained delegate not invoked");
 }
 @end

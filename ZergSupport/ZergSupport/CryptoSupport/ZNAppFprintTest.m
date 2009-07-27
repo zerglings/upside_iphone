@@ -12,7 +12,6 @@
 
 #import "FormatSupport.h"
 #import "WebSupport.h"
-#import "ZNDeviceFprint.h"
 
 
 @interface ZNAppFprint ()
@@ -43,7 +42,7 @@
 }
 
 -(void)setUp {
-  deviceAttributes = [[ZNDeviceFprint deviceAttributes] retain];
+  deviceAttributes = [ZNAppFprint copyDeviceAttributes];
   NSData* manifestData = [NSData
                           dataWithContentsOfFile:[ZNAppFprint executablePath]];
   manifest = [[NSString alloc] initWithData:manifestData
@@ -95,9 +94,10 @@
   receivedResponse = YES;
 
   NSString* goldenHexFprint = [goldenFprints objectForKey:@"hexFprint"];
-  NSString* hexFprint = [ZNAppFprint hexAppFprint];
+  NSString* hexFprint = [ZNAppFprint copyHexAppFprint];
   STAssertEqualStrings(goldenHexFprint, hexFprint,
                        @"Application fingerprint formatted as hex");
+  [hexFprint release];
 }
 
 

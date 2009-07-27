@@ -30,8 +30,24 @@ static BOOL autoDelegateLaunched = NO;
 }
 @end
 @implementation ZNExtUIApplicationTestAuto
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
+-(void)applicationDidFinishLaunching:(UIApplication *)application {
   autoDelegateLaunched = YES;
+}
+-(void)thisDelegateIsAuto {
+}
+@end
+
+// This delegate should be auto-instantiated for hidden chaining.
+static BOOL hiddenDelegateLaunched = NO;
+@interface ZNExtUIApplicationTestHidden :
+NSObject<UIApplicationDelegate, ZNAutoUIHiddenApplicationDelegate> {  
+}
+@end
+@implementation ZNExtUIApplicationTestHidden
+-(void)applicationDidFinishLaunching:(UIApplication *)application {
+  hiddenDelegateLaunched = YES;
+}
+-(void)thisDelegateIsHidden {
 }
 @end
 
@@ -46,8 +62,17 @@ static BOOL autoDelegateLaunched = NO;
 -(void)testAutoDelegateChaining {
   STAssertTrue(autoDelegateLaunched,
                @"Delegate with auto-chaining wasn't invoked at app launch");
+  STAssertTrue(hiddenDelegateLaunched,
+               @"Delegate with hidden-chaining wasn't invoked at app launch");
   STAssertFalse(manualDelegateLaunched,
                @"Delegate without auto-chaining was invoked at app launch");
+  
+  id mainDelegate = [[ZNExtUIApplication sharedApplication] delegate];
+  STAssertTrue([mainDelegate respondsToSelector:@selector(thisDelegateIsAuto)],
+               @"ZNAutoUIApplicationDelegate was chained as hidden");
+  STAssertFalse([mainDelegate
+                 respondsToSelector:@selector(thisDelegateIsHidden)],
+                @"ZNAutoUIHiddenApplicationDelegate wasn't chained as hidden");
 }
 
 -(void)testCopyAllAutoChainedClasses {
@@ -55,9 +80,27 @@ static BOOL autoDelegateLaunched = NO;
   STAssertTrue([chainedClasses containsObject:[ZNExtUIApplicationTestAuto
                                                class]],
                @"copyAllAutoChainedClasses missed an auto-chaining delegate");
+  STAssertFalse([chainedClasses containsObject:[ZNExtUIApplicationTestHidden
+                                                class]],
+                @"copyAllAutoChainedClasses has a hidden chaining delegate");
   STAssertFalse([chainedClasses containsObject:[ZNExtUIApplicationTestManual
                                                 class]],
                 @"copyAllAutoChainedClasses has a manual-chaining delegate");
+}
+-(void)testCopyAllHiddenAutoChainedClasses {
+  NSArray* hiddenClasses = [ZNExtUIApplication copyAllHiddenAutoChainedClasses];
+  STAssertFalse([hiddenClasses containsObject:[ZNExtUIApplicationTestAuto
+                                               class]],
+                @"copyAllHiddenAutoChainedClasses has an auto-chaining "
+                @"delegate");
+  STAssertTrue([hiddenClasses containsObject:[ZNExtUIApplicationTestHidden
+                                               class]],
+               @"copyAllHiddenAutoChainedClasses missed a hidden chaining "
+               @"delegate");
+  STAssertFalse([hiddenClasses containsObject:[ZNExtUIApplicationTestManual
+                                                class]],
+                @"copyAllHiddenAutoChainedClasses has a manual-chaining "
+                @"delegate");
 }
 
 -(void)testSharedDelegate {

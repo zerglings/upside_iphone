@@ -25,13 +25,18 @@
 // proxy's existence. Separate concerns can be handled in chained delegates.
 @interface ZNMulticastDelegateProxy : NSProxy {
   NSObject* mainDelegate;
-  NSMutableSet* chainedDelegates;  
+  NSMutableSet* chainedDelegates;
+  NSMutableSet* hiddenDelegates;
 }
 // The main delegate (the UIKit object's delegate property).
 @property (nonatomic, assign) NSObject* mainDelegate;
 
 // Adds a delegate to the set of chained delegates.
 -(void)chainDelegate:(NSObject*)delegate;
-// Adds a delegate from the set of chained delegates.
+// Adds a delegate to the set of hidden chained delegates.
+//
+// The hidden delegates are not factored into the -respondsToSelecto: method.
+-(void)chainHiddenDelegate:(NSObject*)delegate;
+// Removes a set from the set of chained and/or hidden delegates.
 -(void)unchainDelegate:(NSObject*)delegate;
 @end

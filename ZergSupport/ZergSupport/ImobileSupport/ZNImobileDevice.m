@@ -14,6 +14,7 @@
 
 #import <TargetConditionals.h>
 #import <UIKit/UIKit.h>
+#import "ZNPushNotifications.h"
 
 
 @interface ZNImobileDevice ()
@@ -62,12 +63,8 @@
           objectForInfoDictionaryKey:(NSString*)kCFBundleIdentifierKey];
 }
 
-+(NSUInteger)appProvisioning {  
-#if TARGET_IPHONE_SIMULATOR
-  BOOL inSimulator = YES;
-#else  // TARGET_IPHONE_SIMULATOR
-  BOOL inSimulator = NO;
-#endif  // TARGET_IPHONE_SIMULATOR
++(NSUInteger)appProvisioning {
+  BOOL inSimulator = [ZNImobileDevice inSimulator];
   
 #if defined(DEBUG) || (!defined(NS_BLOCK_ASSERTIONS) && !defined(NDEBUG))
   BOOL inDebug = YES;
@@ -94,6 +91,18 @@
   }
   return encryptedBinary ? kZNImobileProvisioningDeviceDistribution :
       kZNImobileProvisioningDeviceRelease;
+}
+
++(BOOL)inSimulator {
+#if TARGET_IPHONE_SIMULATOR
+  return YES;
+#else  // TARGET_IPHONE_SIMULATOR
+  return NO;
+#endif  // TARGET_IPHONE_SIMULATOR
+}
+
++(NSData*)appPushToken {
+  return [ZNPushNotifications pushToken];
 }
 
 +(NSString*)osName {

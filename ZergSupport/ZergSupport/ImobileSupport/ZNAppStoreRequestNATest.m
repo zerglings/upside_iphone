@@ -13,10 +13,10 @@
 #import <StoreKit/StoreKit.h>
 #import <TargetConditionals.h>
 
-#import "CryptoSupport.h"
 #import "FormatSupport.h"
 #import "ModelSupport.h"
 #import "WebSupport.h"
+#import "ZNImobileDevice.h"
 
 
 // Model for the request to the receipt verification service.
@@ -147,12 +147,9 @@
   [ZNJsonHttpRequest callService:testService
                           method:kZNHttpMethodPost
                             data:request
-                     fieldCasing:kZNFormatterSnakeCase
-                    encoderClass:[ZNFormMultipartEncoder class]
                  responseQueries:[NSArray arrayWithObjects:
                                   [ZNAppStoreRequestNATestWebResponse class],
                                   @"/response", nil]
-                  responseCasing:kZNFormatterSnakeCase
                           target:self
                           action:@selector(checkReceipt:)];
   [request release];
@@ -197,12 +194,10 @@
   STAssertEqualStrings(skTransaction.transactionIdentifier,
                        receipt.transactionId,
                        @"Receipt transaction ID doesn't match");
-  STAssertEqualStrings([[ZNDeviceFprint deviceAttributes]
-                        objectForKey:@"appId"],
-                       receipt.bid, @"Receipt bundle ID doesn't match");
-  STAssertEqualStrings([[ZNDeviceFprint deviceAttributes]
-                        objectForKey:@"appVersion"],
-                       receipt.bvrs, @"Receipt bundle version doesn't match");
+  STAssertEqualStrings([ZNImobileDevice appId], receipt.bid,
+                       @"Receipt bundle ID doesn't match");
+  STAssertEqualStrings([ZNImobileDevice appVersion], receipt.bvrs,
+                       @"Receipt bundle version doesn't match");
 
   if (skTransaction.transactionDate) {
     STAssertEqualObjects(skTransaction.transactionDate, receipt.purchaseDate,

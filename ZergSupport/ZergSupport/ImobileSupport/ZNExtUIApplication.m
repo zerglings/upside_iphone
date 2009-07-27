@@ -25,6 +25,15 @@
       [delegate release];
     }
     [chainedClasses release];
+
+    NSArray* hiddenChainedClasses = [ZNExtUIApplication
+                                     copyAllHiddenAutoChainedClasses];
+    for(Class klass in hiddenChainedClasses) {
+      NSObject<UIApplicationDelegate>* delegate = [[klass alloc] init];
+      [self chainHiddenDelegate:delegate];
+      [delegate release];
+    }
+    [hiddenChainedClasses release];
   }
   return self;
 }
@@ -46,6 +55,10 @@
   [delegateProxy chainDelegate:delegate];
 }
 
+-(void)chainHiddenDelegate:(NSObject<UIApplicationDelegate>*)delegate {
+  [delegateProxy chainHiddenDelegate:delegate];
+}
+
 -(void)unchainDelegate:(NSObject<UIApplicationDelegate>*)delegate {
   [delegateProxy unchainDelegate:delegate];
 }
@@ -58,7 +71,8 @@
   return (ZNExtUIApplication*)[super sharedApplication];
 }
 
-+(NSArray*)copyAllAutoChainedClasses {
+// All the classes implementing a protocol.
++(NSArray*)copyAllClassesImplementing:(char*)protocolName {
   // Get all the classes from the Objective C runtime.
   int numClasses = objc_getClassList(NULL, 0);
   Class* classes = (Class*)calloc(sizeof(Class), numClasses);
@@ -75,8 +89,8 @@
     unsigned int protocolCount;
     Protocol** protocols = class_copyProtocolList(klass, &protocolCount);
     for(unsigned int i = 0; i < protocolCount; i++) {
-      const char* protocolName = protocol_getName(protocols[i]);
-      if (!strcmp(protocolName, "ZNAutoUIApplicationDelegate")) {
+      const char* classProtocolName = protocol_getName(protocols[i]);
+      if (!strcmp(classProtocolName, protocolName)) {
         classes[chainedClasses++] = klass;
         break;
       }
@@ -87,7 +101,15 @@
   NSArray* returnValue = [[NSArray alloc] initWithObjects:classes
                                                     count:chainedClasses];
   free(classes);
-  return returnValue;
+  return returnValue;  
+}
+
++(NSArray*)copyAllAutoChainedClasses {
+  return [self copyAllClassesImplementing:"ZNAutoUIApplicationDelegate"];
+}
+
++(NSArray*)copyAllHiddenAutoChainedClasses {
+  return [self copyAllClassesImplementing:"ZNAutoUIHiddenApplicationDelegate"];
 }
 
 @end

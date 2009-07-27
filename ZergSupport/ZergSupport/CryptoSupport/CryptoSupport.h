@@ -14,7 +14,6 @@
 #import "ZNAppFprint.h"
 #import "ZNAesCipher.h"
 #import "ZNDebugIntegrity.h"
-#import "ZNDeviceFprint.h"
 #import "ZNDigester.h"
 #import "ZNFileFprint.h"
 #import "ZNMd5Digest.h"
