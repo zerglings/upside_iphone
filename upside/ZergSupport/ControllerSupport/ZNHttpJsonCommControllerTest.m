@@ -96,7 +96,7 @@
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
   
-  STAssertEquals(YES, receivedResponse, @"Response never received");
+  STAssertEquals(YES, receivedResponse, @"Never received response");
   STAssertFalse([app isNetworkActivityIndicatorVisible],
                 @"Comm controller did not anounce end of net request");
 }

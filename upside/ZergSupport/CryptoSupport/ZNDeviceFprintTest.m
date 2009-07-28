@@ -8,16 +8,18 @@
 
 #import "TestSupport.h"
 
-#import "ZNDeviceFprint.h"
+#import "ZNAppFprint.h"
 
+#import "ImobileSupport.h"
 #import "WebSupport.h"
 #import "ZNMd5Digest.h"
 
 
-@interface ZNDeviceFprint ()
-// This method isn't part of the public API. It's tested for debugging
-// convenience, because its failure log can helps debug most of the logic.
-+(NSData*)fprintData;
+@interface ZNAppFprint ()
+// Thess methods aren't part of the public API. They are tested for debugging
+// convenience, because their failure logs can help debug most of the logic.
++(NSString*)copyProvisioningStringFor:(NSUInteger)provisioning;
++(NSData*)copyFprintData;
 @end
 
 
@@ -40,7 +42,7 @@
 }
 
 -(void)setUp {
-  deviceAttributes = [[ZNDeviceFprint deviceAttributes] retain];
+  deviceAttributes = [ZNAppFprint copyDeviceAttributes];
 
   testService =
       @"http://zn-testbed.heroku.com/crypto_support/device_fprint.xml";
@@ -55,50 +57,68 @@
   testService = nil;
 }
 
+-(void)testAppProvisioning {
+  NSUInteger provisioning[] = {
+    kZNImobileProvisioningSimulatorDebug,
+    kZNImobileProvisioningSimulatorRelease,
+    kZNImobileProvisioningDeviceDebug,
+    kZNImobileProvisioningDeviceRelease,
+    kZNImobileProvisioningDeviceDistribution,
+  };
+  NSString* golden[] = {@"s", @"S", @"h", @"H", @"D"};
+  
+  for (NSUInteger i = 0; i < sizeof(golden) / sizeof(*golden); i++) {
+    STAssertEqualStrings(golden[i],
+                         [ZNAppFprint copyProvisioningStringFor:
+                          provisioning[i]],
+                         @"Provisioning string mapping failed");
+  }
+}
 
 -(void)testDeviceAttributes {
-  NSCharacterSet* digits = [NSCharacterSet decimalDigitCharacterSet];
   NSDictionary* attributes = deviceAttributes;
-
-  // NOTE: The appVersion below is hard-coded in the Info.plist for
-  //       ZergSupportTests. The test will probably fail when included in
-  //       another suite.
-  STAssertEqualStrings(@"1.9.8.3", [attributes objectForKey:@"appVersion"],
-                       @"appVersion");
-
-  // NOTE: The checks below make assumptions on Apple's future moves. They
-  //       will break if the assumptions are wrong. The main point of the tests
-  //       is to make sure that the value in each key looks right.
-
-  // hardwareModel should be i386 or somethingX,Y where X and Y are digits.
-  NSString* model = [attributes objectForKey:@"hardwareModel"];
-  NSRange comma = [model rangeOfString:@","];
-  if (comma.length == 0) {
-    STAssertEqualStrings(@"i386", model,
-                        @"Simulator hardwareModel should be i386");
+  
+  STAssertEqualStrings(@"us.costan.ZergSupportTests",
+                       [attributes objectForKey:@"appId"], @"appId");
+  
+  if ([ZNImobileDevice inSimulator]) {
+    STAssertEqualStrings(@"", [attributes objectForKey:@"appPushToken"],
+                         @"appPushToken");
   }
   else {
-    STAssertTrue([digits characterIsMember:
-                  [model characterAtIndex:(comma.location - 1)]],
-                 @"Device hardwareModel should have a digit before ,");
-    STAssertTrue([digits characterIsMember:
-                  [model characterAtIndex:(comma.location + 1)]],
-                 @"Device hardwareModel should have a digit after ,");
+    // Wait to get a push token.
+    for (NSUInteger i = 0; i < 100; i++) {
+      [[NSRunLoop currentRunLoop] runUntilDate:
+       [NSDate dateWithTimeIntervalSinceNow:0.1]];
+      if ([ZNImobileDevice appPushToken]) {
+        break;
+      }
+    }
+    STAssertNotNil([ZNImobileDevice appPushToken],
+                   @"Device didn't receive a token for push notifications");  
+    
+    STAssertEquals(64U, [[attributes objectForKey:@"appPushToken"] length],
+                   @"appPushToken length");
   }
-
+  
+  STAssertEqualStrings(@"1.9.8.3", [attributes objectForKey:@"appVersion"],
+                       @"appVersion");
+  
+  STAssertEqualStrings([ZNImobileDevice hardwareModel],
+                       [attributes objectForKey:@"hardwareModel"],
+                       @"hardwareModel");
+  
   STAssertEqualObjects(@"iPhone OS", [attributes objectForKey:@"osName"],
                        @"osName");
-
-  NSString* osVersion = [attributes objectForKey:@"osVersion"];
-  STAssertTrue([digits characterIsMember:[osVersion characterAtIndex:0]],
-               @"osVersion should start with a digit");
-  STAssertEquals((unichar)'.', [osVersion characterAtIndex:1],
-                 @"osVersion should have a . after the first digit");
-  STAssertTrue([digits characterIsMember:[osVersion characterAtIndex:2]],
-               @"osVersion should have a digit after the first .");
+  STAssertEqualStrings([ZNImobileDevice osVersion],
+                       [attributes objectForKey:@"osVersion"],
+                       @"osVersion");
 
   STAssertEquals(40U, [[attributes objectForKey:@"uniqueId"] length],
                  @"UDID length");
+
+  NSString* appProvisioning = [attributes objectForKey:@"appProvisioning"];
+  STAssertEquals(1U, [appProvisioning length], @"appProvisioning length");    
 }
 
 -(void)testDigests {
@@ -125,22 +145,23 @@
   // This method isn't part of the public API. It's tested for debugging
   // convenience, because its failure log can helps debug most of the logic.
   NSString* goldenDataString = [goldenDigests objectForKey:@"data"];
-  NSString* dataString = [[NSString alloc] initWithData:[ZNDeviceFprint
-                                                         fprintData]
-                                               encoding:NSASCIIStringEncoding];
+  NSData* fprintData = [ZNAppFprint copyFprintData];
+  NSString* dataString =
+      [[NSString alloc] initWithData:fprintData
+                            encoding:NSISOLatin1StringEncoding];
+  [fprintData release];
   STAssertEqualStrings(goldenDataString, dataString, @"Fingerprint data");
   [dataString release];
 
   NSString* goldenHexDigest = [goldenDigests objectForKey:@"hexMd5"];
-  NSString* hexDigest = [ZNDeviceFprint
+  NSString* hexDigest = [ZNAppFprint
                          copyHexFprintUsingDigest:[ZNMd5Digest digester]];
   STAssertEqualStrings(goldenHexDigest, hexDigest,
                        @"Fingerprint MD5 hexdigest");
   [hexDigest release];
 
-  NSData* goldenDigest = [ZNMd5Digest copyDigest:[ZNDeviceFprint fprintData]];
-  NSData* digest = [ZNDeviceFprint copyFprintUsingDigest:[ZNMd5Digest
-                                                          digester]];
+  NSData* goldenDigest = [ZNMd5Digest copyDigest:[ZNAppFprint copyFprintData]];
+  NSData* digest = [ZNAppFprint copyFprintUsingDigest:[ZNMd5Digest digester]];
   STAssertEqualObjects(goldenDigest, digest, @"Fingerprint MD5 digest");
   [digest release];
 }

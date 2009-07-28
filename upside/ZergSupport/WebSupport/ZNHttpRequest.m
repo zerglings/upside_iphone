@@ -43,7 +43,7 @@ NSString* kZNHttpErrorDomain = @"ZNHttpErrorDomain";
 
 +(NSURLRequest*)newURLRequestToService:(NSString*)service
                                 method:(NSString*)method
-                                  data:(NSDictionary*)data
+                                  data:(NSObject*)dictionaryOrModel
                            fieldCasing:(ZNFormatterCasing)fieldCasing
                           encoderClass:(Class)dataEncodingClass {
   NSMutableURLRequest* request = [[NSMutableURLRequest alloc] init];
@@ -54,7 +54,7 @@ NSString* kZNHttpErrorDomain = @"ZNHttpErrorDomain";
 
   ZNFormFieldFormatter* fieldFormatter =
       [ZNFormFieldFormatter formatterFromPropertiesTo:fieldCasing];
-  NSData* encodedBody = [dataEncodingClass copyEncodingFor:data
+  NSData* encodedBody = [dataEncodingClass copyEncodingFor:dictionaryOrModel
                                        usingFieldFormatter:fieldFormatter];
   NSString* contentType = [dataEncodingClass copyContentTypeFor:encodedBody];
 
@@ -227,14 +227,14 @@ didReceiveResponse:(NSURLResponse*)response {
 
 +(void)callService:(NSString*)service
             method:(NSString*)method
-              data:(NSDictionary*)data
+              data:(NSObject*)dictionaryOrModel
        fieldCasing:(ZNFormatterCasing)fieldCasing
       encoderClass:(Class)dataEncodingClass
             target:(NSObject*)target
             action:(SEL)action {
   NSURLRequest* urlRequest = [self newURLRequestToService:service
                                                    method:method
-                                                     data:data
+                                                     data:dictionaryOrModel
                                               fieldCasing:fieldCasing
                                              encoderClass:dataEncodingClass];
   ZNHttpRequest* request =

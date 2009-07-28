@@ -12,6 +12,8 @@
 
 @interface ZNMSDate : ZNMSAttributeType {
   NSDateFormatter* osxFormatter;
+  NSDateFormatter* osxFormatter2;
+  NSDateFormatter* railsFormatter;
   NSDateFormatter* rssFormatter;
 }
 

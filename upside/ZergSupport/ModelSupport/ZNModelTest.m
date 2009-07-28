@@ -12,6 +12,7 @@
 #import "ZNModelDefinitionAttribute.h"
 #import "ZNModelDefinition.h"
 
+
 @interface ZNModelTest : SenTestCase {
   ZNTestDate* dateModel;
   ZNTestSubmodel* subModel;
@@ -23,11 +24,14 @@
   NSNumber* integerObject;
   NSNumber* uintegerObject;
   NSString* testString;
+  NSData* testData;
+  NSString* testDataString;
   double testDouble;
   NSInteger testInteger;
   NSUInteger testUInteger;
 }
 @end
+
 
 @implementation ZNModelTest
 
@@ -43,12 +47,18 @@
   testInteger = -3141592;
   testUInteger = 0x87654321;
   testString = @"Awesome \0 test String";
+  uint8_t dataBytes[] = {0x03, 0x07, 0x00, 0xFC, 0x85, 0xEC, 0xDD};
+  testData = [[NSData alloc] initWithBytes:dataBytes length:sizeof(dataBytes)];
+  testDataString = [[NSString alloc] initWithBytes:dataBytes
+                                            length:sizeof(dataBytes)
+                                          encoding:NSASCIIStringEncoding];
   numbersModel = [[ZNTestNumbers alloc] initWithProperties:nil];
   numbersModel.trueVal = YES;
   numbersModel.falseVal = NO;
   numbersModel.doubleVal = testDouble;
   numbersModel.integerVal = testInteger;
   numbersModel.stringVal = testString;
+  numbersModel.dataVal = testData;
   numbersModel.uintegerVal = testUInteger;
   trueObject = [[NSNumber alloc] initWithBool:YES];
   falseObject = [[NSNumber alloc] initWithBool:NO];
@@ -60,6 +70,8 @@
 -(void)tearDown {
   [date release];
   [dateModel release];
+  [testData release];
+  [testDataString release];
   [numbersModel release];
   [trueObject release];
   [falseObject release];
@@ -89,6 +101,8 @@
                        @"Boxed uinteger should reflect the original value");
   STAssertEqualStrings(testString, [numbersDict objectForKey:@"stringVal"],
                        @"Boxed string should equal the original value");
+  STAssertEqualObjects(testData, [numbersDict objectForKey:@"dataVal"],
+                       @"Boxed NSData should equal the original value");
   ZNTestNumbers* thawedModel = [[ZNTestNumbers alloc]
                                 initWithProperties:numbersDict];
   STAssertEquals(YES, thawedModel.trueVal,
@@ -103,6 +117,8 @@
                  @"Unboxed uinteger should equal original");
   STAssertEqualStrings(testString, thawedModel.stringVal,
                        @"Unboxed string should equal original");
+  STAssertEqualObjects(testData, thawedModel.dataVal,
+                       @"Unboxed NSData should equal original");
   [numbersDict release];
   [thawedModel release];
 
@@ -120,6 +136,8 @@
                        @"String-boxed uinteger should reflect original");
   STAssertEqualStrings(testString, [numbersDict objectForKey:@"stringVal"],
                        @"String-boxed string should equal original");
+  STAssertEqualStrings(testDataString, [numbersDict objectForKey:@"dataVal"],
+                       @"String-boxed NSData should reflect original");
   thawedModel = [[ZNTestNumbers alloc] initWithProperties:numbersDict];
   STAssertEquals(YES, thawedModel.trueVal,
                  @"String-unboxed YES should equal original");
@@ -133,6 +151,8 @@
                  @"String-unboxed uinteger should equal original");
   STAssertEqualStrings(testString, thawedModel.stringVal,
                        @"String-unboxed string should equal original");
+  STAssertEqualObjects(testData, thawedModel.dataVal,
+                       @"String-unboxed NSData should equal original");
   [numbersDict release];
   [thawedModel release];
 }
@@ -198,33 +218,44 @@
 
 }
 
--(void)testNullStringBoxing {
+-(void)testNullPrimitiveBoxing {
   ZNTestNumbers* nullCarrier = [[[ZNTestNumbers alloc] init] autorelease];
   nullCarrier.stringVal = nil;
+  nullCarrier.dataVal = nil;
 
   NSDictionary* dict = [nullCarrier copyToDictionaryForcingStrings:NO];
   STAssertNil([dict objectForKey:@"stringVal"],
               @"Nil strings should be ignored while boxing");
+  STAssertNil([dict objectForKey:@"dataVal"],
+              @"Nil NSDatas should be ignored while boxing");
   ZNTestNumbers* thawedNulls = [[ZNTestNumbers alloc] initWithProperties:dict];
   STAssertNil(thawedNulls.stringVal,
               @"Nil strings should be unboxed to nil strings");
+  STAssertNil(thawedNulls.dataVal,
+              @"Nil NSDatas should be unboxed to nil NSDatas");
   [dict release];
   [thawedNulls release];
 
   dict = [nullCarrier copyToDictionaryForcingStrings:YES];
   STAssertNil([dict objectForKey:@"stringVal"],
               @"Nil strings should be ignored while string-boxing");
+  STAssertNil([dict objectForKey:@"dataVal"],
+              @"Nil NSDatas should be ignored while string-boxing");
   thawedNulls = [[ZNTestNumbers alloc] initWithProperties:dict];
   STAssertNil(thawedNulls.stringVal,
               @"Nil strings should be string-unboxed to nil strings");
+  STAssertNil(thawedNulls.dataVal,
+              @"Nil NSDatas should be string-unboxed to nil NSDatas");
   [dict release];
   [thawedNulls release];
 
-  dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNull null], @"stringVal",
-          nil];
+  dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNull null], @"dataVal",
+          [NSNull null], @"stringVal", nil];
   thawedNulls = [[ZNTestNumbers alloc] initWithProperties:dict];
   STAssertNil(thawedNulls.stringVal,
               @"NSNull instances should be string-unboxed to nil strings");
+  STAssertNil(thawedNulls.dataVal,
+              @"NSNull instances should be string-unboxed to nil NSDatas");
   [thawedNulls release];
 }
 
@@ -304,7 +335,8 @@
   NSString* jsonString =
       @"{'trueVal': true, 'falseVal': false, 'doubleVal': 3.141592,"
       @"'integerVal': -3141592, 'uintegerVal': 2271560481, "
-      @"'stringVal': 'Awesome \\u0000 test String'}";
+      @"'stringVal': 'Awesome \\u0000 test String',"
+      @"'dataVal': '\\u0003\\u0007\\u0000\\u00fc\\u0085\\u00ec\\u00dd'}";
   ZNModel* testModel = [[ZNTestNumbers alloc] initWithJson:jsonString];
 
   STAssertEqualStrings([numbersModel description], [testModel description],

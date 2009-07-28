@@ -19,7 +19,7 @@
   NSString* encodedKey = (NSString*)
       CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                               (CFStringRef)key, NULL,
-                                              (CFStringRef)@"&=",
+                                              (CFStringRef)@"&=+/;?:@",
                                               kCFStringEncodingUTF8);
   [output appendBytes:[encodedKey cStringUsingEncoding:NSUTF8StringEncoding]
                length:[encodedKey length]];
@@ -31,16 +31,17 @@
       CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                               (CFStringRef)value,
                                               NULL,
-                                              (CFStringRef)@"&=",
+                                              (CFStringRef)@"&=+/;?:@",
                                               kCFStringEncodingUTF8);
   [output appendBytes:[encodedValue cStringUsingEncoding:NSUTF8StringEncoding]
                length:[encodedValue length]];
   [encodedValue release];
 }
 
-+(NSData*)copyEncodingFor:(NSDictionary*)dictionary
++(NSData*)copyEncodingFor:(NSObject*)dictionaryOrModel
       usingFieldFormatter:(ZNFormFieldFormatter*)formatter {
-  return [super copyEncodingFor:dictionary usingFieldFormatter:formatter];
+  return [super copyEncodingFor:dictionaryOrModel
+            usingFieldFormatter:formatter];
 }
 
 +(NSString*)copyContentTypeFor:(NSData*)encodedData {

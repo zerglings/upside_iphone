@@ -176,13 +176,16 @@
 		5781F9F61015946700B387C2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781F9E81015945200B387C2 /* StoreKit.framework */; };
 		5781FABF1015A59900B387C2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781F9E81015945200B387C2 /* StoreKit.framework */; };
 		5781FAD81015A9AC00B387C2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5781FAD71015A9AC00B387C2 /* Icon.png */; };
-		5799225F1016BC4D009FF134 /* ZNMSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5799225E1016BC4D009FF134 /* ZNMSData.m */; };
 		579A1752101C4DC7006E5D9A /* ZNStringEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 579A1750101C4DC7006E5D9A /* ZNStringEncoder.h */; };
 		579A1753101C4DC7006E5D9A /* ZNStringEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 579A1751101C4DC7006E5D9A /* ZNStringEncoder.m */; };
 		57A5CE800FEE481E003FFC39 /* ZNNetworkProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CE520FEE451F003FFC39 /* ZNNetworkProgress.m */; };
 		57A5CF230FEE9FFA003FFC39 /* ZNHttpJsonCommController.h in Headers */ = {isa = PBXBuildFile; fileRef = 57A5CF210FEE9FFA003FFC39 /* ZNHttpJsonCommController.h */; };
 		57A5CF240FEE9FFA003FFC39 /* ZNHttpJsonCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CF220FEE9FFA003FFC39 /* ZNHttpJsonCommController.m */; };
 		57A5CF290FEEA156003FFC39 /* ZNTestModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41C00FEDC38800A5CC9D /* ZNTestModels.m */; };
+		57C057B3101E5FAF005BB8F6 /* ZNPushNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E37B1019C3D000A22FEF /* ZNPushNotifications.h */; };
+		57C057B4101E5FAF005BB8F6 /* ZNPushNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E37C1019C3D000A22FEF /* ZNPushNotifications.m */; };
+		57C057B8101E6011005BB8F6 /* ZNMSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5799225E1016BC4D009FF134 /* ZNMSData.m */; };
+		57C057B9101E6017005BB8F6 /* ZNMSData.h in Headers */ = {isa = PBXBuildFile; fileRef = 5799225D1016BC4D009FF134 /* ZNMSData.h */; };
 		57CF3CC6101CFF1E00653222 /* ZNPushNotificationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 579A1807101C5D69006E5D9A /* ZNPushNotificationsTest.m */; };
 		57CF3D75101D78E600653222 /* ZNFormURLEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B418C0FEDC38800A5CC9D /* ZNFormURLEncoderTest.m */; };
 		57CF3E50101D929B00653222 /* ZNMulticastDelegateProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E3B51019DFF900A22FEF /* ZNMulticastDelegateProxyTest.m */; };
@@ -223,7 +226,6 @@
 		57CF3EFC101D9CD400653222 /* ZNHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B41FE0FEDC38800A5CC9D /* ZNHttpRequestTest.m */; };
 		57CF3EFD101D9CD400653222 /* ZNJsonHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B42050FEDC38800A5CC9D /* ZNJsonHttpRequestTest.m */; };
 		57CF3EFE101D9CD400653222 /* ZNXmlHttpRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 571B42090FEDC38800A5CC9D /* ZNXmlHttpRequestTest.m */; };
-		57F8E37D1019C3D000A22FEF /* ZNPushNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E37C1019C3D000A22FEF /* ZNPushNotifications.m */; };
 		57F8E3821019C6C700A22FEF /* ZNExtUIApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E3801019C6C700A22FEF /* ZNExtUIApplication.h */; };
 		57F8E3831019C6C700A22FEF /* ZNExtUIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E3811019C6C700A22FEF /* ZNExtUIApplication.m */; };
 		57F8E3861019C6DE00A22FEF /* _ZNExtUIApplicationMain.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E3841019C6DE00A22FEF /* _ZNExtUIApplicationMain.h */; };
@@ -964,6 +966,8 @@
 				57F8E3861019C6DE00A22FEF /* _ZNExtUIApplicationMain.h in Headers */,
 				57F8E3B21019DC9D00A22FEF /* ZNMulticastDelegateProxy.h in Headers */,
 				579A1752101C4DC7006E5D9A /* ZNStringEncoder.h in Headers */,
+				57C057B3101E5FAF005BB8F6 /* ZNPushNotifications.h in Headers */,
+				57C057B9101E6017005BB8F6 /* ZNMSData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1111,8 +1115,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A5CF290FEEA156003FFC39 /* ZNTestModels.m in Sources */,
-				5799225F1016BC4D009FF134 /* ZNMSData.m in Sources */,
-				57F8E37D1019C3D000A22FEF /* ZNPushNotifications.m in Sources */,
 				57CF3CC6101CFF1E00653222 /* ZNPushNotificationsTest.m in Sources */,
 				57CF3D75101D78E600653222 /* ZNFormURLEncoderTest.m in Sources */,
 				57CF3E50101D929B00653222 /* ZNMulticastDelegateProxyTest.m in Sources */,
@@ -1204,6 +1206,8 @@
 				57F8E3831019C6C700A22FEF /* ZNExtUIApplication.m in Sources */,
 				57F8E3B31019DC9D00A22FEF /* ZNMulticastDelegateProxy.m in Sources */,
 				579A1753101C4DC7006E5D9A /* ZNStringEncoder.m in Sources */,
+				57C057B4101E5FAF005BB8F6 /* ZNPushNotifications.m in Sources */,
+				57C057B8101E6011005BB8F6 /* ZNMSData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

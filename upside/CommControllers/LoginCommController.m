@@ -40,12 +40,14 @@
 -(void)loginUsing:(RegistrationState*)theActivationState {
   activationState = theActivationState;
 
+  NSString* hexAppFprint = [ZNAppFprint copyHexAppFprint];
   NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
                            activationState.user.name, @"name",
                            activationState.user.password, @"password",
                            activationState.deviceInfo, @"device",
-                           [ZNAppFprint hexAppFprint], @"appSig",
+                           hexAppFprint, @"appSig",
                            nil];
+  [hexAppFprint release];
   [ZNNetworkProgress connectionStarted];
   [ZNJsonHttpRequest callService:[ServerPaths loginUrl]
                           method:[ServerPaths loginMethod]

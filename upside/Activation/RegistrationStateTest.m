@@ -28,10 +28,12 @@
   [RegistrationState removeSavedState];
   activationState = [[RegistrationState alloc] init];
 
+  NSDictionary* deviceAttributes = [ZNAppFprint copyDeviceAttributes];
   testDevice = [[Device alloc] initWithProperties:
                 [NSDictionary dictionaryWithObjectsAndKeys:
-                 [[ZNDeviceFprint deviceAttributes] objectForKey:@"uniqueId"],
+                 [deviceAttributes objectForKey:@"uniqueId"],
                  @"uniqueId", nil]];
+  [deviceAttributes release];
   testUser = [[User alloc] initPseudoUser:testDevice];
 }
 

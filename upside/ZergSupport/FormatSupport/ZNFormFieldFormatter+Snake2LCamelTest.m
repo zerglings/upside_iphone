@@ -63,7 +63,10 @@
     {@"twoWords", @"two__words"},
     {@"word", @"__word"},
     {@"word", @"word__"},
-    {@"threeGoodWordsXY", @"_three___good_words_x_y__"}
+    {@"threeGoodWordsXY", @"_three___good_words_x_y__"},
+    {@"twoWords", @"two-words"},
+    {@"randomUAndV", @"random-u-and-v"},
+    {@"threeGoodWordsXY", @"-three---good-words-x-y--"}
   };
 
   for (NSUInteger i = 0; i < sizeof(testBattery) / sizeof(NSString*[2]); i++) {

@@ -22,17 +22,23 @@
 }
 
 +(Device*)copyCurrentDevice {
-  return [[Device alloc] initWithProperties:[ZNDeviceFprint deviceAttributes]];
+  NSDictionary* attributes = [ZNAppFprint copyDeviceAttributes];
+  Device* returnValue = [[Device alloc] initWithProperties:attributes];
+  [attributes release];
+  return returnValue;
 }
 
 -(BOOL)isEqualToCurrentDevice {
-  NSDictionary* attributes = [ZNDeviceFprint deviceAttributes];
-  return [uniqueId isEqualToString:[attributes objectForKey:@"uniqueId"]] &&
+  NSDictionary* attributes = [ZNAppFprint copyDeviceAttributes];
+  BOOL returnValue =
+      [uniqueId isEqualToString:[attributes objectForKey:@"uniqueId"]] &&
       [hardwareModel isEqualToString:[attributes
                                       objectForKey:@"hardwareModel"]] &&
       [osName isEqualToString:[attributes objectForKey:@"osName"]] &&
       [osVersion isEqualToString:[attributes objectForKey:@"osVersion"]] &&
       [appVersion isEqualToString:[attributes objectForKey:@"appVersion"]];
+  [attributes release];
+  return returnValue;
 }
 
 -(Device*)copyAndUpdate {

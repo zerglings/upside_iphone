@@ -21,3 +21,4 @@
 #import "ZNModelJsonParser.h"
 #import "ZNModelXmlParser.h"
 #import "ZNObjectQuery.h"
+#import "ZNStringEncoder.h"

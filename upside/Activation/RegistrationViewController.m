@@ -97,11 +97,11 @@
   if (!message) {
     if (title) {
       message = title;
-      title = @"Activation error";
+      title = @"Registration error";
     }
     else {
       message = @"Something went horribly wrong.";
-      title = @"Activation error";
+      title = @"Registration error";
     }
   }
   if (!title) {

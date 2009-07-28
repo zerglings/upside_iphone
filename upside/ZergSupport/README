@@ -118,3 +118,90 @@ simple for ZergSupport's users.
 If your employment conditions or philosophy prevent you from contributing to
 ZergSupport by development, you can buy StockPlay from the App Store, and thus
 contribute indirectly.
+
+
+TESTING
+
+ZergSupport is designed to help communicating with outside services. Its tests
+use mock services. This is the mock setup needed by the tests:
+
+1. A testbed (zn_testbed) service running on Heroku infrastructure. The code is
+at http://github.com/costan/zn_testbed/ and the testbed is hosted at
+http://zn-testbed.heroku.com
+
+2. Apple Push Notification Service certificates. Setup guide:
+  * In the iPhone Developer Program Portal, go to App IDs, select New App ID.
+    * (recommended) Use ZergSupport Tests for the description.
+    * (recommended) Select an existing Bundle Seed ID, if one is available.
+      This way, you can use your existing wildcard provisioning certificates to
+      run ZergSupport tests.
+    * Set the Bundle Identifier (App ID Suffix) to us.costan.ZergSupport, or
+      modify the bundle ID on the ZergSupportTests target to match your setting.
+    * Submit the creation form, then click on Configure next to the new App ID.
+    * Check on Enable Push notifications checkbox.
+    * Click on the Configure button next to Development Push SSL Certificate.
+    * Follow the on-screen instructions to get a certificate in your keychain.
+      TIP: You can use the same certificate signing request for the developer
+           and for the production certificate.
+  * Open Keychain.
+    * Select the login keychain from the keychains list (top-left).
+    * Select "My Certificates" from the category list (bottom-left).
+    * Select the push certificate (the name will include "Push Services").
+    * From the application menu, select File > Export Items..., and leave the
+      password blank. Save the certificate inside the ZergSupport project, as
+      ZergSupport/ImobileSupport/ZNPushNotificationsTestCertDev.p12
+  * Repeat the steps above for the production certificate, save it as
+    ZergSupport/ImobileSupport/ZNPushNotificationsTestCertProd.p12
+  
+
+3. An App Store application with the ID us.costan.ZergSupport. The application
+must be for pay (for In-App Purchases). Setup guide:
+  * In the iPhone Developer Program Portal, go to App IDs, click on the
+    Configure button next to the App ID created at for Push Notifications.
+    * Check the Enable In App Purchase checkbox.
+  * Sign into iTunes connect.
+    * Create a new application, set the pricing to Tier 1 or above (not Free).
+      Everything else in the application description is not important.
+    * Build the ZergSupport tests in Distribution mode, submit the binary to
+      iTunes Connect. Any binary will work. Without a submitted binary, In-App
+      Purchase tests will fail.
+    * Go to Manage Your In-App Purchases, and setup the purchases described
+      below. The purchases must be under the ZergSupport test application.
+
+4. The following In-App Purchases:
+  * A test subscription:
+    * Reference Name: ZergSupport: Subscription Test
+    * Product ID: net.zergling.ZergSupport.sub
+    * Type: Subscription
+    * Price Tier: 2
+    * Cleared for Sale: Yes
+    * Display Detail: Language - English
+      * Name: 1 Month Subscription
+      * Description: 1 Month Subscription Description 
+  * A test premium feature:
+    * Reference Name: ZergSupport: Feature Test
+    * Product ID: net.zergling.ZergSupport.feature
+    * Type: Non-Consumable
+    * Price Tier: 4
+    * Cleared for Sale: Yes
+    * Display Detail: Language - English
+      * Name: Awesome Feature
+      * Description: Awesome Feature Description
+  * A test cheap item:
+    * Reference Name: ZergSupport: Cheap Subscription Test
+    * Product ID: net.zergling.ZergSupport.sub_cheap
+    * Type: Subscription
+    * Price Tier: 1
+    * Cleared for Sale: Yes
+    * Display Detail: Language - English
+      * Name: 1 Day Subscription
+      * Description: Lowest possible price
+  * A cancellation test item:
+    * Reference Name: ZergSupport: Cancellation Test
+    * Product ID: net.zergling.ZergSupport.cancel_me
+    * Type: Consumable
+    * Price Tier: 1
+    * Cleared for Sale: Yes
+    * Display Detail: Language - English
+      * Name: Cancel This Purchase
+      * Description: This item tests cancelled purchases. DON'T agree to buy it.

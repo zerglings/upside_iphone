@@ -104,7 +104,6 @@
 		571B476D0FEDE11F00A5CC9D /* GTMSystemVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551ECF0F4E0D4D0046B0EE /* GTMSystemVersion.m */; };
 		571B4E5F0FEE247800A5CC9D /* GTMIPhoneUnitTestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 57551EC70F4E0D4D0046B0EE /* GTMIPhoneUnitTestDelegate.h */; };
 		571B4E600FEE247800A5CC9D /* GTMIPhoneUnitTestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EC80F4E0D4D0046B0EE /* GTMIPhoneUnitTestDelegate.m */; };
-		571B4E610FEE247800A5CC9D /* GTMIPhoneUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 57551EC90F4E0D4D0046B0EE /* GTMIPhoneUnitTestMain.m */; };
 		571B4E700FEE24A900A5CC9D /* libZergSupport4Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 571B45470FEDD1F400A5CC9D /* libZergSupport4Tests.a */; };
 		57203C060F4942EF00B3A00C /* AssetBook+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */; };
 		57203C070F4942EF00B3A00C /* AssetBook+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 57203C050F4942EF00B3A00C /* AssetBook+Formatting.m */; };
@@ -252,16 +251,29 @@
 		575E391B0F0F999500DEB8E3 /* DashboardTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB1AE0F0F6347002C60C5 /* DashboardTabIcon.png */; };
 		575E39640F0FA00700DEB8E3 /* GreenUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */; };
 		575E39650F0FA00700DEB8E3 /* RedDownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 575E39630F0FA00700DEB8E3 /* RedDownArrow.png */; };
+		576AB155101CEA000027C3BD /* ZNPushNotificationsTestCertDev.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 576AB153101CEA000027C3BD /* ZNPushNotificationsTestCertDev.p12 */; };
+		576AB156101CEA000027C3BD /* ZNPushNotificationsTestCertProd.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 576AB154101CEA000027C3BD /* ZNPushNotificationsTestCertProd.p12 */; };
 		577091AE0F0FA8B000069411 /* StockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 577091AD0F0FA8B000069411 /* StockTableViewCell.m */; };
 		577091E30F10502F00069411 /* StockTableCellNarrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E20F10502F00069411 /* StockTableCellNarrow.xib */; };
 		577091E50F10503900069411 /* StockTableCellWide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 577091E40F10503900069411 /* StockTableCellWide.xib */; };
 		577093620F1084D400069411 /* Stock+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 577093610F1084D400069411 /* Stock+Formatting.m */; };
+		577722401017E88B00DD843C /* ZNImobileDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5777223E1017E88B00DD843C /* ZNImobileDevice.h */; };
+		577722411017E88B00DD843C /* ZNImobileDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5777223F1017E88B00DD843C /* ZNImobileDevice.m */; };
+		577723231018044800DD843C /* ZNImobileDeviceTestPlain in Resources */ = {isa = PBXBuildFile; fileRef = 577723221018044800DD843C /* ZNImobileDeviceTestPlain */; };
+		5777232D101805A600DD843C /* ZNImobileDeviceTestEncrypted in Resources */ = {isa = PBXBuildFile; fileRef = 5777232C101805A600DD843C /* ZNImobileDeviceTestEncrypted */; };
 		578061240F3A804A001BF3AF /* AssetBook+NetWorthTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 578061230F3A804A001BF3AF /* AssetBook+NetWorthTest.m */; };
 		578061250F3A805C001BF3AF /* AssetBook+NetWorth.m in Sources */ = {isa = PBXBuildFile; fileRef = 578061200F3A8019001BF3AF /* AssetBook+NetWorth.m */; };
 		578061260F3A805C001BF3AF /* AssetBook+NetWorth.m in Sources */ = {isa = PBXBuildFile; fileRef = 578061200F3A8019001BF3AF /* AssetBook+NetWorth.m */; };
 		57806FC50FCA7462006C07BD /* ZNFormMultipartEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5748FD740FC9AD9C0072D8A2 /* ZNFormMultipartEncoderTest.m */; };
 		57806FEE0FCA751E006C07BD /* ZNFormEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5748FD7B0FC9B6B30072D8A2 /* ZNFormEncoderTest.m */; };
 		578070420FCA7ABF006C07BD /* ZNHttpRequestTest.put.multipart in Resources */ = {isa = PBXBuildFile; fileRef = 578070410FCA7AAE006C07BD /* ZNHttpRequestTest.put.multipart */; };
+		5781F942101581E100B387C2 /* ZNAppStoreRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5781F940101581E100B387C2 /* ZNAppStoreRequest.h */; };
+		5781F943101581E100B387C2 /* ZNAppStoreRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5781F941101581E100B387C2 /* ZNAppStoreRequest.m */; };
+		5781F946101581EF00B387C2 /* ImobileSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 5781F944101581EF00B387C2 /* ImobileSupport.h */; };
+		5781F9E91015945200B387C2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781F9E81015945200B387C2 /* StoreKit.framework */; };
+		5781F9F61015946700B387C2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781F9E81015945200B387C2 /* StoreKit.framework */; };
+		5781FABF1015A59900B387C2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781F9E81015945200B387C2 /* StoreKit.framework */; };
+		5781FAD81015A9AC00B387C2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5781FAD71015A9AC00B387C2 /* Icon.png */; };
 		578266EE0F2C95A200B53703 /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578266ED0F2C95A200B53703 /* NewOrderViewController.m */; };
 		578266F00F2C95B000B53703 /* NewOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578266EF0F2C95B000B53703 /* NewOrderViewController.xib */; };
 		578268380F2D949F00B53703 /* GreenTick.png in Resources */ = {isa = PBXBuildFile; fileRef = 578268360F2D949F00B53703 /* GreenTick.png */; };
@@ -274,8 +286,6 @@
 		578269490F2E070800B53703 /* TradeOrderCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578269470F2E070800B53703 /* TradeOrderCommController.m */; };
 		578269690F2E2BE300B53703 /* PendingOrdersSubmittingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578269680F2E2BE300B53703 /* PendingOrdersSubmittingController.m */; };
 		5782696A0F2E2BE300B53703 /* PendingOrdersSubmittingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578269680F2E2BE300B53703 /* PendingOrdersSubmittingController.m */; };
-		57826D340FA3F48A006896D7 /* ZNDeviceFprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 57826D320FA3F48A006896D7 /* ZNDeviceFprint.h */; };
-		57826D350FA3F48A006896D7 /* ZNDeviceFprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */; };
 		57826D650FA40533006896D7 /* ZNDeviceFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */; };
 		57826E7B0FA436BA006896D7 /* ZNDigester.h in Headers */ = {isa = PBXBuildFile; fileRef = 57826E790FA436BA006896D7 /* ZNDigester.h */; };
 		57826F720FA4C299006896D7 /* ZNFileFprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 57826F700FA4C299006896D7 /* ZNFileFprint.h */; };
@@ -285,6 +295,8 @@
 		5791AD260F285B3C0036AB57 /* StockInfoCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5791AD250F285B3C0036AB57 /* StockInfoCommController.m */; };
 		5798B9CE0F2AD66600C6FDF5 /* ServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798B9CD0F2AD66600C6FDF5 /* ServiceError.m */; };
 		5798B9CF0F2AD66600C6FDF5 /* ServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798B9CD0F2AD66600C6FDF5 /* ServiceError.m */; };
+		579A1752101C4DC7006E5D9A /* ZNStringEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 579A1750101C4DC7006E5D9A /* ZNStringEncoder.h */; };
+		579A1753101C4DC7006E5D9A /* ZNStringEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 579A1751101C4DC7006E5D9A /* ZNStringEncoder.m */; };
 		57A1E5AD0F20AC5800B8179A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
 		57A1E5AE0F20AC5800B8179A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */; };
 		57A1E7080F2164D600B8179A /* RegistrationCommController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A1E7070F2164D600B8179A /* RegistrationCommController.m */; };
@@ -329,6 +341,10 @@
 		57B5DFE70FAE26DD002CE751 /* ZNJsonHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B5DFE50FAE26DD002CE751 /* ZNJsonHttpRequest.m */; };
 		57BA121C0FEE2E7300E980F0 /* libZergSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 572E0BBC0F56569600E3FEF7 /* libZergSupport.a */; };
 		57BA121F0FEE2E7300E980F0 /* libZergSupport4Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 571B45470FEDD1F400A5CC9D /* libZergSupport4Tests.a */; };
+		57C057B3101E5FAF005BB8F6 /* ZNPushNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E37B1019C3D000A22FEF /* ZNPushNotifications.h */; };
+		57C057B4101E5FAF005BB8F6 /* ZNPushNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E37C1019C3D000A22FEF /* ZNPushNotifications.m */; };
+		57C057B8101E6011005BB8F6 /* ZNMSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5799225E1016BC4D009FF134 /* ZNMSData.m */; };
+		57C057B9101E6017005BB8F6 /* ZNMSData.h in Headers */ = {isa = PBXBuildFile; fileRef = 5799225D1016BC4D009FF134 /* ZNMSData.h */; };
 		57C395E00F5A11D0001F153D /* DollarSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C395DF0F5A11D0001F153D /* DollarSign.png */; };
 		57C3961D0F5A240E001F153D /* AutoRotatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C3961C0F5A240E001F153D /* AutoRotatingViewController.m */; };
 		57C396200F5A245A001F153D /* AutoRotatingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C3961F0F5A245A001F153D /* AutoRotatingTableViewController.m */; };
@@ -350,6 +366,16 @@
 		57CDB1B90F0F7608002C60C5 /* AssetBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB1AA0F0F5ECE002C60C5 /* AssetBook.m */; };
 		57CDB2860F0F8554002C60C5 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CDB2850F0F8554002C60C5 /* TabBarController.m */; };
 		57CDB2D60F0F8CA4002C60C5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57CDB2D40F0F8CA4002C60C5 /* Icon.png */; };
+		57CF3CC6101CFF1E00653222 /* ZNPushNotificationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 579A1807101C5D69006E5D9A /* ZNPushNotificationsTest.m */; };
+		57CF3E50101D929B00653222 /* ZNMulticastDelegateProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E3B51019DFF900A22FEF /* ZNMulticastDelegateProxyTest.m */; };
+		57CF3EC7101D9A8A00653222 /* ZNExtUIApplicationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E43F1019ED1B00A22FEF /* ZNExtUIApplicationTest.m */; };
+		57CF3EF1101D9CD400653222 /* ZNStringEncoderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 579A1759101C4EF9006E5D9A /* ZNStringEncoderTest.m */; };
+		57CF3EF5101D9CD400653222 /* ZNMSDateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5777210D1017B97B00DD843C /* ZNMSDateTest.m */; };
+		57CF3EF7101D9CD400653222 /* ZNAppStoreRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5781F94A1015823900B387C2 /* ZNAppStoreRequestTest.m */; };
+		57CF3EF8101D9CD400653222 /* ZNAppStoreRequestNATest.m in Sources */ = {isa = PBXBuildFile; fileRef = 579DEF2310168C2F00A95EB1 /* ZNAppStoreRequestNATest.m */; };
+		57CF3EF9101D9CD400653222 /* ZNImobileDeviceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 577722511017F10000DD843C /* ZNImobileDeviceTest.m */; };
+		57CF3F88101E5F5900653222 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781F9E81015945200B387C2 /* StoreKit.framework */; };
+		57CF3F89101E5F6200653222 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781F9E81015945200B387C2 /* StoreKit.framework */; };
 		57E250380F93C0FA00262989 /* PortfolioStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E250370F93C0FA00262989 /* PortfolioStat.m */; };
 		57E250390F93C0FA00262989 /* PortfolioStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E250370F93C0FA00262989 /* PortfolioStat.m */; };
 		57E2503C0F93CA7200262989 /* AssetBookTest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 57E2503A0F93CA7200262989 /* AssetBookTest.xml */; };
@@ -378,6 +404,12 @@
 		57F047AF0FA60E45006436EF /* ZNAppFprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F047AD0FA60E45006436EF /* ZNAppFprint.h */; };
 		57F047B00FA60E45006436EF /* ZNAppFprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F047AE0FA60E45006436EF /* ZNAppFprint.m */; };
 		57F047B40FA60E9F006436EF /* ZNAppFprintTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F047B30FA60E9F006436EF /* ZNAppFprintTest.m */; };
+		57F8E3821019C6C700A22FEF /* ZNExtUIApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E3801019C6C700A22FEF /* ZNExtUIApplication.h */; };
+		57F8E3831019C6C700A22FEF /* ZNExtUIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E3811019C6C700A22FEF /* ZNExtUIApplication.m */; };
+		57F8E3861019C6DE00A22FEF /* _ZNExtUIApplicationMain.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E3841019C6DE00A22FEF /* _ZNExtUIApplicationMain.h */; };
+		57F8E3B21019DC9D00A22FEF /* ZNMulticastDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F8E3B01019DC9D00A22FEF /* ZNMulticastDelegateProxy.h */; };
+		57F8E3B31019DC9D00A22FEF /* ZNMulticastDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E3B11019DC9D00A22FEF /* ZNMulticastDelegateProxy.m */; };
+		57F8E4661019F11600A22FEF /* ZNTestSupportMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8E4641019F11600A22FEF /* ZNTestSupportMain.m */; };
 		AA747D9F0F9514B9006C5449 /* ZergSupport_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 576758D90F57B0C6003E1E41 /* ZergSupport_Prefix.pch */; };
 /* End PBXBuildFile section */
 
@@ -637,7 +669,6 @@
 		57551EC60F4E0D4D0046B0EE /* GTMGarbageCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMGarbageCollection.h; sourceTree = "<group>"; };
 		57551EC70F4E0D4D0046B0EE /* GTMIPhoneUnitTestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMIPhoneUnitTestDelegate.h; sourceTree = "<group>"; };
 		57551EC80F4E0D4D0046B0EE /* GTMIPhoneUnitTestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMIPhoneUnitTestDelegate.m; sourceTree = "<group>"; };
-		57551EC90F4E0D4D0046B0EE /* GTMIPhoneUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMIPhoneUnitTestMain.m; sourceTree = "<group>"; };
 		57551ECA0F4E0D4D0046B0EE /* GTMNSObject+UnitTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSObject+UnitTesting.h"; sourceTree = "<group>"; };
 		57551ECB0F4E0D4D0046B0EE /* GTMNSObject+UnitTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSObject+UnitTesting.m"; sourceTree = "<group>"; };
 		57551ECC0F4E0D4D0046B0EE /* GTMSenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMSenTestCase.h; sourceTree = "<group>"; };
@@ -668,6 +699,8 @@
 		575E39620F0FA00700DEB8E3 /* GreenUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenUpArrow.png; sourceTree = "<group>"; };
 		575E39630F0FA00700DEB8E3 /* RedDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDownArrow.png; sourceTree = "<group>"; };
 		576758D90F57B0C6003E1E41 /* ZergSupport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZergSupport_Prefix.pch; sourceTree = "<group>"; };
+		576AB153101CEA000027C3BD /* ZNPushNotificationsTestCertDev.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ZNPushNotificationsTestCertDev.p12; sourceTree = "<group>"; };
+		576AB154101CEA000027C3BD /* ZNPushNotificationsTestCertProd.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ZNPushNotificationsTestCertProd.p12; sourceTree = "<group>"; };
 		577091AC0F0FA8B000069411 /* StockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTableViewCell.h; sourceTree = "<group>"; };
 		577091AD0F0FA8B000069411 /* StockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockTableViewCell.m; sourceTree = "<group>"; };
 		577091E20F10502F00069411 /* StockTableCellNarrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockTableCellNarrow.xib; sourceTree = "<group>"; };
@@ -676,10 +709,22 @@
 		577093610F1084D400069411 /* Stock+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+Formatting.m"; sourceTree = "<group>"; };
 		577093E10F11032200069411 /* Stock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock.h; sourceTree = "<group>"; };
 		577093E40F11049E00069411 /* Stock+FormattingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Stock+FormattingTest.m"; sourceTree = "<group>"; };
+		5777210D1017B97B00DD843C /* ZNMSDateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSDateTest.m; sourceTree = "<group>"; };
+		5777223E1017E88B00DD843C /* ZNImobileDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNImobileDevice.h; sourceTree = "<group>"; };
+		5777223F1017E88B00DD843C /* ZNImobileDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNImobileDevice.m; sourceTree = "<group>"; };
+		577722511017F10000DD843C /* ZNImobileDeviceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNImobileDeviceTest.m; sourceTree = "<group>"; };
+		577723221018044800DD843C /* ZNImobileDeviceTestPlain */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ZNImobileDeviceTestPlain; sourceTree = "<group>"; };
+		5777232C101805A600DD843C /* ZNImobileDeviceTestEncrypted */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ZNImobileDeviceTestEncrypted; sourceTree = "<group>"; };
 		5780611F0F3A8019001BF3AF /* AssetBook+NetWorth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AssetBook+NetWorth.h"; path = "../Models/AssetBook+NetWorth.h"; sourceTree = "<group>"; };
 		578061200F3A8019001BF3AF /* AssetBook+NetWorth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AssetBook+NetWorth.m"; path = "../Models/AssetBook+NetWorth.m"; sourceTree = "<group>"; };
 		578061230F3A804A001BF3AF /* AssetBook+NetWorthTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AssetBook+NetWorthTest.m"; path = "../Models/AssetBook+NetWorthTest.m"; sourceTree = "<group>"; };
 		578070410FCA7AAE006C07BD /* ZNHttpRequestTest.put.multipart */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZNHttpRequestTest.put.multipart; sourceTree = "<group>"; };
+		5781F940101581E100B387C2 /* ZNAppStoreRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNAppStoreRequest.h; sourceTree = "<group>"; };
+		5781F941101581E100B387C2 /* ZNAppStoreRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAppStoreRequest.m; sourceTree = "<group>"; };
+		5781F944101581EF00B387C2 /* ImobileSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImobileSupport.h; sourceTree = "<group>"; };
+		5781F94A1015823900B387C2 /* ZNAppStoreRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAppStoreRequestTest.m; sourceTree = "<group>"; };
+		5781F9E81015945200B387C2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		5781FAD71015A9AC00B387C2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		578266EC0F2C95A200B53703 /* NewOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrderViewController.h; sourceTree = "<group>"; };
 		578266ED0F2C95A200B53703 /* NewOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderViewController.m; sourceTree = "<group>"; };
 		578266EF0F2C95B000B53703 /* NewOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewOrderViewController.xib; sourceTree = "<group>"; };
@@ -689,8 +734,6 @@
 		578269470F2E070800B53703 /* TradeOrderCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeOrderCommController.m; sourceTree = "<group>"; };
 		578269670F2E2BE300B53703 /* PendingOrdersSubmittingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingOrdersSubmittingController.h; sourceTree = "<group>"; };
 		578269680F2E2BE300B53703 /* PendingOrdersSubmittingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingOrdersSubmittingController.m; sourceTree = "<group>"; };
-		57826D320FA3F48A006896D7 /* ZNDeviceFprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNDeviceFprint.h; sourceTree = "<group>"; };
-		57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDeviceFprint.m; sourceTree = "<group>"; };
 		57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNDeviceFprintTest.m; sourceTree = "<group>"; };
 		57826E790FA436BA006896D7 /* ZNDigester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNDigester.h; sourceTree = "<group>"; };
 		57826F700FA4C299006896D7 /* ZNFileFprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNFileFprint.h; sourceTree = "<group>"; };
@@ -702,6 +745,13 @@
 		5791AD280F285C5F0036AB57 /* StockInfoCommControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInfoCommControllerTest.m; sourceTree = "<group>"; };
 		5798B9CC0F2AD66600C6FDF5 /* ServiceError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceError.h; sourceTree = "<group>"; };
 		5798B9CD0F2AD66600C6FDF5 /* ServiceError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceError.m; sourceTree = "<group>"; };
+		5799225D1016BC4D009FF134 /* ZNMSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMSData.h; sourceTree = "<group>"; };
+		5799225E1016BC4D009FF134 /* ZNMSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMSData.m; sourceTree = "<group>"; };
+		579A1750101C4DC7006E5D9A /* ZNStringEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNStringEncoder.h; sourceTree = "<group>"; };
+		579A1751101C4DC7006E5D9A /* ZNStringEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNStringEncoder.m; sourceTree = "<group>"; };
+		579A1759101C4EF9006E5D9A /* ZNStringEncoderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNStringEncoderTest.m; sourceTree = "<group>"; };
+		579A1807101C5D69006E5D9A /* ZNPushNotificationsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNPushNotificationsTest.m; sourceTree = "<group>"; };
+		579DEF2310168C2F00A95EB1 /* ZNAppStoreRequestNATest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAppStoreRequestNATest.m; sourceTree = "<group>"; };
 		57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		57A1E7060F2164D600B8179A /* RegistrationCommController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationCommController.h; sourceTree = "<group>"; };
 		57A1E7070F2164D600B8179A /* RegistrationCommController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationCommController.m; sourceTree = "<group>"; };
@@ -749,6 +799,8 @@
 		57BA11830FEE283C00E980F0 /* MIT-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MIT-LICENSE"; sourceTree = "<group>"; };
 		57BA11840FEE283C00E980F0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		57BA11FA0FEE2BB400E980F0 /* ZergSupportTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZergSupportTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		57C0581F101E9DAC005BB8F6 /* development-entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "development-entitlements.plist"; sourceTree = "<group>"; };
+		57C05821101E9DBA005BB8F6 /* distribution-entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "distribution-entitlements.plist"; sourceTree = "<group>"; };
 		57C395DF0F5A11D0001F153D /* DollarSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DollarSign.png; sourceTree = "<group>"; };
 		57C3961B0F5A240E001F153D /* AutoRotatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRotatingViewController.h; sourceTree = "<group>"; };
 		57C3961C0F5A240E001F153D /* AutoRotatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRotatingViewController.m; sourceTree = "<group>"; };
@@ -811,6 +863,18 @@
 		57F047AD0FA60E45006436EF /* ZNAppFprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNAppFprint.h; sourceTree = "<group>"; };
 		57F047AE0FA60E45006436EF /* ZNAppFprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAppFprint.m; sourceTree = "<group>"; };
 		57F047B30FA60E9F006436EF /* ZNAppFprintTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNAppFprintTest.m; sourceTree = "<group>"; };
+		57F8E37B1019C3D000A22FEF /* ZNPushNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNPushNotifications.h; sourceTree = "<group>"; };
+		57F8E37C1019C3D000A22FEF /* ZNPushNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNPushNotifications.m; sourceTree = "<group>"; };
+		57F8E3801019C6C700A22FEF /* ZNExtUIApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNExtUIApplication.h; sourceTree = "<group>"; };
+		57F8E3811019C6C700A22FEF /* ZNExtUIApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNExtUIApplication.m; sourceTree = "<group>"; };
+		57F8E3841019C6DE00A22FEF /* _ZNExtUIApplicationMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ZNExtUIApplicationMain.h; sourceTree = "<group>"; };
+		57F8E3B01019DC9D00A22FEF /* ZNMulticastDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZNMulticastDelegateProxy.h; sourceTree = "<group>"; };
+		57F8E3B11019DC9D00A22FEF /* ZNMulticastDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMulticastDelegateProxy.m; sourceTree = "<group>"; };
+		57F8E3B51019DFF900A22FEF /* ZNMulticastDelegateProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNMulticastDelegateProxyTest.m; sourceTree = "<group>"; };
+		57F8E43F1019ED1B00A22FEF /* ZNExtUIApplicationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNExtUIApplicationTest.m; sourceTree = "<group>"; };
+		57F8E4641019F11600A22FEF /* ZNTestSupportMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZNTestSupportMain.m; sourceTree = "<group>"; };
+		57F8E5B4101A569A00A22FEF /* ZergSupportTests-dev-entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ZergSupportTests-dev-entitlements.plist"; sourceTree = "<group>"; };
+		57F8E5ED101A5CDF00A22FEF /* ZergSupportTests-prod-entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ZergSupportTests-prod-entitlements.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.entitlements"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -819,6 +883,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57CF3F88101E5F5900653222 /* StoreKit.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -831,6 +896,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5781FABF1015A59900B387C2 /* StoreKit.framework in Frameworks */,
 				571B454C0FEDD1FE00A5CC9D /* libZergSupport.a in Frameworks */,
 				571B46190FEDD7CD00A5CC9D /* Foundation.framework in Frameworks */,
 				571B461B0FEDD7CD00A5CC9D /* UIKit.framework in Frameworks */,
@@ -847,6 +913,7 @@
 				57551D5C0F4DE1CA0046B0EE /* CoreGraphics.framework in Frameworks */,
 				57551D5E0F4DE21E0046B0EE /* QuartzCore.framework in Frameworks */,
 				57551D5B0F4DE1CA0046B0EE /* UIKit.framework in Frameworks */,
+				5781F9E91015945200B387C2 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,6 +921,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5781F9F61015946700B387C2 /* StoreKit.framework in Frameworks */,
 				575520AB0F4E17E30046B0EE /* UIKit.framework in Frameworks */,
 				575520AD0F4E17E30046B0EE /* QuartzCore.framework in Frameworks */,
 				575520AC0F4E17E30046B0EE /* CoreGraphics.framework in Frameworks */,
@@ -866,6 +934,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57CF3F89101E5F6200653222 /* StoreKit.framework in Frameworks */,
 				57CB1A0A0F0F1AF700E95AE1 /* UIKit.framework in Frameworks */,
 				57CB1A0B0F0F1AF700E95AE1 /* Foundation.framework in Frameworks */,
 				57CB1A0C0F0F1AF700E95AE1 /* CoreGraphics.framework in Frameworks */,
@@ -915,6 +984,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				57551E770F4E0D4D0046B0EE /* ZergSupport */,
+				5781F9E81015945200B387C2 /* StoreKit.framework */,
 			);
 			name = ZergSupport;
 			sourceTree = "<group>";
@@ -924,6 +994,8 @@
 			children = (
 				32CA4F630368D1EE00C91783 /* upside_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				57C0581F101E9DAC005BB8F6 /* development-entitlements.plist */,
+				57C05821101E9DBA005BB8F6 /* distribution-entitlements.plist */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -942,6 +1014,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5781F9E81015945200B387C2 /* StoreKit.framework */,
 				57A1E5AC0F20AC5800B8179A /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -1140,13 +1213,17 @@
 				57AF08670FA13BD7006305D3 /* CryptoSupport */,
 				57551E840F4E0D4D0046B0EE /* FormatSupport */,
 				57551EA20F4E0D4D0046B0EE /* ModelSupport */,
+				5781F93F10157D5900B387C2 /* ImobileSupport */,
 				57551EC00F4E0D4D0046B0EE /* TestSupport */,
 				57551ED90F4E0D4D0046B0EE /* WebSupport */,
 				57BA11820FEE283C00E980F0 /* LICENSE */,
 				57BA11830FEE283C00E980F0 /* MIT-LICENSE */,
 				57BA11840FEE283C00E980F0 /* README */,
+				5781FAD71015A9AC00B387C2 /* Icon.png */,
 				576758D90F57B0C6003E1E41 /* ZergSupport_Prefix.pch */,
 				57551E3C0F4E0AE60046B0EE /* ZergSupportTests-Info.plist */,
+				57F8E5B4101A569A00A22FEF /* ZergSupportTests-dev-entitlements.plist */,
+				57F8E5ED101A5CDF00A22FEF /* ZergSupportTests-prod-entitlements.plist */,
 			);
 			path = ZergSupport;
 			sourceTree = "<group>";
@@ -1223,6 +1300,9 @@
 				57EF39360FACDA86004A1808 /* ZNObjectQuery.h */,
 				57EF39370FACDA86004A1808 /* ZNObjectQuery.m */,
 				57EF39490FACF324004A1808 /* ZNObjectQueryTest.m */,
+				579A1750101C4DC7006E5D9A /* ZNStringEncoder.h */,
+				579A1751101C4DC7006E5D9A /* ZNStringEncoder.m */,
+				579A1759101C4EF9006E5D9A /* ZNStringEncoderTest.m */,
 			);
 			path = FormatSupport;
 			sourceTree = "<group>";
@@ -1244,8 +1324,11 @@
 				57551EAE0F4E0D4D0046B0EE /* ZNMSAttributeType.m */,
 				57551EAF0F4E0D4D0046B0EE /* ZNMSBoolean.h */,
 				57551EB00F4E0D4D0046B0EE /* ZNMSBoolean.m */,
+				5799225D1016BC4D009FF134 /* ZNMSData.h */,
+				5799225E1016BC4D009FF134 /* ZNMSData.m */,
 				57551EB10F4E0D4D0046B0EE /* ZNMSDate.h */,
 				57551EB20F4E0D4D0046B0EE /* ZNMSDate.m */,
+				5777210D1017B97B00DD843C /* ZNMSDateTest.m */,
 				57551EB30F4E0D4D0046B0EE /* ZNMSDouble.h */,
 				57551EB40F4E0D4D0046B0EE /* ZNMSDouble.m */,
 				57551EB50F4E0D4D0046B0EE /* ZNMSInteger.h */,
@@ -1275,6 +1358,7 @@
 				57551ED50F4E0D4D0046B0EE /* ZNSenTestCase+Fixtures.m */,
 				57551ED60F4E0D4D0046B0EE /* ZNSenTestCase+FixturesTest.m */,
 				57551ED70F4E0D4D0046B0EE /* ZNSenTestCase+FixturesTest.xml */,
+				57F8E4641019F11600A22FEF /* ZNTestSupportMain.m */,
 			);
 			path = TestSupport;
 			sourceTree = "<group>";
@@ -1290,7 +1374,6 @@
 				57551EC60F4E0D4D0046B0EE /* GTMGarbageCollection.h */,
 				57551EC70F4E0D4D0046B0EE /* GTMIPhoneUnitTestDelegate.h */,
 				57551EC80F4E0D4D0046B0EE /* GTMIPhoneUnitTestDelegate.m */,
-				57551EC90F4E0D4D0046B0EE /* GTMIPhoneUnitTestMain.m */,
 				57551ECA0F4E0D4D0046B0EE /* GTMNSObject+UnitTesting.h */,
 				57551ECB0F4E0D4D0046B0EE /* GTMNSObject+UnitTesting.m */,
 				57551ECC0F4E0D4D0046B0EE /* GTMSenTestCase.h */,
@@ -1330,6 +1413,35 @@
 				57551EE70F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.xml */,
 			);
 			path = WebSupport;
+			sourceTree = "<group>";
+		};
+		5781F93F10157D5900B387C2 /* ImobileSupport */ = {
+			isa = PBXGroup;
+			children = (
+				5781F944101581EF00B387C2 /* ImobileSupport.h */,
+				5781F940101581E100B387C2 /* ZNAppStoreRequest.h */,
+				5781F941101581E100B387C2 /* ZNAppStoreRequest.m */,
+				5781F94A1015823900B387C2 /* ZNAppStoreRequestTest.m */,
+				579DEF2310168C2F00A95EB1 /* ZNAppStoreRequestNATest.m */,
+				57F8E3801019C6C700A22FEF /* ZNExtUIApplication.h */,
+				57F8E3811019C6C700A22FEF /* ZNExtUIApplication.m */,
+				57F8E43F1019ED1B00A22FEF /* ZNExtUIApplicationTest.m */,
+				57F8E3841019C6DE00A22FEF /* _ZNExtUIApplicationMain.h */,
+				5777223E1017E88B00DD843C /* ZNImobileDevice.h */,
+				5777223F1017E88B00DD843C /* ZNImobileDevice.m */,
+				577722511017F10000DD843C /* ZNImobileDeviceTest.m */,
+				5777232C101805A600DD843C /* ZNImobileDeviceTestEncrypted */,
+				577723221018044800DD843C /* ZNImobileDeviceTestPlain */,
+				57F8E3B01019DC9D00A22FEF /* ZNMulticastDelegateProxy.h */,
+				57F8E3B11019DC9D00A22FEF /* ZNMulticastDelegateProxy.m */,
+				57F8E3B51019DFF900A22FEF /* ZNMulticastDelegateProxyTest.m */,
+				57F8E37B1019C3D000A22FEF /* ZNPushNotifications.h */,
+				57F8E37C1019C3D000A22FEF /* ZNPushNotifications.m */,
+				579A1807101C5D69006E5D9A /* ZNPushNotificationsTest.m */,
+				576AB153101CEA000027C3BD /* ZNPushNotificationsTestCertDev.p12 */,
+				576AB154101CEA000027C3BD /* ZNPushNotificationsTestCertProd.p12 */,
+			);
+			path = ImobileSupport;
 			sourceTree = "<group>";
 		};
 		57A1EF070F248D3200B8179A /* ModelPresentation */ = {
@@ -1381,8 +1493,6 @@
 				57F045F50FA50C42006436EF /* ZNCipherClass.h */,
 				573CB88C0FB99A7C00F5E262 /* ZNDebugIntegrity.h */,
 				573CB88D0FB99A7C00F5E262 /* ZNDebugIntegrity.m */,
-				57826D320FA3F48A006896D7 /* ZNDeviceFprint.h */,
-				57826D330FA3F48A006896D7 /* ZNDeviceFprint.m */,
 				57826D640FA40533006896D7 /* ZNDeviceFprintTest.m */,
 				57826E790FA436BA006896D7 /* ZNDigester.h */,
 				57826F700FA4C299006896D7 /* ZNFileFprint.h */,
@@ -1532,7 +1642,6 @@
 				57F045F40FA50BEC006436EF /* ZNCipher.h in Headers */,
 				57F045F60FA50C42006436EF /* ZNCipherClass.h in Headers */,
 				573CB88E0FB99A7C00F5E262 /* ZNDebugIntegrity.h in Headers */,
-				57826D340FA3F48A006896D7 /* ZNDeviceFprint.h in Headers */,
 				57826E7B0FA436BA006896D7 /* ZNDigester.h in Headers */,
 				57826F720FA4C299006896D7 /* ZNFileFprint.h in Headers */,
 				572DCE050FA1743C00CA3975 /* ZNMd5Digest.h in Headers */,
@@ -1570,6 +1679,15 @@
 				57B5DFE60FAE26DD002CE751 /* ZNJsonHttpRequest.h in Headers */,
 				57551F420F4E0D4D0046B0EE /* ZNXmlHttpRequest.h in Headers */,
 				57A5CF230FEE9FFA003FFC39 /* ZNHttpJsonCommController.h in Headers */,
+				5781F942101581E100B387C2 /* ZNAppStoreRequest.h in Headers */,
+				5781F946101581EF00B387C2 /* ImobileSupport.h in Headers */,
+				577722401017E88B00DD843C /* ZNImobileDevice.h in Headers */,
+				57F8E3821019C6C700A22FEF /* ZNExtUIApplication.h in Headers */,
+				57F8E3861019C6DE00A22FEF /* _ZNExtUIApplicationMain.h in Headers */,
+				57F8E3B21019DC9D00A22FEF /* ZNMulticastDelegateProxy.h in Headers */,
+				579A1752101C4DC7006E5D9A /* ZNStringEncoder.h in Headers */,
+				57C057B3101E5FAF005BB8F6 /* ZNPushNotifications.h in Headers */,
+				57C057B9101E6017005BB8F6 /* ZNMSData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1753,6 +1871,11 @@
 				57AC66130FAE4AFD00512D70 /* ZNJsonHttpRequestTest.json in Resources */,
 				57551F820F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.body in Resources */,
 				57551F840F4E0D4D0046B0EE /* ZNXmlHttpRequestTest.xml in Resources */,
+				5781FAD81015A9AC00B387C2 /* Icon.png in Resources */,
+				577723231018044800DD843C /* ZNImobileDeviceTestPlain in Resources */,
+				5777232D101805A600DD843C /* ZNImobileDeviceTestEncrypted in Resources */,
+				576AB155101CEA000027C3BD /* ZNPushNotificationsTestCertDev.p12 in Resources */,
+				576AB156101CEA000027C3BD /* ZNPushNotificationsTestCertProd.p12 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1871,7 +1994,7 @@
 				571B47260FEDDF0F00A5CC9D /* GTMUIKit+UnitTesting.m in Sources */,
 				571B476D0FEDE11F00A5CC9D /* GTMSystemVersion.m in Sources */,
 				571B4E600FEE247800A5CC9D /* GTMIPhoneUnitTestDelegate.m in Sources */,
-				571B4E610FEE247800A5CC9D /* GTMIPhoneUnitTestMain.m in Sources */,
+				57F8E4661019F11600A22FEF /* ZNTestSupportMain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1885,7 +2008,6 @@
 				57AF08730FA13DDF006305D3 /* ZNAesCipher.m in Sources */,
 				57F047B00FA60E45006436EF /* ZNAppFprint.m in Sources */,
 				573CB88F0FB99A7C00F5E262 /* ZNDebugIntegrity.m in Sources */,
-				57826D350FA3F48A006896D7 /* ZNDeviceFprint.m in Sources */,
 				57826F730FA4C299006896D7 /* ZNFileFprint.m in Sources */,
 				572DCE060FA1743C00CA3975 /* ZNMd5Digest.m in Sources */,
 				572DCDF50FA1718800CA3975 /* ZNSha2Digest.m in Sources */,
@@ -1919,6 +2041,13 @@
 				57551F050F4E0D4D0046B0EE /* ZNModelCsvParser.m in Sources */,
 				57A5CE800FEE481E003FFC39 /* ZNNetworkProgress.m in Sources */,
 				57A5CF240FEE9FFA003FFC39 /* ZNHttpJsonCommController.m in Sources */,
+				5781F943101581E100B387C2 /* ZNAppStoreRequest.m in Sources */,
+				577722411017E88B00DD843C /* ZNImobileDevice.m in Sources */,
+				57F8E3831019C6C700A22FEF /* ZNExtUIApplication.m in Sources */,
+				57F8E3B31019DC9D00A22FEF /* ZNMulticastDelegateProxy.m in Sources */,
+				579A1753101C4DC7006E5D9A /* ZNStringEncoder.m in Sources */,
+				57C057B4101E5FAF005BB8F6 /* ZNPushNotifications.m in Sources */,
+				57C057B8101E6011005BB8F6 /* ZNMSData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1927,7 +2056,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A5CF290FEEA156003FFC39 /* ZNTestModels.m in Sources */,
-				575520150F4E11630046B0EE /* ZNXmlHttpRequestTest.m in Sources */,
+				57CF3CC6101CFF1E00653222 /* ZNPushNotificationsTest.m in Sources */,
+				5755200C0F4E11630046B0EE /* ZNFormURLEncoderTest.m in Sources */,
+				57CF3E50101D929B00653222 /* ZNMulticastDelegateProxyTest.m in Sources */,
+				57CF3EC7101D9A8A00653222 /* ZNExtUIApplicationTest.m in Sources */,
 				57A5CF580FEEA219003FFC39 /* ZNHttpJsonCommControllerTest.m in Sources */,
 				57A5CE5E0FEE463B003FFC39 /* ZNNetworkProgressTest.m in Sources */,
 				575520050F4E11630046B0EE /* ZNSyncControllerTest.m in Sources */,
@@ -1945,20 +2077,25 @@
 				5755200A0F4E11630046B0EE /* ZNFormFieldFormatter+Snake2LCamelTest.m in Sources */,
 				5755200B0F4E11630046B0EE /* ZNFormFieldFormatterTest.m in Sources */,
 				57806FC50FCA7462006C07BD /* ZNFormMultipartEncoderTest.m in Sources */,
-				5755200C0F4E11630046B0EE /* ZNFormURLEncoderTest.m in Sources */,
 				5755200D0F4E11630046B0EE /* ZNModelCsvParserTest.m in Sources */,
 				57B5DFD30FAE265E002CE751 /* ZNModelJsonParserTest.m in Sources */,
 				5755200E0F4E11630046B0EE /* ZNModelXmlParserTest.m in Sources */,
 				5735BA4B0FDE5F180058BDD0 /* ZNObjectJsonParserTest.m in Sources */,
 				57B5DFC40FAE265E002CE751 /* ZNObjectQueryTest.m in Sources */,
+				57CF3EF1101D9CD400653222 /* ZNStringEncoderTest.m in Sources */,
 				5755200F0F4E11630046B0EE /* ZNModelDefinitionAttributeTest.m in Sources */,
 				575520100F4E11630046B0EE /* ZNModelDefinitionTest.m in Sources */,
 				575520110F4E11630046B0EE /* ZNModelTest.m in Sources */,
+				57CF3EF5101D9CD400653222 /* ZNMSDateTest.m in Sources */,
 				575520120F4E11630046B0EE /* ZNMSRegistryTest.m in Sources */,
+				57CF3EF7101D9CD400653222 /* ZNAppStoreRequestTest.m in Sources */,
+				57CF3EF8101D9CD400653222 /* ZNAppStoreRequestNATest.m in Sources */,
+				57CF3EF9101D9CD400653222 /* ZNImobileDeviceTest.m in Sources */,
 				57B5DFCF0FAE265E002CE751 /* ZNSenTestCase+FixturesTest.m in Sources */,
 				575520130F4E11630046B0EE /* ZNCsvHttpRequestTest.m in Sources */,
 				575520140F4E11630046B0EE /* ZNHttpRequestTest.m in Sources */,
 				57AC65860FAE392200512D70 /* ZNJsonHttpRequestTest.m in Sources */,
+				575520150F4E11630046B0EE /* ZNXmlHttpRequestTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2051,6 +2188,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "development-entitlements.plist";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2068,6 +2206,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "development-entitlements.plist";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2095,11 +2234,6 @@
 					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin9/4.2.1\"",
 					"\"$(SDKROOT)/usr/lib/gcc/arm-apple-darwin9/4.0.1\"",
 				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					SenTestingKit,
-				);
 				PREBINDING = NO;
 				PRODUCT_NAME = ZergSupport4Tests;
 			};
@@ -2121,11 +2255,6 @@
 					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin9/4.2.1\"",
 					"\"$(SDKROOT)/usr/lib/gcc/arm-apple-darwin9/4.0.1\"",
 				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					SenTestingKit,
-				);
 				PREBINDING = NO;
 				PRODUCT_NAME = ZergSupport4Tests;
 				ZERO_LINK = NO;
@@ -2135,17 +2264,15 @@
 		573165510F5E1BC8004C873A /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				OTHER_CFLAGS = (
-					"-DNDEBUG=1",
-					"-DNS_BLOCK_ASSERTIONS=1",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Distribution;
 		};
@@ -2153,6 +2280,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "distribution-entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
@@ -2196,12 +2324,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PREBINDING = NO;
+				DSTROOT = /tmp/ZergSupport.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ZergSupport/ZergSupport_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = ZergSupport;
-				ZERO_LINK = NO;
 			};
 			name = Distribution;
 		};
@@ -2209,7 +2337,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "ZergSupport/ZergSupportTests-prod-entitlements.plist";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -2217,16 +2346,9 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "ZergSupport/ZergSupportTests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
 				PREBINDING = NO;
 				PRODUCT_NAME = ZergSupportTests;
-				SDKROOT = iphoneos2.2.1;
+				PROVISIONING_PROFILE = "";
 				ZERO_LINK = NO;
 			};
 			name = Distribution;
@@ -2253,7 +2375,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/ZergSupport.dst;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2267,6 +2388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "ZergSupport/ZergSupportTests-dev-entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2275,16 +2397,8 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "ZergSupport/ZergSupportTests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
 				PREBINDING = NO;
 				PRODUCT_NAME = ZergSupportTests;
-				SDKROOT = iphoneos2.1;
 			};
 			name = Debug;
 		};
@@ -2292,6 +2406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "ZergSupport/ZergSupportTests-dev-entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2300,19 +2415,33 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "ZergSupport/ZergSupportTests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
 				PREBINDING = NO;
 				PRODUCT_NAME = ZergSupportTests;
-				SDKROOT = iphoneos2.1;
 				ZERO_LINK = NO;
 			};
 			name = Release;
+		};
+		5781FA3710159DCC00B387C2 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin9/4.2.1\"",
+					"\"$(SDKROOT)/usr/lib/gcc/arm-apple-darwin9/4.0.1\"",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = ZergSupport4Tests;
+				ZERO_LINK = NO;
+			};
+			name = Distribution;
 		};
 		57CB1A070F0F1ADF00E95AE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2375,7 +2504,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
 		};
@@ -2388,7 +2517,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
 		};
@@ -2410,6 +2539,7 @@
 			buildConfigurations = (
 				571B45480FEDD1F500A5CC9D /* Debug */,
 				571B45490FEDD1F500A5CC9D /* Release */,
+				5781FA3710159DCC00B387C2 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
