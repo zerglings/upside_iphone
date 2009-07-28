@@ -66,17 +66,19 @@
 #pragma mark Aborting
 
 -(IBAction)abortTapped:(id)sender {
-  UIActionSheet* sheet = [[UIActionSheet alloc] initWithTitle:@"Exit and try again later?"
-                             delegate:self
-                        cancelButtonTitle:@"No"
-                     destructiveButtonTitle:@"Yes"
-                        otherButtonTitles:nil];
+  UIActionSheet* sheet = [[UIActionSheet alloc]
+                          initWithTitle:@"Exit and try again later?"
+                          delegate:self
+                          cancelButtonTitle:@"No"
+                          destructiveButtonTitle:@"Yes"
+                          otherButtonTitles:nil];
   [sheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
   [sheet showInView:self.view];
   [sheet release];
 }
 
--(void)actionSheet:(UIActionSheet*)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+-(void)actionSheet:(UIActionSheet*)actionSheet
+didDismissWithButtonIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 0) { // the "Yes" button
     [self exitApplication];
   }

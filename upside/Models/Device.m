@@ -14,7 +14,8 @@
 @implementation Device
 
 @synthesize modelId, userId;
-@synthesize uniqueId, hardwareModel, osName, osVersion, appVersion;
+@synthesize appId, appProvisioning, appPushToken, appVersion, hardwareModel;
+@synthesize osName, osVersion, uniqueId;
 
 -(void)dealloc {
   [uniqueId release];
@@ -36,6 +37,11 @@
                                       objectForKey:@"hardwareModel"]] &&
       [osName isEqualToString:[attributes objectForKey:@"osName"]] &&
       [osVersion isEqualToString:[attributes objectForKey:@"osVersion"]] &&
+      [appId isEqualToString:[attributes objectForKey:@"appId"]] &&  
+      [appProvisioning isEqualToString:[attributes
+                                        objectForKey:@"appProvisioning"]] &&  
+      [appPushToken isEqualToString:[attributes
+                                     objectForKey:@"appPushToken"]] &&  
       [appVersion isEqualToString:[attributes objectForKey:@"appVersion"]];
   [attributes release];
   return returnValue;

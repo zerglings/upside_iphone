@@ -8,15 +8,17 @@
 
 #import "LoginCommController.h"
 
-#import "RegistrationState.h"
 #import "ControllerSupport.h"
 #import "CryptoSupport.h"
 #import "Device.h"
+#import "ImobileSupport.h"
 #import "LoginCommController.h"
+#import "RegistrationState.h"
 #import "ServerPaths.h"
 #import "ServiceError.h"
 #import "User.h"
 #import "WebSupport.h"
+
 
 @implementation LoginCommController
 
@@ -40,6 +42,15 @@
 -(void)loginUsing:(RegistrationState*)theActivationState {
   activationState = theActivationState;
 
+  // Wait for 0.1s and see if we get a push token.
+  if (![ZNImobileDevice appPushToken]) {
+    for(NSUInteger i = 0; i < 10; i++) {
+      [[NSRunLoop mainRunLoop] runUntilDate:
+       [NSDate dateWithTimeIntervalSinceNow:0.01]];
+    }
+  }
+  
+  [activationState updateDeviceInfo];
   NSString* hexAppFprint = [ZNAppFprint copyHexAppFprint];
   NSDictionary* request = [[NSDictionary alloc] initWithObjectsAndKeys:
                            activationState.user.name, @"name",

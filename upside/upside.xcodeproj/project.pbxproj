@@ -976,7 +976,7 @@
 				5732104C0F117B9E003D97D8 /* Orders */,
 				57CDB2180F0F7D44002C60C5 /* Overview */,
 				57CDB19E0F0F56CB002C60C5 /* Portfolio */,
-				57CB188B0F0F016C00E95AE1 /* Activation */,
+				57CB188B0F0F016C00E95AE1 /* Registration */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				57CDB16D0F0F4769002C60C5 /* Images */,
@@ -1510,7 +1510,7 @@
 			path = CryptoSupport;
 			sourceTree = "<group>";
 		};
-		57CB188B0F0F016C00E95AE1 /* Activation */ = {
+		57CB188B0F0F016C00E95AE1 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
 				57CB188C0F0F01C600E95AE1 /* RegistrationState.h */,
@@ -1537,7 +1537,7 @@
 				5742CCA910140CE60032762F /* PasswordChangeViewController.m */,
 				5742CC691013DA7C0032762F /* PasswordChangeViewController.xib */,
 			);
-			path = Activation;
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		57CDB16D0F0F4769002C60C5 /* Images */ = {

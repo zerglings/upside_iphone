@@ -45,7 +45,9 @@
   NSMutableDictionary* request =
       [[NSMutableDictionary alloc] initWithDictionary:[theActivationState
                                                        requestSignature]];
-  [request setObject:[Device copyCurrentDevice] forKey:@"device"];
+  Device* currentDevice = [Device copyCurrentDevice];
+  [request setObject:currentDevice forKey:@"device"];
+  [currentDevice release];
   [ZNNetworkProgress connectionStarted];
   [ZNJsonHttpRequest callService:[ServerPaths registrationUrl]
                           method:[ServerPaths registrationMethod]
