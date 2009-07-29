@@ -44,4 +44,10 @@
       value;
 }
 
+-(NSObject*)copyStringForBoxedValue:(NSObject*)boxedValue {
+  NSAssert([boxedValue isKindOfClass:[NSNumber class]],
+           @"Value is not a NSNumber instance");
+  return [[(NSNumber*)boxedValue stringValue] retain];
+}
+
 @end

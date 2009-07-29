@@ -106,7 +106,12 @@
     [newPrefix release];
   }
   else {
-    NSAssert([value isKindOfClass:[NSString class]],
+    NSString* stringValue = (NSString*)([value isKindOfClass:[NSString class]] ?
+        value : [ZNModel copyStringForBoxedValue:value]);
+    if (!stringValue) {
+      return;
+    }    
+    NSAssert([stringValue isKindOfClass:[NSString class]],
              @"Attempting to encode non-String value!");
 
     NSString* outputKey;
@@ -115,7 +120,10 @@
     else
       outputKey = [key retain];
 
-    [self outputValue:(NSString*)value forKey:outputKey];
+    [self outputValue:stringValue forKey:outputKey];
+    if (stringValue != value) {
+      [stringValue release];
+    }
     [outputKey release];
   }
 }

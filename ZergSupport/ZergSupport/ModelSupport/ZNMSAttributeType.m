@@ -63,6 +63,25 @@
   }
 }
 
++(ZNMSAttributeType*)copyTypeFromValue:(NSObject*)value {
+  if ([value isKindOfClass:[NSNumber class]]) {
+    return [[[ZNMSRegistry sharedRegistry] doubleType] retain];
+  }
+  else if ([value isKindOfClass:[NSData class]]) {
+    return [[[ZNMSRegistry sharedRegistry] dataType] retain];
+  }
+  else if ([value isKindOfClass:[NSDate class]]) {
+    return [[[ZNMSRegistry sharedRegistry] dateType] retain];
+  }
+  else if ([value isKindOfClass:[ZNModel class]]) {
+    return [[ZNMSModelAttributeType alloc] initWithModelClass:[value class]];
+  }
+  else if ([value isKindOfClass:[NSString class]]) {
+    return [[[ZNMSRegistry sharedRegistry] stringType] retain];
+  }
+  return nil;
+}
+
 -(NSObject*)copyBoxedAttribute:(ZNModelDefinitionAttribute*)attribute
                     inInstance:(ZNModel*)instance
                    forceString:(BOOL)forceString {
@@ -76,6 +95,23 @@
                  from:(NSObject*)boxedObject {
   NSAssert1(FALSE, @"Attribute type %s did not implement -unboxInstanceVar",
             class_getName([self class]));
+}
+
+-(NSObject*)copyStringForBoxedValue:(NSObject*)boxedValue {
+  NSAssert1(FALSE, @"Attribute type %s did not implement "
+            @"-copyStringForBoxedValue", class_getName([self class]));
+  return nil;
+}
+
++(NSObject*)copyStringForBoxedValue:(NSObject *)boxedValue {
+  ZNMSAttributeType* valueConverter =
+      [ZNMSAttributeType copyTypeFromValue:boxedValue];
+  NSObject* stringValue = [valueConverter copyStringForBoxedValue:boxedValue];
+  NSAssert([stringValue isKindOfClass:[NSString class]] ||
+           [stringValue isKindOfClass:[NSDictionary class]] || !stringValue,
+             @"Incorrect attribute conversion to string");
+  [valueConverter release];
+  return stringValue;
 }
 
 @end

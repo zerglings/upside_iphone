@@ -46,8 +46,8 @@
                     inInstance:(ZNModel*)instance
                    forceString:(BOOL)forceString {
   NSDate* date = object_getIvar(instance, [attribute runtimeIvar]);
-  if (forceString)
-    return [[osxFormatter stringFromDate:date] retain];
+  if (forceString && date)
+    return [self copyStringForBoxedValue:date];
   else
     return [date retain];
 }
@@ -98,6 +98,12 @@
       NSAssert(NO, @"Unknown attribute setter strategy");
   }
   object_setIvar(instance, runtimeIvar, date);
+}
+
+-(NSObject*)copyStringForBoxedValue:(NSObject*)boxedValue {
+  NSAssert([boxedValue isKindOfClass:[NSDate class]],
+            @"Value is not a NSDate instance");
+  return [[osxFormatter stringFromDate:(NSDate*)boxedValue] retain];
 }
 
 @end

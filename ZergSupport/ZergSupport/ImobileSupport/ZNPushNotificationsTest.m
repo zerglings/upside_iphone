@@ -36,7 +36,7 @@
                               error:NULL];
 }
 
--(NSString*)pushCertificate {
+-(NSData*)pushCertificate {
   NSString* certificatePath;
   if ([ZNImobileDevice appProvisioning] ==
       kZNImobileProvisioningDeviceDistribution) {
@@ -49,9 +49,7 @@
                        stringByAppendingPathComponent:
                        @"ZNPushNotificationsTestCertDev.p12"];
   }
-  return [NSString stringWithContentsOfFile:certificatePath
-                                   encoding:NSISOLatin1StringEncoding
-                                      error:NULL];
+  return [NSData dataWithContentsOfFile:certificatePath];
 }
 
 -(void)setUp {

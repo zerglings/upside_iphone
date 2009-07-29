@@ -31,9 +31,7 @@
                    forceString:(BOOL)forceString {
   NSData* data = object_getIvar(instance, [attribute runtimeIvar]);
   if (forceString && data) {
-    // NOTE: using Latin-1 because it's the default HTTP encoding.
-    return [[NSString alloc] initWithData:data
-                                 encoding:NSISOLatin1StringEncoding];
+    return [self copyStringForBoxedValue:data];
   }
   else {
     return [data retain];
@@ -78,6 +76,16 @@
       NSAssert(NO, @"Unknown attribute setter strategy");
   }
   object_setIvar(instance, runtimeIvar, data);
+}
+
+-(NSObject*)copyStringForBoxedValue:(NSObject*)boxedValue {
+  NSAssert([boxedValue isKindOfClass:[NSData class]],
+            @"Value is not a NSData instance");
+  
+  // NOTE: using Latin-1 because it's the default HTTP encoding.
+  return [[NSString alloc] initWithData:(NSData*)boxedValue
+                               encoding:NSISOLatin1StringEncoding];
+  
 }
 
 @end

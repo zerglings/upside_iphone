@@ -21,7 +21,6 @@
                    forceString:(BOOL)forceString {
   ZNModel* model = object_getIvar(instance, [attribute runtimeIvar]);
 
-
   return [model copyToDictionaryForcingStrings:forceString];
 }
 
@@ -51,6 +50,12 @@
       NSAssert(NO, @"Unknown attribute setter strategy");
   }
   object_setIvar(instance, runtimeIvar, model);
+}
+
+-(NSObject*)copyStringForBoxedValue:(NSObject*)boxedValue {
+  NSAssert1([boxedValue isKindOfClass:modelClass],
+            @"Value is not a %s instance", class_getName(modelClass));
+  return [(ZNModel*)boxedValue copyToDictionaryForcingStrings:YES];
 }
 
 -(id)initWithModelClass:(Class)theModelClass {

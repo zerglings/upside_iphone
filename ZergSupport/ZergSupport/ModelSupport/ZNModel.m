@@ -73,6 +73,7 @@
   ZNModelDefinition* definition = [[ZNMSRegistry sharedRegistry]
                                    definitionForModelClass:[self class]];
   NSDictionary* defAttributes = [definition attributes];
+
   for(NSString* attributeName in dictionary) {
     NSObject* boxedObject = [dictionary objectForKey:attributeName];
     ZNModelDefinitionAttribute* attribute = [defAttributes
@@ -96,8 +97,29 @@
 
 
 -(NSMutableDictionary*)copyToMutableDictionaryForcingStrings:(BOOL)forceStrings {
-  NSMutableDictionary* attributes = [[NSMutableDictionary alloc]
-                                     initWithDictionary:props];
+  NSMutableDictionary* attributes;
+  if (forceStrings) {
+    // Convert all values to NSStrings.
+    attributes = [[NSMutableDictionary alloc] init];
+    for (NSString* attributeName in props) {
+      NSObject* boxedValue = [props objectForKey:attributeName];
+      if ([boxedValue isKindOfClass:[NSString class]]) {
+        [attributes setObject:boxedValue forKey:attributeName];
+        continue;
+      }
+      NSObject* stringValue = [ZNMSAttributeType
+                               copyStringForBoxedValue:boxedValue];
+      if (stringValue) {
+        [attributes setObject:stringValue forKey:attributeName];
+        [stringValue release];
+      }
+    }
+  }
+  else {
+    attributes = [[NSMutableDictionary alloc] initWithDictionary:props];
+  }
+  
+  
   ZNModelDefinition* definition = [[ZNMSRegistry sharedRegistry]
                                    definitionForModelClass:[self class]];
 
@@ -134,6 +156,10 @@
 -(NSMutableDictionary*)attributeMutableDictionaryForcingStrings:(BOOL)forceStrings {
   return [[self copyToMutableDictionaryForcingStrings:forceStrings]
           autorelease];
+}
+
++(NSObject*)copyStringForBoxedValue:(NSObject*)boxedValue {
+  return [ZNMSAttributeType copyStringForBoxedValue:boxedValue];
 }
 
 #pragma mark Debugging

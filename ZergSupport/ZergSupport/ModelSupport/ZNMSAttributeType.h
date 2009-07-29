@@ -25,6 +25,12 @@
        inInstance:(ZNModel*)instance
            from:(NSObject*)boxedObject;
 
+-(NSObject*)copyStringForBoxedValue:(NSObject*)boxedValue;
+
++(NSString*)copyStringForBoxedValue:(NSObject*)boxedValue;
+
 +(ZNMSAttributeType*)copyTypeFromString:(const char*)encodedType;
+
++(ZNMSAttributeType*)copyTypeFromValue:(NSObject*)value;
 
 @end
