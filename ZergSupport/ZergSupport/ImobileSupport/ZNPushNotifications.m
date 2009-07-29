@@ -35,7 +35,7 @@
 }
 -(void)dealloc {
   [pushToken release];
-  
+
   [super dealloc];
 }
 
@@ -44,15 +44,15 @@
 -(void)enableNotifications {
   UIRemoteNotificationType allTypes = UIRemoteNotificationTypeBadge |
   UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
-  
+
   [[UIApplication sharedApplication]
-   registerForRemoteNotificationTypes:allTypes];  
+   registerForRemoteNotificationTypes:allTypes];
 }
 
 -(void)receivedDeviceToken:(NSData*)theDeviceToken {
   self.pushToken = theDeviceToken;
   [pushTokenChangedSite performWithObject:theDeviceToken];
-  
+
   // If the app is being debugged on a device, log the push notifications token.
   // This is useful for testing server-side notification pushing.
   if ([ZNImobileDevice appProvisioning] == kZNImobileProvisioningDeviceDebug) {
@@ -104,7 +104,7 @@ static ZNPushNotifications* sharedInstance;
 // Chained (secondary) application delegate handling push notifications.
 @interface ZNPushNotifcationsDelegate :
     NSObject<UIApplicationDelegate, ZNAutoUIApplicationDelegate> {
-  
+
 }
 @end
 
@@ -141,7 +141,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 // Hidden chained application delegate handling push notifications.
 @interface ZNPushNotificationsHiddenDelegate :
     NSObject<UIApplicationDelegate, ZNAutoUIHiddenApplicationDelegate> {
-  
+
 }
 @end
 
@@ -154,9 +154,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   NSDictionary* notificationData =
       [launchOptions
        objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-  if (notificationData) { 
+  if (notificationData) {
     [ZNPushNotifications receivedPushNotification:notificationData];
-  }  
+  }
   return YES;
 }
 

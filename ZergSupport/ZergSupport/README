@@ -74,11 +74,17 @@ converting between different casing conventions. FormatSupport also implements
 ObjectQuery, which can be used to pull objects from deeply nested Cocoa
 collections, such as the results of JSON deserialization.
 
+ImobileSupport addresses several disparate technologies specific to the iPhone
+OS, and makes their use easier. Currently, ImobileSupport simplifies In-App
+Purchases and Push Notifications. ImobileSupport also implements collecting
+metrics on the application's runtime environment, such as the application's
+bundle ID and version, device hardware model (e.g. iPod2,1), unique number
+(UDID), and OS version.
+
 CryptoSupport bundles code that is likely necessary for iPhone application
-security, such as cryptographic primitives (encryption and signatures), and
-collecting device metrics like the device model, unique number, and OS version.
-At this point, the code in CryptoSupport is not well integrated with the rest of
-the toolkit.
+security, such as cryptographic primitives (encryption and signatures). At this
+point, the code in CryptoSupport is not well integrated with the rest of the
+toolkit.
 
 TestSupport offers a healthy foundation for testing, by packing the necessary
 subset of the Google Toolbox for Mac, as well as OCMock. On top of that, it

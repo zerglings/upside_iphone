@@ -115,7 +115,7 @@
                              nil];
     [result setObject:array forKey:key];
     [array release];
-  }  
+  }
 }
 
 -(void)parser:(NSXMLParser*)parser didStartElement:(NSString*)elementName
@@ -126,7 +126,7 @@ qualifiedName:(NSString*)qName
     ignoreDepth++;
     return;
   }
-  
+
   NSString* formattedElementName = keyFormatter ?
       [keyFormatter copyFormattedName:elementName] : elementName;
 
@@ -173,7 +173,7 @@ qualifiedName:(NSString*)qName
   if (formattedElementName != elementName) {
     [formattedElementName release];
   }
-  
+
   // Fast code path for attributes.
   if ([attributeDict count] > 0) {
     NSUInteger parseStackTop = [parseStack count] - 1;
@@ -197,7 +197,7 @@ qualifiedName:(NSString*)qName
                                    initWithCapacity:[attributeDict count]];
             [self addValue:attributeDictionary toKey:(NSString*)stackTop
                   inResult:parentDictionary];
-            
+
             [parseStack replaceObjectAtIndex:parseStackTop
                                   withObject:attributeDictionary];
             [attributeDictionary release];
@@ -206,7 +206,7 @@ qualifiedName:(NSString*)qName
             attributeDictionary = (NSMutableDictionary*)stackTop;
           }
         }
-        
+
         [attributeDictionary setObject:[attributeDict
                                         objectForKey:attributeName]
                                 forKey:formattedAttributeName];

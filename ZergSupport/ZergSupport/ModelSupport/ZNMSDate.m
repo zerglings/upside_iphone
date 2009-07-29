@@ -21,7 +21,7 @@
     [osxFormatter setLenient:YES];
     osxFormatter2 = [[NSDateFormatter alloc] init];
     [osxFormatter2 setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
-    [osxFormatter2 setLenient:YES];    
+    [osxFormatter2 setLenient:YES];
     railsFormatter = [[NSDateFormatter alloc] init];
     [railsFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
     [railsFormatter setLenient:YES];

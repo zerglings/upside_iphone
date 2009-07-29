@@ -44,7 +44,7 @@
 
 -(void)getInfoForProductIds:(NSArray*)productIds
           unwrapProductInfo:(BOOL)theUnwrapProductInfo {
-  unwrapProductInfo = theUnwrapProductInfo;  
+  unwrapProductInfo = theUnwrapProductInfo;
   NSSet* ids = [[NSSet alloc] initWithArray:productIds];
   skRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:ids];
   [ids release];
@@ -88,20 +88,20 @@
 
 #pragma mark SKPaymentTransaction Observer
 
--(void)paymentQueue:(SKPaymentQueue *)queue 
+-(void)paymentQueue:(SKPaymentQueue *)queue
 updatedTransactions:(NSArray *)transactions {
-  SKPaymentQueue* skQueue = [SKPaymentQueue defaultQueue];  
+  SKPaymentQueue* skQueue = [SKPaymentQueue defaultQueue];
   for (SKPaymentTransaction* transaction in transactions) {
     if (![transaction.payment.productIdentifier
           isEqualToString:skPayment.productIdentifier]) {
       continue;
     }
-    
+
     if (transaction.transactionState == SKPaymentTransactionStatePurchasing) {
       // The user confirmed the purchase, so wait until it gets to the server.
       break;
     }
-    
+
     if (transaction.transactionState == SKPaymentTransactionStateFailed &&
         transaction.error == nil) {
       // Failed transaction without an error message. This is garbage.
@@ -114,10 +114,10 @@ updatedTransactions:(NSArray *)transactions {
     if (skTransaction.transactionIdentifier) {
       skTransactionId = [skTransaction.transactionIdentifier retain];
     }
-    else {      
+    else {
       skTransaction = [transaction retain];
     }
-            
+
     switch (transaction.transactionState) {
       case SKPaymentTransactionStateFailed:
         // Purchase failed. Communicate the error, and finish the transaction.
@@ -153,9 +153,9 @@ removedTransactions:(NSArray *)transactions {
         skTransactionId != transaction.transactionIdentifier) {
       continue;
     }
-    
+
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
-    [self release];    
+    [self release];
   }
 }
 

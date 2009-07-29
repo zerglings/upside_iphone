@@ -42,7 +42,7 @@
   //       to "i386" (what the simulator returns) but that would cause tests to
   //       fail on a device. On the bright side, the method is unlikely to
   //       change, because it relies on OSX kernel functionality.
-  
+
   size_t keySize;
   sysctlbyname("hw.machine", NULL, &keySize, NULL, 0);
   char *key = malloc(keySize);
@@ -65,13 +65,13 @@
 
 +(NSUInteger)appProvisioning {
   BOOL inSimulator = [ZNImobileDevice inSimulator];
-  
+
 #if defined(DEBUG) || (!defined(NS_BLOCK_ASSERTIONS) && !defined(NDEBUG))
   BOOL inDebug = YES;
 #else
   BOOL inDebug = NO;
 #endif
- 
+
   BOOL encryptedBinary = [self isEncryptedBinary:[[NSBundle mainBundle]
                                                    executablePath]];
   return [self appProvisioningInSimulator:inSimulator
@@ -85,7 +85,7 @@
   if (inSimulator) {
     return inDebug ?  kZNImobileProvisioningSimulatorDebug :
         kZNImobileProvisioningSimulatorRelease;
-  }  
+  }
   if (inDebug) {
     return kZNImobileProvisioningDeviceDebug;
   }
@@ -116,19 +116,19 @@
 #pragma mark Binary Encryption Detection
 
 #if !defined(LC_ENCRYPTION_INFO)
-#define	LC_ENCRYPTION_INFO 0x21
+#define  LC_ENCRYPTION_INFO 0x21
 struct encryption_info_command {
-  uint32_t	cmd;
-  uint32_t	cmdsize;
-  uint32_t	cryptoff;
-  uint32_t	cryptsize;
-  uint32_t	cryptid;
+  uint32_t  cmd;
+  uint32_t  cmdsize;
+  uint32_t  cryptoff;
+  uint32_t  cryptsize;
+  uint32_t  cryptid;
 };
 #endif  // LC_ENCRYPTION_INFO
 
 +(BOOL)isEncryptedBinary:(NSString*)path {
   BOOL foundEncryptionInfo = NO;
-  
+
   NSFileHandle* fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
 
   // Read the Mach-O header to find out how many loader commands.
@@ -139,7 +139,7 @@ struct encryption_info_command {
   const struct mach_header* header = (const struct mach_header*)[headerData
                                                                  bytes];
   uint32_t numCommands = header->ncmds;
-  
+
   // Read through loader commands, looking for encryption signs.
   unsigned long long fileOffset = sizeof(struct mach_header);
   for(NSUInteger i = 0; i < numCommands; i++) {
@@ -152,9 +152,9 @@ struct encryption_info_command {
     const struct load_command* command =
         (const struct load_command*)[commandData bytes];
     uint32_t commandSize = command->cmdsize;
-    
+
     if (command->cmd == LC_ENCRYPTION_INFO) {
-      // Patch in the rest of the loader command. 
+      // Patch in the rest of the loader command.
       struct encryption_info_command encryption_command;
       memcpy(&encryption_command, command, sizeof(struct load_command));
       NSAssert2(sizeof(encryption_command) <= commandSize,
@@ -169,18 +169,18 @@ struct encryption_info_command {
       }
       memcpy((uint8_t*)&encryption_command + sizeof(struct load_command),
              [fragmentData bytes], fragmentLength);
-      
+
       // Is encryption active?
       if (encryption_command.cryptid < 1) {
         return NO;
       }
       foundEncryptionInfo = YES;
     }
-    
+
     fileOffset += commandSize;
     [fileHandle seekToFileOffset:fileOffset];
   }
-  
+
   [fileHandle closeFile];
   return foundEncryptionInfo;
 }

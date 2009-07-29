@@ -24,7 +24,7 @@
 
 int main(int argc, char *argv[]) {
   ZNDebugIntegrity();
-  
+
   NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
   int retVal = UIApplicationMain(argc, argv, @"ZNExtUIApplication",
                                  ZN_EXT_UI_APPLICATION_MAIN_DELEGATE);

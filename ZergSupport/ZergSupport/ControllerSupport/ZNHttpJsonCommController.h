@@ -13,7 +13,7 @@
 @interface ZNHttpJsonCommController : NSObject {
   NSArray* responseQueries;
   id target;
-  SEL action;  
+  SEL action;
 }
 
 // Designated initializer.

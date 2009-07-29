@@ -13,11 +13,11 @@
 
 // This delegate should not be auto-instantiated for chaining.
 static BOOL manualDelegateLaunched = NO;
-@interface ZNExtUIApplicationTestManual : NSObject<UIApplicationDelegate> {  
+@interface ZNExtUIApplicationTestManual : NSObject<UIApplicationDelegate> {
 }
 @end
 @implementation ZNExtUIApplicationTestManual
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
+-(void)applicationDidFinishLaunching:(UIApplication *)application {
   manualDelegateLaunched = NO;
 }
 @end
@@ -26,7 +26,7 @@ static BOOL manualDelegateLaunched = NO;
 // This delegate should be auto-instantiated for chaining.
 static BOOL autoDelegateLaunched = NO;
 @interface ZNExtUIApplicationTestAuto :
-    NSObject<UIApplicationDelegate, ZNAutoUIApplicationDelegate> {  
+    NSObject<UIApplicationDelegate, ZNAutoUIApplicationDelegate> {
 }
 @end
 @implementation ZNExtUIApplicationTestAuto
@@ -40,7 +40,7 @@ static BOOL autoDelegateLaunched = NO;
 // This delegate should be auto-instantiated for hidden chaining.
 static BOOL hiddenDelegateLaunched = NO;
 @interface ZNExtUIApplicationTestHidden :
-NSObject<UIApplicationDelegate, ZNAutoUIHiddenApplicationDelegate> {  
+NSObject<UIApplicationDelegate, ZNAutoUIHiddenApplicationDelegate> {
 }
 @end
 @implementation ZNExtUIApplicationTestHidden
@@ -66,7 +66,7 @@ NSObject<UIApplicationDelegate, ZNAutoUIHiddenApplicationDelegate> {
                @"Delegate with hidden-chaining wasn't invoked at app launch");
   STAssertFalse(manualDelegateLaunched,
                @"Delegate without auto-chaining was invoked at app launch");
-  
+
   id mainDelegate = [[ZNExtUIApplication sharedApplication] delegate];
   STAssertTrue([mainDelegate respondsToSelector:@selector(thisDelegateIsAuto)],
                @"ZNAutoUIApplicationDelegate was chained as hidden");

@@ -118,7 +118,7 @@ static NSString* kContextObject = @"This is the context";
                  @"Wrong value for the inner model's boolean property");
   STAssertNil(innerModel.subModel,
               @"Wrong value for the inner model's submodel");
-  
+
   NSDictionary* goldenSecond = [NSDictionary dictionaryWithObjectsAndKeys:
                                 @"A prime", @"keyA", @"B prime", @"keyB", nil];
   STAssertEqualObjects(goldenSecond, [items objectAtIndex:1],

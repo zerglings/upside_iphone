@@ -57,7 +57,7 @@
   else {
     data = nil;
   }
-  
+
   Ivar runtimeIvar = [attribute runtimeIvar];
   switch ([attribute setterStrategy]) {
     case kZNPropertyWantsCopy: {

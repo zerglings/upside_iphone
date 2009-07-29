@@ -17,7 +17,7 @@
 -(id)init {
   if ((self = [super init])) {
     delegateProxy = [[ZNMulticastDelegateProxy alloc] init];
-    
+
     NSArray* chainedClasses = [ZNExtUIApplication copyAllAutoChainedClasses];
     for(Class klass in chainedClasses) {
       NSObject<UIApplicationDelegate>* delegate = [[klass alloc] init];
@@ -39,7 +39,7 @@
 }
 -(void)dealloc {
   [delegateProxy release];
-  
+
   [super dealloc];
 }
 
@@ -77,7 +77,7 @@
   int numClasses = objc_getClassList(NULL, 0);
   Class* classes = (Class*)calloc(sizeof(Class), numClasses);
   numClasses = objc_getClassList(classes, numClasses);
-  
+
   // Filter the classes implementing ZNAutoUIApplicationDelegate.
   int chainedClasses = 0;
   SEL mss = @selector(methodSignatureForSelector:);
@@ -85,7 +85,7 @@
     Class klass = classes[i];
     if (!class_respondsToSelector(klass, mss))
       continue;
-    
+
     unsigned int protocolCount;
     Protocol** protocols = class_copyProtocolList(klass, &protocolCount);
     for(unsigned int i = 0; i < protocolCount; i++) {
@@ -96,12 +96,12 @@
       }
     }
   }
-  
+
   // Wrap the result in an NSArray.
   NSArray* returnValue = [[NSArray alloc] initWithObjects:classes
                                                     count:chainedClasses];
   free(classes);
-  return returnValue;  
+  return returnValue;
 }
 
 +(NSArray*)copyAllAutoChainedClasses {

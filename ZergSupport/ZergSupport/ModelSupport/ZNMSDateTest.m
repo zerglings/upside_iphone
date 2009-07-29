@@ -31,7 +31,7 @@
 -(void)testAppStoreParsing {
   [self checkDateString:@"2009-07-22 09:09:52 GMT"
                 against:1248253792.0];
-  
+
   // TODO(costan): make this pass -- the App Store spits out this format
   //[self checkDateString:@"2009-07-22 09:09:52 Etc/GMT"
   //              against:1248253792.0];

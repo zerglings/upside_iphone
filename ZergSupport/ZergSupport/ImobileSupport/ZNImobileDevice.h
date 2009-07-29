@@ -16,15 +16,15 @@
 // The running application's bundle ID.
 //
 // This is grabbed from the main bundle's Info.plist. It is shown as "Bundle
-// Identifier" in the App Details screen from iTunes Connect. 
+// Identifier" in the App Details screen from iTunes Connect.
 +(NSString*)appId;
 
 // The running application's provisioning status (how it got on the device).
 //
 // The following results are possible values:
-// * kZNImobileProvisioningSimulatorDebug 
+// * kZNImobileProvisioningSimulatorDebug
 // * kZNImobileProvisioningSimulatorRelease
-// * kZNImobileProvisioningDeviceDebug 
+// * kZNImobileProvisioningDeviceDebug
 // * kZNImobileProvisioningDeviceRelease
 // * kZNImobileProvisioningDeviceDistribution
 +(NSUInteger)appProvisioning;
@@ -35,7 +35,7 @@
 // The running application's version.
 //
 // This is grabbed from the main bundle's Info.plist. It is shown as "Bundle
-// Version" in the App Details screen from iTunes Connect. 
+// Version" in the App Details screen from iTunes Connect.
 +(NSString*)appVersion;
 
 // The device's hardware model, fetched from the kernel.

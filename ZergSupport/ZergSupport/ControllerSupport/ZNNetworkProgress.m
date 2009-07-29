@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 1/11/09.
-//  Copyright 2009 Zergling.Net. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNNetworkProgress.h"

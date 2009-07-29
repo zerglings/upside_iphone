@@ -41,7 +41,7 @@ static BOOL hookedIntoPushNotifications = NO;
   @synchronized ([ZNAppFprint class]) {
     [cachedDeviceAttributes release];
     cachedDeviceAttributes = nil;
-    
+
     [cachedHexAppFprint release];
     cachedHexAppFprint = nil;
   }
@@ -67,7 +67,7 @@ static BOOL hookedIntoPushNotifications = NO;
                                   [ZNImobileDevice appProvisioning]];
   NSString* pushTokenString =
       [ZNStringEncoder copyHexStringForData:[ZNImobileDevice appPushToken]];
-  
+
   NSDictionary *attributes =
   [[NSMutableDictionary alloc] initWithObjectsAndKeys:
    [ZNImobileDevice appId], @"appId",
@@ -126,7 +126,7 @@ static BOOL hookedIntoPushNotifications = NO;
                       dataUsingEncoding:NSUTF8StringEncoding]];
   }
   [deviceAttrs release];
-  
+
   NSData* returnValue = [[NSData alloc] initWithData:data];
   [data release];
   return returnValue;

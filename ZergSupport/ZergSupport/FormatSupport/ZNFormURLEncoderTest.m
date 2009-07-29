@@ -86,7 +86,7 @@
 -(void)testCharacterEscaping {
   uint8_t chars[256];
   for (size_t i = 0; i < 256; i++) chars[i] = i;
-  
+
   NSString* allChars =
       [[NSString alloc] initWithBytes:chars
                                length:256

@@ -72,7 +72,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   SEL commonSel;
   SEL d2Sel;
   SEL nooneSel;
-  
+
   NSDictionary* arg1;
   NSData* arg2;
 }
@@ -86,16 +86,16 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   d2Sel =
       @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
   nooneSel = @selector(application:handleOpenURL:);
-  
+
   main = [[ZNMulticastDelegateProxyTestD1 alloc] initWithReturnValue:YES];
   d1 = [[ZNMulticastDelegateProxyTestD1 alloc] initWithReturnValue:NO];
   d2 = [[ZNMulticastDelegateProxyTestD2 alloc] initWithReturnValue:NO];
-  
+
   delegate = [[ZNMulticastDelegateProxy alloc] init];
   delegate.mainDelegate = main;
   [delegate chainDelegate:d1];
   [delegate chainDelegate:d2];
-  
+
   arg1 = [[NSMutableDictionary alloc] init];
   arg2 = [[NSMutableData alloc] init];
 }
@@ -122,7 +122,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 -(void)testChainedInvocation {
   [delegate application:nil didFinishLaunchingWithOptions:arg1];
-  
+
   STAssertEquals(arg1, main.invoked, @"Main delegate not invoked");
   STAssertEquals(arg1, d1.invoked, @"Chained delegate 1 not invoked");
   STAssertEquals(arg1, d2.invoked, @"Chained delegate 2 not invoked");
@@ -131,7 +131,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 -(void)testSelectiveInvocation {
   [delegate application:nil
    didRegisterForRemoteNotificationsWithDeviceToken:arg2];
-  
+
   STAssertNil(main.invoked, @"Wrong message invoed on main delegate");
   STAssertNil(d1.invoked, @"Wrong message invoed on chained delegate 1");
   STAssertNil(d2.invoked, @"Wrong message invoed on chained delegate 2");
@@ -146,12 +146,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 -(void)testHiddenDelegates {
   [delegate unchainDelegate:d2];
   [delegate chainHiddenDelegate:d2];
-  
+
   STAssertFalse([delegate respondsToSelector:d2Sel],
                 @"Hidden delegates should not influence -respondsTo:");
-  
+
   [delegate application:nil
-didRegisterForRemoteNotificationsWithDeviceToken:arg2];  
+didRegisterForRemoteNotificationsWithDeviceToken:arg2];
   STAssertEquals(arg2, d2.invoked2, @"Hidden chained delegate not invoked");
 }
 @end

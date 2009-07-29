@@ -22,7 +22,7 @@
 -(void)dealloc {
   [chainedDelegates release];
   [hiddenDelegates release];
-  
+
   [super dealloc];
 }
 
@@ -72,7 +72,7 @@
 
 // Overrides the default implementation to invoke all delegates.
 -(void)forwardInvocation:(NSInvocation *)invocation {
-  SEL aSelector = [invocation selector];  
+  SEL aSelector = [invocation selector];
   for (id delegate in hiddenDelegates) {
     if ([delegate respondsToSelector:aSelector]) {
       [invocation invokeWithTarget:delegate];
