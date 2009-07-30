@@ -13,11 +13,13 @@
 #import "AssetBook+StockCache.h"
 #import "ControllerSupport.h"
 #import "GameSyncController.h"
+#import "ImobileSupport.h"
 #import "NewsCenter.h"
 #import "PendingOrdersSubmittingController.h"
 #import "Portfolio.h"
 #import "StockCache.h"
 #import "TradeBook.h"
+
 
 @implementation Game
 
@@ -43,6 +45,9 @@
     [syncSite release];
 
     newDataSite = [[ZNTargetActionSet alloc] init];
+    
+    [[ZNPushNotifications notificationSite]
+     addTarget:self action:@selector(receivedPushNotification:)];                                                                
   }
   return self;
 }
@@ -98,6 +103,11 @@
 }
 
 -(void)syncData {
+  [syncController syncOnce];
+}
+
+-(void)receivedPushNotification:(NSDictionary*)notification {
+  // Automagically sync (refresh) when we receive notifications.
   [syncController syncOnce];
 }
 
