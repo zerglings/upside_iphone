@@ -172,7 +172,7 @@
   receivedResponse = YES;
   STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
-  
+
   ZNXmlHttpRequestTestModel* model = [responseArray objectAtIndex:0];
   STAssertTrue([model isKindOfClass:[ZNXmlHttpRequestTestModel class]],
                @"Model in response not deserialized properly");

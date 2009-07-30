@@ -3,7 +3,7 @@
 //  upside
 //
 //  Created by Victor Costan on 6/20/09.
-//  Copyright 2009 Zergling.Net. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "ZNHttpJsonCommController.h"

@@ -66,7 +66,7 @@
     kZNImobileProvisioningDeviceDistribution,
   };
   NSString* golden[] = {@"s", @"S", @"h", @"H", @"D"};
-  
+
   for (NSUInteger i = 0; i < sizeof(golden) / sizeof(*golden); i++) {
     STAssertEqualStrings(golden[i],
                          [ZNAppFprint copyProvisioningStringFor:
@@ -77,10 +77,10 @@
 
 -(void)testDeviceAttributes {
   NSDictionary* attributes = deviceAttributes;
-  
+
   STAssertEqualStrings(@"us.costan.ZergSupportTests",
                        [attributes objectForKey:@"appId"], @"appId");
-  
+
   if ([ZNImobileDevice inSimulator]) {
     STAssertEqualStrings(@"", [attributes objectForKey:@"appPushToken"],
                          @"appPushToken");
@@ -95,19 +95,19 @@
       }
     }
     STAssertNotNil([ZNImobileDevice appPushToken],
-                   @"Device didn't receive a token for push notifications");  
-    
+                   @"Device didn't receive a token for push notifications");
+
     STAssertEquals(64U, [[attributes objectForKey:@"appPushToken"] length],
                    @"appPushToken length");
   }
-  
+
   STAssertEqualStrings(@"1.9.8.3", [attributes objectForKey:@"appVersion"],
                        @"appVersion");
-  
+
   STAssertEqualStrings([ZNImobileDevice hardwareModel],
                        [attributes objectForKey:@"hardwareModel"],
                        @"hardwareModel");
-  
+
   STAssertEqualObjects(@"iPhone OS", [attributes objectForKey:@"osName"],
                        @"osName");
   STAssertEqualStrings([ZNImobileDevice osVersion],
@@ -118,7 +118,7 @@
                  @"UDID length");
 
   NSString* appProvisioning = [attributes objectForKey:@"appProvisioning"];
-  STAssertEquals(1U, [appProvisioning length], @"appProvisioning length");    
+  STAssertEquals(1U, [appProvisioning length], @"appProvisioning length");
 }
 
 -(void)testDigests {

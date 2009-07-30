@@ -3,7 +3,7 @@
 //  ZergSupport
 //
 //  Created by Victor Costan on 6/21/09.
-//  Copyright 2009 Zergling.Net. All rights reserved.
+//  Copyright Zergling.Net. Licensed under the MIT license.
 //
 
 #import "TestSupport.h"
@@ -34,7 +34,7 @@
                @"Started second connection");
   [netProgress connectionDone];
   STAssertTrue(app.networkActivityIndicatorVisible,
-               @"Done with first connection");  
+               @"Done with first connection");
   [netProgress connectionDone];
   STAssertFalse(app.networkActivityIndicatorVisible,
                 @"Done with second connection");

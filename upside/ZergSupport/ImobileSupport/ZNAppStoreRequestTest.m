@@ -19,7 +19,7 @@
   NSString* subscriptionId;
   NSString* featureId;
   NSArray* productIds;
-  
+
   BOOL receivedResponse;
 }
 @end
@@ -31,8 +31,8 @@
   subscriptionId = @"net.zergling.ZergSupport.sub";
   featureId = @"net.zergling.ZergSupport.feature";
   productIds = [[NSArray alloc] initWithObjects:subscriptionId, featureId, nil];
-  
-  receivedResponse = NO;  
+
+  receivedResponse = NO;
 }
 -(void)tearDown {
   [productIds release];
@@ -74,11 +74,11 @@
           @"real hardware if you make changes to ZNAppStoreRequest.");
     return;
   }
-  
+
   [ZNAppStoreRequest getInfoForProductId:subscriptionId
                                   target:self
                                   action:@selector(checkSingleProductInfo:)];
-  
+
   for (NSUInteger i = 0; i < 300; i++) {
     [[NSRunLoop currentRunLoop] runUntilDate:
      [NSDate dateWithTimeIntervalSinceNow:0.1]];
@@ -92,8 +92,8 @@
 -(void)checkSingleProductInfo:(SKProduct*)productInfo {
   receivedResponse = YES;
   STAssertFalse([productInfo isKindOfClass:[NSError class]],
-                @"Fetching product info failed: %@", [productInfo description]);  
-  
+                @"Fetching product info failed: %@", [productInfo description]);
+
   [self checkSubscriptionProductInfo:productInfo];
 }
 
@@ -103,12 +103,12 @@
           @"real hardware if you make changes to ZNAppStoreRequest.");
     return;
   }
-  
+
   [ZNAppStoreRequest getInfoForProductId:@"net.zergling.ZergSupport.no_product"
                                   target:self
                                   action:
    @selector(checkNonExistentSingleProductInfo:)];
-  
+
   for (NSUInteger i = 0; i < 300; i++) {
     [[NSRunLoop currentRunLoop] runUntilDate:
      [NSDate dateWithTimeIntervalSinceNow:0.1]];
@@ -123,7 +123,7 @@
   receivedResponse = YES;
   STAssertNil(productInfo,
               @"Fetching non-existent product info yielded %@",
-              [productInfo description]);  
+              [productInfo description]);
 }
 
 -(void)testMultipleProducts {
@@ -132,12 +132,12 @@
           @"real hardware if you make changes to ZNAppStoreRequest.");
     return;
   }
-  
+
   [ZNAppStoreRequest getInfoForProductIds:[NSArray arrayWithObjects:
                                            subscriptionId, featureId, nil]
                                    target:self
                                    action:@selector(checkMultipleProductInfo:)];
-  
+
   for (NSUInteger i = 0; i < 300; i++) {
     [[NSRunLoop currentRunLoop] runUntilDate:
      [NSDate dateWithTimeIntervalSinceNow:0.1]];
@@ -151,9 +151,9 @@
 -(void)checkMultipleProductInfo:(NSArray*)productInfo {
   receivedResponse = YES;
   STAssertFalse([productInfo isKindOfClass:[NSError class]],
-                @"Fetching product info failed: %@", [productInfo description]);  
+                @"Fetching product info failed: %@", [productInfo description]);
   STAssertEquals(2U, [productInfo count], @"Expected info for 2 products");
-  
+
   NSString* firstId = [(SKProduct*)[productInfo objectAtIndex:0]
                        productIdentifier];
   if ([subscriptionId isEqualToString:firstId]) {

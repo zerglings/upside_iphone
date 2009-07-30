@@ -187,4 +187,20 @@
   [string release];
 }
 
+-(void)testNonStringValues {
+  uint8_t dataBytes[] = {'A', 'C', '2', 'D'};
+  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                        [NSNumber numberWithDouble:-3.141592], @"key1",
+                        [NSData dataWithBytes:dataBytes
+                                       length:sizeof(dataBytes)], @"key2", nil];
+  NSData* data = [ZNFormEncoderTestEncoder copyEncodingFor:dict
+                                       usingFieldFormatter:identityFormatter];
+  NSString* string = [[NSString alloc] initWithData:data
+                                           encoding:NSUTF8StringEncoding];
+  STAssertEqualStrings(@"key1: -3.141592; key2: AC2D; ", string,
+                       @"Straight-forward one-level dictionary");
+  [data release];
+  [string release];
+}
+
 @end

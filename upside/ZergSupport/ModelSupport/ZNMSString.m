@@ -52,9 +52,15 @@
     case kZNPropertyWantsAssign:
       break;
     default:
-      NSAssert(NO, @"Unknown attribute setter strategy");      
+      NSAssert(NO, @"Unknown attribute setter strategy");
   }
   object_setIvar(instance, runtimeIvar, string);
+}
+
+-(NSObject*)copyStringForBoxedValue:(NSObject*)boxedValue {
+  NSAssert([boxedValue isKindOfClass:[NSString class]],
+           @"Value is not a NSString instance");
+  return [(NSString*)boxedValue retain];
 }
 
 @end

@@ -17,6 +17,7 @@
   ZNTestDate* dateModel;
   ZNTestSubmodel* subModel;
   NSDate* date;
+  NSString* dateString;
   ZNTestNumbers* numbersModel;
   NSNumber* trueObject;
   NSNumber* falseObject;
@@ -39,7 +40,11 @@
   date = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
   dateModel = [[ZNTestDate alloc] initWithProperties: nil];
   dateModel.pubDate = date;
-
+  NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+  [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];  
+  dateString = [[formatter stringFromDate:date] retain];
+  [formatter release];
+  
   subModel = [[ZNTestSubmodel alloc] initWithProperties:nil];
   subModel.dateModel = dateModel;
 
@@ -69,6 +74,7 @@
 
 -(void)tearDown {
   [date release];
+  [dateString release];
   [dateModel release];
   [testData release];
   [testDataString release];
@@ -287,6 +293,36 @@
   STAssertNil(thawedNulls.dateModel,
               @"NSNull instances should be string-unboxed to nil models");
   [thawedNulls release];
+}
+
+-(void)testExtendedAttributesStringBoxing {
+  NSDictionary* dict =
+      [NSDictionary dictionaryWithObjectsAndKeys:
+       doubleObject, @"doubleVal", integerObject, @"integerVal",
+       uintegerObject, @"uintegerVal", testString, @"stringVal",
+       testData, @"dataVal", date, @"dateVal",
+       subModel, @"model", [NSNull null], @"nullVal", nil];
+  
+  NSDictionary* goldenStringDict = 
+      [NSDictionary dictionaryWithObjectsAndKeys:
+       [NSString stringWithFormat:@"%lf", testDouble], @"doubleVal",
+       [NSString stringWithFormat:@"%d", testInteger], @"integerVal",
+       [NSString stringWithFormat:@"%u", testUInteger], @"uintegerVal",
+       testString, @"stringVal", testDataString, @"dataVal",
+       dateString, @"dateVal", 
+       [NSDictionary dictionaryWithObjectsAndKeys:
+        [NSDictionary dictionaryWithObjectsAndKeys:
+         dateString, @"pubDate", nil],
+        @"dateModel", nil],
+       @"model", nil];
+  
+  ZNTestDate* model = [[ZNTestDate alloc] initWithProperties:dict];
+  NSDictionary* stringDict = [model copyToDictionaryForcingStrings:YES];
+  STAssertEqualObjects(goldenStringDict, stringDict,
+                       @"Incorrect string-boxing from extended attributes");
+  
+  [stringDict release];
+  [model release];
 }
 
 -(void)testIsModelClass {

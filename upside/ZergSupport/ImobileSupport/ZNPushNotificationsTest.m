@@ -36,7 +36,7 @@
                               error:NULL];
 }
 
--(NSString*)pushCertificate {
+-(NSData*)pushCertificate {
   NSString* certificatePath;
   if ([ZNImobileDevice appProvisioning] ==
       kZNImobileProvisioningDeviceDistribution) {
@@ -49,24 +49,22 @@
                        stringByAppendingPathComponent:
                        @"ZNPushNotificationsTestCertDev.p12"];
   }
-  return [NSString stringWithContentsOfFile:certificatePath
-                                   encoding:NSISOLatin1StringEncoding
-                                      error:NULL];
+  return [NSData dataWithContentsOfFile:certificatePath];
 }
 
 -(void)setUp {
   [[ZNPushNotifications notificationSite]
    addTarget:self
    action:@selector(checkNotification:)];
-  
+
   nonce = [[NSString alloc] initWithFormat:@"%lf",
            [NSDate timeIntervalSinceReferenceDate]];
-  
+
   receivedResponse = NO;
   receivedNotification = NO;
 
   pushCertificate = [[self pushCertificate] retain];
-  
+
   notificationData =
       [[NSDictionary alloc] initWithObjectsAndKeys:
        [NSDictionary dictionaryWithObjectsAndKeys:
@@ -94,7 +92,7 @@
           @"real hardware if you make changes to ZNAppStoreRequest.");
     return;
   }
-  
+
   // Wait to get a push token.
   for (NSUInteger i = 0; i < 100; i++) {
     [[NSRunLoop currentRunLoop] runUntilDate:
@@ -104,8 +102,8 @@
     }
   }
   STAssertNotNil([ZNImobileDevice appPushToken],
-                 @"Device didn't receive a token for push notifications");  
-  
+                 @"Device didn't receive a token for push notifications");
+
   // Ask the Web service to send a push notification.
   NSDictionary* deviceAttributes = [ZNAppFprint copyDeviceAttributes];
   NSDictionary* request = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -129,7 +127,7 @@
   }
   STAssertEquals(YES, receivedResponse,
                  @"Notification push service didn't respond");
-  
+
   for (NSUInteger i = 0; i < 600; i++) {
     [[NSRunLoop currentRunLoop] runUntilDate:
      [NSDate dateWithTimeIntervalSinceNow:0.1]];
@@ -138,14 +136,14 @@
     }
   }
   STAssertEquals(YES, receivedNotification,
-                 @"Notification push service didn't respond");  
+                 @"Notification push service didn't respond");
 }
 
 -(void)checkWebResponse:(NSArray*)response {
   receivedResponse = YES;
   STAssertFalse([response isKindOfClass:[NSError class]],
                 @"Push error: %@", [response description]);
-  
+
   STAssertEqualStrings(@"ok", [[response objectAtIndex:0]
                                objectForKey:@"status"],
                        @"Push service failed");
@@ -154,8 +152,8 @@
 -(void)checkNotification:(NSDictionary*)data {
   if (![nonce isEqualToString:[data objectForKey:@"nonce"]])
     return;
-  
-  receivedNotification = YES;  
+
+  receivedNotification = YES;
   STAssertEqualObjects(notificationData, data, @"Bad notification data");
 }
 

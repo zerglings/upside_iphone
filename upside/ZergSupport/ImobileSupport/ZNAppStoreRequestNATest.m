@@ -73,9 +73,9 @@
   NSString* cheapSubscriptionId;
   NSString* cancelMeId;
   BOOL inSimulator;
-  
+
   SKPaymentTransaction* skTransaction;
-  BOOL receivedResponse;  
+  BOOL receivedResponse;
 }
 @end
 
@@ -95,15 +95,15 @@
   cheapSubscriptionId = @"net.zergling.ZergSupport.sub_cheap";
   // This product instructors the tester to cancel it.
   cancelMeId = @"net.zergling.ZergSupport.cancel_me";
-  
+
 #if TARGET_IPHONE_SIMULATOR
   inSimulator = YES;
 #else  // TARGET_IPHONE_SIMULATOR
   inSimulator = NO;
 #endif  // TARGET_IPHONE_SIMULATOR
-  
+
   skTransaction = nil;
-  receivedResponse = NO;  
+  receivedResponse = NO;
 
   testService =
       @"http://zn-testbed.heroku.com/imobile_support/payment_receipt.json";
@@ -125,10 +125,10 @@
           @"real hardware if you make changes to ZNAppStoreRequest.");
     return;
   }
-  
+
   [ZNAppStoreRequest startPurchasing:cheapSubscriptionId
                               target:self
-                              action:@selector(checkPurchase:)];  
+                              action:@selector(checkPurchase:)];
   for (NSUInteger i = 0; i < 3000; i++) {
     [[NSRunLoop currentRunLoop] runUntilDate:
      [NSDate dateWithTimeIntervalSinceNow:0.1]];
@@ -166,12 +166,12 @@
 -(void)checkPurchase:(SKPaymentTransaction*)transaction {
   receivedResponse = YES;
   STAssertFalse([transaction isKindOfClass:[NSError class]],
-                @"Purchase failed: %@", [transaction description]);      
+                @"Purchase failed: %@", [transaction description]);
   STAssertNotNil(transaction, @"Purchase failed (no transaction receipt)");
-  
+
   skTransaction = [transaction retain];
   [ZNAppStoreRequest finishedTransaction:skTransaction];
-    
+
   STAssertEqualStrings(cheapSubscriptionId,
                        transaction.payment.productIdentifier,
                        @"Purchased wrong product");
@@ -182,10 +182,10 @@
 -(void)checkReceipt:(NSArray*)response {
   STAssertFalse([response isKindOfClass:[NSError class]],
                 @"Verification failed: %@", [response description]);
-  
+
   ZNAppStoreRequestNATestWebResponse* receipt = [response objectAtIndex:0];
   receivedResponse = YES;
-  
+
   STAssertEquals(skTransaction.payment.quantity, receipt.quantity,
                  @"Receipt quantity doesn't match");
   STAssertEqualStrings(skTransaction.payment.productIdentifier,
@@ -217,10 +217,10 @@
           @"real hardware if you make changes to ZNAppStoreRequest.");
     return;
   }
-  
+
   [ZNAppStoreRequest startPurchasing:cancelMeId
                               target:self
-                              action:@selector(checkPurchaseCancel:)];  
+                              action:@selector(checkPurchaseCancel:)];
   for (NSUInteger i = 0; i < 3000; i++) {
     [[NSRunLoop currentRunLoop] runUntilDate:
      [NSDate dateWithTimeIntervalSinceNow:0.1]];
@@ -233,7 +233,7 @@
 -(void)checkPurchaseCancel:(NSError*)error {
   receivedResponse = YES;
   STAssertTrue([error isKindOfClass:[NSError class]],
-               @"Cancelled purchase didn't fail: %@", [error description]);      
+               @"Cancelled purchase didn't fail: %@", [error description]);
 }
 
 @end

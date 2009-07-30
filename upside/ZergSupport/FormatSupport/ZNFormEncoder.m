@@ -46,7 +46,7 @@
             !dictionaryOrModel,
             @"Object to be encoded is not a dictionary or a model: %@",
             [dictionaryOrModel description]);
-  
+
   ZNFormEncoder* encoder = [[self alloc] initWithFieldFormatter:formatter];
   [encoder encode:dictionaryOrModel];
   NSMutableData* output = [[encoder output] retain];
@@ -73,7 +73,7 @@
     NSDictionary* dictionary = [object isKindOfClass:[ZNModel class]] ?
         [(ZNModel*)object copyToDictionaryForcingStrings:YES] :
         (NSDictionary*)object;
-        
+
     for (NSString* key in dictionary) {
       NSString* formattedKey = [fieldFormatter copyFormattedName:key];
       [self encodeKey:formattedKey
@@ -81,7 +81,7 @@
             keyPrefix:keyPrefix];
       [formattedKey release];
     }
-    
+
     if (dictionary != object) {
       [dictionary release];
     }
@@ -106,7 +106,12 @@
     [newPrefix release];
   }
   else {
-    NSAssert([value isKindOfClass:[NSString class]],
+    NSString* stringValue = (NSString*)([value isKindOfClass:[NSString class]] ?
+        value : [ZNModel copyStringForBoxedValue:value]);
+    if (!stringValue) {
+      return;
+    }    
+    NSAssert([stringValue isKindOfClass:[NSString class]],
              @"Attempting to encode non-String value!");
 
     NSString* outputKey;
@@ -115,7 +120,10 @@
     else
       outputKey = [key retain];
 
-    [self outputValue:(NSString*)value forKey:outputKey];
+    [self outputValue:stringValue forKey:outputKey];
+    if (stringValue != value) {
+      [stringValue release];
+    }
     [outputKey release];
   }
 }

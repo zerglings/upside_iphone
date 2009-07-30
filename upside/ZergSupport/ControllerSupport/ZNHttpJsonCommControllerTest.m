@@ -90,12 +90,12 @@
 
 -(void)testNormalRun {
   [commController callService:service];
-  
+
   STAssertTrue([app isNetworkActivityIndicatorVisible],
                @"Comm controller did not anounce start of net request");
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
                                             1.0]];
-  
+
   STAssertEquals(YES, receivedResponse, @"Never received response");
   STAssertFalse([app isNetworkActivityIndicatorVisible],
                 @"Comm controller did not anounce end of net request");
@@ -105,12 +105,12 @@
   receivedResponse = YES;
   STAssertFalse([responseArray isKindOfClass:[NSError class]],
                 @"Error occured %@", responseArray);
-  
+
   ZNHttpJsonCommControllerTestModel* response = [responseArray objectAtIndex:0];
   STAssertTrue([response isKindOfClass:[ZNHttpJsonCommControllerTestModel
                                         class]],
                @"Response not deserialized using proper model");
-  
+
   STAssertEqualStrings(@"get", response.method,
                        @"Request not issued using GET");
   STAssertEqualStrings(@"/web_support/echo.json?key1=value1", response.uri,

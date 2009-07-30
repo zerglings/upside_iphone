@@ -27,10 +27,10 @@
                  initWithCapacity:[masterSchema count]];
   parserSchema = [[NSMutableDictionary alloc]
                   initWithCapacity:[masterSchema count]];
-  
+
   for (NSObject* elementName in masterSchema) {
     NSObject* directive = [masterSchema objectForKey:elementName];
-    
+
     if ([directive isKindOfClass:[NSArray class]]) {
       [modelSchema setObject:[(NSArray*)directive objectAtIndex:0]
                       forKey:elementName];

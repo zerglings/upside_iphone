@@ -25,7 +25,7 @@
 @interface ZNAppFprintTest : SenTestCase {
   NSDictionary* deviceAttributes;
   NSString* testService;
-  NSString* manifest;
+  NSData* manifest;
   BOOL receivedResponse;
 }
 
@@ -43,10 +43,9 @@
 
 -(void)setUp {
   deviceAttributes = [ZNAppFprint copyDeviceAttributes];
-  NSData* manifestData = [NSData
-                          dataWithContentsOfFile:[ZNAppFprint executablePath]];
-  manifest = [[NSString alloc] initWithData:manifestData
-                                   encoding:NSISOLatin1StringEncoding];
+  manifest = [[NSData alloc] initWithContentsOfFile:[ZNAppFprint
+                                                     executablePath]];
+              
 
   testService =
       @"http://zn-testbed.heroku.com/crypto_support/app_fprint.xml";
@@ -81,8 +80,8 @@
 
   // Heroku can take a looong time to compute the fingerprint.
   for (NSUInteger i = 0; i < 60; i++) {
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:
-                                              1.0]];
+    [[NSRunLoop currentRunLoop] runUntilDate:
+     [NSDate dateWithTimeIntervalSinceNow:1.0]];
     if (receivedResponse == YES)
       break;
   }

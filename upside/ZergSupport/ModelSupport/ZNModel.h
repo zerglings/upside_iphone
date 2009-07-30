@@ -94,6 +94,9 @@
 
 -(NSMutableDictionary*)copyToMutableDictionaryForcingStrings:(BOOL)forceStrings;
 
+// Turns a boxed value into a string-boxed value. 
++(NSObject*)copyStringForBoxedValue:(NSObject*)boxedValue;
+
 // Checks if an Objective C object is a ModelSupport model, or a class for a
 // ModelSupport model.
 +(BOOL)isModelClass:(id)maybeModelClass;
