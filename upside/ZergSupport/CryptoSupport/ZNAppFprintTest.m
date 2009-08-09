@@ -11,6 +11,7 @@
 #import "ZNAppFprint.h"
 
 #import "FormatSupport.h"
+#import "ImobileSupport.h"
 #import "WebSupport.h"
 
 
@@ -62,6 +63,17 @@
 }
 
 -(void)testFprint {
+  // Wait to get a push token, so the fingerprint is stable.
+  if (![ZNImobileDevice inSimulator]) {
+    for (NSUInteger i = 0; i < 100; i++) {
+      [[NSRunLoop currentRunLoop] runUntilDate:
+       [NSDate dateWithTimeIntervalSinceNow:0.1]];
+      if ([ZNImobileDevice appPushToken]) {
+        break;
+      }
+    }
+  }
+    
   NSDictionary* request = [NSDictionary dictionaryWithObjectsAndKeys:
                            deviceAttributes, @"attributes",
                            manifest, @"manifest",

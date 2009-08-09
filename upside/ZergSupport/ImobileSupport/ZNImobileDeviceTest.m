@@ -110,7 +110,7 @@
     kZNImobileProvisioningDeviceRelease,
     kZNImobileProvisioningDeviceDebug,
     kZNImobileProvisioningDeviceDistribution,
-    kZNImobileProvisioningDeviceDebug,
+    kZNImobileProvisioningDeviceDistribution,
     kZNImobileProvisioningSimulatorRelease,
     kZNImobileProvisioningSimulatorDebug,
     kZNImobileProvisioningSimulatorRelease,

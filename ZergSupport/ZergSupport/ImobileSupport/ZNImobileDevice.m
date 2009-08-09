@@ -86,10 +86,10 @@
     return inDebug ?  kZNImobileProvisioningSimulatorDebug :
         kZNImobileProvisioningSimulatorRelease;
   }
-  if (inDebug) {
-    return kZNImobileProvisioningDeviceDebug;
+  if (encryptedBinary) {
+    return kZNImobileProvisioningDeviceDistribution;
   }
-  return encryptedBinary ? kZNImobileProvisioningDeviceDistribution :
+  return inDebug ? kZNImobileProvisioningDeviceDebug :
       kZNImobileProvisioningDeviceRelease;
 }
 

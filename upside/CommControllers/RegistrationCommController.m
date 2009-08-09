@@ -69,7 +69,7 @@
     [delegate activationFailed:
      [NSError errorWithDomain:@"StockPlay" code:0 userInfo:
       [NSDictionary dictionaryWithObjectsAndKeys:
-       @"Activation Failure",
+       @"Registration Failure",
        NSLocalizedDescriptionKey,
        @"Our server returned an invalid response.",
        NSLocalizedFailureReasonErrorKey,
